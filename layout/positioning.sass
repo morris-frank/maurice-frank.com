@@ -1,0 +1,43 @@
+$linewidth: 769px
+$gap: 20px
+
+=desktop
+  @media screen and (min-width: $linewidth)
+    @content
+
+body
+  margin: 0
+
+nav
+  &.center
+    margin-bottom: 3rem
+  h1
+    margin-right: 2rem
+    display: inline-block
+  > a
+    margin-right: 1rem
+    display: inline-block
+
+main
+  min-height: 40vh
+
+footer
+  margin: 6rem 0 0
+  padding: 3rem 0
+
+.flex
+  display: flex
+  & > *
+    flex-grow: 1
+    flex-basis: 0
+
+.center
+  margin: 0 $gap
+  width: auto
+  +desktop
+    margin: 0 auto
+    max-width: $linewidth - 2 * $gap
+
+.box
+  border-radius: $radius
+  padding: 1.25rem

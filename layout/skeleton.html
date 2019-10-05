@@ -13,44 +13,30 @@
 </head>
 
 <body>
-    <section class="hero is-primary is-bold">
-        <div class="hero-head">
-            <div class="navbar container">
-                <div class="navbar-start">
-                    <a href="/" class="navbar-item">
-                        <h1 class="title">Morris Frank</h1>
-                    </a>
-                    <a class="navbar-item" title="travel">travel</a>
-                    <a class="navbar-item" title="works">portfolio</a>
-                    <a class="navbar-item" href="{{ROOT}}resume.pdf">cv</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <nav class="center">
+        <h1>
+            <a class="no-decorate" href="/">Morris Frank</a>
+        </h1>
+        <!-- <a>how-to</a>
+        <a>travel</a> -->
+        <a href="{{ROOT}}resume.pdf">cv</a>
+    </nav>
 
-    <section class="section">
-        <div class="container">
-            <div class="content">
-                {{CONTENT}}
-            </div>
-        </div>
-    </section>
+    <main class="center">
+        {{CONTENT}}
+    </main>
 
-    <footer class="footer">
-        <div class="container">
-            <article class="box is-primary">
-                <div class="columns">
-                    <div class="column is-6 has-text-centered">
-                        <p class="heading">Responsible person here</p>
-                        <p class="is-size-7"><a href="mailto:maurice.frank@posteo.de">Maurice Frank</a></p>
-                        <p class="is-size-7"><a href="https://github.com/morris-frank/morris-frank.dev">source code (MIT)</a></p>
-                    </div>
-                    <div class="column is-6 has-text-centered">
-                        <p class="heading">Privacy statement</p>
-                        <p class="is-size-7">I don't collect any data from you. Neither do I want any data. So don't send me any!</p>
-                    </div>
-                </div>
-            </article>
+    <footer>
+        <div class="center box flex">
+            <div>
+                <h2>Responsible person here</h2>
+                <p><a href="mailto:maurice.frank@posteo.de">Maurice Frank</a></p>
+                <p><a href="https://github.com/morris-frank/morris-frank.dev">source code (MIT)</a></p>
+            </div>
+            <div>
+                <h2>Privacy statement</h2>
+                <p>I don't collect any data from you. Neither do I want any data. So don't send me any!</p>
+            </div>
         </div>
     </footer>
 </body>
