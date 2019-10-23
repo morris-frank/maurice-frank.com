@@ -31,19 +31,8 @@ footer {
 
 a {
   color: #1a1a1a;
-  background-image: linear-gradient(rgba(104, 157, 106, 0.5), rgba(104, 157, 106, 0.5));
-  background-size: 1px 0.4em;
-  background-position: 0 0.9em;
-  background-repeat: repeat-x;
+  text-decoration-color: rgba(104, 157, 106, 0.5);
   transition: 120ms ease-in-out;
-}
-a:hover {
-  background-size: 1px 0.5em;
-  background-position: 0 0.7em;
-}
-a.no-decorate {
-  background-size: initial;
-  background-position: initial;
 }
 
 h2, nav h1 a {
@@ -158,7 +147,17 @@ blockquote:before {
 }
 
 a {
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.3em;
+  text-decoration-skip-ink: none;
+  text-underline-offset: -0.15em;
+}
+a.no-decorate {
   text-decoration: none;
+}
+a:hover {
+  text-decoration-thickness: 0.4em;
+  text-underline-offset: -0.3em;
 }
 
 h1 {

@@ -32,17 +32,8 @@ footer
 
 a
   color: $black
-  background-image: linear-gradient(rgba($primary, 0.5), rgba($primary, 0.5))
-  background-size: 1px 0.4em
-  background-position: 0 0.9em
-  background-repeat: repeat-x
+  text-decoration-color: rgba($primary, 0.5)
   transition: 120ms ease-in-out
-  &:hover
-    background-size: 1px 0.5em
-    background-position: 0 0.7em
-  &.no-decorate
-    background-size: initial
-    background-position: initial
 
 h2, nav h1 a
   $gradient-top-left: darken(saturate(adjust-hue($primary, -10deg), 10%),20%)

@@ -17,6 +17,7 @@
 $font: 'Fira Sans Extra Condensed', sans-serif
 
 body
+  $font-family: $font
   font-size: 22px
   line-height: 1.35
   text-ren­der­ing: op­ti­mize­Leg­i­bil­ity
@@ -50,7 +51,15 @@ blockquote:before
   line-height: 0
 
 a
-  text-decoration: none
+  text-decoration-line: underline
+  text-decoration-thickness: 0.3em
+  text-decoration-skip-ink: none
+  text-underline-offset: -0.15em
+  &.no-decorate
+    text-decoration: none
+  &:hover
+    text-decoration-thickness: 0.4em
+    text-underline-offset: -0.3em
 
 h1
   font-size: 1.5rem

@@ -4,7 +4,6 @@
   "author": "Maurice Frank <maurice.frank@posteo.de>",
   "license": "MIT",
   "dependencies": {
-    "bulma": "^0.7.1",
     "js-beautify": "^1.8.6",
     "sass": "^1.13.4"
   }
