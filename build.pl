@@ -18,7 +18,7 @@ GetOptions ('local' => \$local);
 
 if ($local) {
     print colored("⇒ Building for local dev", "white"), "\n";
-    $root = 'file:///home/morris/src/morris-frank/morris-frank.dev/docs/';
+    $root = 'http://127.0.0.1:8080/';
 }
 
 build();
