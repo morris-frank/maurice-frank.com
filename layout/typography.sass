@@ -7,14 +7,20 @@
   font-family: 'Fira Sans Condensed'
   font-style: italic
   font-weight: 400
-  src: local('Fira Sans Condensed Italic'), local('FiraSansCondensed-Italic'), url('FiraSansCondensed-Italic.ttf')
+  src: local('Fira Sans Condensed Italic'), local('FiraSansCondensed-Italic'), url('FiraSansCondensed-Italic.otf')
 @font-face
   font-family: 'Fira Sans Condensed'
   font-style: normal
   font-weight: 700
-  src: local('Fira Sans Condensed SemiBold'), local('FiraSansCondensed-SemiBold'), url('FiraSansCondensed-SemiBold.ttf')
+  src: local('Fira Sans Condensed SemiBold'), local('FiraSansCondensed-SemiBold'), url('FiraSansCondensed-SemiBold.otf')
+@font-face
+  font-family: 'Fira Code'
+  font-style: normal
+  font-weight: 400
+  src: local('Fira Code Regular'), local('FiraCode-Regular'), url('FiraCode-Regular.otf')
 
 $font: 'Fira Sans Condensed', sans-serif
+$font-code: 'Fira Code'
 
 body
   font-family: $font
@@ -84,3 +90,7 @@ h3
 
 h4
   font-size: 1.2rem
+
+code
+  font-family: $font-code
+  font-size: 0.8rem

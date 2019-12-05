@@ -53,12 +53,15 @@ sub process_content_file {
     print colored( "    Processing $basename", 'yellow' ), "\n";
 
     my $content = read_file($input_file);
+
     my $title = "";
     if ($content =~ m/<h2[^>]*>([^<]+)<\/h2>/i ) {
         $title = $1;
     } else {
         $title = $basename;
     }
+
+    my $contains_code = index($content, "<pre>") != -1;
 
     my $output = $skeleton;
     $output =~ s/\{\{CONTENT\}\}/$content/g;
@@ -74,7 +77,15 @@ sub process_content_file {
     }
     write_file($output_file, $output);
 
-    beautify_file($output_file)
+    beautify_file($output_file);
+    if ($contains_code) {
+        syntax_highlight($output_file);
+    }
+}
+
+sub syntax_highlight {
+    my ($filename) = @_;
+    system("bin/prismjs $filename");
 }
 
 sub beautify_file {
@@ -97,6 +108,7 @@ sub process_sass {
     my $save_name = "main-${fingerprint}.css";
 
     move("${output_dir}main.css", "${output_dir}${save_name}");
+    beautify_file("${output_dir}${save_name}");
     print colored( "⇐ Built ${output_dir}${save_name}", 'green' ), "\n";
     return $save_name;
 }
