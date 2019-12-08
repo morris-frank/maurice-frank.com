@@ -45,33 +45,45 @@ nav h1 a {
 
 hr {
     border-width: 1px 0 0 0;
-    color: #333333;
+    color: #4a4a4a;
 }
 
-pre.language-python {
+pre {
     color: #f7f7f7;
     background: #333333;
     border-radius: 1em;
 }
 
-pre.language-python .token.keyword {
+pre .token.keyword {
     color: #689D6A;
 }
 
-pre.language-python .token.string {
+pre .token.string {
     color: #f3de8a;
 }
 
-pre.language-python .token.function {
+pre .token.function {
     color: #ff8360;
 }
 
-pre.language-python .token.punctuation {
+pre .token.punctuation {
     color: #70a9a1;
 }
 
-pre.language-python .token.operator {
+pre .token.operator {
     color: #cacf85;
+}
+
+cite {
+    color: #7a7a7a;
+}
+
+cite .title {
+    color: #333333;
+}
+
+.listing {
+    border-left: 3px solid #689D6A;
 }
 
 body {
@@ -142,6 +154,18 @@ figure svg {
 pre {
     padding: 1.5em 2em;
     margin: 0 -2em;
+}
+
+.listing {
+    padding-left: 3em;
+}
+
+.listing span {
+    display: block;
+}
+
+hr {
+    clear: both;
 }
 
 @font-face {
@@ -255,11 +279,35 @@ h3 {
 
 h4 {
     font-size: 1.2rem;
+    margin: 1em 0 0.2em;
 }
 
 code {
     font-family: "Fira Code";
     font-size: 0.8rem;
+}
+
+kbd {
+    font-family: "Fira Code";
+}
+
+cite {
+    font-size: 0.9rem;
+    line-height: 1.7em;
+    font-style: normal;
+}
+
+cite .title {
+    font-style: italic;
+}
+
+.references {
+    font-size: 0.9rem;
+    padding-left: 1em;
+}
+
+.listing .title {
+    font-size: 1.2rem;
 }
 
 .figure-contents {
