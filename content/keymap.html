@@ -9,24 +9,25 @@ layout file to extend ones keyboard layout.
 
 <h3>What is it?</h3>
 <p>
-That is easy. The keyboard layout tells your system which character / symbol to
+That's easy. The keyboard layout tells your system which character / symbol to
 print, when you press a key.
 </p>
 
 <h3>Why?</h3>
 <p>
-Most people that start going down that path and ask <em>Which keyboard layout
+Most people that start going down this path and ask <em>Which keyboard layout
 should I use?</em> probably end up with one of the modern optimized layouts,
-like <a href="https://w.wiki/DWJ">Neo</a>, for German. The argument being, that
-the layout most of use use like QWERTY (or QWERTZ for me) sucks and makes you
-type slower. Which is true. Those layouts were invented to be slow, in a time of
+like <a href="https://w.wiki/DWJ">Neo</a> (German only). The argument being, that
+the layout most of use like QWERTY (or QWERTZ, etc.) sucks and makes you type
+slower. Which is true. Those layouts were invented to be slow, in a time of
 typewriters, so that commonly used keys have a higher distance between each
 other and jam less often. Thus it shouldn't be surprising that one can easily
 construct a layout which is <em>way</em> more efficient. I personally never felt
-though that the my typing speed was holding me back, I just do not write enough
+though, that the my typing speed was holding me back. I just do not write enough
 (or think fast enough) to require those kinds of speeds. Nevertheless I found my
 keyboard always to be severely underutilized. All those symbols reachable with
-<kbd>Shift</kbd> and <kbd>AltGr</kbd>, that I never need.
+<kbd>Shift</kbd> and <kbd>AltGr</kbd>, that I never need, could be symbol I do
+need.
 </p>
 
 <p>The symbols I added that proved especially useful:</p>
@@ -73,9 +74,9 @@ x = μ + np.random.rand() * σ</code></pre>
 <h3>How?</h3>
 <p>
 We do not want to reinvent the wheel. We just want to replace symbols that we
-never use with symbols that could be useful. So best to start off with a
-pre-existing layout. For me that would be the German QWERTZ layout. You find all
-XKB layout definitions in <var>/usr/share/X11/xkb/symbols</var>.
+never use with symbols that could be useful. Therefore it is best to start off
+with a pre-existing layout. For me that would be the German QWERTZ layout. You
+find all XKB layout definitions in <var>/usr/share/X11/xkb/symbols</var>.
 </p>
 
 <p>
@@ -100,20 +101,22 @@ The xkb layout definitions are hierarchical, we can include other definitions
 with an include statement and override only the parts that we need. The <em>de</em>
 layout is based on the type4 layout (which itself has latin as its base) in the
 file <var>symbols/latin</var>. Further included is <var>level3(ralt_switch)</var>
-which will make the third layer in the layout with the right <kbd>Alt</kbd> key.
+which will make <kbd>Alt</kbd> the modifier with which the third layer is
+reached.
 </p>
 
-<p>The rest of the block has many lines like:</p>
+<p>The inside of the block consists of lines like:</p>
 
 <pre>    key &lt;AE04&gt; { [ 4, dollar, onequarter, currency ] };</pre>
 
 <p>
-    in the angle brackets we have the XKB key symbol we want to define followed
-    by a list with the four levels: no modifier, <kbd>Shift</kbd>, <kbd>RAlt</kbd>,
-    <kbd>RAlt</kbd> + <kbd>Shift</kbd> (for this German case).
+in the angle brackets we have the XKB key symbol we want to define followed
+by a list with the four levels: no modifier, <kbd>Shift</kbd>, <kbd>RAlt</kbd>,
+<kbd>RAlt</kbd> + <kbd>Shift</kbd> (for this German case).
 </p>
 
 
+<h3>Our own layout</h3>
 <p>
 We start by just importing the German basic layout (which imports all
 underlying imports):
@@ -131,8 +134,8 @@ xkb_symbols "basic" {
 <p>
 If you want to have a different modifier than <kbd>RAlt</kbd> for level3 you
 have to import the definition from <var>symbols/level3</var>. Now we need the
-XKB symbol names for the keys we are interested in. For this you can run in
-terminal:
+XKB symbol names for the keys we are interested in. For this you can run inside
+a terminal:
 </p>
 
 <pre><code class="lang-bash">xev -event keyboard</code></pre>
@@ -141,10 +144,10 @@ terminal:
 
 <p>
 <var>xev</var> gives you a little white window and if you press a key inside
-it prints information about that key in the terminal. We are interested in
-<var>keycode</var>. For example lets say I press my <kbd>F</kbd> key it will
-give me keycode 41. Sadly thats the keycode not the key-symbol. To find
-the key symbol you have to look in <var>/usr/share/X11/xkb/keycodes/evdev</var>.
+it, it will print information about the pressed  key in the terminal. We are
+interested in the <em>keycode</em>. If I press my <kbd>F</kbd> key it will
+give me keycode 41. Sadly that is the keycode not the <em>key-symbol</em>. To
+find the key symbol you have to look in <var>/usr/share/X11/xkb/keycodes/evdev</var>.
 In there we find that the key symbol for key code 41 is <var>&lt;AC04&gt;</var>.
 </p>
 
@@ -164,12 +167,16 @@ and fourth layer so we write:
 <pre>key &lt;AC04&gt; { [ f, F, Greek_phi, Greek_PHI] };</pre>
 
 <p>
-Some part of the Unicode standard has names as the φ and Φ here. To find those
-you have to look in <var>/usr/include/X11/keysymdef.h</var> (ignoring the
-leading <em>XK_</em>). Or more realistically you look in other layout
-definitions. More generally you may use any Unicode character. For 👍 that will
+We write <var>Greek_phi</var> instead of φ. Except the absolute basic numbers
+and latin alphabet you cannot write copy symbol you want but have to use an
+identifier. A subset of Unicode symbols have defined names in X11. A list of
+those given names is in <var>/usr/include/X11/keysymdef.h</var>.
+You can use any name from this header file, ignoring the leading <em>XK_</em>.
+More realistically you can also look in other layout files from <var>xkb/symbols</var>.
+Besides the given names you may use any Unicode character. For 👍 that will
 give you <a href="https://unicode-table.com/en/1F44D/">U+1F44D</a> which you can
-use in the form <var>U1F44D</var> inside the layout.
+use in the form <var>U1F44D</var> inside the layout. You can also use the Unicodes
+instead of the given X11 names (loosing some readability…).
 </p>
 
 <p>
@@ -181,8 +188,8 @@ directory:
 <pre><code class="lang-bash">sudo install -Dm644 deedit /usr/share/X11/xkb/symbols/deedit</code></pre>
 
 <p>
-It is probably a better idea to make a package out of your definition for which
-you can check your Distros documentation (⇒ for Arch Linux: <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a>,
+It is probably a better idea to make a package out of your layout for which
+you can check your distros documentation (⇒ for Arch Linux: <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a>,
 <a href="https://github.com/morris-frank/xkb-demod/blob/master/PKGBUILD">example</a>).
 </p>
 
@@ -193,5 +200,6 @@ Lastly you change your current Keyboard layout and try it out:
 <pre><code class="lang-bash">setxkbmap deedit</code></pre>
 
 <p>
-Put the same line into your <var>xinit.rc</var> to make it stick.
+If your happy with it and want to make it stick, append the previous line to
+your <var>xinit.rc</var> so that it is loaded on every boot.
 </p>
