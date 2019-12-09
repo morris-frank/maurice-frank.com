@@ -5,13 +5,13 @@
     <meta name="theme-color" content="#a9384a">
     <meta name="referrer" content="no-referrer">
 
-    <link rel="stylesheet" href="https://morris-frank.dev/main-cd4def98e1.css">
+    <link rel="stylesheet" href="https://morris-frank.dev/main-1297a371fc.css">
     <link rel="shortcut icon" type="image/png" href="https://morris-frank.dev//icon.png">
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <title>Using a LaTeX macro file | morris-frank.dev</title>
+    <title>Using a LaTeX macro package | morris-frank.dev</title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
     </nav>
 
     <main class="center">
-        <h2>Using a \(\LaTeX\) macro file</h2>
+        <h2>Using a \(\LaTeX\) macro package</h2>
 
         <p>
             If your writing a lot of small documents all the time and do math in them it is
@@ -109,7 +109,7 @@
 
         <p>
             On most Linux systems this will be <var>/home/YOUR-USER/texmf</var>, which
-            probably doesn't exist. As I do not want to clutter my home folder with this I
+            probably doesn't exist. As I do not want to clutter my home folder with this, I
             changed the path by adjusting the environment variable with the same name inside
             my <var>xinit.rc</var>:
         </p>
@@ -117,15 +117,15 @@
         <pre class=" language-bash"><code class=" language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">TEXMFHOME</span><span class="token operator">=</span>~/.local/share/texmf</code></pre>
 
         <p>
-            After a reboot that should be your new <var>TEXMFHOME</var>. Inside this folder
-            your supposed to follow the TeX folder structure which means you should create
-            the folders <var>~/.local/share/texmf/tex/latex/YOUR-PACKAGE-NAME/</var> and
-            put your <var>YOUR-PACKAGE-NAME.sty</var> in there.
+            After a reboot/re-login that should be your new <var>TEXMFHOME</var>. Inside
+            this folder your supposed to follow the TeX folder structure which means you
+            should create the folders <var>~/.local/share/texmf/tex/latex/YOUR-PACKAGE-NAME/</var>
+            and put your <var>YOUR-PACKAGE-NAME.sty</var> in there.
         </p>
 
         <p>If the path is still the old one you might need to rehash the TeX path:</p>
 
-        <pre class=" language-bash"><code class=" language-bash"><span class="token function">sudo</span> texhash /home/morris/.local/share/textmf</code></pre>
+        <pre class=" language-bash"><code class=" language-bash"><span class="token function">sudo</span> texhash /home/YOUR-<span class="token environment constant">USER</span>/.local/share/textmf</code></pre>
 
         <p>
             Now all my assignment files for University and other scribbles always start

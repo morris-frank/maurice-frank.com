@@ -108,8 +108,8 @@ which will make the third layer in the layout with the right <kbd>Alt</kbd> key.
 <pre>    key &lt;AE04&gt; { [ 4, dollar, onequarter, currency ] };</pre>
 
 <p>
-    in the angle brackets we have the XKB key symbol we want to define and than
-    in the list the four levels: no modifier, <kbd>Shift</kbd>, <kbd>RAlt</kbd>,
+    in the angle brackets we have the XKB key symbol we want to define followed
+    by a list with the four levels: no modifier, <kbd>Shift</kbd>, <kbd>RAlt</kbd>,
     <kbd>RAlt</kbd> + <kbd>Shift</kbd> (for this German case).
 </p>
 
@@ -129,20 +129,21 @@ xkb_symbols "basic" {
 };</pre>
 
 <p>
-If you want to have a different Modifier for level3 you have to import the
-definition from <var>symbols/level3</var>. Now we need the XKB symbol names for
-the keys we are interested in. For this you can run in terminal:
+If you want to have a different modifier than <kbd>RAlt</kbd> for level3 you
+have to import the definition from <var>symbols/level3</var>. Now we need the
+XKB symbol names for the keys we are interested in. For this you can run in
+terminal:
 </p>
 
 <pre><code class="lang-bash">xev -event keyboard</code></pre>
 
-<p>xev should be included in the <em>x11-utils</em> package.</p>
+<p><var>xev</var> is included in the <em>x11-utils</em> package.</p>
 
 <p>
-This command will give you a little white window and if you press a key inside
-it print the information about that key in the terminal. We are interested in
-<var>keycode</var>. For example lets say I press my <kbd>F</kbd> key which will
-give me keycode 41. Sadly thats only the keycode not the key symbols. To find
+<var>xev</var> gives you a little white window and if you press a key inside
+it prints information about that key in the terminal. We are interested in
+<var>keycode</var>. For example lets say I press my <kbd>F</kbd> key it will
+give me keycode 41. Sadly thats the keycode not the key-symbol. To find
 the key symbol you have to look in <var>/usr/share/X11/xkb/keycodes/evdev</var>.
 In there we find that the key symbol for key code 41 is <var>&lt;AC04&gt;</var>.
 </p>

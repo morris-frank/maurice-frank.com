@@ -148,9 +148,15 @@ footer {
 
 figure {
     position: relative;
-    margin: 1em 2em;
+    margin: 0;
     display: flex;
     justify-content: center;
+}
+
+@media screen and (min-width: 769px) {
+    figure {
+        margin: 1em 2em;
+    }
 }
 
 figure svg {
@@ -191,6 +197,7 @@ var {
     font-style: normal;
     font-weight: 400;
     src: local("Fira Sans Condensed"), local("FiraSansCondensed-Regular"), url("FiraSansCondensed-Regular.otf");
+    font-display: swap;
 }
 
 @font-face {
@@ -198,6 +205,7 @@ var {
     font-style: italic;
     font-weight: 400;
     src: local("Fira Sans Condensed Italic"), local("FiraSansCondensed-Italic"), url("FiraSansCondensed-Italic.otf");
+    font-display: swap;
 }
 
 @font-face {
@@ -205,6 +213,7 @@ var {
     font-style: normal;
     font-weight: 700;
     src: local("Fira Sans Condensed SemiBold"), local("FiraSansCondensed-SemiBold"), url("FiraSansCondensed-SemiBold.otf");
+    font-display: swap;
 }
 
 @font-face {
@@ -212,6 +221,7 @@ var {
     font-style: normal;
     font-weight: 400;
     src: local("Fira Code Regular"), local("FiraCode-Regular"), url("FiraCode-Regular.otf");
+    font-display: swap;
 }
 
 body {
@@ -308,6 +318,8 @@ pre {
 
 kbd {
     font-family: "Fira Code";
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
 }
 
 cite {

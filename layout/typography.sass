@@ -3,21 +3,25 @@
   font-style: normal
   font-weight: 400
   src: local('Fira Sans Condensed'), local('FiraSansCondensed-Regular'), url('FiraSansCondensed-Regular.otf')
+  font-display: swap
 @font-face
   font-family: 'Fira Sans Condensed'
   font-style: italic
   font-weight: 400
   src: local('Fira Sans Condensed Italic'), local('FiraSansCondensed-Italic'), url('FiraSansCondensed-Italic.otf')
+  font-display: swap
 @font-face
   font-family: 'Fira Sans Condensed'
   font-style: normal
   font-weight: 700
   src: local('Fira Sans Condensed SemiBold'), local('FiraSansCondensed-SemiBold'), url('FiraSansCondensed-SemiBold.otf')
+  font-display: swap
 @font-face
   font-family: 'Fira Code'
   font-style: normal
   font-weight: 400
   src: local('Fira Code Regular'), local('FiraCode-Regular'), url('FiraCode-Regular.otf')
+  font-display: swap
 
 $font: 'Fira Sans Condensed', sans-serif
 $font-code: 'Fira Code'
@@ -99,6 +103,8 @@ pre
 
 kbd
   font-family: $font-code
+  font-size: 0.9rem
+  letter-spacing: 0.05em
 
 cite
   font-size: 0.9rem
