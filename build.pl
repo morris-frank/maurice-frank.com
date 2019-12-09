@@ -41,6 +41,7 @@ sub process_content_files {
     my ($input_dir, $skeleton, $output_dir, $root_path) = @_;
     my @input_list = glob "$input_dir*html";
 
+    system("echo -n \"\" > $output_dir/sitemap.txt ");
     foreach my $input_file (@input_list) {
         process_content_file($input_file, $skeleton, $output_dir, $root_path);
     }
@@ -70,19 +71,22 @@ sub process_content_file {
     $output =~ s/\{\{TITLE\}\}/$title/g;
     $output =~ s/\{\{ROOT\}\}/$root_path/g;
 
-    my $output_file = "";
+    my $slug = "";
     if ($basename eq "index") {
-        $output_file = "$output_dir$basename.html";
+        $slug = "$basename.html";
     } else {
         mkdir($output_dir . $basename);
-        $output_file = "$output_dir$basename/index.html";
+        $slug = "$basename/index.html";
     }
+    my $output_file = "$output_dir$slug";
     write_file($output_file, $output);
 
     beautify_file($output_file);
     if ($contains_code) {
         syntax_highlight($output_file);
     }
+
+    system("echo \"$root_path$slug\" >> $output_dir/sitemap.txt");
 }
 
 sub syntax_highlight {
