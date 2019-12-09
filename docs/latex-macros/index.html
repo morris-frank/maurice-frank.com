@@ -1,0 +1,166 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#a9384a">
+    <meta name="referrer" content="no-referrer">
+
+    <link rel="stylesheet" href="https://morris-frank.dev/main-d7211d2421.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <title>Using a LaTeX macro file | morris-frank.dev</title>
+</head>
+
+<body>
+    <nav class="center">
+        <h1>
+            <a class="no-decorate" href="https://morris-frank.dev/">Morris Frank</a>
+        </h1>
+        <a href="https://morris-frank.dev/">blog</a>
+        <a href="https://morris-frank.dev/resume.pdf">resume</a>
+    </nav>
+
+    <main class="center">
+        <h2>Using a \(\LaTeX\) macro file</h2>
+
+        <p>
+            If your writing a lot of small documents all the time and do math in them it is
+            a good idea to write yourself a macro package that contains personalized macros
+            and functions to speed up your typesetting. Especially useful for University
+            assignments and notes.
+        </p>
+
+        <hr>
+
+        <p>
+            If you never written a TeX package here the short-form with only the stuff we
+            need. You start the file with
+        </p>
+
+        <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\NeedsTeXFormat</span><span class="token punctuation">{</span>LaTeX2e<span class="token punctuation">}</span><span class="token punctuation">[</span>1994/06/01<span class="token punctuation">]</span>
+<span class="token function selector">\ProvidesPackage</span><span class="token punctuation">{</span>YOUR-PACKAGE-NAME<span class="token punctuation">}</span></code></pre>
+
+        <p>and end it with:</p>
+
+        <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\endinput</span></code></pre>
+
+        <p>and save it with extension <var>*.sty</var> instead of <var>.tex</var>.</p>
+
+        <h3>Things to add</h3>
+
+        <ul>
+            <li>
+                Packages you always use. For example which fonts to use. Difference
+                for a package definition you use <var>\RequirePackage</var> instead
+                of <var>\usepackage</var>.
+                <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\RequirePackage</span><span class="token punctuation">{</span>newpxtext<span class="token punctuation">}</span>
+<span class="token function selector">\RequirePackage</span><span class="token punctuation">{</span>mathpazo<span class="token punctuation">}</span>
+<span class="token function selector">\RequirePackage</span><span class="token punctuation">{</span>dsfont<span class="token punctuation">}</span></code></pre>
+            </li>
+            <li>
+                Faster font changes. I use for bold and italic text the same macro for
+                math and normal text using the <var>\ifmmode</var> command.
+                <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\newcommand*</span><span class="token punctuation">{</span><span class="token function selector">\B</span><span class="token punctuation">}</span><span class="token punctuation">[</span>1<span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token function selector">\ifmmode</span><span class="token function selector">\bm</span><span class="token punctuation">{</span>#1<span class="token punctuation">}</span><span class="token function selector">\else</span><span class="token function selector">\textbf</span><span class="token punctuation">{</span>#1<span class="token punctuation">}</span><span class="token function selector">\fi</span><span class="token punctuation">}</span>
+<span class="token function selector">\newcommand*</span><span class="token punctuation">{</span><span class="token function selector">\I</span><span class="token punctuation">}</span><span class="token punctuation">[</span>1<span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token function selector">\ifmmode</span><span class="token function selector">\mathit</span><span class="token punctuation">{</span>#1<span class="token punctuation">}</span><span class="token function selector">\else</span><span class="token function selector">\textit</span><span class="token punctuation">{</span>#1<span class="token punctuation">}</span><span class="token function selector">\fi</span><span class="token punctuation">}</span></code></pre>
+            </li>
+            <li>
+                Unicode symbols. LaTeX supports Unicode commands so write the symbols
+                instead of calling them. The <var>\ensuremath</var> call makes these
+                commands also work in normal text mode. If you don't have special
+                characters you want on your keyboard I have <a href="https://morris-frank.dev/keymap">a tutorial</a>
+                for that.
+                <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\newcommand*</span><span class="token function selector">\ℝ</span><span class="token punctuation">{</span><span class="token function selector">\ensuremath</span><span class="token punctuation">{</span><span class="token function selector">\mathds</span><span class="token punctuation">{</span>R<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token function selector">\newcommand*</span><span class="token function selector">\π</span><span class="token punctuation">{</span><span class="token function selector">\ensuremath</span><span class="token punctuation">{</span><span class="token function selector">\pi</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token function selector">\newcommand*</span><span class="token function selector">\Σ</span><span class="token punctuation">{</span><span class="token function selector">\ensuremath</span><span class="token punctuation">{</span><span class="token function selector">\sum</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
+                <var>\mathds</var> from <em>dsfont</em> gives nicer double-strokes.
+            </li>
+            <li>
+                More math operators. I have to write lot of expected values so I made a
+                nicer short version.
+                <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\DeclareMathOperator*</span><span class="token punctuation">{</span><span class="token function selector">\argmax</span><span class="token punctuation">}</span><span class="token punctuation">{</span>arg<span class="token function selector">\,</span>max<span class="token punctuation">}</span>
+<span class="token function selector">\DeclareMathOperator*</span><span class="token punctuation">{</span><span class="token function selector">\E</span><span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token function selector">\mathbb</span><span class="token punctuation">{</span>E<span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
+                The <var>\,</var> makes a tiny space.
+
+            </li>
+            <li>
+                Anything else. You can <a href="https://github.com/morris-frank/latex-templates/blob/master/morris.sty">check out mine</a>
+                or do whatever you like. If a command name is already taken and you want
+                to overwrite it use <var>\renewcommand</var> instead of <var>\newcommand</var>.
+            </li>
+        </ul>
+
+        <p>
+            Obviously this is more for documents that your working on yourself. Otherwise
+            you have to distribute the package to your collaborators.
+        </p>
+
+        <h3>Using it</h3>
+        <p>
+            To make the package visible to your compiler you have to put it on the TeX path.
+            You can add to your users local path to make it available to the compiler while
+            using your account. The path is called <var>TEXMFHOME</var> and you can look it
+            up with:
+        </p>
+
+        <pre class=" language-bash"><code class=" language-bash">kpsewhich -var-value TEXMFHOME</code></pre>
+
+        <p>
+            On most Linux systems this will be <var>/home/YOUR-USER/texmf</var>, which
+            probably doesn't exist. As I do not want to clutter my home folder with this I
+            changed the path by adjusting the environment variable with the same name inside
+            my <var>xinit.rc</var>:
+        </p>
+
+        <pre class=" language-bash"><code class=" language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">TEXMFHOME</span><span class="token operator">=</span>~/.local/share/texmf</code></pre>
+
+        <p>
+            After a reboot that should be your new <var>TEXMFHOME</var>. Inside this folder
+            your supposed to follow the TeX folder structure which means you should create
+            the folders <var>~/.local/share/texmf/tex/latex/YOUR-PACKAGE-NAME/</var> and
+            put your <var>YOUR-PACKAGE-NAME.sty</var> in there.
+        </p>
+
+        <p>If the path is still the old one you might need to rehash the TeX path:</p>
+
+        <pre class=" language-bash"><code class=" language-bash"><span class="token function">sudo</span> texhash /home/morris/.local/share/textmf</code></pre>
+
+        <p>
+            Now all my assignment files for University and other scribbles always start
+            with (as I have a <var>morris.sty</var>):
+        </p>
+
+        <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword">morris</span><span class="token punctuation">}</span></code></pre>
+
+        <p>
+            and I am writing considerably faster and more readable (in my humble opinion).
+            Instead of:
+        </p>
+
+        <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\pmb</span><span class="token punctuation">{</span><span class="token function selector">\sigma</span><span class="token punctuation">}</span> = <span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword">bmatrix</span><span class="token punctuation">}</span>
+    <span class="token function selector">\frac</span><span class="token punctuation">{</span><span class="token function selector">\exp</span><span class="token punctuation">{</span><span class="token function selector">\phi</span>_1<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token function selector">\sum</span>_i^N <span class="token function selector">\exp</span><span class="token punctuation">{</span><span class="token function selector">\phi</span>_i<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token punctuation">&amp;</span> <span class="token function selector">\dots</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword">bmatrix</span><span class="token punctuation">}</span></code></pre>
+
+        <p>I write:</p>
+
+        <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\B</span><span class="token punctuation">{</span><span class="token function selector">\σ</span><span class="token punctuation">}</span> = <span class="token function selector">\bM</span><span class="token punctuation">{</span><span class="token function selector">\÷</span><span class="token punctuation">{</span><span class="token function selector">\exp</span><span class="token punctuation">{</span><span class="token function selector">\φ</span>_1<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token function selector">\Σ</span>_i^N <span class="token function selector">\exp</span><span class="token punctuation">{</span><span class="token function selector">\φ</span>_i<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token punctuation">&amp;</span> <span class="token function selector">\…</span> <span class="token punctuation">}</span></code></pre>
+
+    </main>
+
+    <footer>
+        <div class="center box flex">
+            <div>
+                <h2>Responsible person here</h2>
+                <p><a href="mailto:maurice.frank@posteo.de">Maurice Frank</a></p>
+                <p><a href="https://github.com/morris-frank/morris-frank.dev">source code (MIT)</a></p>
+            </div>
+            <div>
+                <h2>Privacy statement</h2>
+                <p>I don't collect any data from you. Neither do I want any data. So don't send me any!</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body></html>

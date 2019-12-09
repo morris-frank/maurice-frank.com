@@ -1,0 +1,196 @@
+<h2>Personalize your keyboard layout</h2>
+<p>
+I adjusted my own keyboard layout and you should too. Here we will quickly see
+how/why to write a <a href="https://w.wiki/DWZ">XKB</a> (X keyboard extension)
+layout file to extend ones keyboard layout.
+</p>
+
+<hr>
+
+<h3>What is it?</h3>
+<p>
+That is easy. The keyboard layout tells your system which character / symbol to
+print, when you press a key.
+</p>
+
+<h3>Why?</h3>
+<p>
+Most people that start going down that path and ask <em>Which keyboard layout
+should I use?</em> probably end up with one of the modern optimized layouts,
+like <a href="https://w.wiki/DWJ">Neo</a>, for German. The argument being, that
+the layout most of use use like QWERTY (or QWERTZ for me) sucks and makes you
+type slower. Which is true. Those layouts were invented to be slow, in a time of
+typewriters, so that commonly used keys have a higher distance between each
+other and jam less often. Thus it shouldn't be surprising that one can easily
+construct a layout which is <em>way</em> more efficient. I personally never felt
+though that the my typing speed was holding me back, I just do not write enough
+(or think fast enough) to require those kinds of speeds. Nevertheless I found my
+keyboard always to be severely underutilized. All those symbols reachable with
+<kbd>Shift</kbd> and <kbd>AltGr</kbd>, that I never need.
+</p>
+
+<p>The symbols I added that proved especially useful:</p>
+
+<ul>
+    <li>
+        Greek letters (<kbd>α</kbd>, <kbd>β</kbd>, <kbd>γ</kbd>, …). I use them
+        extensively in writing and programming. As Python is ok with most
+        unicode symbols as variable names you can code more expressively:
+        <pre><code class="lang-python">π = np.pi
+φ = np.random.randint(360)
+x = μ + np.random.rand() * σ</code></pre>
+        which is especially useful in the kind of mathematical, research code I
+        am writing often. (Of course this is more for personal code, if your
+        collaborators are not doing the same or are Greek).
+    </li>
+    <li>
+        Mathematical / logic notation. With <kbd>⇔</kbd>, <kbd>∥</kbd>,
+        <kbd>·</kbd>, <kbd>¬</kbd>,<kbd>∧</kbd>, <kbd>∨</kbd> etc. it is quite
+        easier to communicate math or logic with other people quickly.
+    </li>
+    <li>
+        Emoticons <kbd>🤷</kbd>. Yes, it is 2019 and on my phone I can quickly
+        add smileys to a message but chatting on the computer that is
+        <em>clearly</em> a lacking possibility. As emoticons are Unicode
+        standard we can add what we need <kbd>👍👍👍</kbd>.
+    </li>
+    <li>
+        Bringing dead keys alive. Some keys in a standard keyboard layout are
+        so-called <a href="https://w.wiki/DWX">dead keys</a>. E.g the grave
+        accent <kbd>`</kbd>. Now for me I need the grave way more commonly as a
+        single symbol not as a accent (⇒ <kbd>à</kbd>), you might be the same.
+    </li>
+</ul>
+
+<p>
+    Many of the symbols I use together with <a href="{{ROOT}}latex-macros">
+    LaTeX macros so I can write mathematical text:</a>
+</p>
+
+
+<pre><code class="lang-latex">\σ_i = \÷{\exp{\φ_i}}{\Σ_j \exp{\φ_j}}</code></pre>
+
+<h3>How?</h3>
+<p>
+We do not want to reinvent the wheel. We just want to replace symbols that we
+never use with symbols that could be useful. So best to start off with a
+pre-existing layout. For me that would be the German QWERTZ layout. You find all
+XKB layout definitions in <var>/usr/share/X11/xkb/symbols</var>.
+</p>
+
+<p>
+Looking into any of those files (e.g. <var>symbols/de</var>) you will blocks of
+the form:
+</p>
+
+<pre>default
+xkb_symbols "basic" {
+
+    include "latin(type4)"
+    include "kpdl(comma)"
+    include "level3(ralt_switch)"
+
+    name[Group1]="German";
+
+    …
+};</pre>
+
+<p>
+The xkb layout definitions are hierarchical, we can include other definitions
+with an include statement and override only the parts that we need. The <em>de</em>
+layout is based on the type4 layout (which itself has latin as its base) in the
+file <var>symbols/latin</var>. Further included is <var>level3(ralt_switch)</var>
+which will make the third layer in the layout with the right <kbd>Alt</kbd> key.
+</p>
+
+<p>The rest of the block has many lines like:</p>
+
+<pre>    key &lt;AE04&gt; { [ 4, dollar, onequarter, currency ] };</pre>
+
+<p>
+    in the angle brackets we have the XKB key symbol we want to define and than
+    in the list the four levels: no modifier, <kbd>Shift</kbd>, <kbd>RAlt</kbd>,
+    <kbd>RAlt</kbd> + <kbd>Shift</kbd> (for this German case).
+</p>
+
+
+<p>
+We start by just importing the German basic layout (which imports all
+underlying imports):
+</p>
+
+<pre>default
+xkb_symbols "basic" {
+    include "de(basic)"
+
+    name[Group1]="German Edited";
+
+    …
+};</pre>
+
+<p>
+If you want to have a different Modifier for level3 you have to import the
+definition from <var>symbols/level3</var>. Now we need the XKB symbol names for
+the keys we are interested in. For this you can run in terminal:
+</p>
+
+<pre><code class="lang-bash">xev -event keyboard</code></pre>
+
+<p>xev should be included in the <em>x11-utils</em> package.</p>
+
+<p>
+This command will give you a little white window and if you press a key inside
+it print the information about that key in the terminal. We are interested in
+<var>keycode</var>. For example lets say I press my <kbd>F</kbd> key which will
+give me keycode 41. Sadly thats only the keycode not the key symbols. To find
+the key symbol you have to look in <var>/usr/share/X11/xkb/keycodes/evdev</var>.
+In there we find that the key symbol for key code 41 is <var>&lt;AC04&gt;</var>.
+</p>
+
+<p>
+As quick rule for the rows of the keyboard: The number row is <var>&lt;AE##&gt;</var>
+(Key 1 ⇒ &lt;AE01&gt;), and the three letter rows are from top to bottom
+<var>&lt;AD##&gt;</var>,  <var>&lt;AC##&gt;</var> and <var>&lt;AB##&gt;</var>
+(Key Q ⇒ &lt;AD01&gt;, Key A ⇒ &lt;AC01&gt;, Key Y/Z ⇒ &lt;AB01&gt; for QWRTY/Z).
+Inside the rows the numbers increase to the right.
+</p>
+
+<p>
+Now we want to update our F key to have the Greek small and big Phi on the third
+and fourth layer so we write:
+</p>
+
+<pre>key &lt;AC04&gt; { [ f, F, Greek_phi, Greek_PHI] };</pre>
+
+<p>
+Some part of the Unicode standard has names as the φ and Φ here. To find those
+you have to look in <var>/usr/include/X11/keysymdef.h</var> (ignoring the
+leading <em>XK_</em>). Or more realistically you look in other layout
+definitions. More generally you may use any Unicode character. For 👍 that will
+give you <a href="https://unicode-table.com/en/1F44D/">U+1F44D</a> which you can
+use in the form <var>U1F44D</var> inside the layout.
+</p>
+
+<p>
+Change all the keys you need, put them into the <em>xkb_symbols</em> block and
+save the file to somewhere, lets say <var>deedit</var>. Next you can install the file into the symbols
+directory:
+</p>
+
+<pre><code class="lang-bash">sudo install -Dm644 deedit /usr/share/X11/xkb/symbols/deedit</code></pre>
+
+<p>
+It is probably a better idea to make a package out of your definition for which
+you can check your Distros documentation (⇒ for Arch Linux: <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a>,
+<a href="https://github.com/morris-frank/xkb-demod/blob/master/PKGBUILD">example</a>).
+</p>
+
+<p>
+Lastly you change your current Keyboard layout and try it out:
+</p>
+
+<pre><code class="lang-bash">setxkbmap deedit</code></pre>
+
+<p>
+Put the same line into your <var>xinit.rc</var> to make it stick.
+</p>

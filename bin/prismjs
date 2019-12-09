@@ -4,7 +4,7 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const Prism = require('../node_modules/prismjs/prism');
 const loadLanguages = require('../node_modules/prismjs/components/');
-loadLanguages(['python', 'latex']);
+loadLanguages(['python', 'latex', 'bash']);
 
 process.argv.slice(2).forEach(function (filepath, index, array) {
     var data = fs.readFileSync(filepath, 'utf8');
