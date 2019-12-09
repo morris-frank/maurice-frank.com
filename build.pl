@@ -60,6 +60,8 @@ sub process_content_file {
     } else {
         $title = $basename;
     }
+    # Remove LaTeX commands from the title
+    $title =~ s/(\\\(|\\\)|\\)//g;
 
     my $contains_code = index($content, "<pre>") != -1;
 
