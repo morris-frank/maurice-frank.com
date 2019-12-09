@@ -59,7 +59,7 @@ sub process_content_file {
     if ($content =~ m/<h2[^>]*>([^<]+)<\/h2>/i ) {
         $title = $1;
     } else {
-        $title = $basename;
+        $title = "";
     }
     # Remove LaTeX commands from the title
     $title =~ s/(\\\(|\\\)|\\)//g;

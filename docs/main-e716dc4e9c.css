@@ -224,6 +224,10 @@ var {
     font-display: swap;
 }
 
+.font-code {
+    font-family: "Fira Code";
+}
+
 body {
     font-family: "Fira Sans Condensed", sans-serif;
     font-size: 17px;
