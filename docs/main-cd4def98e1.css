@@ -45,8 +45,8 @@ nav h1 a {
 }
 
 hr {
-    border-width: 1px 0 0 0;
-    color: #4a4a4a;
+    border: 0;
+    border-top: 1px solid #b5b5b5;
 }
 
 pre {
@@ -160,11 +160,18 @@ figure svg {
 
 pre {
     padding: 1em 2em;
+    min-width: max-content;
 }
 
 .listing {
-    padding-left: 3em;
+    padding-left: 1em;
     margin-bottom: 1em;
+}
+
+@media screen and (min-width: 769px) {
+    .listing {
+        padding-left: 3em;
+    }
 }
 
 .listing span {
@@ -276,6 +283,7 @@ h2 {
     font-size: 40px;
     font-weight: bold;
     margin: 2rem 0 0;
+    line-height: 1.4;
 }
 
 footer h2 {
@@ -326,6 +334,10 @@ var {
     font-size: 0.9rem;
     font-style: normal;
     white-space: nowrap;
+}
+
+ul {
+    list-style: square;
 }
 
 .figure-contents {

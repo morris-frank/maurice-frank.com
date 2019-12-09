@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+var fs = require('fs');
+const mjpage = require("../node_modules/mathjax-node-page/lib/main").mjpage;
+
+process.argv.slice(2).forEach(function (filepath, index, array) {
+    var data = fs.readFileSync(filepath, 'utf8');
+    mjpage(data, {format: ["TeX"]}, {mml: true}, function(output) {
+        fs.writeFileSync(filepath, output);
+    });
+});
