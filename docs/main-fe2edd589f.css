@@ -50,7 +50,7 @@ hr {
 }
 
 pre {
-    color: #f7f7f7;
+    color: #d2d2d2;
     background: #333333;
     border-radius: 1em;
 }
@@ -85,6 +85,12 @@ cite .title {
 
 .listing {
     border-left: 3px solid #689D6A;
+}
+
+var {
+    background: rgba(181, 181, 181, 0.5);
+    color: #4a4a4a;
+    border-radius: 0.2rem;
 }
 
 body {
@@ -153,12 +159,12 @@ figure svg {
 }
 
 pre {
-    padding: 1.5em 2em;
-    margin: 0 -2em;
+    padding: 1em 2em;
 }
 
 .listing {
     padding-left: 3em;
+    margin-bottom: 1em;
 }
 
 .listing span {
@@ -167,6 +173,10 @@ pre {
 
 hr {
     clear: both;
+}
+
+var {
+    padding: 0.1rem 0.4rem;
 }
 
 @font-face {
@@ -265,7 +275,7 @@ h1 {
 h2 {
     font-size: 40px;
     font-weight: bold;
-    margin-top: 1.4rem;
+    margin: 2rem 0 0;
 }
 
 footer h2 {
@@ -309,6 +319,13 @@ cite .title {
 
 .listing .title {
     font-size: 1.2rem;
+}
+
+var {
+    font-family: "Fira Code";
+    font-size: 0.9rem;
+    font-style: normal;
+    white-space: nowrap;
 }
 
 .figure-contents {
