@@ -1,7 +1,13 @@
 @charset 'utf-8'
+
+$linewidth: 769px
 $radius: 2px
 
-@import 'coloring.sass'
-@import 'positioning.sass'
+=desktop
+  @media screen and (min-width: $linewidth)
+    @content
+
+@import 'text-elements.sass'
+@import 'block-elements.sass'
 @import 'typography.sass'
-@import 'figures.sass'
+@import 'coloring.sass'

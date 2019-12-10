@@ -1,9 +1,9 @@
-$linewidth: 769px
-$gap: 20px
+main
+  min-height: 40vh
 
-=desktop
-  @media screen and (min-width: $linewidth)
-    @content
+footer
+  margin: 6rem 0 0
+  padding: 1rem 0
 
 body
   margin: 0
@@ -11,19 +11,10 @@ body
 nav
   &.center
     margin-bottom: 3rem
-  h1
-    margin-right: 2rem
-    display: inline-block
-  > a
-    margin-right: 1rem
-    display: inline-block
 
-main
-  min-height: 40vh
-
-footer
-  margin: 6rem 0 0
-  padding: 3rem 0
+hr
+  clear: both
+  border: 0
 
 .flex
   display: flex
@@ -31,16 +22,17 @@ footer
     flex-grow: 1
     flex-basis: 0
 
+.box
+  border-radius: $radius
+  padding: .25em 1em
+
 .center
+  $gap: 20px
   margin: 0 $gap
   width: auto
   +desktop
     margin: 0 auto
     max-width: $linewidth - 2 * $gap
-
-.box
-  border-radius: $radius
-  padding: 1.25rem
 
 figure
   position: relative
@@ -53,9 +45,8 @@ figure
     position: relative
     top: 0px
 
-pre
-  padding: 1em 2em
-  min-width: max-content
+.references
+  padding-left: 1em
 
 .listing
   padding-left: 1em
@@ -64,9 +55,3 @@ pre
   margin-bottom: 1em
   span
     display: block
-
-hr
-  clear: both
-
-var
-  padding: 0.1rem 0.4rem

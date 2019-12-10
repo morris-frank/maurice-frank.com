@@ -26,46 +26,18 @@
 $font: 'Fira Sans Condensed', sans-serif
 $font-code: 'Fira Code'
 
-.font-code
-  font-family: $font-code
-
 body
   font-family: $font
   font-size: 17px
   line-height: 1.7
   text-ren­der­ing: op­ti­mize­Leg­i­bil­ity
 
-footer
-  font-size: 0.9rem
-  text-align: center
-
-figure
-  color: rgba(0,0,0,0.6)
-  font-size: 13px
+.font-code
+  font-family: $font-code
 
 p
-  margin-top: 1rem
-  margin-bottom: 1rem
   hyphens: auto
   letter-spacing: 0.05em
-
-blockquote
-  font-size: 0.95rem
-  line-height: 1.25
-  border-left: 4px solid $primary
-  margin: 0
-  padding: 0.4em 2em
-  position: relative
-
-blockquote:before
-  display: block
-  content: '“'
-  position: absolute
-  color: rgba($primary, 0.4)
-  top: 2.1rem
-  left: -0.2rem
-  font-size: 5rem
-  line-height: 0
 
 a
   text-decoration-line: underline
@@ -85,20 +57,31 @@ h1
 h2
   font-size: 40px
   font-weight: bold
-  margin: 2rem 0 0
   line-height: 1.4
 
 footer h2
-  font-size: 0.9rem
+    font-size: 0.9rem
 
 h3
   font-size: 1.2rem
   font-weight: bold
-  margin: 2rem 0 0.4rem 0
 
 h4
   font-size: 1.2rem
-  margin: 1em 0 0.2em
+
+footer
+  font-size: 0.9rem
+  text-align: center
+
+figure
+  font-size: 13px
+
+blockquote
+  font-size: 0.95rem
+  line-height: 1.25
+  &:before
+    font-size: 5rem
+    line-height: 0
 
 pre
   font-family: $font-code
@@ -118,7 +101,6 @@ cite
 
 .references
   font-size: 0.9rem
-  padding-left: 1em
 
 .listing
   .title
@@ -129,6 +111,3 @@ var
   font-size: 0.9rem
   font-style: normal
   white-space: nowrap
-
-ul
-  list-style: square

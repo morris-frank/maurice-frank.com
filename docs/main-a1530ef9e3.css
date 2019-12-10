@@ -1,5 +1,299 @@
 @charset "UTF-8";
 
+p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+a {
+    transition: 120ms ease-in-out;
+}
+
+h2 {
+    margin: 2rem 0 0;
+}
+
+h3 {
+    margin: 2rem 0 0.4rem 0;
+}
+
+h4 {
+    margin: 1em 0 0.2em;
+}
+
+ul {
+    list-style: square;
+}
+
+blockquote {
+    margin: 0;
+}
+
+blockquote {
+    padding: 0.4em 2em;
+    position: relative;
+}
+
+blockquote:before {
+    position: absolute;
+    top: 2.1rem;
+    left: -0.2rem;
+    display: block;
+    content: "“";
+}
+
+pre {
+    padding: 1em 2em;
+    min-width: max-content;
+}
+
+var {
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.2rem;
+}
+
+pre {
+    border-radius: 1em;
+}
+
+nav h1 {
+    margin-right: 2rem;
+    display: inline-block;
+}
+
+nav>a {
+    margin-right: 1rem;
+    display: inline-block;
+}
+
+main {
+    min-height: 40vh;
+}
+
+footer {
+    margin: 6rem 0 0;
+    padding: 1rem 0;
+}
+
+body {
+    margin: 0;
+}
+
+nav.center {
+    margin-bottom: 3rem;
+}
+
+hr {
+    clear: both;
+    border: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex>* {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.box {
+    border-radius: 2px;
+    padding: 0.25em 1em;
+}
+
+.center {
+    margin: 0 20px;
+    width: auto;
+}
+
+@media screen and (min-width: 769px) {
+    .center {
+        margin: 0 auto;
+        max-width: 729px;
+    }
+}
+
+figure {
+    position: relative;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (min-width: 769px) {
+    figure {
+        margin: 1em 2em;
+    }
+}
+
+figure svg {
+    position: relative;
+    top: 0px;
+}
+
+.references {
+    padding-left: 1em;
+}
+
+.listing {
+    padding-left: 1em;
+    margin-bottom: 1em;
+}
+
+@media screen and (min-width: 769px) {
+    .listing {
+        padding-left: 3em;
+    }
+}
+
+.listing span {
+    display: block;
+}
+
+@font-face {
+    font-family: "Fira Sans Condensed";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Fira Sans Condensed"), local("FiraSansCondensed-Regular"), url("FiraSansCondensed-Regular.otf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Fira Sans Condensed";
+    font-style: italic;
+    font-weight: 400;
+    src: local("Fira Sans Condensed Italic"), local("FiraSansCondensed-Italic"), url("FiraSansCondensed-Italic.otf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Fira Sans Condensed";
+    font-style: normal;
+    font-weight: 700;
+    src: local("Fira Sans Condensed SemiBold"), local("FiraSansCondensed-SemiBold"), url("FiraSansCondensed-SemiBold.otf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Fira Code";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Fira Code Regular"), local("FiraCode-Regular"), url("FiraCode-Regular.otf");
+    font-display: swap;
+}
+
+body {
+    font-family: "Fira Sans Condensed", sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    text-ren­der­ing: op­ti­mize­Leg­i­bil­ity;
+}
+
+.font-code {
+    font-family: "Fira Code";
+}
+
+p {
+    hyphens: auto;
+    letter-spacing: 0.05em;
+}
+
+a {
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.3em;
+    text-decoration-skip-ink: none;
+    text-underline-offset: -0.15em;
+}
+
+a.no-decorate {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration-thickness: 0.4em;
+    text-underline-offset: -0.3em;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+footer h2 {
+    font-size: 0.9rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+footer {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+figure {
+    font-size: 13px;
+}
+
+blockquote {
+    font-size: 0.95rem;
+    line-height: 1.25;
+}
+
+blockquote:before {
+    font-size: 5rem;
+    line-height: 0;
+}
+
+pre {
+    font-family: "Fira Code";
+    font-size: 0.8rem;
+}
+
+kbd {
+    font-family: "Fira Code";
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+cite {
+    font-size: 0.9rem;
+    line-height: 1.7em;
+    font-style: normal;
+}
+
+cite .title {
+    font-style: italic;
+}
+
+.references {
+    font-size: 0.9rem;
+}
+
+.listing .title {
+    font-size: 1.2rem;
+}
+
+var {
+    font-family: "Fira Code";
+    font-size: 0.9rem;
+    font-style: normal;
+    white-space: nowrap;
+}
+
 html {
     color: #333333;
     background: #f7f7f7;
@@ -45,14 +339,12 @@ nav h1 a {
 }
 
 hr {
-    border: 0;
     border-top: 1px solid #b5b5b5;
 }
 
 pre {
     color: #d2d2d2;
     background: #333333;
-    border-radius: 1em;
 }
 
 pre .token.keyword {
@@ -90,275 +382,18 @@ cite .title {
 var {
     background: rgba(181, 181, 181, 0.5);
     color: #4a4a4a;
-    border-radius: 0.2rem;
-}
-
-body {
-    margin: 0;
-}
-
-nav.center {
-    margin-bottom: 3rem;
-}
-
-nav h1 {
-    margin-right: 2rem;
-    display: inline-block;
-}
-
-nav>a {
-    margin-right: 1rem;
-    display: inline-block;
-}
-
-main {
-    min-height: 40vh;
-}
-
-footer {
-    margin: 6rem 0 0;
-    padding: 3rem 0;
-}
-
-.flex {
-    display: flex;
-}
-
-.flex>* {
-    flex-grow: 1;
-    flex-basis: 0;
-}
-
-.center {
-    margin: 0 20px;
-    width: auto;
-}
-
-@media screen and (min-width: 769px) {
-    .center {
-        margin: 0 auto;
-        max-width: 729px;
-    }
-}
-
-.box {
-    border-radius: 2px;
-    padding: 1.25rem;
-}
-
-figure {
-    position: relative;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-@media screen and (min-width: 769px) {
-    figure {
-        margin: 1em 2em;
-    }
-}
-
-figure svg {
-    position: relative;
-    top: 0px;
-}
-
-pre {
-    padding: 1em 2em;
-    min-width: max-content;
-}
-
-.listing {
-    padding-left: 1em;
-    margin-bottom: 1em;
-}
-
-@media screen and (min-width: 769px) {
-    .listing {
-        padding-left: 3em;
-    }
-}
-
-.listing span {
-    display: block;
-}
-
-hr {
-    clear: both;
-}
-
-var {
-    padding: 0.1rem 0.4rem;
-}
-
-@font-face {
-    font-family: "Fira Sans Condensed";
-    font-style: normal;
-    font-weight: 400;
-    src: local("Fira Sans Condensed"), local("FiraSansCondensed-Regular"), url("FiraSansCondensed-Regular.otf");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Fira Sans Condensed";
-    font-style: italic;
-    font-weight: 400;
-    src: local("Fira Sans Condensed Italic"), local("FiraSansCondensed-Italic"), url("FiraSansCondensed-Italic.otf");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Fira Sans Condensed";
-    font-style: normal;
-    font-weight: 700;
-    src: local("Fira Sans Condensed SemiBold"), local("FiraSansCondensed-SemiBold"), url("FiraSansCondensed-SemiBold.otf");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Fira Code";
-    font-style: normal;
-    font-weight: 400;
-    src: local("Fira Code Regular"), local("FiraCode-Regular"), url("FiraCode-Regular.otf");
-    font-display: swap;
-}
-
-.font-code {
-    font-family: "Fira Code";
-}
-
-body {
-    font-family: "Fira Sans Condensed", sans-serif;
-    font-size: 17px;
-    line-height: 1.7;
-    text-ren­der­ing: op­ti­mize­Leg­i­bil­ity;
-}
-
-footer {
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-figure {
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 13px;
-}
-
-p {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    hyphens: auto;
-    letter-spacing: 0.05em;
 }
 
 blockquote {
-    font-size: 0.95rem;
-    line-height: 1.25;
     border-left: 4px solid #689D6A;
-    margin: 0;
-    padding: 0.4em 2em;
-    position: relative;
 }
 
 blockquote:before {
-    display: block;
-    content: "“";
-    position: absolute;
     color: rgba(104, 157, 106, 0.4);
-    top: 2.1rem;
-    left: -0.2rem;
-    font-size: 5rem;
-    line-height: 0;
 }
 
-a {
-    text-decoration-line: underline;
-    text-decoration-thickness: 0.3em;
-    text-decoration-skip-ink: none;
-    text-underline-offset: -0.15em;
-}
-
-a.no-decorate {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration-thickness: 0.4em;
-    text-underline-offset: -0.3em;
-}
-
-h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-h2 {
-    font-size: 40px;
-    font-weight: bold;
-    margin: 2rem 0 0;
-    line-height: 1.4;
-}
-
-footer h2 {
-    font-size: 0.9rem;
-}
-
-h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 2rem 0 0.4rem 0;
-}
-
-h4 {
-    font-size: 1.2rem;
-    margin: 1em 0 0.2em;
-}
-
-pre {
-    font-family: "Fira Code";
-    font-size: 0.8rem;
-}
-
-kbd {
-    font-family: "Fira Code";
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-}
-
-cite {
-    font-size: 0.9rem;
-    line-height: 1.7em;
-    font-style: normal;
-}
-
-cite .title {
-    font-style: italic;
-}
-
-.references {
-    font-size: 0.9rem;
-    padding-left: 1em;
-}
-
-.listing .title {
-    font-size: 1.2rem;
-}
-
-var {
-    font-family: "Fira Code";
-    font-size: 0.9rem;
-    font-style: normal;
-    white-space: nowrap;
-}
-
-ul {
-    list-style: square;
-}
-
-.figure-contents {
+figure {
     color: rgba(0, 0, 0, 0.6);
-    font-size: 13px;
 }
 
 /*# sourceMappingURL=main.css.map */
