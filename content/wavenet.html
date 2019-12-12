@@ -1,0 +1,238 @@
+<h2>WaveNet from scratch</h2>
+<script type="text/javascript" src="{{ROOT}}figures/wavenet.js"></script>
+
+<p>
+Today we are building a WaveNet <a href="#oordWaveNet2016">[1]</a> from
+scratch. The WaveNet is an <em>autoregressive</em>, <em>generative</em> and
+<em>deep</em> model for audio signals.
+</p>
+
+<p>
+<em>This guide is geared towards readers with a background in modern
+deep learning.</em>
+</p>
+
+<div class="tags">
+    <span>PyTorch</span><span>Deep Learning</span><span>Sound processing</span>
+    <span>Generative modelling</span>
+</div>
+
+<hr>
+
+<h3>The problem</h3>
+<p>
+Lets say we want to generate sound signals. This might happen in different
+settings. We might have music notes + a instrument and want to generate
+their sound \(w(\mathrm{note}, \mathrm{instrument}) = \mathrm{sound}\), or we
+have a text and want to generate the corresponding speech
+\(w(\mathrm{text}) = \mathrm{sound}\) or maybe we already have a sound signal,
+but it is noisy and we want to remove the noise \(w(\mathrm{noisy\ sound}) = \mathrm{sound}\).
+
+For all of these we need to find a model \(w(\cdot)\) which can generate
+high-quality semantic sounds.
+</p>
+
+<p>
+Sound is just a 1-dimensional temporal signal. Therefore the the same methods
+can be used for other similar signals like <a href="https://w.wiki/DHK">EEG</a>
+or financial data. I will ignore those areas here but you can find cool
+applications in other literature.
+</p>
+
+<h3>Using Waveforms</h3>
+<p>
+Sounds are vibrations of air, increase and decrease of air pressure over time.
+As such sound, measured at one given point, is a 1D-signal over time. Stereo
+sound recordings (over more than that) are multiple such signals, from different
+spatial positions. When we are working with sound digitally we need an
+approximation of those recorded analog signals. The simplest digitalization is
+<a href="https://w.wiki/DHJ">Pulse-code modulation</a> (PCM). In PCM we take
+samples from the analog signal and discretize them at fixed same-length
+intervals. For e.g. 8kHz 16bit PCM that means that we take a sample from the
+vibration every \(\frac{1}{8000}\mathrm{sec}\) and choose the closest of
+\(2^{16}=65536\) bins/amplitude values. Below we have a small excerpt of a sound
+file encoded with 16kHz 16bit.
+</p>
+
+<figure>
+    <img src="{{ROOT}}img/wave.jpg">
+</figure>
+
+<p>
+As we have here a sample length of 100 at a sample rate of 16kHz this sample is
+<em>only</em> 6.25 ms long. So we expect already that the fidelity of sound
+signals highly depend on their high sampling rate / temporal density.
+</p>
+
+<p>
+The general idea of the WaveNet to have a <em>causal</em> generation process.
+This means that each predicted output value is only based on information of
+previous input values, given an ordering. Now the idea of this causal
+autoregressive process comes from previous works by the same authors (and other)
+PixelRNN <a href="#oordPixelRNN2016">[2]</a>, and incorporating convolutions
+into the same process in PixelCNN <a href="#oordPixelCNN2016">[3]</a>. In those
+they also used the same principle to generate images, quite successfully.
+Naturally they took this to sound, as sound, in contrast to images, actually has
+an natural 1D-ordering.
+</p>
+
+<p>
+For the WaveNet the input is assumed to be as long as the output that we want to
+generate. For now lets assume we have a sound to sound translation task, so that
+the input and output are of the same type (Mono-audio).
+</p>
+
+<figure>
+    <svg id="figcausal_svg" height="300" width="600">
+        Sorry, your browser does not support inline SVG.
+    </svg>
+    <script type="text/javascript" src="{{ROOT}}figures/causal.js" defer></script>
+</figure>
+
+<h3>Dilated Convolutions</h3>
+<figure>
+    <svg id="figdilated_svg" height="300" width="600">
+        Sorry, your browser does not support inline SVG.
+    </svg>
+    <script type="text/javascript" src="{{ROOT}}figures/dilated.js" defer></script>
+</figure>
+
+<p>
+Do make the dilated convolutions we are doing the dilation and the convolution
+separately. Looking back to the animation above, we see that for the dilation in
+the first hidden layer the convolution we kind of have two <em>dense</em>
+convolutions (with the same kernel), for the even and the odd elements. In the
+implementation we can achieve that by splitting up the input along its time axis
+and transposing as such that the these blocks go into the batch-size dimension.
+</p>
+
+<p>
+In PyTorch we always have the dimensions ordering \(\mathrm{batch\_size} \times \mathrm{channels} \times \mathrm{length}\).
+</p>
+
+<p>
+So for an input of the size \(4\times 1\times 128\) with a dilation of \(2\) we
+end up with \(8\times 1\times 64\). Or a direct example (\(2\times 1\times 4\)):
+</p>
+
+\[
+\begin{align*}
+    x &= \begin{bmatrix}0 & 1 & 2 & 3\\A & B & C & D\end{bmatrix}\\
+    &\Rightarrow\\
+    dilate(x, 2) &= \begin{bmatrix}0 & 2\\A & C\\1 & 3\\B & D\end{bmatrix}
+\end{align*}
+\]
+
+<p>
+Of course now we have the difficulty that our batch dimension is cluttered with
+all blocks from the different samples in the mini-batch. Therefore we always
+need to keep track of the dilation we are having right now, so that we can
+reverse it. In code this gives us:
+</p>
+
+<pre><code class="lang-python">def dilate(x: torch.Tensor, new: int, old: int = 1) -> torch.Tensor:
+    """
+    :param x: The input Tensor
+    :param new: The new dilation we want
+    :param old: The dilation x already has
+    """
+    [N, C, L] = x.shape  # N == Batch size × old
+    if (dilation := new / old) == 1:
+        return x
+    L, N = int(L / dilation), int(N * dilation)
+    x = x.permute(1, 2, 0)
+    x = torch.reshape(x, [C, L, N])
+    x = x.permute(2, 0, 1)
+    return x.contiguous()
+</code></pre>
+
+<p>
+Now that we dilated we can apply a normal 1-dim convolution on the new Tensor
+which will go along the time axis and thus have a dilated receptive field. For
+the example given above we would dilate three times each with a factor of two
+(\(2, 4, 8\)).
+</p>
+
+<p>
+<i>As a sidenote: This is different from the dilated (à trous) convolution as
+    implemented in PyTorch's <samp>nn.Conv1d</samp> itself.
+</i>
+</p>
+
+<h3>Gates, Residuals and Skips</h3>
+<p>
+The whole goal of the dilated convolution is to have the big receptive window
+for the prediction of one output element.
+</p>
+
+<pre><code class="lang-python">
+dilated = dilate(x, new=2**l, old=2**(l-1))
+
+filters = torch.sigmoid(filter_conv(dilated))
+gates = torch.tanh(gate_conv(dilated))
+gated_filters = filters * gates
+x = x + gated_filters
+</code></pre>
+
+<figure>
+    <img src="{{ROOT}}figures/wavenet_dilated_block.svg">
+</figure>
+
+<hr>
+
+<h3>References</h3>
+<ol class="references">
+    <li>
+        <cite id="oordWaveNet2016">
+            <span class="title">WaveNet: A Generative Model for Raw Audio</span>
+            <br>
+            <span>A. van den Oord et al., Sep. 2016</span>
+            <br>
+            <a href="https://arxiv.org/abs/1609.03499">arXiv:1609.03499</a>
+        </cite>
+    </li>
+    <li>
+        <cite id="oordPixelRNN2016">
+            <span class="title">Pixel Recurrent Neural Networks</span>
+            <br>
+            <span>A. van den Oord, N. Kalchbrenner, and K. Kavukcuoglu, Aug. 2016</span>
+            <br>
+            <a href="https://arxiv.org/abs/1601.06759">arXiv:1601.06759</a>
+        </cite>
+    </li>
+    <li>
+        <cite id="oordPixelCNN2016">
+            <span class="title">Conditional Image Generation with PixelCNN Decoders</span>
+            <br>
+            <span>A. van den Oord, N. Kalchbrenner, O. Vinyals, L. Espeholt, A. Graves, and K. Kavukcuoglu, Jun. 2016</span>
+            <br>
+            <a href="https://arxiv.org/abs/1606.05328">arXiv:1606.05328</a>
+        </cite>
+    </li>
+    <li>
+        <cite id="paineFast2016">
+            <span class="title">Fast Wavenet Generation Algorithm</span>
+            <br>
+            <span>T. L. Paine et al., Nov. 2016</span>
+            <br>
+            <a href="http://arxiv.org/abs/1611.09482">arxiv:1611.09482</a>
+        </cite>
+    </li>
+    <li>
+        <cite id="hochreiterLong1997">
+            <span class="title">Long Short-Term Memory</span>
+            <br>
+            <span>S. Hochreiter and J. Schmidhuber, Neural Computation, vol. 9, no. 8, Nov. 1997.</span>
+            <br>
+        </cite>
+    </li>
+    <li>
+        <cite id="heDeep2015">
+            <span class="title">Deep Residual Learning for Image Recognition</span>
+            <br>
+            <span>K. He, X. Zhang, S. Ren, and J. Sun, Dec. 2015</span>
+            <br>
+            <a href="http://arxiv.org/abs/1512.03385">arXiv:1512.03385</a>
+        </cite>
+    </li>
+</ol>

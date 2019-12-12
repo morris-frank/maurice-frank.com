@@ -5,6 +5,10 @@ how/why to write a <a href="https://w.wiki/DWZ">XKB</a> (X keyboard extension)
 layout file to extend ones keyboard layout.
 </p>
 
+<div class="tags">
+    <span>Linux</span><span>Efficiency</span>
+</div>
+
 <hr>
 
 <h3>What is it?</h3>
@@ -76,11 +80,11 @@ x = μ + np.random.rand() * σ</code></pre>
 We do not want to reinvent the wheel. We just want to replace symbols that we
 never use with symbols that could be useful. Therefore it is best to start off
 with a pre-existing layout. For me that would be the German QWERTZ layout. You
-find all XKB layout definitions in <var>/usr/share/X11/xkb/symbols</var>.
+find all XKB layout definitions in <samp>/usr/share/X11/xkb/symbols</samp>.
 </p>
 
 <p>
-Looking into any of those files (e.g. <var>symbols/de</var>) you will find
+Looking into any of those files (e.g. <samp>symbols/de</samp>) you will find
 blocks of the form:
 </p>
 
@@ -100,7 +104,7 @@ xkb_symbols "basic" {
 The xkb layout definitions are hierarchical, we can include other definitions
 with an include statement and override only the parts that we need. The <em>de</em>
 layout is based on the type4 layout (which itself has latin as its base) in the
-file <var>symbols/latin</var>. Further included is <var>level3(ralt_switch)</var>
+file <samp>symbols/latin</samp>. Further included is <var>level3(ralt_switch)</var>
 which will make <kbd>Alt</kbd> the modifier with which the third layer is
 reached.
 </p>
@@ -133,21 +137,21 @@ xkb_symbols "basic" {
 
 <p>
 If you want to have a different modifier than <kbd>RAlt</kbd> for level3 you
-have to import the definition from <var>symbols/level3</var>. Now we need the
+have to import the definition from <samp>symbols/level3</samp>. Now we need the
 XKB symbol names for the keys we are interested in. For this you can run inside
 a terminal:
 </p>
 
 <pre><code class="lang-bash">xev -event keyboard</code></pre>
 
-<p><var>xev</var> is included in the <em>x11-utils</em> package.</p>
+<p><samp>xev</samp> is included in the <em>x11-utils</em> package.</p>
 
 <p>
-<var>xev</var> gives you a little white window and if you press a key inside
+<samp>xev</samp> gives you a little white window and if you press a key inside
 it, it will print information about the pressed  key in the terminal. We are
 interested in the <em>keycode</em>. If I press my <kbd>F</kbd> key it will
 give me keycode 41. Sadly that is the keycode not the <em>key-symbol</em>. To
-find the key symbol you have to look in <var>/usr/share/X11/xkb/keycodes/evdev</var>.
+find the key symbol you have to look in <samp>/usr/share/X11/xkb/keycodes/evdev</samp>.
 In there we find that the key symbol for key code 41 is <var>&lt;AC04&gt;</var>.
 </p>
 
@@ -170,9 +174,9 @@ and fourth layer so we write:
 We write <var>Greek_phi</var> instead of φ. Except the absolute basic numbers
 and latin alphabet you cannot write copy symbol you want but have to use an
 identifier. A subset of Unicode symbols have defined names in X11. A list of
-those given names is in <var>/usr/include/X11/keysymdef.h</var>.
+those given names is in <samp>/usr/include/X11/keysymdef.h</samp>.
 You can use any name from this header file, ignoring the leading <em>XK_</em>.
-More realistically you can also look in other layout files from <var>xkb/symbols</var>.
+More realistically you can also look in other layout files from <samp>xkb/symbols</samp>.
 Besides the given names you may use any Unicode character. For 👍 that will
 give you <a href="https://unicode-table.com/en/1F44D/">U+1F44D</a> which you can
 use in the form <var>U1F44D</var> inside the layout. You can also use the Unicodes
@@ -181,7 +185,7 @@ instead of the given X11 names (loosing some readability…).
 
 <p>
 Change all the keys you need, put them into the <em>xkb_symbols</em> block and
-save the file to somewhere, lets say <var>deedit</var>. Next you can install the file into the symbols
+save the file to somewhere, lets say <samp>deedit</samp>. Next you can install the file into the symbols
 directory:
 </p>
 
@@ -201,5 +205,5 @@ Lastly you change your current Keyboard layout and try it out:
 
 <p>
 If your happy with it and want to make it stick, append the previous line to
-your <var>xinit.rc</var> so that it is loaded on every boot.
+your <samp>xinit.rc</samp> so that it is loaded on every boot.
 </p>

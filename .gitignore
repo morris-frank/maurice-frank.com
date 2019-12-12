@@ -2,3 +2,6 @@
 .vscode/
 .sass-cache/
 node_modules/
+*log
+*xdv
+*gz

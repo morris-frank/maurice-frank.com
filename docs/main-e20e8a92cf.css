@@ -48,7 +48,7 @@ pre {
 }
 
 var {
-    padding: 0.1rem 0.4rem;
+    padding: 0.14rem 0.2rem 0.1rem;
     border-radius: 0.2rem;
 }
 
@@ -64,6 +64,13 @@ nav h1 {
 nav>a {
     margin-right: 1rem;
     display: inline-block;
+}
+
+.tags span,
+.tag {
+    border-radius: 0.3em;
+    margin-right: 0.4em;
+    padding: 0.1em 0.5em;
 }
 
 main {
@@ -151,6 +158,12 @@ figure svg {
     display: block;
 }
 
+.tags:before {
+    content: "Topics:";
+    display: inline;
+    padding-right: 0.5em;
+}
+
 @font-face {
     font-family: "Fira Sans Condensed";
     font-style: normal;
@@ -187,7 +200,7 @@ body {
     font-family: "Fira Sans Condensed", sans-serif;
     font-size: 17px;
     line-height: 1.7;
-    text-ren­der­ing: op­ti­mize­Leg­i­bil­ity;
+    text-ren­der­ing: op­ti­mize­leg­i­bil­ity;
 }
 
 .font-code {
@@ -258,7 +271,8 @@ blockquote:before {
     line-height: 0;
 }
 
-pre {
+pre,
+code {
     font-family: "Fira Code";
     font-size: 0.8rem;
 }
@@ -292,6 +306,16 @@ var {
     font-size: 0.9rem;
     font-style: normal;
     white-space: nowrap;
+}
+
+samp {
+    font-family: "Fira Code";
+    font-size: 0.9rem;
+    font-style: normal;
+}
+
+.tags:before {
+    font-style: italic;
 }
 
 html {
@@ -367,6 +391,10 @@ pre .token.operator {
     color: #cacf85;
 }
 
+pre .token.comment {
+    color: #756f51;
+}
+
 cite {
     color: #7a7a7a;
 }
@@ -384,6 +412,11 @@ var {
     color: #4a4a4a;
 }
 
+samp {
+    color: black;
+    background: rgba(104, 157, 106, 0.2);
+}
+
 blockquote {
     border-left: 4px solid #689D6A;
 }
@@ -394,6 +427,12 @@ blockquote:before {
 
 figure {
     color: rgba(0, 0, 0, 0.6);
+}
+
+.tags span,
+.tag {
+    background: #689D6A;
+    color: #f7f7f7;
 }
 
 /*# sourceMappingURL=main.css.map */
