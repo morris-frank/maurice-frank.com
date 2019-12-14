@@ -9,7 +9,7 @@ a {
     transition: 120ms ease-in-out;
 }
 
-h2 {
+main h2 {
     margin: 2rem 0 0;
 }
 
@@ -80,10 +80,15 @@ main {
 footer {
     margin: 6rem 0 0;
     padding: 1rem 0;
+    contain: layout paint;
 }
 
 body {
     margin: 0;
+}
+
+nav {
+    contain: layout paint;
 }
 
 nav.center {
@@ -144,6 +149,7 @@ figure svg {
 }
 
 .listing {
+    contain: layout paint;
     padding-left: 1em;
     margin-bottom: 1em;
 }
@@ -173,10 +179,10 @@ figure svg {
 }
 
 @font-face {
-    font-family: "Fira Sans Condensed";
+    font-family: "Vollkorn";
     font-style: italic;
     font-weight: 400;
-    src: local("Fira Sans Condensed Italic"), local("FiraSansCondensed-Italic"), url("FiraSansCondensed-Italic.otf");
+    src: url("Vollkorn-Italic.otf");
     font-display: swap;
 }
 
@@ -200,6 +206,7 @@ body {
     font-family: "Fira Sans Condensed", sans-serif;
     font-size: 17px;
     line-height: 1.7;
+    font-variant-ligatures: common-ligatures;
     text-ren­der­ing: op­ti­mize­leg­i­bil­ity;
 }
 
@@ -210,6 +217,12 @@ body {
 p {
     hyphens: auto;
     letter-spacing: 0.05em;
+}
+
+i,
+em {
+    font-family: "Vollkorn";
+    font-style: italic;
 }
 
 a {
@@ -254,7 +267,6 @@ h4 {
 
 footer {
     font-size: 0.9rem;
-    text-align: center;
 }
 
 figure {
@@ -290,7 +302,7 @@ cite {
 }
 
 cite .title {
-    font-style: italic;
+    font-style: normal;
 }
 
 .references {
@@ -312,6 +324,11 @@ samp {
     font-family: "Fira Code";
     font-size: 0.9rem;
     font-style: normal;
+}
+
+.tags span,
+.tag {
+    white-space: nowrap;
 }
 
 .tags:before {
@@ -388,11 +405,15 @@ pre .token.punctuation {
 }
 
 pre .token.operator {
-    color: #cacf85;
+    color: #fe8019;
 }
 
 pre .token.comment {
     color: #756f51;
+}
+
+pre .token.builtin {
+    color: #fabd2f;
 }
 
 cite {

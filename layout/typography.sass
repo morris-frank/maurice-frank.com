@@ -5,10 +5,10 @@
   src: local('Fira Sans Condensed'), local('FiraSansCondensed-Regular'), url('FiraSansCondensed-Regular.otf')
   font-display: swap
 @font-face
-  font-family: 'Fira Sans Condensed'
+  font-family: 'Vollkorn'
   font-style: italic
   font-weight: 400
-  src: local('Fira Sans Condensed Italic'), local('FiraSansCondensed-Italic'), url('FiraSansCondensed-Italic.otf')
+  src: url('Vollkorn-Italic.otf')
   font-display: swap
 @font-face
   font-family: 'Fira Sans Condensed'
@@ -25,11 +25,13 @@
 
 $font: 'Fira Sans Condensed', sans-serif
 $font-code: 'Fira Code'
+$font-italic: 'Vollkorn'
 
 body
   font-family: $font
   font-size: 17px
   line-height: 1.7
+  font-variant-ligatures: common-ligatures
   text-ren­der­ing: op­ti­mize­leg­i­bil­ity
 
 .font-code
@@ -38,6 +40,10 @@ body
 p
   hyphens: auto
   letter-spacing: 0.05em
+
+i, em
+  font-family: 'Vollkorn'
+  font-style: italic
 
 a
   text-decoration-line: underline
@@ -71,7 +77,6 @@ h4
 
 footer
   font-size: 0.9rem
-  text-align: center
 
 figure
   font-size: 13px
@@ -97,7 +102,7 @@ cite
   line-height: 1.7em
   font-style: normal
   .title
-    font-style: italic
+    font-style: normal
 
 .references
   font-size: 0.9rem
@@ -116,6 +121,9 @@ samp
   font-family: $font-code
   font-size: 0.9rem
   font-style: normal
+
+.tags span, .tag
+  white-space: nowrap
 
 .tags:before
   font-style: italic
