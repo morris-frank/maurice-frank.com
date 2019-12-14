@@ -81,9 +81,11 @@ sub process_content_file {
     my $output_file = "$output_dir$slug";
     write_file($output_file, $output);
 
-    beautify_file($output_file);
-    if ($contains_code) {
-        syntax_highlight($output_file);
+    if (1-$local) {
+        beautify_file($output_file);
+        if ($contains_code) {
+            syntax_highlight($output_file);
+        }
     }
 
     system("echo \"$root_path$slug\" >> $output_dir/sitemap.txt");
@@ -114,7 +116,9 @@ sub process_sass {
     my $save_name = "main-${fingerprint}.css";
 
     move("${output_dir}main.css", "${output_dir}${save_name}");
-    beautify_file("${output_dir}${save_name}");
+    if (1-$local) {
+        beautify_file("${output_dir}${save_name}");
+    }
     print colored( "⇐ Built ${output_dir}${save_name}", 'green' ), "\n";
     return $save_name;
 }
