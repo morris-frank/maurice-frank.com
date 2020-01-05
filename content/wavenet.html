@@ -8,10 +8,6 @@ scratch. The WaveNet is an <em>autoregressive</em>, <em>generative</em> and
 </p>
 
 <p>
-`x > y`
-</p>
-
-<p>
 <em>This guide is geared towards readers with a background in modern
 deep learning.</em>
 </p>
@@ -82,7 +78,7 @@ autoregressive process comes from previous works by the same authors (and other)
 PixelRNN <a href="#oordPixelRNN2016">[2]</a>, and incorporating convolutions
 into the same process in PixelCNN <a href="#oordPixelCNN2016">[3]</a>. In those
 they also used the same principle to generate images, quite successfully.
-Naturally they took this to sound, as sound, in contrast to images, actually has
+They took this approach to sound, as sound, in contrast to images, actually has
 an natural 1D-ordering.
 </p>
 
@@ -226,7 +222,7 @@ Setting the forward pass of one hidden layer in code we will get something
 along:
 </p>
 
-<pre><code class="lang-python">dilated = dilate(feat, new=new_dil, old=old_dil)
+<pre><code class="lang-python">dilated = dilate(feat, new=new_dilation, old=old_dilation)
 
 filters = torch.sigmoid(filter_conv(dilated))
 gates = torch.tanh(gate_conv(dilated))
@@ -239,38 +235,53 @@ skip = skip + skip_conv(residual)
 <h3>Putting it together</h3>
 
 <p>
-In the <samp>__init__</samp> we have to prepare all the layers:
+The previous section defines the flow for one <i>layer</i> (as in dilated layer in the animation from the
+beginning). We want to put multiple such layers together to get the large dilation that we want. As in
+the original work we use multiple blocks where one block  is as in our visualization. So if we want to
+compute the compound receptive field size of the complete model we have:
 </p>
 
-<pre><code class="lang-python">def __init__(self, n_blocks: int = 3, n_layers: int = 10,
-                feat_width: int = 32, residual_width: int = 32,
-                skip_width: int = 32, kernel_size: int = 3,
-                bias: bool = True):
-    super(WaveNet, self).__init__()
-    self.n_blocks, self.n_layers = n_blocks, n_layers
-    self.bias = bias
+\[
+\mathrm{receptive\_field} = n_{\mathrm{blocks}} \cdot \prod_{i=0}^{n_{\mathrm{layers}}} \mathrm{dilation}_i
+\]
 
-    self.filter_conv = self._conv_list(feat_width, residual_width,
-                                        kernel_size)
-    self.gate_conv = self._conv_list(feat_width, residual_width,
-                                        kernel_size)
-    self.skip_conv = self._conv_list(residual_width, skip_width, 1)
-    self.feat_conv = self._conv_list(residual_width, feat_width, 1)
+\[
+\mathrm{receptive\_field} = n_{\mathrm{blocks}} \cdot 2^{n_{\mathrm{layers}}}
+\]
+
+<p>
+With the second one for the specific case that we only always dilate with 2.
+</p>
+
+<p>
+Now lets write the final WaveNet model and lets start with the <samp>__init__</samp>:
+</p>
+
+<pre><code class="lang-python">class WaveNet(nn.Module):
+    def __init__(self, n_blocks: int = 3, n_layers: int = 10,
+                 feat_width: int = 32, residual_width: int = 32,
+                 skip_width: int = 32, kernel_size: int = 3,
+                 bias: bool = True):
+        super(WaveNet, self).__init__()
+        self.n_blocks, self.n_layers = n_blocks, n_layers
+        self.bias = bias
+
+        self.filter_conv = self._conv_list(feat_width, residual_width,
+                                           kernel_size)
+        self.gate_conv = self._conv_list(feat_width, residual_width,
+                                         kernel_size)
+        self.skip_conv = self._conv_list(residual_width, skip_width, 1)
+        self.feat_conv = self._conv_list(residual_width, feat_width, 1)
+
+        self.dilations = [2**l for l in range(1, n_layers+1)]
 </code></pre>
 
 <p>
 With a helper function to generate all the list of convolutions:
 </p>
 
-<pre><code class="lang-python">def _conv_list(self, in_channels: int, out_channels: int,
-                   kernel_size: int) -> nn.ModuleList:
-        """
-        Gives a list of convolutions of length blocks × layers.
-        :param in_channels:
-        :param out_channels:
-        :param kernel_size:
-        :return:
-        """
+<pre><code class="lang-python">    def _conv_list(self, in_channels: int, out_channels: int,
+                             kernel_size: int) -> nn.ModuleList:
         module_list = []
         for _ in range(self.n_blocks * self.n_layers):
             module_list.append(nn.Conv1d(in_channels, out_channels, kernel_size,
@@ -279,23 +290,23 @@ With a helper function to generate all the list of convolutions:
 </code></pre>
 
 <p>
-And our forward pass:
+And the forward pass:
 </p>
 
-<pre><code class="lang-python">def forward(self, x: torch.Tensor) -> torch.Tensor:
-    for i in range(self.n_blocks * self.n_layers):
-        dilated = dilate(feat, new=new_dil, old=old_dil)
+<pre><code class="lang-python">    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        for i in product(self.n_blocks * self.n_layers):
+            l = i % self.n_blocks
+            dilated = dilate(feat, new=self.dilations[l], old=self.dilations[l-1])
 
-        f = torch.sigmoid(self.filter_conv[i](dilated))
-        g = torch.tanh(self.gate_conv[i](dilated))
-        residual = f * g
+            f = torch.sigmoid(self.filter_conv[i](dilated))
+            g = torch.tanh(self.gate_conv[i](dilated))
+            residual = f * g
 
-        feat = dilated + self.feat_conv[i](residual)
-        skip = skip + self.skip_conv[i](residual)
+            feat = dilated + self.feat_conv[i](residual)
+            skip = skip + self.skip_conv[i](residual)
 </code></pre>
 
-<h3>Faster WaveNet</h3>
-
+<!-- <h3>Faster WaveNet</h3> -->
 
 <hr>
 

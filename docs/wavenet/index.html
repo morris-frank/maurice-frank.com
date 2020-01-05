@@ -34,10 +34,6 @@
         </p>
 
         <p>
-            `x &gt; y`
-        </p>
-
-        <p>
             <em>This guide is geared towards readers with a background in modern
                 deep learning.</em>
         </p>
@@ -108,7 +104,7 @@
             PixelRNN <a href="#oordPixelRNN2016">[2]</a>, and incorporating convolutions
             into the same process in PixelCNN <a href="#oordPixelCNN2016">[3]</a>. In those
             they also used the same principle to generate images, quite successfully.
-            Naturally they took this to sound, as sound, in contrast to images, actually has
+            They took this approach to sound, as sound, in contrast to images, actually has
             an natural 1D-ordering.
         </p>
 
@@ -252,7 +248,7 @@
             along:
         </p>
 
-        <pre class=" language-python"><code class=" language-python">dilated <span class="token operator">=</span> dilate<span class="token punctuation">(</span>feat<span class="token punctuation">,</span> new<span class="token operator">=</span>new_dil<span class="token punctuation">,</span> old<span class="token operator">=</span>old_dil<span class="token punctuation">)</span>
+        <pre class=" language-python"><code class=" language-python">dilated <span class="token operator">=</span> dilate<span class="token punctuation">(</span>feat<span class="token punctuation">,</span> new<span class="token operator">=</span>new_dilation<span class="token punctuation">,</span> old<span class="token operator">=</span>old_dilation<span class="token punctuation">)</span>
 
 filters <span class="token operator">=</span> torch<span class="token punctuation">.</span>sigmoid<span class="token punctuation">(</span>filter_conv<span class="token punctuation">(</span>dilated<span class="token punctuation">)</span><span class="token punctuation">)</span>
 gates <span class="token operator">=</span> torch<span class="token punctuation">.</span>tanh<span class="token punctuation">(</span>gate_conv<span class="token punctuation">(</span>dilated<span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -265,38 +261,53 @@ skip <span class="token operator">=</span> skip <span class="token operator">+</
         <h3>Putting it together</h3>
 
         <p>
-            In the <samp>__init__</samp> we have to prepare all the layers:
+            The previous section defines the flow for one <i>layer</i> (as in dilated layer in the animation from the
+            beginning). We want to put multiple such layers together to get the large dilation that we want. As in
+            the original work we use multiple blocks where one block is as in our visualization. So if we want to
+            compute the compound receptive field size of the complete model we have:
         </p>
 
-        <pre class=" language-python"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> n_blocks<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span> n_layers<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span>
-                feat_width<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">,</span> residual_width<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">,</span>
-                skip_width<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">,</span> kernel_size<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
-                bias<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token builtin">super</span><span class="token punctuation">(</span>WaveNet<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    self<span class="token punctuation">.</span>n_blocks<span class="token punctuation">,</span> self<span class="token punctuation">.</span>n_layers <span class="token operator">=</span> n_blocks<span class="token punctuation">,</span> n_layers
-    self<span class="token punctuation">.</span>bias <span class="token operator">=</span> bias
+        \[
+        \mathrm{receptive\_field} = n_{\mathrm{blocks}} \cdot \prod_{i=0}^{n_{\mathrm{layers}}} \mathrm{dilation}_i
+        \]
 
-    self<span class="token punctuation">.</span>filter_conv <span class="token operator">=</span> self<span class="token punctuation">.</span>_conv_list<span class="token punctuation">(</span>feat_width<span class="token punctuation">,</span> residual_width<span class="token punctuation">,</span>
-                                        kernel_size<span class="token punctuation">)</span>
-    self<span class="token punctuation">.</span>gate_conv <span class="token operator">=</span> self<span class="token punctuation">.</span>_conv_list<span class="token punctuation">(</span>feat_width<span class="token punctuation">,</span> residual_width<span class="token punctuation">,</span>
-                                        kernel_size<span class="token punctuation">)</span>
-    self<span class="token punctuation">.</span>skip_conv <span class="token operator">=</span> self<span class="token punctuation">.</span>_conv_list<span class="token punctuation">(</span>residual_width<span class="token punctuation">,</span> skip_width<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    self<span class="token punctuation">.</span>feat_conv <span class="token operator">=</span> self<span class="token punctuation">.</span>_conv_list<span class="token punctuation">(</span>residual_width<span class="token punctuation">,</span> feat_width<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        \[
+        \mathrm{receptive\_field} = n_{\mathrm{blocks}} \cdot 2^{n_{\mathrm{layers}}}
+        \]
+
+        <p>
+            With the second one for the specific case that we only always dilate with 2.
+        </p>
+
+        <p>
+            Now lets write the final WaveNet model and lets start with the <samp>__init__</samp>:
+        </p>
+
+        <pre class=" language-python"><code class=" language-python"><span class="token keyword">class</span> <span class="token class-name">WaveNet</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> n_blocks<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span> n_layers<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span>
+                 feat_width<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">,</span> residual_width<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">,</span>
+                 skip_width<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">,</span> kernel_size<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                 bias<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>WaveNet<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>n_blocks<span class="token punctuation">,</span> self<span class="token punctuation">.</span>n_layers <span class="token operator">=</span> n_blocks<span class="token punctuation">,</span> n_layers
+        self<span class="token punctuation">.</span>bias <span class="token operator">=</span> bias
+
+        self<span class="token punctuation">.</span>filter_conv <span class="token operator">=</span> self<span class="token punctuation">.</span>_conv_list<span class="token punctuation">(</span>feat_width<span class="token punctuation">,</span> residual_width<span class="token punctuation">,</span>
+                                           kernel_size<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>gate_conv <span class="token operator">=</span> self<span class="token punctuation">.</span>_conv_list<span class="token punctuation">(</span>feat_width<span class="token punctuation">,</span> residual_width<span class="token punctuation">,</span>
+                                         kernel_size<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>skip_conv <span class="token operator">=</span> self<span class="token punctuation">.</span>_conv_list<span class="token punctuation">(</span>residual_width<span class="token punctuation">,</span> skip_width<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>feat_conv <span class="token operator">=</span> self<span class="token punctuation">.</span>_conv_list<span class="token punctuation">(</span>residual_width<span class="token punctuation">,</span> feat_width<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>dilations <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token operator">**</span>l <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n_layers<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 </code></pre>
 
         <p>
             With a helper function to generate all the list of convolutions:
         </p>
 
-        <pre class=" language-python"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">_conv_list</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> in_channels<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> out_channels<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span>
-                   kernel_size<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> nn<span class="token punctuation">.</span>ModuleList<span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""
-        Gives a list of convolutions of length blocks × layers.
-        :param in_channels:
-        :param out_channels:
-        :param kernel_size:
-        :return:
-        """</span>
+        <pre class=" language-python"><code class=" language-python">    <span class="token keyword">def</span> <span class="token function">_conv_list</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> in_channels<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> out_channels<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span>
+                             kernel_size<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> nn<span class="token punctuation">.</span>ModuleList<span class="token punctuation">:</span>
         module_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
         <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>n_blocks <span class="token operator">*</span> self<span class="token punctuation">.</span>n_layers<span class="token punctuation">)</span><span class="token punctuation">:</span>
             module_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Conv1d<span class="token punctuation">(</span>in_channels<span class="token punctuation">,</span> out_channels<span class="token punctuation">,</span> kernel_size<span class="token punctuation">,</span>
@@ -305,23 +316,23 @@ skip <span class="token operator">=</span> skip <span class="token operator">+</
 </code></pre>
 
         <p>
-            And our forward pass:
+            And the forward pass:
         </p>
 
-        <pre class=" language-python"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">:</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>n_blocks <span class="token operator">*</span> self<span class="token punctuation">.</span>n_layers<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        dilated <span class="token operator">=</span> dilate<span class="token punctuation">(</span>feat<span class="token punctuation">,</span> new<span class="token operator">=</span>new_dil<span class="token punctuation">,</span> old<span class="token operator">=</span>old_dil<span class="token punctuation">)</span>
+        <pre class=" language-python"><code class=" language-python">    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">:</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> product<span class="token punctuation">(</span>self<span class="token punctuation">.</span>n_blocks <span class="token operator">*</span> self<span class="token punctuation">.</span>n_layers<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            l <span class="token operator">=</span> i <span class="token operator">%</span> self<span class="token punctuation">.</span>n_blocks
+            dilated <span class="token operator">=</span> dilate<span class="token punctuation">(</span>feat<span class="token punctuation">,</span> new<span class="token operator">=</span>self<span class="token punctuation">.</span>dilations<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">,</span> old<span class="token operator">=</span>self<span class="token punctuation">.</span>dilations<span class="token punctuation">[</span>l<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-        f <span class="token operator">=</span> torch<span class="token punctuation">.</span>sigmoid<span class="token punctuation">(</span>self<span class="token punctuation">.</span>filter_conv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span>dilated<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        g <span class="token operator">=</span> torch<span class="token punctuation">.</span>tanh<span class="token punctuation">(</span>self<span class="token punctuation">.</span>gate_conv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span>dilated<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        residual <span class="token operator">=</span> f <span class="token operator">*</span> g
+            f <span class="token operator">=</span> torch<span class="token punctuation">.</span>sigmoid<span class="token punctuation">(</span>self<span class="token punctuation">.</span>filter_conv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span>dilated<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            g <span class="token operator">=</span> torch<span class="token punctuation">.</span>tanh<span class="token punctuation">(</span>self<span class="token punctuation">.</span>gate_conv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span>dilated<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            residual <span class="token operator">=</span> f <span class="token operator">*</span> g
 
-        feat <span class="token operator">=</span> dilated <span class="token operator">+</span> self<span class="token punctuation">.</span>feat_conv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span>residual<span class="token punctuation">)</span>
-        skip <span class="token operator">=</span> skip <span class="token operator">+</span> self<span class="token punctuation">.</span>skip_conv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span>residual<span class="token punctuation">)</span>
+            feat <span class="token operator">=</span> dilated <span class="token operator">+</span> self<span class="token punctuation">.</span>feat_conv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span>residual<span class="token punctuation">)</span>
+            skip <span class="token operator">=</span> skip <span class="token operator">+</span> self<span class="token punctuation">.</span>skip_conv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span>residual<span class="token punctuation">)</span>
 </code></pre>
 
-        <h3>Faster WaveNet</h3>
-
+        <!-- <h3>Faster WaveNet</h3> -->
 
         <hr>
 
