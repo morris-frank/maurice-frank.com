@@ -77,7 +77,10 @@ sub process_content_file {
     } else {
         mkdir($output_dir . $basename);
         $slug = "$basename/index.html";
+        system("echo \"$root_path$basename\" >> $output_dir/sitemap.txt");
     }
+    system("echo \"$root_path$slug\" >> $output_dir/sitemap.txt");
+
     my $output_file = "$output_dir$slug";
     write_file($output_file, $output);
 
@@ -88,7 +91,6 @@ sub process_content_file {
         }
     }
 
-    system("echo \"$root_path$slug\" >> $output_dir/sitemap.txt");
 }
 
 sub syntax_highlight {
