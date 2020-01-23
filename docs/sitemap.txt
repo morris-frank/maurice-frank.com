@@ -5,5 +5,7 @@ https://morris-frank.dev/keymap
 https://morris-frank.dev/keymap/index.html
 https://morris-frank.dev/latex-macros
 https://morris-frank.dev/latex-macros/index.html
+https://morris-frank.dev/media
+https://morris-frank.dev/media/index.html
 https://morris-frank.dev/wavenet
 https://morris-frank.dev/wavenet/index.html

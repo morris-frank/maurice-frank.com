@@ -73,6 +73,11 @@ nav>a {
     padding: 0.1em 0.5em;
 }
 
+img.text-image {
+    height: 1.2em;
+    vertical-align: middle;
+}
+
 main {
     min-height: 40vh;
 }
