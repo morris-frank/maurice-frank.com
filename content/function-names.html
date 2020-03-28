@@ -105,7 +105,7 @@ most-outer commas.
 </p>
 
 <pre><code class="lang-python">import re
-argument_string = re.match(rf"{func_name}\((.*)\)", code_line)[1]
+argument_string = re.search(rf"{func_name}\((.*)\)", code_line)[1]
 arguments = re.split(r",\s*(?![^()]*\))", argument_string)
 </code></pre>
 
@@ -121,7 +121,7 @@ increase the our lookups in the stack by one and it works. To sum up:
 <pre><code class="lang-python">def get_func_arguments():
     func_name = inspect.stack()[1].function.strip()
     code_line = inspect.stack()[2].code_context[0].strip()
-    argument_string = re.match(rf"{func_name}\((.*)\)", code_line)[1]
+    argument_string = re.search(rf"{func_name}\((.*)\)", code_line)[1]
     arguments = re.split(r",\s*(?![^()]*\))", argument_string)
     return arguments</code></pre>
 
