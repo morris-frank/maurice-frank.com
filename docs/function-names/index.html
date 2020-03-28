@@ -85,17 +85,17 @@
             Will give something along:
         </p>
 
-        <pre>[FrameInfo(frame=&gt;, filename='./test.py', lineno=6, function='<module>', code_context=['print(inspect.stack())\n'], index=0)]
+        <pre>[FrameInfo(frame=&lt;frame at 0x7fd80164c450, file './test.py', line 6, code &lt;module&gt;&gt;, filename='./test.py', lineno=6, function='<module>', code_context=['print(inspect.stack())\n'], index=0)]
 </module></pre>
 
         <p>
             We get an ordered list of <samp>FrameInfo</samp> objects, starting from the
             current scope going up, the call stack. Looking at the <samp>FrameInfo</samp>
             (a named tuple) it contains the function name of the current scope (which this
-            being run in the global scope just being <samp>module</samp>) and the source
+            being run in the global scope just being <samp>&lt;module&gt;</samp>) and the source
             code of this execution with <samp>code_context</samp>. The sole argument to
             <samp>.stack(context=1)</samp> can set number of lines around the current
-            position we are ineterested in, one is enough.
+            position we are ineterested in, one is enough for our case.
         </p>
 
         <p>
@@ -108,7 +108,7 @@
 
         <p>
             And yes that works! First caveat: the function call shall only be one line,
-            because we only have one-line context, buy hey I said this was hacky. Second,
+            because we only have one line of context, buy hey I said this was hacky. Second,
             now we have a string akin:
         </p>
 
@@ -117,7 +117,7 @@
         <p>
             Where we are only ineterested in the arguments of <samp>func</samp>. Therefore
             we need some RegEx magic to extract them. First we can use inspect again to
-            fetch the name of function:
+            fetch the name of the current function:
         </p>
 
         <pre class=" language-python"><code class=" language-python">func_name <span class="token operator">=</span> inspect<span class="token punctuation">.</span>stack<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>function</code></pre>
@@ -155,14 +155,14 @@ arguments <span class="token operator">=</span> re<span class="token punctuation
             With that I can now call:
         </p>
 
-        <pre code="lang-python"><code>plot.plot_data(s, μ_ŝ, m)</code></pre>
+        <pre code="lang-python"><code>plot.plot_data(s, μ_ŝ, mean(x, dim=1))</code></pre>
 
         <p>
             and inside get
         </p>
 
         <pre code="lang-python"><code>def plot_data(*signals: torch.Tensor):
-    arguments = get_func_arguments()  # = ['s', 'μ_ŝ', 'm']
+    arguments = get_func_arguments()  # = ['s', 'μ_ŝ', 'mean(x, dim=1)']
     …</code></pre>
 
         <p>
