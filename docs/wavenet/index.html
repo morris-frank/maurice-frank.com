@@ -61,7 +61,7 @@
         </p>
 
         <p>
-            Sound is just a 1-dimensional temporal signal. Therefore the the same methods
+            Sound is just a 1-dimensional temporal signal. Therefore the same methods
             can be used for other similar signals like <a href="https://w.wiki/DHK">EEG</a>
             or financial data. I will ignore those areas here but you can find cool
             applications in other literature.
@@ -76,7 +76,7 @@
             approximation of those recorded analog signals. The simplest digitalization is
             <a href="https://w.wiki/DHJ">Pulse-code modulation</a> (PCM). In PCM we take
             samples from the analog signal and discretize them at fixed same-length
-            intervals. For e.g. 8kHz 16bit PCM that means that we take a sample from the
+            intervals. E.g. with 8kHz 16bit PCM that means that we take a sample from the
             vibration every \(\frac{1}{8000}\mathrm{sec}\) and choose the closest of
             \(2^{16}=65536\) bins/amplitude values. Below we have a small excerpt of a sound
             file encoded with 16kHz 16bit.
@@ -90,11 +90,11 @@
             As we have here a sample length of 100 at a sample rate of 16kHz this sample is
             <em>only</em> 6.25 ms long. Directly we see the problem in working with music in
             the time-domain: Interesting information is at completely different temporal
-            scales. On the low level we have the characteristics of different notes, e.g.
+            scales. On the low level, we have the characteristics of different notes, e.g.
             a piano has frequencies between around 30 Hz to 4 kHz, on top of you could
             expect modulating effects (e.g a voice vibrato is around 6Hz), growing larger in
             the temporal dependencies, a short rhythm in the range of seconds to the
-            structure of songs / works at multiple minutes. How can we capture all those
+            structure of songs/works at multiple minutes. How can we capture all those
             scales with one model?
         </p>
 
@@ -107,12 +107,12 @@
             into the same process in PixelCNN <a href="#oordPixelCNN2016">[3]</a>. In those
             they also used the same principle to generate images, quite successfully.
             They took this approach to sound, as sound, in contrast to images, actually has
-            an natural 1D-ordering.
+            a natural 1D-ordering.
         </p>
 
         <p>
             For the WaveNet the input is assumed to be as long as the output that we want to
-            generate. For now lets assume we have a sound to sound translation task, so that
+            generate. For now let us assume we have a sound to sound translation task, so that
             the input and output are of the same type (Mono-audio).
         </p>
 
@@ -137,7 +137,7 @@
             the first hidden layer the convolution we kind of have two <em>dense</em>
             convolutions (with the same kernel), for the even and the odd elements. In the
             implementation we can achieve that by splitting up the input along its time axis
-            and transposing as such that the these blocks go into the batch-size dimension.
+            and transposing as such that these blocks go into the batch-size dimension.
         </p>
 
         <p>
@@ -197,7 +197,7 @@
         <p>
             The different hidden layers in the model have differently sized receptive fields
             (play around with the animation to see this). We introduced the problem of
-            time-domain modelling as a problem of different temporal scales. Now these
+            time-domain modeling as a problem of different temporal scales. Now these
             different layers, so the assumption, will look at features at different scales,
             combining the information from more low-level features. As the inference process
             needs the information from all those levels, the model employs skip-connections.
@@ -212,7 +212,7 @@
             <a href="hochreiterLong1997">[5]</a>. For each hidden layer we have have two
             convolutions followed by a <samp>sigmoid</samp> \(\sigma\) and a <samp>tanh</samp>,
             respectively. The <samp>sigmoid</samp> gives a scaling in \([0, 1]\) and is
-            acting as the gate (the value being the amount of allowed information to flow).
+            acting as the gate (the value is the amount of allowed information to flow).
             The <samp>tanh</samp> gives a scaling of \([-1,1]\) and is acting as the feature
             magnitude. Their outputs are just multiplied, to <i>apply the gating</i>. Keep
             in mind though that this does not necessarily accurately predict the trained
@@ -229,8 +229,8 @@
         <p>
             To summarize the construction of one hidden layer: The output of the previous
             layer gets dilated, we keep this as the reference, goes through the gated
-            convolution giving the residual. The residual is than added to the
-            skip-connection flow and to the reference as the input for the next hidden
+            convolution giving the residual. The residual is then added to the
+            skip-connection flow and the reference as the input for the next hidden
             layer.<br>
             In a picture:
         </p>
@@ -242,7 +242,7 @@
         <p>
             Why the \(1\times 1\) convolutions after the residual? The width (channels) of
             the residual, skip and reference might be different. Therefore we need to learn
-            a channels to channels mapping, which is precisely a \(1\times 1\) convolution.
+            a mapping channels to channels, which is precisely a \(1\times 1\) convolution.
         </p>
 
         <p>
@@ -263,9 +263,10 @@ skip <span class="token operator">=</span> skip <span class="token operator">+</
         <h3>Putting it together</h3>
 
         <p>
-            The previous section defines the flow for one <i>layer</i> (as in dilated layer in the animation from the
-            beginning). We want to put multiple such layers together to get the large dilation that we want. As in
-            the original work we use multiple blocks where one block is as in our visualization. So if we want to
+            The previous section defines the flow for one <i>layer</i> (as in the dilated
+            layer in the animation from the beginning). We want to put multiple such layers
+            together to get the large dilation that we want. As in the original work we use
+            multiple blocks where one block is as in our visualization. So if we want to
             compute the compound receptive field size of the complete model we have:
         </p>
 

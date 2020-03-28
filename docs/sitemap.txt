@@ -1,5 +1,7 @@
 https://morris-frank.dev/biwak
 https://morris-frank.dev/biwak/index.html
+https://morris-frank.dev/function-names
+https://morris-frank.dev/function-names/index.html
 https://morris-frank.dev/index.html
 https://morris-frank.dev/keymap
 https://morris-frank.dev/keymap/index.html
