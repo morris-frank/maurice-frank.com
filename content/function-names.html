@@ -76,7 +76,8 @@ the stack going one scope up, wich is where we called this function and parsing
 the line of source code for the the names:
 </p>
 
-<pre><code class="lang-python">code_line = inspect.stack()[1].code_context[0]</code></pre>
+<pre><code class="lang-python">code_line = inspect.stack()[1].code_context[0]
+</code></pre>
 
 <p>
 And yes that works! First caveat: the function call shall only be one line,
@@ -92,7 +93,8 @@ we need some RegEx magic to extract them. First we can use inspect again to
 fetch the name of the current function:
 </p>
 
-<pre><code class="lang-python">func_name = inspect.stack()[0].function</code></pre>
+<pre><code class="lang-python">func_name = inspect.stack()[0].function
+</code></pre>
 
 <p>
 Easy right? Next we use a regular expression to extract the string between the
@@ -127,15 +129,17 @@ increase the our lookups in the stack by one and it works. To sum up:
 With that I can now call:
 </p>
 
-<pre code="lang-python"><code>plot.plot_data(s, μ_ŝ, mean(x, dim=1))</code></pre>
+<pre><code class="lang-python">plot.plot_data(s, μ_ŝ, mean(x, dim=1))
+</code></pre>
 
 <p>
 and inside get
 </p>
 
-<pre code="lang-python"><code>def plot_data(*signals: torch.Tensor):
+<pre><code class="lang-python">def plot_data(*signals: torch.Tensor):
     arguments = get_func_arguments()  # = ['s', 'μ_ŝ', 'mean(x, dim=1)']
-    …</code></pre>
+    …
+</code></pre>
 
 <p>
 Again, be advised this is a little dirty trick, which probably can fail in dozen

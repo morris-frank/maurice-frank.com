@@ -104,7 +104,8 @@
             the line of source code for the the names:
         </p>
 
-        <pre class=" language-python"><code class=" language-python">code_line <span class="token operator">=</span> inspect<span class="token punctuation">.</span>stack<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>code_context<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></code></pre>
+        <pre class=" language-python"><code class=" language-python">code_line <span class="token operator">=</span> inspect<span class="token punctuation">.</span>stack<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>code_context<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+</code></pre>
 
         <p>
             And yes that works! First caveat: the function call shall only be one line,
@@ -120,7 +121,8 @@
             fetch the name of the current function:
         </p>
 
-        <pre class=" language-python"><code class=" language-python">func_name <span class="token operator">=</span> inspect<span class="token punctuation">.</span>stack<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>function</code></pre>
+        <pre class=" language-python"><code class=" language-python">func_name <span class="token operator">=</span> inspect<span class="token punctuation">.</span>stack<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>function
+</code></pre>
 
         <p>
             Easy right? Next we use a regular expression to extract the string between the
@@ -155,15 +157,17 @@ arguments <span class="token operator">=</span> re<span class="token punctuation
             With that I can now call:
         </p>
 
-        <pre code="lang-python"><code>plot.plot_data(s, μ_ŝ, mean(x, dim=1))</code></pre>
+        <pre class=" language-python"><code class=" language-python">plot<span class="token punctuation">.</span>plot_data<span class="token punctuation">(</span>s<span class="token punctuation">,</span> μ_ŝ<span class="token punctuation">,</span> mean<span class="token punctuation">(</span>x<span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
 
         <p>
             and inside get
         </p>
 
-        <pre code="lang-python"><code>def plot_data(*signals: torch.Tensor):
-    arguments = get_func_arguments()  # = ['s', 'μ_ŝ', 'mean(x, dim=1)']
-    …</code></pre>
+        <pre class=" language-python"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">plot_data</span><span class="token punctuation">(</span><span class="token operator">*</span>signals<span class="token punctuation">:</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    arguments <span class="token operator">=</span> get_func_arguments<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># = ['s', 'μ_ŝ', 'mean(x, dim=1)']</span>
+    …
+</code></pre>
 
         <p>
             Again, be advised this is a little dirty trick, which probably can fail in dozen
