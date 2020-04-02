@@ -5,6 +5,10 @@ p {
     margin-bottom: 1rem;
 }
 
+footer p {
+    margin: 0 0 0.5em 0;
+}
+
 main h2 {
     margin: 2rem 0 0;
 }
@@ -82,16 +86,6 @@ img.text-image {
     margin-bottom: 0.7rem;
 }
 
-main {
-    min-height: 40vh;
-}
-
-footer {
-    margin: 6rem 0 0;
-    padding: 1rem 0;
-    contain: layout paint;
-}
-
 body {
     margin: 0;
 }
@@ -102,6 +96,16 @@ nav {
 
 nav.center {
     margin-bottom: 3rem;
+}
+
+main {
+    min-height: calc(100vh - 3rem - 1px - 8rem - 80px - 122px);
+}
+
+footer {
+    margin: 6rem 0 0;
+    padding: 1rem 0;
+    contain: layout paint;
 }
 
 .center {
@@ -133,7 +137,7 @@ hr {
 
 .box {
     border-radius: 2px;
-    padding: 0.25em 1em;
+    padding: 0.5em 1em;
 }
 
 figure {
@@ -330,6 +334,7 @@ samp {
 .tags span,
 .tag {
     white-space: nowrap;
+    font-size: 1.1rem;
 }
 
 .tags:before {
