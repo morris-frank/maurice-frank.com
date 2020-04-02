@@ -140,12 +140,16 @@ With that I can now call:
 </code></pre>
 
 <p>
-and inside get
+and inside use our new function to label the plots;
 </p>
 
 <pre><code class="lang-python">def plot_data(*signals: torch.Tensor):
     arguments = get_func_arguments()  # = ['s', 'μ_ŝ', 'mean(x, dim=1)']
-    …
+
+    plt.figure()
+    for signal, name in zip(signals, arguments):
+        plt.plot(signal, label=name)
+    plt.legend()
 </code></pre>
 
 <p>
