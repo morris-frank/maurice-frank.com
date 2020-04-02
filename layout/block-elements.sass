@@ -6,6 +6,7 @@ footer
   padding: 1rem 0
   contain: layout paint
 
+
 body
   margin: 0
 
@@ -13,6 +14,15 @@ nav
   contain: layout paint
   &.center
     margin-bottom: 3rem
+
+.center
+  $gap: 20px
+  padding: 0 $gap
+  width: auto
+  +desktop
+    padding: 0
+    margin: 0 auto
+    max-width: $linewidth - 2 * $gap
 
 hr
   clear: both
@@ -27,14 +37,6 @@ hr
 .box
   border-radius: $radius
   padding: .25em 1em
-
-.center
-  $gap: 20px
-  margin: 0 $gap
-  width: auto
-  +desktop
-    margin: 0 auto
-    max-width: $linewidth - 2 * $gap
 
 figure
   position: relative
@@ -51,6 +53,7 @@ figure
   padding-left: 1em
 
 .listing
+  display: block
   contain: layout paint
   padding-left: 1em
   +desktop

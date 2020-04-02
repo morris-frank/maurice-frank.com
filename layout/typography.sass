@@ -29,7 +29,7 @@ $font-italic: 'Vollkorn'
 
 body
   font-family: $font
-  font-size: 17px
+  font-size: 1.2rem
   line-height: 1.7
   font-variant-ligatures: common-ligatures
   text-ren­der­ing: op­ti­mize­leg­i­bil­ity
@@ -39,29 +39,24 @@ body
 
 p
   hyphens: auto
-  letter-spacing: 0.05em
 
 i, em
   font-family: 'Vollkorn'
   font-style: italic
 
 a
-  text-decoration-line: underline
-  text-decoration-thickness: 0.3em
-  text-decoration-skip-ink: none
-  text-underline-offset: -0.15em
-  &.no-decorate
+  text-decoration: underline
+  &.listing
     text-decoration: none
-  &:hover
-    text-decoration-thickness: 0.4em
-    text-underline-offset: -0.3em
 
 h1
   font-size: 1.5rem
   font-weight: bold
+  a
+    text-decoration: none
 
 h2
-  font-size: 40px
+  font-size: 2.5rem
   font-weight: bold
   line-height: 1.4
 
@@ -69,7 +64,7 @@ footer h2
     font-size: 0.9rem
 
 h3
-  font-size: 1.2rem
+  font-size: 1.3rem
   font-weight: bold
 
 h4
@@ -79,7 +74,7 @@ footer
   font-size: 0.9rem
 
 figure
-  font-size: 13px
+  font-size: 1rem
 
 blockquote
   font-size: 0.95rem
@@ -90,36 +85,31 @@ blockquote
 
 pre, code
   font-family: $font-code
-  font-size: 0.95rem
+  font-size: 0.9rem
 
 kbd
   font-family: $font-code
-  font-size: 0.9rem
+  font-size: 0.95rem
   letter-spacing: 0.05em
 
-cite
+.references
   font-size: 0.9rem
-  line-height: 1.7em
+  line-height: 1.5rem
+
+cite
   font-style: normal
   .title
     font-style: normal
 
-.references
-  font-size: 0.9rem
-
-.listing
-  .title
-    font-size: 1.2rem
-
 var
   font-family: $font-code
-  font-size: 0.9rem
+  font-size: 0.95rem
   font-style: normal
   white-space: nowrap
 
 samp
   font-family: $font-code
-  font-size: 0.9rem
+  font-size: 1rem
   font-style: normal
 
 .tags span, .tag

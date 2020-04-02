@@ -5,10 +5,6 @@ p {
     margin-bottom: 1rem;
 }
 
-a {
-    transition: 120ms ease-in-out;
-}
-
 main h2 {
     margin: 2rem 0 0;
 }
@@ -19,6 +15,10 @@ h3 {
 
 h4 {
     margin: 1em 0 0.2em;
+}
+
+.listing h4 {
+    margin-top: 0;
 }
 
 ul {
@@ -78,6 +78,10 @@ img.text-image {
     vertical-align: middle;
 }
 
+.references li {
+    margin-bottom: 0.7rem;
+}
+
 main {
     min-height: 40vh;
 }
@@ -100,6 +104,19 @@ nav.center {
     margin-bottom: 3rem;
 }
 
+.center {
+    padding: 0 20px;
+    width: auto;
+}
+
+@media screen and (min-width: 769px) {
+    .center {
+        padding: 0;
+        margin: 0 auto;
+        max-width: 729px;
+    }
+}
+
 hr {
     clear: both;
     border: 0;
@@ -117,18 +134,6 @@ hr {
 .box {
     border-radius: 2px;
     padding: 0.25em 1em;
-}
-
-.center {
-    margin: 0 20px;
-    width: auto;
-}
-
-@media screen and (min-width: 769px) {
-    .center {
-        margin: 0 auto;
-        max-width: 729px;
-    }
 }
 
 figure {
@@ -154,6 +159,7 @@ figure svg {
 }
 
 .listing {
+    display: block;
     contain: layout paint;
     padding-left: 1em;
     margin-bottom: 1em;
@@ -209,7 +215,7 @@ figure svg {
 
 body {
     font-family: "Fira Sans Condensed", sans-serif;
-    font-size: 17px;
+    font-size: 1.2rem;
     line-height: 1.7;
     font-variant-ligatures: common-ligatures;
     text-ren­der­ing: op­ti­mize­leg­i­bil­ity;
@@ -221,7 +227,6 @@ body {
 
 p {
     hyphens: auto;
-    letter-spacing: 0.05em;
 }
 
 i,
@@ -231,19 +236,11 @@ em {
 }
 
 a {
-    text-decoration-line: underline;
-    text-decoration-thickness: 0.3em;
-    text-decoration-skip-ink: none;
-    text-underline-offset: -0.15em;
+    text-decoration: underline;
 }
 
-a.no-decorate {
+a.listing {
     text-decoration: none;
-}
-
-a:hover {
-    text-decoration-thickness: 0.4em;
-    text-underline-offset: -0.3em;
 }
 
 h1 {
@@ -251,8 +248,12 @@ h1 {
     font-weight: bold;
 }
 
+h1 a {
+    text-decoration: none;
+}
+
 h2 {
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: bold;
     line-height: 1.4;
 }
@@ -262,7 +263,7 @@ footer h2 {
 }
 
 h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
 }
 
@@ -275,7 +276,7 @@ footer {
 }
 
 figure {
-    font-size: 13px;
+    font-size: 1rem;
 }
 
 blockquote {
@@ -291,18 +292,21 @@ blockquote:before {
 pre,
 code {
     font-family: "Fira Code";
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 kbd {
     font-family: "Fira Code";
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     letter-spacing: 0.05em;
 }
 
-cite {
+.references {
     font-size: 0.9rem;
-    line-height: 1.7em;
+    line-height: 1.5rem;
+}
+
+cite {
     font-style: normal;
 }
 
@@ -310,24 +314,16 @@ cite .title {
     font-style: normal;
 }
 
-.references {
-    font-size: 0.9rem;
-}
-
-.listing .title {
-    font-size: 1.2rem;
-}
-
 var {
     font-family: "Fira Code";
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-style: normal;
     white-space: nowrap;
 }
 
 samp {
     font-family: "Fira Code";
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-style: normal;
 }
 
@@ -373,15 +369,14 @@ footer {
 
 a {
     color: #333333;
-    text-decoration-color: rgba(104, 157, 106, 0.5);
-    transition: 120ms ease-in-out;
 }
 
 h2,
-nav h1 a {
+nav h1 a,
+a:hover {
     background-image: linear-gradient(141deg, #3d6837 0%, #689D6A 71%, #65a572 100%);
     -webkit-background-clip: text;
-    color: transparent;
+    -webkit-text-fill-color: transparent;
 }
 
 hr {
@@ -431,6 +426,7 @@ cite .title {
 
 .listing {
     border-left: 3px solid #689D6A;
+    color: #333333;
 }
 
 var {
