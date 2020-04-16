@@ -69,18 +69,18 @@ Will give something along:
 
 <p>
 We get an ordered list of <samp>FrameInfo</samp> objects, starting from the
-current scope going up the call stack. Looking at the <samp>FrameInfo</samp>
-(a named tuple) it contains the function name of the current scope (which this
-being run in the global scope just being <samp>&lt;module&gt;</samp>) and the source
-code of this execution with <samp>code_context</samp>. The sole argument to
-<samp>.stack(context=1)</samp> can set number of lines around the current
-position we are ineterested in, one is enough for our case.
+current scope going up the call stack. <samp>FrameInfo</samp> is a named tuple
+and contains the function name of the current scope (which this
+being run in the global scope is just <samp>&lt;module&gt;</samp>) and the source
+code of this execution in <samp>code_context</samp>. The only optional argument
+<samp>.stack(context=1)</samp> can set the number of lines around the current
+position we are ineterested in. One is enough for our case.
 </p>
 
 <p>
 So we should be able to get the parameters of our function call by looking at
 the stack going one scope up, wich is where we called this function and parsing
-the line of source code for the the names:
+the line of source code for the names:
 </p>
 
 <pre><code class="lang-python">code_line = inspect.stack()[1].code_context[0]
@@ -117,12 +117,12 @@ arguments = re.split(r",\s*(?![^()]*\))", argument_string)
 </code></pre>
 
 <p>
-And that's basically it. For convenience I want this to be in its own function I
-can call from another function. Luckily it is really easy to adapt for this.
-Where do get now get the correct function name and source code line from if we
+And that's basically it. For convenience I want this to be in its own function
+that I can call from another function. Luckily it is really easy to adapt for
+this. Where do get the correct function name and source code line from, if we
 are currently in a function <em>inside</em> the function of interest? Yes,
-exactly, they are just one step higher in the stack. We just have to adjust
-increase the our lookups in the stack by one and it works. To sum up:
+exactly, they are just one step higher in the stack. We just have to
+increase the index our lookups in the stack by one and it works. To sum up:
 </p>
 
 <pre><code class="lang-python">def get_func_arguments():
