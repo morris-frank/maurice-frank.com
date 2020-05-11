@@ -351,9 +351,9 @@ nav {
 }
 
 footer {
-    background: linear-gradient(135deg, #77a779 25%, transparent 25%) -50px 0, linear-gradient(225deg, #77a779 25%, transparent 25%) -50px 0, linear-gradient(315deg, #77a779 25%, transparent 25%), linear-gradient(45deg, #77a779 25%, transparent 25%);
+    background: linear-gradient(135deg, #82ab6d 25%, transparent 25%) -50px 0, linear-gradient(225deg, #82ab6d 25%, transparent 25%) -50px 0, linear-gradient(315deg, #82ab6d 25%, transparent 25%), linear-gradient(45deg, #82ab6d 25%, transparent 25%);
     background-size: 100px 100px;
-    background-color: #689D6A;
+    background-color: #74a25d;
     box-shadow: inset 0 0 10px rgba(51, 51, 51, 0.2);
 }
 
@@ -363,12 +363,12 @@ footer {
 }
 
 ::-moz-selection {
-    background: #689D6A;
+    background: #74a25d;
     color: #f7f7f7;
 }
 
 ::selection {
-    background: #689D6A;
+    background: #74a25d;
     color: #f7f7f7;
 }
 
@@ -379,7 +379,7 @@ a {
 h2,
 nav h1 a,
 a:hover {
-    background-image: linear-gradient(141deg, #3d6837 0%, #689D6A 71%, #65a572 100%);
+    background-image: linear-gradient(141deg, #4d6930 0%, #74a25d 71%, #67aa5a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -394,7 +394,7 @@ pre {
 }
 
 pre .token.keyword {
-    color: #689D6A;
+    color: #74a25d;
 }
 
 pre .token.string {
@@ -430,7 +430,7 @@ cite .title {
 }
 
 .listing {
-    border-left: 3px solid #689D6A;
+    border-left: 3px solid #74a25d;
     color: #333333;
 }
 
@@ -441,15 +441,15 @@ var {
 
 samp {
     color: black;
-    background: rgba(104, 157, 106, 0.2);
+    background: rgba(116, 162, 93, 0.2);
 }
 
 blockquote {
-    border-left: 4px solid #689D6A;
+    border-left: 4px solid #74a25d;
 }
 
 blockquote:before {
-    color: rgba(104, 157, 106, 0.4);
+    color: rgba(116, 162, 93, 0.4);
 }
 
 figure {
@@ -458,7 +458,7 @@ figure {
 
 .tags span,
 .tag {
-    background: #689D6A;
+    background: #74a25d;
     color: #f7f7f7;
 }
 
