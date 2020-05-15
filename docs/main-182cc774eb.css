@@ -186,26 +186,26 @@ figure svg {
 }
 
 @font-face {
-    font-family: "Fira Sans Condensed";
+    font-family: "Fira Sans";
     font-style: normal;
     font-weight: 400;
-    src: local("Fira Sans Condensed"), local("FiraSansCondensed-Regular"), url("FiraSansCondensed-Regular.otf");
+    src: local("Fira Sans Regular"), local("FiraSans-Regular"), url("FiraSans-Regular.woff2");
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Vollkorn";
+    font-family: "Fira Sans";
     font-style: italic;
     font-weight: 400;
-    src: url("Vollkorn-Italic.otf");
+    src: local("Fira Sans Italic"), local("FiraSans-Italic"), url("FiraSans-Italic.woff2");
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Fira Sans Condensed";
+    font-family: "Fira Sans";
     font-style: normal;
     font-weight: 700;
-    src: local("Fira Sans Condensed SemiBold"), local("FiraSansCondensed-SemiBold"), url("FiraSansCondensed-SemiBold.otf");
+    src: local("Fira Sans SemiBold"), local("FiraSans-SemiBold"), url("FiraSans-SemiBold.woff2");
     font-display: swap;
 }
 
@@ -213,12 +213,12 @@ figure svg {
     font-family: "Fira Code";
     font-style: normal;
     font-weight: 400;
-    src: local("Fira Code Regular"), local("FiraCode-Regular"), url("FiraCode-Regular.otf");
+    src: local("Fira Code Regular"), local("FiraCode-Regular"), url("FiraCode-Regular.woff2");
     font-display: swap;
 }
 
 body {
-    font-family: "Fira Sans Condensed", sans-serif;
+    font-family: "Fira Sans", sans-serif;
     font-size: 1.2rem;
     line-height: 1.7;
     font-variant-ligatures: common-ligatures;
@@ -226,7 +226,7 @@ body {
 }
 
 .font-code {
-    font-family: "Fira Code";
+    font-family: "Fira Code", monospace;
 }
 
 p {
@@ -235,8 +235,9 @@ p {
 
 i,
 em {
-    font-family: "Vollkorn";
+    font-family: "Fira Sans", sans-serif;
     font-style: italic;
+    letter-spacing: 0.02em;
 }
 
 a {
@@ -295,12 +296,12 @@ blockquote:before {
 
 pre,
 code {
-    font-family: "Fira Code";
+    font-family: "Fira Code", monospace;
     font-size: 0.9rem;
 }
 
 kbd {
-    font-family: "Fira Code";
+    font-family: "Fira Code", monospace;
     font-size: 0.95rem;
     letter-spacing: 0.05em;
 }
@@ -319,14 +320,14 @@ cite .title {
 }
 
 var {
-    font-family: "Fira Code";
+    font-family: "Fira Code", monospace;
     font-size: 0.95rem;
     font-style: normal;
     white-space: nowrap;
 }
 
 samp {
-    font-family: "Fira Code";
+    font-family: "Fira Code", monospace;
     font-size: 1rem;
     font-style: normal;
 }

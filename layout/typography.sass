@@ -1,31 +1,31 @@
 @font-face
-  font-family: 'Fira Sans Condensed'
+  font-family: 'Fira Sans'
   font-style: normal
   font-weight: 400
-  src: local('Fira Sans Condensed'), local('FiraSansCondensed-Regular'), url('FiraSansCondensed-Regular.otf')
+  src: local('Fira Sans Regular'), local('FiraSans-Regular'), url('FiraSans-Regular.woff2')
   font-display: swap
 @font-face
-  font-family: 'Vollkorn'
+  font-family: 'Fira Sans'
   font-style: italic
   font-weight: 400
-  src: url('Vollkorn-Italic.otf')
+  src: local('Fira Sans Italic'), local('FiraSans-Italic'), url('FiraSans-Italic.woff2')
   font-display: swap
 @font-face
-  font-family: 'Fira Sans Condensed'
+  font-family: 'Fira Sans'
   font-style: normal
   font-weight: 700
-  src: local('Fira Sans Condensed SemiBold'), local('FiraSansCondensed-SemiBold'), url('FiraSansCondensed-SemiBold.otf')
+  src: local('Fira Sans SemiBold'), local('FiraSans-SemiBold'), url('FiraSans-SemiBold.woff2')
   font-display: swap
 @font-face
   font-family: 'Fira Code'
   font-style: normal
   font-weight: 400
-  src: local('Fira Code Regular'), local('FiraCode-Regular'), url('FiraCode-Regular.otf')
+  src: local('Fira Code Regular'), local('FiraCode-Regular'), url('FiraCode-Regular.woff2')
   font-display: swap
 
-$font: 'Fira Sans Condensed', sans-serif
-$font-code: 'Fira Code'
-$font-italic: 'Vollkorn'
+$font: 'Fira Sans', sans-serif
+$font-code: 'Fira Code', monospace
+$font-italic: 'Fira Sans', sans-serif
 
 body
   font-family: $font
@@ -41,8 +41,9 @@ p
   hyphens: auto
 
 i, em
-  font-family: 'Vollkorn'
+  font-family: $font-italic
   font-style: italic
+  letter-spacing: 0.02em
 
 a
   text-decoration: underline
