@@ -11,7 +11,7 @@ https://morris-frank.dev/media
 https://morris-frank.dev/media/index.html
 https://morris-frank.dev/music
 https://morris-frank.dev/music/index.html
-https://morris-frank.dev/tick-plotting
-https://morris-frank.dev/tick-plotting/index.html
+https://morris-frank.dev/plotting-ticks
+https://morris-frank.dev/plotting-ticks/index.html
 https://morris-frank.dev/wavenet
 https://morris-frank.dev/wavenet/index.html
