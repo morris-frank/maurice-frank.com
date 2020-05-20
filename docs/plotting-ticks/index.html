@@ -5,7 +5,7 @@
     <meta name="theme-color" content="#a9384a">
     <meta name="referrer" content="no-referrer">
 
-    <link rel="stylesheet" href="https://morris-frank.dev/main-182cc774eb.css">
+    <link rel="stylesheet" href="https://morris-frank.dev/main-10b2c33f8b.css">
     <link rel="shortcut icon" type="image/png" href="https://morris-frank.dev//icon.png">
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -27,58 +27,58 @@
 
     <main class="center">
         <h2>Using plots as ticks in PyPlot</h2>
-        <p>
-            Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?
-        </p>
+<p>
+Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?
+</p>
 
-        <div class="tags">
-            <span>Python</span><span>Plotting</span>
-        </div>
+<div class="tags">
+    <span>Python</span><span>Plotting</span>
+</div>
 
-        <h3>Why?</h3>
-        <p>
-            I was building a heatmap showing some result on different signal sources. The
-            signals where different simple curves: sinus, triangle, square and saw-tooth
-            waves. Now for annotating the plot, yes you could write down the names of the
-            signals on the axis and yes that's probably the 'correct' way to do it. But it
-            is ugly and not intuitive if you could also just show the signals:
-        </p>
+<h3>Why?</h3>
+<p>
+I was building a heatmap showing some result on different signal sources. The
+signals where different simple curves: sinus, triangle, square and saw-tooth
+waves. Now for annotating the plot, yes you could write down the names of the
+signals on the axis and yes that's probably the 'correct' way to do it. But it
+is ugly and not intuitive if you could also just show the signals:
+</p>
 
-        <figure>
-            <img src="https://morris-frank.dev/img/heatmap_ticks_plot.png">
-        </figure>
+<figure>
+    <img src="https://morris-frank.dev/img/heatmap_ticks_plot.png" alt="A histogram plot where the ticks on the left and top axis are printed as for different plots.">
+</figure>
 
-        <h3>How?</h3>
-        <p>
-            Unsuprisingly we proceed as follows: We remove all actual ticks from the plot
-            and add correctly small sized axes onto the figure. Adding axes to arbitrary
-            places of a figure is best possible with the <samp>inset_axes</samp> function
-            provided by the (probably) little known <samp>axes_grid1</samp> toolbox in
-            <samp>mpl_toolkits</samp> (<a href="https://matplotlib.org/api/_as_gen/mpl_toolkits.axes_grid1.inset_locator.inset_axes.html#mpl_toolkits.axes_grid1.inset_locator.inset_axes">docs</a>).
-        </p>
+<h3>How?</h3>
+<p>
+Unsuprisingly we proceed as follows: We remove all actual ticks from the plot
+and add correctly small sized axes onto the figure. Adding axes to arbitrary
+places of a figure is best possible with the <samp>inset_axes</samp> function
+provided by the (probably) little known <samp>axes_grid1</samp> toolbox in
+<samp>mpl_toolkits</samp> (<a href="https://matplotlib.org/api/_as_gen/mpl_toolkits.axes_grid1.inset_locator.inset_axes.html#mpl_toolkits.axes_grid1.inset_locator.inset_axes">docs</a>).
+</p>
 
-        <p>
-            <samp>inset_axes</samp> is called as:
-        </p>
+<p>
+<samp>inset_axes</samp> is called as:
+</p>
 
-        <pre class=" language-python"><code class=" language-python">inset_axes<span class="token punctuation">(</span>ax<span class="token punctuation">,</span> width<span class="token operator">=</span><span class="token punctuation">,</span> height<span class="token operator">=</span><span class="token punctuation">,</span> bbox_transform<span class="token operator">=</span><span class="token punctuation">,</span> bbox_to_anchor<span class="token operator">=</span><span class="token punctuation">,</span> loc<span class="token operator">=</span><span class="token punctuation">)</span></code></pre>
+<pre class=" language-python"><code class=" language-python">inset_axes<span class="token punctuation">(</span>ax<span class="token punctuation">,</span> width<span class="token operator">=</span><span class="token punctuation">,</span> height<span class="token operator">=</span><span class="token punctuation">,</span> bbox_transform<span class="token operator">=</span><span class="token punctuation">,</span> bbox_to_anchor<span class="token operator">=</span><span class="token punctuation">,</span> loc<span class="token operator">=</span><span class="token punctuation">)</span></code></pre>
 
-        <p>We want to position our new axis relative to the axis we position it into
-            (which is <samp>ax</samp>). To do so we can set <samp>bbox_transform</samp> to
-            the bounding box of the parent axis: <samp>ax.transAxes</samp>. <samp>bbox_to_anchor</samp>
-            will set the anchor/position of the new axis, as we are now setting relative
-            values this can e.g. be <samp>(0.05, 1.01)</samp> which would be 5% from the
-            left but 1% outside the figure to the bottom. <samp>loc</samp> sets which point
-            in the new axis is the anchor. For the full list see the documentation, we will
-            need <i>8</i> for <i>'lower center'</i> and <i>7</i> for <i>'center right'</i>.</p>
+<p>We want to position our new axis relative to the axis we position it into
+(which is <samp>ax</samp>). To do so we can set <samp>bbox_transform</samp> to
+the bounding box of the parent axis: <samp>ax.transAxes</samp>. <samp>bbox_to_anchor</samp>
+will set the anchor/position of the new axis, as we are now setting relative
+values this can e.g. be <samp>(0.05, 1.01)</samp> which would be 5% from the
+left but 1% outside the figure to the bottom. <samp>loc</samp> sets which point
+in the new axis is the anchor. For the full list see the documentation, we will
+need <i>8</i> for <i>'lower center'</i> and <i>7</i> for <i>'center right'</i>.</p>
 
-        <p>
-            <samp>inset_axes</samp> will return the new axis which you than can proceed to
-            plot into! So here the full function that will add <i>one</i> tick at a given
-            position on either the upper x axis or the left y axis:
-        </p>
+<p>
+<samp>inset_axes</samp> will return the new axis which you than can proceed to
+plot into! So here the full function that will add <i>one</i> tick at a given
+position on either the upper x axis or the left y axis:
+</p>
 
-        <pre class=" language-python"><code class=" language-python"><span class="token keyword">from</span> mpl_toolkits<span class="token punctuation">.</span>axes_grid1<span class="token punctuation">.</span>inset_locator <span class="token keyword">import</span> inset_axes
+<pre class=" language-python"><code class=" language-python"><span class="token keyword">from</span> mpl_toolkits<span class="token punctuation">.</span>axes_grid1<span class="token punctuation">.</span>inset_locator <span class="token keyword">import</span> inset_axes
 
 <span class="token keyword">def</span> <span class="token function">add_plot_tick</span><span class="token punctuation">(</span>
     ax<span class="token punctuation">:</span> plt<span class="token punctuation">.</span>Axes<span class="token punctuation">,</span>
@@ -118,17 +118,17 @@
 
     _ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> linewidth<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> c<span class="token operator">=</span><span class="token string">"k"</span><span class="token punctuation">)</span></code></pre>
 
-        <p>
-            Obviously this code is specific to my use-case of those four signals. One could
-            also just return the axis and then manually plot into it.
-        </p>
+<p>
+Obviously this code is specific to my use-case of those four signals. One could
+also just return the axis and then manually plot into it.
+</p>
 
-        <p>
-            To add all four singal ticks we utilize the new function and just loop over the
-            signals. The outer code looks something like:
-        </p>
+<p>
+To add all four singal ticks we utilize the new function and just loop over the
+signals. The outer code looks something like:
+</p>
 
-        <pre class=" language-python"><code class=" language-python">ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class=" language-python"><code class=" language-python">ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 ax<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>…<span class="token punctuation">)</span>
 ax<span class="token punctuation">.</span>set_axis_off<span class="token punctuation">(</span><span class="token punctuation">)</span>

@@ -61,7 +61,7 @@ sub process_content_file {
     } else {
         $title = "";
     }
-    # Remove LaTeX commands from the title
+    # Remove LaTeX commands from the title, doesn't work in Chrome :(
     $title =~ s/(\\\(|\\\)|\\)//g;
 
     my $contains_code = index($content, "<pre>") != -1;
@@ -84,11 +84,8 @@ sub process_content_file {
     my $output_file = "$output_dir$slug";
     write_file($output_file, $output);
 
-    if (1-$local) {
-        beautify_file($output_file);
-        if ($contains_code) {
+    if (1-$local && $contains_code) {
             syntax_highlight($output_file);
-        }
     }
 
 }
@@ -98,29 +95,18 @@ sub syntax_highlight {
     system("bin/prismjs $filename");
 }
 
-sub beautify_file {
-    # Beautifies an HTML source file
-    # :param filename
-    my ($filename)  = @_;
-
-    system("node_modules/.bin/js-beautify $filename > $filename.bak");
-    move("$filename.bak", $filename);
-}
 
 sub process_sass {
     my ($layout_dir, $output_dir) = @_;
     print colored("    Deleting old main.css", 'red'), "\n";
     unlink glob "${output_dir}main-*.css";
     print colored("    Processing ${layout_dir}main.sass", 'yellow' ), "\n";
-    system("node_modules/.bin/sass ${layout_dir}main.sass ${output_dir}main.css");
+    system("sassc ${layout_dir}main.sass > ${output_dir}main.css");
 
     my $fingerprint = substr(hash_file("${output_dir}main.css"), 0, 10);
     my $save_name = "main-${fingerprint}.css";
 
     move("${output_dir}main.css", "${output_dir}${save_name}");
-    if (1-$local) {
-        beautify_file("${output_dir}${save_name}");
-    }
     print colored( "⇐ Built ${output_dir}${save_name}", 'green' ), "\n";
     return $save_name;
 }
