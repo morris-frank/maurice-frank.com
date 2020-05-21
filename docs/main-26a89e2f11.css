@@ -1,4 +1,14 @@
 @charset "UTF-8";
+nav h1 {
+  margin: 1rem 2rem 0 0;
+  display: inline-block; }
+  @media (max-width: 769px) {
+    nav h1 {
+      display: block; } }
+nav > a {
+  margin-right: 1rem;
+  display: inline-block; }
+
 p {
   margin-top: 1rem;
   margin-bottom: 1rem; }
@@ -22,9 +32,7 @@ ul {
   list-style: square; }
 
 blockquote {
-  margin: 0; }
-
-blockquote {
+  margin: 0;
   padding: 0.4em 2em;
   position: relative; }
   blockquote:before {
@@ -35,23 +43,15 @@ blockquote {
     content: '“'; }
 
 pre {
+  border-radius: 1em;
   padding: 1em 2em;
-  min-width: max-content; }
-
+  overflow-x: scroll; }
+  @media (min-width: 1119px) {
+    pre {
+      min-width: max-content; } }
 var {
   padding: 0.14rem 0.2rem 0.1rem;
   border-radius: 0.2rem; }
-
-pre {
-  border-radius: 1em; }
-
-nav h1 {
-  margin-right: 2rem;
-  display: inline-block; }
-
-nav > a {
-  margin-right: 1rem;
-  display: inline-block; }
 
 .tags span, .tag {
   border-radius: 0.3em;
@@ -71,6 +71,7 @@ body {
 nav {
   contain: layout paint; }
   nav.center {
+    padding-bottom: 1rem;
     margin-bottom: 3rem; }
 
 main {

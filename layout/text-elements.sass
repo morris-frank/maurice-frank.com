@@ -1,3 +1,13 @@
+nav
+  h1
+    margin: 1rem 2rem 0 0
+    display: inline-block
+    @media (max-width: $linewidth)
+      display: block
+  > a
+    margin-right: 1rem
+    display: inline-block
+
 p
   margin-top: 1rem
   margin-bottom: 1rem
@@ -24,8 +34,6 @@ ul
 
 blockquote
   margin: 0
-
-blockquote
   padding: 0.4em 2em
   position: relative
   &:before
@@ -36,23 +44,16 @@ blockquote
     content: '“'
 
 pre
+  border-radius: 1em
   padding: 1em 2em
-  min-width: max-content
+  overflow-x: scroll
+
+  @media (min-width: $linewidth + 350px)
+    min-width: max-content
 
 var
   padding: 0.14rem 0.2rem 0.1rem
   border-radius: 0.2rem
-
-pre
-  border-radius: 1em
-
-nav
-  h1
-    margin-right: 2rem
-    display: inline-block
-  > a
-    margin-right: 1rem
-    display: inline-block
 
 .tags span, .tag
   border-radius: 0.3em
