@@ -8,26 +8,30 @@ use File::Copy;
 use Digest::MD5 qw(md5_hex);
 use Getopt::Long;
 
+my $pub_url = 'https://morris-frank.dev/';
+my $local_url = 'http://127.0.0.1:8000/';
+
 my $input_directory = 'content/';
-my $output_directory = 'docs/';
+my $publish_directory = 'docs/';
+my $build_directory = 'build/';
 my $layout_directory = 'layout/';
 
 my $local = 0;
-my $root = 'https://morris-frank.dev/';
 GetOptions ('local' => \$local);
 
 if ($local) {
     print colored("⇒ Building for local dev", "white"), "\n";
-    $root = 'http://127.0.0.1:8080/';
+    build($local_url, $build_directory);
+} else {
+    build($pub_url, $publish_directory);
 }
-
-build();
 exit;
 
 sub build {
-    my $css_link = process_sass($layout_directory, $output_directory);
+    my ($url_at, $build_to) = @_;
+    my $css_link = process_sass($layout_directory, $build_to);
     my $skeleton = process_skeleton($layout_directory, $css_link);
-    process_content_files($input_directory, $skeleton, $output_directory, $root);
+    process_content_files($input_directory, $skeleton, $build_to, $url_at);
 }
 
 sub process_skeleton {
@@ -94,7 +98,6 @@ sub syntax_highlight {
     my ($filename) = @_;
     system("bin/prismjs $filename");
 }
-
 
 sub process_sass {
     my ($layout_dir, $output_dir) = @_;
