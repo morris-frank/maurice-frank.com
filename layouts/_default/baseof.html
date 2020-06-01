@@ -7,7 +7,9 @@
     <meta name="theme-color" content="#a9384a">
     <meta name="referrer" content="no-referrer">
 
-    {{ $style := resources.Get "sass/main.sass" | toCSS (dict "outputStyle" "compressed" "enableSourceMap" true) | fingerprint }}
+
+    {{ $sass_options := (dict "outputStyle" "compressed" "enableSourceMap" true) }}
+    {{ $style := resources.Get "sass/main.sass" | toCSS $sass_options | fingerprint }}
     <link rel="stylesheet" href="{{ $style.Permalink }}">
     <link rel="shortcut icon" type="image/png" href="/icon.png"/>
 
@@ -17,7 +19,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
 
-    <title>--TITLE-- | morris-frank.dev</title>
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 </head>
 
 <body>
@@ -32,7 +34,7 @@
     </nav>
 
     <main class="center">
-        {{ .Content }}
+{{ block "main" . }}{{ end }}
     </main>
 
     <footer>
