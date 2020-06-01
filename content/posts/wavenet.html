@@ -1,8 +1,9 @@
 ---
 title: "WaveNet from scratch"
+slug: "wavenet"
 ---
 
-<script type="text/javascript" src="{{ROOT}}figures/wavenet.js"></script>
+<script type="text/javascript" src="/figures/wavenet.js"></script>
 
 <p>
 Today we are building a WaveNet <a href="#oordWaveNet2016">[1]</a> from
@@ -58,7 +59,7 @@ file encoded with 16kHz 16bit.
 </p>
 
 <figure>
-    <img src="{{ROOT}}img/wave.jpg" alt="A cut from an audio waveform.">
+    <img src="/img/wave.jpg" alt="A cut from an audio waveform.">
 </figure>
 
 <p>
@@ -95,7 +96,7 @@ the input and output are of the same type (Mono-audio).
     <svg id="figcausal_svg" height="300" width="600">
         Sorry, your browser does not support inline SVG.
     </svg>
-    <script type="text/javascript" src="{{ROOT}}figures/causal.js" defer></script>
+    <script type="text/javascript" src="/figures/causal.js" defer></script>
 </figure>
 
 <h3>Dilated Convolutions</h3>
@@ -103,7 +104,7 @@ the input and output are of the same type (Mono-audio).
     <svg id="figdilated_svg" height="300" width="600">
         Sorry, your browser does not support inline SVG.
     </svg>
-    <script type="text/javascript" src="{{ROOT}}figures/dilated.js" defer></script>
+    <script type="text/javascript" src="/figures/dilated.js" defer></script>
 </figure>
 
 <p>
@@ -211,7 +212,7 @@ In a picture:
 </p>
 
 <figure>
-    <img src="{{ROOT}}figures/wavenet_dilated_block.svg" alt="Schematic figure showing the flow of information through one of the dilated blocks in a WaveNet.">
+    <img src="/figures/wavenet_dilated_block.svg" alt="Schematic figure showing the flow of information through one of the dilated blocks in a WaveNet.">
 </figure>
 
 <p>

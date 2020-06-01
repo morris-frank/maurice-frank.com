@@ -1,6 +1,8 @@
 baseURL = "https://morris-frank.dev"
 title = "Morris Frank"
-assetDir = '.'
 
 [permalinks]
 posts = "/:slug/"
+
+[taxonomies]
+    tag = "tags"
