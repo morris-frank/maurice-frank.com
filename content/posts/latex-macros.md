@@ -1,6 +1,7 @@
 +++
 title = "Using a LaTeX macro package"
-tags = ["Linux & Sytems", "LaTeX"]
+tags = ["Linux & System", "LaTeX"]
+date = "2019-12-15"
 tldr = "If your writing a lot of small documents all the time and do math in them it is a good idea to write yourself a macro package that contains personalized macros and functions to speed up your typesetting. Especially useful for University assignments and notes."
 +++
 

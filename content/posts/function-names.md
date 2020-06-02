@@ -1,6 +1,7 @@
 +++
 title = "Getting the argument names of a function"
 tags = ["Python"]
+date = "2020-02-12"
 tldr = "Is it possible to get the names of the variables given as positional arguments to a function? Yes, though it is a bit of a hack and probably nothing for real systems in production."
 +++
 

@@ -1,8 +1,7 @@
-{{ define "title" }} {{ .Title }} - {{ .Site.Title }} {{ end }}
+<h3>{{ humanize .tag }}</h3>
 
-{{ define "main" }}<h2>{{ .Title }}</h2>
-{{ range .Paginator.Pages }}
-<a class="listing">
+{{ range .context.Site.Taxonomies.tags.python.Pages }}
+<a class="listing" href="{{ .Permalink }}">
     <date>{{.Date.Format "2006-01-02"}}</date>
     <h4>{{ .Title }}</h4>
     <span>
@@ -11,5 +10,4 @@
         {{ end }}
     </span>
 </a>
-{{ end }}
 {{ end }}
