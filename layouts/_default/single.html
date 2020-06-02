@@ -1,6 +1,11 @@
 {{ define "title" }} {{ .Title }} - {{ .Site.Title }} {{ end }}
 
 {{ define "main" }}<h2>{{ .Title }}</h2>
+
+{{ with .Params.tldr }}
+<p>{{ . }}</p>
+{{ end }}
+
 {{ with .Params.tags }}
 <div class="tags">
   {{ range . }}

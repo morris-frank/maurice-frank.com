@@ -1,9 +1,8 @@
 +++
 title = "Using plots as ticks in PyPlot"
-tags = ["Python"]
+tags = ["Python", "Plotting"]
+tldr = "Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?"
 +++
-
-Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?
 
 ### Why?
 

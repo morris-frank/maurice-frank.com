@@ -1,15 +1,8 @@
 +++
 title = "WaveNet from scratch"
+tags = ["Machine Learning", "Python"]
+tldr = "Today we are building a WaveNet from scratch. The WaveNet is an autoregressive, generative and deep model for audio signals."
 +++
-
-<script type="text/javascript" src="/figures/wavenet.js"></script>
-
-
-Today we are building a WaveNet [[1]](#oordWaveNet2016) from
-scratch. The WaveNet is an _autoregressive_, _generative_ and
-_deep_ model for audio signals.
-
-
 
 _This guide is geared towards readers with a background in modern
 deep learning._
@@ -26,13 +19,10 @@ but it is noisy and we want to remove the noise \(w(\mathrm{noisy\ sound}) = \ma
 For all of these we need to find a model \(w(\cdot)\) which can generate
 high-quality semantic sounds.
 
-
-
 Sound is just a 1-dimensional temporal signal. Therefore the same methods
 can be used for other similar signals like [EEG](https://w.wiki/DHK)
 or financial data. I will ignore those areas here but you can find cool
 applications in other literature.
-
 
 ### Using Waveforms
 
@@ -62,7 +52,7 @@ the temporal dependencies, a short rhythm in the range of seconds to the
 structure of songs/works at multiple minutes. How can we capture all those
 scales with one model?
 
-The general idea of the WaveNet to have a _causal_ generation process.
+The general idea of the WaveNet [[1]](#oordWaveNet2016) to have a _causal_ generation process.
 This means that each predicted output value is only based on information of
 previous input values, given an ordering. Now the idea of this causal
 autoregressive process comes from previous works by the same authors (and other)
@@ -135,18 +125,13 @@ def dilate(x: torch.Tensor, new: int, old: int = 1) -> torch.Tensor:
     return x.contiguous()
 ```
 
-
 Now that we dilated we can apply a normal 1-dim convolution on the new Tensor
 which will go along the time axis and thus have a dilated receptive field. For
 the animations given above we would dilate three times each with a factor of two
 (\(2, 4, 8\)).
 
-
-
-<i>As a sidenote: This is different from the dilated (à trous) convolution as
-    implemented in PyTorch's `nn.Conv1d` itself.
-</i>
-
+_As a sidenote: This is different from the dilated (à trous) convolution as
+    implemented in PyTorch's `nn.Conv1d` itself._
 
 ### Gates, Residuals and Skips
 
@@ -158,7 +143,6 @@ combining the information from more low-level features. As the inference process
 needs the information from all those levels, the model employs skip-connections.
 Instead of taking the output of the last layer the actual model output is the
 sum of projections out of all the layers.
-
 
 Next we see that not all information flowing upwards from the low-level to the
 high level is useful information to keep, especially with the big temporal
@@ -173,14 +157,12 @@ magnitude. Their outputs are just multiplied, to <i>apply the gating</i>. Keep
 in mind though that this does not necessarily accurately predict the trained
 behavior, but it has shown better training performance in comparable settings.
 
-
 Further all hidden layers are constructed as residuals, the to the convolution
 is added back to the output of the convolutions. Residual learning ensures that
 the zero-centered initialization of the weights constructs an identity mapping,
 meaning if the layer does not learn anything it also does not degrade the
 inference in any way [[6]](#heDeep2015). For deeper models this has
 shown to considerably improves training speed.
-
 
 To summarize the construction of one hidden layer: The output of the previous
 layer gets dilated, we keep this as the reference, goes through the gated
@@ -341,3 +323,5 @@ And the forward pass:
         </cite>
     </li>
 </ol>
+
+<script type="text/javascript" src="/figures/wavenet.js"></script>

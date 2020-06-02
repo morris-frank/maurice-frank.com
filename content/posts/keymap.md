@@ -1,15 +1,13 @@
 +++
 title = "Personalize your keyboard layout"
+tags = ["Linux & System"]
+tldr = "I adjusted my own keyboard layout and you should too. Here we will quickly see how/why to write a XKB layout file to extend ones keyboard layout."
 +++
-
-I adjusted my own keyboard layout and you should too. Here we will quickly see
-how/why to write a [XKB](https://w.wiki/DWZ) (X keyboard extension)
-layout file to extend ones keyboard layout.
 
 ### What is it?
 
-That's easy. The keyboard layout tells your system which character/symbol to
-print, when you press a key.
+That's easy. The [XKB](https://w.wiki/DWZ) (X keyboard extension) layout tells your system which character/symbol to
+print, when you press a key on your keyboard.
 
 ### Why?
 
