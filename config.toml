@@ -1,5 +1,8 @@
 baseURL = "https://morris-frank.dev"
 title = "Morris Frank"
+publishDir = "docs"
+assetDir = "layout"
+layoutDir = "layout"
 
 [permalinks]
 posts = "/:filename/"
