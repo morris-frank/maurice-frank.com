@@ -3,58 +3,49 @@ title = "Using plots as ticks in PyPlot"
 tags = ["Python"]
 +++
 
-<p>
 Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?
-</p>
 
-<div class="tags">
-    <span>Python</span><span>Plotting</span>
-</div>
+### Why?
 
-<h3>Why?</h3>
-<p>
 I was building a heatmap showing some result on different signal sources. The
 signals where different simple curves: sinus, triangle, square and saw-tooth
 waves. Now for annotating the plot, yes you could write down the names of the
 signals on the axis and yes that's probably the 'correct' way to do it. But it
 is ugly and not intuitive if you could also just show the signals:
-</p>
 
 <figure>
     <img src="/img/heatmap_ticks_plot.png" alt="A histogram plot where the ticks on the left and top axis are printed as for different plots.">
 </figure>
 
-<h3>How?</h3>
-<p>
+### How?
+
 Unsuprisingly we proceed as follows: We remove all actual ticks from the plot
 and add correctly small sized axes onto the figure. Adding axes to arbitrary
-places of a figure is best possible with the <samp>inset_axes</samp> function
-provided by the (probably) little known <samp>axes_grid1</samp> toolbox in
-<samp>mpl_toolkits</samp> (<a href="https://matplotlib.org/api/_as_gen/mpl_toolkits.axes_grid1.inset_locator.inset_axes.html#mpl_toolkits.axes_grid1.inset_locator.inset_axes">docs</a>).
-</p>
+places of a figure is best possible with the `inset_axes` function
+provided by the (probably) little known `axes_grid1` toolbox in
+`mpl_toolkits` ([docs](https://matplotlib.org/api/_as_gen/mpl_toolkits.axes_grid1.inset_locator.inset_axes.html#mpl_toolkits.axes_grid1.inset_locator.inset_axes)).
 
-<p>
-<samp>inset_axes</samp> is called as:
-</p>
+`inset_axes` is called as:
 
-<pre><code class="lang-python">inset_axes(ax, width=, height=, bbox_transform=, bbox_to_anchor=, loc=)</code></pre>
+```py3
+inset_axes(ax, width=, height=, bbox_transform=, bbox_to_anchor=, loc=)
+```
 
-<p>We want to position our new axis relative to the axis we position it into
-(which is <samp>ax</samp>). To do so we can set <samp>bbox_transform</samp> to
-the bounding box of the parent axis: <samp>ax.transAxes</samp>. <samp>bbox_to_anchor</samp>
+We want to position our new axis relative to the axis we position it into
+(which is `ax`). To do so we can set `bbox_transform` to
+the bounding box of the parent axis: `ax.transAxes`. `bbox_to_anchor`
 will set the anchor/position of the new axis, as we are now setting relative
-values this can e.g. be <samp>(0.05, 1.01)</samp> which would be 5% from the
-left but 1% outside the figure to the bottom. <samp>loc</samp> sets which point
+values this can e.g. be `(0.05, 1.01)` which would be 5% from the
+left but 1% outside the figure to the bottom. `loc` sets which point
 in the new axis is the anchor. For the full list see the documentation, we will
-need <i>8</i> for <i>'lower center'</i> and <i>7</i> for <i>'center right'</i>.</p>
+need _8_ for _'lower center'_ and _7_ for _'center right'_.
 
-<p>
-<samp>inset_axes</samp> will return the new axis which you than can proceed to
-plot into! So here the full function that will add <i>one</i> tick at a given
+`inset_axes` will return the new axis which you than can proceed to
+plot into! So here the full function that will add _one_ tick at a given
 position on either the upper x axis or the left y axis:
-</p>
 
-<pre><code class="lang-python">from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+```py3
+from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
 def add_plot_tick(
     ax: plt.Axes,
@@ -92,19 +83,18 @@ def add_plot_tick(
     else:
         raise ValueError("unknown symbol")
 
-    _ax.plot(x, y, linewidth=3, c="k")</code></pre>
+    _ax.plot(x, y, linewidth=3, c="k")
+```
 
-<p>
 Obviously this code is specific to my use-case of those four signals. One could
 also just return the axis and then manually plot into it.
-</p>
 
-<p>
 To add all four singal ticks we utilize the new function and just loop over the
 signals. The outer code looks something like:
-</p>
 
-<pre><code class="lang-python">ax = plt.figure()
+
+```py3
+ax = plt.figure()
 
 ax.imshow(…)
 ax.set_axis_off()
@@ -114,4 +104,4 @@ symbols = ["sin", "sq", "tri", "saw"]
 for i in range(4):
     add_plot_tick(ax, symbols[i], pos=pos_tick[i], where="x", size=0.25)
     add_plot_tick(ax, symbols[i], pos=pos_tick[-i - 1], where="y", size=0.25)
-</code></pre>
+```

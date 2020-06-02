@@ -2,7 +2,14 @@ baseURL = "https://morris-frank.dev"
 title = "Morris Frank"
 
 [permalinks]
-posts = "/:slug/"
+posts = "/:filename/"
 
 [taxonomies]
     tag = "tags"
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
