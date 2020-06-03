@@ -12,12 +12,12 @@ deep learning._
 
 Lets say we want to generate sound signals. This might happen in different
 settings. We might have music notes + a instrument and want to generate
-their sound \(w(\mathrm{note}, \mathrm{instrument}) = \mathrm{sound}\), or we
+their sound \\(w(\mathrm{note}, \mathrm{instrument}) = \mathrm{sound}\\), or we
 have a text and want to generate the corresponding speech
-\(w(\mathrm{text}) = \mathrm{sound}\) or maybe we already have a sound signal,
-but it is noisy and we want to remove the noise \(w(\mathrm{noisy\ sound}) = \mathrm{sound}\).
+\\(w(\mathrm{text}) = \mathrm{sound}\\) or maybe we already have a sound signal,
+but it is noisy and we want to remove the noise \\(w(\mathrm{noisy\ sound}) = \mathrm{sound}\\).
 
-For all of these we need to find a model \(w(\cdot)\) which can generate
+For all of these we need to find a model \\(w(\cdot)\\) which can generate
 high-quality semantic sounds.
 
 Sound is just a 1-dimensional temporal signal. Therefore the same methods
@@ -35,8 +35,8 @@ approximation of those recorded analog signals. The simplest digitalization is
 [Pulse-code modulation](https://w.wiki/DHJ) (PCM). In PCM we take
 samples from the analog signal and discretize them at fixed same-length
 intervals. E.g. with 8kHz 16bit PCM that means that we take a sample from the
-vibration every \(\frac{1}{8000}\mathrm{sec}\) and choose the closest of
-\(2^{16}=65536\) bins/amplitude values. Below we have a small excerpt of a sound
+vibration every \\(\frac{1}{8000}\mathrm{sec}\\) and choose the closest of
+\\(2^{16}=65536\\) bins/amplitude values. Below we have a small excerpt of a sound
 file encoded with 16kHz 16bit.
 
 <figure>
@@ -90,18 +90,18 @@ convolutions (with the same kernel), for the even and the odd elements. In the
 implementation we can achieve that by splitting up the input along its time axis
 and transposing as such that these blocks go into the batch-size dimension.
 
-In PyTorch we always have the dimensions ordering \(\mathrm{batch\_size} \times \mathrm{channels} \times \mathrm{length}\).
+In PyTorch we always have the dimensions ordering \\(\mathrm{batch\\_size} \times \mathrm{channels} \times \mathrm{length}\\).
 
-So for an input of the size \(4\times 1\times 128\) with a dilation of \(2\) we
-end up with \(8\times 1\times 64\). Or a direct example (\(2\times 1\times 4\)):
+So for an input of the size \\(4\times 1\times 128\\) with a dilation of \\(2\\) we
+end up with \\(8\times 1\times 64\\). Or a direct example (\\(2\times 1\times 4\\)):
 
-\[
+\\[
 \begin{aligned}
     x &= \begin{bmatrix}0 & 1 & 2 & 3\\A & B & C & D\end{bmatrix}\\
     &\Rightarrow\\
     dilate(x, 2) &= \begin{bmatrix}0 & 2\\A & C\\1 & 3\\B & D\end{bmatrix}
 \end{aligned}
-\]
+\\]
 
 Of course now we have the difficulty that our batch dimension is cluttered with
 all blocks from the different samples in the mini-batch. Therefore we always
@@ -129,7 +129,7 @@ def dilate(x: torch.Tensor, new: int, old: int = 1) -> torch.Tensor:
 Now that we dilated we can apply a normal 1-dim convolution on the new Tensor
 which will go along the time axis and thus have a dilated receptive field. For
 the animations given above we would dilate three times each with a factor of two
-(\(2, 4, 8\)).
+(\\(2, 4, 8\\)).
 
 _As a sidenote: This is different from the dilated (à trous) convolution as
     implemented in PyTorch's `nn.Conv1d` itself._
@@ -150,10 +150,10 @@ high level is useful information to keep, especially with the big temporal
 receptive field the flow of information needs to be regulated. Here he authors
 take the idea of gated convolutions as it is known from e.g. LSTM
 [[5]](#hochreiterLong1997). For each hidden layer we have have two
-convolutions followed by a `sigmoid` \(\sigma\) and a `tanh`,
-respectively. The `sigmoid` gives a scaling in \([0, 1]\) and is
+convolutions followed by a `sigmoid` \\(\sigma\\) and a `tanh`,
+respectively. The `sigmoid` gives a scaling in \\([0, 1]\\) and is
 acting as the gate (the value is the amount of allowed information to flow).
-The `tanh` gives a scaling of \([-1,1]\) and is acting as the feature
+The `tanh` gives a scaling of \\([-1,1]\\) and is acting as the feature
 magnitude. Their outputs are just multiplied, to <i>apply the gating</i>. Keep
 in mind though that this does not necessarily accurately predict the trained
 behavior, but it has shown better training performance in comparable settings.
@@ -177,9 +177,9 @@ In a picture:
     <img src="/figures/wavenet_dilated_block.svg" alt="Schematic figure showing the flow of information through one of the dilated blocks in a WaveNet.">
 </figure>
 
-Why the \(1\times 1\) convolutions after the residual? The width (channels) of
+Why the \\(1\times 1\\) convolutions after the residual? The width (channels) of
 the residual, skip and reference might be different. Therefore we need to learn
-a mapping channels to channels, which is precisely a \(1\times 1\) convolution.
+a mapping channels to channels, which is precisely a \\(1\times 1\\) convolution.
 
 Setting the forward pass of one hidden layer in code we will get something
 along:
@@ -203,13 +203,13 @@ together to get the large dilation that we want. As in the original work we use
 multiple blocks where one block is as in our visualization. So if we want to
 compute the compound receptive field size of the complete model we have:
 
-\[
-\mathrm{receptive\_field} = n_{\mathrm{blocks}} \cdot \prod_{i=0}^{n_{\mathrm{layers}}} \mathrm{dilation}_i
-\]
+\\[
+\mathrm{receptivefield} = n_{\mathrm{blocks}} \cdot \prod_{i=0}^{n_{\mathrm{layers}}} \mathrm{dilation}_i
+\\]
 
-\[
-\mathrm{receptive\_field} = n_{\mathrm{blocks}} \cdot 2^{n_{\mathrm{layers}}}
-\]
+\\[
+\mathrm{receptivefield} = n_{\mathrm{blocks}} \cdot 2^{n_{\mathrm{layers}}}
+\\]
 
 With the second one for the specific case that we only always dilate with 2.
 
