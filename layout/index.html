@@ -2,7 +2,4 @@
 
 {{ define "main" }}<h2>{{ .Title }}</h2>
 {{ .Content }}
-
-{{ partial "tag_list.html" (dict "context" . "tag" "python") }}
-
 {{ end }}

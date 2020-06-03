@@ -6,11 +6,15 @@
 <p>{{ . }}</p>
 {{ end }}
 
+<hr/>
+
 {{ with .Params.tags }}
 <div class="tags">
   {{ range . }}
-    <span><a href="{{ "tags" | absURL }}{{ . | urlize }}">{{ . }}</a></span>
+    <!-- <span><a href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a></span> -->
+    <span>{{ . }}</span>
   {{ end }}
 </div>
 {{ end }}
+
 {{ .Content }}{{ end }}

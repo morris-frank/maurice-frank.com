@@ -1,9 +1,11 @@
-<h3>{{ humanize .tag }}</h3>
+{{ $tag := .Get 0 }}
 
-{{ range .context.Site.Taxonomies.tags.python.Pages }}
+<h3>{{ humanize $tag }}</h3>
+
+{{ range ( index .Page.Site.Taxonomies.tags $tag) }}
 <a class="listing" href="{{ .Permalink }}">
-    <date>{{.Date.Format "2006-01-02"}}</date>
     <h4>{{ .Title }}</h4>
+    <date>{{.Date.Format "2006-01-02"}}</date>
     <span>
         {{ with .Params.tldr }}
             {{ . }}
