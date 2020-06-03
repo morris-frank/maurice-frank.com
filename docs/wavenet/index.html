@@ -59,11 +59,11 @@ deep learning.</em></p>
 <h3 id="the-problem">The problem</h3>
 <p>Lets say we want to generate sound signals. This might happen in different
 settings. We might have music notes + a instrument and want to generate
-their sound (w(\mathrm{note}, \mathrm{instrument}) = \mathrm{sound}), or we
+their sound \(w(\mathrm{note}, \mathrm{instrument}) = \mathrm{sound}\), or we
 have a text and want to generate the corresponding speech
-(w(\mathrm{text}) = \mathrm{sound}) or maybe we already have a sound signal,
-but it is noisy and we want to remove the noise (w(\mathrm{noisy\ sound}) = \mathrm{sound}).</p>
-<p>For all of these we need to find a model (w(\cdot)) which can generate
+\(w(\mathrm{text}) = \mathrm{sound}\) or maybe we already have a sound signal,
+but it is noisy and we want to remove the noise \(w(\mathrm{noisy\ sound}) = \mathrm{sound}\).</p>
+<p>For all of these we need to find a model \(w(\cdot)\) which can generate
 high-quality semantic sounds.</p>
 <p>Sound is just a 1-dimensional temporal signal. Therefore the same methods
 can be used for other similar signals like <a href="https://w.wiki/DHK">EEG</a>
@@ -78,8 +78,8 @@ approximation of those recorded analog signals. The simplest digitalization is
 <a href="https://w.wiki/DHJ">Pulse-code modulation</a> (PCM). In PCM we take
 samples from the analog signal and discretize them at fixed same-length
 intervals. E.g. with 8kHz 16bit PCM that means that we take a sample from the
-vibration every (\frac{1}{8000}\mathrm{sec}) and choose the closest of
-(2^{16}=65536) bins/amplitude values. Below we have a small excerpt of a sound
+vibration every \(\frac{1}{8000}\mathrm{sec}\) and choose the closest of
+\(2^{16}=65536\) bins/amplitude values. Below we have a small excerpt of a sound
 file encoded with 16kHz 16bit.</p>
 <figure>
     <img src="/img/wave.jpg" alt="A cut from an audio waveform.">
@@ -124,16 +124,16 @@ the first hidden layer the convolution we kind of have two <em>dense</em>
 convolutions (with the same kernel), for the even and the odd elements. In the
 implementation we can achieve that by splitting up the input along its time axis
 and transposing as such that these blocks go into the batch-size dimension.</p>
-<p>In PyTorch we always have the dimensions ordering (\mathrm{batch_size} \times \mathrm{channels} \times \mathrm{length}).</p>
-<p>So for an input of the size (4\times 1\times 128) with a dilation of (2) we
-end up with (8\times 1\times 64). Or a direct example ((2\times 1\times 4)):</p>
-<p>[
+<p>In PyTorch we always have the dimensions ordering \(\mathrm{batch\_size} \times \mathrm{channels} \times \mathrm{length}\).</p>
+<p>So for an input of the size \(4\times 1\times 128\) with a dilation of \(2\) we
+end up with \(8\times 1\times 64\). Or a direct example (\(2\times 1\times 4\)):</p>
+<p>\[
 \begin{aligned}
 x &amp;= \begin{bmatrix}0 &amp; 1 &amp; 2 &amp; 3\A &amp; B &amp; C &amp; D\end{bmatrix}\<br>
 &amp;\Rightarrow\<br>
 dilate(x, 2) &amp;= \begin{bmatrix}0 &amp; 2\A &amp; C\1 &amp; 3\B &amp; D\end{bmatrix}
 \end{aligned}
-]</p>
+\]</p>
 <p>Of course now we have the difficulty that our batch dimension is cluttered with
 all blocks from the different samples in the mini-batch. Therefore we always
 need to keep track of the dilation we are having right now, so that we can
@@ -155,7 +155,7 @@ reverse it. In code this gives us:</p>
 </code></pre></div><p>Now that we dilated we can apply a normal 1-dim convolution on the new Tensor
 which will go along the time axis and thus have a dilated receptive field. For
 the animations given above we would dilate three times each with a factor of two
-((2, 4, 8)).</p>
+(\(2, 4, 8\)).</p>
 <p><em>As a sidenote: This is different from the dilated (à trous) convolution as
 implemented in PyTorch&rsquo;s <code>nn.Conv1d</code> itself.</em></p>
 <h3 id="gates-residuals-and-skips">Gates, Residuals and Skips</h3>
@@ -172,10 +172,10 @@ high level is useful information to keep, especially with the big temporal
 receptive field the flow of information needs to be regulated. Here he authors
 take the idea of gated convolutions as it is known from e.g. LSTM
 <a href="#hochreiterLong1997">[5]</a>. For each hidden layer we have have two
-convolutions followed by a <code>sigmoid</code> (\sigma) and a <code>tanh</code>,
-respectively. The <code>sigmoid</code> gives a scaling in ([0, 1]) and is
+convolutions followed by a <code>sigmoid</code> \(\sigma\) and a <code>tanh</code>,
+respectively. The <code>sigmoid</code> gives a scaling in \([0, 1]\) and is
 acting as the gate (the value is the amount of allowed information to flow).
-The <code>tanh</code> gives a scaling of ([-1,1]) and is acting as the feature
+The <code>tanh</code> gives a scaling of \([-1,1]\) and is acting as the feature
 magnitude. Their outputs are just multiplied, to <i>apply the gating</i>. Keep
 in mind though that this does not necessarily accurately predict the trained
 behavior, but it has shown better training performance in comparable settings.</p>
@@ -194,9 +194,9 @@ layer.</p>
 <figure>
     <img src="/figures/wavenet_dilated_block.svg" alt="Schematic figure showing the flow of information through one of the dilated blocks in a WaveNet.">
 </figure>
-<p>Why the (1\times 1) convolutions after the residual? The width (channels) of
+<p>Why the \(1\times 1\) convolutions after the residual? The width (channels) of
 the residual, skip and reference might be different. Therefore we need to learn
-a mapping channels to channels, which is precisely a (1\times 1) convolution.</p>
+a mapping channels to channels, which is precisely a \(1\times 1\) convolution.</p>
 <p>Setting the forward pass of one hidden layer in code we will get something
 along:</p>
 <div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="n">dilated</span> <span class="o">=</span> <span class="n">dilate</span><span class="p">(</span><span class="n">feat</span><span class="p">,</span> <span class="n">new</span><span class="o">=</span><span class="n">new_dilation</span><span class="p">,</span> <span class="n">old</span><span class="o">=</span><span class="n">old_dilation</span><span class="p">)</span>
@@ -213,12 +213,12 @@ layer in the animation from the beginning). We want to put multiple such layers
 together to get the large dilation that we want. As in the original work we use
 multiple blocks where one block is as in our visualization. So if we want to
 compute the compound receptive field size of the complete model we have:</p>
-<p>[
-\mathrm{receptive_field} = n_{\mathrm{blocks}} \cdot \prod_{i=0}^{n_{\mathrm{layers}}} \mathrm{dilation}_i
-]</p>
-<p>[
-\mathrm{receptive_field} = n_{\mathrm{blocks}} \cdot 2^{n_{\mathrm{layers}}}
-]</p>
+<p>\[
+\mathrm{receptivefield} = n_{\mathrm{blocks}} \cdot \prod_{i=0}^{n_{\mathrm{layers}}} \mathrm{dilation}_i
+\]</p>
+<p>\[
+\mathrm{receptivefield} = n_{\mathrm{blocks}} \cdot 2^{n_{\mathrm{layers}}}
+\]</p>
 <p>With the second one for the specific case that we only always dilate with 2.</p>
 <p>Now lets write the final WaveNet model and lets start with the <code>__init__</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="k">class</span> <span class="nc">WaveNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
