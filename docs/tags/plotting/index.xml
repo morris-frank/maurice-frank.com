@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Plotting on Morris Frank</title>
+    <link>https://morris-frank.dev/tags/plotting/</link>
+    <description>Recent content in Plotting on Morris Frank</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://morris-frank.dev/tags/plotting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using plots as ticks in PyPlot</title>
+      <link>https://morris-frank.dev/plotting-ticks/</link>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/plotting-ticks/</guid>
+      <description>Why? I was building a heatmap showing some result on different signal sources. The signals where different simple curves: sinus, triangle, square and saw-tooth waves. Now for annotating the plot, yes you could write down the names of the signals on the axis and yes that&amp;rsquo;s probably the &amp;lsquo;correct&amp;rsquo; way to do it. But it is ugly and not intuitive if you could also just show the signals:
+  How?</description>
+    </item>
+    
+  </channel>
+</rss>

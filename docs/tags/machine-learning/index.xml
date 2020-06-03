@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on Morris Frank</title>
+    <link>https://morris-frank.dev/tags/machine-learning/</link>
+    <description>Recent content in Machine Learning on Morris Frank</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 02 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://morris-frank.dev/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WaveNet from scratch</title>
+      <link>https://morris-frank.dev/wavenet/</link>
+      <pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/wavenet/</guid>
+      <description>This guide is geared towards readers with a background in modern deep learning.
+The problem Lets say we want to generate sound signals. This might happen in different settings. We might have music notes + a instrument and want to generate their sound (w(\mathrm{note}, \mathrm{instrument}) = \mathrm{sound}), or we have a text and want to generate the corresponding speech (w(\mathrm{text}) = \mathrm{sound}) or maybe we already have a sound signal, but it is noisy and we want to remove the noise (w(\mathrm{noisy\ sound}) = \mathrm{sound}).</description>
+    </item>
+    
+  </channel>
+</rss>
