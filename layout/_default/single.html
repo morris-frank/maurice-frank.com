@@ -1,0 +1,20 @@
+{{ define "title" }} {{ .Title }} - {{ .Site.Title }} {{ end }}
+
+{{ define "main" }}<h2>{{ .Title }}</h2>
+
+{{ with .Params.tldr }}
+<p>{{ . }}</p>
+{{ end }}
+
+<hr/>
+
+{{ with .Params.tags }}
+<div class="tags">
+  {{ range . }}
+    <!-- <span><a href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a></span> -->
+    <span>{{ . }}</span>
+  {{ end }}
+</div>
+{{ end }}
+
+{{ .Content }}{{ end }}

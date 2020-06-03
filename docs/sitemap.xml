@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://morris-frank.dev/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/tags/plotting/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/posts/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/tags/python/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/tags/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/plotting-ticks/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/function-names/</loc>
+    <lastmod>2020-02-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/keymap/</loc>
+    <lastmod>2020-01-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/tags/system-stuff/</loc>
+    <lastmod>2020-01-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/tags/latex/</loc>
+    <lastmod>2019-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/latex-macros/</loc>
+    <lastmod>2019-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/tags/machine-learning/</loc>
+    <lastmod>2019-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/wavenet/</loc>
+    <lastmod>2019-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/media/</loc>
+  </url>
+  
+  <url>
+    <loc>https://morris-frank.dev/music/</loc>
+  </url>
+  
+</urlset>

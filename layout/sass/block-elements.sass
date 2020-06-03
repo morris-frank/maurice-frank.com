@@ -1,0 +1,73 @@
+body
+  margin: 0
+
+nav
+  contain: layout paint
+  &.center
+    padding-bottom: 1rem
+    margin-bottom: 3rem
+
+main
+  min-height: calc( 100vh - 3rem - 1px - 8rem - 80px - 122px )
+
+footer
+  margin: 6rem 0 0
+  padding: 1rem 0
+  contain: layout paint
+
+.center
+  $gap: 20px
+  padding: 0 $gap
+  width: auto
+  +desktop
+    padding: 0
+    margin: 0 auto
+    max-width: $linewidth - 2 * $gap
+
+hr
+  clear: both
+  border: 0
+
+.flex
+  display: flex
+  & > *
+    flex-grow: 1
+    flex-basis: 0
+
+.box
+  border-radius: $radius
+  padding: .5em 1em
+
+figure
+  position: relative
+  margin: 0
+  +desktop
+    margin: 1em 2em
+  display: flex
+  justify-content: center
+  svg
+    position: relative
+    top: 0px
+
+.references
+  padding-left: 1em
+
+.listing
+  display: block
+  contain: layout paint
+  padding-left: 1em
+  +desktop
+    padding-left: 3em
+  margin-bottom: 1em
+  span
+    display: block
+  h4
+    display: inline
+  date
+    float: right
+
+.tags
+  &:before
+    content: "Topics:"
+    display: inline
+    padding-right: 0.5em

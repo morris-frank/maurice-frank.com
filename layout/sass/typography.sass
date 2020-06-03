@@ -1,0 +1,128 @@
+@font-face
+  font-family: 'Fira Sans'
+  font-style: normal
+  font-weight: 400
+  src: local('Fira Sans Regular'), local('FiraSans-Regular'), url('FiraSans-Regular.woff2')
+  font-display: swap
+@font-face
+  font-family: 'Fira Sans'
+  font-style: italic
+  font-weight: 400
+  src: local('Fira Sans Italic'), local('FiraSans-Italic'), url('FiraSans-Italic.woff2')
+  font-display: swap
+@font-face
+  font-family: 'Fira Sans'
+  font-style: normal
+  font-weight: 700
+  src: local('Fira Sans SemiBold'), local('FiraSans-SemiBold'), url('FiraSans-SemiBold.woff2')
+  font-display: swap
+@font-face
+  font-family: 'Fira Code'
+  font-style: normal
+  font-weight: 400
+  src: local('Fira Code Regular'), local('FiraCode-Regular'), url('FiraCode-Regular.woff2')
+  font-display: swap
+
+$font: 'Fira Sans', sans-serif
+$font-code: 'Fira Code', monospace
+$font-italic: 'Fira Sans', sans-serif
+
+body
+  font-family: $font
+  font-size: 1.2rem
+  line-height: 1.7
+  font-variant-ligatures: common-ligatures
+  text-ren­der­ing: op­ti­mize­leg­i­bil­ity
+
+.font-code
+  font-family: $font-code
+
+date
+  font-size: 0.9em
+  letter-spacing: 0.05rem
+
+p
+  hyphens: auto
+
+i, em
+  font-family: $font-italic
+  font-style: italic
+  letter-spacing: 0.02em
+
+a
+  text-decoration: underline
+  &.listing
+    text-decoration: none
+
+h1
+  font-size: 1.5rem
+  font-weight: bold
+  a
+    text-decoration: none
+
+h2
+  font-size: 2.5rem
+  font-weight: bold
+  line-height: 1.4
+
+footer h2
+    font-size: 0.9rem
+
+h3
+  font-size: 1.3rem
+  font-weight: bold
+
+h4
+  font-size: 1.2rem
+
+footer
+  font-size: 0.9rem
+
+figure
+  font-size: 1rem
+
+blockquote
+  font-size: 0.95rem
+  line-height: 1.25
+  &:before
+    font-size: 5rem
+    line-height: 0
+
+pre, code
+  font-family: $font-code
+  font-size: 0.9rem
+
+kbd
+  font-family: $font-code
+  font-size: 0.95rem
+  letter-spacing: 0.05em
+
+.references
+  font-size: 0.9rem
+  line-height: 1.5rem
+
+cite
+  font-style: normal
+  .title
+    font-style: normal
+
+var
+  font-family: $font-code
+  font-size: 0.95rem
+  font-style: normal
+  white-space: nowrap
+
+samp
+  font-family: $font-code
+  font-size: 1rem
+  font-style: normal
+
+.tags span, .tag
+  white-space: nowrap
+  font-size: 1.1rem
+
+.tags:before
+  font-style: italic
+
+.listing
+  font-size: 0.9rem

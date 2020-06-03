@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Morris Frank</title>
+    <link>https://morris-frank.dev/</link>
+    <description>Recent content in Blog on Morris Frank</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://morris-frank.dev/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using plots as ticks in PyPlot</title>
+      <link>https://morris-frank.dev/plotting-ticks/</link>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/plotting-ticks/</guid>
+      <description>Why? I was building a heatmap showing some result on different signal sources. The signals where different simple curves: sinus, triangle, square and saw-tooth waves. Now for annotating the plot, yes you could write down the names of the signals on the axis and yes that&amp;rsquo;s probably the &amp;lsquo;correct&amp;rsquo; way to do it. But it is ugly and not intuitive if you could also just show the signals:
+  How?</description>
+    </item>
+    
+    <item>
+      <title>Getting the argument names of a function</title>
+      <link>https://morris-frank.dev/function-names/</link>
+      <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/function-names/</guid>
+      <description>Why? My use-case is as follows: I have a plotting function which takes a variable number of signals and plots them in an organized little plot:
+def plot_data(*signals: torch.Tensor): ... The organization of those plots I can infer from the data, but it would also be nice to label the plots with a legend. The pythonic way to do this, is either to accept another argument with a list of labels or give the signals in a dictionary with the labels as the keys.</description>
+    </item>
+    
+    <item>
+      <title>Personalize your keyboard layout</title>
+      <link>https://morris-frank.dev/keymap/</link>
+      <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/keymap/</guid>
+      <description>What is it? That&amp;rsquo;s easy. The XKB (X keyboard extension) layout tells your system which character/symbol to print, when you press a key on your keyboard.
+Why? Most people that start going down this path and ask Which keyboard layout should I use? probably end up with one of the modern optimized layouts, like Neo (German only). The argument being, that the layout most of use like QWERTY (or QWERTZ, etc.</description>
+    </item>
+    
+    <item>
+      <title>Using a LaTeX macro package</title>
+      <link>https://morris-frank.dev/latex-macros/</link>
+      <pubDate>Sun, 15 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/latex-macros/</guid>
+      <description>If you never have written a TeX package, here the short-form with only the stuff we need. You start the file with
+\NeedsTeXFormat{LaTeX2e}[1994/06/01] \ProvidesPackage{YOUR-PACKAGE-NAME} end it with
+\endinput and save it with extension .sty instead of .tex.
+Things to add  Packages you always include. For example which fonts to use. In a package .sty file you use \RequirePackage instead of \usepackage to include other packages. \RequirePackage{newpxtext} \RequirePackage{mathpazo} \RequirePackage{dsfont}  Faster font changes.</description>
+    </item>
+    
+    <item>
+      <title>WaveNet from scratch</title>
+      <link>https://morris-frank.dev/wavenet/</link>
+      <pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/wavenet/</guid>
+      <description>This guide is geared towards readers with a background in modern deep learning.
+The problem Lets say we want to generate sound signals. This might happen in different settings. We might have music notes + a instrument and want to generate their sound (w(\mathrm{note}, \mathrm{instrument}) = \mathrm{sound}), or we have a text and want to generate the corresponding speech (w(\mathrm{text}) = \mathrm{sound}) or maybe we already have a sound signal, but it is noisy and we want to remove the noise (w(\mathrm{noisy\ sound}) = \mathrm{sound}).</description>
+    </item>
+    
+    <item>
+      <title>Media</title>
+      <link>https://morris-frank.dev/media/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/media/</guid>
+      <description>I didn&amp;rsquo;t do anything so far therefore there is nothing to report on. Notably exception in medial attention is me being cited by the  as not being able to cook black salsify.
+This is not true anymore so here is a working way to cook black salsify:
+ Completely peel the salsify. Now it is not black anymore During peeling submerge the peeled parts in a mix of water and lemon juice to keep them fresh Cut the peeled parts up and fry them in olive oil for some minutes.</description>
+    </item>
+    
+    <item>
+      <title>Music</title>
+      <link>https://morris-frank.dev/music/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/music/</guid>
+      <description>I am learning to make amateurish music. Currently on a mission of one track per week in Bitwig (the only professional DAW running on Linux).
+See here as it happens:
+ Tutorials on stuff I discover will follow.</description>
+    </item>
+    
+  </channel>
+</rss>

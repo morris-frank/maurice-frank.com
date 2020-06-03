@@ -1,0 +1,15 @@
+{{ $tag := .Get 0 }}
+
+<h3>{{ humanize $tag }}</h3>
+
+{{ range ( index .Page.Site.Taxonomies.tags $tag) }}
+<a class="listing" href="{{ .Permalink }}">
+    <h4>{{ .Title }}</h4>
+    <date>{{.Date.Format "2006-01-02"}}</date>
+    <span>
+        {{ with .Params.tldr }}
+            {{ . }}
+        {{ end }}
+    </span>
+</a>
+{{ end }}

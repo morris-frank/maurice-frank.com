@@ -1,245 +1,181 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html>
+<html>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#a9384a">
     <meta name="referrer" content="no-referrer">
 
-    <link rel="stylesheet" href="https://morris-frank.dev/main-d26021ca55.css">
-    <link rel="shortcut icon" type="image/png" href="https://morris-frank.dev//icon.png">
 
+    
+    
+    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.49e51b2ca772c902da54f45ec75a7da7e75fcebaabcb5faf5d3b3e32037e5086.css">
+    <link rel="shortcut icon" type="image/png" href="/icon.png"/>
+
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 
-    <!-- The loading of KaTeX is deferred to speed up page rendering -->
-    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
-
-    <!-- To automatically render math in text elements, include the auto-render extension: -->
-    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
-    <title>Personalize your keyboard layout | morris-frank.dev</title>
+    <title> Personalize your keyboard layout - Morris Frank </title>
 </head>
 
 <body>
     <nav class="center">
         <h1>
-            <a href="https://morris-frank.dev/">Morris Frank</a>
+            <a href="https://morris-frank.dev">Morris Frank</a>
         </h1>
-        <a href="https://morris-frank.dev/">blog</a>
+        <a href="https://morris-frank.dev">blog</a>
         <a href="https://morris-frank.dev/music">music</a>
         <a href="https://morris-frank.dev/media">media</a>
         <a href="https://morris-frank.dev/cv.pdf">cv</a>
     </nav>
 
     <main class="center">
-        <h2>Personalize your keyboard layout</h2>
-<p>
-I adjusted my own keyboard layout and you should too. Here we will quickly see
-how/why to write a <a href="https://w.wiki/DWZ">XKB</a> (X keyboard extension)
-layout file to extend ones keyboard layout.
-</p>
+<h2>Personalize your keyboard layout</h2>
+
+
+<p>I adjusted my own keyboard layout and you should too. Here we will quickly see how/why to write a XKB layout file to extend ones keyboard layout.</p>
+
+
+<hr/>
+
 
 <div class="tags">
-    <span>Linux</span><span>Efficiency</span>
+  
+    
+    <span>System stuff</span>
+  
 </div>
 
-<hr>
 
-<h3>What is it?</h3>
-<p>
-That's easy. The keyboard layout tells your system which character/symbol to
-print, when you press a key.
-</p>
-
-<h3>Why?</h3>
-<p>
-Most people that start going down this path and ask <em>Which keyboard layout
+<h3 id="what-is-it">What is it?</h3>
+<p>That&rsquo;s easy. The <a href="https://w.wiki/DWZ">XKB</a> (X keyboard extension) layout tells your system which character/symbol to
+print, when you press a key on your keyboard.</p>
+<h3 id="why">Why?</h3>
+<p>Most people that start going down this path and ask <em>Which keyboard layout
 should I use?</em> probably end up with one of the modern optimized layouts,
 like <a href="https://w.wiki/DWJ">Neo</a> (German only). The argument being, that
 the layout most of use like QWERTY (or QWERTZ, etc.) sucks and makes you type
 slower. Which is true. Those layouts were invented to be slow, in a time of
 typewriters, so that commonly used keys have a higher distance between each
-other and jam less often. Thus it shouldn't be surprising that one can easily
+other and jam less often. Thus it shouldn&rsquo;t be surprising that one can easily
 construct a layout which is <em>way</em> more efficient. I personally never felt
 though, that my typing speed was holding me back. I just do not write enough
 (or think fast enough) to require those kinds of speeds. Nevertheless I found my
 keyboard always to be severely underutilized. All those symbols reachable with
 <kbd>Shift</kbd> and <kbd>AltGr</kbd>, that I never need, could be symbol I do
-need.
-</p>
-
+need.</p>
 <p>The symbols I added that proved especially useful:</p>
-
 <ul>
-    <li>
-        Greek letters (<kbd>α</kbd>, <kbd>β</kbd>, <kbd>γ</kbd>, …). I use them
-        extensively in writing and programming. As Python is ok with most
-        unicode symbols as variable names you can code more expressively:
-        <pre class=" language-python"><code class=" language-python">π <span class="token operator">=</span> np<span class="token punctuation">.</span>pi
-φ <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">360</span><span class="token punctuation">)</span>
-x <span class="token operator">=</span> μ <span class="token operator">+</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> σ</code></pre>
-        which is especially useful in the kind of mathematical, research code I
-        am writing often. (Of course, this is more for personal code, if your
-        collaborators are not doing the same or are Greek).
-    </li>
-    <li>
-        Mathematical / logic notation. With <kbd>⇔</kbd>, <kbd>∥</kbd>,
-        <kbd>·</kbd>, <kbd>¬</kbd>,<kbd>∧</kbd>, <kbd>∨</kbd> etc. it is quite
-        easier to communicate math or logic with other people quickly.
-    </li>
-    <li>
-        Emoticons <kbd>🤷</kbd>. Yes, it is 2019 and on my phone I can quickly
-        add smileys to a message but chatting on the computer that is
-        <em>clearly</em> a lacking possibility. As emoticons are Unicode
-        standard we can add what we need <kbd>👍👍👍</kbd>.
-    </li>
-    <li>
-        Bringing dead keys alive. Some keys in a standard keyboard layout are
-        so-called <a href="https://w.wiki/DWX">dead keys</a>. E.g the grave
-        accent <kbd>`</kbd>. Now for me I need the grave way more commonly as a
-        single symbol not as a accent (⇒ <kbd>à</kbd>), you might be the same.
-    </li>
+<li>Greek letters (<kbd>α</kbd>, <kbd>β</kbd>, <kbd>γ</kbd>, …). I use them
+extensively in writing and programming. As Python is ok with most
+unicode symbols as variable names you can code more expressively:
+<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="n">π</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">φ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">360</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">μ</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="n">σ</span>
+</code></pre></div><p>which is especially useful in the kind of mathematical, research code I
+am writing often. (Of course, this is more for personal code, if your
+collaborators are not doing the same or are Greek).</p>
+</li>
+<li>Mathematical / logic notation. With <kbd>⇔</kbd>, <kbd>∥</kbd>,
+<kbd>·</kbd>, <kbd>¬</kbd>,<kbd>∧</kbd>, <kbd>∨</kbd> etc. it is quite
+easier to communicate math or logic with other people quickly.</li>
+<li>Emoticons <kbd>🤷</kbd>. Yes, it is 2019 and on my phone I can quickly
+add smileys to a message but chatting on the computer that is
+<em>clearly</em> a lacking possibility. As emoticons are Unicode
+standard we can add what we need <kbd>👍👍👍</kbd>.</li>
+<li>Bringing dead keys alive. Some keys in a standard keyboard layout are
+so-called <a href="https://w.wiki/DWX">dead keys</a>. E.g the grave
+accent <kbd>`</kbd>. Now for me I need the grave way more commonly as a
+single symbol not as a accent (⇒ <kbd>à</kbd>), you might be the same.</li>
 </ul>
-
-<p>
-    Many of the symbols I use together with <a href="https://morris-frank.dev/latex-macros">
-    LaTeX macros so I can write mathematical text:</a>
-</p>
-
-
-<pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\σ</span>_i = <span class="token function selector">\÷</span><span class="token punctuation">{</span><span class="token function selector">\exp</span><span class="token punctuation">{</span><span class="token function selector">\φ</span>_i<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token function selector">\Σ</span>_j <span class="token function selector">\exp</span><span class="token punctuation">{</span><span class="token function selector">\φ</span>_j<span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
-
-<h3>How?</h3>
-<p>
-We do not want to reinvent the wheel. We just want to replace symbols that we
+<p>Many of the symbols I use together with
+<a href="https://morris-frank.dev/latex-macros/">LaTeX macros so I can write mathematical text:</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\σ</span><span class="nb">_</span>i = <span class="k">\÷</span><span class="nb">{</span><span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>i<span class="nb">}}{</span><span class="k">\Σ</span><span class="nb">_</span>j <span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>j<span class="nb">}}</span>
+</code></pre></div><h3 id="how">How?</h3>
+<p>We do not want to reinvent the wheel. We just want to replace symbols that we
 never use with symbols that could be useful. Therefore it is best to start
 with a pre-existing layout. For me that would be the German QWERTZ layout. You
-find all XKB layout definitions in <samp>/usr/share/X11/xkb/symbols</samp>.
-</p>
+find all XKB layout definitions in <code>/usr/share/X11/xkb/symbols</code>.</p>
+<p>Looking into any of those files (e.g. <code>symbols/de</code>) you will find
+blocks of the form:</p>
+<pre><code>default
+xkb_symbols &quot;basic&quot; {
 
-<p>
-Looking into any of those files (e.g. <samp>symbols/de</samp>) you will find
-blocks of the form:
-</p>
+    include &quot;latin(type4)&quot;
+    include &quot;kpdl(comma)&quot;
+    include &quot;level3(ralt_switch)&quot;
 
-<pre>default
-xkb_symbols "basic" {
-
-    include "latin(type4)"
-    include "kpdl(comma)"
-    include "level3(ralt_switch)"
-
-    name[Group1]="German";
+    name[Group1]=&quot;German&quot;;
 
     …
-};</pre>
-
-<p>
-The xkb layout definitions are hierarchical, we can include other definitions
+};
+</code></pre><p>The xkb layout definitions are hierarchical, we can include other definitions
 with an include statement and override only the parts that we need. The <em>de</em>
 layout is based on the type4 layout (which itself has latin as its base) in the
-file <samp>symbols/latin</samp>. Further included is <var>level3(ralt_switch)</var>
+file <code>symbols/latin</code>. Further included is <var>level3(ralt_switch)</var>
 which will make <kbd>Alt</kbd> the modifier with which the third layer is
-reached.
-</p>
-
+reached.</p>
 <p>The inside of the block consists of lines like:</p>
-
-<pre>    key &lt;AE04&gt; { [ 4, dollar, onequarter, currency ] };</pre>
-
-<p>
-in the angle brackets we have the XKB key symbol we want to define followed
+<pre><code>    key &amp;lt;AE04&amp;gt; { [ 4, dollar, onequarter, currency ] };
+</code></pre><p>in the angle brackets we have the XKB key symbol we want to define followed
 by a list with the four levels: no modifier, <kbd>Shift</kbd>, <kbd>RAlt</kbd>,
-<kbd>RAlt</kbd> + <kbd>Shift</kbd> (for this German case).
-</p>
+<kbd>RAlt</kbd> + <kbd>Shift</kbd> (for this German case).</p>
+<h3 id="our-own-layout">Our own layout</h3>
+<p>We start by just importing the German basic layout (which imports all
+underlying imports):</p>
+<pre><code>default
+xkb_symbols &quot;basic&quot; {
+    include &quot;de(basic)&quot;
 
-
-<h3>Our own layout</h3>
-<p>
-We start by just importing the German basic layout (which imports all
-underlying imports):
-</p>
-
-<pre>default
-xkb_symbols "basic" {
-    include "de(basic)"
-
-    name[Group1]="German Edited";
+    name[Group1]=&quot;German Edited&quot;;
 
     …
-};</pre>
-
-<p>
-If you want to have a different modifier than <kbd>RAlt</kbd> for level3 you
-have to import the definition from <samp>symbols/level3</samp>. Now we need the
+};
+</code></pre><p>If you want to have a different modifier than <kbd>RAlt</kbd> for level3 you
+have to import the definition from <code>symbols/level3</code>. Now we need the
 XKB symbol names for the keys we are interested in. For this you can run inside
-a terminal:
-</p>
-
-<pre class=" language-bash"><code class=" language-bash">xev -event keyboard</code></pre>
-
-<p><samp>xev</samp> is included in the <em>x11-utils</em> package.</p>
-
-<p>
-<samp>xev</samp> gives you a little white window and if you press a key inside
+a terminal:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">xev -event keyboard
+</code></pre></div><p><code>xev</code> is included in the <em>x11-utils</em> package.</p>
+<p><code>xev</code> gives you a little white window and if you press a key inside
 it, it will print information about the pressed  key in the terminal. We are
 interested in the <em>keycode</em>. If I press my <kbd>F</kbd> key it will
 give me keycode 41. Sadly that is the keycode not the <em>key-symbol</em>. To
-find the key symbol you have to look in <samp>/usr/share/X11/xkb/keycodes/evdev</samp>.
-In there we find that the key symbol for key code 41 is <var>&lt;AC04&gt;</var>.
-</p>
-
-<p>
-As quick rule for the rows of the keyboard: The number row is <var>&lt;AE##&gt;</var>
+find the key symbol you have to look in <code>/usr/share/X11/xkb/keycodes/evdev</code>.
+In there we find that the key symbol for key code 41 is <var>&lt;AC04&gt;</var>.</p>
+<p>As quick rule for the rows of the keyboard: The number row is <var>&lt;AE##&gt;</var>
 (Key 1 ⇒ &lt;AE01&gt;), and the three letter rows are from top to bottom
 <var>&lt;AD##&gt;</var>,  <var>&lt;AC##&gt;</var> and <var>&lt;AB##&gt;</var>
 (Key Q ⇒ &lt;AD01&gt;, Key A ⇒ &lt;AC01&gt;, Key Y/Z ⇒ &lt;AB01&gt; for QWRTY/Z).
-Inside the rows the numbers increase to the right.
-</p>
-
-<p>
-Now we want to update our F key to have the Greek small and big Phi on the third
-and fourth layer so we write:
-</p>
-
-<pre>key &lt;AC04&gt; { [ f, F, Greek_phi, Greek_PHI] };</pre>
-
-<p>
-We write <var>Greek_phi</var> instead of φ. Except for the absolute basic numbers
+Inside the rows the numbers increase to the right.</p>
+<p>Now we want to update our F key to have the Greek small and big Phi on the third
+and fourth layer so we write:</p>
+<pre><code>key &amp;lt;AC04&amp;gt; { [ f, F, Greek_phi, Greek_PHI] };
+</code></pre><p>We write <var>Greek_phi</var> instead of φ. Except for the absolute basic numbers
 and Latin alphabet you cannot just write the symbols you want but have to use an
 identifier. A subset of Unicode symbols have defined names in X11. A list of
-those given names is in <samp>/usr/include/X11/keysymdef.h</samp>.
+those given names is in <code>/usr/include/X11/keysymdef.h</code>.
 You can use any name from this header file, ignoring the leading <em>XK_</em>.
-More realistically you can also look in other layout files from <samp>xkb/symbols</samp>.
+More realistically you can also look in other layout files from <code>xkb/symbols</code>.
 Besides the given names you may use any Unicode character. For 👍 that will
 give you <a href="https://unicode-table.com/en/1F44D/">U+1F44D</a> which you can
 use in the form <var>U1F44D</var> inside the layout. You can also use the Unicodes
-instead of the given X11 names (losing some readability…).
-</p>
-
-<p>
-Change all the keys you need, put them into the <em>xkb_symbols</em> block and
-save the file to somewhere, lets say <samp>deedit</samp>. Next you can install the file into the symbols
-directory:
-</p>
-
-<pre class=" language-bash"><code class=" language-bash"><span class="token function">sudo</span> <span class="token function">install</span> -Dm644 deedit /usr/share/X11/xkb/symbols/deedit</code></pre>
-
-<p>
-It is probably a better idea to make a package out of your layout for which
+instead of the given X11 names (losing some readability…).</p>
+<p>Change all the keys you need, put them into the <em>xkb_symbols</em> block and
+save the file to somewhere, lets say <code>deedit</code>. Next you can install the file into the symbols
+directory:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo install -Dm644 deedit /usr/share/X11/xkb/symbols/deedit
+</code></pre></div><p>It is probably a better idea to make a package out of your layout for which
 you can check your distros documentation (⇒ for Arch Linux: <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a>,
-<a href="https://github.com/morris-frank/xkb-demod/blob/master/PKGBUILD">example</a>).
-</p>
-
-<p>
-Lastly, you change your current Keyboard layout and try it out:
-</p>
-
-<pre class=" language-bash"><code class=" language-bash">setxkbmap deedit</code></pre>
-
-<p>
-If your happy with it and want to make it stick, append the previous line to
-your <samp>xinit.rc</samp> so that it is loaded on every boot.
-</p>
+<a href="https://github.com/morris-frank/xkb-demod/blob/master/PKGBUILD">example</a>).</p>
+<p>Lastly, you change your current Keyboard layout and try it out:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">setxkbmap deedit
+</code></pre></div><p>If your happy with it and want to make it stick, append the previous line to
+your <code>xinit.rc</code> so that it is loaded on every boot.</p>
 
     </main>
 
@@ -256,6 +192,5 @@ your <samp>xinit.rc</samp> so that it is loaded on every boot.
             </div>
         </div>
     </footer>
-
-
-</body></html>
+</body>
+</html>

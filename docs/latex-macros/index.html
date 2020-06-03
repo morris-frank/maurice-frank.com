@@ -1,166 +1,133 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html>
+<html>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#a9384a">
     <meta name="referrer" content="no-referrer">
 
-    <link rel="stylesheet" href="https://morris-frank.dev/main-d26021ca55.css">
-    <link rel="shortcut icon" type="image/png" href="https://morris-frank.dev//icon.png">
 
+    
+    
+    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.49e51b2ca772c902da54f45ec75a7da7e75fcebaabcb5faf5d3b3e32037e5086.css">
+    <link rel="shortcut icon" type="image/png" href="/icon.png"/>
+
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 
-    <!-- The loading of KaTeX is deferred to speed up page rendering -->
-    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
-
-    <!-- To automatically render math in text elements, include the auto-render extension: -->
-    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
-    <title>Using a LaTeX macro package | morris-frank.dev</title>
+    <title> Using a LaTeX macro package - Morris Frank </title>
 </head>
 
 <body>
     <nav class="center">
         <h1>
-            <a href="https://morris-frank.dev/">Morris Frank</a>
+            <a href="https://morris-frank.dev">Morris Frank</a>
         </h1>
-        <a href="https://morris-frank.dev/">blog</a>
+        <a href="https://morris-frank.dev">blog</a>
         <a href="https://morris-frank.dev/music">music</a>
         <a href="https://morris-frank.dev/media">media</a>
         <a href="https://morris-frank.dev/cv.pdf">cv</a>
     </nav>
 
     <main class="center">
-        <h2>Using a \(\LaTeX\) macro package</h2>
+<h2>Using a LaTeX macro package</h2>
 
-<p>
-If your writing a lot of small documents all the time and do math in them it is
-a good idea to write yourself a macro package that contains personalized macros
-and functions to speed up your typesetting. Especially useful for University
-assignments and notes.
-</p>
+
+<p>If your writing a lot of small documents all the time and do math in them it is a good idea to write yourself a macro package that contains personalized macros and functions to speed up your typesetting. Especially useful for University assignments and notes.</p>
+
+
+<hr/>
+
 
 <div class="tags">
-    <span>LaTeX</span><span>Linux</span><span>Efficiency</span>
+  
+    
+    <span>System stuff</span>
+  
+    
+    <span>LaTeX</span>
+  
 </div>
 
-<hr>
 
-<p>
-If you never have written a TeX package, here the short-form with only the stuff
-we need. You start the file with
-</p>
-
-<pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\NeedsTeXFormat</span><span class="token punctuation">{</span>LaTeX2e<span class="token punctuation">}</span><span class="token punctuation">[</span>1994/06/01<span class="token punctuation">]</span>
-<span class="token function selector">\ProvidesPackage</span><span class="token punctuation">{</span>YOUR-PACKAGE-NAME<span class="token punctuation">}</span></code></pre>
-
-<p>end it with</p>
-
-<pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\endinput</span></code></pre>
-
-<p>and save it with extension <samp>.sty</samp> instead of <samp>.tex</samp>.</p>
-
-<h3>Things to add</h3>
-
+<p>If you never have written a TeX package, here the short-form with only the stuff
+we need. You start the file with</p>
+<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\NeedsTeXFormat</span><span class="nb">{</span>LaTeX2e<span class="nb">}</span>[1994/06/01]
+<span class="k">\ProvidesPackage</span><span class="nb">{</span>YOUR-PACKAGE-NAME<span class="nb">}</span>
+</code></pre></div><p>end it with</p>
+<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\endinput</span>
+</code></pre></div><p>and save it with extension <code>.sty</code> instead of <code>.tex</code>.</p>
+<h3 id="things-to-add">Things to add</h3>
 <ul>
-    <li>
-        Packages you always include. For example which fonts to use. In a
-        package <samp>.sty</samp> file you use <var>\RequirePackage</var> instead
-        of <var>\usepackage</var> to include other packages.
-        <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\RequirePackage</span><span class="token punctuation">{</span>newpxtext<span class="token punctuation">}</span>
-<span class="token function selector">\RequirePackage</span><span class="token punctuation">{</span>mathpazo<span class="token punctuation">}</span>
-<span class="token function selector">\RequirePackage</span><span class="token punctuation">{</span>dsfont<span class="token punctuation">}</span></code></pre>
-    </li>
-    <li>
-        Faster font changes. I use the same macro for bold and italic text in
-        math and normal mode using the <var>\ifmmode</var> command.
-        <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\newcommand*</span><span class="token punctuation">{</span><span class="token function selector">\B</span><span class="token punctuation">}</span><span class="token punctuation">[</span>1<span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token function selector">\ifmmode</span><span class="token function selector">\bm</span><span class="token punctuation">{</span>#1<span class="token punctuation">}</span><span class="token function selector">\else</span><span class="token function selector">\textbf</span><span class="token punctuation">{</span>#1<span class="token punctuation">}</span><span class="token function selector">\fi</span><span class="token punctuation">}</span>
-<span class="token function selector">\newcommand*</span><span class="token punctuation">{</span><span class="token function selector">\I</span><span class="token punctuation">}</span><span class="token punctuation">[</span>1<span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token function selector">\ifmmode</span><span class="token function selector">\mathit</span><span class="token punctuation">{</span>#1<span class="token punctuation">}</span><span class="token function selector">\else</span><span class="token function selector">\textit</span><span class="token punctuation">{</span>#1<span class="token punctuation">}</span><span class="token function selector">\fi</span><span class="token punctuation">}</span></code></pre>
-    </li>
-    <li>
-        Unicode symbols. LaTeX supports Unicode commands so we can write the
-        symbols instead of their names. The <var>\ensuremath</var> call makes
-        commands from <var>amsmath</var> also work in normal text mode. If you
-        don't have these special characters on your keyboard I have
-        <a href="https://morris-frank.dev/keymap">a tutorial</a> to change that.
-        <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\newcommand*</span><span class="token function selector">\ℝ</span><span class="token punctuation">{</span><span class="token function selector">\ensuremath</span><span class="token punctuation">{</span><span class="token function selector">\mathds</span><span class="token punctuation">{</span>R<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
-<span class="token function selector">\newcommand*</span><span class="token function selector">\π</span><span class="token punctuation">{</span><span class="token function selector">\ensuremath</span><span class="token punctuation">{</span><span class="token function selector">\pi</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
-<span class="token function selector">\newcommand*</span><span class="token function selector">\Σ</span><span class="token punctuation">{</span><span class="token function selector">\ensuremath</span><span class="token punctuation">{</span><span class="token function selector">\sum</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
-        <var>\mathds</var> from <em>dsfont</em> gives nicer double-strokes.
-    </li>
-    <li>
-        More math operators. I have to write lot of expected values so I made a
-        nicer short version.
-        <pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\DeclareMathOperator*</span><span class="token punctuation">{</span><span class="token function selector">\argmax</span><span class="token punctuation">}</span><span class="token punctuation">{</span>arg<span class="token function selector">\,</span>max<span class="token punctuation">}</span>
-<span class="token function selector">\DeclareMathOperator*</span><span class="token punctuation">{</span><span class="token function selector">\E</span><span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token function selector">\mathbb</span><span class="token punctuation">{</span>E<span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
-        The <var>\,</var> makes a tiny space.
-
-    </li>
-    <li>
-        Anything else. You can <a href="https://github.com/morris-frank/latex-templates/blob/master/morris.sty">check out mine</a>
-        or do whatever you like. It is recommended to use the LaTeX macro
-        <var>\newcommand</var> to define new commands instead of the TeX
-        <var>\def</var>. If a command name is already taken and you want to
-        overwrite it use <var>\renewcommand</var> instead of
-        <var>\newcommand</var>.
-    </li>
+<li>Packages you always include. For example which fonts to use. In a
+package <code>.sty</code> file you use <code>\RequirePackage</code> instead
+of <code>\usepackage</code> to include other packages.
+<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\RequirePackage</span><span class="nb">{</span>newpxtext<span class="nb">}</span>
+<span class="k">\RequirePackage</span><span class="nb">{</span>mathpazo<span class="nb">}</span>
+<span class="k">\RequirePackage</span><span class="nb">{</span>dsfont<span class="nb">}</span>
+</code></pre></div></li>
+<li>Faster font changes. I use the same macro for bold and italic text in
+math and normal mode using the <code>\ifmmode</code> command.
+<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\B</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\ifmmode\bm</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\else\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\fi</span><span class="nb">}</span>
+<span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\I</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\ifmmode\mathit</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\else\textit</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\fi</span><span class="nb">}</span>
+</code></pre></div></li>
+<li>Unicode symbols. LaTeX supports Unicode commands so we can write the
+symbols instead of their names. The <code>\ensuremath</code> call makes
+commands from <code>amsmath</code> also work in normal text mode. If you
+don&rsquo;t have these special characters on your keyboard I have
+<a href="https://morris-frank.dev/keymap/">a tutorial</a> to change that.
+<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\newcommand*\ℝ</span><span class="nb">{</span><span class="k">\ensuremath</span><span class="nb">{</span><span class="k">\mathds</span><span class="nb">{</span>R<span class="nb">}}}</span>
+<span class="k">\newcommand*\π</span><span class="nb">{</span><span class="k">\ensuremath</span><span class="nb">{</span><span class="k">\pi</span><span class="nb">}}</span>
+<span class="k">\newcommand*\Σ</span><span class="nb">{</span><span class="k">\ensuremath</span><span class="nb">{</span><span class="k">\sum</span><span class="nb">}}</span>
+</code></pre></div><p><code>\mathds</code> from <em>dsfont</em> gives nicer double-strokes.</p>
+</li>
+<li>More math operators. I have to write lot of expected values so I made a
+nicer short version.
+<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\DeclareMathOperator*</span><span class="nb">{</span><span class="k">\argmax</span><span class="nb">}{</span>arg<span class="k">\,</span>max<span class="nb">}</span>
+<span class="k">\DeclareMathOperator*</span><span class="nb">{</span><span class="k">\E</span><span class="nb">}{</span><span class="k">\mathbb</span><span class="nb">{</span>E<span class="nb">}}</span>
+</code></pre></div><p>The <code>\,</code> makes a tiny space.</p>
+</li>
+<li>Anything else. You can <a href="https://github.com/morris-frank/latex-templates/blob/master/morris.sty">check out mine</a>
+or do whatever you like. It is recommended to use the LaTeX macro
+<code>\newcommand</code> to define new commands instead of the TeX
+<code>\def</code>. If a command name is already taken and you want to
+overwrite it use <code>\renewcommand</code> instead of
+<code>\newcommand</code>.</li>
 </ul>
-
-<p>
-All of this is more useful for documents that you're working on by
-yourself. Otherwise you have to distribute the package to your collaborators.
-</p>
-
-<h3>Using it</h3>
-<p>
-To make the package visible to your compiler (<samp>pdflatex</samp>,
-<samp>xelatex</samp>, …) you have to put it on the TeX path. You can add to your
+<p>All of this is more useful for documents that you&rsquo;re working on by
+yourself. Otherwise you have to distribute the package to your collaborators.</p>
+<h3 id="using-it">Using it</h3>
+<p>To make the package visible to your compiler (<code>pdflatex</code>,
+<code>xelatex</code>, …) you have to put it on the TeX path. You can add to your
 users local path to make it available to the compiler while using your account.
-The path is called <samp>TEXMFHOME</samp> and you can look it up with:
-</p>
-
-<pre class=" language-bash"><code class=" language-bash">kpsewhich -var-value TEXMFHOME</code></pre>
-
-<p>
-On most Linux distros this will be <samp>/home/YOUR-USER/texmf</samp>, which
-probably doesn't exist. As I do not want to clutter my home folder with that
+The path is called <code>TEXMFHOME</code> and you can look it up with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">kpsewhich -var-value TEXMFHOME
+</code></pre></div><p>On most Linux distros this will be <code>/home/YOUR-USER/texmf</code>, which
+probably doesn&rsquo;t exist. As I do not want to clutter my home folder with that
 folder, I changed the path by setting an environment variable with the same
-name inside my <samp>xinit.rc</samp>:
-</p>
-
-<pre class=" language-bash"><code class=" language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">TEXMFHOME</span><span class="token operator">=</span>~/.local/share/texmf</code></pre>
-
-<p>
-After a reboot/re-login the new <samp>TEXMFHOME</samp> should be set. Inside
+name inside my <code>xinit.rc</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">TEXMFHOME</span><span class="o">=</span>~/.local/share/texmf
+</code></pre></div><p>After a reboot/re-login the new <code>TEXMFHOME</code> should be set. Inside
 the folder your supposed to follow the TeX folder structure which means you
-should create the folders <samp>~/.local/share/texmf/tex/latex/YOUR-PACKAGE-NAME/</samp>
-and put your <samp>YOUR-PACKAGE-NAME.sty</samp> in there.
-</p>
-
+should create the folders <code>~/.local/share/texmf/tex/latex/YOUR-PACKAGE-NAME/</code>
+and put your <code>YOUR-PACKAGE-NAME.sty</code> in there.</p>
 <p>If the new path is not recognized you might need to rehash the TeX path:</p>
-
-<pre class=" language-bash"><code class=" language-bash"><span class="token function">sudo</span> texhash /home/YOUR-<span class="token environment constant">USER</span>/.local/share/textmf</code></pre>
-
-<p>
-Now all my assignment files for University and other scribbles always start
-with (as I have a <samp>morris.sty</samp>):
-</p>
-
-<pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword">morris</span><span class="token punctuation">}</span></code></pre>
-
-<p>
-and I am writing considerably faster and more readable (in my humble opinion).<br>
-Instead of:
-</p>
-
-<pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\pmb</span><span class="token punctuation">{</span><span class="token function selector">\sigma</span><span class="token punctuation">}</span> = <span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword">bmatrix</span><span class="token punctuation">}</span>
-    <span class="token function selector">\frac</span><span class="token punctuation">{</span><span class="token function selector">\exp</span><span class="token punctuation">{</span><span class="token function selector">\phi</span>_1<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token function selector">\sum</span>_i^N <span class="token function selector">\exp</span><span class="token punctuation">{</span><span class="token function selector">\phi</span>_i<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token punctuation">&amp;</span> <span class="token function selector">\dots</span>
-<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword">bmatrix</span><span class="token punctuation">}</span></code></pre>
-
-<p>I write:</p>
-
-<pre class=" language-latex"><code class=" language-latex"><span class="token function selector">\B</span><span class="token punctuation">{</span><span class="token function selector">\σ</span><span class="token punctuation">}</span> = <span class="token function selector">\bM</span><span class="token punctuation">{</span><span class="token function selector">\÷</span><span class="token punctuation">{</span><span class="token function selector">\exp</span><span class="token punctuation">{</span><span class="token function selector">\φ</span>_1<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token function selector">\Σ</span>_i^N <span class="token function selector">\exp</span><span class="token punctuation">{</span><span class="token function selector">\φ</span>_i<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token punctuation">&amp;</span> <span class="token function selector">\…</span> <span class="token punctuation">}</span></code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo texhash /home/YOUR-USER/.local/share/textmf
+</code></pre></div><p>Now all my assignment files for University and other scribbles always start
+with (as I have a <code>morris.sty</code>):</p>
+<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\usepackage</span><span class="nb">{</span>morris<span class="nb">}</span>
+</code></pre></div><p>and I am writing considerably faster and more readable (in my humble opinion).<br>
+Instead of:</p>
+<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\pmb</span><span class="nb">{</span><span class="k">\sigma</span><span class="nb">}</span> = <span class="k">\begin</span><span class="nb">{</span>bmatrix<span class="nb">}</span>
+    <span class="k">\frac</span><span class="nb">{</span><span class="k">\exp</span><span class="nb">{</span><span class="k">\phi</span><span class="nb">_</span>1<span class="nb">}}{</span><span class="k">\sum</span><span class="nb">_</span>i<span class="nb">^</span>N <span class="k">\exp</span><span class="nb">{</span><span class="k">\phi</span><span class="nb">_</span>i<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\dots</span>
+<span class="k">\end</span><span class="nb">{</span>bmatrix<span class="nb">}</span>
+</code></pre></div><p>I write:</p>
+<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\B</span><span class="nb">{</span><span class="k">\σ</span><span class="nb">}</span> = <span class="k">\bM</span><span class="nb">{</span><span class="k">\÷</span><span class="nb">{</span><span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>1<span class="nb">}}{</span><span class="k">\Σ</span><span class="nb">_</span>i<span class="nb">^</span>N <span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>i<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\…</span> <span class="nb">}</span>
+</code></pre></div>
     </main>
 
     <footer>
@@ -176,6 +143,5 @@ Instead of:
             </div>
         </div>
     </footer>
-
-
-</body></html>
+</body>
+</html>

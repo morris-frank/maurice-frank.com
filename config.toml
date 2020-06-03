@@ -1,0 +1,18 @@
+baseURL = "https://morris-frank.dev"
+title = "Morris Frank"
+publishDir = "docs"
+assetDir = "layout"
+layoutDir = "layout"
+
+[permalinks]
+posts = "/:filename/"
+
+[taxonomies]
+    tags = "tags"
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
