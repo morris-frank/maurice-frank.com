@@ -1,14 +1,12 @@
 +++
 title = "Using a LaTeX macro package"
-tags = ["Linux & System", "LaTeX"]
+tags = ["System stuff", "LaTeX"]
 date = "2019-12-15"
 tldr = "If your writing a lot of small documents all the time and do math in them it is a good idea to write yourself a macro package that contains personalized macros and functions to speed up your typesetting. Especially useful for University assignments and notes."
 +++
 
-
 If you never have written a TeX package, here the short-form with only the stuff
 we need. You start the file with
-
 
 ```latex
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
