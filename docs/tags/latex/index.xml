@@ -5,11 +5,7 @@
     <link>https://morris-frank.dev/tags/latex/</link>
     <description>Recent content in LaTeX on Morris Frank</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 15 Dec 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://morris-frank.dev/tags/latex/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 15 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/tags/latex/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using a LaTeX macro package</title>
       <link>https://morris-frank.dev/latex-macros/</link>

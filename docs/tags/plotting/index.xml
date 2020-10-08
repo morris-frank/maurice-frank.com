@@ -5,11 +5,7 @@
     <link>https://morris-frank.dev/tags/plotting/</link>
     <description>Recent content in Plotting on Morris Frank</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://morris-frank.dev/tags/plotting/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/tags/plotting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using plots as ticks in PyPlot</title>
       <link>https://morris-frank.dev/plotting-ticks/</link>
