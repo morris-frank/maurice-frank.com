@@ -1,5 +1,5 @@
 baseURL = "https://morris-frank.dev"
-title = "Morris Frank"
+title = "Morris-Frank"
 publishDir = "docs"
 assetDir = "layout"
 layoutDir = "layout"
