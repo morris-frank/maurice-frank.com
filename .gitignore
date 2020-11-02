@@ -2,7 +2,7 @@
 .vscode/
 .sass-cache/
 node_modules/
-*log
+*.log
 *xdv
 *gz
 
