@@ -11,3 +11,7 @@ Please contact me under
 #### [hire@morris-frank.dev](mailto:hire@morris-frank.dev)
 
 if you're interested in working with me.
+
+I am registered with the Dutch chamber of commerce (KVK) under the KVK-nummer 80834000.
+
+Ik sta ingeschreven bij de Kamer van Koophandel onder het KVK-nummer 80834000.
