@@ -67,7 +67,7 @@ nav
 // Component classes -----------------------------------------------------------
 .avatar
   float: right
-  margin: 1m 0 2m 2m
+  margin: 1em 0 2em 2em
   background-image: url("/img/me.jpg")
   background-size: contain
   width: 256px
@@ -89,11 +89,8 @@ nav
   padding: .5em 1em
 
 .center
-  $gap: 20px
-  padding: 0 $gap
   width: auto
   +desktop
-    padding: 0
     margin: 0 auto
     max-width: $linewidth - 2 * $gap
 
@@ -115,6 +112,7 @@ nav
     margin-bottom: 1em
   span
     display: block
+    text-transform: lowercase
   h4
     display: inline
     margin-top: 0
