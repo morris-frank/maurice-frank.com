@@ -1,0 +1,95 @@
+// Meta Stuff ------------------------------------------------------------------
+::-moz-selection
+    background: $primary
+    color: $white
+
+::selection
+    background: $primary
+    color: $white
+
+// Mega effects ----------------------------------------------------------------
+h2, nav h1 a, a:hover
+    $gradient-top-left: darken(saturate(adjust-hue($primary, -10deg), 10%),20%)
+    $gradient-bottom-right: lighten(saturate(adjust-hue($primary, 10deg), 5%), 1%)
+    background-image: linear-gradient(141deg, $gradient-top-left 0%, $primary 71%, $gradient-bottom-right 100%)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    .date, date
+        color: $primary
+        -webkit-text-fill-color: $primary
+
+// Base elements ---------------------------------------------------------------
+a
+    text-decoration: underline
+    color: $black
+    &.listing
+        text-decoration: none
+
+cite
+    font-style: normal
+    color: $grey
+    .title
+        font-style: normal
+        color: $black
+
+code
+    font-family: $font
+    font-size: 0.9rem
+
+date
+    font-size: 0.9em
+    letter-spacing: 0.05rem
+
+i, em
+    font-family: $font
+    font-style: italic
+    letter-spacing: 0.02em
+
+h1
+    font-size: 1.5rem
+    font-weight: bold
+    a
+        text-decoration: none
+
+h2
+    font-size: 2.5rem
+    font-weight: bold
+    line-height: 1.4
+    margin: 2rem 0 0
+
+h3
+    margin: 2rem 0 0.4rem 0
+    font-size: 1.3rem
+    font-weight: bold
+
+h4
+    margin: 1em 0 0.2em
+    font-size: 1.2rem
+
+kbd
+    font-size: 0.95rem
+    letter-spacing: 0.05em
+
+p
+    margin-top: 1rem
+    margin-bottom: 1rem
+
+pre
+    font-family: $font
+    font-size: 0.9rem
+    color: #d2d2d2
+    background: $black
+    border-radius: 1em
+    padding: 1em 2em
+    overflow-x: scroll
+    @media (min-width: $linewidth + 350px)
+        min-width: max-content
+        overflow: visible
+
+var
+    font-size: 0.95rem
+    white-space: nowrap
+    padding: 0.14rem 0.2rem 0.1rem
+    border-radius: 0.2rem
+    background: rgba($grey-light, 0.5)
+    color: $grey-dark

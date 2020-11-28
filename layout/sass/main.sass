@@ -1,13 +1,42 @@
 @charset 'utf-8'
 
+// Font variables --------------------------------------------------------------
+@font-face
+  font-family: 'Inconsolata'
+  src: url('../Inconsolata-VariableFont_wdth,wght.ttf')
+$font: 'Inconsolata', sans-serif
+
+// Layout variables ------------------------------------------------------------
+
 $linewidth: 769px
 $radius: 2px
 
+// Color variables -------------------------------------------------------------
+$primary:      hsl(100, 27%, 50%)
+$black:        hsl(0, 0%, 20%)
+$grey-dark:    hsl(0, 0%, 29%)
+$grey:         hsl(0, 0%, 48%)
+$grey-light:   hsl(0, 0%, 71%)
+$white:        hsl(0, 0%, 97%)
+
+// Mixins ----------------------------------------------------------------------
 =desktop
   @media screen and (min-width: $linewidth)
     @content
 
-@import 'text-elements.sass'
-@import 'block-elements.sass'
-@import 'typography.sass'
-@import 'coloring.sass'
+// Global setups / reset -------------------------------------------------------
+html
+  color: $black
+  background: $white
+
+body
+  font-family: $font
+  font-size: 1rem
+  line-height: 1.5
+  hyphens: auto
+  margin: 0
+
+// Imports ---------------------------------------------------------------------
+@import 'text'
+@import 'blocks'
+@import 'highlight'
