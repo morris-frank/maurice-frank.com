@@ -68,6 +68,11 @@
   </url>
   
   <url>
+    <loc>https://morris-frank.dev/work/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://morris-frank.dev/blog/</loc>
   </url>
   
