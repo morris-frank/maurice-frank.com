@@ -46,9 +46,11 @@ i, em
     letter-spacing: 0.02em
 
 h1
-    font-variation-settings: "wght" 900, "wdth" 90
+    font-variation-settings: "wght" 500
     font-size: 2rem
     font-weight: bold
+    &:hover
+        font-variation-settings: "wght" 1000
     a
         text-decoration: none
 
@@ -87,6 +89,9 @@ pre
     @media (min-width: $linewidth + 350px)
         min-width: max-content
         overflow: visible
+
+strong
+    font-variation-settings: "wght" 850
 
 var
     font-size: 0.95rem
