@@ -59,15 +59,6 @@ The problem Lets say we want to generate sound signals. This might happen in dif
     </item>
     
     <item>
-      <title></title>
-      <link>https://morris-frank.dev/work/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/work/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Blog</title>
       <link>https://morris-frank.dev/blog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -106,6 +97,24 @@ This is not true anymore so here is a working way to cook black salsify:
       <description>I am learning to make amateurish music. Currently on a mission of one track per week in Bitwig (the only professional DAW running on Linux).
 See here as it happens:
  Tutorials on stuff I discover will follow.</description>
+    </item>
+    
+    <item>
+      <title>Work Samples</title>
+      <link>https://morris-frank.dev/work/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/work/</guid>
+      <description>Research  2020
+Problems using deep generative models for probabilistic audio source separation
+Maurice Frank, Maximilian Ilse
+[Paper] [Pre-Print] [Code]
+published-at: I can&amp;rsquo;t believe it&amp;rsquo;s not better workshops @ NeurIPS 2020
+In invistigation into how good deep generative models behave if cmoing in contact with data not present in their trainings set. Do they know what they do not know?
+  2020
+Unsupervised musical source separation
+Maurice Frank
+[Paper] [Code]</description>
     </item>
     
   </channel>
