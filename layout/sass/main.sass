@@ -3,8 +3,14 @@
 // Font variables --------------------------------------------------------------
 @font-face
   font-family: 'Inconsolata'
-  src: url('../Inconsolata-VariableFont_wdth,wght.ttf')
+  src: url('../Inconsolata-VariableFont_wdth,wght.ttf') format(ttf)
 $font: 'Inconsolata', sans-serif
+
+@font-face
+  font-family: 'icons'
+  src: url('../icons.woff2') format('woff2')
+  font-weight: normal
+  font-style: normal
 
 // Layout variables ------------------------------------------------------------
 
@@ -40,6 +46,8 @@ body
   line-height: 1.5
   hyphens: auto
   margin: 0
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
 // Imports ---------------------------------------------------------------------
 @import 'text'

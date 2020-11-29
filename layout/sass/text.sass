@@ -100,3 +100,27 @@ var
     background: rgba($grey-light, 0.5)
     color: $grey-dark
     font-style: normal
+
+// Icons -----------------------------------------------------------------------
+[class^="icon-"], [class*=" icon-"]
+    white-space: nowrap
+    &::before
+        font-family: "icons"
+        speak: never
+        display: inline-block
+        width: 1rem
+        margin-right: .5rem
+        text-align: center
+        // text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3)
+        text-decoration: none
+
+.icon-github:before
+    content: '\f09b'
+.icon-mail:before
+    content: '\f0e0'
+.icon-code:before
+    content: '\f121'
+.icon-insta:before
+    content: '\f16d'
+.icon-soundcloud:before
+    content: '\f1be'
