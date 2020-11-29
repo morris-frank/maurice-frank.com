@@ -50,6 +50,6 @@ While I am not a totally seasoned web-designer I have almost a decade of experie
             <h4><a href="https://collegiumacademicum.de">Collegium Academicum</a></h4>
             <p>A student-run company in Heidelberg, Germany. We are constructing sustainable (all wood!) student and young people housing and building up a new self-organized study college.</p>
         </div>
-        <a href="https://collegiumacademicum.org">{{< img src="web_ca" >}}</a>
+        <a href="https://collegiumacademicum.de">{{< img src="web_ca" >}}</a>
     </div>
 </div>
