@@ -40,7 +40,7 @@ While I am not a totally seasoned web-designer I have almost a decade of experie
 <div class="flex">
     <div class="card">
         <div>
-            <h4><a href="https://ackersyndikat.org">Ackersyndikat e.V.</a></h4>
+            <h4><a href="https://ackersyndikat.org">Das Ackersyndikat</a></h4>
             <p>A new Germany-wide collective trying to make farming in <a href="https://en.wikipedia.org/wiki/Commons">the commons</a> possible again. Buying land and farms and transfering them into a collective owner-structure.</p>
         </div>
         <a href="https://ackersyndikat.org">{{< img src="web_as" >}}</a>

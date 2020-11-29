@@ -2,8 +2,12 @@
 @keyframes pulse
   0%
     opacity: 0%
+  30%
+    opacity: 0%
   50%
     opacity: 100%
+  70%
+    opacity: 0%
   100%
     opacity: 0%
 
@@ -27,7 +31,7 @@ figure
 
 footer
   margin: 6rem 0 0
-  padding: 1rem 0
+  padding: 3rem 0
   contain: layout paint
   $odd-stripe: lighten($primary, 5)
   background: linear-gradient(135deg, $odd-stripe 25%, transparent 25%) -50px 0, linear-gradient(225deg, $odd-stripe 25%, transparent 25%) -50px 0, linear-gradient(315deg, $odd-stripe 25%, transparent 25%), linear-gradient(45deg, $odd-stripe 25%, transparent 25%)
@@ -39,8 +43,6 @@ footer
   h2
     font-size: 0.9rem
     margin: 0 0 0.5rem 0
-  .flex
-    gap: 3rem
 
 img
   height: auto
@@ -96,7 +98,7 @@ nav
     display: block
     background-image: url("/img/me_deep.jpg")
     background-size: contain
-    animation: pulse 5s infinite
+    animation: pulse 5s ease infinite
 
 .box
   background: $white
@@ -108,14 +110,24 @@ nav
 
 .card
   box-shadow: 0 2px 3px rgba(10,10,10,0.1),0 0 0 1px rgba(10,10,10,0.1)
-  margin: 0 1em
   max-height: 450px
+  position: relative
   overflow-y: hidden
   img
     width: 100%
     max-width: 100%
+    position: relative
+    top: 0em
+    z-index: 1
+    &:hover
+      top: -13em
   > div
-    margin: 1em 1em
+    z-index: 2
+    position: relative
+    padding: 1em 1em 1px
+    background: $white
+  p
+    margin-top: 0.2rem
 
 .center
   width: auto
@@ -129,6 +141,7 @@ nav
   display: flex
   align-items: flex-start
   // text-align: justify
+  gap: 2rem
   font-size: 0.9rem
   flex-direction: column
   +desktop
