@@ -16,3 +16,7 @@ posts = "/:filename/"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+[imaging]
+  quality = 90
+  resampleFilter = "lanczos"

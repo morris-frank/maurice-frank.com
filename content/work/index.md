@@ -6,9 +6,9 @@ title = "Work Samples"
 
 > 2020  
 > **Problems using deep generative models for probabilistic audio source separation**  
+> _published-at: I can't believe it's not better workshops @ NeurIPS 2020_  
 > [Maurice Frank](https://scholar.google.com/citations?user=jCHjpIsAAAAJ), [Maximilian Ilse](https://scholar.google.com/citations?user=KNJIRGkAAAAJ)  
 > [[Paper](https://i-cant-believe-its-not-better.github.io/accepted_papers/)] [[Pre-Print](https://arxiv.org/abs/2011.01761)] [[Code](https://github.com/morris-frank/unsupervised-source-separation)]  
-> _published-at: I can't believe it's not better workshops @ NeurIPS 2020_  
 > In invistigation into how good deep generative models behave if cmoing in contact with data not present in their trainings set. Do they know what they do not know?  
 > {{< img src="2020_icbinb_t" >}}
 
@@ -40,14 +40,14 @@ While I am not a totally seasoned web-designer I have almost a decade of experie
 <div class="flex">
     <div class="card">
         <div>
-            <h4>Ackersyndikat e.V.</h4>
-            <p>A new Germany-wide collective trying to revoltanize the framing marked but making communal / cooperative farms possible thru an innovative legal and financing structure.</p>
+            <h4><a href="https://ackersyndikat.org">Ackersyndikat e.V.</a></h4>
+            <p>A new Germany-wide collective trying to make farming in <a href="https://en.wikipedia.org/wiki/Commons">the commons</a> possible again. Buying land and farms and transfering them into a collective owner-structure.</p>
         </div>
         <a href="https://ackersyndikat.org">{{< img src="web_as" >}}</a>
     </div>
     <div class="card">
         <div>
-            <h4>Collegium Academicum</h4>
+            <h4><a href="https://collegiumacademicum.de">Collegium Academicum</a></h4>
             <p>A student-run company in Heidelberg, Germany. We are constructing sustainable (all wood!) student and young people housing and building up a new self-organized study college.</p>
         </div>
         <a href="https://collegiumacademicum.org">{{< img src="web_ca" >}}</a>

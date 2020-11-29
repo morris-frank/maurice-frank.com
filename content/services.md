@@ -14,6 +14,9 @@ Please contact me under
 
 if you're interested in working with me.
 
+<div class="box">
 I am registered with the Dutch chamber of commerce (KVK) under the KVK-nummer 80834000.
 
 Ik sta ingeschreven bij de Kamer van Koophandel onder het KVK-nummer 80834000.
+
+</div>

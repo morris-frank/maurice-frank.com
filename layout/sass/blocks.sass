@@ -38,10 +38,14 @@ footer
     margin: 0 0 0.5em 0
   h2
     font-size: 0.9rem
+  .flex
+    div
+      min-width: 40%
 
 img
   height: auto
   max-width: 80%
+  position: relative
   &.text-image
     height: 1.2em
     vertical-align: middle
@@ -55,23 +59,27 @@ main
   min-height: calc( 100vh - 3rem - 1px - 8rem - 80px - 122px )
 
 nav
-  border-bottom: 1px solid $grey-light
+  // border-bottom: 1px solid $grey-light
   contain: layout paint
-  &.center
-    padding-bottom: 1rem
   h1
     margin: 1rem 2rem 0 0
     display: inline-block
+    font-variation-settings: "wght" 800, "wdth" 100
+    font-size: 2rem
+    &:hover
+      font-variation-settings: "wght" 400, "wdth" 100
+    a
+      text-decoration: none
     @media (max-width: $linewidth)
       display: block
   > a
     padding-right: 1rem
     padding-bottom: 1rem
     display: inline-block
-    font-variation-settings: "wght" 400
+    font-variation-settings: "wght" 500, "wdth" 105
 
     &:hover
-      font-variation-settings: "wght" 1000
+      font-variation-settings: "wght" 900, "wdth" 105
 
 // Component classes -----------------------------------------------------------
 .avatar
@@ -95,26 +103,25 @@ nav
   box-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
   border-radius: $radius
   padding: .5em 1em
+  &.center
+    padding: .5em 1em
 
 .card
   box-shadow: 0 2px 3px rgba(10,10,10,0.1),0 0 0 1px rgba(10,10,10,0.1)
   margin: 0 1em
   max-height: 450px
   overflow-y: hidden
-  flow-direction: row
-  +desktop
-    flow-direction: column
   img
     width: 100%
     max-width: 100%
   > div
     margin: 1em 1em
-  a
-    font-style: italic
 
 .center
   width: auto
+  padding: 0 $gap
   +desktop
+    padding: 0
     margin: 0 auto
     max-width: $linewidth - 2 * $gap
 

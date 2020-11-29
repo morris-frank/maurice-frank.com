@@ -3,7 +3,7 @@
 {{ define "main" }}<h2>{{ .Title }}</h2>
 
 {{ with .Params.tldr }}
-<p>{{ . }}</p>
+<p>{{ . | markdownify }}</p>
 {{ end }}
 
 <hr/>

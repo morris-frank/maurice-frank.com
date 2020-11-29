@@ -1,8 +1,7 @@
 +++
 title = "Music"
+tldr = "I am learning to make amateurish music. Currently on a mission of one track per week in [Bitwig](https://bitwig.com) (the only professional DAW running on Linux)."
 +++
-
-I am learning to make amateurish music. Currently on a mission of one track per week in [Bitwig](https://bitwig.com) (the only professional DAW running on Linux).
 
 See here as it happens:
 
