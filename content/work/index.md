@@ -8,7 +8,7 @@ title = "Work Samples"
 > **Problems using deep generative models for probabilistic audio source separation**  
 > _published-at: I can't believe it's not better workshops @ NeurIPS 2020_  
 > [Maurice Frank](https://scholar.google.com/citations?user=jCHjpIsAAAAJ), [Maximilian Ilse](https://scholar.google.com/citations?user=KNJIRGkAAAAJ)  
-> [[Paper](https://i-cant-believe-its-not-better.github.io/accepted_papers/)] [[Pre-Print](https://arxiv.org/abs/2011.01761)] [[Code](https://github.com/morris-frank/unsupervised-source-separation)]  
+> [[Paper](https://i-cant-believe-its-not-better.github.io/accepted_papers/)] [[Pre-Print](https://arxiv.org/abs/2011.01761)] [[Code](https://github.com/morris-frank/unsupervised-source-separation)] [[Poster](https://raw.githubusercontent.com/morris-frank/thesis-tex/master/poster.pdf)]  
 > In invistigation into how good deep generative models behave if cmoing in contact with data not present in their trainings set. Do they know what they do not know?  
 > {{< img src="2020_icbinb_t" >}}
 
