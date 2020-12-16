@@ -121,7 +121,7 @@ Maurice Frank</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/captcha_test/</guid>
-      <description>   var captcha_lambda_endpoint = &#34;https://45pbsdz0q9.execute-api.eu-central-1.amazonaws.com/getData&#34;; var onSuccessfullCaptcha = function (args) { console.log(args); }  </description>
+      <description>   var captcha_lambda_endpoint = &#34;https://45pbsdz0q9.execute-api.eu-central-1.amazonaws.com/getData&#34;; var onSuccessfullCaptcha = function (token) { console.log(token); const XHR = new XMLHttpRequest(); let data = &#39;response=&#39; + encodeURIComponent(token); XHR.addEventListener( &#39;load&#39;, function(event) { console.log(event); } ); XHR.open(&#39;POST&#39;, captcha_lambda_endpoint); XHR.setRequestHeader( &#39;Content-Type&#39;, &#39;application/x-www-form-urlencoded&#39; ); XHR.send( data ); }  </description>
     </item>
     
   </channel>
