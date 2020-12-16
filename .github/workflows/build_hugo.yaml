@@ -12,15 +12,6 @@ jobs:
         run: brew install hugo
       - name: Run hugo
         run: hugo -d docs --cleanDestinationDir
-      - name: Commit files
-        run: |
-          git config --local user.email "ai@morris-frank.dev"
-          git config --local user.name "Morris' AI"
-          git add ./docs
-          git commit -m "Published 👍"
-      - name: Push changes # push the output folder to your repo
-        uses: ad-m/github-push-action@master
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          branch: master
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
+          commit_message: Build with hugp
