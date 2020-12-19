@@ -12,7 +12,7 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/captcha/</guid>
-      <description>In a recent web-design project we decided that we want to prevent spam and other leakage of information by hiding away that content (e.g. the mail-address) behind a CAPTCHA. Now that web-site up until that point was a completly static site (build with Hugo) even lacking any scripting. As I am a staunch defender of keeping static content static, I wanted to absolutely avoid having to admister a server and maybe even porting this simple site to some for of dynamic CMS.</description>
+      <description>In a recent web-design project we decided that we want to prevent spam and other leakages of information by hiding away that content (e.g. the mail-address) behind a CAPTCHA. Now that web-site up until that point was a completely static site (build with Hugo) even lacking any scripting. As I am a staunch defender of keeping static content static, I wanted to avoid having to administer a server and maybe even porting this simple site to some for of dynamic CMS.</description>
     </item>
     
     <item>
@@ -122,15 +122,6 @@ In invistigation into how good deep generative models behave if cmoing in contac
   2020
 Unsupervised musical source separation
 Maurice Frank</description>
-    </item>
-    
-    <item>
-      <title>λ-Captcha</title>
-      <link>https://morris-frank.dev/captcha_test/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/captcha_test/</guid>
-      <description>   var captcha_lambda_endpoint = &#34;https://nxmko95l3k.execute-api.eu-central-1.amazonaws.com&#34;; var onSuccessfullCaptcha = function (token) { console.log(token); const XHR = new XMLHttpRequest(); let data = &#39;response=&#39; + encodeURIComponent(token); XHR.addEventListener( &#39;load&#39;, function(event) { console.log(event); } ); XHR.open(&#39;POST&#39;, captcha_lambda_endpoint); XHR.setRequestHeader( &#39;Content-Type&#39;, &#39;application/x-www-form-urlencoded&#39; ); XHR.send( data ); }  </description>
     </item>
     
   </channel>

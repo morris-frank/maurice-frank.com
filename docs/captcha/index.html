@@ -40,6 +40,8 @@
 <h2>A serverless captcha for static sites</h2>
 
 
+<p>Can we include a CAPTCHA in statically generated web-sites to hide content from spammers?</p>
+
 
 <hr/>
 
@@ -47,19 +49,20 @@
 <div class="tags">
   
     
-    <span>Webdesign</span>
+    <span>Web</span>
   
 </div>
 
 
-<p>In a recent web-design project we decided that we want to prevent spam and other leakage of information by hiding away that content (e.g. the mail-address) behind a <a href="https://en.wikipedia.org/wiki/CAPTCHA">CAPTCHA</a>. Now that web-site up until that point was a completly static site (build with <a href="https://gohugo.io/">Hugo</a>) even lacking any scripting. As I am a staunch defender of keeping static content static, I wanted to absolutely avoid having to admister a server and maybe even porting this simple site to some for of dynamic CMS.</p>
-<p>It might not be obvious why using one of the classic CAPTCHAs (hCaptcha, recaptcha) necessitates a server. The CAPTCHA is a little JS widget which will pose the turing-test question to the user and will communicate with the provider (hCaptcha, Google). The provider server-side will check the answer, and send an approve / dis-approve message back to the site where we can wait for it with a JS script. Now the hidden content should appear, but this content not be contained in the site code yet, otherwise it could be read out. Therefore we need a <em>&ldquo;server&rdquo;</em> that we will send the response token from the CAPTCHA to, then will certify the response with the CAPTCHA provider and only then respond with the hidden content which we at that point can insert into the site.</p>
+<p>In a recent web-design project we decided that we want to prevent spam and other leakages of information by hiding away that content (e.g. the mail-address) behind a <a href="https://en.wikipedia.org/wiki/CAPTCHA">CAPTCHA</a>. Now that web-site up until that point was a completely static site (build with <a href="https://gohugo.io/">Hugo</a>) even lacking any scripting. As I am a staunch defender of keeping static content static, I wanted to avoid having to administer a server and maybe even porting this simple site to some for of dynamic CMS.</p>
+<p>It might not be obvious why using one of the classic CAPTCHAs (hCaptcha, recaptcha) necessitates a server. The CAPTCHA is a little JS widget that will pose the turing-test question to the user and will communicate with the provider (hCaptcha, Google). The provider server-side will check the answer, and send an approve / disapprove message back to the site where we can wait for it with a JS script. Now the hidden content should appear, but this content not be contained in the site code yet, otherwise it could be readout. Therefore we need a <em>&ldquo;server&rdquo;</em> that we will send the response token from the CAPTCHA to, then will certify the response with the CAPTCHA provider and only then respond with the hidden content which we at that point can insert into the site.</p>
 <p>Because I know nothing about <em>serverless</em> servers and this seemed like the perfect contained λ like function I implemented it with AWS Lambda and Python. This setup has three parts:</p>
 <ol>
 <li>The lambda function, which takes in a receives a CAPTCHA response token and in case of success returns the hidden content</li>
 <li>The CAPTCHA widget in the site</li>
 <li>A script that sends the token from the widget to out λ-function, waits for the answer and replaces the widget with the hidden content</li>
 </ol>
+<p>Here is a test for the finished script:</p>
 <center class="box">
 <i>Here is a little test with one captcha and two little secrets:</i>
 <div class="secret-email">
@@ -71,34 +74,81 @@
 </div>
 </center>
 <h3 id="the-λ-function">The λ-function</h3>
-<p>Now I thought this kind of code lends itself to Node.js and actually implemented a version of the lambda-function in Node which was pretty convoluted, slow and ugly (I&rsquo;m not a Node/JS programmer). Turns out AWS Lambda Python enviroment are <a href="https://medium.com/the-theam-journey/benchmarking-aws-lambda-runtimes-in-2019-part-ii-50e796d3d11b">acutally faster</a> and the code is way simpler. Our function has to communicate to another server, but this happens not asynchronously (on the lambda server), therefore linear Python code is nice and fine.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">json</span>
+<p>The lambda-function is easily implemented in pure Python. The response has to wait for the CAPTCHA provider anyway so the code can be synchronous. Go on AWS Lambda in the console and create a new function in a Python enviroment. Under the code tab copy this code:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">parse</span><span class="p">,</span> <span class="n">request</span>
 
 <span class="n">VERIFY_URL</span> <span class="o">=</span> <span class="s2">&#34;https://hcaptcha.com/siteverify&#34;</span>
 <span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s2">&#34;0x0000000000000000000000000000000000000000&#34;</span>
 <span class="n">SECRETS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&#34;email&#34;</span><span class="p">:</span> <span class="s2">&#34;my-secret-mail@example.org&#34;</span><span class="p">,</span>
-    <span class="s2">&#34;another-key&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;this&#34;</span><span class="p">:</span> <span class="s2">&#34;could&#34;</span><span class="p">,</span> <span class="s2">&#34;also&#34;</span><span class="p">:</span> <span class="s2">&#34;be an dictionary&#34;</span><span class="p">}</span>
+    <span class="s2">&#34;iban&#34;</span><span class="p">:</span> <span class="s2">&#34;this-is-the-iban&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;email&#34;</span><span class="p">:</span> <span class="s2">&#34;my-secret-mailaddress@example.org&#34;</span><span class="p">,</span>
 <span class="p">}</span>
 
+<span class="k">def</span> <span class="nf">gen_response</span><span class="p">(</span><span class="n">statusCode</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&#34;statusCode&#34;</span><span class="p">:</span> <span class="n">statusCode</span><span class="p">,</span>
+        <span class="s2">&#34;headers&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;Content-Type&#34;</span><span class="p">:</span> <span class="s2">&#34;application/json&#34;</span><span class="p">},</span>
+        <span class="s2">&#34;body&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">body</span><span class="p">),</span>
+    <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="k">if</span> <span class="s2">&#34;headers&#34;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">event</span> <span class="ow">or</span> <span class="s2">&#34;response&#34;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">event</span><span class="p">[</span><span class="s2">&#34;headers&#34;</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&#34;statusCode&#34;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&#34;secrets&#34;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_qs</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s2">&#34;body&#34;</span><span class="p">])</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="s2">&#34;response&#34;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">body</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">gen_response</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
 
-    <span class="n">response</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&#34;headers&#34;</span><span class="p">][</span><span class="s2">&#34;response&#34;</span><span class="p">]</span>
-
-    <span class="n">data</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">({</span><span class="s2">&#34;secret&#34;</span><span class="p">:</span> <span class="n">SECRET_KEY</span><span class="p">,</span> <span class="s2">&#34;response&#34;</span><span class="p">:</span> <span class="n">response</span><span class="p">})</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s2">&#34;response&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">({</span><span class="s2">&#34;secret&#34;</span><span class="p">:</span> <span class="n">SECRET_KEY</span><span class="p">,</span> <span class="s2">&#34;response&#34;</span><span class="p">:</span> <span class="n">token</span><span class="p">})</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
     <span class="n">req</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">VERIFY_URL</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
     <span class="k">with</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
         <span class="n">success</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;utf8&#34;</span><span class="p">))[</span><span class="s2">&#34;success&#34;</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">{</span><span class="s2">&#34;statusCode&#34;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&#34;secrets&#34;</span><span class="p">:</span> <span class="n">SECRETS</span><span class="p">}</span>
+            <span class="k">return</span> <span class="n">gen_response</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">SECRETS</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">{</span><span class="s2">&#34;statusCode&#34;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="s2">&#34;secrets&#34;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}</span>
-</code></pre></div><script src="https://hcaptcha.com/1/api.js" async defer></script>
+            <span class="k">return</span> <span class="n">gen_response</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span>
+</code></pre></div><p>We avoid using <code>requests</code> to avoid dealing with installing dependencies so therefore we implement the POST request to hcaptcha with the <code>urllib</code>. The is is pretty self-explanatory, check for the response token in an incoming event, send it to hcaptcha with the <var>SECRET_KEY</var> and if the response to that is successfull, return the <var>SECRETS</var>.</p>
+<p>The only tricky part was, finding that we have to decode <code>body</code> of the incoming POST request from base64 and url-encoding manually:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">body</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_qs</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s2">&#34;body&#34;</span><span class="p">])</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">))</span>
+</code></pre></div><p>Not really sure why this is not handled automatically.</p>
+<p>To make the lambda-function accessible from the static website you have to create an API in AWS. Go to the API Gateway in the AWS console and create a new API which will give you a public-facing URL.</p>
+<p>Under <em>Route</em> create a new POST route (can be just <var>/</var>). Then under <em>Attach integration</em>, create a new integration of type Lambda, where you can choose your already saved new lambda-function.</p>
+<p>It is a good idea to lock down the public API as much as possible, which you can do under the CORS tab. Here you can restrict the incoming domains (just enter your static site domain) and the request methods (we are only using POST). With that the serverless AWS server part is finished and we work on the static site of things…</p>
+<h3 id="including-the-captcha-widget">Including the CAPTCHA widget</h3>
+<p>We add the hcaptcha widget and the JS API anywhere in the site. The site-key you should have generated previously in your hcaptcha account. The <code>data-callback</code> attribute is the name of the callback function the hcaptcha script is calling after a successfull test.</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span>
+  <span class="na">class</span><span class="o">=</span><span class="s">&#34;h-captcha&#34;</span>
+  <span class="na">data-sitekey</span><span class="o">=</span><span class="s">&#34;10000000-ffff-ffff-ffff-000000000001&#34;</span>
+  <span class="na">data-callback</span><span class="o">=</span><span class="s">&#34;onSuccessfullCaptcha&#34;</span>
+<span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://hcaptcha.com/1/api.js&#34;</span> <span class="na">async</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div><h3 id="processing-the-captcha-response">Processing the CAPTCHA response</h3>
+<p>Here we keep the callback function as simple as possible, but of course in your use-case that might be more involved:</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">captcha_lambda_endpoint</span> <span class="o">=</span> <span class="s2">&#34;https://RANDOM.YOUR-AWS-REGION.amazonaws.com/&#34;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">replaceSecrets</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">secrets</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">secrets</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">root</span> <span class="k">of</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&#34;secret-&#34;</span> <span class="o">+</span> <span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">root</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">secrets</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">onSuccessfullCaptcha</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">XHR</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+  <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="s2">&#34;response=&#34;</span> <span class="o">+</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+  <span class="nx">XHR</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">secrets</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+      <span class="nx">replaceSecrets</span><span class="p">(</span><span class="nx">secrets</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+  <span class="nx">XHR</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&#34;POST&#34;</span><span class="p">,</span> <span class="nx">captcha_lambda_endpoint</span><span class="p">);</span>
+  <span class="nx">XHR</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s2">&#34;application/x-www-form-urlencoded&#34;</span><span class="p">);</span>
+  <span class="nx">XHR</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div><p>Again we avoid using any external libraries and send the POST request with vanilla JS. When the request completes and is succesfull (statusCode of 200) we parse the incoming data with JSON and use the extremely simple <var>replaceSecrets</var> function to replace the contents of all hidden secret elements with their corresponding secrets.</p>
+<p>And that&rsquo;s it! Now you might wanna make this a tad more complicated, e.g. the state of unlocking the secrets would only temporary so you might wanna set a cookie that you can check with the lambda-function. But for now that&rsquo;s it.</p>
+<script src="https://hcaptcha.com/1/api.js" async defer></script>
 <script>
 var captcha_lambda_endpoint = "https://nxmko95l3k.execute-api.eu-central-1.amazonaws.com/morrisfrank";
 var replaceSecrets = function (secrets) {
