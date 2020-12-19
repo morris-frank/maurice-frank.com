@@ -15,7 +15,7 @@ title = "Work Samples"
 > 2020  
 > **Unsupervised musical source separation**  
 > [Maurice Frank](https://scholar.google.com/citations?user=jCHjpIsAAAAJ)  
-> [[Paper](https://raw.githubusercontent.com/morris-frank/thesis-tex/master/main.pdf)] [[Code](https://github.com/morris-frank/unsupervised-source-separation)]  
+> [[Paper](https://raw.githubusercontent.com/morris-frank/thesis-tex/master/Frank_Thesis_Msc.pdf)] [[Code](https://github.com/morris-frank/unsupervised-source-separation)]  
 > A summary and invistigation of recent methods to achieve source separation of musical data unsuspervised (meaning not to use tuples of mixed and unmixed musical examples).  
 > {{< img src="2020_thesis" >}}
 
