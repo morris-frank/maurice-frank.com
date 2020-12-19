@@ -5,7 +5,16 @@
     <link>https://morris-frank.dev/</link>
     <description>Recent content in About me on Morris-Frank</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A serverless captcha for static sites</title>
+      <link>https://morris-frank.dev/captcha/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/captcha/</guid>
+      <description>In a recent web-design project we decided that we want to prevent spam and other leakage of information by hiding away that content (e.g. the mail-address) behind a CAPTCHA. Now that web-site up until that point was a completly static site (build with Hugo) even lacking any scripting. As I am a staunch defender of keeping static content static, I wanted to absolutely avoid having to admister a server and maybe even porting this simple site to some for of dynamic CMS.</description>
+    </item>
+    
     <item>
       <title>Using plots as ticks in PyPlot</title>
       <link>https://morris-frank.dev/plotting-ticks/</link>
