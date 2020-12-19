@@ -35,7 +35,7 @@ title = "Work Samples"
 
 ### Web-design
 
-While I am not a totally seasoned web-designer I have almost a decade of experience in it and also try to bring that to use in good projects that need help. These projects here where mostly bootstraped and are maintained by me:
+While I am not a totally seasoned web-designer I have almost a decade of experience in it and also try to bring that to use in good projects that need help. The pages for these projects here where mostly bootstraped and are maintained by me:
 
 <div class="flex">
     <div class="card">
