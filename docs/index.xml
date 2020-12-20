@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>A serverless captcha for static sites</title>
+      <title>Bitwig controller script tutorial</title>
+      <link>https://morris-frank.dev/bitwig-controller/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/bitwig-controller/</guid>
+      <description>Shotrcuts          Ctrl + Shift + J Console   Ctrl + R Reload the script live while in the console    Functions Utilities          println(string) Print a line in the console   errorln(string) Print a error in the console   showPopupNotification(string) Show a popup in the GUI (not the console)   printMidi(status, key, value) Helper to print a Midi command    Global settings loadAPI(12); host.</description>
+    </item>
+    
+    <item>
+      <title>Serverless captcha for static sites</title>
       <link>https://morris-frank.dev/captcha/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
