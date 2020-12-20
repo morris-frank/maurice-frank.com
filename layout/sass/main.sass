@@ -2,9 +2,25 @@
 
 // Font variables --------------------------------------------------------------
 @font-face
-  font-family: 'Inconsolata'
-  src: url('../Inconsolata-VariableFont_wdth,wght.ttf') format(ttf)
-$font: 'Inconsolata', sans-serif
+  font-family: 'FiraSans'
+  src: url('../FiraSans-Regular.woff2') format(woff2)
+  font-style: normal
+  font-weight: normal
+@font-face
+  font-family: 'FiraSans'
+  src: url('../FiraSans-Italic.woff2') format(woff2)
+  font-style: italic
+@font-face
+  font-family: 'FiraSans'
+  src: url('../FiraSans-SemiBold.woff2') format(woff2)
+  font-style: normal
+  font-weight: bold
+@font-face
+  font-family: 'FantasqueSansMono'
+  src: url('../FantasqueSansMono-Regular.woff2') format(woff2)
+  font-style: italic
+$font: 'FiraSans', sans-serif
+$font-code: 'FantasqueSansMono', monospace
 
 @font-face
   font-family: 'icons'
@@ -41,7 +57,6 @@ html
 
 body
   font-family: $font
-  font-variation-settings: "wght" 600, "wdth" 100
   font-size: 1rem
   line-height: 1.5
   hyphens: auto

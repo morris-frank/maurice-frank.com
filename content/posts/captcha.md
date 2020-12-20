@@ -1,5 +1,5 @@
 +++
-title = "A serverless captcha for static sites"
+title = "Serverless captcha for static sites"
 tags = ["Web"]
 date = "2020-12-15"
 tldr = "Can we include a CAPTCHA in statically generated web-sites to hide content from spammers?"
