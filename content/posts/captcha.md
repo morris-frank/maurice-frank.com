@@ -132,7 +132,7 @@ And that's it! Now you might wanna make this a tad more complicated, e.g. the st
 
 <script src="https://hcaptcha.com/1/api.js" async defer></script>
 <script>
-var captcha_lambda_endpoint = "https://nxmko95l3k.execute-api.eu-central-1.amazonaws.com/morrisfrank";
+var captcha_lambda_endpoint = "https://captcha.morris-frank.dev/morrisfrank";
 var replaceSecrets = function (secrets) {
     for (const key in secrets) {
         for (const root of document.getElementsByClassName("secret-" + key)){
