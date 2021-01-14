@@ -11,7 +11,7 @@
 
     
     
-    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.6073a28796377dadf92a73405b6b894580f8ba0668d55a685bab677e1626d2d6.css">
+    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.063653f7b69ba38002b08396540ee2d5046f9ef2f3f4a05ef9eb53987a5496c3.css">
     <link rel="shortcut icon" type="image/png" href="/icon.png"/>
 
     
@@ -122,7 +122,65 @@
   <span class="p">[</span><span class="s2">&#34;USB Axiom 25 MIDI 1&#34;</span><span class="p">],</span>
   <span class="p">[</span><span class="s2">&#34;USB Axiom MIDI 2&#34;</span><span class="p">]</span>
 <span class="p">);</span>
-</code></pre></div><h3 id="writing-a-bitwig-controller-script">Writing a Bitwig controller script</h3>
+</code></pre></div><h3 id="midi-cheat-sheet">MIDI cheat sheet</h3>
+<table>
+<thead>
+<tr>
+<th>Status (Hex)</th>
+<th>Command</th>
+<th>data1</th>
+<th>data2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x80</td>
+<td>Note-Off</td>
+<td>key</td>
+<td>velocity</td>
+</tr>
+<tr>
+<td>0x90</td>
+<td>Note-on</td>
+<td>key</td>
+<td>velocity</td>
+</tr>
+<tr>
+<td>0xA0</td>
+<td>After-touch</td>
+<td>key</td>
+<td>touch</td>
+</tr>
+<tr>
+<td>0xB0</td>
+<td>Continous controller</td>
+<td>controller</td>
+<td>value</td>
+</tr>
+<tr>
+<td>0xC0</td>
+<td>Patch change</td>
+<td>instrument</td>
+<td></td>
+</tr>
+<tr>
+<td>0xD0</td>
+<td>Channel pressure</td>
+<td>pressure</td>
+<td></td>
+</tr>
+<tr>
+<td>0xE0</td>
+<td>Pich bend</td>
+<td>least sign bits</td>
+<td>most sign bits</td>
+</tr>
+</tbody>
+</table>
+<p><em>Channel pressure vs Poly After-touch</em>: Both of these are after-touch, meaning they start sending after the key press down <em>bottoms out</em>. The polyphonic after-touch sends a key specific touch strength, while the channel pressure sends a global pressure value.</p>
+<h3 id="track-bank">Track Bank</h3>
+<p>A page is a window inside a bank / remote controls.</p>
+<h3 id="writing-a-bitwig-controller-script">Writing a Bitwig controller script</h3>
 <p>This is a write-up on how to write a JavaScript controller script for a simple Midi Controller for Bitwig. I&rsquo;m developing a controller plugin for the <strong>M-Audio Axiom 25</strong> (Mk1 <em>not</em> Mk2). The functionality is pretty similar to other controllers with some keys, pads and knobs but other devices might have more complex functionality for which this tutorial is not enough.</p>
 <p>I learned about the controller scripting from <a href="https://www.youtube.com/watch?v=l4AuiQ8krQc&amp;list=PLqRWeSPiYQ66KBGONBenPv1O3luQCFQR2">Jürgen Moßgrabers video tutorial series</a> on YouTube, so check that out too but I wanted a smaller write-up as reference for myself.</p>
 <h4 id="setting-up-a-new-project">Setting up a new project</h4>
