@@ -24,8 +24,6 @@ def build_frames_from_dir(directory: Path):
             continue
         subprocess.run(["ffmpeg", "-y", "-i", path, "-vframes", "1", "-f", "image2", path.with_suffix('.jpg')])
 
-# build_frames_from_dir(dir_target)
-# exit()
 build_frames_from_dir(dir_originals)
 build_frames_from_dir(dir_origin)
 
@@ -67,3 +65,5 @@ for path in dir_origin.glob("*.jpg"):
     match, distance = find_closest(img)
     print(f"{path.stem}\t->\t{match}\t:{distance}")
     shutil.move(path.with_suffix(".mp4"), dir_target/f"{match}.mp4")
+
+build_frames_from_dir(dir_target)
