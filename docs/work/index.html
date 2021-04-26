@@ -15,6 +15,9 @@
     <link rel="shortcut icon" type="image/png" href="/icon.png"/>
 
     
+    <script async src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js"></script>
+
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha256-tn6hZ2YGDv0w1/DaFL4MiUoXuAVclrtFZs13ch3TB9M=" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha256-1qhJwAgsSPVSSjlQVTewHS49eaoAbOz651dveUANVBI=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/contrib/auto-render/auto-render.js" integrity="sha256-ToeaLm5Kg0eFKmBZfb79N6N/rLmgZxcYhOA7sxMfq3w=" crossorigin="anonymous"></script>
@@ -328,6 +331,8 @@ A reimplementation of the great NSynth Autoencoder for musical notes proposed by
         </div>
     </footer>
 
-    <script async src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js"></script>
+    <script>
+        var lazyLoadInstance = new LazyLoad({});
+    </script>
 </body>
 </html>
