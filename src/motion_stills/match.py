@@ -24,6 +24,8 @@ def build_frames_from_dir(directory: Path):
             continue
         subprocess.run(["ffmpeg", "-y", "-i", path, "-vframes", "1", "-f", "image2", path.with_suffix('.jpg')])
 
+# build_frames_from_dir(dir_target)
+# exit()
 build_frames_from_dir(dir_originals)
 build_frames_from_dir(dir_origin)
 
