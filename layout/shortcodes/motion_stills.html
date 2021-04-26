@@ -1,5 +1,5 @@
 {{ range $.Site.Data.motionstills }}
-<video class="lazy motion_still" width="720" height="540" preload="none" loop onmouseenter="this.play()" onmouseleave="this.pause()" data-poster="{{$.Site.Params.motionstills}}{{ . }}.jpg" data-src="{{$.Site.Params.motionstills}}{{ . }}.mp4">
+<video class="lazy motion_still" height="720" width="540" preload="none" loop onmouseenter="this.play()" onmouseleave="this.pause()" data-poster="{{$.Site.Params.motionstills}}{{ . }}.jpg" data-src="{{$.Site.Params.motionstills}}{{ . }}.mp4">
     <source data-src="{{$.Site.Params.motionstills}}{{ . }}.mp4" type="video/mp4">
 </video>
 {{ end }}
