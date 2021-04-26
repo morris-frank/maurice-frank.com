@@ -20,3 +20,6 @@ posts = "/:filename/"
 [imaging]
   quality = 90
   resampleFilter = "lanczos"
+
+[params]
+  motionstills = "https://motionstill.morris-frank.dev/file/motionstills/"
