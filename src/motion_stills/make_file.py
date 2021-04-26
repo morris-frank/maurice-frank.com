@@ -12,8 +12,8 @@ slug = "motionstills"
 matched = json.load(open(inputf))
 for link in sorted(matched, reverse=True):
     content += f"""
-<video class="motion_still" width="720" height="540" preload="none" loop onmouseenter="this.play()" onmouseleave="this.pause()">
-        <source src="{url}{link}" poster="{url}{link[:-3]}jpg" type="video/mp4">
+<video class="lazy motion_still" width="720" height="540" preload="none" loop onmouseenter="this.play()" onmouseleave="this.pause()">
+        <source data-src="{url}{link}" data-poster="{url}{link[:-3]}jpg" type="video/mp4">
 </video>\n"""
 
 with open(outputf, "w") as fp:

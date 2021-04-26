@@ -14,4 +14,4 @@ jobs:
         run: hugo -d docs --cleanDestinationDir
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Build with hugp
+          commit_message: Build with hugo
