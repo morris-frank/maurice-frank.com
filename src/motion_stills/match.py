@@ -5,7 +5,7 @@ import shutil
 import subprocess
 
 # from torch.nn import functional as F
-from tqdm import tqdm
+from tqdm.auto import tqdm
 import torchvision
 import torch
 print("Finished importing")
@@ -39,29 +39,19 @@ build_frames_from_dir(dir_origin)
 print("Exported frames for input videos")
 
 # Create features of frames
-if path_features.exists(): 
-    with open(path_features, "rb") as fp:
-        dictionary = pickle.load(fp)
-else:
-    dictionary = defaultdict(dict)
-    for path in tqdm(dir_originals.glob("*.jpg"), desc="Building features from originals"):
-        feat, shape = imread(model, path)
-        dictionary[shape][path.stem] = feat
-
-with open(path_features, "wb") as fp:
-    pickle.dump(dictionary, fp)
+dictionary = defaultdict(dict)
+for path in tqdm(dir_originals.glob("*.jpg"), desc="Building features from originals"):
+    feat, shape = imread(model, path)
+    dictionary[shape][path.stem] = feat
 
 # Find NN for movies
 def find_closest(dictionary, feat):
-    d = 1e12
-    c = "UNKNOWN"
-    for name, o in dictionary.items():
-        # _d = F.cosine_similarity(feat, o).mean().item()
-        _d = torch.dist(feat, o)
-        if _d < d:
-            d = _d
-            c = name
-    return c, d
+    min_d = 1e12
+    match = "UNKNOWN"
+    for name, ref in dictionary.items():
+        if (d:=torch.dist(feat, ref) < min_d):
+            min_d, match = d, name
+    return match, d
 
 for path in dir_origin.glob("*.jpg"):
     if not path.with_suffix(".mp4").exists():
