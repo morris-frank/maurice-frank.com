@@ -4,16 +4,7 @@ title: "About me"
 
 <div class="avatar"></div>
 
-Morris is an independent machine learning researcher. He recently graduated from
-the research masters Artificial Intelligence at the Universiteit of
-Amsterdam. He is an expert in deep learning, especially in generative modelling
-even more specifically in models working with sound.
-
-Right now he is woring in the intersection of Bioinformatics and Machine Learning.
-Working with real-world genetic sequencing data means working in noisy enviroments
-looking for incredily weak signals. Hopefully unsupervised representation
-learning and geometric deep learning will give us a new direction of working with
-human genetics codes.
+Hey, there… I am Morris (mʌɽis) and this is my personal homepage.
 
 I am also active member of the [Collegium
 Academicum](https://collegiumacademicum.de) project group. A non-profit company in Heidelberg, Germany where
