@@ -1,5 +1,8 @@
 {{ range $.Site.Data.motionstills }}
+<h2>{{ .year }}</h2>
+{{ range .stills }}
 <video class="lazy motion_still" height="720" width="540" preload="none" loop onmouseenter="this.play()" onmouseleave="this.pause()" data-poster="{{$.Site.Params.motionstills}}{{ . }}.jpg" data-src="{{$.Site.Params.motionstills}}{{ . }}.mp4">
     <source data-src="{{$.Site.Params.motionstills}}{{ . }}.mp4" type="video/mp4">
 </video>
+{{ end }}
 {{ end }}
