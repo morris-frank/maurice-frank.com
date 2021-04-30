@@ -96,11 +96,7 @@ So for an input of the size \\(4\times 1\times 128\\) with a dilation of \\(2\\)
 end up with \\(8\times 1\times 64\\). Or a direct example (\\(2\times 1\times 4\\)):
 
 \\[
-\begin{aligned}
-    x &= \begin{bmatrix}0 & 1 & 2 & 3\\A & B & C & D\end{bmatrix}\\
-    &\Rightarrow\\
-    dilate(x, 2) &= \begin{bmatrix}0 & 2\\A & C\\1 & 3\\B & D\end{bmatrix}
-\end{aligned}
+\begin{align}x &= \begin{bmatrix}0 & 1 & 2 & 3\\\\A & B & C & D\end{bmatrix}\\\\&\Rightarrow\\\\dilate(x, 2) &= \begin{bmatrix}0 & 2\\\\A & C\\\\1 & 3\\\\B & D\end{bmatrix}\end{align}
 \\]
 
 Of course now we have the difficulty that our batch dimension is cluttered with
