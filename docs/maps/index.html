@@ -11,7 +11,7 @@
 
     
     
-    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.6ac7fc165290a0db571c551b16a28a9882a39062d611b3a09e83674f4190a57d.css">
+    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.965531181aa8e9b3af90e3fd2b13b12b1a482f31707bc404021be1c1819d977f.css">
     <link rel="shortcut icon" type="image/png" href="/icon.png"/>
 
     
@@ -24,7 +24,7 @@
         
         
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" integrity="sha256-BPfK9M5v34c2XP6p0cxVz1mUQLst0gTLk0mlc7kuodA=" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js" integrity="sha256-yDc0eil8GjWFKqN1OSzHSVCiuGghTosZCcRje4tj7iQ=" crossorigin="anonymous"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js" integrity="sha256-yDc0eil8GjWFKqN1OSzHSVCiuGghTosZCcRje4tj7iQ=" crossorigin="anonymous"></script>
 
     <title> Maps - Morris-Frank </title>
 </head>
@@ -50,10 +50,9 @@
 
 
 
-<div class="osm">
-    <div id="map"></div>
-</div>
+<div id="map" class="map"></div>
 <script>
+window.addEventListener('load', function() {
     let tileserver = "https://tiles.morris-frank.dev/file/osm-tiles/";
     let layers = {
         "Topology": L.tileLayer(tileserver + 'topo/{z}/{x}/{y}.png',{maxZoom:16}),
@@ -64,7 +63,8 @@
         zoom: 11,
         layers: [layers["Topology"],]
     });
-    L.control.layers(layers).addTo(map);
+    L.control.layers(layers,null,{collapsed:false}).addTo(map);
+  }, false);
 </script>
     </main>
 
