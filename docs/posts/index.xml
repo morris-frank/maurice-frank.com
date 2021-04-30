@@ -77,12 +77,12 @@ The problem Lets say we want to generate sound signals. This might happen in dif
     </item>
     
     <item>
-      <title>Maps</title>
-      <link>https://morris-frank.dev/maps/</link>
+      <title></title>
+      <link>https://morris-frank.dev/image_matching/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://morris-frank.dev/maps/</guid>
-      <description>    let tileserver = &#34;https://tiles.morris-frank.dev/file/osm-tiles/&#34;; let map_topo = L.map(&#39;map_topo&#39;).setView([47.05,12.2], 11); L.tileLayer(tileserver + &#39;topo/{z}/{x}/{y}.png&#39;,{maxZoom:16}).addTo(map_topo); let map_avk = L.map(&#39;map_avk&#39;).setView([47.05,12.2], 11); L.tileLayer(tileserver + &#39;avk/{z}/{x}/{y}.png&#39;,{maxZoom:16}).addTo(map_avk); map_topo.sync(map_avk); map_avk.sync(map_topo); // var map_oac = L.map(&#39;map_oac&#39;).setView([47.05, 12.2], 11); // L.vectorGrid.protobuf(&#34;osm/oac/{z}/{x}/{y}.pbf&#34;, {maxNativeZoom: 14}).addTo(map_oac); </description>
+      <guid>https://morris-frank.dev/image_matching/</guid>
+      <description></description>
     </item>
     
   </channel>
