@@ -52,4 +52,11 @@ While I am not a totally seasoned web-designer I have almost a decade of experie
         </div>
         <a href="https://collegiumacademicum.de">{{< img src="web_ca" >}}</a>
     </div>
+    <div class="card">
+        <div>
+            <h4><a href="/maps">Maps</a></h4>
+            <p>I am running my own web map server with some tile-servers served from B2 over CloudFlare.</p>
+        </div>
+        <a href="/maps">{{< img src="web_maps" >}}</a>
+    </div>
 </div>
