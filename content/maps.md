@@ -3,10 +3,9 @@ title = "Maps"
 +++
 
 
-<div class="osm">
-    <div id="map"></div>
-</div>
+<div id="map" class="map"></div>
 <script>
+window.addEventListener('load', function() {
     let tileserver = "https://tiles.morris-frank.dev/file/osm-tiles/";
     let layers = {
         "Topology": L.tileLayer(tileserver + 'topo/{z}/{x}/{y}.png',{maxZoom:16}),
@@ -17,5 +16,6 @@ title = "Maps"
         zoom: 11,
         layers: [layers["Topology"],]
     });
-    L.control.layers(layers).addTo(map);
+    L.control.layers(layers,null,{collapsed:false}).addTo(map);
+  }, false);
 </script>
