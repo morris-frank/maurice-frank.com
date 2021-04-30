@@ -1,5 +1,5 @@
 +++
-title = "Work Samples"
+title = "Software Projects"
 +++
 
 ### Research
