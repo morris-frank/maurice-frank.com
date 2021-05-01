@@ -347,7 +347,9 @@ compute the compound receptive field size of the complete model we have:</p>
     </footer>
 
     <script>
-        var lazyLoadInstance = new LazyLoad({});
+        window.addEventListener('load', function() {
+            var lazyLoadInstance = new LazyLoad({});
+        }, false);
     </script>
 </body>
 </html>

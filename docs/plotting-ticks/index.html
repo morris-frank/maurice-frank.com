@@ -169,7 +169,9 @@ signals. The outer code looks something like:</p>
     </footer>
 
     <script>
-        var lazyLoadInstance = new LazyLoad({});
+        window.addEventListener('load', function() {
+            var lazyLoadInstance = new LazyLoad({});
+        }, false);
     </script>
 </body>
 </html>

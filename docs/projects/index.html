@@ -380,7 +380,9 @@ A reimplementation of the great NSynth Autoencoder for musical notes proposed by
     </footer>
 
     <script>
-        var lazyLoadInstance = new LazyLoad({});
+        window.addEventListener('load', function() {
+            var lazyLoadInstance = new LazyLoad({});
+        }, false);
     </script>
 </body>
 </html>

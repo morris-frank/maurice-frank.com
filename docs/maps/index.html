@@ -91,7 +91,9 @@ window.addEventListener('load', function() {
     </footer>
 
     <script>
-        var lazyLoadInstance = new LazyLoad({});
+        window.addEventListener('load', function() {
+            var lazyLoadInstance = new LazyLoad({});
+        }, false);
     </script>
 </body>
 </html>

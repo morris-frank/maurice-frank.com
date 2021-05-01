@@ -210,7 +210,9 @@ your <code>xinit.rc</code> so that it is loaded on every boot.</p>
     </footer>
 
     <script>
-        var lazyLoadInstance = new LazyLoad({});
+        window.addEventListener('load', function() {
+            var lazyLoadInstance = new LazyLoad({});
+        }, false);
     </script>
 </body>
 </html>
