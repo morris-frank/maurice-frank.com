@@ -6,6 +6,8 @@ node_modules/
 *.log
 *xdv
 *gz
+*pyc
+*pth
 .DS_Store
 
 resources/
