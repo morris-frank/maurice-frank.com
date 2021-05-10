@@ -28,15 +28,15 @@ model.eval()
 print("Set-Up torch model")
 
 
-def imread(model: torch.Module, path: Path) -> torch.Tensor:
+def imread(model: torch.nn.Module, path: Path) -> torch.Tensor:
     """Reads an image from disks and gets the deep feature representation from the pretrained model."""
     x = torchvision.io.read_image(str(path)).unsqueeze(0) / 256
     x = model.normalize(x)
     x = model.features(x)
-    return x[0, ...].detach(), tuple(x.shape[-2:])
+    return x[0, ...].detach()
 
 
-def build_frames_from_dir(directory: Path):
+def build_frames_from_dir(directory: Path, featurize=False):
     """Extracts the first frame from all videos in a folder."""
     for path in tqdm(directory.glob("*mp4"), desc=f"Export frames {directory}"):
         if path.with_suffix(".jpg").exists():
@@ -56,36 +56,50 @@ def build_frames_from_dir(directory: Path):
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
+        if featurize:
+            torch.save(imread(model, path.with_suffix(".jpg")), path.with_suffix(".p"))
 
 
-build_frames_from_dir(originals)
-build_frames_from_dir(to_match)
+build_frames_from_dir(originals, True)
+build_frames_from_dir(to_match, True)
 print("Exported frames for input videos")
 
 # Create features of frames
-dictionary = defaultdict(dict)
-for path in tqdm(originals.glob("*.jpg"), desc="Building features from originals"):
-    feat, shape = imread(model, path)
-    dictionary[shape][path.stem] = feat
+reference = {p.stem: torch.load(p) for p in originals.glob("*.p")}
+# origis = {p.stem: torch.load(p) for p in to_match.glob("*.p")}
 
 # Find NN for movies
 def find_closest(dictionary, feat):
     min_d = 1e12
     match = "UNKNOWN"
     for name, ref in dictionary.items():
-        if d := torch.dist(feat, ref) < min_d:
+        if (d := torch.dist(feat, ref).item()) < min_d:
             min_d, match = d, name
-    return match, d
+    return match, min_d
 
 
-for path in to_match.glob("*.jpg"):
+for path in to_match.glob("*.p"):
     if not path.with_suffix(".mp4").exists():
         continue
-    feat, shape = imread(model, path)
-    match, distance = find_closest(dictionary[shape], feat)
+    match, distance = find_closest(reference, torch.load(path))
     print(f"{path.stem}\t->\t{match}\t:{distance}")
     while (save_directory / f"{match}.mp4").exists():
         match += "_"
-    shutil.copy(path.with_suffix(".mp4"), save_directory / f"{match}.mp4")
+    save_path = save_directory / f"{match}.mp4"
+    shutil.copy(path.with_suffix(".mp4"), save_path)
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-i",
+            save_path,
+            "-c:v",
+            "libvpx-vp9",
+            "-c:a",
+            "libopus",
+            save_path.with_suffix(".webm"),
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
 
-build_frames_from_dir(save_directory)
+build_frames_from_dir(save_directory, False)
