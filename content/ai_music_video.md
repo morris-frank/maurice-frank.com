@@ -14,45 +14,51 @@ classic [Lucy in the sky](https://en.wikipedia.org/wiki/Lucy_in_the_Sky_with_Dia
 Input here are only the lyrics plus "The Beatles" at the beginning and "The end" at the end. 
 
 <details>
-  <summary>Input Screen-play</summary>
-  <pre>"The Beatles",0 
-"Picture yourself in a boat on a river",6
-"With tangerine trees and marmalade skies",11.6
-"Somebody calls you, you answer quite slowly",18.7
-"A girl with kaleidoscope eyes",24
-"Cellophane flowers of yellow and green",32.2
-"Towering over your head",37.5
-"Look for the girl with the sun in her eyes",42.6
-"And she's gone",46.7
-"Lucy in the sky with diamonds",50
-"Lucy in the sky with diamonds",55
-"Lucy in the sky with diamonds, ahh",60
-"ahhhhhh",66
-"Follow her down to a bridge by a fountain",68.4
-"Where rocking horse people eat marshmallow pies",73.6
-"Everyone smiles as you drift past the flowers",80.4
-"That grow so incredibly high",85.5
-"Newspaper taxis appear on the shore",93.4
-"Waiting to take you away",98
-"Climb in the back with your head in the clouds",103.3
-"And you're gone",107
-"Lucy in the sky with diamonds",110
-"Lucy in the sky with diamonds",115
-"Lucy in the sky with diamonds, ahh",120
-"ahhhhhh",125
-"Picture yourself on a train in a station",129
-"With plasticine porters with looking glass ties",134.2
-"Suddenly someone is there at the turnstile",141
-"The girl with kaleidoscope eyes",146
-"Lucy in the sky with diamonds",154
-"Lucy in the sky with diamonds",159
-"Lucy in the sky with diamonds, ahh",164
-"ahhhhh",168.3
-"Lucy in the sky with diamonds",173.5
-"Lucy in the sky with diamonds",178.5
-"Lucy in the sky with diamonds, ahh",183.5
-"ahhhhhhhh",188.3
-"The End",209</pre>
+<summary>Input Screen-play</summary>
+<pre>
+
+| Text line                                       | cue   |
+| ----------------------------------------------- | ----- |
+| The Beatles                                     | 0     |
+| Picture yourself in a boat on a river           | 6     |
+| With tangerine trees and marmalade skies        | 11.6  |
+| Somebody calls you, you answer quite slowly     | 18.7  |
+| A girl with kaleidoscope eyes                   | 24    |
+| Cellophane flowers of yellow and green          | 32.2  |
+| Towering over your head                         | 37.5  |
+| Look for the girl with the sun in her eyes      | 42.6  |
+| And she's gone                                  | 46.7  |
+| Lucy in the sky with diamonds                   | 50    |
+| Lucy in the sky with diamonds                   | 55    |
+| Lucy in the sky with diamonds, ahh              | 60    |
+| ahhhhhh                                         | 66    |
+| Follow her down to a bridge by a fountain       | 68.4  |
+| Where rocking horse people eat marshmallow pies | 73.6  |
+| Everyone smiles as you drift past the flowers   | 80.4  |
+| That grow so incredibly high                    | 85.5  |
+| Newspaper taxis appear on the shore             | 93.4  |
+| Waiting to take you away                        | 98    |
+| Climb in the back with your head in the clouds  | 103.3 |
+| And you're gone                                 | 107   |
+| Lucy in the sky with diamonds                   | 110   |
+| Lucy in the sky with diamonds                   | 115   |
+| Lucy in the sky with diamonds, ahh              | 120   |
+| ahhhhhh                                         | 125   |
+| Picture yourself on a train in a station        | 129   |
+| With plasticine porters with looking glass ties | 134.2 |
+| Suddenly someone is there at the turnstile      | 141   |
+| The girl with kaleidoscope eyes                 | 146   |
+| Lucy in the sky with diamonds                   | 154   |
+| Lucy in the sky with diamonds                   | 159   |
+| Lucy in the sky with diamonds, ahh              | 164   |
+| ahhhhh                                          | 168.3 |
+| Lucy in the sky with diamonds                   | 173.5 |
+| Lucy in the sky with diamonds                   | 178.5 |
+| Lucy in the sky with diamonds, ahh              | 183.5 |
+| ahhhhhhhh                                       | 188.3 |
+| The End                                         | 209   |
+
+</pre>
 </details>
 
 #### Version 0.2
@@ -60,7 +66,7 @@ Input here are only the lyrics plus "The Beatles" at the beginning and "The end"
 {{< video "lucy_000" >}}
 
 <details>
-    <summary>Sampling strategy</summary>
+<summary>Sampling strategy</summary>
 <pre>
 - Sampled keyframes from VQGAN at 15FPS
 - 100 sampling iterations per keyframe
@@ -76,25 +82,31 @@ short studio version… Making a video for a great 40min live performance of the
 Input here are only the lyrics plus "The Grateful Dead" at the beginning and "The end" at the end. (Notice how the first frames really do look like a Grateful dead cover! The VQGAN really knows everything.)
 
 <details>
-    <summary>Input Screen-play</summary>
-    <pre>"The Grateful dead", 0.0
-"Dark star crashes", 14.8
-"Pouring its light Into ashes", 19.7
-"Reason tatters", 25
-"The forces tear loose From the axis", 30
-"Searchlight casting", 35.3
-"For faults in the Clouds of delusion", 40.1
-"Shall we go", 45.5
-"You and I While we can?", 48.7
-"Through The transitive nightfall Of diamonds", 56
-"Mirror shatters", 80.1
-"In formless reflections Of matter", 84.8
-"Glass hand dissolving To ice petal flowers Revolving", 90
-"Lady in velvet Recedes In the nights of goodbye", 100.6
-"Shall we go", 110.6
-"You and I While we can?", 113.4
-"Through The transitive nightfall Of diamonds", 120
-"The End", 150</pre>
+<summary>Input Screen-play</summary>
+<pre>
+
+| Text line                                            | cue   |
+| ---------------------------------------------------- | ----- |
+| The Grateful dead                                    | 0.0   |
+| Dark star crashes                                    | 14.8  |
+| Pouring its light Into ashes                         | 19.7  |
+| Reason tatters                                       | 25    |
+| The forces tear loose From the axis                  | 30    |
+| Searchlight casting                                  | 35.3  |
+| For faults in the Clouds of delusion                 | 40.1  |
+| Shall we go                                          | 45.5  |
+| You and I While we can?                              | 48.7  |
+| Through The transitive nightfall Of diamonds         | 56    |
+| Mirror shatters                                      | 80.1  |
+| In formless reflections Of matter                    | 84.8  |
+| Glass hand dissolving To ice petal flowers Revolving | 90    |
+| Lady in velvet Recedes In the nights of goodbye      | 100.6 |
+| Shall we go                                          | 110.6 |
+| You and I While we can?                              | 113.4 |
+| Through The transitive nightfall Of diamonds         | 120   |
+| The End                                              | 150   |
+
+</pre>
 </details>
 
 #### Version 0.2
