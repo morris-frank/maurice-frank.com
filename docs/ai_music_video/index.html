@@ -11,7 +11,7 @@
 
     
     
-    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.23283e50c80420146276cb061f96b9a62139e811b789b4b423bc04735c66afdf.css">
+    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.22c9ad6a1039c067c97a289d25f6fb476574b14175d68a41209f22d3bdcc8c1e.css">
     <link rel="shortcut icon" type="image/png" href="/icon.png"/>
 
     
@@ -34,10 +34,10 @@
         <h1>
             <a href="https://morris-frank.dev">Morris-Frank</a>
         </h1>
-        <a href="https://morris-frank.dev/blog">blog</a>
         <a href="https://morris-frank.dev/art">art</a>
+        <a href="https://morris-frank.dev/blog">blog</a>
         <a href="https://morris-frank.dev/projects">projects</a>
-        <a href="https://raw.githubusercontent.com/morris-frank/resume/master/Frank_cv.pdf">cv</a>
+        <a href="https://github.com/morris-frank/resume/blob/master/Frank_cv.pdf">cv</a>
         <a href="https://morris-frank.dev/services">hire me</a>
     </nav>
 
@@ -52,12 +52,13 @@
 
 
 
-<h3 id="lucy-in-the-sky-with-diamonds">Lucy in the Sky with diamonds</h3>
+<p>Let&rsquo;s start right away with some results from the setup.</p>
+<h3 id="lucy-in-the-sky-with-diamonds">Lucy in the Sky with Diamonds</h3>
 <p>As all the videos are pretty intense and inconsistent, I think psychdelic rock lends itself quite naturally to this kind of video… What better than the
 classic <a href="https://en.wikipedia.org/wiki/Lucy_in_the_Sky_with_Diamonds">Lucy in the sky</a> from The Beatle&rsquo;s Sgt. Pepper album.</p>
 <p>Input here are only the lyrics plus &ldquo;The Beatles&rdquo; at the beginning and &ldquo;The end&rdquo; at the end.</p>
 <details>
-  <summary>Input text</summary>
+  <summary>Input Screen-play</summary>
   <pre>"The Beatles",0 
 "Picture yourself in a boat on a river",6
 "With tangerine trees and marmalade skies",11.6
@@ -97,21 +98,24 @@ classic <a href="https://en.wikipedia.org/wiki/Lucy_in_the_Sky_with_Diamonds">Lu
 "ahhhhhhhh",188.3
 "The End",209</pre>
 </details>
-<h4 id="version-02">version 0.2</h4>
+<h4 id="version-02">Version 0.2</h4>
 <video controls poster="https://media.morris-frank.dev/file/morris-media/lucy_000.jpg" src="https://media.morris-frank.dev/file/morris-media/lucy_000.mp4">
     <source src="https://media.morris-frank.dev/file/morris-media/lucy_000.mp4" type="video/mp4">
 </video>
-<ul>
-<li>Sampled keyframes from VQGAN at 15FPS</li>
-<li>100 sampling iterations per keyframe</li>
-<li>Interpolation between keyframe latents in latent space at 60FPS</li>
-</ul>
+<details>
+    <summary>Sampling strategy</summary>
+<pre>
+- Sampled keyframes from VQGAN at 15FPS
+- 100 sampling iterations per keyframe
+- Interpolation between keyframe latents in latent space at 60FPS
+</pre>
+</details>
 <h3 id="dark-star">Dark Star</h3>
 <p><a href="https://en.wikipedia.org/wiki/Dark_Star_(song)">Dark Star</a> by the <a href="https://en.wikipedia.org/wiki/Grateful_Dead">Grateful Dead</a> with the the famously elusive lyrics of <a href="https://en.wikipedia.org/wiki/Robert_Hunter_(lyricist)">Robert Hunter</a>. This is the
 short studio version… Making a video for a great 40min live performance of the song would be too expensive ;)</p>
 <p>Input here are only the lyrics plus &ldquo;The Grateful Dead&rdquo; at the beginning and &ldquo;The end&rdquo; at the end. (Notice how the first frames really do look like a Grateful dead cover! The VQGAN really knows everything.)</p>
 <details>
-    <summary>Input text</summary>
+    <summary>Input Screen-play</summary>
     <pre>"The Grateful dead", 0.0
 "Dark star crashes", 14.8
 "Pouring its light Into ashes", 19.7
@@ -131,24 +135,76 @@ short studio version… Making a video for a great 40min live performance of the
 "Through The transitive nightfall Of diamonds", 120
 "The End", 150</pre>
 </details>
-<h4 id="version-02-1">version 0.2</h4>
+<h4 id="version-02-1">Version 0.2</h4>
+<details>
+    <summary>Sampling strategy</summary>
+<pre>
+- Sampled keyframes from VQGAN at 15FPS
+- 100 sampling iterations per keyframe
+- Interpolation between keyframe latents in latent space at 60FPS
+</pre>
+</details>
 <video controls poster="https://media.morris-frank.dev/file/morris-media/dark_star_001.jpg" src="https://media.morris-frank.dev/file/morris-media/dark_star_001.mp4">
     <source src="https://media.morris-frank.dev/file/morris-media/dark_star_001.mp4" type="video/mp4">
 </video>
-<ul>
-<li>Sampled keyframes from VQGAN at 15FPS</li>
-<li>100 sampling iterations per keyframe</li>
-<li>Interpolation between keyframe latents in latent space at 60FPS</li>
-</ul>
-<h4 id="version-01">version 0.1</h4>
+<h4 id="version-01">Version 0.1</h4>
+<details>
+    <summary>Sampling strategy</summary>
+<pre>
+- Sampled keyframes from VQGAN at 15FPS
+- 100 sampling iterations per keyframe
+- Interpolation to 30FPS with ffmpeg 
+</pre>
+</details>
 <video controls poster="https://media.morris-frank.dev/file/morris-media/dark_star_000_with_audio.jpg" src="https://media.morris-frank.dev/file/morris-media/dark_star_000_with_audio.mp4">
     <source src="https://media.morris-frank.dev/file/morris-media/dark_star_000_with_audio.mp4" type="video/mp4">
 </video>
-<ul>
-<li>Sampled keyframes from VQGAN at 15FPS</li>
-<li>100 sampling iterations per keyframe</li>
-<li>Interpolation to 30FPS with ffmpeg</li>
-</ul>
+<h3 id="implementation">Implementation</h3>
+<p>wip</p>
+<h3 id="references">References</h3>
+<ol class="references">
+    <li>
+        <cite id="esser2020taming">
+            <span class="title">Taming Transformers for High-Resolution Image Synthesis</span>
+            <br>
+            <span>Patrick Esser and Robin Rombach and Björn Ommer</span>
+            <br>
+            <a href="https://arxiv.org/abs/2012.09841">arXiv:2012.09841</a>
+        </cite>
+    </li>
+    <li>
+        <cite id="radford2021learning">
+            <span class="title">Learning transferable visual models from natural language supervision</span>
+            <br>
+            <span>Radford, Alec and Kim, Jong Wook and Hallacy, Chris and Ramesh, Aditya and Goh, Gabriel and Agarwal, Sandhini and Sastry, Girish and Askell, Amanda and Mishkin, Pamela and Clark, Jack and others</span>
+            <br>
+            <a href="https://arxiv.org/abs/2103.00020">arXiv:2103.00020</a>
+        </cite>
+    </li>
+    <li>
+        <cite id="advadnoun">
+            <span class="title">LatentVisions</span>
+            <br>
+            <span>@advadnoun</span>
+            <br>
+            <a href="https://www.patreon.com/patronizeme/">patronizeme</a>
+        </cite>
+    </li>
+    <li>
+        <cite id="beatles1967lucy">
+            <span class="title">Lucy in the Sky with Diamonds</span>
+            <br>
+            <span><i>Performed by:</i> The Beatles, <i>Lyrics by:</i> John Lennon and Paul McCartney</span>
+        </cite>
+    </li>
+    <li>
+        <cite id="dead1968dark">
+            <span class="title">Dark Star</span>
+            <br>
+            <span><i>Performed by:</i> The Gratful Dead, <i>Lyrics by:</i> Robert Hunter</span>
+        </cite>
+    </li>
+</ol>
 
     </main>
 

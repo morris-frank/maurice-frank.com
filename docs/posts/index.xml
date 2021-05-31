@@ -76,14 +76,5 @@ Things to add  Packages you always include. For example which fonts to use. In a
 The problem Lets say we want to generate sound signals. This might happen in different settings. We might have music notes + a instrument and want to generate their sound \(w(\mathrm{note}, \mathrm{instrument}) = \mathrm{sound}\), or we have a text and want to generate the corresponding speech \(w(\mathrm{text}) = \mathrm{sound}\) or maybe we already have a sound signal, but it is noisy and we want to remove the noise \(w(\mathrm{noisy\ sound}) = \mathrm{sound}\).</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://morris-frank.dev/image_matching/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/image_matching/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>
