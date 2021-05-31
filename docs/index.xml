@@ -91,9 +91,7 @@ The problem Lets say we want to generate sound signals. This might happen in dif
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/art/</guid>
-      <description>Video projects Still in motion  And not-endless endless stream of images in motion through space and time.   Music I am learning to make amateurish music. Currently on a mission of one track per week in Bitwig (the only professional DAW running on Linux).
-See here as it happens:
- </description>
+      <description>Video projects Making music videos with AI  Iteratively sampling from a generative image model to generate videos conditioned on the lyrics of songs.   Still in motion  A non-endless endless stream of images in motion through space and time.   Music I am learning to make amateurish music. Currently on a mission of one track per week in Bitwig (the only professional DAW running on Linux).</description>
     </item>
     
     <item>
@@ -116,21 +114,23 @@ As an experienced researcher as well as seasoned industry developer I can help y
     </item>
     
     <item>
+      <title>Making music videos with AI</title>
+      <link>https://morris-frank.dev/latents/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/latents/</guid>
+      <description>Lucy in the Sky with diamonds As all the videos are pretty intense and inconsistent, I think psychdelic rock lends itself quite naturally to this kind of video… What better than the classic Lucy in the sky from The Beatle&amp;rsquo;s Sgt. Pepper album.
+Input here are only the lyrics plus &amp;ldquo;The Beatles&amp;rdquo; at the beginning and &amp;ldquo;The end&amp;rdquo; at the end.
+ Input text &#34;The Beatles&#34;,0 &#34;Picture yourself in a boat on a river&#34;</description>
+    </item>
+    
+    <item>
       <title>Maps</title>
       <link>https://morris-frank.dev/maps/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/maps/</guid>
       <description>  window.addEventListener(&#39;load&#39;, function() { let tileserver = &#34;https://tiles.morris-frank.dev/file/osm-tiles/&#34;; let layers = { &#34;Topology&#34;: L.tileLayer(tileserver + &#39;topo/{z}/{x}/{y}.png&#39;,{maxZoom:16}), &#34;Alpine club&#34;: L.tileLayer(tileserver + &#39;avk/{z}/{x}/{y}.png&#39;,{maxZoom:16}) }; let map = L.map(&#39;map&#39;, { center: [47.05, 12.2], zoom: 11, layers: [layers[&#34;Topology&#34;],] }); L.control.layers(layers,null,{collapsed:false}).addTo(map); }, false); </description>
-    </item>
-    
-    <item>
-      <title>Sampling music videos from latent space</title>
-      <link>https://morris-frank.dev/latents/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/latents/</guid>
-      <description>Dark Star   Sampled keyframes from VQGAN at 15FPS 100 sampling iterations per keyframe Interpolation to 30FPS with ffmpeg    Sampled keyframes from VQGAN at 15FPS 100 sampling iterations per keyframe Interpolation between keyframe latents in latent space at 60FPS  Lucy in the Sky with diamonds   Sampled keyframes from VQGAN at 15FPS 100 sampling iterations per keyframe Interpolation between keyframe latents in latent space at 60FPS  </description>
     </item>
     
     <item>
