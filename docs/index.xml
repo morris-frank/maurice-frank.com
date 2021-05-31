@@ -125,6 +125,15 @@ As an experienced researcher as well as seasoned industry developer I can help y
     </item>
     
     <item>
+      <title>Sampling music videos from latent space</title>
+      <link>https://morris-frank.dev/latents/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/latents/</guid>
+      <description>Dark Star   Sampled keyframes from VQGAN at 15FPS 100 sampling iterations per keyframe Interpolation to 30FPS with ffmpeg    Sampled keyframes from VQGAN at 15FPS 100 sampling iterations per keyframe Interpolation between keyframe latents in latent space at 60FPS  Lucy in the Sky with diamonds   Sampled keyframes from VQGAN at 15FPS 100 sampling iterations per keyframe Interpolation between keyframe latents in latent space at 60FPS  </description>
+    </item>
+    
+    <item>
       <title>Software Projects</title>
       <link>https://morris-frank.dev/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
