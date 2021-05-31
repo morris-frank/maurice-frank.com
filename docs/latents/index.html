@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" integrity="sha256-BPfK9M5v34c2XP6p0cxVz1mUQLst0gTLk0mlc7kuodA=" crossorigin="anonymous">
     <script async src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js" integrity="sha256-yDc0eil8GjWFKqN1OSzHSVCiuGghTosZCcRje4tj7iQ=" crossorigin="anonymous"></script>
 
-    <title> Sampling music videos from latent space - Morris-Frank </title>
+    <title> Making music videos with AI - Morris-Frank </title>
 </head>
 
 <body>
@@ -42,25 +42,96 @@
     </nav>
 
     <main class="center">
-<h2>Sampling music videos from latent space</h2>
+<h2>Making music videos with AI</h2>
 
 
-<p>Sampling music videos from latent space</p>
+<p>Iteratively sampling from a generative image model to generate videos conditioned on the lyrics of songs.</p>
 
 
 <hr/>
 
 
 
-<h3 id="dark-star">Dark Star</h3>
-<video controls poster="https://media.morris-frank.dev/file/morris-media/dark_star_000_with_audio.jpg" src="https://media.morris-frank.dev/file/morris-media/dark_star_000_with_audio.mp4">
-    <source src="https://media.morris-frank.dev/file/morris-media/dark_star_000_with_audio.mp4" type="video/mp4">
+<h3 id="lucy-in-the-sky-with-diamonds">Lucy in the Sky with diamonds</h3>
+<p>As all the videos are pretty intense and inconsistent, I think psychdelic rock lends itself quite naturally to this kind of video… What better than the
+classic <a href="https://en.wikipedia.org/wiki/Lucy_in_the_Sky_with_Diamonds">Lucy in the sky</a> from The Beatle&rsquo;s Sgt. Pepper album.</p>
+<p>Input here are only the lyrics plus &ldquo;The Beatles&rdquo; at the beginning and &ldquo;The end&rdquo; at the end.</p>
+<details>
+  <summary>Input text</summary>
+  <pre>"The Beatles",0 
+"Picture yourself in a boat on a river",6
+"With tangerine trees and marmalade skies",11.6
+"Somebody calls you, you answer quite slowly",18.7
+"A girl with kaleidoscope eyes",24
+"Cellophane flowers of yellow and green",32.2
+"Towering over your head",37.5
+"Look for the girl with the sun in her eyes",42.6
+"And she's gone",46.7
+"Lucy in the sky with diamonds",50
+"Lucy in the sky with diamonds",55
+"Lucy in the sky with diamonds, ahh",60
+"ahhhhhh",66
+"Follow her down to a bridge by a fountain",68.4
+"Where rocking horse people eat marshmallow pies",73.6
+"Everyone smiles as you drift past the flowers",80.4
+"That grow so incredibly high",85.5
+"Newspaper taxis appear on the shore",93.4
+"Waiting to take you away",98
+"Climb in the back with your head in the clouds",103.3
+"And you're gone",107
+"Lucy in the sky with diamonds",110
+"Lucy in the sky with diamonds",115
+"Lucy in the sky with diamonds, ahh",120
+"ahhhhhh",125
+"Picture yourself on a train in a station",129
+"With plasticine porters with looking glass ties",134.2
+"Suddenly someone is there at the turnstile",141
+"The girl with kaleidoscope eyes",146
+"Lucy in the sky with diamonds",154
+"Lucy in the sky with diamonds",159
+"Lucy in the sky with diamonds, ahh",164
+"ahhhhh",168.3
+"Lucy in the sky with diamonds",173.5
+"Lucy in the sky with diamonds",178.5
+"Lucy in the sky with diamonds, ahh",183.5
+"ahhhhhhhh",188.3
+"The End",209</pre>
+</details>
+<h4 id="version-02">version 0.2</h4>
+<video controls poster="https://media.morris-frank.dev/file/morris-media/lucy_000_with_audio.jpg" src="https://media.morris-frank.dev/file/morris-media/lucy_000_with_audio.mp4">
+    <source src="https://media.morris-frank.dev/file/morris-media/lucy_000_with_audio.mp4" type="video/mp4">
 </video>
 <ul>
 <li>Sampled keyframes from VQGAN at 15FPS</li>
 <li>100 sampling iterations per keyframe</li>
-<li>Interpolation to 30FPS with ffmpeg</li>
+<li>Interpolation between keyframe latents in latent space at 60FPS</li>
 </ul>
+<h3 id="dark-star">Dark Star</h3>
+<p><a href="https://en.wikipedia.org/wiki/Dark_Star_(song)">Dark Star</a> by the <a href="https://en.wikipedia.org/wiki/Grateful_Dead">Grateful Dead</a> with the the famously elusive lyrics of <a href="https://en.wikipedia.org/wiki/Robert_Hunter_(lyricist)">Robert Hunter</a>. This is the
+short studio version… Making a video for a great 40min live performance of the song would be too expensive ;)</p>
+<p>Input here are only the lyrics plus &ldquo;The Grateful Dead&rdquo; at the beginning and &ldquo;The end&rdquo; at the end. (Notice how the first frames really do look like a Grateful dead cover! The VQGAN really knows everything.)</p>
+<details>
+    <summary>Input text</summary>
+    <pre>"The Grateful dead", 0.0
+"Dark star crashes", 14.8
+"Pouring its light Into ashes", 19.7
+"Reason tatters", 25
+"The forces tear loose From the axis", 30
+"Searchlight casting", 35.3
+"For faults in the Clouds of delusion", 40.1
+"Shall we go", 45.5
+"You and I While we can?", 48.7
+"Through The transitive nightfall Of diamonds", 56
+"Mirror shatters", 80.1
+"In formless reflections Of matter", 84.8
+"Glass hand dissolving To ice petal flowers Revolving", 90
+"Lady in velvet Recedes In the nights of goodbye", 100.6
+"Shall we go", 110.6
+"You and I While we can?", 113.4
+"Through The transitive nightfall Of diamonds", 120
+"The End", 150</pre>
+</details>
+<h4 id="version-02-1">version 0.2</h4>
 <video controls poster="https://media.morris-frank.dev/file/morris-media/dark_star_001_with_audio.jpg" src="https://media.morris-frank.dev/file/morris-media/dark_star_001_with_audio.mp4">
     <source src="https://media.morris-frank.dev/file/morris-media/dark_star_001_with_audio.mp4" type="video/mp4">
 </video>
@@ -69,14 +140,14 @@
 <li>100 sampling iterations per keyframe</li>
 <li>Interpolation between keyframe latents in latent space at 60FPS</li>
 </ul>
-<h3 id="lucy-in-the-sky-with-diamonds">Lucy in the Sky with diamonds</h3>
-<video controls poster="https://media.morris-frank.dev/file/morris-media/lucy_000_with_audio.jpg" src="https://media.morris-frank.dev/file/morris-media/lucy_000_with_audio.mp4">
-    <source src="https://media.morris-frank.dev/file/morris-media/lucy_000_with_audio.mp4" type="video/mp4">
+<h4 id="version-01">version 0.1</h4>
+<video controls poster="https://media.morris-frank.dev/file/morris-media/dark_star_000_with_audio.jpg" src="https://media.morris-frank.dev/file/morris-media/dark_star_000_with_audio.mp4">
+    <source src="https://media.morris-frank.dev/file/morris-media/dark_star_000_with_audio.mp4" type="video/mp4">
 </video>
 <ul>
 <li>Sampled keyframes from VQGAN at 15FPS</li>
 <li>100 sampling iterations per keyframe</li>
-<li>Interpolation between keyframe latents in latent space at 60FPS</li>
+<li>Interpolation to 30FPS with ffmpeg</li>
 </ul>
 
     </main>
