@@ -4,7 +4,9 @@ slug = "ai_music_video"
 tldr =  "Iteratively sampling from a generative image model to generate videos conditioned on the lyrics of songs."
 +++
 
-### Lucy in the Sky with diamonds
+Let's start right away with some results from the setup.
+
+### Lucy in the Sky with Diamonds
 
 As all the videos are pretty intense and inconsistent, I think psychdelic rock lends itself quite naturally to this kind of video… What better than the
 classic [Lucy in the sky](https://en.wikipedia.org/wiki/Lucy_in_the_Sky_with_Diamonds) from The Beatle's Sgt. Pepper album.
@@ -12,7 +14,7 @@ classic [Lucy in the sky](https://en.wikipedia.org/wiki/Lucy_in_the_Sky_with_Dia
 Input here are only the lyrics plus "The Beatles" at the beginning and "The end" at the end. 
 
 <details>
-  <summary>Input text</summary>
+  <summary>Input Screen-play</summary>
   <pre>"The Beatles",0 
 "Picture yourself in a boat on a river",6
 "With tangerine trees and marmalade skies",11.6
@@ -53,13 +55,18 @@ Input here are only the lyrics plus "The Beatles" at the beginning and "The end"
 "The End",209</pre>
 </details>
 
-#### version 0.2
+#### Version 0.2
 
 {{< video "lucy_000" >}}
 
+<details>
+    <summary>Sampling strategy</summary>
+<pre>
 - Sampled keyframes from VQGAN at 15FPS
 - 100 sampling iterations per keyframe
 - Interpolation between keyframe latents in latent space at 60FPS
+</pre>
+</details>
 
 ### Dark Star
 
@@ -69,7 +76,7 @@ short studio version… Making a video for a great 40min live performance of the
 Input here are only the lyrics plus "The Grateful Dead" at the beginning and "The end" at the end. (Notice how the first frames really do look like a Grateful dead cover! The VQGAN really knows everything.)
 
 <details>
-    <summary>Input text</summary>
+    <summary>Input Screen-play</summary>
     <pre>"The Grateful dead", 0.0
 "Dark star crashes", 14.8
 "Pouring its light Into ashes", 19.7
@@ -90,16 +97,76 @@ Input here are only the lyrics plus "The Grateful Dead" at the beginning and "Th
 "The End", 150</pre>
 </details>
 
-#### version 0.2
-{{< video "dark_star_001" >}}
-
+#### Version 0.2
+<details>
+    <summary>Sampling strategy</summary>
+<pre>
 - Sampled keyframes from VQGAN at 15FPS
 - 100 sampling iterations per keyframe
 - Interpolation between keyframe latents in latent space at 60FPS
+</pre>
+</details>
 
-#### version 0.1
-{{< video "dark_star_000_with_audio" >}}
+{{< video "dark_star_001" >}}
 
+#### Version 0.1
+<details>
+    <summary>Sampling strategy</summary>
+<pre>
 - Sampled keyframes from VQGAN at 15FPS
 - 100 sampling iterations per keyframe
 - Interpolation to 30FPS with ffmpeg 
+</pre>
+</details>
+
+{{< video "dark_star_000_with_audio" >}}
+
+### Implementation
+
+wip
+
+### References
+<ol class="references">
+    <li>
+        <cite id="esser2020taming">
+            <span class="title">Taming Transformers for High-Resolution Image Synthesis</span>
+            <br>
+            <span>Patrick Esser and Robin Rombach and Björn Ommer</span>
+            <br>
+            <a href="https://arxiv.org/abs/2012.09841">arXiv:2012.09841</a>
+        </cite>
+    </li>
+    <li>
+        <cite id="radford2021learning">
+            <span class="title">Learning transferable visual models from natural language supervision</span>
+            <br>
+            <span>Radford, Alec and Kim, Jong Wook and Hallacy, Chris and Ramesh, Aditya and Goh, Gabriel and Agarwal, Sandhini and Sastry, Girish and Askell, Amanda and Mishkin, Pamela and Clark, Jack and others</span>
+            <br>
+            <a href="https://arxiv.org/abs/2103.00020">arXiv:2103.00020</a>
+        </cite>
+    </li>
+    <li>
+        <cite id="advadnoun">
+            <span class="title">LatentVisions</span>
+            <br>
+            <span>@advadnoun</span>
+            <br>
+            <a href="https://www.patreon.com/patronizeme/">patronizeme</a>
+        </cite>
+    </li>
+    <li>
+        <cite id="beatles1967lucy">
+            <span class="title">Lucy in the Sky with Diamonds</span>
+            <br>
+            <span><i>Performed by:</i> The Beatles, <i>Lyrics by:</i> John Lennon and Paul McCartney</span>
+        </cite>
+    </li>
+    <li>
+        <cite id="dead1968dark">
+            <span class="title">Dark Star</span>
+            <br>
+            <span><i>Performed by:</i> The Gratful Dead, <i>Lyrics by:</i> Robert Hunter</span>
+        </cite>
+    </li>
+</ol>
+
