@@ -4,7 +4,7 @@ title: "Art projects"
 
 ### Video projects
 
-{{< listing "/latents" >}}
+{{< listing "/ai_music_video" >}}
 
 {{< listing "/motionstills" >}}
 
