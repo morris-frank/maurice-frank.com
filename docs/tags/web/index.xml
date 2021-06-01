@@ -12,7 +12,7 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/captcha/</guid>
-      <description>In a recent web-design project we decided that we want to prevent spam and other leakages of information by hiding away that content (e.g. the mail-address) behind a CAPTCHA. Now that web-site up until that point was a completely static site (build with Hugo) even lacking any scripting. As I am a staunch defender of keeping static content static, I wanted to avoid having to administer a server and maybe even porting this simple site to some for of dynamic CMS.</description>
+      <description>In a recent web-design project we decided that we want to prevent spam and other leakages of information by hiding away that content (e.g. the mail-address) behind a CAPTCHA. Now that web-site up until that point was a completely static site (build with Hugo) even lacking any scripting. As I am a staunch defender of keeping static content static, I wanted to avoid having to administer a server and maybe even porting this simple site to some form of dynamic CMS.</description>
     </item>
     
   </channel>
