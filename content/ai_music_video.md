@@ -6,6 +6,7 @@ tldr =  "Iteratively sampling from a generative image model to generate videos c
 
 Let's start right away with some results from the setup.
 
+
 ### Lucy in the Sky with Diamonds
 
 As all the videos are pretty intense and inconsistent, I think psychdelic rock lends itself quite naturally to this kind of video… What better than the
@@ -71,6 +72,54 @@ Input here are only the lyrics plus "The Beatles" at the beginning and "The end"
 - Sampled keyframes from VQGAN at 15FPS
 - 100 sampling iterations per keyframe
 - Interpolation between keyframe latents in latent space at 60FPS
+</pre>
+</details>
+
+
+### White Rabbit
+
+<details>
+<summary>Input Screen-play</summary>
+<pre>
+
+| Text line                                                               | cue |
+| ----------------------------------------------------------------------- | --- |
+| The rock band jefferson airplane is playing                             | 0   |
+| Grace Slick singing intp a microphone                                   | 7   |
+| One pill makes you larger                                               | 15  |
+| And one pill makes you small                                            | 34  |
+| Mother is giving Alice a pill                                           | 55  |
+| There is Alice in Wonderland. She is ten feet tall                      | 43  |
+| Alice in Wonderland is chasing a rabbit                                 | 56  |
+| The girl is falling through a hole                                      | 60  |
+| a hookah smoking caterpillar, a caterpillar smoking a shisha            | 65  |
+| the caterpillar is calling with the phone                               | 70  |
+| Alice in wonderland is becoming small                                   | 75  |
+| Men are standing on a chessboard. A knight is standing on a chessboard. | 85  |
+| The knight is lifting his arm. The knight is giving directions.         | 88  |
+| The girl is eating a mushroom. There is a weird kind of mushroom.       | 93  |
+| The girl is thinking really slow.                                       | 96  |
+| Alice in Wonderland                                                     | 101 |
+| When logic and proportion have fallen sloppy dead                       | 110 |
+| The white knight is talking backward                                    | 120 |
+| The red queen. The red queen is off with her head.                      | 123 |
+| There is a dormouse. A kind of mouse.                                   | 129 |
+| Feed your head, feed your head, feed your head                          | 135 |
+| Alice in Wonderland                                                     | 150 |
+
+</pre>
+</details>
+
+#### Version 0.3
+
+{{< video "white_rabbit_000" >}}
+
+<details>
+<summary>Sampling strategy</summary>
+<pre>
+- Sampled only one key-frame for each text, each 5.000 iterations each
+- Interpolation at 60 FPS in latent space
+- Added low-freq noise bias in latent space
 </pre>
 </details>
 
