@@ -45,6 +45,15 @@ def plot_data(*signals: torch.Tensor): ... The organization of those plots I can
     </item>
     
     <item>
+      <title>Match corresponding </title>
+      <link>https://morris-frank.dev/image-matching/</link>
+      <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/image-matching/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Personalize your keyboard layout</title>
       <link>https://morris-frank.dev/keymap/</link>
       <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
@@ -74,6 +83,15 @@ Things to add  Packages you always include. For example which fonts to use. In a
       <guid>https://morris-frank.dev/wavenet/</guid>
       <description>This guide is geared towards readers with a background in modern deep learning.
 The problem Lets say we want to generate sound signals. This might happen in different settings. We might have music notes + a instrument and want to generate their sound \(w(\mathrm{note}, \mathrm{instrument}) = \mathrm{sound}\), or we have a text and want to generate the corresponding speech \(w(\mathrm{text}) = \mathrm{sound}\) or maybe we already have a sound signal, but it is noisy and we want to remove the noise \(w(\mathrm{noisy\ sound}) = \mathrm{sound}\).</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://morris-frank.dev/python-snippets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/python-snippets/</guid>
+      <description>for first_level in filter(Path.is_dir, Path(&amp;#34;.&amp;#34;).iterdir()): for second_level in filter(Path.is_dir, first_level.iterdir()): process_dir(second_level) for folder in folders: for path in paths: if path.exists() break else: print(&amp;#34;No path found&amp;#34;) continue </description>
     </item>
     
     <item>
@@ -148,7 +166,7 @@ Maurice Frank</description>
       
       <guid>https://morris-frank.dev/motionstills/</guid>
       <description>I am really in love with an app made @ Google Research called MotionStills. It takes little videos that can be stabilized with some quite involved CV algorithm it seems… And the app is super slim… I assume Google will kill it in the future but until then it is super fun to use.
-2021                                                           2021 2020                                                                        2020 2019                                                                       2019 2018                                                                                                              2018 </description>
+2021                                                                                 2021 2020                                                                        2020 2019                                                                       2019 2018                                                                                                              2018 </description>
     </item>
     
   </channel>
