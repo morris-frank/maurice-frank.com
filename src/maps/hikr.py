@@ -1,7 +1,6 @@
-from multiprocessing import Pool
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
-from tqdm import trange, tqdm
+from typing import Dict, List
+from tqdm import trange
 from bs4 import BeautifulSoup
 import requests
 from rich import print
@@ -12,14 +11,10 @@ import re
 
 
 # Settings ---------------------------------------------------------------------
-url = "https://www.hikr.org/filter.php?skip=3000&act=filter&a=alp&ai=1&aa=4"
-
-user: str = "abenteurer"
-max_page: int = 760
-
-gpx_file: Path = f"../../content/maps/{user}_hikr_{{difficulty}}.gpx"
-cache_file: Path = Path(f"../../content/maps/{user}_hikr.yaml")
-# ------------------------------------------------------------------------------
+pages = [
+    ("bergrebell", "https://www.hikr.org/user/{user}/tour/?skip={skip}", 760),
+    ("hikr", "https://www.hikr.org/filter.php?skip={skip}&act=filter&a=alp&ai=1&aa=4", 3000),
+]
 
 diff_titles = {
     "Wandern Schwierigkeit": "hiking",
@@ -28,6 +23,7 @@ diff_titles = {
     "Klettersteig Schwierigkeit": "via-ferrata",
     "Ski Schwierigkeit": "ski",
 }
+# ------------------------------------------------------------------------------
 
 
 def dms2dec(dms_str: str) -> float:
@@ -41,18 +37,6 @@ def dms2dec(dms_str: str) -> float:
     second += "." + frac_seconds
     return sign * (int(degree) + float(minute) / 60 + float(second) / 3600)
 
-def cache_entry_list(user: str, max_page: int) -> List[Dict[str, str]]:
-    entries = []
-    for skip in trange(0, max_page + 20, 20):
-        soup = BeautifulSoup(requests.get(f"https://www.hikr.org/user/{user}/tour/?skip={skip}").content, "html.parser")
-        for result in soup.find_all("div", class_="content-list-intern"):
-            entries.append({"url": result.find_next("a")["href"]})
-            for k, v in diff_titles.items():
-                r = result.find_next("span", attrs={"title": k})
-                if r is not None:
-                    entries[-1][v] = r.contents[0].strip()
-    return entries
-
 def get_coordinates(url: str) -> Dict[str, str]:
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
     return {str(soup.find("h1").string).strip(): str(soup.find(id="sidebar_swiss").find("td", class_="div13", string="Koordinaten: ").next_sibling.string).strip()}
@@ -65,16 +49,43 @@ def cache_entry(url: str) -> List[Dict[str, str]]:
         coords.append(get_coordinates(link["href"]))
     return coords
 
-def cache_entries(entries: Dict[str, str]) -> Dict[str, str]:
+def download_entry_list(name: str, url: str, max_skip: int):
+    cache_file: Path = Path(f"../../content/maps/{name}.yaml")
+    def save(entries):
+        with open(cache_file, "w") as fp:
+            yaml.dump(entries, fp)
+
+    if cache_file.exists():
+        with open(cache_file, "r") as fp:
+            # return yaml.load(fp, Loader=yaml.SafeLoader)
+            entries = yaml.load(fp, Loader=yaml.SafeLoader)
+    else: 
+        entries = []
+        for skip in trange(0, max_skip + 20, 20):
+            soup = BeautifulSoup(requests.get(url.format(skip=skip)).content, "html.parser")
+            for result in soup.find_all("div", class_="content-list-intern"):
+                entries.append({"url": result.find_next("a")["href"]})
+                for k, v in diff_titles.items():
+                    r = result.find_next("span", attrs={"title": k})
+                    if r is not None:
+                        entries[-1][v] = r.contents[0].strip()
+        save(entries)
+
     for i in range(len(entries)):
         if "waypoints" not in entries[i]:
-            entries[i]["waypoints"] = cache_entry(entries[i]["url"])
-    return entries
+            try:
+                entries[i]["waypoints"] = cache_entry(entries[i]["url"])
+            except:
+                continue
+            save(entries)
 
+    save(entries)
+    return entries    
+    
 def get_tracks(entries: Dict[str, str], difficulty: str):
     gpx = gpxpy.gpx.GPX()
     for entry in entries:
-        if entry.get("mountaineering", "") != difficulty:
+        if entry.get("mountaineering", "") != difficulty or not "waypoints" in entry:
             continue
         gpx_track = gpxpy.gpx.GPXTrack()
         gpx_segment = gpxpy.gpx.GPXTrackSegment()
@@ -86,16 +97,12 @@ def get_tracks(entries: Dict[str, str], difficulty: str):
         gpx.tracks.append(gpx_track)
     return gpx
 
-if not cache_file.exists():
-    entries = cache_entry_list(user, max_page)
-    entries = cache_entries(entries)
-    with open(cache_file, "w") as fp:
-        yaml.dump(entries, fp)     
 
-with open(cache_file, "r") as fp:
-    entries: Dict[str, str] = yaml.load(fp, Loader=yaml.SafeLoader)
-
-for difficulty in ["L", "WS-", "WS", "WS+"]:
-    gpx = get_tracks(entries, difficulty)
-    with open(gpx_file.format(difficulty=difficulty), "w") as fp:
-        fp.write(gpx.to_xml())
+for name, url, max_skip in pages:
+    entries = download_entry_list(name, url, max_skip)
+    gpx_file: Path = f"../../content/maps/{name}_{{difficulty}}.gpx"
+    
+    for difficulty in ["L", "WS-", "WS", "WS+"]:
+        gpx = get_tracks(entries, difficulty)
+        with open(gpx_file.format(difficulty=difficulty), "w") as fp:
+            fp.write(gpx.to_xml())
