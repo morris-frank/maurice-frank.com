@@ -62,14 +62,14 @@ window.addEventListener('load', function() {
         layers: [layers["Topology"],]
     });
     L.control.layers(layers,null,{collapsed:false}).addTo(map);
-    var gpx = './abenteurer_hikr.gpx';
-    new L.GPX(gpx, {
-        async: true,
-        marker_options: {
-            startIconUrl: null,
-            endIconUrl: null,
-            shadowUrl: null
-    }}).addTo(map);
+    let difficulties = {"L": "green", "WS-": "orange", "WS": "red", "WS+": "black"}
+    for (var d in difficulties) {
+        new L.GPX("./abenteurer_hikr_" + d + ".gpx", {
+            async: true,
+            marker_options: {startIconUrl: null, endIconUrl: null, shadowUrl: null},
+            polyline_options: {color: difficulties[d], opacity: 0.75,},
+        }).addTo(map);
+    }
   }, false);
 </script>
     </main>
