@@ -62,7 +62,7 @@ window.addEventListener('load', function() {
         layers: [layers["Topology"],]
     });
     L.control.layers(layers,null,{collapsed:false}).addTo(map);
-    var gpx = 'https://media.morris-frank.dev/file/morris-media/abenteurer_hikr.gpx';
+    var gpx = './abenteurer_hikr.gpx';
     new L.GPX(gpx, {async: true}).on('loaded', function(e) {
         map.fitBounds(e.target.getBounds());
     }).addTo(map);
