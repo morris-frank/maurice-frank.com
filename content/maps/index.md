@@ -18,8 +18,12 @@ window.addEventListener('load', function() {
     });
     L.control.layers(layers,null,{collapsed:false}).addTo(map);
     var gpx = './abenteurer_hikr.gpx';
-    new L.GPX(gpx, {async: true}).on('loaded', function(e) {
-        map.fitBounds(e.target.getBounds());
-    }).addTo(map);
+    new L.GPX(gpx, {
+        async: true,
+        marker_options: {
+            startIconUrl: null,
+            endIconUrl: null,
+            shadowUrl: null
+    }}).addTo(map);
   }, false);
 </script>
