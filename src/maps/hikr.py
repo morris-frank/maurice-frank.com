@@ -12,10 +12,13 @@ import re
 
 
 # Settings ---------------------------------------------------------------------
+url = "https://www.hikr.org/filter.php?skip=3000&act=filter&a=alp&ai=1&aa=4"
+
 user: str = "abenteurer"
-cache_file: Path = Path(f"../../content/maps/{user}_hikr.yaml")
-gpx_file: Path = f"../../content/maps/{user}_hikr_{{difficulty}}.gpx"
 max_page: int = 760
+
+gpx_file: Path = f"../../content/maps/{user}_hikr_{{difficulty}}.gpx"
+cache_file: Path = Path(f"../../content/maps/{user}_hikr.yaml")
 # ------------------------------------------------------------------------------
 
 diff_titles = {
