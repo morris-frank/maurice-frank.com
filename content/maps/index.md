@@ -14,12 +14,13 @@ window.addEventListener('load', function() {
     let difficulties = {"L": "green", "WS-": "orange", "WS": "red", "WS+": "black"}
     let overlays = {}
     for (var d in difficulties) {
-        overlays[d] =  L.GPX("./abenteurer_hikr_" + d + ".gpx", {
+        overlays[d] =  new L.GPX("./abenteurer_hikr_" + d + ".gpx", {
             async: true,
             marker_options: {startIconUrl: null, endIconUrl: null, shadowUrl: null},
             polyline_options: {color: difficulties[d], opacity: 0.75,},
         });
     }
+    console.log(overlays);
     let map = L.map('map', {
         center: [47.05, 12.2],
         zoom: 11,
