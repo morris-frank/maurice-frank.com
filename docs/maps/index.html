@@ -25,6 +25,7 @@
         
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" integrity="sha256-BPfK9M5v34c2XP6p0cxVz1mUQLst0gTLk0mlc7kuodA=" crossorigin="anonymous">
     <script async src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js" integrity="sha256-yDc0eil8GjWFKqN1OSzHSVCiuGghTosZCcRje4tj7iQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.1/gpx.min.js"></script>
 
     <title> Maps - Morris-Frank </title>
 </head>
@@ -64,6 +65,10 @@ window.addEventListener('load', function() {
         layers: [layers["Topology"],]
     });
     L.control.layers(layers,null,{collapsed:false}).addTo(map);
+    var gpx = 'https://morris-frank.dev/abenteurer_hikr.gpx';
+    new L.GPX(gpx, {async: true}).on('loaded', function(e) {
+        map.fitBounds(e.target.getBounds());
+    }).addTo(map);
   }, false);
 </script>
     </main>
