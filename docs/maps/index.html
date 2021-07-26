@@ -59,7 +59,7 @@ window.addEventListener('load', function() {
     let difficulties = {"L": "green", "WS-": "orange", "WS": "red", "WS+": "black"}
     let overlays = {}
     for (var d in difficulties) {
-        overlays[d] =  new L.GPX("./hikr_" + d + ".gpx", {
+        overlays[d] =  new L.GPX("./bergrebell_" + d + ".gpx", {
             async: true,
             marker_options: {startIconUrl: null, endIconUrl: null, shadowUrl: null},
             polyline_options: {color: difficulties[d], opacity: 0.75,},

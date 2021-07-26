@@ -2338,4 +2338,435 @@
       </trkpt>
     </trkseg>
   </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.330000000000005" lon="9.655277777777778">
+        <name>Capanna Albigna 2340 m</name>
+      </trkpt>
+      <trkpt lat="46.30416666666667" lon="9.67">
+        <name>Bocchetta dal Castel 3106 m</name>
+      </trkpt>
+      <trkpt lat="46.30222222222222" lon="9.676944444444445">
+        <name>Cima di Castello 3379 m</name>
+      </trkpt>
+      <trkpt lat="46.30416666666667" lon="9.67">
+        <name>Bocchetta dal Castel 3106 m</name>
+      </trkpt>
+      <trkpt lat="46.30694444444444" lon="9.678333333333333">
+        <name>Passo dal Cantun 3277 m</name>
+      </trkpt>
+      <trkpt lat="46.32277777777778" lon="9.701666666666666">
+        <name>Fornogletscher / Vadrec del Forno 2500 m</name>
+      </trkpt>
+      <trkpt lat="46.331944444444446" lon="9.709444444444443">
+        <name>Capanna del Forno CAS 2574 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.41222222222222" lon="9.965">
+        <name>Berghaus Diavolezza 2978 m</name>
+      </trkpt>
+      <trkpt lat="46.410555555555554" lon="9.967222222222222">
+        <name>Diavolezza 2958 m</name>
+      </trkpt>
+      <trkpt lat="46.41027777777778" lon="9.970833333333333">
+        <name>Diavolezza / P. 3002 3002 m</name>
+      </trkpt>
+      <trkpt lat="46.40333333333333" lon="9.973055555555556">
+        <name>Fuorcla Trovat 3019 m</name>
+      </trkpt>
+      <trkpt lat="46.37861111111111" lon="9.969166666666666">
+        <name>Piz Palü - Sattel P.3730m 3730 m</name>
+      </trkpt>
+      <trkpt lat="46.37916666666667" lon="9.964444444444444">
+        <name>Piz Palü - Ostgipfel 3882 m</name>
+      </trkpt>
+      <trkpt lat="46.37888888888889" lon="9.960277777777778">
+        <name>Piz Palü 3900 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.17833333333333" lon="7.8244444444444445">
+        <name>Gasenried 1659 m</name>
+      </trkpt>
+      <trkpt lat="46.16833333333333" lon="7.8325">
+        <name>Riedbach Schöpfe 1840 m</name>
+      </trkpt>
+      <trkpt lat="46.16277777777778" lon="7.831388888888888">
+        <name>Alpja 2089 m</name>
+      </trkpt>
+      <trkpt lat="46.144444444444446" lon="7.849722222222222">
+        <name>Bordierhütte SAC 2886 m</name>
+      </trkpt>
+      <trkpt lat="46.117777777777775" lon="7.876666666666667">
+        <name>Ulrichshorn 3925 m</name>
+      </trkpt>
+      <trkpt lat="46.11638888888889" lon="7.873333333333334">
+        <name>Windjoch 3850 m</name>
+      </trkpt>
+      <trkpt lat="46.10944444444445" lon="7.863888888888889">
+        <name>Nadelhorn 4327 m</name>
+      </trkpt>
+      <trkpt lat="46.109722222222224" lon="7.888888888888888">
+        <name>Mischabelhütten AACZ 3335 m</name>
+      </trkpt>
+      <trkpt lat="46.10944444444445" lon="7.894444444444444">
+        <name>Hüttenweg Mischabelhütten AACZ 2980 m</name>
+      </trkpt>
+      <trkpt lat="46.10722222222223" lon="7.912222222222223">
+        <name>Trift 2069 m</name>
+      </trkpt>
+      <trkpt lat="46.10861111111111" lon="7.926666666666667">
+        <name>Saas-Fee 1792 m</name>
+      </trkpt>
+      <trkpt lat="46.10861111111111" lon="7.929166666666667">
+        <name>Saas-Fee - Busterminal 1803 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.272777777777776" lon="9.169166666666666">
+        <name>Cama 352 m</name>
+      </trkpt>
+      <trkpt lat="46.255" lon="9.227500000000001">
+        <name>Lagh de Cama 1265 m</name>
+      </trkpt>
+      <trkpt lat="46.25083333333333" lon="9.218055555555555">
+        <name>Rifugio Alp de Vazzola 1804 m</name>
+      </trkpt>
+      <trkpt lat="46.23972222222222" lon="9.225555555555555">
+        <name>Rifugio Alp d'Agnon 1905 m</name>
+      </trkpt>
+      <trkpt lat="46.2325" lon="9.233333333333334">
+        <name>Bocchetta di Agnon / Bocchetta di Cama 2270 m</name>
+      </trkpt>
+      <trkpt lat="46.23305555555556" lon="9.237777777777778">
+        <name>Piz Martel 2450 m</name>
+      </trkpt>
+      <trkpt lat="46.2325" lon="9.239999999999998">
+        <name>Fil del Martel 2434 m</name>
+      </trkpt>
+      <trkpt lat="46.231944444444444" lon="9.245833333333332">
+        <name>Pizzo Campanile 2458 m</name>
+      </trkpt>
+      <trkpt lat="46.2325" lon="9.246944444444443">
+        <name>Bocchetta del Valon / Bocchetta della Cengia N 2370 m</name>
+      </trkpt>
+      <trkpt lat="46.24166666666667" lon="9.249166666666666">
+        <name>Bocchetta del Notar 2095 m</name>
+      </trkpt>
+      <trkpt lat="46.25" lon="9.250277777777777">
+        <name>Passo dei Contrabbandieri 2200 m</name>
+      </trkpt>
+      <trkpt lat="46.25472222222222" lon="9.240555555555554">
+        <name>Rifugio Alp Vec 1794 m</name>
+      </trkpt>
+      <trkpt lat="46.26083333333333" lon="9.247499999999999">
+        <name>Lagh de Sambrog 2076 m</name>
+      </trkpt>
+      <trkpt lat="46.25555555555555" lon="9.248888888888889">
+        <name>Piz de Sambrog - Cima Sud 2312 m</name>
+      </trkpt>
+      <trkpt lat="46.257222222222225" lon="9.25">
+        <name>Piz de Sambrog - Cima Centrale 2290 m</name>
+      </trkpt>
+      <trkpt lat="46.25861111111111" lon="9.251111111111111">
+        <name>Piz de Sambrog - Cima Nord 2310 m</name>
+      </trkpt>
+      <trkpt lat="46.26277777777778" lon="9.252777777777778">
+        <name>Fil de Sambrog 2416 m</name>
+      </trkpt>
+      <trkpt lat="46.26638888888889" lon="9.250277777777777">
+        <name>Piz de Cressim / Piz de Roggione 2575 m</name>
+      </trkpt>
+      <trkpt lat="46.285" lon="9.2525">
+        <name>Bocchetta d'Egion 2145 m</name>
+      </trkpt>
+      <trkpt lat="46.28944444444444" lon="9.265555555555556">
+        <name>Rifugio Alp de Setaggié 1959 m</name>
+      </trkpt>
+      <trkpt lat="46.28194444444444" lon="9.267777777777779">
+        <name>Forcola de Strem 2294 m</name>
+      </trkpt>
+      <trkpt lat="46.280833333333334" lon="9.264444444444445">
+        <name>Piz Forcletta 2428 m</name>
+      </trkpt>
+      <trkpt lat="46.27583333333333" lon="9.259444444444444">
+        <name>Cantone di Strem 2559 m</name>
+      </trkpt>
+      <trkpt lat="46.278055555555554" lon="9.258888888888889">
+        <name>Pizzo di Setaggiolo di Dentro - SW-Gipfel 2566 m</name>
+      </trkpt>
+      <trkpt lat="46.278888888888886" lon="9.26">
+        <name>Pizzo di Setaggiolo di Dentro - NO-Gipfel 2567 m</name>
+      </trkpt>
+      <trkpt lat="46.30333333333333" lon="9.26361111111111">
+        <name>Rifugio Gamba in Dent 1469 m</name>
+      </trkpt>
+      <trkpt lat="46.31527777777777" lon="9.26">
+        <name>Rifugio Gamba in Fora 1359 m</name>
+      </trkpt>
+      <trkpt lat="46.32416666666667" lon="9.245">
+        <name>Parcheggio Montogn 1320 m</name>
+      </trkpt>
+      <trkpt lat="46.32083333333334" lon="9.228055555555555">
+        <name>Diga Val d'Arbola 1155 m</name>
+      </trkpt>
+      <trkpt lat="46.33111111111111" lon="9.214444444444444">
+        <name>Cran 570 m</name>
+      </trkpt>
+      <trkpt lat="46.32888888888889" lon="9.204722222222221">
+        <name>Cabbiolo 446 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.00611111111111" lon="9.598055555555556">
+        <name>Piani dell'Avaro 1700 m</name>
+      </trkpt>
+      <trkpt lat="46.018055555555556" lon="9.588611111111112">
+        <name>Passo dell'Avaro 2100 m</name>
+      </trkpt>
+      <trkpt lat="46.03055555555555" lon="9.588611111111112">
+        <name>Via Fior di Montagna 2050 m</name>
+      </trkpt>
+      <trkpt lat="46.029444444444444" lon="9.589166666666667">
+        <name>Cima di Pescegallo 2330 m</name>
+      </trkpt>
+      <trkpt lat="46.02833333333333" lon="9.589444444444444">
+        <name>Monte Ponteranica - Occidentale 2370 m</name>
+      </trkpt>
+      <trkpt lat="46.029444444444444" lon="9.589166666666667">
+        <name>Cima di Pescegallo 2330 m</name>
+      </trkpt>
+      <trkpt lat="46.02111111111111" lon="9.591666666666667">
+        <name>Bocchetta di Triomen 2205 m</name>
+      </trkpt>
+      <trkpt lat="46.018055555555556" lon="9.588611111111112">
+        <name>Passo dell'Avaro 2100 m</name>
+      </trkpt>
+      <trkpt lat="46.00611111111111" lon="9.598055555555556">
+        <name>Piani dell'Avaro 1700 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.57638888888889" lon="8.421666666666667">
+        <name>Furkapass - Hotel Furkablick 2427 m</name>
+      </trkpt>
+      <trkpt lat="46.606944444444444" lon="8.416111111111112">
+        <name>Galenstock Südostsporn 3365 m</name>
+      </trkpt>
+      <trkpt lat="46.612500000000004" lon="8.416944444444443">
+        <name>Galenstock 3586 m</name>
+      </trkpt>
+      <trkpt lat="46.58388888888889" lon="8.3875">
+        <name>Rhonegletscher 2300 m</name>
+      </trkpt>
+      <trkpt lat="46.57666666666667" lon="8.388333333333334">
+        <name>Furka Belvédère 2271 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="45.78944444444444" lon="6.91">
+        <name>Val Veny 1600 m</name>
+      </trkpt>
+      <trkpt lat="45.78638888888889" lon="6.9013888888888895">
+        <name>Cantine de la Visaille 1660 m</name>
+      </trkpt>
+      <trkpt lat="45.77638888888889" lon="6.867777777777778">
+        <name>Cabane du Combal 1972 m</name>
+      </trkpt>
+      <trkpt lat="45.775" lon="6.868333333333334">
+        <name>Lago di Combal 1968 m</name>
+      </trkpt>
+      <trkpt lat="45.777499999999996" lon="6.869722222222222">
+        <name>Lac du Miage 2030 m</name>
+      </trkpt>
+      <trkpt lat="45.81916666666667" lon="6.829444444444444">
+        <name>Refuge Gonella 3071 m</name>
+      </trkpt>
+      <trkpt lat="45.82611111111112" lon="6.826388888888888">
+        <name>Aiguilles Grises 3526 m</name>
+      </trkpt>
+      <trkpt lat="45.83722222222222" lon="6.830277777777778">
+        <name>Piton des Italiens 4002 m</name>
+      </trkpt>
+      <trkpt lat="45.84277777777778" lon="6.843333333333333">
+        <name>Dôme du Goûter 4304 m</name>
+      </trkpt>
+      <trkpt lat="45.84138888888889" lon="6.846666666666667">
+        <name>Col du Dôme 4236 m</name>
+      </trkpt>
+      <trkpt lat="45.83916666666667" lon="6.851944444444444">
+        <name>Bivouac Vallot 4362 m</name>
+      </trkpt>
+      <trkpt lat="45.83277777777778" lon="6.8613888888888885">
+        <name>Cresta delle Bosses - Punto più alto dell'Italia 4760 m</name>
+      </trkpt>
+      <trkpt lat="45.83277777777778" lon="6.864999999999999">
+        <name>Mont Blanc 4810 m</name>
+      </trkpt>
+      <trkpt lat="45.850833333333334" lon="6.831388888888888">
+        <name>Aiguille du Goûter 3863 m</name>
+      </trkpt>
+      <trkpt lat="45.8525" lon="6.830277777777778">
+        <name>Nouveau Refuge de l'Aiguille du Goûter 3835 m</name>
+      </trkpt>
+      <trkpt lat="45.85333333333333" lon="6.83">
+        <name>Refuge de l'Aiguille du Goûter 3817 m</name>
+      </trkpt>
+      <trkpt lat="45.855000000000004" lon="6.8175">
+        <name>Refuge de Tête Rousse 3167 m</name>
+      </trkpt>
+      <trkpt lat="45.858333333333334" lon="6.798611111111111">
+        <name>Nid d'Aigle 2372 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.236666666666665" lon="11.902777777777779">
+        <name>Rifugio Treviso 1631 m</name>
+      </trkpt>
+      <trkpt lat="46.240833333333335" lon="11.924999999999999">
+        <name>Forcella dei Vani Alti 2378 m</name>
+      </trkpt>
+      <trkpt lat="46.246944444444445" lon="11.928055555555554">
+        <name>Bivacco Reali 2595 m</name>
+      </trkpt>
+      <trkpt lat="46.250277777777775" lon="11.933055555555555">
+        <name>Croda Granda 2849 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.236666666666665" lon="11.902777777777779">
+        <name>Rifugio Treviso 1631 m</name>
+      </trkpt>
+      <trkpt lat="46.23361111111111" lon="11.915000000000001">
+        <name>Forcella delle Mughe 2244 m</name>
+      </trkpt>
+      <trkpt lat="46.23722222222222" lon="11.916111111111112">
+        <name>Sass d'Ortiga 2634 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.86805555555556" lon="10.879166666666666">
+        <name>Breslauer Hütte 2844 m</name>
+      </trkpt>
+      <trkpt lat="46.88388888888889" lon="10.856944444444444">
+        <name>Klettersteig Mitterkarjoch 3400 m</name>
+      </trkpt>
+      <trkpt lat="46.88527777777778" lon="10.8675">
+        <name>Wildspitze 3770 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.48833333333334" lon="11.600555555555555">
+        <name>Rechter Leger 1610 m</name>
+      </trkpt>
+      <trkpt lat="46.484722222222224" lon="11.629444444444445">
+        <name>Grasleitenhütte / Rifugio Bergamo 2134 m</name>
+      </trkpt>
+      <trkpt lat="46.474444444444444" lon="11.638333333333334">
+        <name>Rifugio Passo Principe / Grasleitenpasshütte 2600 m</name>
+      </trkpt>
+      <trkpt lat="46.474722222222226" lon="11.639444444444443">
+        <name>Kesselkogelsteig 2600 m</name>
+      </trkpt>
+      <trkpt lat="46.47416666666667" lon="11.643611111111111">
+        <name>Kesselkogel / Catinaccio di Antermoia  3004 m</name>
+      </trkpt>
+      <trkpt lat="46.47083333333334" lon="11.645277777777777">
+        <name>Pas de Antermoia 2770 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.44222222222222" lon="9.29888888888889">
+        <name>Alpe dei Piani 2066 m</name>
+      </trkpt>
+      <trkpt lat="46.44694444444444" lon="9.247222222222222">
+        <name>Bocchetta quota 2916m 2916 m</name>
+      </trkpt>
+      <trkpt lat="46.44972222222222" lon="9.2575">
+        <name>Piz Bianch 3037 m</name>
+      </trkpt>
+      <trkpt lat="46.45027777777778" lon="9.263333333333334">
+        <name>Piz di Ross 3018 m</name>
+      </trkpt>
+      <trkpt lat="46.45416666666667" lon="9.270555555555557">
+        <name>Piz di Pian - Cima Sudovest 3149 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.611111111111114" lon="8.308055555555557">
+        <name>Handegg 1401 m</name>
+      </trkpt>
+      <trkpt lat="46.61194444444445" lon="8.292222222222222">
+        <name>Ärlen 1700 m</name>
+      </trkpt>
+      <trkpt lat="46.60638888888889" lon="8.279722222222222">
+        <name>Egg 1976 m</name>
+      </trkpt>
+      <trkpt lat="46.61083333333333" lon="8.262777777777778">
+        <name>Lücke 2640 m</name>
+      </trkpt>
+      <trkpt lat="46.617777777777775" lon="8.254444444444445">
+        <name>Steinlauihorn 3162 m</name>
+      </trkpt>
+      <trkpt lat="46.62083333333334" lon="8.255">
+        <name>Ärlenlücke 3053 m</name>
+      </trkpt>
+      <trkpt lat="46.615" lon="8.279722222222222">
+        <name>Rindertal Couloir 2000 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <trk>
+    <trkseg>
+      <trkpt lat="46.527499999999996" lon="10.58888888888889">
+        <name>Sulden / Solda 1860 m</name>
+      </trkpt>
+      <trkpt lat="46.50833333333333" lon="10.544166666666667">
+        <name>Ortler / Ortles 3905 m</name>
+      </trkpt>
+      <trkpt lat="46.51833333333333" lon="10.54111111111111">
+        <name>Lombardi Biwak 3350 m</name>
+      </trkpt>
+      <trkpt lat="46.52222222222222" lon="10.541666666666666">
+        <name>Tschierfeckwandl 3150 m</name>
+      </trkpt>
+      <trkpt lat="46.525277777777774" lon="10.5425">
+        <name>Tabarettaspitze 3128 m</name>
+      </trkpt>
+      <trkpt lat="46.526944444444446" lon="10.543333333333333">
+        <name>Payer Hütte 3020 m</name>
+      </trkpt>
+      <trkpt lat="46.52916666666667" lon="10.549444444444445">
+        <name>Tabaretta Hütte 2571 m</name>
+      </trkpt>
+      <trkpt lat="46.53472222222222" lon="10.54138888888889">
+        <name>Bärenkopfscharte 2871 m</name>
+      </trkpt>
+    </trkseg>
+  </trk>
 </gpx>

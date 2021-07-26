@@ -6958,354 +6958,1191 @@
   hiking: T4-
   mountaineering: L
   url: https://www.hikr.org/tour/post155124.html
+  waypoints:
+  - Bergstation Ankogelbahn 2636 m: "47\xB02'33'' N, 13\xB012'56'' E"
+  - Radeckscharte 2874 m: "47\xB02'51'' N, 13\xB014'23'' E"
+  - Kleiner Ankogel 3096 m: "47\xB02'52'' N, 13\xB014'47'' E"
+  - Ankogel 3252 m: "47\xB03'5'' N, 13\xB014'58'' E"
 - climbing: III
   hiking: T6
   mountaineering: WS
   url: https://www.hikr.org/tour/post155293.html
+  waypoints:
+  - "Neih\xFCttli 1192 m": "46\xB053'7'' N, 8\xB033'14'' E"
+  - Musenalp 1486 m: "46\xB052'54'' N, 8\xB032'46'' E"
+  - Sassigrat 1868 m: "46\xB053'11'' N, 8\xB032'9'' E"
+  - Chli Schlieren 2155 m: "46\xB052'43'' N, 8\xB032'9'' E"
+  - Schlieren Nordostgrat 2234 m: "46\xB052'27'' N, 8\xB032'8'' E"
+  - Schlieren 2830 m: "46\xB052'3'' N, 8\xB032'2'' E"
+  - "Schlierenl\xFCcke 2707 m": "46\xB051'54'' N, 8\xB032'3'' E"
+  - Uri Rotstock - Nordgrat 2800 m: "46\xB051'48'' N, 8\xB032'4'' E"
+  - Uri Rotstock 2928 m: "46\xB051'42'' N, 8\xB032'7'' E"
 - climbing: I
   hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post155275.html
+  waypoints:
+  - "T\xE4schalp 2180 m": "46\xB03'33'' N, 7\xB048'41'' E"
+  - "T\xE4schh\xFCtte SAC 2701 m": "46\xB03'6'' N, 7\xB049'48'' E"
+  - Alphubeljoch 3772 m: "46\xB03'15'' N, 7\xB052'29'' E"
+  - Alphubel Eisnase 4100 m: "46\xB03'37'' N, 7\xB051'57'' E"
+  - Alphubel 4206 m: "46\xB03'45'' N, 7\xB051'50'' E"
 - climbing: I
   hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post155310.html
+  waypoints:
+  - Parcheggio Alpi di Suretta 1908 m: "46\xB029'17'' N, 9\xB020'52'' E"
+  - Bivacco Suretta 2753 m: "46\xB030'8'' N, 9\xB021'41'' E"
+  - Ghiacciaio di Suretta 2820 m: "46\xB030'16'' N, 9\xB021'49'' E"
+  - Surettahorn / Punta Nera 3027 m: "46\xB030'34'' N, 9\xB021'45'' E"
+  - Ghiacciaio di Suretta 2820 m: "46\xB030'16'' N, 9\xB021'49'' E"
+  - Lago Azzurro 2440 m: "46\xB030'9'' N, 9\xB020'38'' E"
+  - Montespluga 1905 m: "46\xB029'22'' N, 9\xB020'13'' E"
+  - Parcheggio Alpi di Suretta 1908 m: "46\xB029'17'' N, 9\xB020'52'' E"
 - climbing: III
   hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post155033.html
+  waypoints:
+  - Surlej 1809 m: "46\xB027'31'' N, 9\xB048'42'' E"
+  - "Murt\xE8l 2699 m": "46\xB025'56'' N, 9\xB049'26'' E"
+  - "Piz Murt\xE8l 3433 m": "46\xB024'45'' N, 9\xB049'12'' E"
+  - Piz Corvatsch 3451 m: "46\xB024'30'' N, 9\xB048'58'' E"
+  - "Piz Murt\xE8l 3433 m": "46\xB024'45'' N, 9\xB049'12'' E"
+  - "Murt\xE8l 2699 m": "46\xB025'56'' N, 9\xB049'26'' E"
+  - Surlej 1809 m: "46\xB027'31'' N, 9\xB048'42'' E"
 - climbing: III
   hiking: T5
   mountaineering: WS
   url: https://www.hikr.org/tour/post155259.html
+  waypoints:
+  - Bristen - Talstation Golzernbahn 832 m: "46\xB045'58'' N, 8\xB042'45'' E"
+  - Gasthaus Legni 1020 m: "46\xB046'11'' N, 8\xB043'58'' E"
+  - "R\xFCtelibr\xFCcke 1080 m": "46\xB046'15'' N, 8\xB044'30'' E"
+  - "St\xF6ssi 1187 m": "46\xB046'31'' N, 8\xB045'28'' E"
+  - Alp Guferen 1275 m: "46\xB046'46'' N, 8\xB046'32'' E"
+  - Blindensee 1374 m: "46\xB047'12'' N, 8\xB047'26'' E"
+  - "H\xFCfih\xFCtte SAC 2334 m": "46\xB048'7'' N, 8\xB049'8'' E"
+  - "Gross D\xFCssi / Piz Git 3256 m": "46\xB047'30'' N, 8\xB049'40'' E"
+  - "Chli D\xFCssi 3127 m": "46\xB047'18'' N, 8\xB049'35'' E"
+  - P.2799m 2799 m: "46\xB047'2'' N, 8\xB049'17'' E"
+  - Tschingelseeli 2443 m: "46\xB046'27'' N, 8\xB048'57'' E"
+  - P.2449m 2449 m: "46\xB046'27'' N, 8\xB048'54'' E"
+  - "Br\xFCcke Brunnital 1900 m": "46\xB046'18'' N, 8\xB048'16'' E"
+  - "Hinterbalmh\xFCtte 1817 m": "46\xB046'46'' N, 8\xB047'55'' E"
+  - Blindensee 1374 m: "46\xB047'12'' N, 8\xB047'26'' E"
+  - Alp Guferen 1275 m: "46\xB046'46'' N, 8\xB046'32'' E"
+  - "St\xF6ssi 1187 m": "46\xB046'31'' N, 8\xB045'28'' E"
+  - "R\xFCtelibr\xFCcke 1080 m": "46\xB046'15'' N, 8\xB044'30'' E"
+  - Gasthaus Legni 1020 m: "46\xB046'11'' N, 8\xB043'58'' E"
+  - Bristen - Talstation Golzernbahn 832 m: "46\xB045'58'' N, 8\xB042'45'' E"
 - climbing: II
   hiking: T3
   mountaineering: WS+
   url: https://www.hikr.org/tour/post155314.html
+  waypoints:
+  - Capanna Albigna 2340 m: "46\xB019'48'' N, 9\xB039'19'' E"
+  - Bocchetta dal Castel 3106 m: "46\xB018'15'' N, 9\xB040'12'' E"
+  - Cima di Castello 3379 m: "46\xB018'8'' N, 9\xB040'37'' E"
+  - Bocchetta dal Castel 3106 m: "46\xB018'15'' N, 9\xB040'12'' E"
+  - Passo dal Cantun 3277 m: "46\xB018'25'' N, 9\xB040'42'' E"
+  - Fornogletscher / Vadrec del Forno 2500 m: "46\xB019'22'' N, 9\xB042'6'' E"
+  - Capanna del Forno CAS 2574 m: "46\xB019'55'' N, 9\xB042'34'' E"
 - climbing: I
   hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post155263.html
+  waypoints:
+  - Bergstation Mittelallalin 3457 m: "46\xB03'27'' N, 7\xB054'17'' E"
+  - Allalin Schlepplift 3560 m: "46\xB03'5'' N, 7\xB053'53'' E"
+  - Feejoch 3826 m: "46\xB02'48'' N, 7\xB053'17'' E"
+  - Allalinhorn 4027 m: "46\xB02'46'' N, 7\xB053'41'' E"
 - climbing: I
   hiking: T4
   mountaineering: WS+
   url: https://www.hikr.org/tour/post155267.html
+  waypoints:
+  - Berghaus Diavolezza 2978 m: "46\xB024'44'' N, 9\xB057'54'' E"
+  - Diavolezza 2958 m: "46\xB024'38'' N, 9\xB058'2'' E"
+  - Diavolezza / P. 3002 3002 m: "46\xB024'37'' N, 9\xB058'15'' E"
+  - Fuorcla Trovat 3019 m: "46\xB024'12'' N, 9\xB058'23'' E"
+  - "Piz Pal\xFC - Sattel P.3730m 3730 m": "46\xB022'43'' N, 9\xB058'9'' E"
+  - "Piz Pal\xFC - Ostgipfel 3882 m": "46\xB022'45'' N, 9\xB057'52'' E"
+  - "Piz Pal\xFC 3900 m": "46\xB022'44'' N, 9\xB057'37'' E"
 - climbing: I
   hiking: T3
   mountaineering: WS
   url: https://www.hikr.org/tour/post155232.html
+  waypoints:
+  - Scuol 1243 m: "46\xB047'45'' N, 10\xB017'48'' E"
+  - San Jon 1461 m: "46\xB047'11'' N, 10\xB018'30'' E"
+  - Chamanna Lischana CAS 2500 m: "46\xB045'56'' N, 10\xB020'4'' E"
+  - Piz Lischana - Vorgipfel 3050 m: "46\xB046'2'' N, 10\xB020'49'' E"
+  - Fuorcla Cornet 2853 m: "46\xB044'26'' N, 10\xB023'7'' E"
+  - Fuorcla Sesvenna 2819 m: "46\xB043'27'' N, 10\xB024'39'' E"
+  - "Sesvenna H\xFCtte 2258 m": "46\xB044'5'' N, 10\xB026'8'' E"
+  - Schlinigpass 2309 m: "46\xB044'26'' N, 10\xB025'39'' E"
+  - Il Quar / Uinaschlucht 2080 m: "46\xB045'44'' N, 10\xB024'53'' E"
+  - Sur En  1121 m: "46\xB048'59'' N, 10\xB021'48'' E"
+  - Ardez 1431 m: "46\xB046'27'' N, 10\xB012'5'' E"
+  - Guarda 1653 m: "46\xB046'32'' N, 10\xB09'13'' E"
+  - Zernez 1471 m: "46\xB041'51'' N, 10\xB05'24'' E"
+  - Chamanna Cluozza 1882 m: "46\xB039'46'' N, 10\xB07'4'' E"
+  - Piz Quattervals 3165 m: "46\xB037'38'' N, 10\xB05'42'' E"
+  - Chamanna Cluozza 1882 m: "46\xB039'46'' N, 10\xB07'4'' E"
+  - Zernez 1471 m: "46\xB041'51'' N, 10\xB05'24'' E"
 - climbing: II
   hiking: T3
   mountaineering: L
   url: https://www.hikr.org/tour/post155218.html
+  waypoints:
+  - Abzweigung Valle di Lei 1672 m: "46\xB029'41'' N, 9\xB028'23'' E"
+  - "Cr\xF6t 1715 m": "46\xB028'41'' N, 9\xB029'7'' E"
+  - Stettli 1797 m: "46\xB026'58'' N, 9\xB028'44'' E"
+  - Preda 1951 m: "46\xB024'52'' N, 9\xB029'58'' E"
+  - "Alp Sovr\xE4na 1995 m": "46\xB023'47'' N, 9\xB030'14'' E"
+  - "Cima da la Sovr\xE4na / Cima della Sovrana 3016 m": "46\xB023'20'' N, 9\xB028'8''\
+      \ E"
 - climbing: II
   hiking: T6-
   mountaineering: WS-
   url: https://www.hikr.org/tour/post155102.html
+  waypoints:
+  - Olivone Municipio 891 m: "46\xB031'41'' N, 8\xB056'22'' E"
+  - "Galleria della T\xF6ira - Uscita Nord 1139 m": "46\xB032'41'' N, 8\xB056'20''\
+      \ E"
+  - Ponte Semina 1193 m: "46\xB033'11'' N, 8\xB056'21'' E"
+  - Ghirone - Aquilesco 1217 m: "46\xB033'34'' N, 8\xB056'37'' E"
+  - "Scalv\xE9id 1390 m": "46\xB033'42'' N, 8\xB057'4'' E"
+  - Diga Lago di Luzzone 1609 m: "46\xB033'48'' N, 8\xB057'48'' E"
+  - Alpe Cavalasca 1829 m: "46\xB034'41'' N, 8\xB058'31'' E"
+  - Toroi 2520 m: "46\xB035'33'' N, 8\xB058'34'' E"
+  - Filo di Stanga - Anticima Sud 2219 m: "46\xB034'58'' N, 8\xB058'52'' E"
+  - Alpe Cavalasca 1829 m: "46\xB034'41'' N, 8\xB058'31'' E"
+  - Diga Lago di Luzzone 1609 m: "46\xB033'48'' N, 8\xB057'48'' E"
+  - "Scalv\xE9id 1390 m": "46\xB033'42'' N, 8\xB057'4'' E"
+  - Ghirone - Aquilesco 1217 m: "46\xB033'34'' N, 8\xB056'37'' E"
+  - Ponte Semina 1193 m: "46\xB033'11'' N, 8\xB056'21'' E"
+  - "Galleria della T\xF6ira - Uscita Nord 1139 m": "46\xB032'41'' N, 8\xB056'20''\
+      \ E"
+  - "Olivone - Lav\xF2rceno 891 m": "46\xB031'46'' N, 8\xB056'10'' E"
+  - Olivone Municipio 891 m: "46\xB031'41'' N, 8\xB056'22'' E"
 - climbing: II
   hiking: T3+
   mountaineering: L
   url: https://www.hikr.org/tour/post154809.html
+  waypoints:
+  - "Macugnaga localit\xE0 Pecetto 1358 m": "45\xB058'13'' N, 7\xB057'8'' E"
+  - Alpe Burky 1603 m: "45\xB058'1'' N, 7\xB055'55'' E"
+  - Rifugio CAI Saronno 1827 m: "45\xB057'59'' N, 7\xB055'32'' E"
+  - Wengwald Hutte 1950 m: "45\xB057'58'' N, 7\xB055'21'' E"
+  - Belvedere di Macugnaga 1905 m: "45\xB057'57'' N, 7\xB055'20'' E"
+  - Conca di Pedriola 2065 m: "45\xB057'15'' N, 7\xB055'4'' E"
+  - colletto del Pizzo Bianco 2880 m: "45\xB056'37'' N, 7\xB056'20'' E"
+  - Rifugio Zamboni Zappa 2065 m: "45\xB057'11'' N, 7\xB055'4'' E"
+  - Wengwald Hutte 1950 m: "45\xB057'58'' N, 7\xB055'21'' E"
+  - "Macugnaga localit\xE0 Pecetto 1358 m": "45\xB058'13'' N, 7\xB057'8'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post155122.html
+  waypoints:
+  - Wendenhorn 3023 m: "46\xB045'14'' N, 8\xB026'37'' E"
+  - "F\xFCnffingerst\xF6ck 2994 m": "46\xB045'8'' N, 8\xB026'11'' E"
 - hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post155131.html
+  waypoints:
+  - Parcheggio diga Lago di Morasco 1740 m: "46\xB025'29'' N, 8\xB024'20'' E"
+  - Lago del Sabbione  2463 m: "46\xB025'3'' N, 8\xB020'41'' E"
+  - Rifugio Claudio e Bruno 2708 m: "46\xB024'53'' N, 8\xB019'30'' E"
+  - Rothornpass / Gran Sella del Gries 3112 m: "46\xB025'30'' N, 8\xB019'19'' E"
+  - Passo dei Camosci 3160 m: "46\xB025'27'' N, 8\xB019'36'' E"
+  - Rothorn / Corno Rosso 3289 m: "46\xB025'41'' N, 8\xB019'42'' E"
+  - Rothornpass / Gran Sella del Gries 3112 m: "46\xB025'30'' N, 8\xB019'19'' E"
+  - Rifugio Claudio e Bruno 2708 m: "46\xB024'53'' N, 8\xB019'30'' E"
+  - Lago del Sabbione  2463 m: "46\xB025'3'' N, 8\xB020'41'' E"
+  - Parcheggio diga Lago di Morasco 1740 m: "46\xB025'29'' N, 8\xB024'20'' E"
 - hiking: T4-
   mountaineering: L
   url: https://www.hikr.org/tour/post154590.html
+  waypoints:
+  - Baite Plan di Monte Campione 1720 m: "45\xB050'14'' N, 10\xB014'19'' E"
+  - Goletto di Baccinale 1752 m: "45\xB050'0'' N, 10\xB014'16'' E"
+  - Palestra di roccia Muffetto 1897 m: "45\xB049'59'' N, 10\xB014'35'' E"
+  - Monte Muffetto 2060 m: "45\xB049'57'' N, 10\xB014'56'' E"
+  - Cima Q 2012 2012 m: "45\xB050'7'' N, 10\xB015'15'' E"
+  - Corno Mura 1937 m: "45\xB050'32'' N, 10\xB015'52'' E"
+  - Cima Torricello 2009 m: "45\xB050'37'' N, 10\xB016'2'' E"
+  - Monte Rossello 2031 m: "45\xB050'44'' N, 10\xB016'15'' E"
+  - Corni del Diavolo cima S 2031 m: "45\xB050'49'' N, 10\xB016'33'' E"
+  - Corni del Diavolo cima N 1997 m: "45\xB050'52'' N, 10\xB016'45'' E"
+  - Passo Foppa del Mercato 1924 m: "45\xB050'57'' N, 10\xB016'51'' E"
+  - Cima Q 2005 2005 m: "45\xB051'3'' N, 10\xB016'54'' E"
+  - Monte Stabil Fiorito 1997 m: "45\xB051'8'' N, 10\xB017'8'' E"
+  - Cima Foppa del Mario 2072 m: "45\xB051'9'' N, 10\xB017'47'' E"
+  - Cima Q 2130 2130 m: "45\xB051'14'' N, 10\xB018'7'' E"
+  - Bivio per Malga Rosellino/Passo Crestoso 2020 m: "45\xB051'15'' N, 10\xB018'12''\
+      \ E"
+  - Cima q 2202  2202 m: "45\xB051'17'' N, 10\xB018'29'' E"
+  - Monte Crestoso 2208 m: "45\xB051'14'' N, 10\xB018'38'' E"
+  - Cima q 2202  2202 m: "45\xB051'17'' N, 10\xB018'29'' E"
+  - Bivio per Malga Rosellino/Passo Crestoso 2020 m: "45\xB051'15'' N, 10\xB018'12''\
+      \ E"
+  - Malga Alpe Rosellino 1876 m: "45\xB051'29'' N, 10\xB017'46'' E"
+  - Torbiere di Rosellino 1869 m: "45\xB051'25'' N, 10\xB017'45'' E"
+  - Alpe Rosello/Rif. Tironi 1710 m: "45\xB051'10'' N, 10\xB016'23'' E"
+  - Corna dei Soldi 1769 m: "45\xB051'9'' N, 10\xB015'56'' E"
+  - Malga Rondeneto 1808 m: "45\xB050'44'' N, 10\xB015'41'' E"
+  - Stanga di Bassinale 1883 m: "45\xB050'17'' N, 10\xB015'13'' E"
+  - Baite Plan di Monte Campione 1720 m: "45\xB050'14'' N, 10\xB014'19'' E"
 - hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post155050.html
+  waypoints:
+  - "Neih\xFCttli 1192 m": "46\xB053'7'' N, 8\xB033'14'' E"
+  - Musenalp 1486 m: "46\xB052'54'' N, 8\xB032'46'' E"
+  - Firnboden 1637 m: "46\xB052'40'' N, 8\xB032'33'' E"
+  - Chessel - Wegverzweigung P.1989m 1989 m: "46\xB052'11'' N, 8\xB032'60'' E"
+  - Chlitaler Firn 2700 m: "46\xB051'33'' N, 8\xB032'25'' E"
+  - Sattel Chlitaler Firn 2798 m: "46\xB051'33'' N, 8\xB032'9'' E"
+  - Uri Rotstock 2928 m: "46\xB051'42'' N, 8\xB032'7'' E"
+  - Rotstocksattel 2732 m: "46\xB051'21'' N, 8\xB032'34'' E"
+  - Im Lauberz 2340 m: "46\xB051'32'' N, 8\xB031'38'' E"
+  - Wilderbutzen 1875 m: "46\xB052'26'' N, 8\xB031'40'' E"
+  - Sassigrat 1868 m: "46\xB053'11'' N, 8\xB032'9'' E"
+  - Musenalp 1486 m: "46\xB052'54'' N, 8\xB032'46'' E"
+  - "Neih\xFCttli 1192 m": "46\xB053'7'' N, 8\xB033'14'' E"
 - hiking: T4+
   mountaineering: WS-
   url: https://www.hikr.org/tour/post155087.html
+  waypoints:
+  - Piz Urlaun 3359 m: "46\xB047'47'' N, 8\xB055'42'' E"
+  - Trun 852 m: "46\xB044'33'' N, 8\xB059'26'' E"
+  - Alp da Punteglias 1640 m: "46\xB045'49'' N, 8\xB058'21'' E"
+  - Camona da Punteglias CAS 2311 m: "46\xB046'38'' N, 8\xB057'22'' E"
+  - Obere Fuorcla da Punteglias 2880 m: "46\xB047'18'' N, 8\xB055'50'' E"
+  - "Urlaun S\xFCdgrat 3208 m": "46\xB047'30'' N, 8\xB055'46'' E"
 - climbing: I
   hiking: T3
   mountaineering: WS+
   url: https://www.hikr.org/tour/post154851.html
+  waypoints:
+  - Gasenried 1659 m: "46\xB010'42'' N, 7\xB049'28'' E"
+  - "Riedbach Sch\xF6pfe 1840 m": "46\xB010'6'' N, 7\xB049'57'' E"
+  - Alpja 2089 m: "46\xB09'46'' N, 7\xB049'53'' E"
+  - "Bordierh\xFCtte SAC 2886 m": "46\xB08'40'' N, 7\xB050'59'' E"
+  - Ulrichshorn 3925 m: "46\xB07'4'' N, 7\xB052'36'' E"
+  - Windjoch 3850 m: "46\xB06'59'' N, 7\xB052'24'' E"
+  - Nadelhorn 4327 m: "46\xB06'34'' N, 7\xB051'50'' E"
+  - "Mischabelh\xFCtten AACZ 3335 m": "46\xB06'35'' N, 7\xB053'20'' E"
+  - "H\xFCttenweg Mischabelh\xFCtten AACZ 2980 m": "46\xB06'34'' N, 7\xB053'40'' E"
+  - Trift 2069 m: "46\xB06'26'' N, 7\xB054'44'' E"
+  - Saas-Fee 1792 m: "46\xB06'31'' N, 7\xB055'36'' E"
+  - Saas-Fee - Busterminal 1803 m: "46\xB06'31'' N, 7\xB055'45'' E"
 - climbing: I
   hiking: T3
   mountaineering: WS-
   url: https://www.hikr.org/tour/post154891.html
+  waypoints:
+  - "Chelenalph\xFCtte SAC 2350 m": "46\xB040'18'' N, 8\xB026'24'' E"
+  - Abzw. Chelen - Bergsee 2592 m: "46\xB040'32'' N, 8\xB026'28'' E"
+  - Sustenlimi 3078 m: "46\xB041'12'' N, 8\xB026'40'' E"
+  - Sustenhorn 3502 m: "46\xB041'56'' N, 8\xB027'19'' E"
+  - "Tierberglih\xFCtte SAC 2795 m": "46\xB042'7'' N, 8\xB024'51'' E"
+  - "Steilimibr\xFCcke 2093 m": "46\xB042'47'' N, 8\xB024'55'' E"
+  - Parkplatz Umpol 2093 m: "46\xB042'48'' N, 8\xB024'58'' E"
 - climbing: I
   hiking: T3
   mountaineering: L
   url: https://www.hikr.org/tour/post155054.html
+  waypoints:
+  - Bergstation Mittelallalin 3457 m: "46\xB03'27'' N, 7\xB054'17'' E"
+  - Feegletscher - P.3638m 3638 m: "46\xB02'59'' N, 7\xB053'21'' E"
+  - Feejoch 3826 m: "46\xB02'48'' N, 7\xB053'17'' E"
+  - Allalinhorn 4027 m: "46\xB02'46'' N, 7\xB053'41'' E"
 - climbing: I
   hiking: T3
   mountaineering: L
   url: https://www.hikr.org/tour/post154985.html
+  waypoints:
+  - Monte Fumo 3418 m: "46\xB08'42'' N, 10\xB032'48'' E"
+  - Monte Fumo 3418 m: "46\xB08'42'' N, 10\xB032'48'' E"
+  - "Baita Adam\xE8 2132 m": "46\xB06'12'' N, 10\xB031'23'' E"
+  - "Bivacco  Invernale Adam\xE9 2140 m": "46\xB06'11'' N, 10\xB031'9'' E"
+  - "Malga Adam\xE8 2020 m": "46\xB05'20'' N, 10\xB029'60'' E"
+  - "Rifugio Citt\xE0 di Lissone 2024 m": "46\xB05'4'' N, 10\xB029'49'' E"
+  - Malga Lincino 1613 m: "46\xB05'5'' N, 10\xB029'13'' E"
 - climbing: III
   hiking: T6
   mountaineering: WS+
   url: https://www.hikr.org/tour/post154443.html
+  waypoints:
+  - Cama 352 m: "46\xB016'22'' N, 9\xB010'9'' E"
+  - Lagh de Cama 1265 m: "46\xB015'18'' N, 9\xB013'39'' E"
+  - Rifugio Alp de Vazzola 1804 m: "46\xB015'3'' N, 9\xB013'5'' E"
+  - Rifugio Alp d'Agnon 1905 m: "46\xB014'23'' N, 9\xB013'32'' E"
+  - Bocchetta di Agnon / Bocchetta di Cama 2270 m: "46\xB013'57'' N, 9\xB013'60''\
+      \ E"
+  - Piz Martel 2450 m: "46\xB013'59'' N, 9\xB014'16'' E"
+  - Fil del Martel 2434 m: "46\xB013'57'' N, 9\xB014'24'' E"
+  - Pizzo Campanile 2458 m: "46\xB013'55'' N, 9\xB014'45'' E"
+  - Bocchetta del Valon / Bocchetta della Cengia N 2370 m: "46\xB013'57'' N, 9\xB0\
+      14'49'' E"
+  - Bocchetta del Notar 2095 m: "46\xB014'30'' N, 9\xB014'57'' E"
+  - Passo dei Contrabbandieri 2200 m: "46\xB015'0'' N, 9\xB015'1'' E"
+  - Rifugio Alp Vec 1794 m: "46\xB015'17'' N, 9\xB014'26'' E"
+  - Lagh de Sambrog 2076 m: "46\xB015'39'' N, 9\xB014'51'' E"
+  - Piz de Sambrog - Cima Sud 2312 m: "46\xB015'20'' N, 9\xB014'56'' E"
+  - Piz de Sambrog - Cima Centrale 2290 m: "46\xB015'26'' N, 9\xB015'0'' E"
+  - Piz de Sambrog - Cima Nord 2310 m: "46\xB015'31'' N, 9\xB015'4'' E"
+  - Fil de Sambrog 2416 m: "46\xB015'46'' N, 9\xB015'10'' E"
+  - Piz de Cressim / Piz de Roggione 2575 m: "46\xB015'59'' N, 9\xB015'1'' E"
+  - Bocchetta d'Egion 2145 m: "46\xB017'6'' N, 9\xB015'9'' E"
+  - "Rifugio Alp de Setaggi\xE9 1959 m": "46\xB017'22'' N, 9\xB015'56'' E"
+  - Forcola de Strem 2294 m: "46\xB016'55'' N, 9\xB016'4'' E"
+  - Piz Forcletta 2428 m: "46\xB016'51'' N, 9\xB015'52'' E"
+  - Cantone di Strem 2559 m: "46\xB016'33'' N, 9\xB015'34'' E"
+  - Pizzo di Setaggiolo di Dentro - SW-Gipfel 2566 m: "46\xB016'41'' N, 9\xB015'32''\
+      \ E"
+  - Pizzo di Setaggiolo di Dentro - NO-Gipfel 2567 m: "46\xB016'44'' N, 9\xB015'36''\
+      \ E"
+  - Rifugio Gamba in Dent 1469 m: "46\xB018'12'' N, 9\xB015'49'' E"
+  - Rifugio Gamba in Fora 1359 m: "46\xB018'55'' N, 9\xB015'36'' E"
+  - Parcheggio Montogn 1320 m: "46\xB019'27'' N, 9\xB014'42'' E"
+  - Diga Val d'Arbola 1155 m: "46\xB019'15'' N, 9\xB013'41'' E"
+  - Cran 570 m: "46\xB019'52'' N, 9\xB012'52'' E"
+  - Cabbiolo 446 m: "46\xB019'44'' N, 9\xB012'17'' E"
 - climbing: II
   hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post154933.html
+  waypoints:
+  - Fiescheralp 2212 m: "46\xB024'47'' N, 8\xB06'11'' E"
+  - Aussichtspunkt Fieschergletscher  2358 m: "46\xB026'37'' N, 8\xB07'12'' E"
+  - "T\xE4lligrat Nord 2200 m": "46\xB026'51'' N, 8\xB07'5'' E"
+  - "M\xE4rjelen-Stausee 2348 m": "46\xB026'29'' N, 8\xB06'21'' E"
+  - Galkina 2516 m: "46\xB027'13'' N, 8\xB06'36'' E"
+  - Stock 2525 m: "46\xB027'18'' N, 8\xB07'11'' E"
+  - Strahlgrat 3310 m: "46\xB028'19'' N, 8\xB05'59'' E"
+  - Galkina 2516 m: "46\xB027'13'' N, 8\xB06'36'' E"
+  - "Gletscherstube M\xE4rjelen 2360 m": "46\xB026'26'' N, 8\xB06'7'' E"
+  - "M\xE4rjelen-Tunnel 2347 m": "46\xB026'12'' N, 8\xB06'29'' E"
+  - "Obers T\xE4lli 2316 m": "46\xB025'52'' N, 8\xB06'45'' E"
+  - "Salzg\xE4b 2278 m": "46\xB025'39'' N, 8\xB06'53'' E"
+  - Fiescheralp 2212 m: "46\xB024'47'' N, 8\xB06'11'' E"
 - climbing: II
   hiking: T5
   mountaineering: WS
   url: https://www.hikr.org/tour/post154889.html
+  waypoints:
+  - Biathlonstadion Antholz 1640 m: "46\xB053'6'' N, 12\xB09'12'' E"
+  - Remscheidscharte/Tulpenscharte 2898 m: "46\xB054'32'' N, 12\xB010'19'' E"
+  - "Gro\xDFe Ohrenspitze 3101 m": "46\xB054'25'' N, 12\xB010'37'' E"
+  - Remscheidscharte/Tulpenscharte 2898 m: "46\xB054'32'' N, 12\xB010'19'' E"
+  - "Barmer H\xFCtte 2610 m": "46\xB054'60'' N, 12\xB010'9'' E"
+  - Riepenscharte 2738 m: "46\xB054'32'' N, 12\xB09'29'' E"
+  - Biathlonstadion Antholz 1640 m: "46\xB053'6'' N, 12\xB09'12'' E"
 - climbing: II
   hiking: T5
   mountaineering: WS
   url: https://www.hikr.org/tour/post154915.html
+  waypoints:
+  - "Gorezmettlenbach Br\xFCcke / Haltestelle 1613 m": "46\xB044'37'' N, 8\xB030'30''\
+      \ E"
+  - "Seewenh\xFCtte SAC 2150 m": "46\xB044'48'' N, 8\xB031'16'' E"
+  - "Alte Sewenh\xFCtte 2307 m": "46\xB045'17'' N, 8\xB031'51'' E"
+  - "B\xE4chenstock 3011 m": "46\xB046'5'' N, 8\xB032'12'' E"
+  - Spitzplanggenstock 2820 m: "46\xB045'37'' N, 8\xB032'39'' E"
 - climbing: II
   hiking: T2
   mountaineering: L
   url: https://www.hikr.org/tour/post154908.html
+  waypoints:
+  - "Sn\xE6fellsj\xF6kull - St\xE6\xF0i 710 m": "64\xB049'4'' N, -24\xB017'8'' E"
+  - "Sn\xE6fellsj\xF6kull 1446 m": "64\xB048'12'' N, -24\xB013'24'' E"
+  - "Sn\xE6fellsj\xF6kull - St\xE6\xF0i 710 m": "64\xB049'4'' N, -24\xB017'8'' E"
 - climbing: II
   hiking: T6
   mountaineering: WS
   url: https://www.hikr.org/tour/post154611.html
+  waypoints:
+  - "Patscher H\xFCtte 1667 m": "46\xB055'41'' N, 12\xB013'32'' E"
+  - "Barmer H\xFCtte 2610 m": "46\xB054'60'' N, 12\xB010'9'' E"
+  - Remscheidscharte/Tulpenscharte 2898 m: "46\xB054'32'' N, 12\xB010'19'' E"
+  - Mittlere Ohrenspitze 3005 m: "46\xB054'36'' N, 12\xB010'11'' E"
+  - "Gro\xDFe Ohrenspitze 3101 m": "46\xB054'25'' N, 12\xB010'37'' E"
 - climbing: IV
   hiking: T3+
   mountaineering: L
   url: https://www.hikr.org/tour/post154867.html
+  waypoints:
+  - Parcheggio diga Lago di Morasco 1740 m: "46\xB025'29'' N, 8\xB024'20'' E"
+  - Lago del Sabbione  2463 m: "46\xB025'3'' N, 8\xB020'41'' E"
+  - Rifugio Claudio e Bruno 2708 m: "46\xB024'53'' N, 8\xB019'30'' E"
+  - Hohsandgletscher 2800 m: "46\xB024'36'' N, 8\xB018'25'' E"
+  - "Mittelb\xE4rgpass 3044 m": "46\xB024'9'' N, 8\xB018'14'' E"
+  - Hohsandhorn / Punta del Sabbione 3182 m: "46\xB024'14'' N, 8\xB018'35'' E"
 - climbing: IV
   hiking: T4
   mountaineering: WS+
   url: https://www.hikr.org/tour/post154852.html
+  waypoints:
+  - Piani dell'Avaro 1700 m: "46\xB00'22'' N, 9\xB035'53'' E"
+  - Passo dell'Avaro 2100 m: "46\xB01'5'' N, 9\xB035'19'' E"
+  - Via Fior di Montagna 2050 m: "46\xB01'50'' N, 9\xB035'19'' E"
+  - Cima di Pescegallo 2330 m: "46\xB01'46'' N, 9\xB035'21'' E"
+  - Monte Ponteranica - Occidentale 2370 m: "46\xB01'42'' N, 9\xB035'22'' E"
+  - Cima di Pescegallo 2330 m: "46\xB01'46'' N, 9\xB035'21'' E"
+  - Bocchetta di Triomen 2205 m: "46\xB01'16'' N, 9\xB035'30'' E"
+  - Passo dell'Avaro 2100 m: "46\xB01'5'' N, 9\xB035'19'' E"
+  - Piani dell'Avaro 1700 m: "46\xB00'22'' N, 9\xB035'53'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post154823.html
+  waypoints:
+  - "Albergo Robi\xE8i 1914 m": "46\xB026'39'' N, 8\xB030'49'' E"
+  - "M\xF6tt di Crusei - P.2252m 2252 m": "46\xB026'11'' N, 8\xB029'43'' E"
+  - Monolito Franco Zorzi 2555 m: "46\xB025'33'' N, 8\xB028'54'' E"
+  - "Ghiacciaio del Bas\xF2dino, entrata NW 2839 m": "46\xB025'17'' N, 8\xB028'27''\
+      \ E"
+  - "Ghiacciaio del Bas\xF2dino 3000 m": "46\xB024'54'' N, 8\xB028'28'' E"
+  - "Bas\xF2dino 3272 m": "46\xB024'42'' N, 8\xB028'6'' E"
 - climbing: III
   hiking: T3+
   mountaineering: L
   url: https://www.hikr.org/tour/post154650.html
+  waypoints:
+  - Campolaro 1415 m: "45\xB054'59'' N, 10\xB021'46'' E"
+  - Pian di Campo 1554 m: "45\xB055'9'' N, 10\xB021'56'' E"
+  - Pian del Zuf 1594 m: "45\xB055'36'' N, 10\xB021'16'' E"
+  - Sentiero Irene Gatti 1680 m: "45\xB055'32'' N, 10\xB021'32'' E"
+  - Malga di Stabio di Sotto 1821 m: "45\xB056'4'' N, 10\xB022'42'' E"
+  - Malga di Stabio di Sopra 1923 m: "45\xB056'27'' N, 10\xB023'7'' E"
+  - Vendolaro Zucconi 1968 m: "45\xB056'40'' N, 10\xB023'29'' E"
+  - Lago della Sorba 2336 m: "45\xB057'4'' N, 10\xB024'15'' E"
+  - Porte di Stabio 2505 m: "45\xB057'10'' N, 10\xB024'26'' E"
+  - Monte Stabio 2536 m: "45\xB057'12'' N, 10\xB024'23'' E"
+  - Campolaro 1415 m: "45\xB054'59'' N, 10\xB021'46'' E"
 - climbing: III
   hiking: T3+
   mountaineering: WS-
   url: https://www.hikr.org/tour/post154878.html
+  waypoints:
+  - "Hvannadalshn\xFAkur 2110 m": "64\xB00'53'' N, -17\xB019'30'' E"
 - climbing: III
   hiking: T3+
   mountaineering: L
   url: https://www.hikr.org/tour/post154858.html
+  waypoints:
+  - Parcheggio diga Lago di Morasco 1740 m: "46\xB025'29'' N, 8\xB024'20'' E"
+  - Lago di Morasco 1815 m: "46\xB025'25'' N, 8\xB023'45'' E"
+  - "Rifugio Cesare M\xF3res 2504 m": "46\xB025'26'' N, 8\xB021'4'' E"
+  - Lago del Sabbione  2463 m: "46\xB025'3'' N, 8\xB020'41'' E"
+  - Rifugio Claudio e Bruno 2708 m: "46\xB024'53'' N, 8\xB019'30'' E"
+  - Hohsandgletscher 2800 m: "46\xB024'36'' N, 8\xB018'25'' E"
+  - "Mittelb\xE4rgpass 3044 m": "46\xB024'9'' N, 8\xB018'14'' E"
+  - Hohsandhorn / Punta del Sabbione 3182 m: "46\xB024'14'' N, 8\xB018'35'' E"
+  - "Mittelb\xE4rgpass 3044 m": "46\xB024'9'' N, 8\xB018'14'' E"
+  - Hohsandgletscher 2800 m: "46\xB024'36'' N, 8\xB018'25'' E"
+  - Rifugio Claudio e Bruno 2708 m: "46\xB024'53'' N, 8\xB019'30'' E"
+  - Piana dei Camosci 2460 m: "46\xB025'57'' N, 8\xB021'12'' E"
+  - "Rifugio Citt\xE0 di Busto 2482 m": "46\xB026'2'' N, 8\xB021'47'' E"
+  - "B\xE4ttelmattalp 2112 m": "46\xB026'28'' N, 8\xB022'21'' E"
+  - Parcheggio diga Lago di Morasco 1740 m: "46\xB025'29'' N, 8\xB024'20'' E"
 - climbing: III
   hiking: T4
   mountaineering: WS+
   url: https://www.hikr.org/tour/post154829.html
+  waypoints:
+  - Furkapass - Hotel Furkablick 2427 m: "46\xB034'35'' N, 8\xB025'18'' E"
+  - "Galenstock S\xFCdostsporn 3365 m": "46\xB036'25'' N, 8\xB024'58'' E"
+  - Galenstock 3586 m: "46\xB036'45'' N, 8\xB025'1'' E"
+  - Rhonegletscher 2300 m: "46\xB035'2'' N, 8\xB023'15'' E"
+  - "Furka Belv\xE9d\xE8re 2271 m": "46\xB034'36'' N, 8\xB023'18'' E"
 - climbing: II
   hiking: T5
   mountaineering: WS-
   url: https://www.hikr.org/tour/post154825.html
+  waypoints:
+  - Scherbadung / Pizzo Cervandone 3211 m: "46\xB019'27'' N, 8\xB013'23'' E"
 - hiking: T3+
   mountaineering: L
   url: https://www.hikr.org/tour/post154772.html
+  waypoints:
+  - Fiesso 979 m: "46\xB029'34'' N, 8\xB044'0'' E"
+  - Capanna Tremorgio 1848 m: "46\xB028'54'' N, 8\xB043'30'' E"
+  - Valle dei Cani 2534 m: "46\xB028'45'' N, 8\xB041'42'' E"
+  - Poncione di Tremorgio 2669 m: "46\xB028'57'' N, 8\xB042'1'' E"
+  - Valle dei Cani 2534 m: "46\xB028'45'' N, 8\xB041'42'' E"
+  - Cascina di Campolungo 2086 m: "46\xB028'20'' N, 8\xB043'11'' E"
+  - Lago Tremorgio 1827 m: "46\xB028'47'' N, 8\xB043'15'' E"
+  - Fiesso 979 m: "46\xB029'34'' N, 8\xB044'0'' E"
 - hiking: T3
   mountaineering: WS-
   url: https://www.hikr.org/tour/post154799.html
+  waypoints:
+  - Prati di Compietto 1694 m: "46\xB032'55'' N, 8\xB057'59'' E"
+  - Bacino di Carassino 1707 m: "46\xB032'46'' N, 8\xB058'3'' E"
+  - Alpe della Bolla 1717 m: "46\xB032'36'' N, 8\xB058'16'' E"
+  - Alpe Carassino 1766 m: "46\xB031'52'' N, 8\xB058'59'' E"
+  - Alpe Cassimoi 1829 m: "46\xB031'32'' N, 8\xB059'24'' E"
+  - Alpe Bresciana 1883 m: "46\xB030'47'' N, 8\xB059'34'' E"
+  - Capanna Adula UTOE 2393 m: "46\xB029'44'' N, 9\xB00'28'' E"
+  - Adulajoch 3290 m: "46\xB029'43'' N, 9\xB02'19'' E"
+  - Rheinwaldhorn / Adula 3402 m: "46\xB029'37'' N, 9\xB02'24'' E"
+  - Adulajoch 3290 m: "46\xB029'43'' N, 9\xB02'19'' E"
+  - Capanna Adula UTOE 2393 m: "46\xB029'44'' N, 9\xB00'28'' E"
+  - Alpe Bresciana 1883 m: "46\xB030'47'' N, 8\xB059'34'' E"
+  - Alpe Cassimoi 1829 m: "46\xB031'32'' N, 8\xB059'24'' E"
+  - Alpe Carassino 1766 m: "46\xB031'52'' N, 8\xB058'59'' E"
+  - Alpe della Bolla 1717 m: "46\xB032'36'' N, 8\xB058'16'' E"
+  - Bacino di Carassino 1707 m: "46\xB032'46'' N, 8\xB058'3'' E"
+  - Prati di Compietto 1694 m: "46\xB032'55'' N, 8\xB057'59'' E"
 - climbing: II
   hiking: T4+
   mountaineering: L
   url: https://www.hikr.org/tour/post154774.html
   via-ferrata: WS
+  waypoints:
+  - Venoz 1770 m: "45\xB047'51'' N, 7\xB029'11'' E"
+  - Tza di Fontaney 2307 m: "45\xB048'52'' N, 7\xB029'2'' E"
+  - "Colle di Salv\xE9 2569 m": "45\xB049'40'' N, 7\xB029'21'' E"
+  - Rifugio di Cuney 2656 m: "45\xB050'29'' N, 7\xB028'57'' E"
+  - Lago Pisonet 2740 m: "45\xB050'20'' N, 7\xB028'45'' E"
+  - Coteau Champorcher 2656 m: "45\xB049'18'' N, 7\xB028'50'' E"
 - climbing: II
   hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post154690.html
   via-ferrata: WS
+  waypoints:
+  - Glacier de la Plaine Morte 2700 m: "46\xB022'43'' N, 7\xB029'29'' E"
+  - Lac des Faverges 2750 m: "46\xB022'51'' N, 7\xB032'33'' E"
 - climbing: II
   hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post154753.html
   via-ferrata: WS
+  waypoints:
+  - Larecc 1633 m: "46\xB034'9'' N, 8\xB059'23'' E"
+  - Alpe Scaradra di Sotto 1797 m: "46\xB033'46'' N, 8\xB059'45'' E"
+  - Passo Soreda 2759 m: "46\xB032'49'' N, 9\xB01'9'' E"
+  - Pizzo Cassinello 3102 m: "46\xB032'16'' N, 9\xB01'23'' E"
+  - Passo Soreda 2759 m: "46\xB032'49'' N, 9\xB01'9'' E"
+  - Alpe Scaradra di Sotto 1797 m: "46\xB033'46'' N, 8\xB059'45'' E"
+  - Larecc 1633 m: "46\xB034'9'' N, 8\xB059'23'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post154743.html
   via-ferrata: WS
+  waypoints:
+  - Parkplatz Punt Ota  1774 m: "46\xB029'25'' N, 9\xB053'59'' E"
+  - Alp Misaun 2013 m: "46\xB025'52'' N, 9\xB051'54'' E"
+  - Margun Misaun 2245 m: "46\xB024'39'' N, 9\xB051'53'' E"
+  - Chamanna da Tschierva SAC 2583 m: "46\xB024'14'' N, 9\xB052'48'' E"
+  - Vadrettin da Tschierva 3225 m: "46\xB024'38'' N, 9\xB053'39'' E"
+  - Piz Morteratsch 3751 m: "46\xB024'9'' N, 9\xB054'6'' E"
 - climbing: II
   hiking: T5
   mountaineering: WS
   url: https://www.hikr.org/tour/post154659.html
   via-ferrata: WS
+  waypoints:
+  - Ardez 1431 m: "46\xB046'27'' N, 10\xB012'5'' E"
+  - Alp Valmala 1980 m: "46\xB049'27'' N, 10\xB012'13'' E"
+  - Plan d' Agl 2025 m: "46\xB049'42'' N, 10\xB012'6'' E"
+  - Marangun Valmala 2178 m: "46\xB049'47'' N, 10\xB010'60'' E"
+  - Furcletta 2735 m: "46\xB050'6'' N, 10\xB09'12'' E"
+  - Chamonna Tuoi CAS 2250 m: "46\xB049'51'' N, 10\xB07'57'' E"
+  - Lai Blau 2613 m: "46\xB049'17'' N, 10\xB09'35'' E"
+  - P.2855m 2855 m: "46\xB049'32'' N, 10\xB09'56'' E"
+  - Piz da las Clavigliadas 2983 m: "46\xB049'50'' N, 10\xB09'9'' E"
+  - Chamonna Tuoi CAS 2250 m: "46\xB049'51'' N, 10\xB07'57'' E"
+  - Fuorcla dal Cunfin  3042 m: "46\xB050'36'' N, 10\xB06'10'' E"
+  - Piz Buin Grond 3312 m: "46\xB050'39'' N, 10\xB07'8'' E"
+  - Fuorcla dal Cunfin  3042 m: "46\xB050'36'' N, 10\xB06'10'' E"
+  - Chamonna Tuoi CAS 2250 m: "46\xB049'51'' N, 10\xB07'57'' E"
+  - Guarda 1653 m: "46\xB046'32'' N, 10\xB09'13'' E"
 - climbing: II
   hiking: T6-
   mountaineering: WS
   url: https://www.hikr.org/tour/post154710.html
   via-ferrata: WS
+  waypoints:
+  - "S\xE4ge 1470 m": "46\xB041'43'' N, 10\xB029'17'' E"
+  - Kapajabruck 1786 m: "46\xB040'58'' N, 10\xB029'1'' E"
+  - Kastafritt 1967 m: "46\xB041'4'' N, 10\xB027'51'' E"
+  - Laatscher Alm 2041 m: "46\xB040'52'' N, 10\xB027'16'' E"
+  - Tellakopf / Cima di Tella 2527 m: "46\xB040'29'' N, 10\xB027'37'' E"
+  - Tellajoch 2355 m: "46\xB040'16'' N, 10\xB027'5'' E"
+  - Guardaskopf / Krippenland / Cima dei Greppi 2720 m: "46\xB040'16'' N, 10\xB026'10''\
+      \ E"
+  - Schwarze Wand 2754 m: "46\xB040'31'' N, 10\xB025'58'' E"
+  - Arundakopf 2879 m: "46\xB041'7'' N, 10\xB025'45'' E"
+  - Punkt 2751 2751 m: "46\xB041'28'' N, 10\xB025'28'' E"
+  - Costeras 2946 m: "46\xB041'44'' N, 10\xB025'14'' E"
+  - Valdaschli Spitze / Cima Valdassa 3049 m: "46\xB041'58'' N, 10\xB024'49'' E"
+  - Sella 3081 m: "46\xB042'18'' N, 10\xB024'26'' E"
+  - Piz Sesvenna 3205 m: "46\xB042'21'' N, 10\xB024'10'' E"
+  - Foratrida 3136 m: "46\xB042'19'' N, 10\xB024'33'' E"
+  - Punkt 2958 2958 m: "46\xB042'49'' N, 10\xB024'60'' E"
+  - Schliniger Alm 1866 m: "46\xB043'13'' N, 10\xB027'13'' E"
+  - Schlinig / Slingia 1717 m: "46\xB042'19'' N, 10\xB028'23'' E"
+  - "Abzweigung nach Pr\xE4majur 1620 m": "46\xB041'45'' N, 10\xB029'51'' E"
 - climbing: 4+
   hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post154599.html
   via-ferrata: WS
+  waypoints:
+  - Trotzigplanggstock 2954 m: "46\xB045'51'' N, 8\xB028'26'' E"
+  - "Sustlih\xFCtte SAC 2257 m": "46\xB045'6'' N, 8\xB028'15'' E"
+  - "Sustlih\xFCtte Leiterenweg 2128 m": "46\xB045'2'' N, 8\xB028'7'' E"
+  - "Sustlih\xFCtte - Parkplatz 1895 m": "46\xB044'49'' N, 8\xB028'2'' E"
 - climbing: II
   hiking: T4+
   mountaineering: L
   url: https://www.hikr.org/tour/post154476.html
   via-ferrata: WS
+  waypoints:
+  - Lucknerhaus 1918 m: "47\xB01'17'' N, 12\xB041'19'' E"
+  - "Glorer H\xFCtte 2642 m": "47\xB01'52'' N, 12\xB042'57'' E"
+  - "Salmh\xFCtte 2638 m": "47\xB02'49'' N, 12\xB043'14'' E"
+  - Schwertkopf 3099 m: "47\xB03'16'' N, 12\xB044'19'' E"
 - climbing: II
   hiking: T3
   mountaineering: L
   url: https://www.hikr.org/tour/post154670.html
   via-ferrata: WS
+  waypoints:
+  - Prati di Compietto 1694 m: "46\xB032'55'' N, 8\xB057'59'' E"
+  - Passo di Piotta 2031 m: "46\xB030'2'' N, 8\xB059'46'' E"
+  - Capanna Adula CAS 2012 m: "46\xB029'57'' N, 8\xB059'45'' E"
+  - Capanna Adula UTOE 2393 m: "46\xB029'44'' N, 9\xB00'28'' E"
+  - Bivio Adula / Passo del Laghetto 2520 m: "46\xB029'32'' N, 9\xB00'40'' E"
+  - Passo del Laghetto 2646 m: "46\xB029'28'' N, 9\xB01'11'' E"
+  - Laghetto dei Cadabi 2646 m: "46\xB029'29'' N, 9\xB01'13'' E"
+  - Cima del Laghetto 2695 m: "46\xB029'21'' N, 9\xB01'10'' E"
 - climbing: II
   hiking: T5
   mountaineering: WS
   url: https://www.hikr.org/tour/post154414.html
   via-ferrata: WS
+  waypoints:
+  - Caiasco 1003 m: "46\xB010'22'' N, 9\xB014'29'' E"
+  - Bocchetta di Lavreno 2324 m: "46\xB013'50'' N, 9\xB014'48'' E"
+  - Pizzo Campanile 2458 m: "46\xB013'55'' N, 9\xB014'45'' E"
+  - Bocchetta di Lavreno 2324 m: "46\xB013'50'' N, 9\xB014'48'' E"
+  - Caiasco 1003 m: "46\xB010'22'' N, 9\xB014'29'' E"
 - climbing: I
   hiking: T5+
   mountaineering: WS
   url: https://www.hikr.org/tour/post154637.html
   via-ferrata: WS
+  waypoints:
+  - "Pr\xE4majur - Talstation Sessellift 1723 m": "46\xB042'13'' N, 10\xB030'32''\
+      \ E"
+  - "H\xF6feralm 2068 m": "46\xB042'12'' N, 10\xB029'47'' E"
+  - "Plantapatschh\xFCtte 2141 m": "46\xB042'27'' N, 10\xB029'32'' E"
+  - P.2505 2505 m: "46\xB043'13'' N, 10\xB028'58'' E"
+  - P.2512 2512 m: "46\xB043'15'' N, 10\xB028'45'' E"
+  - La Forcella 2334 m: "46\xB043'32'' N, 10\xB028'21'' E"
+  - Vernungspitz 2818 m: "46\xB044'16'' N, 10\xB027'53'' E"
+  - P.2812 2812 m: "46\xB044'18'' N, 10\xB027'31'' E"
+  - Vernungkopf 2870 m: "46\xB044'29'' N, 10\xB027'18'' E"
+  - "Sesvenna H\xFCtte 2258 m": "46\xB044'5'' N, 10\xB026'8'' E"
+  - "F\xF6llakopf 2890 m": "46\xB043'21'' N, 10\xB025'37'' E"
+  - "F\xF6llascharte 2791 m": "46\xB043'16'' N, 10\xB025'27'' E"
+  - Fernerspitz / Punta della Vedretta  2954 m: "46\xB043'9'' N, 10\xB025'7'' E"
+  - P.2884 2884 m: "46\xB043'12'' N, 10\xB024'55'' E"
+  - P. 2915 2915 m: "46\xB043'17'' N, 10\xB024'51'' E"
+  - Fuorcla Sesvenna 2819 m: "46\xB043'27'' N, 10\xB024'39'' E"
+  - Schadler 2948 m: "46\xB043'39'' N, 10\xB024'34'' E"
+  - P.2905 2905 m: "46\xB043'48'' N, 10\xB024'17'' E"
+  - Piz Rims 3067 m: "46\xB043'58'' N, 10\xB024'1'' E"
+  - "Ehemalige Pforzheimer H\xFCtte 2250 m": "46\xB044'4'' N, 10\xB026'16'' E"
+  - Wasserfall Schlinig 2118 m: "46\xB043'52'' N, 10\xB026'35'' E"
+  - Schliniger Alm 1866 m: "46\xB043'13'' N, 10\xB027'13'' E"
+  - Schlinig / Slingia 1717 m: "46\xB042'19'' N, 10\xB028'23'' E"
+  - "Abzweigung nach Pr\xE4majur 1620 m": "46\xB041'45'' N, 10\xB029'51'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS+
   url: https://www.hikr.org/tour/post154643.html
   via-ferrata: WS
+  waypoints:
+  - Val Veny 1600 m: "45\xB047'22'' N, 6\xB054'36'' E"
+  - Cantine de la Visaille 1660 m: "45\xB047'11'' N, 6\xB054'5'' E"
+  - Cabane du Combal 1972 m: "45\xB046'35'' N, 6\xB052'4'' E"
+  - Lago di Combal 1968 m: "45\xB046'30'' N, 6\xB052'6'' E"
+  - Lac du Miage 2030 m: "45\xB046'39'' N, 6\xB052'11'' E"
+  - Refuge Gonella 3071 m: "45\xB049'9'' N, 6\xB049'46'' E"
+  - Aiguilles Grises 3526 m: "45\xB049'34'' N, 6\xB049'35'' E"
+  - Piton des Italiens 4002 m: "45\xB050'14'' N, 6\xB049'49'' E"
+  - "D\xF4me du Go\xFBter 4304 m": "45\xB050'34'' N, 6\xB050'36'' E"
+  - "Col du D\xF4me 4236 m": "45\xB050'29'' N, 6\xB050'48'' E"
+  - Bivouac Vallot 4362 m: "45\xB050'21'' N, 6\xB051'7'' E"
+  - "Cresta delle Bosses - Punto pi\xF9 alto dell'Italia 4760 m": "45\xB049'58'' N,\
+      \ 6\xB051'41'' E"
+  - Mont Blanc 4810 m: "45\xB049'58'' N, 6\xB051'54'' E"
+  - "Aiguille du Go\xFBter 3863 m": "45\xB051'3'' N, 6\xB049'53'' E"
+  - "Nouveau Refuge de l'Aiguille du Go\xFBter 3835 m": "45\xB051'9'' N, 6\xB049'49''\
+      \ E"
+  - "Refuge de l'Aiguille du Go\xFBter 3817 m": "45\xB051'12'' N, 6\xB049'48'' E"
+  - "Refuge de T\xEAte Rousse 3167 m": "45\xB051'18'' N, 6\xB049'3'' E"
+  - Nid d'Aigle 2372 m: "45\xB051'30'' N, 6\xB047'55'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post154457.html
   via-ferrata: WS
+  waypoints:
+  - Visp 651 m: "46\xB017'37'' N, 7\xB052'58'' E"
+  - "Vispa, M\xFCndung in den Rotten 646 m": "46\xB018'8'' N, 7\xB052'13'' E"
+  - Eggerberg 846 m: "46\xB018'25'' N, 7\xB052'42'' E"
+  - Eiiltini 1476 m: "46\xB021'11'' N, 7\xB052'47'' E"
+  - "D\xFCbihorn 2983 m": "46\xB021'59'' N, 7\xB051'27'' E"
+  - Martischipfa 1940 m: "46\xB022'12'' N, 7\xB053'4'' E"
+  - Strahlhorn 3200 m: "46\xB023'11'' N, 7\xB054'30'' E"
+  - Eiiltini 1476 m: "46\xB021'11'' N, 7\xB052'47'' E"
+  - Baltschieder 645 m: "46\xB018'32'' N, 7\xB051'52'' E"
+  - "Vispa, M\xFCndung in den Rotten 646 m": "46\xB018'8'' N, 7\xB052'13'' E"
+  - Visp 651 m: "46\xB017'37'' N, 7\xB052'58'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post154410.html
   via-ferrata: WS
+  waypoints:
+  - "Tiefenbach - Parkplatz Albert-Heim-H\xFCtte 2120 m": "46\xB035'40'' N, 8\xB0\
+      27'30'' E"
+  - Tiefengletscher 3120 m: "46\xB037'19'' N, 8\xB025'33'' E"
+  - "N\xF6rdlicher Tiefensattel 3250 m": "46\xB037'21'' N, 8\xB025'17'' E"
+  - Tiefengletscher 3120 m: "46\xB037'19'' N, 8\xB025'33'' E"
+  - "Tiefenbach - Parkplatz Albert-Heim-H\xFCtte 2120 m": "46\xB035'40'' N, 8\xB0\
+      27'30'' E"
 - climbing: III
   hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post154508.html
+  waypoints:
+  - Bruck an der Glocknerstrasse 755 m: "47\xB017'10'' N, 12\xB049'27'' E"
+  - Fusch 813 m: "47\xB013'31'' N, 12\xB049'27'' E"
+  - Kleiner Tenn 3158 m: "47\xB011'5'' N, 12\xB045'26'' E"
+  - Schneespitze 3317 m: "47\xB011'0'' N, 12\xB045'41'' E"
+  - Bergrestaurant Mooserboden 2040 m: "47\xB010'3'' N, 12\xB042'55'' E"
 - climbing: III
   hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post154492.html
+  waypoints:
+  - Berghotel Schwarenbach 2060 m: "46\xB025'55'' N, 7\xB037'30'' E"
+  - Biwakplatz Schwarzgletscher 2407 m: "46\xB025'37'' N, 7\xB039'26'' E"
+  - Zackengrat 3326 m: "46\xB025'8'' N, 7\xB040'51'' E"
+  - Balmhorn 3697 m: "46\xB025'30'' N, 7\xB041'37'' E"
 - climbing: III
   hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post154392.html
+  waypoints:
+  - Passo del Lucomagno / Cuolm Lucmagn / Lukmanierpass 1915 m: "46\xB033'47'' N,\
+      \ 8\xB048'3'' E"
+  - "Einstieg zum Scop\xED / Attacco salita Scop\xED 1971 m": "46\xB034'36'' N, 8\xB0\
+      48'5'' E"
+  - Tornante P.2488m 2488 m: "46\xB034'24'' N, 8\xB048'44'' E"
+  - Scopi 3190 m: "46\xB034'18'' N, 8\xB049'48'' E"
 - climbing: III
   hiking: T4+
   mountaineering: WS
   url: https://www.hikr.org/tour/post154179.html
+  waypoints:
+  - "Parkplatz Br\xFCndler 1176 m": "46\xB047'40'' N, 8\xB028'6'' E"
+  - "Alpenr\xF6sli 1258 m": "46\xB047'42'' N, 8\xB028'59'' E"
+  - "Alp St\xE4feli 1393 m": "46\xB048'2'' N, 8\xB029'40'' E"
+  - "Spannorth\xFCtte SAC 1956 m": "46\xB047'59'' N, 8\xB030'35'' E"
+  - "Schlossbergl\xFCcke 2624 m": "46\xB047'44'' N, 8\xB031'33'' E"
+  - Gross Spannort 3198 m: "46\xB047'12'' N, 8\xB031'28'' E"
 - climbing: I
   hiking: T4+
   mountaineering: WS
   url: https://www.hikr.org/tour/post154391.html
+  waypoints:
+  - Val Bedretto - Ultimo tornante strada del Passo della Novena 2410 m: "46\xB028'49''\
+      \ N, 8\xB024'9'' E"
+  - Chilchhornpass 2740 m: "46\xB029'23'' N, 8\xB023'34'' E"
+  - Pizzo Gallina 3061 m: "46\xB029'42'' N, 8\xB023'31'' E"
+  - Laghetto superiore del Pizzo Gallina 2566 m: "46\xB029'19'' N, 8\xB024'0'' E"
+  - Laghetto inferiore del Pizzo Gallina 2507 m: "46\xB029'3'' N, 8\xB024'22'' E"
+  - Val Bedretto - Ultimo tornante strada del Passo della Novena 2410 m: "46\xB028'49''\
+      \ N, 8\xB024'9'' E"
 - climbing: II
   mountaineering: WS
   url: https://www.hikr.org/tour/post154363.html
+  waypoints:
+  - Nadelhorn 4327 m: "46\xB06'34'' N, 7\xB051'50'' E"
+  - Windjoch 3850 m: "46\xB06'59'' N, 7\xB052'24'' E"
+  - Ulrichshorn 3925 m: "46\xB07'4'' N, 7\xB052'36'' E"
+  - Schwarzhorn 3620 m: "46\xB06'34'' N, 7\xB052'57'' E"
+  - "Mischabelh\xFCtten AACZ 3335 m": "46\xB06'35'' N, 7\xB053'20'' E"
+  - "H\xFCttenweg Mischabelh\xFCtten AACZ 2980 m": "46\xB06'34'' N, 7\xB053'40'' E"
+  - Saas-Fee - Busterminal 1803 m: "46\xB06'31'' N, 7\xB055'45'' E"
 - climbing: II
   hiking: T3
   mountaineering: L
   url: https://www.hikr.org/tour/post154316.html
   via-ferrata: ZS-
+  waypoints:
+  - Fiescheralp 2212 m: "46\xB024'47'' N, 8\xB06'11'' E"
 - climbing: II
   hiking: T6
   mountaineering: L
   url: https://www.hikr.org/tour/post154364.html
   via-ferrata: ZS-
+  waypoints:
+  - Cuzzago 220 m: "45\xB059'47'' N, 8\xB022'17'' E"
+  - Ponte Rio dei Mulini 259 m: "45\xB059'57'' N, 8\xB022'42'' E"
+  - Sasso Grande 878 m: "46\xB00'16'' N, 8\xB023'31'' E"
+  - Mot Gianin 1049 m: "46\xB00'32'' N, 8\xB023'28'' E"
+  - Rudere Mot Gianin 1150 m: "46\xB00'42'' N, 8\xB023'30'' E"
+  - Pizz d'la Vugia 1898 m: "46\xB01'14'' N, 8\xB023'28'' E"
+  - Pizzo Proman 2098 m: "46\xB01'29'' N, 8\xB023'43'' E"
+  - Colma di Premosello 1728 m: "46\xB01'51'' N, 8\xB022'37'' E"
+  - Alpe La Motta 1139 m: "46\xB01'38'' N, 8\xB021'36'' E"
+  - Alpe La Piana 999 m: "46\xB01'19'' N, 8\xB021'16'' E"
+  - Alpetto Cornala 640 m: "46\xB00'28'' N, 8\xB021'5'' E"
+  - Pian del Manico 497 m: "46\xB00'19'' N, 8\xB020'56'' E"
+  - Premosello-Chiovenda 222 m: "46\xB00'8'' N, 8\xB019'38'' E"
 - climbing: I
   hiking: T3+
   mountaineering: L
   url: https://www.hikr.org/tour/post154345.html
   via-ferrata: ZS-
+  waypoints:
+  - Corte Terza 1196 m: "46\xB015'57'' N, 9\xB016'55'' E"
+  - Corte Seconda 1368 m: "46\xB015'4'' N, 9\xB015'55'' E"
+  - Corte Prima 1540 m: "46\xB014'44'' N, 9\xB015'45'' E"
+  - Passo della Crocetta 2201 m: "46\xB013'58'' N, 9\xB015'22'' E"
+  - Pizzo San Pio 2304 m: "46\xB013'58'' N, 9\xB015'46'' E"
+  - Passo della Crocetta 2201 m: "46\xB013'58'' N, 9\xB015'22'' E"
+  - Alpe del Notar 1882 m: "46\xB014'34'' N, 9\xB015'19'' E"
+  - Corte Prima 1540 m: "46\xB014'44'' N, 9\xB015'45'' E"
+  - Corte Seconda 1368 m: "46\xB015'4'' N, 9\xB015'55'' E"
+  - Corte Terza 1196 m: "46\xB015'57'' N, 9\xB016'55'' E"
 - climbing: I
   hiking: T5+
   mountaineering: WS
   url: https://www.hikr.org/tour/post141984.html
   via-ferrata: ZS-
+  waypoints:
+  - "Frassen\xE9 1084 m": "46\xB015'8'' N, 11\xB058'56'' E"
+  - Rifugio Scarpa-Gurekian 1748 m: "46\xB016'1'' N, 11\xB057'35'' E"
+  - Bivacco Biasin 2650 m: "46\xB016'33'' N, 11\xB057'13'' E"
+  - "Monte Agn\xE8r 2872 m": "46\xB016'35'' N, 11\xB057'9'' E"
 - climbing: I
   hiking: T5+
   mountaineering: WS+
   url: https://www.hikr.org/tour/post142145.html
   via-ferrata: ZS-
+  waypoints:
+  - Rifugio Treviso 1631 m: "46\xB014'12'' N, 11\xB054'10'' E"
+  - Forcella dei Vani Alti 2378 m: "46\xB014'27'' N, 11\xB055'30'' E"
+  - Bivacco Reali 2595 m: "46\xB014'49'' N, 11\xB055'41'' E"
+  - Croda Granda 2849 m: "46\xB015'1'' N, 11\xB055'59'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS+
   url: https://www.hikr.org/tour/post150781.html
   via-ferrata: ZS-
+  waypoints:
+  - Rifugio Treviso 1631 m: "46\xB014'12'' N, 11\xB054'10'' E"
+  - Forcella delle Mughe 2244 m: "46\xB014'1'' N, 11\xB054'54'' E"
+  - Sass d'Ortiga 2634 m: "46\xB014'14'' N, 11\xB054'58'' E"
 - climbing: I
   hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post154228.html
   via-ferrata: ZS-
+  waypoints:
+  - Bagni di Craveggia 980 m: "46\xB011'53'' N, 8\xB032'23'' E"
+  - Alpe Fondo Monfraccio 1077 m: "46\xB011'59'' N, 8\xB031'3'' E"
+  - Alpe Pianezza 1645 m: "46\xB011'48'' N, 8\xB030'3'' E"
+  - Alpe Tenda 1853 m: "46\xB011'35'' N, 8\xB029'41'' E"
+  - Pizzo Ruggia 2289 m: "46\xB011'34'' N, 8\xB028'58'' E"
+  - Bocchetta di Ruggia 1990 m: "46\xB011'13'' N, 8\xB028'58'' E"
+  - Alpe Ruggia 1888 m: "46\xB010'60'' N, 8\xB029'24'' E"
+  - Rifugio Greppi 1915 m: "46\xB010'54'' N, 8\xB029'35'' E"
+  - Alpe Motta di Vocogno 1743 m: "46\xB011'0'' N, 8\xB029'50'' E"
+  - Alpe Motta Bugiola 1627 m: "46\xB011'14'' N, 8\xB029'42'' E"
+  - Alpe Cortaccio 1166 m: "46\xB011'46'' N, 8\xB030'46'' E"
+  - Alpe Fondo Monfraccio 1077 m: "46\xB011'59'' N, 8\xB031'3'' E"
+  - Bagni di Craveggia 980 m: "46\xB011'53'' N, 8\xB032'23'' E"
 - climbing: I
   hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post154247.html
   via-ferrata: ZS-
+  waypoints:
+  - Monte Vigna Vaga 2332 m: "45\xB059'18'' N, 10\xB00'47'' E"
+  - Passo di Fontana Mora 2235 m: "45\xB059'9'' N, 10\xB00'54'' E"
+  - Passo di Petto 2225 m: "45\xB059'31'' N, 10\xB01'18'' E"
+  - Pizzo di Petto 2270 m: "45\xB059'33'' N, 10\xB01'18'' E"
+  - Monte Sponda Vaga 2071 m: "46\xB00'24'' N, 10\xB00'33'' E"
+  - Rifugio Mirtillo 1952 m: "46\xB00'32'' N, 10\xB00'23'' E"
+  - Monte Cavandola 2050 m: "46\xB00'31'' N, 10\xB00'7'' E"
+  - Passo di Val Grande 1980 m: "46\xB00'27'' N, 9\xB059'53'' E"
+  - Pizzo della Corna 2330 m: "46\xB00'38'' N, 9\xB059'25'' E"
+  - Vigna Soliva 2347 m: "46\xB00'26'' N, 9\xB059'14'' E"
+  - Monte Calvera 2292 m: "46\xB00'9'' N, 9\xB058'56'' E"
+  - Croce Monte Calvera 2180 m: "45\xB059'59'' N, 9\xB058'49'' E"
+  - Sorgente San Carlo 1163 m: "45\xB059'14'' N, 9\xB058'8'' E"
+  - Gandellino - Tezzi Alti 962 m: "45\xB059'40'' N, 9\xB057'19'' E"
+  - Spiazzi dell 'Acqua 1228 m: "45\xB059'2'' N, 9\xB058'33'' E"
+  - Bivio per Tezzi Alto 1205 m: "45\xB059'1'' N, 9\xB058'34'' E"
+  - Stalle di Prato di Vigna 1287 m: "45\xB059'1'' N, 9\xB059'18'' E"
+  - Baita Bassa di Fontana Mora 1513 m: "45\xB058'51'' N, 9\xB059'27'' E"
+  - Bivio Sentiero dell' Orso/Spigorel 1408 m: "45\xB058'56'' N, 9\xB059'32'' E"
+  - Baita Zuccotto 1717 m: "45\xB058'57'' N, 9\xB059'57'' E"
+  - Monte Vigna Vaga 2332 m: "45\xB059'18'' N, 10\xB00'47'' E"
 - climbing: I
   hiking: T4
   mountaineering: WS+
   url: https://www.hikr.org/tour/post154201.html
   via-ferrata: ZS-
+  waypoints:
+  - "Breslauer H\xFCtte 2844 m": "46\xB052'5'' N, 10\xB052'45'' E"
+  - Klettersteig Mitterkarjoch 3400 m: "46\xB053'2'' N, 10\xB051'25'' E"
+  - Wildspitze 3770 m: "46\xB053'7'' N, 10\xB052'3'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post154204.html
   via-ferrata: WS
+  waypoints:
+  - "Talstation F\xFCrenalpbahn 1084 m": "46\xB048'6'' N, 8\xB026'57'' E"
+  - "Alp St\xE4feli 1393 m": "46\xB048'2'' N, 8\xB029'40'' E"
+  - "Spannorth\xFCtte SAC 1956 m": "46\xB047'59'' N, 8\xB030'35'' E"
+  - "Schlossbergl\xFCcke 2624 m": "46\xB047'44'' N, 8\xB031'33'' E"
+  - "Schlossbergl\xFCcke 2624 m": "46\xB047'44'' N, 8\xB031'33'' E"
+  - "Kr\xF6ntenl\xFCcke 2824 m": "46\xB046'58'' N, 8\xB033'35'' E"
+  - "Kr\xF6nten 3108 m": "46\xB046'56'' N, 8\xB034'10'' E"
+  - "Kr\xF6ntenh\xFCtte SAC 1903 m": "46\xB048'0'' N, 8\xB034'32'' E"
+  - Bodenberg 1002 m: "46\xB048'42'' N, 8\xB036'11'' E"
 - climbing: I
   hiking: T6
   mountaineering: WS+
   url: https://www.hikr.org/tour/post154054.html
   via-ferrata: WS
+  waypoints:
+  - Rechter Leger 1610 m: "46\xB029'18'' N, 11\xB036'2'' E"
+  - "Grasleitenh\xFCtte / Rifugio Bergamo 2134 m": "46\xB029'5'' N, 11\xB037'46''\
+      \ E"
+  - "Rifugio Passo Principe / Grasleitenpassh\xFCtte 2600 m": "46\xB028'28'' N, 11\xB0\
+      38'18'' E"
+  - Kesselkogelsteig 2600 m: "46\xB028'29'' N, 11\xB038'22'' E"
+  - Kesselkogel / Catinaccio di Antermoia  3004 m: "46\xB028'27'' N, 11\xB038'37''\
+      \ E"
+  - Pas de Antermoia 2770 m: "46\xB028'15'' N, 11\xB038'43'' E"
 - climbing: II
   hiking: T6
   mountaineering: WS
   url: https://www.hikr.org/tour/post153765.html
   via-ferrata: WS
+  waypoints:
+  - "Gastst\xE4tte Oberhausalm 1786 m": "46\xB056'51'' N, 12\xB012'59'' E"
+  - Seebachalm 1890 m: "46\xB057'42'' N, 12\xB011'25'' E"
+  - Jagdhausspitze S-Gipfel 3129 m: "47\xB00'31'' N, 12\xB09'44'' E"
+  - Jagdhausspitze 3165 m: "47\xB00'34'' N, 12\xB09'48'' E"
 - climbing: I
   hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post134657.html
   via-ferrata: WS
+  waypoints:
+  - Larecc 1633 m: "46\xB034'9'' N, 8\xB059'23'' E"
+  - Alpe Scaradra di Sotto 1797 m: "46\xB033'46'' N, 8\xB059'45'' E"
+  - Rifugio Scaradra 2173 m: "46\xB033'21'' N, 9\xB00'21'' E"
+  - Passo Soreda 2759 m: "46\xB032'49'' N, 9\xB01'9'' E"
+  - Pizzo Cassinello 3102 m: "46\xB032'16'' N, 9\xB01'23'' E"
 - climbing: I
   hiking: T4
   mountaineering: WS-
   url: https://www.hikr.org/tour/post153974.html
   via-ferrata: WS
+  waypoints:
+  - Roter Kogel 2827 m: "47\xB011'5'' N, 10\xB058'33'' E"
+  - Wechnerscharte 2758 m: "47\xB011'1'' N, 10\xB058'4'' E"
 - climbing: I
   hiking: T4
   mountaineering: L
   url: https://www.hikr.org/tour/post153890.html
   via-ferrata: WS
+  waypoints:
+  - Pizzo Redorta 3038 m: "46\xB03'43'' N, 9\xB059'4'' E"
+  - Passo della Scaletta 2534 m: "46\xB04'2'' N, 9\xB057'41'' E"
+  - Pizzo Brunone (l'altro) 2750 m: "46\xB03'54'' N, 9\xB058'23'' E"
+  - Rifugio Baroni al Brunone 2295 m: "46\xB03'44'' N, 9\xB057'38'' E"
+  - Pian dell'Aser 1597 m: "46\xB03'16'' N, 9\xB057'3'' E"
+  - Pian di Campo 1373 m: "46\xB02'60'' N, 9\xB056'42'' E"
+  - Fiumenero - Parcheggio del cimitero 800 m: "46\xB01'12'' N, 9\xB057'23'' E"
 - climbing: I
   hiking: T4
   mountaineering: WS
   url: https://www.hikr.org/tour/post153370.html
   via-ferrata: WS
+  waypoints:
+  - "Parkplatz S\xC4GE zwischen Bruck und Hinterstein 835 m": "47\xB029'2'' N, 10\xB0\
+      23'22'' E"
+  - Hinterstein 866 m: "47\xB028'52'' N, 10\xB024'15'' E"
+  - Hinterstein - Hinteres Dorf 865 m: "47\xB028'32'' N, 10\xB024'51'' E"
+  - "Hinterstein - Parkplatz Auf der H\xF6h 890 m": "47\xB028'25'' N, 10\xB025'2''\
+      \ E"
+  - "Konstanzer J\xE4gerhaus 910 m": "47\xB027'40'' N, 10\xB026'16'' E"
+  - E-Werk Bad Hindelang / Auele 940 m: "47\xB027'18'' N, 10\xB026'19'' E"
+  - Hubertuskapelle 1033 m: "47\xB026'9'' N, 10\xB025'36'' E"
+  - Hinterer Erzberghof 1030 m: "47\xB026'4'' N, 10\xB025'37'' E"
+  - "Sommerweg Schwarzenbergh\xFCtte 1036 m": "47\xB025'59'' N, 10\xB025'28'' E"
+  - Giebelhaus 1068 m: "47\xB025'19'' N, 10\xB024'43'' E"
+  - "B\xE4rg\xFCndeletal - Einm\xFCndung Notabstieg 1105 m": "47\xB025'4'' N, 10\xB0\
+      24'49'' E"
+  - "Untere B\xE4rg\xFCndelealpe 1322 m": "47\xB024'11'' N, 10\xB024'48'' E"
+  - Prinz-Luitpold-Haus 1846 m: "47\xB023'33'' N, 10\xB025'12'' E"
+  - Abzweig Quelle 2020 m: "47\xB023'19'' N, 10\xB025'33'' E"
+  - Kaltwinkelscharte 2281 m: "47\xB022'58'' N, 10\xB025'57'' E"
+  - Hochvogel 2592 m: "47\xB022'50'' N, 10\xB026'11'' E"
+  - Kaltwinkelscharte 2281 m: "47\xB022'58'' N, 10\xB025'57'' E"
+  - Kreuzspitze 2367 m: "47\xB023'2'' N, 10\xB025'51'' E"
+  - Abzweig Quelle 2020 m: "47\xB023'19'' N, 10\xB025'33'' E"
+  - Prinz-Luitpold-Haus 1846 m: "47\xB023'33'' N, 10\xB025'12'' E"
+  - "Untere B\xE4rg\xFCndelealpe 1322 m": "47\xB024'11'' N, 10\xB024'48'' E"
+  - "B\xE4rg\xFCndeletal - Einm\xFCndung Notabstieg 1105 m": "47\xB025'4'' N, 10\xB0\
+      24'49'' E"
+  - Giebelhaus 1068 m: "47\xB025'19'' N, 10\xB024'43'' E"
+  - "Sommerweg Schwarzenbergh\xFCtte 1036 m": "47\xB025'59'' N, 10\xB025'28'' E"
+  - Hinterer Erzberghof 1030 m: "47\xB026'4'' N, 10\xB025'37'' E"
+  - Hubertuskapelle 1033 m: "47\xB026'9'' N, 10\xB025'36'' E"
+  - E-Werk Bad Hindelang / Auele 940 m: "47\xB027'18'' N, 10\xB026'19'' E"
+  - "Konstanzer J\xE4gerhaus 910 m": "47\xB027'40'' N, 10\xB026'16'' E"
+  - "Hinterstein - Parkplatz Auf der H\xF6h 890 m": "47\xB028'25'' N, 10\xB025'2''\
+      \ E"
+  - Hinterstein - Hinteres Dorf 865 m: "47\xB028'32'' N, 10\xB024'51'' E"
+  - Hinterstein 866 m: "47\xB028'52'' N, 10\xB024'15'' E"
+  - "Parkplatz S\xC4GE zwischen Bruck und Hinterstein 835 m": "47\xB029'2'' N, 10\xB0\
+      23'22'' E"
 - climbing: II
   hiking: T3
   mountaineering: L
   url: https://www.hikr.org/tour/post153577.html
+  waypoints:
+  - Ponte sul  torrente Tino 1058 m: "46\xB00'11'' N, 10\xB06'18'' E"
+  - Lago di Varro 2236 m: "46\xB01'42'' N, 10\xB06'31'' E"
+  - Sella del Tornone 2509 m: "46\xB01'59'' N, 10\xB06'48'' E"
+  - Pizzo Tornello 2687 m: "46\xB02'9'' N, 10\xB06'44'' E"
+  - Lago Cornalta 2181 m: "46\xB01'31'' N, 10\xB05'57'' E"
+  - Bivacco Baita di Varro 2027 m: "46\xB01'23'' N, 10\xB06'25'' E"
+  - Vilmaggiore 1089 m: "46\xB00'12'' N, 10\xB06'27'' E"
 - climbing: II
   hiking: T5
   mountaineering: WS-
   url: https://www.hikr.org/tour/post153307.html
+  waypoints:
+  - Lodrino 269 m: "46\xB018'2'' N, 8\xB058'50'' E"
+  - Forte Chiesa (Fortificazioni Ticinesi) 295 m: "46\xB018'4'' N, 8\xB058'37'' E"
+  - Ciduglio 824 m: "46\xB018'11'' N, 8\xB058'4'' E"
+  - Lagua 894 m: "46\xB018'6'' N, 8\xB057'58'' E"
+  - Grei 1180 m: "46\xB017'54'' N, 8\xB057'43'' E"
+  - Piancora 1396 m: "46\xB017'57'' N, 8\xB057'26'' E"
+  - Capanna Alpe d'Alva 1570 m: "46\xB017'60'' N, 8\xB057'10'' E"
+  - Piavacra 1728 m: "46\xB017'45'' N, 8\xB056'31'' E"
+  - "Rifugio Alpe Negh\xE9isc 1881 m": "46\xB017'33'' N, 8\xB055'7'' E"
+  - Forcarella di Lodrino 2223 m: "46\xB017'37'' N, 8\xB054'27'' E"
+  - Poncione Rosso 2505 m: "46\xB017'57'' N, 8\xB054'42'' E"
+  - Forcarella di Lodrino 2223 m: "46\xB017'37'' N, 8\xB054'27'' E"
+  - "Rifugio Alpe F\xFCm\xE8gna 1810 m": "46\xB017'49'' N, 8\xB053'56'' E"
+  - Val Pincascia - Ponte per Cornavosa 1300 m: "46\xB017'14'' N, 8\xB053'10'' E"
+  - Pincascia 1155 m: "46\xB017'0'' N, 8\xB052'49'' E"
+  - Forno 824 m: "46\xB016'28'' N, 8\xB051'20'' E"
+  - Cognera 758 m: "46\xB015'54'' N, 8\xB051'4'' E"
+  - "Lavertezzo - Verz\xF6\xF6  618 m": "46\xB015'36'' N, 8\xB050'28'' E"
+  - Lavertezzo 536 m: "46\xB015'30'' N, 8\xB050'20'' E"
 - climbing: I
   hiking: T5
   mountaineering: WS
   url: https://www.hikr.org/tour/post153672.html
+  waypoints:
+  - Passo del Lucomagno / Cuolm Lucmagn / Lukmanierpass 1915 m: "46\xB033'47'' N,\
+      \ 8\xB048'3'' E"
+  - Passo del Lucomagno - Baracca militare 1923 m: "46\xB033'51'' N, 8\xB047'48''\
+      \ E"
+  - Val Termine - P.1924m 1924 m: "46\xB034'0'' N, 8\xB047'4'' E"
+  - Bivio Val Termine 1924 m: "46\xB033'59'' N, 8\xB047'1'' E"
+  - Sentiero Val Cadlimo - P.2092m 2092 m: "46\xB033'58'' N, 8\xB046'32'' E"
+  - Piode della Val Cadlimo 2380 m: "46\xB034'4'' N, 8\xB046'11'' E"
+  - Foppa della Rondadura 2850 m: "46\xB034'28'' N, 8\xB045'8'' E"
+  - Colletto - Deposito Sci 2985 m: "46\xB034'34'' N, 8\xB045'5'' E"
+  - Piz Rondadura 3016 m: "46\xB034'34'' N, 8\xB045'3'' E"
 - hiking: T2
   mountaineering: L
   url: https://www.hikr.org/tour/post153524.html
+  waypoints:
+  - Montespluga 1905 m: "46\xB029'22'' N, 9\xB020'13'' E"
+  - Bivacco Val Loga - ex Cecchini  2773 m: "46\xB028'34'' N, 9\xB017'4'' E"
+  - Cima Meridionale di Val Loga 3003 m: "46\xB028'19'' N, 9\xB016'34'' E"
+  - Pass de Val Loga 2923 m: "46\xB028'39'' N, 9\xB016'36'' E"
+  - Cima Settentrionale di Val Loga 2968 m: "46\xB028'48'' N, 9\xB016'36'' E"
+  - Pass Zoccone 2920 m: "46\xB028'51'' N, 9\xB016'31'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS+
   ski: ZS
   url: https://www.hikr.org/tour/post153554.html
   via-ferrata: ZS-
+  waypoints:
+  - Alpe dei Piani 2066 m: "46\xB026'32'' N, 9\xB017'56'' E"
+  - Bocchetta quota 2916m 2916 m: "46\xB026'49'' N, 9\xB014'50'' E"
+  - Piz Bianch 3037 m: "46\xB026'59'' N, 9\xB015'27'' E"
+  - Piz di Ross 3018 m: "46\xB027'1'' N, 9\xB015'48'' E"
+  - Piz di Pian - Cima Sudovest 3149 m: "46\xB027'15'' N, 9\xB016'14'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS-
   ski: ZS
   url: https://www.hikr.org/tour/post153705.html
   via-ferrata: ZS-
+  waypoints:
+  - "Hinterstein - Parkplatz Auf der H\xF6h 890 m": "47\xB028'25'' N, 10\xB025'2''\
+      \ E"
+  - Zipfelsfall 980 m: "47\xB028'59'' N, 10\xB024'36'' E"
+  - Zipfelsalpe 1526 m: "47\xB029'31'' N, 10\xB025'33'' E"
+  - "Bschie\xDFer 2000 m": "47\xB029'17'' N, 10\xB026'24'' E"
+  - Ponten 2045 m: "47\xB029'8'' N, 10\xB027'8'' E"
+  - Zirleseck 1872 m: "47\xB028'57'' N, 10\xB027'48'' E"
+  - "Zererk\xF6pfle 1945 m": "47\xB028'37'' N, 10\xB028'5'' E"
+  - "Gei\xDFhorn / Gaishorn 2247 m": "47\xB028'11'' N, 10\xB028'34'' E"
+  - Rauhhorn 2240 m: "47\xB027'30'' N, 10\xB028'6'' E"
+  - Hintere Schafwanne 1956 m: "47\xB027'5'' N, 10\xB028'0'' E"
+  - Kirchdachsattel 1927 m: "47\xB026'20'' N, 10\xB028'22'' E"
+  - Schrecksee 1813 m: "47\xB026'13'' N, 10\xB027'59'' E"
 - climbing: I
   hiking: T5
   mountaineering: WS-
   ski: ZS
   url: https://www.hikr.org/tour/post153608.html
   via-ferrata: ZS-
+  waypoints:
+  - "Pl\xE4tz 853 m": "47\xB01'25'' N, 8\xB056'22'' E"
+  - "Ch\xE4seren 1281 m": "46\xB059'44'' N, 8\xB056'25'' E"
+  - "W\xE4rben / Werben 1383 m": "46\xB059'46'' N, 8\xB056'50'' E"
+  - "Gl\xE4rnischh\xFCtte SAC 1989 m": "47\xB00'6'' N, 8\xB057'48'' E"
+  - "Usser F\xFCrberg 2604 m": "47\xB00'23'' N, 8\xB058'6'' E"
+  - "Inner F\xFCrberg 2627 m": "47\xB00'19'' N, 8\xB058'45'' E"
+  - "Gl\xE4rnischh\xFCtte SAC 1989 m": "47\xB00'6'' N, 8\xB057'48'' E"
+  - "W\xE4rben / Werben 1383 m": "46\xB059'46'' N, 8\xB056'50'' E"
+  - "Ch\xE4seren 1281 m": "46\xB059'44'' N, 8\xB056'25'' E"
+  - "Pl\xE4tz 853 m": "47\xB01'25'' N, 8\xB056'22'' E"
 - climbing: II
   hiking: T2
   mountaineering: L
@@ -7324,12 +8161,45 @@
   ski: ZS
   url: https://www.hikr.org/tour/post153526.html
   via-ferrata: ZS-
+  waypoints:
+  - Bedri o Pian Castagno  868 m: "46\xB09'58'' N, 9\xB015'22'' E"
+  - Caiasco Cappella degli Alpini 946 m: "46\xB010'11'' N, 9\xB014'58'' E"
+  - Caiasco 1003 m: "46\xB010'22'' N, 9\xB014'29'' E"
+  - Cucchetta 1092 m: "46\xB010'55'' N, 9\xB014'31'' E"
+  - La Foppa 1126 m: "46\xB011'36'' N, 9\xB014'10'' E"
+  - Alpe Porcile 1180 m: "46\xB011'56'' N, 9\xB014'11'' E"
+  - Ponte di Madri 1200 m: "46\xB012'1'' N, 9\xB014'11'' E"
+  - Mottala di sotto 1433 m: "46\xB011'43'' N, 9\xB013'36'' E"
+  - Mottala di sopra 1657 m: "46\xB011'58'' N, 9\xB013'34'' E"
+  - "Sas Camosc\xE9 2228 m": "46\xB012'26'' N, 9\xB013'13'' E"
+  - Bocchetta del Cardinello 2380 m: "46\xB012'30'' N, 9\xB012'50'' E"
+  - Cardinello 2520 m: "46\xB012'38'' N, 9\xB012'52'' E"
+  - Bocchetta di Caurit o Bellimbusta 2355 m: "46\xB012'36'' N, 9\xB012'34'' E"
+  - Alpe Bellimbusta o di Paina 1965 m: "46\xB012'14'' N, 9\xB012'19'' E"
+  - Alpe Malpensata 1880 m: "46\xB011'52'' N, 9\xB012'3'' E"
+  - Alpe Corte di Mezzo 1709 m: "46\xB011'48'' N, 9\xB012'15'' E"
+  - Alpe Prato Fiorito 1551 m: "46\xB011'39'' N, 9\xB012'29'' E"
+  - Alpe Camedo 1539 m: "46\xB011'36'' N, 9\xB012'38'' E"
+  - Pian Pozzone 1383 m: "46\xB011'41'' N, 9\xB012'58'' E"
+  - Vincino 1080 m: "46\xB010'54'' N, 9\xB013'42'' E"
+  - Piazza 998 m: "46\xB010'50'' N, 9\xB013'48'' E"
+  - Ponte di Vincino 860 m: "46\xB010'55'' N, 9\xB014'4'' E"
 - climbing: II
   hiking: T3+
   mountaineering: WS-
   ski: ZS
   url: https://www.hikr.org/tour/post153410.html
   via-ferrata: ZS-
+  waypoints:
+  - Passo della Presolana 1297 m: "45\xB055'45'' N, 10\xB05'56'' E"
+  - Baita Cassinelli 1568 m: "45\xB056'32'' N, 10\xB04'36'' E"
+  - Cappella  Savina 2082 m: "45\xB057'6'' N, 10\xB03'44'' E"
+  - Grotta dei Pagani 2224 m: "45\xB057'14'' N, 10\xB03'20'' E"
+  - Presolana - Occidentale 2521 m: "45\xB057'24'' N, 10\xB03'20'' E"
+  - Monte Visolo 2369 m: "45\xB057'14'' N, 10\xB04'27'' E"
+  - Passo del Visolo 2350 m: "45\xB057'16'' N, 10\xB04'25'' E"
+  - P.1656m 1656 m: "45\xB056'23'' N, 10\xB05'22'' E"
+  - "Monte G\xFClter 1608 m": "45\xB056'8'' N, 10\xB05'31'' E"
 - climbing: I
   hiking: T4-
   mountaineering: L
@@ -7342,42 +8212,97 @@
   ski: ZS
   url: https://www.hikr.org/tour/post153328.html
   via-ferrata: ZS-
+  waypoints:
+  - Molare 1495 m: "46\xB029'10'' N, 8\xB049'49'' E"
+  - Bivio Bosco della Fornace 1575 m: "46\xB029'1'' N, 8\xB050'43'' E"
+  - "Ch\xE8rz 1714 m": "46\xB028'47'' N, 8\xB050'47'' E"
+  - Alpe Nara 1932 m: "46\xB028'35'' N, 8\xB051'26'' E"
+  - Bassa di Nara 2123 m: "46\xB028'32'' N, 8\xB052'5'' E"
+  - Pizzo di Nara 2231 m: "46\xB028'41'' N, 8\xB052'13'' E"
+  - "Sasso Spr\xFCgh 2200 m": "46\xB029'4'' N, 8\xB052'10'' E"
+  - Bocchetta di Sasso Bianco 2404 m: "46\xB029'7'' N, 8\xB051'43'' E"
+  - Pizzo Molare 2585 m: "46\xB029'18'' N, 8\xB051'53'' E"
 - climbing: I
   hiking: T3+
   mountaineering: WS
   ski: ZS
   url: https://www.hikr.org/tour/post153327.html
   via-ferrata: ZS-
+  waypoints:
+  - Parcheggio Cima di Dentro 1013 m: "46\xB08'20'' N, 8\xB059'34'' E"
+  - Alpe del Tiglio 1076 m: "46\xB08'37'' N, 8\xB059'60'' E"
+  - Monti del Tiglio 1052 m: "46\xB08'45'' N, 9\xB00'19'' E"
+  - Alpe Caneggio - Corte Inferiore 1421 m: "46\xB08'53'' N, 9\xB02'30'' E"
+  - Alpe Caneggio - Corte di Mezzo 1471 m: "46\xB08'54'' N, 9\xB03'2'' E"
+  - Corte di Campo 1700 m: "46\xB08'25'' N, 9\xB03'49'' E"
+  - Quota 2150 2150 m: "46\xB08'8'' N, 9\xB03'53'' E"
 - climbing: I
   hiking: T1
   mountaineering: L
   ski: ZS
   url: https://www.hikr.org/tour/post153050.html
   via-ferrata: ZS-
+  waypoints:
+  - Alpe di Neggia / Corte di Neggia 1395 m: "46\xB06'39'' N, 8\xB050'44'' E"
+  - Monte Gambarogno - Cima Orientale 1687 m: "46\xB06'53'' N, 8\xB050'6'' E"
+  - Monte Gambarogno 1734 m: "46\xB06'44'' N, 8\xB049'50'' E"
 - climbing: I
   hiking: T3
   mountaineering: L
   ski: ZS
   url: https://www.hikr.org/tour/post153051.html
   via-ferrata: ZS-
+  waypoints:
+  - Monti della Gana 1286 m: "46\xB011'53'' N, 8\xB054'27'' E"
+  - Cappella Santa Maria 1498 m: "46\xB012'5'' N, 8\xB054'36'' E"
+  - Alpe di Sassello 1673 m: "46\xB012'29'' N, 8\xB054'47'' E"
+  - Forcola 1709 m: "46\xB012'42'' N, 8\xB055'5'' E"
+  - Capanna Borgna 1912 m: "46\xB013'47'' N, 8\xB055'30'' E"
+  - Pizzo di Vogorno 2442 m: "46\xB014'23'' N, 8\xB053'35'' E"
 - climbing: I
   hiking: T2
   mountaineering: L
   ski: ZS
   url: https://www.hikr.org/tour/post153049.html
   via-ferrata: ZS-
+  waypoints:
+  - Mergugno 1060 m: "46\xB07'36'' N, 8\xB041'3'' E"
+  - Pislone 1261 m: "46\xB07'38'' N, 8\xB040'40'' E"
+  - Margozzone 1550 m: "46\xB07'31'' N, 8\xB040'14'' E"
+  - Rifugio Al Legn 1785 m: "46\xB07'21'' N, 8\xB040'2'' E"
+  - Bocchetta di Valle 1948 m: "46\xB07'15'' N, 8\xB039'33'' E"
+  - Fumadiga 2010 m: "46\xB07'22'' N, 8\xB039'37'' E"
+  - Bocchetta di Valle 1948 m: "46\xB07'15'' N, 8\xB039'33'' E"
+  - Gridone - Anticima Sud 2138 m: "46\xB07'9'' N, 8\xB039'11'' E"
+  - Gridone / Ghiridone / Monte Limidario 2188 m: "46\xB07'24'' N, 8\xB038'53'' E"
 - climbing: I
   hiking: T5
   mountaineering: L
   ski: ZS
   url: https://www.hikr.org/tour/post153239.html
   via-ferrata: ZS-
+  waypoints:
+  - "Str\xF6den 1403 m": "47\xB00'58'' N, 12\xB019'12'' E"
+  - Islitzer Alm 1513 m: "47\xB00'33'' N, 12\xB018'17'' E"
+  - Pebellalm 1513 m: "47\xB00'31'' N, 12\xB018'16'' E"
+  - "Umbalf\xE4lle 1665 m": "47\xB00'34'' N, 12\xB017'30'' E"
+  - Ogasilspitze 3032 m: "47\xB01'23'' N, 12\xB016'34'' E"
 - climbing: I
   hiking: T2
   mountaineering: L
   ski: ZS
   url: https://www.hikr.org/tour/post153048.html
   via-ferrata: ZS-
+  waypoints:
+  - Mergoscia - Busada 730 m: "46\xB012'32'' N, 8\xB050'24'' E"
+  - Bivio per Busada 772 m: "46\xB012'35'' N, 8\xB050'11'' E"
+  - Campigliai 1035 m: "46\xB012'46'' N, 8\xB049'44'' E"
+  - Bresciadiga 1132 m: "46\xB012'48'' N, 8\xB049'21'' E"
+  - Faedo 1351 m: "46\xB012'56'' N, 8\xB048'40'' E"
+  - Alpe di Bietri 1499 m: "46\xB012'49'' N, 8\xB047'53'' E"
+  - Costa Bella - Sella P.1657m 1657 m: "46\xB012'51'' N, 8\xB047'36'' E"
+  - Madone - Cima Sud 2039 m: "46\xB013'21'' N, 8\xB048'1'' E"
+  - Madone - Cima Nord 2051 m: "46\xB013'26'' N, 8\xB047'57'' E"
 - climbing: I
   hiking: T4-
   mountaineering: L
@@ -7389,127 +8314,346 @@
   mountaineering: L
   ski: ZS
   url: https://www.hikr.org/tour/post153258.html
+  waypoints:
+  - San Bartolomeo 1204 m: "46\xB011'37'' N, 9\xB023'9'' E"
+  - Alpe di Mezzo 1536 m: "46\xB012'29'' N, 9\xB022'42'' E"
+  - Muro del Terminone 1853 m: "46\xB012'55'' N, 9\xB022'13'' E"
+  - Sasso Canale - Anticima sciistica / Sasso Bianco 2397 m: "46\xB013'24'' N, 9\xB0\
+      21'12'' E"
+  - Sasso Canale 2411 m: "46\xB013'30'' N, 9\xB021'3'' E"
 - climbing: II
   hiking: T4+
   mountaineering: L
   ski: ZS
   url: https://www.hikr.org/tour/post153255.html
+  waypoints:
+  - Piz Fora 3363 m: "46\xB020'27'' N, 9\xB047'5'' E"
+  - Alp Muot Selvas 2070 m: "46\xB022'45'' N, 9\xB047'18'' E"
+  - Curtins 1973 m: "46\xB024'7'' N, 9\xB046'32'' E"
+  - Fex Platta 1894 m: "46\xB025'12'' N, 9\xB045'39'' E"
+  - Segl Maria 1809 m: "46\xB025'51'' N, 9\xB045'53'' E"
 - climbing: II
   hiking: T5
   mountaineering: L
   ski: ZS
   url: https://www.hikr.org/tour/post152677.html
+  waypoints:
+  - Horboden 815 m: "46\xB037'57'' N, 7\xB033'37'' E"
+  - Feissenboden 1239 m: "46\xB035'17'' N, 7\xB033'12'' E"
+  - Ramse 1443 m: "46\xB035'2'' N, 7\xB032'48'' E"
+  - Gurbs Metteberg 1853 m: "46\xB034'31'' N, 7\xB031'58'' E"
+  - Gurbsgrat 2275 m: "46\xB033'54'' N, 7\xB032'0'' E"
+  - Cheibehorn / Cheibehore 2462 m: "46\xB033'43'' N, 7\xB032'36'' E"
+  - "B\xFCtschi 1938 m": "46\xB034'25'' N, 7\xB032'22'' E"
 - climbing: I
   hiking: T5
   mountaineering: L
   url: https://www.hikr.org/tour/post153113.html
+  waypoints:
+  - Parcheggio Prennaro 970 m: "46\xB010'12'' N, 9\xB015'39'' E"
+  - Piaghedo 1339 m: "46\xB010'38'' N, 9\xB015'0'' E"
+  - Dosso Bello 1980 m: "46\xB011'48'' N, 9\xB015'7'' E"
+  - Motto Rotondo / Cima degli Orsi 2245 m: "46\xB012'9'' N, 9\xB015'13'' E"
+  - Bocchetta della Zoccaccia 2184 m: "46\xB012'11'' N, 9\xB015'18'' E"
+  - Monte Duria - Cima Ovest 2243 m: "46\xB012'13'' N, 9\xB015'21'' E"
+  - Monte Duria 2264 m: "46\xB012'11'' N, 9\xB015'33'' E"
+  - Monte L' Usciolo 2146 m: "46\xB012'24'' N, 9\xB016'28'' E"
+  - Zochett 1950 m: "46\xB012'1'' N, 9\xB015'56'' E"
+  - Sella di Paregna 1470 m: "46\xB011'29'' N, 9\xB016'28'' E"
+  - Ponte 1200 m: "46\xB011'13'' N, 9\xB016'14'' E"
+  - Piaghedo 1339 m: "46\xB010'38'' N, 9\xB015'0'' E"
+  - Parcheggio Prennaro 970 m: "46\xB010'12'' N, 9\xB015'39'' E"
 - climbing: II
   hiking: T3+
   mountaineering: WS
   ski: WS+
   url: https://www.hikr.org/tour/post153092.html
+  waypoints:
+  - "Localit\xE0 Case Alte 869 m": "45\xB058'26'' N, 9\xB025'10'' E"
+  - Passo della Stanga 1210 m: "45\xB058'21'' N, 9\xB024'22'' E"
+  - Val Cugnoletta 1387 m: "45\xB058'12'' N, 9\xB023'58'' E"
+  - Val Cugnoletta - Tratto attrezzato 1523 m: "45\xB058'5'' N, 9\xB023'56'' E"
+  - Passo Zapel 1850 m: "45\xB057'54'' N, 9\xB023'37'' E"
+  - Cresta Via Invernale 2217 m: "45\xB057'25'' N, 9\xB023'38'' E"
+  - Rifugio Brioschi 2410 m: "45\xB057'11'' N, 9\xB023'15'' E"
+  - Grigna Settentrionale 2410 m: "45\xB057'12'' N, 9\xB023'14'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS
   ski: WS+
   url: https://www.hikr.org/tour/post153069.html
+  waypoints:
+  - "Gorezmettlenbach Br\xFCcke / Haltestelle 1613 m": "46\xB044'37'' N, 8\xB030'30''\
+      \ E"
+  - Altboden 1674 m: "46\xB045'5'' N, 8\xB030'30'' E"
+  - Rossbiel 2215 m: "46\xB045'42'' N, 8\xB030'56'' E"
+  - Juzfad 2380 m: "46\xB046'11'' N, 8\xB031'31'' E"
+  - "Ch\xFCefadpass 2896 m": "46\xB046'42'' N, 8\xB030'24'' E"
+  - Gross Spannort 3198 m: "46\xB047'12'' N, 8\xB031'28'' E"
+  - Spannortjoch 2905 m: "46\xB046'57'' N, 8\xB031'14'' E"
 - climbing: I
   hiking: T4
   mountaineering: L
   ski: S+
   url: https://www.hikr.org/tour/post152915.html
+  waypoints:
+  - Ponte di Maiavacca 659 m: "46\xB010'0'' N, 9\xB014'4'' E"
+  - Ceresa 916 m: "46\xB010'6'' N, 9\xB013'37'' E"
+  - Cresta 1024 m: "46\xB010'23'' N, 9\xB013'35'' E"
+  - Inizio cresta E 1230 m: "46\xB010'31'' N, 9\xB013'26'' E"
+  - Toresella 2246 m: "46\xB010'42'' N, 9\xB011'38'' E"
+  - Alpe Toresella 1749 m: "46\xB010'18'' N, 9\xB011'54'' E"
+  - "Alpe Med\xE8 1330 m": "46\xB09'55'' N, 9\xB011'56'' E"
+  - Alpe Paradino 1396 m: "46\xB010'16'' N, 9\xB012'37'' E"
+  - Piazzolo 1027 m: "46\xB010'14'' N, 9\xB013'28'' E"
+  - Ceresa 916 m: "46\xB010'6'' N, 9\xB013'37'' E"
+  - Ponte di Maiavacca 659 m: "46\xB010'0'' N, 9\xB014'4'' E"
 - climbing: I
   hiking: T4-
   mountaineering: L
   ski: S+
   url: https://www.hikr.org/tour/post152854.html
+  waypoints:
+  - All'Acqua 1614 m: "46\xB029'12'' N, 8\xB028'31'' E"
+  - Capanna Piansecco 1982 m: "46\xB029'40'' N, 8\xB028'17'' E"
+  - Gerenpass 2671 m: "46\xB030'13'' N, 8\xB027'2'' E"
+  - "Ch\xFCebodenhorn 3070 m": "46\xB030'29'' N, 8\xB027'11'' E"
+  - Gerenpass 2671 m: "46\xB030'13'' N, 8\xB027'2'' E"
+  - Capanna Piansecco 1982 m: "46\xB029'40'' N, 8\xB028'17'' E"
+  - All'Acqua 1614 m: "46\xB029'12'' N, 8\xB028'31'' E"
 - climbing: I
   hiking: T4
   mountaineering: L
   ski: S+
   url: https://www.hikr.org/tour/post152764.html
+  waypoints:
+  - Bodenalm Parkplatz 1688 m: "47\xB01'20'' N, 12\xB023'57'' E"
+  - Bodenalm 1955 m: "47\xB01'40'' N, 12\xB023'15'' E"
+  - "Ochsnerh\xFCtte 2128 m": "47\xB02'28'' N, 12\xB022'49'' E"
+  - "Eisseeh\xFCtte 2521 m": "47\xB03'19'' N, 12\xB022'44'' E"
+  - Kleiner Hexenkopf 3194 m: "47\xB03'41'' N, 12\xB024'34'' E"
 - climbing: I
   hiking: T1
   mountaineering: L
   ski: S+
   url: https://www.hikr.org/tour/post152192.html
+  waypoints:
+  - Notre-Dame de Lorette 1609 m: "45\xB057'22'' N, 7\xB012'36'' E"
+  - Creux du Ma 1974 m: "45\xB058'17'' N, 7\xB013'4'' E"
+  - Boveire d'en Bas 2227 m: "45\xB058'31'' N, 7\xB013'40'' E"
+  - "Col de Panossi\xE8re 3458 m": "45\xB058'6'' N, 7\xB016'19'' E"
+  - "Combin de Corbassi\xE8re 3716 m": "45\xB058'40'' N, 7\xB016'50'' E"
+  - Petit Combin 3663 m: "45\xB059'2'' N, 7\xB016'4'' E"
 - climbing: I
   hiking: T3
   mountaineering: WS
   ski: ZS
   url: https://www.hikr.org/tour/post152818.html
+  waypoints:
+  - Klausenpass 1948 m: "46\xB052'5'' N, 8\xB051'19'' E"
+  - Chammlialp 2054 m: "46\xB051'34'' N, 8\xB050'8'' E"
+  - "Griessb\xF6demli 2003 m": "46\xB051'18'' N, 8\xB050'1'' E"
+  - "Chammlil\xFCcke 2854 m": "46\xB049'52'' N, 8\xB050'23'' E"
+  - "Gross Sch\xE4rhorn 3295 m": "46\xB049'37'' N, 8\xB049'45'' E"
 - climbing: I
   hiking: T3
   mountaineering: L
   ski: S-
   url: https://www.hikr.org/tour/post152782.html
+  waypoints:
+  - Gajum 485 m: "45\xB050'55'' N, 9\xB017'14'' E"
+  - Gajum 485 m: "45\xB050'55'' N, 9\xB017'14'' E"
+  - Parcheggio Val Ravella 513 m: "45\xB050'52'' N, 9\xB017'25'' E"
+  - Terz' Alpe 793 m: "45\xB051'24'' N, 9\xB018'50'' E"
+  - Colma / La Colma 997 m: "45\xB051'26'' N, 9\xB019'34'' E"
+  - "Acqua del F\xF2 984 m": "45\xB051'28'' N, 9\xB019'43'' E"
+  - Bocchetta di Luera 1190 m: "45\xB051'41'' N, 9\xB019'52'' E"
+  - Corno di Canzo - Orientale 1232 m: "45\xB051'40'' N, 9\xB019'57'' E"
+  - Rifugio S.E.V. 1250 m: "45\xB051'51'' N, 9\xB019'39'' E"
+  - Forcella dei Corni 1298 m: "45\xB051'46'' N, 9\xB019'29'' E"
+  - Corno di Canzo - Centrale 1368 m: "45\xB051'44'' N, 9\xB019'39'' E"
+  - Corno di Canzo - Occidentale 1373 m: "45\xB051'45'' N, 9\xB019'23'' E"
+  - Passo della Vacca 1350 m: "45\xB051'45'' N, 9\xB019'21'' E"
 - climbing: II
   hiking: T4
   mountaineering: WS
   ski: S-
   url: https://www.hikr.org/tour/post152655.html
+  waypoints:
+  - Piz Duan 3131 m: "46\xB022'31'' N, 9\xB034'59'' E"
+  - "L\xE4gh da la Duana 2466 m": "46\xB023'12'' N, 9\xB035'16'' E"
+  - Maroz Dent 2035 m: "46\xB023'32'' N, 9\xB037'7'' E"
+  - Maroz Dora 1799 m: "46\xB023'44'' N, 9\xB038'37'' E"
+  - Casaccia 1458 m: "46\xB023'28'' N, 9\xB039'59'' E"
+  - Piz Morteratsch 3751 m: "46\xB024'9'' N, 9\xB054'6'' E"
+  - Fuorcla da Boval 3347 m: "46\xB024'42'' N, 9\xB054'8'' E"
+  - Chamanna da Boval CAS 2495 m: "46\xB024'55'' N, 9\xB055'30'' E"
 - climbing: II
   hiking: T3+
   mountaineering: WS
   ski: S-
   url: https://www.hikr.org/tour/post152665.html
+  waypoints:
+  - Kiruna flygplats 454 m: "67\xB049'31'' N, 20\xB020'7'' E"
+  - Nikkaluokta 470 m: "67\xB051'4'' N, 19\xB00'59'' E"
+  - "Kebnekaise - Fj\xE4llstation 670 m": "67\xB052'6'' N, 18\xB037'10'' E"
+  - "Kebnekaise / Giebmeg\xE1isi - Sydtoppen 2097 m": "67\xB054'2'' N, 18\xB031'1''\
+      \ E"
 - climbing: II
   hiking: T3+
   mountaineering: WS+
   ski: S-
   url: https://www.hikr.org/tour/post151934.html
+  waypoints:
+  - Handegg 1401 m: "46\xB036'40'' N, 8\xB018'29'' E"
+  - "\xC4rlen 1700 m": "46\xB036'43'' N, 8\xB017'32'' E"
+  - Egg 1976 m: "46\xB036'23'' N, 8\xB016'47'' E"
+  - "L\xFCcke 2640 m": "46\xB036'39'' N, 8\xB015'46'' E"
+  - Steinlauihorn 3162 m: "46\xB037'4'' N, 8\xB015'16'' E"
+  - "\xC4rlenl\xFCcke 3053 m": "46\xB037'15'' N, 8\xB015'18'' E"
+  - Rindertal Couloir 2000 m: "46\xB036'54'' N, 8\xB016'47'' E"
 - climbing: II
   hiking: T3+
   mountaineering: WS
   ski: WS+
   url: https://www.hikr.org/tour/post152392.html
+  waypoints:
+  - Piz Buin Grond 3312 m: "46\xB050'39'' N, 10\xB07'8'' E"
 - climbing: II
   hiking: T5+
   mountaineering: WS
   ski: WS+
   url: https://www.hikr.org/tour/post152404.html
+  waypoints:
+  - Hahnen 2607 m: "46\xB049'26'' N, 8\xB027'20'' E"
 - climbing: I
   hiking: T2
   mountaineering: WS
   ski: WS+
   url: https://www.hikr.org/tour/post152130.html
+  waypoints:
+  - Realp 1538 m: "46\xB035'56'' N, 8\xB030'13'' E"
+  - Tiefenstock 3515 m: "46\xB037'38'' N, 8\xB025'20'' E"
 - climbing: I
   hiking: T2
   mountaineering: WS
   ski: ZS+
   url: https://www.hikr.org/tour/post152081.html
+  waypoints:
+  - "Schw\xE4ndi Winterfahrverbot 1519 m": "46\xB044'14'' N, 8\xB031'6'' E"
+  - Gorezmettlen 1560 m: "46\xB044'22'' N, 8\xB030'48'' E"
+  - "Gorezmettlenbach Br\xFCcke / Haltestelle 1613 m": "46\xB044'37'' N, 8\xB030'30''\
+      \ E"
+  - Altboden 1674 m: "46\xB045'5'' N, 8\xB030'30'' E"
+  - Hohbergtal 2100 m: "46\xB045'28'' N, 8\xB029'42'' E"
+  - Wichelplanggfirn 2600 m: "46\xB045'50'' N, 8\xB028'46'' E"
+  - P.2850m 2850 m: "46\xB046'1'' N, 8\xB028'23'' E"
+  - "St\xF6ssenstock / Grassengrat 2941 m": "46\xB046'4'' N, 8\xB028'23'' E"
 - climbing: III
   hiking: T2
   mountaineering: WS+
   url: https://www.hikr.org/tour/post152059.html
+  waypoints:
+  - Sulden / Solda 1860 m: "46\xB031'39'' N, 10\xB035'20'' E"
+  - Ortler / Ortles 3905 m: "46\xB030'30'' N, 10\xB032'39'' E"
+  - Lombardi Biwak 3350 m: "46\xB031'6'' N, 10\xB032'28'' E"
+  - Tschierfeckwandl 3150 m: "46\xB031'20'' N, 10\xB032'30'' E"
+  - Tabarettaspitze 3128 m: "46\xB031'31'' N, 10\xB032'33'' E"
+  - "Payer H\xFCtte 3020 m": "46\xB031'37'' N, 10\xB032'36'' E"
+  - "Tabaretta H\xFCtte 2571 m": "46\xB031'45'' N, 10\xB032'58'' E"
+  - "B\xE4renkopfscharte 2871 m": "46\xB032'5'' N, 10\xB032'29'' E"
 - climbing: I
   hiking: T2
   mountaineering: L
   url: https://www.hikr.org/tour/post152063.html
+  waypoints:
+  - Capanna Gnifetti 3647 m: "45\xB053'59'' N, 7\xB051'1'' E"
+  - Colle del Lys / Lisjoch 4248 m: "45\xB055'10'' N, 7\xB051'37'' E"
+  - Capanna Regina Margherita 4554 m: "45\xB055'38'' N, 7\xB052'38'' E"
+  - Colle Gnifetti 4452 m: "45\xB055'47'' N, 7\xB052'24'' E"
+  - Zumsteinspitze / Punta Zumstein 4563 m: "45\xB055'56'' N, 7\xB052'17'' E"
+  - Signalkuppe / Punta Gnifetti 4554 m: "45\xB055'38'' N, 7\xB052'38'' E"
 - climbing: III
   hiking: T2
   mountaineering: WS
   url: https://www.hikr.org/tour/post152036.html
+  waypoints:
+  - Oropa - Parcheggio funivia 1221 m: "45\xB037'45'' N, 7\xB058'30'' E"
+  - Rifugio Rosazza 1810 m: "45\xB038'2'' N, 7\xB057'2'' E"
+  - Sella Finestra 2000 m: "45\xB038'40'' N, 7\xB057'14'' E"
+  - Monte Tovo 2230 m: "45\xB038'41'' N, 7\xB057'42'' E"
+  - Delubro 1245 m: "45\xB037'53'' N, 7\xB058'36'' E"
+  - Santuario di Oropa 1185 m: "45\xB037'45'' N, 7\xB058'40'' E"
+  - Oropa - Parcheggio funivia 1221 m: "45\xB037'45'' N, 7\xB058'30'' E"
 - climbing: III
   mountaineering: WS-
   url: https://www.hikr.org/tour/post151994.html
+  waypoints:
+  - Juf 2126 m: "46\xB026'43'' N, 9\xB034'46'' E"
+  - Stallerberg 2581 m: "46\xB026'54'' N, 9\xB035'56'' E"
+  - "Piz Surpar\xE9 3078 m": "46\xB027'54'' N, 9\xB035'43'' E"
+  - Stallerberg 2581 m: "46\xB026'54'' N, 9\xB035'56'' E"
+  - Juf 2126 m: "46\xB026'43'' N, 9\xB034'46'' E"
 - mountaineering: WS-
   url: https://www.hikr.org/tour/post152021.html
+  waypoints:
+  - Simplonpass / Passo del Sempione 2006 m: "46\xB015'2'' N, 8\xB01'55'' E"
+  - P.2516m 2516 m: "46\xB014'58'' N, 8\xB03'55'' E"
+  - Chaltwassergletscher 3000 m: "46\xB014'59'' N, 8\xB05'4'' E"
+  - P. 3350 m 3350 m: "46\xB014'51'' N, 8\xB05'44'' E"
+  - P.3373m 3373 m: "46\xB014'44'' N, 8\xB06'43'' E"
+  - Monte Leone 3553 m: "46\xB014'58'' N, 8\xB06'37'' E"
 - climbing: II
   hiking: T3
   mountaineering: WS-
   ski: WS+
   url: https://www.hikr.org/tour/post152023.html
+  waypoints:
+  - Juppa Parkplatz 1980 m: "46\xB026'57'' N, 9\xB033'4'' E"
+  - Olta Stofel / Alp Hinterbergalga 2074 m: "46\xB025'14'' N, 9\xB033'5'' E"
+  - Gletscherhorn 3106 m: "46\xB023'15'' N, 9\xB033'38'' E"
+  - Olta Stofel / Alp Hinterbergalga 2074 m: "46\xB025'14'' N, 9\xB033'5'' E"
+  - Juppa Parkplatz 1980 m: "46\xB026'57'' N, 9\xB033'4'' E"
 - climbing: II
   hiking: T3
   mountaineering: WS-
   ski: WS+
   url: https://www.hikr.org/tour/post151868.html
+  waypoints:
+  - Parcheggio dei Forni 2161 m: "46\xB025'12'' N, 10\xB033'21'' E"
+  - Rifugio Pizzini-Frattola 2706 m: "46\xB027'10'' N, 10\xB034'43'' E"
+  - Laghi del Cedec 2830 m: "46\xB027'34'' N, 10\xB035'29'' E"
+  - Passo del Cevedale 3256 m: "46\xB027'45'' N, 10\xB036'7'' E"
+  - Rifugio Casati 3269 m: "46\xB027'47'' N, 10\xB036'9'' E"
+  - Monte Cevedale 3769 m: "46\xB026'37'' N, 10\xB036'60'' E"
+  - Colle de la Mare 3442 m: "46\xB025'36'' N, 10\xB037'2'' E"
+  - Palon de la Mare 3703 m: "46\xB024'59'' N, 10\xB037'4'' E"
+  - Passo della Vedretta Rossa 3405 m: "46\xB024'36'' N, 10\xB037'26'' E"
+  - Cima Linke 3631 m: "46\xB024'3'' N, 10\xB037'38'' E"
+  - Monte Vioz 3645 m: "46\xB024'6'' N, 10\xB037'59'' E"
+  - Rifugio Mantova 3544 m: "46\xB023'55'' N, 10\xB038'3'' E"
+  - Monte Vioz 3645 m: "46\xB024'6'' N, 10\xB037'59'' E"
+  - "\xF6stlicher Forni Gletscher 3238 m": "46\xB024'5'' N, 10\xB036'49'' E"
+  - Rifugio Cesare Branca 2493 m: "46\xB024'52'' N, 10\xB035'10'' E"
+  - Malga dei Forni 2320 m: "46\xB025'17'' N, 10\xB034'12'' E"
+  - Parcheggio dei Forni 2161 m: "46\xB025'12'' N, 10\xB033'21'' E"
 - climbing: II
   hiking: T6
   mountaineering: WS+
   ski: WS+
   url: https://www.hikr.org/tour/post149495.html
+  waypoints:
+  - Rosenlaui Gletscherschlucht 1360 m: "46\xB040'44'' N, 8\xB09'19'' E"
+  - Rosenlauibiwak SAC 2330 m: "46\xB039'33'' N, 8\xB010'4'' E"
+  - "Dossenh\xFCtte SAC 2663 m": "46\xB039'18'' N, 8\xB010'10'' E"
+  - Dossensattel 3010 m: "46\xB039'1'' N, 8\xB09'44'' E"
+  - Tossen / Dossenhorn / Dossen 3138 m: "46\xB038'55'' N, 8\xB09'47'' E"
+  - "R\xE4nfenjoch 3052 m": "46\xB038'30'' N, 8\xB09'31'' E"
+  - "R\xE4nfenhorn - S\xFCdgipfel 3253 m": "46\xB037'60'' N, 8\xB09'49'' E"
+  - Chammliegg 2450 m: "46\xB036'59'' N, 8\xB012'31'' E"
+  - "Gaulih\xFCtte SAC 2205 m": "46\xB037'26'' N, 8\xB012'60'' E"
+  - Mattenalpsee 1880 m: "46\xB038'1'' N, 8\xB014'11'' E"
+  - "M\xFCrvorsess - Parkplatz 877 m": "46\xB040'21'' N, 8\xB012'19'' E"
 - climbing: II
   hiking: T3
   mountaineering: WS+
