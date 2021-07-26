@@ -57,7 +57,7 @@ def download_entry_list(name: str, url: str, max_skip: int):
 
     if cache_file.exists():
         with open(cache_file, "r") as fp:
-            # return yaml.load(fp, Loader=yaml.SafeLoader)
+            return yaml.load(fp, Loader=yaml.SafeLoader)
             entries = yaml.load(fp, Loader=yaml.SafeLoader)
     else: 
         entries = []
