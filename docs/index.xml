@@ -139,7 +139,7 @@ Input here are only the lyrics plus &amp;ldquo;The Beatles&amp;rdquo; at the beg
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/maps/</guid>
-      <description>  window.addEventListener(&#39;load&#39;, function() { let tileserver = &#34;https://tiles.morris-frank.dev/file/osm-tiles/&#34;; let layers = { &#34;Topology&#34;: L.tileLayer(tileserver + &#39;topo/{z}/{x}/{y}.png&#39;,{maxZoom:16}), &#34;Alpine club&#34;: L.tileLayer(tileserver + &#39;avk/{z}/{x}/{y}.png&#39;,{maxZoom:16}) }; let map = L.map(&#39;map&#39;, { center: [47.05, 12.2], zoom: 11, layers: [layers[&#34;Topology&#34;],] }); L.control.layers(layers,null,{collapsed:false}).addTo(map); var gpx = &#39;./abenteurer_hikr.gpx&#39;; new L.GPX(gpx, {async: true}).on(&#39;loaded&#39;, function(e) { map.fitBounds(e.target.getBounds()); }).addTo(map); }, false); </description>
+      <description>  window.addEventListener(&#39;load&#39;, function() { let tileserver = &#34;https://tiles.morris-frank.dev/file/osm-tiles/&#34;; let layers = { &#34;Topology&#34;: L.tileLayer(tileserver + &#39;topo/{z}/{x}/{y}.png&#39;,{maxZoom:16}), &#34;Alpine club&#34;: L.tileLayer(tileserver + &#39;avk/{z}/{x}/{y}.png&#39;,{maxZoom:16}) }; let map = L.map(&#39;map&#39;, { center: [47.05, 12.2], zoom: 11, layers: [layers[&#34;Topology&#34;],] }); L.control.layers(layers,null,{collapsed:false}).addTo(map); var gpx = &#39;./abenteurer_hikr.gpx&#39;; new L.GPX(gpx, { async: true, marker_options: { startIconUrl: null, endIconUrl: null, shadowUrl: null }}).addTo(map); }, false); </description>
     </item>
     
     <item>
