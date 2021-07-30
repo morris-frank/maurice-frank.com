@@ -79,7 +79,7 @@ need.</p>
 <li>Greek letters (<kbd>α</kbd>, <kbd>β</kbd>, <kbd>γ</kbd>, …). I use them
 extensively in writing and programming. As Python is ok with most
 unicode symbols as variable names you can code more expressively:
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="n">π</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="n">π</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
 <span class="n">φ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">360</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">μ</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="n">σ</span>
 </code></pre></div><p>which is especially useful in the kind of mathematical, research code I
@@ -100,7 +100,7 @@ single symbol not as a accent (⇒ <kbd>à</kbd>), you might be the same.</li>
 </ul>
 <p>Many of the symbols I use together with
 <a href="https://morris-frank.dev/latex-macros/">LaTeX macros so I can write mathematical text:</a></p>
-<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\σ</span><span class="nb">_</span>i = <span class="k">\÷</span><span class="nb">{</span><span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>i<span class="nb">}}{</span><span class="k">\Σ</span><span class="nb">_</span>j <span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>j<span class="nb">}}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\σ</span><span class="nb">_</span>i = <span class="k">\÷</span><span class="nb">{</span><span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>i<span class="nb">}}{</span><span class="k">\Σ</span><span class="nb">_</span>j <span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>j<span class="nb">}}</span>
 </code></pre></div><h3 id="how">How?</h3>
 <p>We do not want to reinvent the wheel. We just want to replace symbols that we
 never use with symbols that could be useful. Therefore it is best to start
@@ -145,7 +145,7 @@ xkb_symbols &quot;basic&quot; {
 have to import the definition from <code>symbols/level3</code>. Now we need the
 XKB symbol names for the keys we are interested in. For this you can run inside
 a terminal:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">xev -event keyboard
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">xev -event keyboard
 </code></pre></div><p><code>xev</code> is included in the <em>x11-utils</em> package.</p>
 <p><code>xev</code> gives you a little white window and if you press a key inside
 it, it will print information about the pressed  key in the terminal. We are
@@ -174,12 +174,12 @@ instead of the given X11 names (losing some readability…).</p>
 <p>Change all the keys you need, put them into the <em>xkb_symbols</em> block and
 save the file to somewhere, lets say <code>deedit</code>. Next you can install the file into the symbols
 directory:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo install -Dm644 deedit /usr/share/X11/xkb/symbols/deedit
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo install -Dm644 deedit /usr/share/X11/xkb/symbols/deedit
 </code></pre></div><p>It is probably a better idea to make a package out of your layout for which
 you can check your distros documentation (⇒ for Arch Linux: <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a>,
 <a href="https://github.com/morris-frank/xkb-demod/blob/master/PKGBUILD">example</a>).</p>
 <p>Lastly, you change your current Keyboard layout and try it out:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">setxkbmap deedit
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">setxkbmap deedit
 </code></pre></div><p>If your happy with it and want to make it stick, append the previous line to
 your <code>xinit.rc</code> so that it is loaded on every boot.</p>
 

@@ -48,10 +48,10 @@
 
 
 
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">first_level</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&#34;.&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">first_level</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&#34;.&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
     <span class="k">for</span> <span class="n">second_level</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">,</span> <span class="n">first_level</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
         <span class="n">process_dir</span><span class="p">(</span><span class="n">second_level</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folders</span><span class="p">:</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folders</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
         <span class="k">break</span>

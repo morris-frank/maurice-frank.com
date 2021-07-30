@@ -62,23 +62,23 @@
 
 <p>If you never have written a TeX package, here the short-form with only the stuff
 we need. You start the file with</p>
-<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\NeedsTeXFormat</span><span class="nb">{</span>LaTeX2e<span class="nb">}</span>[1994/06/01]
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\NeedsTeXFormat</span><span class="nb">{</span>LaTeX2e<span class="nb">}</span>[1994/06/01]
 <span class="k">\ProvidesPackage</span><span class="nb">{</span>YOUR-PACKAGE-NAME<span class="nb">}</span>
 </code></pre></div><p>end it with</p>
-<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\endinput</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\endinput</span>
 </code></pre></div><p>and save it with extension <code>.sty</code> instead of <code>.tex</code>.</p>
 <h3 id="things-to-add">Things to add</h3>
 <ul>
 <li>Packages you always include. For example which fonts to use. In a
 package <code>.sty</code> file you use <code>\RequirePackage</code> instead
 of <code>\usepackage</code> to include other packages.
-<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\RequirePackage</span><span class="nb">{</span>newpxtext<span class="nb">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\RequirePackage</span><span class="nb">{</span>newpxtext<span class="nb">}</span>
 <span class="k">\RequirePackage</span><span class="nb">{</span>mathpazo<span class="nb">}</span>
 <span class="k">\RequirePackage</span><span class="nb">{</span>dsfont<span class="nb">}</span>
 </code></pre></div></li>
 <li>Faster font changes. I use the same macro for bold and italic text in
 math and normal mode using the <code>\ifmmode</code> command.
-<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\B</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\ifmmode\bm</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\else\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\fi</span><span class="nb">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\B</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\ifmmode\bm</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\else\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\fi</span><span class="nb">}</span>
 <span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\I</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\ifmmode\mathit</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\else\textit</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\fi</span><span class="nb">}</span>
 </code></pre></div></li>
 <li>Unicode symbols. LaTeX supports Unicode commands so we can write the
@@ -86,14 +86,14 @@ symbols instead of their names. The <code>\ensuremath</code> call makes
 commands from <code>amsmath</code> also work in normal text mode. If you
 don&rsquo;t have these special characters on your keyboard I have
 <a href="https://morris-frank.dev/keymap/">a tutorial</a> to change that.
-<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\newcommand*\ℝ</span><span class="nb">{</span><span class="k">\ensuremath</span><span class="nb">{</span><span class="k">\mathds</span><span class="nb">{</span>R<span class="nb">}}}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\newcommand*\ℝ</span><span class="nb">{</span><span class="k">\ensuremath</span><span class="nb">{</span><span class="k">\mathds</span><span class="nb">{</span>R<span class="nb">}}}</span>
 <span class="k">\newcommand*\π</span><span class="nb">{</span><span class="k">\ensuremath</span><span class="nb">{</span><span class="k">\pi</span><span class="nb">}}</span>
 <span class="k">\newcommand*\Σ</span><span class="nb">{</span><span class="k">\ensuremath</span><span class="nb">{</span><span class="k">\sum</span><span class="nb">}}</span>
 </code></pre></div><p><code>\mathds</code> from <em>dsfont</em> gives nicer double-strokes.</p>
 </li>
 <li>More math operators. I have to write lot of expected values so I made a
 nicer short version.
-<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\DeclareMathOperator*</span><span class="nb">{</span><span class="k">\argmax</span><span class="nb">}{</span>arg<span class="k">\,</span>max<span class="nb">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\DeclareMathOperator*</span><span class="nb">{</span><span class="k">\argmax</span><span class="nb">}{</span>arg<span class="k">\,</span>max<span class="nb">}</span>
 <span class="k">\DeclareMathOperator*</span><span class="nb">{</span><span class="k">\E</span><span class="nb">}{</span><span class="k">\mathbb</span><span class="nb">{</span>E<span class="nb">}}</span>
 </code></pre></div><p>The <code>\,</code> makes a tiny space.</p>
 </li>
@@ -111,28 +111,28 @@ yourself. Otherwise you have to distribute the package to your collaborators.</p
 <code>xelatex</code>, …) you have to put it on the TeX path. You can add to your
 users local path to make it available to the compiler while using your account.
 The path is called <code>TEXMFHOME</code> and you can look it up with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">kpsewhich -var-value TEXMFHOME
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kpsewhich -var-value TEXMFHOME
 </code></pre></div><p>On most Linux distros this will be <code>/home/YOUR-USER/texmf</code>, which
 probably doesn&rsquo;t exist. As I do not want to clutter my home folder with that
 folder, I changed the path by setting an environment variable with the same
 name inside my <code>xinit.rc</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">TEXMFHOME</span><span class="o">=</span>~/.local/share/texmf
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">TEXMFHOME</span><span class="o">=</span>~/.local/share/texmf
 </code></pre></div><p>After a reboot/re-login the new <code>TEXMFHOME</code> should be set. Inside
 the folder your supposed to follow the TeX folder structure which means you
 should create the folders <code>~/.local/share/texmf/tex/latex/YOUR-PACKAGE-NAME/</code>
 and put your <code>YOUR-PACKAGE-NAME.sty</code> in there.</p>
 <p>If the new path is not recognized you might need to rehash the TeX path:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo texhash /home/YOUR-USER/.local/share/textmf
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo texhash /home/YOUR-USER/.local/share/textmf
 </code></pre></div><p>Now all my assignment files for University and other scribbles always start
 with (as I have a <code>morris.sty</code>):</p>
-<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\usepackage</span><span class="nb">{</span>morris<span class="nb">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\usepackage</span><span class="nb">{</span>morris<span class="nb">}</span>
 </code></pre></div><p>and I am writing considerably faster and more readable (in my humble opinion).<br>
 Instead of:</p>
-<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\pmb</span><span class="nb">{</span><span class="k">\sigma</span><span class="nb">}</span> = <span class="k">\begin</span><span class="nb">{</span>bmatrix<span class="nb">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\pmb</span><span class="nb">{</span><span class="k">\sigma</span><span class="nb">}</span> = <span class="k">\begin</span><span class="nb">{</span>bmatrix<span class="nb">}</span>
     <span class="k">\frac</span><span class="nb">{</span><span class="k">\exp</span><span class="nb">{</span><span class="k">\phi</span><span class="nb">_</span>1<span class="nb">}}{</span><span class="k">\sum</span><span class="nb">_</span>i<span class="nb">^</span>N <span class="k">\exp</span><span class="nb">{</span><span class="k">\phi</span><span class="nb">_</span>i<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\dots</span>
 <span class="k">\end</span><span class="nb">{</span>bmatrix<span class="nb">}</span>
 </code></pre></div><p>I write:</p>
-<div class="highlight"><pre class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\B</span><span class="nb">{</span><span class="k">\σ</span><span class="nb">}</span> = <span class="k">\bM</span><span class="nb">{</span><span class="k">\÷</span><span class="nb">{</span><span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>1<span class="nb">}}{</span><span class="k">\Σ</span><span class="nb">_</span>i<span class="nb">^</span>N <span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>i<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\…</span> <span class="nb">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\B</span><span class="nb">{</span><span class="k">\σ</span><span class="nb">}</span> = <span class="k">\bM</span><span class="nb">{</span><span class="k">\÷</span><span class="nb">{</span><span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>1<span class="nb">}}{</span><span class="k">\Σ</span><span class="nb">_</span>i<span class="nb">^</span>N <span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>i<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\…</span> <span class="nb">}</span>
 </code></pre></div>
     </main>
 

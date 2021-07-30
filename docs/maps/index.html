@@ -56,13 +56,13 @@ window.addEventListener('load', function() {
         "Topology": L.tileLayer(tileserver + 'topo/{z}/{x}/{y}.png',{maxZoom:16}),
         "Alpine club": L.tileLayer(tileserver + 'avk/{z}/{x}/{y}.png',{maxZoom:16})
     };
-    let difficulties = {"L": "green", "WS-": "orange", "WS": "red", "WS+": "black"}
+    let layers = {"hikr_L" : "#b3a178", "hikr_WS-" : "#a4735d", "hikr_WS" : "#8b413f", "hikr_WS+" : "#530609", "bergrebell_L": "#828d04", "bergrebell_WS-": "#4b6f21", "bergrebell_WS": "#245637", "bergrebell_WS+": "#04424b"}
     let overlays = {}
-    for (var d in difficulties) {
-        overlays[d] =  new L.GPX("./hikr_" + d + ".gpx", {
+    for (var d in layers) {
+        overlays[d] =  new L.GPX("./" + d + ".gpx", {
             async: true,
             marker_options: {startIconUrl: null, endIconUrl: null, shadowUrl: null},
-            polyline_options: {color: difficulties[d], opacity: 0.75,},
+            polyline_options: {color: layers[d], opacity: 0.75,},
         });
     }
     console.log(overlays);

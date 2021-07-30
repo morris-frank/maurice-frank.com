@@ -76,7 +76,7 @@ places of a figure is best possible with the <code>inset_axes</code> function
 provided by the (probably) little known <code>axes_grid1</code> toolbox in
 <code>mpl_toolkits</code> (<a href="https://matplotlib.org/api/_as_gen/mpl_toolkits.axes_grid1.inset_locator.inset_axes.html#mpl_toolkits.axes_grid1.inset_locator.inset_axes">docs</a>).</p>
 <p><code>inset_axes</code> is called as:</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="n">inset_axes</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="p">,</span> <span class="n">bbox_transform</span><span class="o">=</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="n">inset_axes</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="p">,</span> <span class="n">bbox_transform</span><span class="o">=</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="p">)</span>
 </code></pre></div><p>We want to position our new axis relative to the axis we position it into
 (which is <code>ax</code>). To do so we can set <code>bbox_transform</code> to
 the bounding box of the parent axis: <code>ax.transAxes</code>. <code>bbox_to_anchor</code>
@@ -88,7 +88,7 @@ need <em>8</em> for <em>&lsquo;lower center&rsquo;</em> and <em>7</em> for <em>&
 <p><code>inset_axes</code> will return the new axis which you than can proceed to
 plot into! So here the full function that will add <em>one</em> tick at a given
 position on either the upper x axis or the left y axis:</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
 
 <span class="k">def</span> <span class="nf">add_plot_tick</span><span class="p">(</span>
     <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
@@ -131,7 +131,7 @@ position on either the upper x axis or the left y axis:</p>
 also just return the axis and then manually plot into it.</p>
 <p>To add all four singal ticks we utilize the new function and just loop over the
 signals. The outer code looks something like:</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="err">…</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>

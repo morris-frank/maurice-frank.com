@@ -60,7 +60,7 @@
 <h3 id="why">Why?</h3>
 <p>My use-case is as follows: I have a plotting function which takes a variable
 number of signals and plots them in an organized little plot:</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="o">*</span><span class="n">signals</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="o">*</span><span class="n">signals</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
     <span class="o">...</span>
 </code></pre></div><p>The organization of those plots I can infer from the data, but it would also be
 nice to label the plots with a legend. The pythonic way to do this, is
@@ -69,7 +69,7 @@ dictionary with the labels as the keys. But I am lazy, my thesis code can be as
 experimental as I want it to be and <em>my variable names are already
 descriptive enough</em>. Therefore I want to somehow retrieve the given variable
 names as they are in the code.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="n">plot</span><span class="o">.</span><span class="n">plot_data</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">ŝ</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="n">plot</span><span class="o">.</span><span class="n">plot_data</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">ŝ</span><span class="p">)</span>
 </code></pre></div><figure>
     <img src="/img/label_plot.png" alt="A plot of the two signals where the legend states their variable names.">
 </figure>
@@ -86,7 +86,7 @@ dirty way: Look at the source code to get the names. Luckily this is
 supprisingly easily done with the <a href="https://docs.python.org/3/library/inspect.html">inspect module</a>
 from the Python standard library. <code>inspect</code> allows us to get
 information about objects as they lie on the Python execution stack. Running:</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">import</span> <span class="nn">inspect</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">import</span> <span class="nn">inspect</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">())</span>
 </code></pre></div><p>Will give something along:</p>
 <pre><code>[FrameInfo(frame=&amp;lt;frame at 0x7fd80164c450, file './test.py', line 6, code &amp;lt;module&amp;gt;&amp;gt;, filename='./test.py', lineno=6, function='&amp;lt;module&amp;gt;', code_context=['print(inspect.stack())\n'], index=0)]
@@ -100,7 +100,7 @@ position we are ineterested in. One is enough for our case.</p>
 <p>So we should be able to get the parameters of our function call by looking at
 the stack going one scope up, wich is where we called this function and parsing
 the line of source code for the names:</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="n">code_line</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">code_context</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="n">code_line</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">code_context</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div><p>And yes that works! First caveat: the function call shall only be one line,
 because we only have one line of context, buy hey I said this was hacky. Second,
 now we have a string akin:</p>
@@ -108,13 +108,13 @@ now we have a string akin:</p>
 </code></pre><p>Where we are only ineterested in the arguments of <code>func</code>. Therefore
 we need some RegEx magic to extract them. First we can use inspect again to
 fetch the name of the current function:</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="n">func_name</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">function</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="n">func_name</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">function</span>
 </code></pre></div><p>Easy right? Next we use a regular expression to extract the string between the
 parentheses behind the <code>func_name</code> and than another regular
 expression to split the argument list at the commas. Just using normal string
 <code>.split(',')</code> is not enough here as we want to only split on the
 most-outer commas.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">import</span> <span class="nn">re</span>
 <span class="n">argument_string</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">func_name</span><span class="si">}</span><span class="s2">\((.*)\)&#34;</span><span class="p">,</span> <span class="n">code_line</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">arguments</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&#34;,\s*(?![^()]*\))&#34;</span><span class="p">,</span> <span class="n">argument_string</span><span class="p">)</span>
 </code></pre></div><p>And that&rsquo;s basically it. For convenience I want this to be in its own function
@@ -123,16 +123,16 @@ this. Where do get the correct function name and source code line from, if we
 are currently in a function <em>inside</em> the function of interest? Yes,
 exactly, they are just one step higher in the stack. We just have to
 increase the index our lookups in the stack by one and it works. To sum up:</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="k">def</span> <span class="nf">get_func_arguments</span><span class="p">():</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="k">def</span> <span class="nf">get_func_arguments</span><span class="p">():</span>
     <span class="n">func_name</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="n">code_line</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">code_context</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="n">argument_string</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">func_name</span><span class="si">}</span><span class="s2">\((.*)\)&#34;</span><span class="p">,</span> <span class="n">code_line</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">arguments</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&#34;,\s*(?![^()]*\))&#34;</span><span class="p">,</span> <span class="n">argument_string</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">arguments</span>
 </code></pre></div><p>With that I can now call:</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="n">plot</span><span class="o">.</span><span class="n">plot_data</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">μ_ŝ</span><span class="p">,</span> <span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="n">plot</span><span class="o">.</span><span class="n">plot_data</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">μ_ŝ</span><span class="p">,</span> <span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </code></pre></div><p>and inside use our new function to label the plots;</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="o">*</span><span class="n">signals</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="o">*</span><span class="n">signals</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
     <span class="n">arguments</span> <span class="o">=</span> <span class="n">get_func_arguments</span><span class="p">()</span>  <span class="c1"># = [&#39;s&#39;, &#39;μ_ŝ&#39;, &#39;mean(x, dim=1)&#39;]</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
