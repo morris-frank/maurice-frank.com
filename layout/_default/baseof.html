@@ -41,7 +41,7 @@
         <a href="{{ "services" | absURL }}">hire me</a>
     </nav>
 
-    <main class="center">
+    <main class="{{ if .Params.fullwidth }}fullwidth{{ else }}center{{ end }}">
 {{ block "main" . }}{{ end }}
     </main>
 
