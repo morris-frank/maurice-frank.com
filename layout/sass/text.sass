@@ -108,6 +108,11 @@ pre
     code
         padding: 0
 
+a pre
+    padding: 0
+    display: inline
+    background: inherit
+
 var
     font-family: $font-code
     font-size: 0.95rem
@@ -124,23 +129,28 @@ table
         text-align: left
 
 // Icons -----------------------------------------------------------------------
+ul.icons
+    list-style: none
+    a
+        text-decoration: none
+
 [class^="icon-"], [class*=" icon-"]
     white-space: nowrap
     &::before
         font-family: "icons"
         speak: never
         display: inline-block
-        width: 1rem
+        width: 1.4rem
         margin-right: .5rem
         text-align: center
-        // text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3)
+        text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3)
         text-decoration: none
 a[class^="icon-"] + a[class^="icon-"]
     margin-left: 1em
 
 .icon-github:before
     content: '\f09b'
-.icon-mail:before
+.icon-mail-alt:before
     content: '\f0e0'
 .icon-code:before
     content: '\f121'
@@ -150,3 +160,5 @@ a[class^="icon-"] + a[class^="icon-"]
     content: '\f1be'
 .icon-twitter:before
     content: '\f099'
+.icon-spotify:before
+    content: '\f1bc'
