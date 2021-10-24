@@ -45,15 +45,6 @@ def plot_data(*signals: torch.Tensor): ... The organization of those plots I can
     </item>
     
     <item>
-      <title>Match corresponding </title>
-      <link>https://morris-frank.dev/image-matching/</link>
-      <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/image-matching/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Personalize your keyboard layout</title>
       <link>https://morris-frank.dev/keymap/</link>
       <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>

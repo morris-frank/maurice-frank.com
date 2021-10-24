@@ -11,7 +11,7 @@
 
     
     
-    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.a9fe5b57f7ff1f35e17403a665a2e8d781d71751aa742945eb5f221de7b4460c.css">
+    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.176172de7a1926653375f99679225088ca4bd0fa4968a68da9dc62297a63caf8.css">
     <link rel="shortcut icon" type="image/png" href="/icon.png"/>
 
  <script async src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js"></script>
@@ -37,7 +37,7 @@
         <a href="https://morris-frank.dev/art">art</a>
         <a href="https://morris-frank.dev/blog">blog</a>
         <a href="https://morris-frank.dev/projects">projects</a>
-        <a href="https://github.com/morris-frank/resume/blob/master/Frank_cv.pdf">cv</a>
+        <a href="https://github.com/morris-frank/resume/raw/master/Frank_cv.pdf">cv</a>
         <a href="https://morris-frank.dev/services">hire me</a>
     </nav>
 
@@ -91,7 +91,7 @@ information about objects as they lie on the Python execution stack. Running:</p
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">import</span> <span class="nn">inspect</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">())</span>
 </code></pre></div><p>Will give something along:</p>
-<pre><code>[FrameInfo(frame=&amp;lt;frame at 0x7fd80164c450, file './test.py', line 6, code &amp;lt;module&amp;gt;&amp;gt;, filename='./test.py', lineno=6, function='&amp;lt;module&amp;gt;', code_context=['print(inspect.stack())\n'], index=0)]
+<pre tabindex="0"><code>[FrameInfo(frame=&amp;lt;frame at 0x7fd80164c450, file './test.py', line 6, code &amp;lt;module&amp;gt;&amp;gt;, filename='./test.py', lineno=6, function='&amp;lt;module&amp;gt;', code_context=['print(inspect.stack())\n'], index=0)]
 </code></pre><p>We get an ordered list of <code>FrameInfo</code> objects, starting from the
 current scope going up the call stack. <code>FrameInfo</code> is a named tuple
 and contains the function name of the current scope (which this
@@ -106,7 +106,7 @@ the line of source code for the names:</p>
 </code></pre></div><p>And yes that works! First caveat: the function call shall only be one line,
 because we only have one line of context, buy hey I said this was hacky. Second,
 now we have a string akin:</p>
-<pre><code>variable = something(func(a, b, sum((c, d)))) + 1
+<pre tabindex="0"><code>variable = something(func(a, b, sum((c, d)))) + 1
 </code></pre><p>Where we are only ineterested in the arguments of <code>func</code>. Therefore
 we need some RegEx magic to extract them. First we can use inspect again to
 fetch the name of the current function:</p>
@@ -152,15 +152,8 @@ call stack in a production live systems. It is pretty neat though 👍.</p>
             <div>
                 <h2>Contact</h2>
                 <p>Maurice Frank</p>
-                <p class="icon-mail">firstname.lastname @ posteo de</p>
+                <p class="icon-mail-alt">firstname.lastname @ posteo de</p>
                 <p class="icon-code"><a href="https://github.com/morris-frank/morris-frank.dev">source code (MIT)</a></p>
-            </div>
-            <div>
-                <h2>Links</h2>
-                <p><a class="icon-github" href="https://github.com/morris-frank">GitHub</a></p>
-                <p><a class="icon-insta" href="https://instagram.com/morris_frank_">Instagram</a></p>
-                <p><a class="icon-soundcloud" href="https://soundcloud.com/morris-frank/">SoundCloud</a></p>
-                <p><a class="icon-twitter" href="https://nitter.pussthecat.org/morris_frank_/">Twitter</a></p>
             </div>
             <div>
                 <h2>Privacy statement</h2>
