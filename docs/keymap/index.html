@@ -11,7 +11,7 @@
 
     
     
-    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.a9fe5b57f7ff1f35e17403a665a2e8d781d71751aa742945eb5f221de7b4460c.css">
+    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.176172de7a1926653375f99679225088ca4bd0fa4968a68da9dc62297a63caf8.css">
     <link rel="shortcut icon" type="image/png" href="/icon.png"/>
 
  <script async src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js"></script>
@@ -37,7 +37,7 @@
         <a href="https://morris-frank.dev/art">art</a>
         <a href="https://morris-frank.dev/blog">blog</a>
         <a href="https://morris-frank.dev/projects">projects</a>
-        <a href="https://github.com/morris-frank/resume/blob/master/Frank_cv.pdf">cv</a>
+        <a href="https://github.com/morris-frank/resume/raw/master/Frank_cv.pdf">cv</a>
         <a href="https://morris-frank.dev/services">hire me</a>
     </nav>
 
@@ -110,7 +110,7 @@ with a pre-existing layout. For me that would be the German QWERTZ layout. You
 find all XKB layout definitions in <code>/usr/share/X11/xkb/symbols</code>.</p>
 <p>Looking into any of those files (e.g. <code>symbols/de</code>) you will find
 blocks of the form:</p>
-<pre><code>default
+<pre tabindex="0"><code>default
 xkb_symbols &quot;basic&quot; {
 
     include &quot;latin(type4)&quot;
@@ -128,14 +128,14 @@ file <code>symbols/latin</code>. Further included is <var>level3(ralt_switch)</v
 which will make <kbd>Alt</kbd> the modifier with which the third layer is
 reached.</p>
 <p>The inside of the block consists of lines like:</p>
-<pre><code>    key &amp;lt;AE04&amp;gt; { [ 4, dollar, onequarter, currency ] };
+<pre tabindex="0"><code>    key &amp;lt;AE04&amp;gt; { [ 4, dollar, onequarter, currency ] };
 </code></pre><p>in the angle brackets we have the XKB key symbol we want to define followed
 by a list with the four levels: no modifier, <kbd>Shift</kbd>, <kbd>RAlt</kbd>,
 <kbd>RAlt</kbd> + <kbd>Shift</kbd> (for this German case).</p>
 <h3 id="our-own-layout">Our own layout</h3>
 <p>We start by just importing the German basic layout (which imports all
 underlying imports):</p>
-<pre><code>default
+<pre tabindex="0"><code>default
 xkb_symbols &quot;basic&quot; {
     include &quot;de(basic)&quot;
 
@@ -162,7 +162,7 @@ In there we find that the key symbol for key code 41 is <var>&lt;AC04&gt;</var>.
 Inside the rows the numbers increase to the right.</p>
 <p>Now we want to update our F key to have the Greek small and big Phi on the third
 and fourth layer so we write:</p>
-<pre><code>key &amp;lt;AC04&amp;gt; { [ f, F, Greek_phi, Greek_PHI] };
+<pre tabindex="0"><code>key &amp;lt;AC04&amp;gt; { [ f, F, Greek_phi, Greek_PHI] };
 </code></pre><p>We write <var>Greek_phi</var> instead of φ. Except for the absolute basic numbers
 and Latin alphabet you cannot just write the symbols you want but have to use an
 identifier. A subset of Unicode symbols have defined names in X11. A list of
@@ -192,15 +192,8 @@ your <code>xinit.rc</code> so that it is loaded on every boot.</p>
             <div>
                 <h2>Contact</h2>
                 <p>Maurice Frank</p>
-                <p class="icon-mail">firstname.lastname @ posteo de</p>
+                <p class="icon-mail-alt">firstname.lastname @ posteo de</p>
                 <p class="icon-code"><a href="https://github.com/morris-frank/morris-frank.dev">source code (MIT)</a></p>
-            </div>
-            <div>
-                <h2>Links</h2>
-                <p><a class="icon-github" href="https://github.com/morris-frank">GitHub</a></p>
-                <p><a class="icon-insta" href="https://instagram.com/morris_frank_">Instagram</a></p>
-                <p><a class="icon-soundcloud" href="https://soundcloud.com/morris-frank/">SoundCloud</a></p>
-                <p><a class="icon-twitter" href="https://nitter.pussthecat.org/morris_frank_/">Twitter</a></p>
             </div>
             <div>
                 <h2>Privacy statement</h2>
