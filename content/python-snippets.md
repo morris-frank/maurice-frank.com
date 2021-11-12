@@ -1,15 +1,65 @@
-```python
-for first_level in filter(Path.is_dir, Path(".").iterdir()):
-    for second_level in filter(Path.is_dir, first_level.iterdir()):
-        process_dir(second_level)
+# Collection of niche Python snippets
+
+## General stuff
+
+### Use _ in numbers
+ 
+ ```py
+ # Underscores in numbers are ignored, but can increase readability
+ 2_000_000 == 2000000
 ```
 
-```python
-for folder in folders:
-    for path in paths:
-        if path.exists()
-        break
-    else:
-        print("No path found")
-        continue
+### Use _ for catching returns
+
+```py
+# User underscores to _ignore_ return elemens, event wildcard
+def func():
+    …
+    return a, b, c, d
+
+a, _, b, c, d = func()
+a, *_, d = func()
 ```
+
+## Packages
+
+### Defining wildcard import
+
+```py
+# file package.py
+
+```
+
+## Paths
+
+### Can use slash with pathlib
+```py
+from pathlib import Path
+path = Path("/home/morris")
+code_path = path / "code"
+
+code_path == Path("/home/morris/code")
+```
+
+### Iterate over only folders in a folder
+```py
+from pathlib import Path
+
+for folder in filter(Path.is_dir, Path(path).iterdir()):
+    pass
+```
+
+## itertools
+
+### Use product to reduce nested for loops
+
+```py
+# instead of
+for i in range(N):
+    for j in range(N):
+        pass
+
+# you can do
+from itertools import product
+for i, j in product(range(N), range(N)):
+    pass
