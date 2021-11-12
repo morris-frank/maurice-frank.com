@@ -77,15 +77,6 @@ The problem Lets say we want to generate sound signals. This might happen in dif
     </item>
     
     <item>
-      <title></title>
-      <link>https://morris-frank.dev/python-snippets/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/python-snippets/</guid>
-      <description>Collection of niche Python snippets General stuff Use _ in numbers # Underscores in numbers are ignored, but can increase readability 2_000_000 == 2000000 Use _ for catching returns # User underscores to _ignore_ return elemens, event wildcard def func(): … return a, b, c, d a, _, b, c, d = func() a, *_, d = func() Packages Defining wildcard import # file package.py Paths Can use slash with pathlib from pathlib import Path path = Path(&amp;#34;/home/morris&amp;#34;) code_path = path / &amp;#34;code&amp;#34; code_path == Path(&amp;#34;/home/morris/code&amp;#34;) Iterate over only folders in a folder from pathlib import Path for folder in filter(Path.</description>
-    </item>
-    
-    <item>
       <title>Art projects</title>
       <link>https://morris-frank.dev/art/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -101,6 +92,15 @@ The problem Lets say we want to generate sound signals. This might happen in dif
       
       <guid>https://morris-frank.dev/blog/</guid>
       <description>Machine learning WaveNet from scratch 2019-12-02  Today we are building a WaveNet from scratch. The WaveNet is an autoregressive, generative and deep model for audio signals.   Python Using plots as ticks in PyPlot 2020-03-22  Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?   Getting the argument names of a function 2020-02-12  Is it possible to get the names of the variables given as positional arguments to a function?</description>
+    </item>
+    
+    <item>
+      <title>Collection of Python snippets</title>
+      <link>https://morris-frank.dev/python-snippets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/python-snippets/</guid>
+      <description>General stuff Use _ in numbers # Underscores in numbers are ignored, but can increase readability 2_000_000 == 2000000 Use _ for catching returns # User underscores to _ignore_ return elemens, event wildcard def func(): … return a, b, c, d a, _, b, c, d = func() a, *_, d = func() Packages Defining wildcard import # file package.py Paths Can use slash with pathlib from pathlib import Path path = Path(&amp;#34;/home/morris&amp;#34;) code_path = path / &amp;#34;code&amp;#34; code_path == Path(&amp;#34;/home/morris/code&amp;#34;) Iterate over only folders in a folder from pathlib import Path for folder in filter(Path.</description>
     </item>
     
     <item>
