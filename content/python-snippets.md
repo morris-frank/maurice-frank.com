@@ -1,15 +1,17 @@
-# Collection of niche Python snippets
+---
+title: "Collection of Python snippets"
+---
 
-## General stuff
+### General stuff
 
-### Use _ in numbers
+#### Use _ in numbers
  
  ```py
  # Underscores in numbers are ignored, but can increase readability
  2_000_000 == 2000000
 ```
 
-### Use _ for catching returns
+#### Use _ for catching returns
 
 ```py
 # User underscores to _ignore_ return elemens, event wildcard
@@ -21,18 +23,18 @@ a, _, b, c, d = func()
 a, *_, d = func()
 ```
 
-## Packages
+### Packages
 
-### Defining wildcard import
+#### Defining wildcard import
 
 ```py
 # file package.py
 
 ```
 
-## Paths
+### Paths
 
-### Can use slash with pathlib
+#### Can use slash with pathlib
 ```py
 from pathlib import Path
 path = Path("/home/morris")
@@ -41,7 +43,7 @@ code_path = path / "code"
 code_path == Path("/home/morris/code")
 ```
 
-### Iterate over only folders in a folder
+#### Iterate over only folders in a folder
 ```py
 from pathlib import Path
 
@@ -49,9 +51,9 @@ for folder in filter(Path.is_dir, Path(path).iterdir()):
     pass
 ```
 
-## itertools
+### itertools
 
-### Use product to reduce nested for loops
+#### Use product to reduce nested for loops
 
 ```py
 # instead of
