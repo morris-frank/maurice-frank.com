@@ -50,25 +50,58 @@
 
 
 
-<h3 id="general-stuff">General stuff</h3>
 <h4 id="use-_-in-numbers">Use _ in numbers</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="c1"># Underscores in numbers are ignored, but can increase readability</span>
-<span class="mi">2_000_000</span> <span class="o">==</span> <span class="mi">2000000</span>
+<p>Underscores in numbers are ignored, but can increase readability</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="mi">2_000_000</span> <span class="o">==</span> <span class="mi">2000000</span>
 </code></pre></div><h4 id="use-_-for-catching-returns">Use _ for catching returns</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="c1"># User underscores to _ignore_ return elemens, event wildcard</span>
-<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+<p>User underscores to <em>ignore</em> return elemens, even can use a wildcard <code>*</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
     <span class="err">…</span>
     <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span>
 
-<span class="n">a</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
 <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
-</code></pre></div><h3 id="packages">Packages</h3>
-<h4 id="defining-wildcard-import">Defining wildcard import</h4>
+</code></pre></div><h4 id="use-type-in-add_argument-to-directly-transform-input">Use type in add_argument to directly transform input</h4>
+<h4 id="namespace-straight-to-args">Namespace straight to args</h4>
+<p>Have an argument parser that matches the arguments of the main function and just
+want them put in:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">ArgumentParser</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&#34;--file&#34;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&#34;--name&#34;</span><span class="p">)</span>
+</code></pre></div><p>with <code>vars</code> you can make the <code>Namespace</code> a dict and unpack it in one statement:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="n">main</span><span class="p">(</span><span class="o">**</span><span class="nb">vars</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()))</span>
+</code></pre></div><h4 id="infinite-defaultdict">Infinite defaultdict</h4>
+<p>Want to set</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="n">dictionary</span><span class="p">[</span><span class="s2">&#34;level1&#34;</span><span class="p">][</span><span class="s2">&#34;level2&#34;</span><span class="p">][</span><span class="s2">&#34;arg&#34;</span><span class="p">][</span><span class="s2">&#34;attr&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">some_value</span>
+</code></pre></div><p>without having to define any of the levels. Make a infinite defaultdict:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">infinite_defaultdict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">infinite_defaultdict</span><span class="p">)</span>
+<span class="n">dictionary</span> <span class="o">=</span> <span class="n">infinite_defaultdict</span><span class="p">()</span>
+<span class="n">dictionary</span><span class="p">[</span><span class="s2">&#34;level1&#34;</span><span class="p">][</span><span class="s2">&#34;level2&#34;</span><span class="p">][</span><span class="s2">&#34;arg&#34;</span><span class="p">][</span><span class="s2">&#34;attr&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">some_value</span>
+</code></pre></div><h4 id="global-vs-nonlocal">global vs nonlocal</h4>
+<p>Use the keyword <code>nonlocal</code> to access the <code>index</code> variable in the outer function but not the global variable which you would access with <code>global</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">outer_function</span><span class="p">():</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">42</span>
+    <span class="k">def</span> <span class="nf">inner_fucntion</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">index</span>
+        <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">inner_function</span><span class="p">()</span>
+</code></pre></div><h4 id="defining-wildcard-import">Defining wildcard import</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="c1"># file package.py</span>
 
-</code></pre></div><h3 id="paths">Paths</h3>
-<h4 id="can-use-slash-with-pathlib">Can use slash with pathlib</h4>
+</code></pre></div><h4 id="using-__file__">Using __file__</h4>
+<h4 id="using-slash-with-pathlib-paths">Using slash with <code>pathlib</code> Paths</h4>
+<p>The <code>/</code> operator is overloaded for <code>pathlib</code> so you can easily extend paths:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
 <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&#34;/home/morris&#34;</span><span class="p">)</span>
 <span class="n">code_path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">/</span> <span class="s2">&#34;code&#34;</span>
 
@@ -78,8 +111,7 @@
 
 <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
     <span class="k">pass</span>
-</code></pre></div><h3 id="itertools">itertools</h3>
-<h4 id="use-product-to-reduce-nested-for-loops">Use product to reduce nested for loops</h4>
+</code></pre></div><h4 id="use-product-to-reduce-nested-for-loops">Use product to reduce nested for loops</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="c1"># instead of</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
