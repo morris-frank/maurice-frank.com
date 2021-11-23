@@ -2,20 +2,23 @@
 title: "Collection of Python snippets"
 ---
 
-### Use _ in numbers
+My running un-sorted list of snippets for Python that I use regulary, and I have seen that people don't know about them.
+Some are really basic some weirdly advanced…
 
-Underscores in numbers are ignored, but can increase readability
+### Use underscores in numbers
+
+Underscores in numbers are ignored, but can increase readability:
 
 ```py
 2_000_000 == 2000000
 ```
 
-### Use _ for catching returns
+### Use underscores to discard  returns
 
-User underscores to _ignore_ return elemens, even can use a wildcard `*`
+Use underscores to _ignore_ return elemens. More advanced, use can use a wildcard `*` to discard a sub-set of the return arguments:
 
 ```py
-def func():
+def some_function():
     …
     return a, b, c, d
 
@@ -23,11 +26,25 @@ a, _, c, d = func()
 a, *_, d = func()
 ```
 
-### Use type in add_argument to directly transform input
+### Use type in `add_argument` to directly transform input
 
-### Namespace straight to args
+A pattern I use a lot in `ArgumentParser` is to abuse the `type` argument. As the input argument is just casted by calling the `type` object you can also just give a function to transform the input. For example a config file:
 
-Have an argument parser that matches the arguments of the main function and just
+```py
+from argparse import ArgumentParser
+import json
+
+parser = ArgumentParser()
+parser.add_argument("--config", type=lambda x: json.load(open(x, 'r')))
+args = parser.parse_args()
+
+args.config # is now the loaded config file already!
+```
+
+
+### Unpack namespace as keyword arguments
+
+Assume you have an argument parser that matches the arguments of the main function and just
 want them put in:
 
 ```py
@@ -47,12 +64,14 @@ with `vars` you can make the `Namespace` a dict and unpack it in one statement:
 main(**vars(parser.parse_args()))
 ```
 
-### Infinite defaultdict
-Want to set
+### Implicit infinite defaultdict
+
+Lets say you want to set
 
 ```py
 dictionary["level1"]["level2"]["arg"]["attr"] = some_value
 ```
+
 without having to define any of the levels. Make a infinite defaultdict:
 
 ```py
@@ -60,9 +79,9 @@ from collections import defaultdict
 
 infinite_defaultdict = defaultdict(lambda: infinite_defaultdict)
 dictionary = infinite_defaultdict()
+
 dictionary["level1"]["level2"]["arg"]["attr"] = some_value
 ```
-
 
 ### global vs nonlocal
 
