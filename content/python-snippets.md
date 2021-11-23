@@ -2,7 +2,7 @@
 title: "Collection of Python snippets"
 ---
 
-#### Use _ in numbers
+### Use _ in numbers
 
 Underscores in numbers are ignored, but can increase readability
 
@@ -10,7 +10,7 @@ Underscores in numbers are ignored, but can increase readability
 2_000_000 == 2000000
 ```
 
-#### Use _ for catching returns
+### Use _ for catching returns
 
 User underscores to _ignore_ return elemens, even can use a wildcard `*`
 
@@ -23,9 +23,9 @@ a, _, c, d = func()
 a, *_, d = func()
 ```
 
-#### Use type in add_argument to directly transform input
+### Use type in add_argument to directly transform input
 
-#### Namespace straight to args
+### Namespace straight to args
 
 Have an argument parser that matches the arguments of the main function and just
 want them put in:
@@ -47,7 +47,7 @@ with `vars` you can make the `Namespace` a dict and unpack it in one statement:
 main(**vars(parser.parse_args()))
 ```
 
-#### Infinite defaultdict
+### Infinite defaultdict
 Want to set
 
 ```py
@@ -64,7 +64,7 @@ dictionary["level1"]["level2"]["arg"]["attr"] = some_value
 ```
 
 
-#### global vs nonlocal
+### global vs nonlocal
 
 Use the keyword `nonlocal` to access the `index` variable in the outer function but not the global variable which you would access with `global`.
 
@@ -80,16 +80,16 @@ def outer_function():
 ```
 
 
-#### Defining wildcard import
+### Defining wildcard import
 
 ```py
 # file package.py
 
 ```
 
-#### Using \_\_file\_\_
+### Using \_\_file\_\_
 
-#### Using slash with `pathlib` Paths
+### Using slash with `pathlib` Paths
 
 The `/` operator is overloaded for `pathlib` so you can easily extend paths:
 
@@ -102,7 +102,7 @@ code_path = path / "code"
 code_path == Path("/home/morris/code")
 ```
 
-#### Iterate over only folders in a folder
+### Iterate over only folders in a folder
 ```py
 from pathlib import Path
 
@@ -110,7 +110,7 @@ for folder in filter(Path.is_dir, Path(path).iterdir()):
     pass
 ```
 
-#### Use product to reduce nested for loops
+### Use product to reduce nested for loops
 
 ```py
 # instead of
@@ -122,3 +122,12 @@ for i in range(N):
 from itertools import product
 for i, j in product(range(N), range(N)):
     pass
+```
+
+### Generate a random list of words
+```py
+import random
+
+def random_words(n: int) -> list[str]:
+    return random.sample(open("/usr/share/dict/words").read().splitlines(), n)
+```
