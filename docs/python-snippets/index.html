@@ -50,20 +50,31 @@
 
 
 
-<h3 id="use-_-in-numbers">Use _ in numbers</h3>
-<p>Underscores in numbers are ignored, but can increase readability</p>
+<p>My running un-sorted list of snippets for Python that I use regulary, and I have seen that people don&rsquo;t know about them.
+Some are really basic some weirdly advanced…</p>
+<h3 id="use-underscores-in-numbers">Use underscores in numbers</h3>
+<p>Underscores in numbers are ignored, but can increase readability:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="mi">2_000_000</span> <span class="o">==</span> <span class="mi">2000000</span>
-</code></pre></div><h3 id="use-_-for-catching-returns">Use _ for catching returns</h3>
-<p>User underscores to <em>ignore</em> return elemens, even can use a wildcard <code>*</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+</code></pre></div><h3 id="use-underscores-to-discard--returns">Use underscores to discard  returns</h3>
+<p>Use underscores to <em>ignore</em> return elemens. More advanced, use can use a wildcard <code>*</code> to discard a sub-set of the return arguments:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
     <span class="err">…</span>
     <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span>
 
 <span class="n">a</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
 <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
-</code></pre></div><h3 id="use-type-in-add_argument-to-directly-transform-input">Use type in add_argument to directly transform input</h3>
-<h3 id="namespace-straight-to-args">Namespace straight to args</h3>
-<p>Have an argument parser that matches the arguments of the main function and just
+</code></pre></div><h3 id="use-type-in-add_argument-to-directly-transform-input">Use type in <code>add_argument</code> to directly transform input</h3>
+<p>A pattern I use a lot in <code>ArgumentParser</code> is to abuse the <code>type</code> argument. As the input argument is just casted by calling the <code>type</code> object you can also just give a function to transform the input. For example a config file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">ArgumentParser</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&#34;--config&#34;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)))</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="n">args</span><span class="o">.</span><span class="n">config</span> <span class="c1"># is now the loaded config file already!</span>
+</code></pre></div><h3 id="unpack-namespace-as-keyword-arguments">Unpack namespace as keyword arguments</h3>
+<p>Assume you have an argument parser that matches the arguments of the main function and just
 want them put in:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">ArgumentParser</span>
 
@@ -75,14 +86,15 @@ want them put in:</p>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&#34;--name&#34;</span><span class="p">)</span>
 </code></pre></div><p>with <code>vars</code> you can make the <code>Namespace</code> a dict and unpack it in one statement:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="n">main</span><span class="p">(</span><span class="o">**</span><span class="nb">vars</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()))</span>
-</code></pre></div><h3 id="infinite-defaultdict">Infinite defaultdict</h3>
-<p>Want to set</p>
+</code></pre></div><h3 id="implicit-infinite-defaultdict">Implicit infinite defaultdict</h3>
+<p>Lets say you want to set</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="n">dictionary</span><span class="p">[</span><span class="s2">&#34;level1&#34;</span><span class="p">][</span><span class="s2">&#34;level2&#34;</span><span class="p">][</span><span class="s2">&#34;arg&#34;</span><span class="p">][</span><span class="s2">&#34;attr&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">some_value</span>
 </code></pre></div><p>without having to define any of the levels. Make a infinite defaultdict:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 
 <span class="n">infinite_defaultdict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">infinite_defaultdict</span><span class="p">)</span>
 <span class="n">dictionary</span> <span class="o">=</span> <span class="n">infinite_defaultdict</span><span class="p">()</span>
+
 <span class="n">dictionary</span><span class="p">[</span><span class="s2">&#34;level1&#34;</span><span class="p">][</span><span class="s2">&#34;level2&#34;</span><span class="p">][</span><span class="s2">&#34;arg&#34;</span><span class="p">][</span><span class="s2">&#34;attr&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">some_value</span>
 </code></pre></div><h3 id="global-vs-nonlocal">global vs nonlocal</h3>
 <p>Use the keyword <code>nonlocal</code> to access the <code>index</code> variable in the outer function but not the global variable which you would access with <code>global</code>.</p>

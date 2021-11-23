@@ -100,9 +100,9 @@ The problem Lets say we want to generate sound signals. This might happen in dif
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/python-snippets/</guid>
-      <description>Use _ in numbers Underscores in numbers are ignored, but can increase readability
-2_000_000 == 2000000 Use _ for catching returns User underscores to ignore return elemens, even can use a wildcard *
-def func(): … return a, b, c, d a, _, c, d = func() a, *_, d = func() Use type in add_argument to directly transform input Namespace straight to args Have an argument parser that matches the arguments of the main function and just want them put in:</description>
+      <description>My running un-sorted list of snippets for Python that I use regulary, and I have seen that people don&amp;rsquo;t know about them. Some are really basic some weirdly advanced…
+Use underscores in numbers Underscores in numbers are ignored, but can increase readability:
+2_000_000 == 2000000 Use underscores to discard returns Use underscores to ignore return elemens. More advanced, use can use a wildcard * to discard a sub-set of the return arguments:</description>
     </item>
     
     <item>
