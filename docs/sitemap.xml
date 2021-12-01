@@ -56,9 +56,7 @@
     <loc>https://morris-frank.dev/wavenet/</loc>
     <lastmod>2019-12-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://morris-frank.dev/art/</loc>
-  </url><url>
-    <loc>https://morris-frank.dev/blog/</loc>
+    <loc>https://morris-frank.dev/bivy/</loc>
   </url><url>
     <loc>https://morris-frank.dev/python-snippets/</loc>
   </url><url>
@@ -71,5 +69,7 @@
     <loc>https://morris-frank.dev/projects/</loc>
   </url><url>
     <loc>https://morris-frank.dev/motionstills/</loc>
+  </url><url>
+    <loc>https://morris-frank.dev/tutorials/</loc>
   </url>
 </urlset>
