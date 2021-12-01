@@ -59,16 +59,12 @@ hr
 main
   min-height: calc(100vh - 21.7rem)
 
-nav
-  // border-bottom: 1px solid $grey-light
+header
   contain: layout paint
   h1
     margin: 1rem 2rem 0 0
     display: inline-block
-    font-variation-settings: "wght" 800, "wdth" 100
     font-size: 2rem
-    &:hover
-      font-variation-settings: "wght" 400, "wdth" 100
     a
       text-decoration: none
     @media (max-width: $linewidth)
@@ -77,10 +73,20 @@ nav
     padding-right: 1rem
     padding-bottom: 1rem
     display: inline-block
-    font-variation-settings: "wght" 500, "wdth" 105
 
-    &:hover
-      font-variation-settings: "wght" 900, "wdth" 105
+nav
+  background: $white
+  line-height: 2rem
+  z-index: 2
+  li
+    display: inline
+    margin-right: 2rem
+  +desktop
+    position: fixed
+    li
+      display: list-item
+  ul
+    list-style: none
 
 // Component classes -----------------------------------------------------------
 .avatar
