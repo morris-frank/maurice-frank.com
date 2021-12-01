@@ -1,5 +1,5 @@
 ---
-title: "Blog"
+title: "Tutorials"
 ---
 
 {{< tag_list "machine-learning" >}}

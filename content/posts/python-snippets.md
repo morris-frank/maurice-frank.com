@@ -150,3 +150,6 @@ import random
 def random_words(n: int) -> list[str]:
     return random.sample(open("/usr/share/dict/words").read().splitlines(), n)
 ```
+
+
+### Import sub-modules into alias
