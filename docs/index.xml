@@ -77,21 +77,12 @@ The problem Lets say we want to generate sound signals. This might happen in dif
     </item>
     
     <item>
-      <title>Art projects</title>
-      <link>https://morris-frank.dev/art/</link>
+      <title></title>
+      <link>https://morris-frank.dev/bivy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://morris-frank.dev/art/</guid>
-      <description>Video projects Making music videos with AI  Iteratively sampling from a generative image model to generate videos conditioned on the lyrics of songs.   Still in motion  A non-endless endless stream of images in motion through space and time.   Music I am learning to make amateurish music. Currently on a mission of one track per week in Bitwig (the only professional DAW running on Linux).</description>
-    </item>
-    
-    <item>
-      <title>Blog</title>
-      <link>https://morris-frank.dev/blog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/blog/</guid>
-      <description>Machine learning WaveNet from scratch 2019-12-02  Today we are building a WaveNet from scratch. The WaveNet is an autoregressive, generative and deep model for audio signals.   Python Using plots as ticks in PyPlot 2020-03-22  Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?   Getting the argument names of a function 2020-02-12  Is it possible to get the names of the variables given as positional arguments to a function?</description>
+      <guid>https://morris-frank.dev/bivy/</guid>
+      <description>   Item Product Price Weight Volume     Bivy bag BD/MSR/RAB 150-250 200-350 3L   Sleeping bag Mythic Ultra 180 450 400 5L    </description>
     </item>
     
     <item>
@@ -136,20 +127,13 @@ Input here are only the lyrics plus &amp;ldquo;The Beatles&amp;rdquo; at the beg
     </item>
     
     <item>
-      <title>Software Projects</title>
+      <title>Projects</title>
       <link>https://morris-frank.dev/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/projects/</guid>
-      <description>Research  2020
-Problems using deep generative models for probabilistic audio source separation
-published-at: I can&amp;rsquo;t believe it&amp;rsquo;s not better workshops @ NeurIPS 2020
-Maurice Frank, Maximilian Ilse
-[Paper] [Pre-Print] [Code] [Poster]
-In invistigation into how good deep generative models behave if cmoing in contact with data not present in their trainings set. Do they know what they do not know?
-  2020
-Unsupervised musical source separation
-Maurice Frank</description>
+      <description>Audio-visual Making music videos with AI  Iteratively sampling from a generative image model to generate videos conditioned on the lyrics of songs.   Still in motion  A non-endless endless stream of images in motion through space and time.   Music I am learning to make amateurish music. Currently on a mission of one track per week in Bitwig (the only professional DAW running on Linux).
+See here as it happens:</description>
     </item>
     
     <item>
@@ -160,6 +144,15 @@ Maurice Frank</description>
       <guid>https://morris-frank.dev/motionstills/</guid>
       <description>I am really in love with an app made @ Google Research called MotionStills. It takes little videos that can be stabilized with some quite involved CV algorithm it seems… And the app is super slim… I assume Google will kill it in the future but until then it is super fun to use.
 2021                                                                                                                                                                                                2021 2020                                                                        2020 2019                                                                       2019 2018                                                                                                              2018 </description>
+    </item>
+    
+    <item>
+      <title>Tutorials</title>
+      <link>https://morris-frank.dev/tutorials/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/tutorials/</guid>
+      <description>Machine learning WaveNet from scratch 2019-12-02  Today we are building a WaveNet from scratch. The WaveNet is an autoregressive, generative and deep model for audio signals.   Python Using plots as ticks in PyPlot 2020-03-22  Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?   Getting the argument names of a function 2020-02-12  Is it possible to get the names of the variables given as positional arguments to a function?</description>
     </item>
     
   </channel>
