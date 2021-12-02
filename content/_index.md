@@ -6,12 +6,6 @@ title: "About me"
 
 Hey, there… I am Morris (mʌɽis) and this is my personal homepage. Mostly I am interested in random stuff, so you will find a collection of random stuff on this website.
 
-In the [blog](/blog) is a real random collection of mostly tutorials I found out while building stuff…
-
-Under [art](/art) are some musical and visual art projects (you can call everything art am I right?)…
-
-Under [projects](/projects) you'll find some engineering projects I've been working on.
-
 I am also active member of the [Collegium
 Academicum](https://collegiumacademicum.de) project group. A non-profit company in Heidelberg, Germany where
 we are building a sustainable, innovative and really cool wooden housing complex

@@ -1,9 +1,9 @@
 ---
 title: "Collection of Python snippets"
+tags: ["Python"]
+date: "2021-12-02"
+tldr: "On-going list of niche snippets for programming Python like an annoying know-it-all (also some actual good tips)."
 ---
-
-My running un-sorted list of snippets for Python that I use regulary, and I have seen that people don't know about them.
-Some are really basic some weirdly advanced…
 
 ### Use underscores in numbers
 
