@@ -76,14 +76,17 @@ header
 
 nav
   background: $white
+  border-left: 4px solid $primary
   line-height: 2rem
   z-index: 2
   li
     display: inline
     margin-right: 2rem
+    a
+      text-decoration: none
   +desktop
     position: fixed
-    right: -18rem
+    right: -12rem
     width: 23rem
     &:hover
       right: 0rem
@@ -91,6 +94,8 @@ nav
       display: list-item
   ul
     list-style: none
+    padding: 0 0 0 2rem
+    text-indent: -1rem
 
 // Component classes -----------------------------------------------------------
 .avatar
