@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://morris-frank.dev/</loc>
-    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://morris-frank.dev/python-snippets/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://morris-frank.dev/posts/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://morris-frank.dev/tags/python/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://morris-frank.dev/tags/</loc>
+    <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://morris-frank.dev/shm/</loc>
+    <lastmod>2021-11-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://morris-frank.dev/tags/bitwig/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
@@ -14,22 +29,13 @@
     <loc>https://morris-frank.dev/tags/music/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://morris-frank.dev/posts/</loc>
-    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://morris-frank.dev/captcha/</loc>
-    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://morris-frank.dev/tags/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://morris-frank.dev/tags/web/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://morris-frank.dev/tags/plotting/</loc>
-    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://morris-frank.dev/tags/python/</loc>
     <lastmod>2020-03-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://morris-frank.dev/plotting-ticks/</loc>
@@ -57,8 +63,6 @@
     <lastmod>2019-12-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://morris-frank.dev/bivy/</loc>
-  </url><url>
-    <loc>https://morris-frank.dev/python-snippets/</loc>
   </url><url>
     <loc>https://morris-frank.dev/services/</loc>
   </url><url>

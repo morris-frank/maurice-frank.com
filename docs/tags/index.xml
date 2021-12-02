@@ -5,7 +5,16 @@
     <link>https://morris-frank.dev/tags/</link>
     <description>Recent content in Tags on Morris-Frank</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python</title>
+      <link>https://morris-frank.dev/tags/python/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/tags/python/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Bitwig</title>
       <link>https://morris-frank.dev/tags/bitwig/</link>
@@ -39,15 +48,6 @@
       <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/tags/plotting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://morris-frank.dev/tags/python/</link>
-      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/tags/python/</guid>
       <description></description>
     </item>
     

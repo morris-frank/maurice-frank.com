@@ -5,7 +5,27 @@
     <link>https://morris-frank.dev/posts/</link>
     <description>Recent content in Posts on Morris-Frank</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Collection of Python snippets</title>
+      <link>https://morris-frank.dev/python-snippets/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/python-snippets/</guid>
+      <description>Use underscores in numbers Underscores in numbers are ignored, but can increase readability:
+2_000_000 == 2000000 Use underscores to discard returns Use underscores to ignore return elemens. More advanced, use can use a wildcard * to discard a sub-set of the return arguments:
+def some_function(): … return a, b, c, d a, _, c, d = func() a, *_, d = func() Use type in add_argument to directly transform input A pattern I use a lot in ArgumentParser is to abuse the type argument.</description>
+    </item>
+    
+    <item>
+      <title>Persistant shared memory</title>
+      <link>https://morris-frank.dev/shm/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/shm/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Bitwig controller script tutorial</title>
       <link>https://morris-frank.dev/bitwig-controller/</link>
@@ -83,17 +103,6 @@ The problem Lets say we want to generate sound signals. This might happen in dif
       
       <guid>https://morris-frank.dev/bivy/</guid>
       <description>   Item Product Price Weight Volume     Bivy bag BD/MSR/RAB 150-250 200-350 3L   Sleeping bag Mythic Ultra 180 450 400 5L    </description>
-    </item>
-    
-    <item>
-      <title>Collection of Python snippets</title>
-      <link>https://morris-frank.dev/python-snippets/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/python-snippets/</guid>
-      <description>My running un-sorted list of snippets for Python that I use regulary, and I have seen that people don&amp;rsquo;t know about them. Some are really basic some weirdly advanced…
-Use underscores in numbers Underscores in numbers are ignored, but can increase readability:
-2_000_000 == 2000000 Use underscores to discard returns Use underscores to ignore return elemens. More advanced, use can use a wildcard * to discard a sub-set of the return arguments:</description>
     </item>
     
     <item>

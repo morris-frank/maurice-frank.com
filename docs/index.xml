@@ -5,7 +5,27 @@
     <link>https://morris-frank.dev/</link>
     <description>Recent content in About me on Morris-Frank</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Collection of Python snippets</title>
+      <link>https://morris-frank.dev/python-snippets/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/python-snippets/</guid>
+      <description>Use underscores in numbers Underscores in numbers are ignored, but can increase readability:
+2_000_000 == 2000000 Use underscores to discard returns Use underscores to ignore return elemens. More advanced, use can use a wildcard * to discard a sub-set of the return arguments:
+def some_function(): … return a, b, c, d a, _, c, d = func() a, *_, d = func() Use type in add_argument to directly transform input A pattern I use a lot in ArgumentParser is to abuse the type argument.</description>
+    </item>
+    
+    <item>
+      <title>Persistant shared memory</title>
+      <link>https://morris-frank.dev/shm/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/shm/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Bitwig controller script tutorial</title>
       <link>https://morris-frank.dev/bitwig-controller/</link>
@@ -86,17 +106,6 @@ The problem Lets say we want to generate sound signals. This might happen in dif
     </item>
     
     <item>
-      <title>Collection of Python snippets</title>
-      <link>https://morris-frank.dev/python-snippets/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/python-snippets/</guid>
-      <description>My running un-sorted list of snippets for Python that I use regulary, and I have seen that people don&amp;rsquo;t know about them. Some are really basic some weirdly advanced…
-Use underscores in numbers Underscores in numbers are ignored, but can increase readability:
-2_000_000 == 2000000 Use underscores to discard returns Use underscores to ignore return elemens. More advanced, use can use a wildcard * to discard a sub-set of the return arguments:</description>
-    </item>
-    
-    <item>
       <title>Hire me</title>
       <link>https://morris-frank.dev/services/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -152,7 +161,7 @@ See here as it happens:</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/tutorials/</guid>
-      <description>Machine learning WaveNet from scratch 2019-12-02  Today we are building a WaveNet from scratch. The WaveNet is an autoregressive, generative and deep model for audio signals.   Python Using plots as ticks in PyPlot 2020-03-22  Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?   Getting the argument names of a function 2020-02-12  Is it possible to get the names of the variables given as positional arguments to a function?</description>
+      <description>Machine learning WaveNet from scratch 2019-12-02  Today we are building a WaveNet from scratch. The WaveNet is an autoregressive, generative and deep model for audio signals.   Python Collection of Python snippets 2021-12-02  On-going list of niche snippets for programming Python like an annoying know-it-all (also some actual good tips).   Persistant shared memory 2021-11-10  How to create a store in memory easily share and survive restarts etc… in pure Python   Using plots as ticks in PyPlot 2020-03-22  Another week another tutorial for something that you never thought about doing.</description>
     </item>
     
   </channel>
