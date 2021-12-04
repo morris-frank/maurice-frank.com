@@ -39,9 +39,7 @@ vibration every \\(\frac{1}{8000}\mathrm{sec}\\) and choose the closest of
 \\(2^{16}=65536\\) bins/amplitude values. Below we have a small excerpt of a sound
 file encoded with 16kHz 16bit.
 
-<figure>
-    <img src="/img/wave.jpg" alt="A cut from an audio waveform.">
-</figure>
+![A cut from an audio waveform.](wave.jpg)
 
 As we have here a sample length of 100 at a sample rate of 16kHz this sample is
 _only_ 6.25 ms long. Directly we see the problem in working with music in
@@ -71,7 +69,7 @@ the input and output are of the same type (Mono-audio).
     <svg id="figcausal_svg" height="300" width="600">
         Sorry, your browser does not support inline SVG.
     </svg>
-    <script type="text/javascript" src="/figures/causal.js" defer></script>
+    <script type="text/javascript" src="causal.js" defer></script>
 </figure>
 
 ### Dilated Convolutions
@@ -80,7 +78,7 @@ the input and output are of the same type (Mono-audio).
     <svg id="figdilated_svg" height="300" width="600">
         Sorry, your browser does not support inline SVG.
     </svg>
-    <script type="text/javascript" src="/figures/dilated.js" defer></script>
+    <script type="text/javascript" src="dilated.js" defer></script>
 </figure>
 
 Do make the dilated convolutions we are doing the dilation and the convolution
@@ -170,7 +168,7 @@ layer.
 In a picture:
 
 <figure>
-    <img src="/figures/wavenet_dilated_block.svg" alt="Schematic figure showing the flow of information through one of the dilated blocks in a WaveNet.">
+    <img src="wavenet_dilated_block.svg" alt="Schematic figure showing the flow of information through one of the dilated blocks in a WaveNet.">
 </figure>
 
 Why the \\(1\times 1\\) convolutions after the residual? The width (channels) of
@@ -321,4 +319,4 @@ And the forward pass:
     </li>
 </ol>
 
-<script type="text/javascript" src="/figures/wavenet.js"></script>
+<script type="text/javascript" src="wavenet.js"></script>

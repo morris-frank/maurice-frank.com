@@ -27,9 +27,7 @@ names as they are in the code.
 plot.plot_data(s, ŝ)
 ```
 
-<figure>
-    <img src="/img/label_plot.png" alt="A plot of the two signals where the legend states their variable names.">
-</figure>
+![A plot of the two signals where the legend states their variable names.](label_plot.png)
 
 ### How?
 

@@ -13,9 +13,7 @@ waves. Now for annotating the plot, yes you could write down the names of the
 signals on the axis and yes that's probably the 'correct' way to do it. But it
 is ugly and not intuitive if you could also just show the signals:
 
-<figure>
-    <img src="/img/heatmap_ticks_plot.png" alt="A histogram plot where the ticks on the left and top axis are printed as for different plots.">
-</figure>
+![A histogram plot where the ticks on the left and top axis are printed as for different plots.](heatmap_ticks_plot.png)
 
 ### How?
 
