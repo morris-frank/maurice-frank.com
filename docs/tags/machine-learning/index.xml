@@ -5,7 +5,16 @@
     <link>https://morris-frank.dev/tags/machine-learning/</link>
     <description>Recent content in Machine Learning on Morris-Frank</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 02 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Latents</title>
+      <link>https://morris-frank.dev/latents/</link>
+      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/latents/</guid>
+      <description>Asterix &amp;amp; Obelix (ruDALL-e) Sickle Army Gallia Obelix Romans Romans are crazy Gladiator Magic potion звездочка борьба </description>
+    </item>
+    
     <item>
       <title>WaveNet from scratch</title>
       <link>https://morris-frank.dev/wavenet/</link>
