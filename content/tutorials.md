@@ -2,11 +2,11 @@
 title: "Tutorials"
 ---
 
-### Machine learning
-{{< tag_list "machine-learning" >}}
-
 ### Python
 {{< tag_list "python" >}}
+
+### Machine learning
+{{< tag_list "machine-learning" >}}
 
 ### Web
 {{< tag_list "web" >}}

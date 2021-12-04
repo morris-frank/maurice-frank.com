@@ -64,7 +64,7 @@ Time to go to binary. For this use [Otsu's method](https://en.wikipedia.org/wiki
 
 ```py
 _, img = cv.threshold(img, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
-cv.imwrite("otsu.jpg", img * 255) 
+cv.imwrite("otsu.jpg", img) 
 ```
 
 ![After applying otsu thresholding](otsu.jpg)
@@ -87,8 +87,7 @@ Finally, to fill the remaining white holes in the black panels, apply a flood-fi
 
 ```py
 _, _, img, _ = cv.floodFill(img, np.zeros((height+2, width+2), np.uint8), (0,0), 255)
-img *= 255
-cv.imwrite("floodfill.jpg", img) 
+cv.imwrite("floodfill.jpg", img * 255) 
 ```
 
 ![After flood-filling](floodfill.jpg)

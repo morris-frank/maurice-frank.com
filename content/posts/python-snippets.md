@@ -1,7 +1,7 @@
 ---
 title: "Collection of Python snippets"
 tags: ["Python"]
-date: "2021-12-02"
+date: "2021-12-04"
 tldr: "On-going list of niche snippets for programming Python like an annoying know-it-all (also some actual good tips)."
 ---
 
@@ -99,14 +99,14 @@ def outer_function():
 ```
 
 
-### Defining wildcard import
+<!-- ### Defining wildcard import
 
 ```py
 # file package.py
 
-```
+``` -->
 
-### Using \_\_file\_\_
+<!-- ### Using \_\_file\_\_ -->
 
 ### Using slash with `pathlib` Paths
 
@@ -152,4 +152,4 @@ def random_words(n: int) -> list[str]:
 ```
 
 
-### Import sub-modules into alias
+<!-- ### Import sub-modules into alias -->
