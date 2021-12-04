@@ -85,22 +85,21 @@ nav
   border-left: 4px solid $primary
   line-height: 2rem
   z-index: 2
-  li
-    display: inline
-    margin-right: 2rem
-    a
-      text-decoration: none
+  li a
+    text-decoration: none
   +desktop
     position: fixed
     right: -12rem
     width: 23rem
     &:hover
       right: 0rem
-    li
-      display: list-item
   ul
     list-style: none
-    padding: 0 0 0 2rem
+    text-align: right
+    padding: 0 4em 0 0
+    +desktop
+      text-align: left
+      padding: 0 0 0 2rem
     text-indent: -1rem
 
 // Component classes -----------------------------------------------------------

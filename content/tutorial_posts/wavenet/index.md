@@ -1,6 +1,6 @@
 +++
 title = "WaveNet from scratch"
-tags = ["Machine Learning", "Python"]
+tags = ["Machine Learning"]
 date = "2019-12-02"
 tldr = "Today we are building a WaveNet from scratch. The WaveNet is an autoregressive, generative and deep model for audio signals."
 +++

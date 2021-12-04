@@ -1,6 +1,6 @@
 ---
 title: "Extract panels from comic pages"
-tags: ["Python"]
+tags: ["Computer Vision"]
 date: "2021-12-04"
 tldr: "How to extract the individual panels from a scanned page from a comic book."
 ---
