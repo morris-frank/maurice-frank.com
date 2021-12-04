@@ -12,7 +12,7 @@
 
     
     
-    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.df8dc70bc97a383959a5ba399c31ac842d9d74c2f854ca384aa34f49b26ca3d5.css">
+    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.75b3c9bcc2742cff41a7010d80800a0105a07ae76b21872f82be4c6e7b2ceab6.css">
     <link rel="shortcut icon" type="image/png" href="/icon.png" />
 
     
@@ -99,9 +99,7 @@ intervals. E.g. with 8kHz 16bit PCM that means that we take a sample from the
 vibration every \(\frac{1}{8000}\mathrm{sec}\) and choose the closest of
 \(2^{16}=65536\) bins/amplitude values. Below we have a small excerpt of a sound
 file encoded with 16kHz 16bit.</p>
-<figure>
-    <img src="/img/wave.jpg" alt="A cut from an audio waveform.">
-</figure>
+<p><img src="wave.jpg" alt="A cut from an audio waveform."></p>
 <p>As we have here a sample length of 100 at a sample rate of 16kHz this sample is
 <em>only</em> 6.25 ms long. Directly we see the problem in working with music in
 the time-domain: Interesting information is at completely different temporal
@@ -127,14 +125,14 @@ the input and output are of the same type (Mono-audio).</p>
     <svg id="figcausal_svg" height="300" width="600">
         Sorry, your browser does not support inline SVG.
     </svg>
-    <script type="text/javascript" src="/figures/causal.js" defer></script>
+    <script type="text/javascript" src="causal.js" defer></script>
 </figure>
 <h3 id="dilated-convolutions">Dilated Convolutions</h3>
 <figure>
     <svg id="figdilated_svg" height="300" width="600">
         Sorry, your browser does not support inline SVG.
     </svg>
-    <script type="text/javascript" src="/figures/dilated.js" defer></script>
+    <script type="text/javascript" src="dilated.js" defer></script>
 </figure>
 <p>Do make the dilated convolutions we are doing the dilation and the convolution
 separately. Looking back to the animation above, we see that for the dilation in
@@ -206,7 +204,7 @@ skip-connection flow and the reference as the input for the next hidden
 layer.</p>
 <p>In a picture:</p>
 <figure>
-    <img src="/figures/wavenet_dilated_block.svg" alt="Schematic figure showing the flow of information through one of the dilated blocks in a WaveNet.">
+    <img src="wavenet_dilated_block.svg" alt="Schematic figure showing the flow of information through one of the dilated blocks in a WaveNet.">
 </figure>
 <p>Why the \(1\times 1\) convolutions after the residual? The width (channels) of
 the residual, skip and reference might be different. Therefore we need to learn
@@ -330,7 +328,7 @@ compute the compound receptive field size of the complete model we have:</p>
         </cite>
     </li>
 </ol>
-<script type="text/javascript" src="/figures/wavenet.js"></script>
+<script type="text/javascript" src="wavenet.js"></script>
 
     </main>
 
