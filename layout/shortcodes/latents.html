@@ -1,0 +1,6 @@
+{{ $path := .Get "path" }}
+{{ $n := int ( .Get "n" ) }}
+
+{{ range seq 0 $n }}
+    <img class="lazy small" src="https://media.morris-frank.dev/file/morris-media/latents/{{$path}}/{{ printf "%05d" . }}.png" >
+{{ end }}
