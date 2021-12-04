@@ -5,11 +5,11 @@
     <link>https://morris-frank.dev/posts/</link>
     <description>Recent content in Posts on Morris-Frank</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 02 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Collection of Python snippets</title>
       <link>https://morris-frank.dev/python-snippets/</link>
-      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/python-snippets/</guid>
       <description>Use underscores in numbers Underscores in numbers are ignored, but can increase readability:
@@ -18,12 +18,24 @@ def some_function(): … return a, b, c, d a, _, c, d = func() a, *_, d = func()
     </item>
     
     <item>
+      <title>Extract panels from comic pages</title>
+      <link>https://morris-frank.dev/comic_panels/</link>
+      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/comic_panels/</guid>
+      <description>Today some classical computer vision with OpenCV. I needed a dataset of individual comic book panels for some model fine-tuning.
+For example take this page from an &amp;ldquo;Astérix&amp;rdquo; comic-book:
+After counting we see, it contains 11 individual panels and we will extract those with a little list of OpenCV magic.
+import cv2 as cv import numpy as np file = &amp;#34;page.jpg&amp;#34; orignal_img = cv.imread(file) height, width = orignal_img.shape[:-1] Grayscale First, convert it to grayscale.</description>
+    </item>
+    
+    <item>
       <title>Persistant shared memory</title>
       <link>https://morris-frank.dev/shm/</link>
       <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/shm/</guid>
-      <description></description>
+      <description>For a data visualization project at my current employer we need a way to save big data matrices in-memory and access them from random processes. On the server mulitple DASH dashboards are hosted, with which you can build nice web data viz dashboards while staying purely in Python. The data displayed in the dashboards where consisting of matrices, each up to 5GB big. As the dashboards are, of course, multi-user and a also randomly shutting down and up and also are running by different users on the system, if you would just access the pickled numpy files on the hard drive, when needed, you would be constantly loading data which takes forever.</description>
     </item>
     
     <item>
@@ -46,12 +58,12 @@ def some_function(): … return a, b, c, d a, _, c, d = func() a, *_, d = func()
     
     <item>
       <title>Using plots as ticks in PyPlot</title>
-      <link>https://morris-frank.dev/plotting-ticks/</link>
+      <link>https://morris-frank.dev/plottings-ticks/</link>
       <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://morris-frank.dev/plotting-ticks/</guid>
+      <guid>https://morris-frank.dev/plottings-ticks/</guid>
       <description>Why? I was building a heatmap showing some result on different signal sources. The signals where different simple curves: sinus, triangle, square and saw-tooth waves. Now for annotating the plot, yes you could write down the names of the signals on the axis and yes that&amp;rsquo;s probably the &amp;lsquo;correct&amp;rsquo; way to do it. But it is ugly and not intuitive if you could also just show the signals:
-  How?</description>
+How? Unsuprisingly we proceed as follows: We remove all actual ticks from the plot and add correctly small sized axes onto the figure.</description>
     </item>
     
     <item>
