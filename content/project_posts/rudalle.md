@@ -1,11 +1,9 @@
 ---
-title: "Latents"
-tags: ["Python", "Machine Learning"]
-date: "2021-12-04"
-tldr: ""
+title: "ruDALL-e"
+tldr: "Experiments with fintuneing and sampling from ruDALL-e"
 ---
 
-## Asterix & Obelix (ruDALL-e)
+## Asterix & Obelix
 
 ### Sickle
 {{< latents path="rudalle/asterix/серп" n=23 >}}

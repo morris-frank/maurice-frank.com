@@ -5,7 +5,8 @@ assetDir = "layout"
 layoutDir = "layout"
 
 [permalinks]
-posts = "/:filename/"
+project_posts = "/:filename/"
+tutorial_posts = "/:filename/"
 
 [taxonomies]
     tags = "tags"

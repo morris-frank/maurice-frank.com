@@ -1,8 +1,10 @@
-+++
-title = "Projects"
-+++
+---
+title: "Projects"
+---
 
 ### Audio-visual
+
+{{< listing "/rudalle" >}}
 
 {{< listing "/ai_music_video" >}}
 
