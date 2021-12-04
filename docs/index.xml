@@ -182,7 +182,7 @@ Sickle Army Gallia Obelix Romans Romans are crazy Gladiator Magic potion зве�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/tutorials/</guid>
-      <description>Python Collection of Python snippets 2021-12-04  On-going list of niche snippets for programming Python like an annoying know-it-all (also some actual good tips).   Extract panels from comic pages 2021-12-04  How to extract the individual panels from a scanned page from a comic book.   Persistant shared memory 2021-11-10  How to create a store in memory easily share and survive restarts etc… in pure Python   Using plots as ticks in PyPlot 2020-03-22  Another week another tutorial for something that you never thought about doing.</description>
+      <description>Python Collection of Python snippets 2021-12-04  On-going list of niche snippets for programming Python like an annoying know-it-all (also some actual good tips).   Persistant shared memory 2021-11-10  How to create a store in memory easily share and survive restarts etc… in pure Python   Using plots as ticks in PyPlot 2020-03-22  Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?</description>
     </item>
     
   </channel>

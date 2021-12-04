@@ -18,18 +18,6 @@ def some_function(): … return a, b, c, d a, _, c, d = func() a, *_, d = func()
     </item>
     
     <item>
-      <title>Extract panels from comic pages</title>
-      <link>https://morris-frank.dev/comic_panels/</link>
-      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/comic_panels/</guid>
-      <description>Today some classical computer vision with OpenCV. I needed a dataset of individual comic book panels for some model fine-tuning.
-For example take this page from an &amp;ldquo;Astérix&amp;rdquo; comic-book:
-After counting we see, it contains 11 individual panels and we will extract those with a little list of OpenCV magic.
-import cv2 as cv import numpy as np file = &amp;#34;page.jpg&amp;#34; orignal_img = cv.imread(file) height, width = orignal_img.shape[:-1] Grayscale First, convert it to grayscale.</description>
-    </item>
-    
-    <item>
       <title>Persistant shared memory</title>
       <link>https://morris-frank.dev/shm/</link>
       <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
@@ -56,16 +44,6 @@ How? Unsuprisingly we proceed as follows: We remove all actual ticks from the pl
       <guid>https://morris-frank.dev/function-names/</guid>
       <description>Why? My use-case is as follows: I have a plotting function which takes a variable number of signals and plots them in an organized little plot:
 def plot_data(*signals: torch.Tensor): ... The organization of those plots I can infer from the data, but it would also be nice to label the plots with a legend. The pythonic way to do this, is either to accept another argument with a list of labels or give the signals in a dictionary with the labels as the keys.</description>
-    </item>
-    
-    <item>
-      <title>WaveNet from scratch</title>
-      <link>https://morris-frank.dev/wavenet/</link>
-      <pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/wavenet/</guid>
-      <description>This guide is geared towards readers with a background in modern deep learning.
-The problem Lets say we want to generate sound signals. This might happen in different settings. We might have music notes + a instrument and want to generate their sound \(w(\mathrm{note}, \mathrm{instrument}) = \mathrm{sound}\), or we have a text and want to generate the corresponding speech \(w(\mathrm{text}) = \mathrm{sound}\) or maybe we already have a sound signal, but it is noisy and we want to remove the noise \(w(\mathrm{noisy\ sound}) = \mathrm{sound}\).</description>
     </item>
     
   </channel>

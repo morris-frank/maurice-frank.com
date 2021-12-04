@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer Vision on Morris-Frank</title>
+    <link>https://morris-frank.dev/tags/computer-vision/</link>
+    <description>Recent content in Computer Vision on Morris-Frank</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/tags/computer-vision/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Extract panels from comic pages</title>
+      <link>https://morris-frank.dev/comic_panels/</link>
+      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/comic_panels/</guid>
+      <description>Today some classical computer vision with OpenCV. I needed a dataset of individual comic book panels for some model fine-tuning.
+For example take this page from an &amp;ldquo;Astérix&amp;rdquo; comic-book:
+After counting we see, it contains 11 individual panels and we will extract those with a little list of OpenCV magic.
+import cv2 as cv import numpy as np file = &amp;#34;page.jpg&amp;#34; orignal_img = cv.imread(file) height, width = orignal_img.shape[:-1] Grayscale First, convert it to grayscale.</description>
+    </item>
+    
+  </channel>
+</rss>
