@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Morris-Frank</title>
-    <link>https://morris-frank.dev/posts/</link>
-    <description>Recent content in Posts on Morris-Frank</description>
+    <title>Tutorial_posts on Morris-Frank</title>
+    <link>https://morris-frank.dev/tutorial_posts/</link>
+    <description>Recent content in Tutorial_posts on Morris-Frank</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://morris-frank.dev/tutorial_posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Collection of Python snippets</title>
       <link>https://morris-frank.dev/python-snippets/</link>
@@ -27,15 +27,6 @@ def some_function(): … return a, b, c, d a, _, c, d = func() a, *_, d = func()
 For example take this page from an &amp;ldquo;Astérix&amp;rdquo; comic-book:
 After counting we see, it contains 11 individual panels and we will extract those with a little list of OpenCV magic.
 import cv2 as cv import numpy as np file = &amp;#34;page.jpg&amp;#34; orignal_img = cv.imread(file) height, width = orignal_img.shape[:-1] Grayscale First, convert it to grayscale.</description>
-    </item>
-    
-    <item>
-      <title>Latents</title>
-      <link>https://morris-frank.dev/latents/</link>
-      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/latents/</guid>
-      <description>Asterix &amp;amp; Obelix (ruDALL-e) Sickle Army Gallia Obelix Romans Romans are crazy Gladiator Magic potion звездочка борьба </description>
     </item>
     
     <item>

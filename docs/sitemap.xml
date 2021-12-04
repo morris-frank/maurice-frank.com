@@ -11,19 +11,13 @@
     <loc>https://morris-frank.dev/comic_panels/</loc>
     <lastmod>2021-12-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://morris-frank.dev/latents/</loc>
-    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://morris-frank.dev/tags/machine-learning/</loc>
-    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://morris-frank.dev/posts/</loc>
-    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://morris-frank.dev/tags/python/</loc>
     <lastmod>2021-12-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://morris-frank.dev/tags/</loc>
+    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://morris-frank.dev/tutorial_posts/</loc>
     <lastmod>2021-12-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://morris-frank.dev/shm/</loc>
@@ -65,6 +59,9 @@
     <loc>https://morris-frank.dev/latex-macros/</loc>
     <lastmod>2019-12-15T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://morris-frank.dev/tags/machine-learning/</loc>
+    <lastmod>2019-12-02T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://morris-frank.dev/wavenet/</loc>
     <lastmod>2019-12-02T00:00:00+00:00</lastmod>
   </url><url>
@@ -76,7 +73,11 @@
   </url><url>
     <loc>https://morris-frank.dev/maps/</loc>
   </url><url>
+    <loc>https://morris-frank.dev/project_posts/</loc>
+  </url><url>
     <loc>https://morris-frank.dev/projects/</loc>
+  </url><url>
+    <loc>https://morris-frank.dev/rudalle/</loc>
   </url><url>
     <loc>https://morris-frank.dev/motionstills/</loc>
   </url><url>

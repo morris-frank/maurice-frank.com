@@ -30,15 +30,6 @@ import cv2 as cv import numpy as np file = &amp;#34;page.jpg&amp;#34; orignal_im
     </item>
     
     <item>
-      <title>Latents</title>
-      <link>https://morris-frank.dev/latents/</link>
-      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://morris-frank.dev/latents/</guid>
-      <description>Asterix &amp;amp; Obelix (ruDALL-e) Sickle Army Gallia Obelix Romans Romans are crazy Gladiator Magic potion звездочка борьба </description>
-    </item>
-    
-    <item>
       <title>Persistant shared memory</title>
       <link>https://morris-frank.dev/shm/</link>
       <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
@@ -162,8 +153,16 @@ Input here are only the lyrics plus &amp;ldquo;The Beatles&amp;rdquo; at the beg
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/projects/</guid>
-      <description>Audio-visual Making music videos with AI  Iteratively sampling from a generative image model to generate videos conditioned on the lyrics of songs.   Still in motion  A non-endless endless stream of images in motion through space and time.   Music I am learning to make amateurish music. Currently on a mission of one track per week in Bitwig (the only professional DAW running on Linux).
-See here as it happens:</description>
+      <description>Audio-visual ruDALL-e  Experiments with fintuneing and sampling from ruDALL-e   Making music videos with AI  Iteratively sampling from a generative image model to generate videos conditioned on the lyrics of songs.   Still in motion  A non-endless endless stream of images in motion through space and time.   Music I am learning to make amateurish music. Currently on a mission of one track per week in Bitwig (the only professional DAW running on Linux).</description>
+    </item>
+    
+    <item>
+      <title>ruDALL-e</title>
+      <link>https://morris-frank.dev/rudalle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/rudalle/</guid>
+      <description>Asterix &amp;amp; Obelix Sickle Army Gallia Obelix Romans Romans are crazy Gladiator Magic potion звездочка борьба </description>
     </item>
     
     <item>
@@ -182,7 +181,7 @@ See here as it happens:</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/tutorials/</guid>
-      <description>Python Collection of Python snippets 2021-12-04  On-going list of niche snippets for programming Python like an annoying know-it-all (also some actual good tips).   Extract panels from comic pages 2021-12-04  How to extract the individual panels from a scanned page from a comic book.   Latents 2021-12-04    Persistant shared memory 2021-11-10  How to create a store in memory easily share and survive restarts etc… in pure Python   Using plots as ticks in PyPlot 2020-03-22  Another week another tutorial for something that you never thought about doing.</description>
+      <description>Python Collection of Python snippets 2021-12-04  On-going list of niche snippets for programming Python like an annoying know-it-all (also some actual good tips).   Extract panels from comic pages 2021-12-04  How to extract the individual panels from a scanned page from a comic book.   Persistant shared memory 2021-11-10  How to create a store in memory easily share and survive restarts etc… in pure Python   Using plots as ticks in PyPlot 2020-03-22  Another week another tutorial for something that you never thought about doing.</description>
     </item>
     
   </channel>

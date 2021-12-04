@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Project_posts on Morris-Frank</title>
+    <link>https://morris-frank.dev/project_posts/</link>
+    <description>Recent content in Project_posts on Morris-Frank</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://morris-frank.dev/project_posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maps</title>
+      <link>https://morris-frank.dev/maps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/maps/</guid>
+      <description>window.addEventListener(&#39;load&#39;, function() { let tileserver = &#34;https://tiles.morris-frank.dev/file/osm-tiles/&#34;; let basemaps = { &#34;Topology&#34;: L.tileLayer(tileserver + &#39;topo/{z}/{x}/{y}.png&#39;,{maxZoom:16}), &#34;Alpine club&#34;: L.tileLayer(tileserver + &#39;avk/{z}/{x}/{y}.png&#39;,{maxZoom:16}) }; let layers = {&#34;hikr_L&#34; : &#34;#b3a178&#34;, &#34;hikr_WS-&#34; : &#34;#a4735d&#34;, &#34;hikr_WS&#34; : &#34;#8b413f&#34;, &#34;hikr_WS+&#34; : &#34;#530609&#34;, &#34;bergrebell_L&#34;: &#34;#828d04&#34;, &#34;bergrebell_WS-&#34;: &#34;#4b6f21&#34;, &#34;bergrebell_WS&#34;: &#34;#245637&#34;, &#34;bergrebell_WS+&#34;: &#34;#04424b&#34;} let overlays = {} for (var d in layers) { overlays[d] = new L.GPX(&#34;./&#34; + d + &#34;.gpx&#34;, { async: true, marker_options: {startIconUrl: null, endIconUrl: null, shadowUrl: null}, polyline_options: {color: layers[d], opacity: 0.</description>
+    </item>
+    
+    <item>
+      <title>ruDALL-e</title>
+      <link>https://morris-frank.dev/rudalle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/rudalle/</guid>
+      <description>Asterix &amp;amp; Obelix Sickle Army Gallia Obelix Romans Romans are crazy Gladiator Magic potion звездочка борьба </description>
+    </item>
+    
+    <item>
+      <title>Still in motion</title>
+      <link>https://morris-frank.dev/motionstills/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/motionstills/</guid>
+      <description>I am really in love with an app made @ Google Research called MotionStills. It takes little videos that can be stabilized with some quite involved CV algorithm it seems… And the app is super slim… I assume Google will kill it in the future but until then it is super fun to use.
+2021                                                                                                                                                                                                2020                                                                        2019                                                                       2018                                                                                                              </description>
+    </item>
+    
+  </channel>
+</rss>
