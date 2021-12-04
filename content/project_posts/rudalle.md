@@ -5,6 +5,8 @@ tldr: "Experiments with fintuneing and sampling from ruDALL-e"
 
 ## Asterix & Obelix
 
+I generate a dataset from the russian versions of the first eight Asterix comic books. [See the tutorial](https://morris-frank.dev/comic_panels/) on how to automatically split a comic book page into its panels see.
+
 ### Sickle
 {{< latents path="rudalle/asterix/серп" n=23 >}}
 
