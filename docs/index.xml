@@ -177,6 +177,15 @@ Sickle Army Gallia Obelix Romans Romans are crazy Gladiator Magic potion зве�
     </item>
     
     <item>
+      <title>This Ape does not exist</title>
+      <link>https://morris-frank.dev/apes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://morris-frank.dev/apes/</guid>
+      <description> let idx = String(Math.floor(Math.random() * 191)).padStart(3, &#39;0&#39;); document.getElementById(&#34;ape&#34;).src = &#34;https://media.morris-frank.dev/file/morris-media/latents/rudalle/apes/&#34; + idx + &#34;.png&#34; </description>
+    </item>
+    
+    <item>
       <title>Tutorials</title>
       <link>https://morris-frank.dev/tutorials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
