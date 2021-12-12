@@ -20,8 +20,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/rudalle/</guid>
-      <description>Asterix &amp;amp; Obelix I generate a dataset from the russian versions of the first eight Asterix comic books. See the tutorial on how to automatically split a comic book page into its panels see.
-Sickle Army Gallia Obelix Romans Romans are crazy Gladiator Magic potion звездочка борьба </description>
+      <description>Bored Ape Yacht Club  - Initial weights: Malevich - Learning rate: 5e-6 or 1e-6 - Training amount: 1 epoch - Dataset: The 10_000 apes from their website, paired with their description.  As those stupid apes are fairly similar, getting the right learning rate is important at 1e-5 the model basically collapses on the mean monkey (no accessoiraces, brown background). 1e-6 gives fairly unconstrained results (less monkey-y), 5e-6 contrains strongly on the monkey shape but allows stuff to happen.</description>
     </item>
     
     <item>
@@ -40,7 +39,7 @@ Sickle Army Gallia Obelix Romans Romans are crazy Gladiator Magic potion зве�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/apes/</guid>
-      <description> let idx = String(Math.floor(Math.random() * 191)).padStart(3, &#39;0&#39;); document.getElementById(&#34;ape&#34;).src = &#34;https://media.morris-frank.dev/file/morris-media/latents/rudalle/apes/&#34; + idx + &#34;.png&#34; </description>
+      <description> let idx = String(Math.floor(Math.random() * 703)).padStart(5, &#39;0&#39;); document.getElementById(&#34;ape&#34;).src = &#34;https://media.morris-frank.dev/file/morris-media/latents/rudalle/apes/selection/&#34; + idx + &#34;.png&#34; </description>
     </item>
     
   </channel>
