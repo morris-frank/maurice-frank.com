@@ -9,6 +9,7 @@
     <meta name="referrer" content="no-referrer">
     <meta name="description"
         name="The personal website of Maurice Frank. Information about my work, music and services.">
+    <meta property="og:image" content="/icon.png" />
 
     
     
@@ -70,9 +71,9 @@
 
 
 <p>Today some classical computer vision with OpenCV. I needed a dataset of individual comic book panels for some model fine-tuning.</p>
-<p>For example take this page from an &ldquo;Astérix&rdquo; comic-book:</p>
+<p>For example, take this page from an &ldquo;Astérix&rdquo; comic book:</p>
 <p><img src="page.jpg" alt="The original page"></p>
-<p>After counting we see, it contains 11 individual panels and we will extract those with a little list of OpenCV magic.</p>
+<p>After counting, we see, it contains 11 individual panels and we will extract those with a little list of OpenCV magic.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">cv2</span> <span class="k">as</span> <span class="nn">cv</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -98,7 +99,7 @@
 <span class="n">cv</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">&#34;sharpen.jpg&#34;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span> 
 </code></pre></div><p><img src="sharpen.jpg" alt="After sharpening"></p>
 <h3 id="thresholding">Thresholding</h3>
-<p>Time to go to binary. For this use <a href="https://en.wikipedia.org/wiki/Otsu%27s_method">Otsu&rsquo;s method</a> for thresholding. Looks already good, but we want to fille the white patterns in the panels as good as possible to make the contour detection easier.</p>
+<p>Time to go to binary. For this use <a href="https://en.wikipedia.org/wiki/Otsu%27s_method">Otsu&rsquo;s method</a> for thresholding. Looks already good, but we want to fille the white patterns in the panels as well as possible to make the contour detection easier.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="n">_</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">THRESH_BINARY</span> <span class="o">+</span> <span class="n">cv</span><span class="o">.</span><span class="n">THRESH_OTSU</span><span class="p">)</span>
 <span class="n">cv</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">&#34;otsu.jpg&#34;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span> 
 </code></pre></div><p><img src="otsu.jpg" alt="After applying otsu thresholding"></p>
@@ -115,7 +116,7 @@
 </code></pre></div><p><img src="floodfill.jpg" alt="After flood-filling"></p>
 <h3 id="contour-extraction">Contour extraction</h3>
 <p>The <code>cv.findContours</code> method from OpenCV generally finds contours of objects in images. With the pre-processing we made sure that the only sensible objects remaining should be the panels. Nevertheless we filter the found countours by their size with a minimum area and a maximum area.</p>
-<p>The countours found will not be perfect four-edge rectangles, therfore we apply <code>cv.boundingRect</code> which will fit a rectangle around the contour. This will almost be the same contour but we need the simple <em>x,y, width, height</em> rectangle to select from the original image.</p>
+<p>The contours found will not be perfect four-edge rectangles, therefore we apply <code>cv.boundingRect</code> which will fit a rectangle around the contour. This will almost be the same contour but we need the simple <em>x,y, width, height</em> rectangle to select from the original image.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="n">contours</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">RETR_TREE</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">CHAIN_APPROX_SIMPLE</span><span class="p">)</span>
 <span class="n">min_size</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># 1% minimum size</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
@@ -172,7 +173,7 @@ You might have noticed, that the given comic is in Russian. Therefore when insta
     <span class="c1"># Reduce multiple spaces in the text to single space</span>
     <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
     <span class="n">texts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span>
-</code></pre></div><p>Sadly, the images are rather small and text not super-readable. Therefore for this page, Tesseract only recognizes the text in 5 out of the 11 panels:</p>
+</code></pre></div><p>Sadly, the images are rather small and the text is not super-readable. Therefore for this page, Tesseract only recognizes the text in 5 out of the 11 panels:</p>
 <table>
 <thead>
 <tr>

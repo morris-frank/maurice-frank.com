@@ -13,8 +13,8 @@
       
       <guid>https://morris-frank.dev/comic_panels/</guid>
       <description>Today some classical computer vision with OpenCV. I needed a dataset of individual comic book panels for some model fine-tuning.
-For example take this page from an &amp;ldquo;Astérix&amp;rdquo; comic-book:
-After counting we see, it contains 11 individual panels and we will extract those with a little list of OpenCV magic.
+For example, take this page from an &amp;ldquo;Astérix&amp;rdquo; comic book:
+After counting, we see, it contains 11 individual panels and we will extract those with a little list of OpenCV magic.
 import cv2 as cv import numpy as np file = &amp;#34;page.jpg&amp;#34; orignal_img = cv.imread(file) height, width = orignal_img.shape[:-1] Grayscale First, convert it to grayscale.</description>
     </item>
     
