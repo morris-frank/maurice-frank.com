@@ -7,11 +7,11 @@ tldr: "How to extract the individual panels from a scanned page from a comic boo
 
 Today some classical computer vision with OpenCV. I needed a dataset of individual comic book panels for some model fine-tuning.
 
-For example take this page from an "Astérix" comic-book:
+For example, take this page from an "Astérix" comic book:
 
 ![The original page](page.jpg)
 
-After counting we see, it contains 11 individual panels and we will extract those with a little list of OpenCV magic.
+After counting, we see, it contains 11 individual panels and we will extract those with a little list of OpenCV magic.
 
 ```py
 import cv2 as cv
@@ -60,7 +60,7 @@ cv.imwrite("sharpen.jpg", img)
 
 ### Thresholding
 
-Time to go to binary. For this use [Otsu's method](https://en.wikipedia.org/wiki/Otsu%27s_method) for thresholding. Looks already good, but we want to fille the white patterns in the panels as good as possible to make the contour detection easier.
+Time to go to binary. For this use [Otsu's method](https://en.wikipedia.org/wiki/Otsu%27s_method) for thresholding. Looks already good, but we want to fille the white patterns in the panels as well as possible to make the contour detection easier.
 
 ```py
 _, img = cv.threshold(img, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
@@ -96,7 +96,7 @@ cv.imwrite("floodfill.jpg", img * 255)
 
 The `cv.findContours` method from OpenCV generally finds contours of objects in images. With the pre-processing we made sure that the only sensible objects remaining should be the panels. Nevertheless we filter the found countours by their size with a minimum area and a maximum area.
 
-The countours found will not be perfect four-edge rectangles, therfore we apply `cv.boundingRect` which will fit a rectangle around the contour. This will almost be the same contour but we need the simple _x,y, width, height_ rectangle to select from the original image.
+The contours found will not be perfect four-edge rectangles, therefore we apply `cv.boundingRect` which will fit a rectangle around the contour. This will almost be the same contour but we need the simple _x,y, width, height_ rectangle to select from the original image.
 
 
 ```py3
@@ -142,7 +142,7 @@ for i in range(1, 12):
     texts[i] = text
 ```
 
-Sadly, the images are rather small and text not super-readable. Therefore for this page, Tesseract only recognizes the text in 5 out of the 11 panels:
+Sadly, the images are rather small and the text is not super-readable. Therefore for this page, Tesseract only recognizes the text in 5 out of the 11 panels:
 
 |                                                                                                                       |                          |                                                                   |     |
 | --------------------------------------------------------------------------------------------------------------------- | ------------------------ | ----------------------------------------------------------------- | --- |
