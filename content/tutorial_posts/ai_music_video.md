@@ -6,6 +6,10 @@ tldr =  "Iteratively sampling from a generative image model to generate videos c
 
 Let's start right away with some results from the setup.
 
+### Eating Hooks
+
+{{< video "Eating Hooks" >}}
+
 
 ### Lucy in the Sky with Diamonds
 
