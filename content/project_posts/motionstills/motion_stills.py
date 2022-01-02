@@ -7,9 +7,9 @@ import torchvision
 import torch
 
 # Folder settings...............................................................
-originals = Path("/Users/mfr/Desktop/ms/api/originals")
-to_match = Path("/Users/mfr/Desktop/ms/api/processed")
-save_directory = Path("/Users/mfr/Desktop/ms/api/matched")
+originals = Path("/Users/mfr/Desktop/ms/originals")
+to_match = Path("/Users/mfr/Desktop/ms/processed")
+save_directory = Path("/Users/mfr/Desktop/ms/matched")
 # ...............................................................................
 
 model = torchvision.models.vgg16(pretrained=True)
