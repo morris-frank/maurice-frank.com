@@ -79,7 +79,7 @@ for path in to_match.glob("*.p"):
     shutil.copy(path.with_suffix(".mp4"), save_path)
 
 for save_path in tqdm(save_directory.glob("*mp4"), desc=f"Make webm {save_directory}"):
-    subprocess.run(f"ffmpeg -i {save_path} -c:v libvpx-vp9 -c:a libopus {save_path.with_suffix('.webm')}",
+    subprocess.run(f"/usr/local/bin/ffmpeg -i {save_path} -c:v libvpx-vp9 -c:a libopus {save_path.with_suffix('.webm')}",
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
         shell=True
