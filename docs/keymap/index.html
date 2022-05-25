@@ -13,7 +13,7 @@
 
     
     
-    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.d0b4c698666d0b36d7f7e0c6a249bc445e1ee54dafc24a57635397dce7d08b09.css">
+    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.383a71ce83b051fe221a7e457143731d50a479762e88c7bff5cf76eabbc7f361.css">
     <link rel="shortcut icon" type="image/png" href="/icon.png" />
 
     
@@ -92,10 +92,10 @@ need.</p>
 <li>Greek letters (<kbd>α</kbd>, <kbd>β</kbd>, <kbd>γ</kbd>, …). I use them
 extensively in writing and programming. As Python is ok with most
 unicode symbols as variable names you can code more expressively:
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="n">π</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-<span class="n">φ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">360</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">μ</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="n">σ</span>
-</code></pre></div>which is especially useful in the kind of mathematical, research code I
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="n">π</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+</span></span><span class="line"><span class="cl"><span class="n">φ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">360</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">μ</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="n">σ</span>
+</span></span></code></pre></div>which is especially useful in the kind of mathematical, research code I
 am writing often. (Of course, this is more for personal code, if your
 collaborators are not doing the same or are Greek).</li>
 <li>Mathematical / logic notation. With <kbd>⇔</kbd>, <kbd>∥</kbd>,
@@ -112,8 +112,8 @@ single symbol not as a accent (⇒ <kbd>à</kbd>), you might be the same.</li>
 </ul>
 <p>Many of the symbols I use together with
 <a href="https://morris-frank.dev/latex-macros/">LaTeX macros so I can write mathematical text:</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\σ</span><span class="nb">_</span>i = <span class="k">\÷</span><span class="nb">{</span><span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>i<span class="nb">}}{</span><span class="k">\Σ</span><span class="nb">_</span>j <span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>j<span class="nb">}}</span>
-</code></pre></div><h3 id="how">How?</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\σ</span><span class="nb">_</span>i = <span class="k">\÷</span><span class="nb">{</span><span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>i<span class="nb">}}{</span><span class="k">\Σ</span><span class="nb">_</span>j <span class="k">\exp</span><span class="nb">{</span><span class="k">\φ</span><span class="nb">_</span>j<span class="nb">}}</span>
+</span></span></code></pre></div><h3 id="how">How?</h3>
 <p>We do not want to reinvent the wheel. We just want to replace symbols that we
 never use with symbols that could be useful. Therefore it is best to start
 with a pre-existing layout. For me that would be the German QWERTZ layout. You
@@ -121,13 +121,13 @@ find all XKB layout definitions in <code>/usr/share/X11/xkb/symbols</code>.</p>
 <p>Looking into any of those files (e.g. <code>symbols/de</code>) you will find
 blocks of the form:</p>
 <pre tabindex="0"><code>default
-xkb_symbols &quot;basic&quot; {
+xkb_symbols &#34;basic&#34; {
 
-    include &quot;latin(type4)&quot;
-    include &quot;kpdl(comma)&quot;
-    include &quot;level3(ralt_switch)&quot;
+    include &#34;latin(type4)&#34;
+    include &#34;kpdl(comma)&#34;
+    include &#34;level3(ralt_switch)&#34;
 
-    name[Group1]=&quot;German&quot;;
+    name[Group1]=&#34;German&#34;;
 
     …
 };
@@ -146,10 +146,10 @@ by a list with the four levels: no modifier, <kbd>Shift</kbd>, <kbd>RAlt</kbd>,
 <p>We start by just importing the German basic layout (which imports all
 underlying imports):</p>
 <pre tabindex="0"><code>default
-xkb_symbols &quot;basic&quot; {
-    include &quot;de(basic)&quot;
+xkb_symbols &#34;basic&#34; {
+    include &#34;de(basic)&#34;
 
-    name[Group1]=&quot;German Edited&quot;;
+    name[Group1]=&#34;German Edited&#34;;
 
     …
 };
@@ -157,8 +157,8 @@ xkb_symbols &quot;basic&quot; {
 have to import the definition from <code>symbols/level3</code>. Now we need the
 XKB symbol names for the keys we are interested in. For this you can run inside
 a terminal:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">xev -event keyboard
-</code></pre></div><p><code>xev</code> is included in the <em>x11-utils</em> package.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">xev -event keyboard
+</span></span></code></pre></div><p><code>xev</code> is included in the <em>x11-utils</em> package.</p>
 <p><code>xev</code> gives you a little white window and if you press a key inside
 it, it will print information about the pressed  key in the terminal. We are
 interested in the <em>keycode</em>. If I press my <kbd>F</kbd> key it will
@@ -186,13 +186,13 @@ instead of the given X11 names (losing some readability…).</p>
 <p>Change all the keys you need, put them into the <em>xkb_symbols</em> block and
 save the file to somewhere, lets say <code>deedit</code>. Next you can install the file into the symbols
 directory:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo install -Dm644 deedit /usr/share/X11/xkb/symbols/deedit
-</code></pre></div><p>It is probably a better idea to make a package out of your layout for which
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo install -Dm644 deedit /usr/share/X11/xkb/symbols/deedit
+</span></span></code></pre></div><p>It is probably a better idea to make a package out of your layout for which
 you can check your distros documentation (⇒ for Arch Linux: <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a>,
 <a href="https://github.com/morris-frank/xkb-demod/blob/master/PKGBUILD">example</a>).</p>
 <p>Lastly, you change your current Keyboard layout and try it out:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">setxkbmap deedit
-</code></pre></div><p>If your happy with it and want to make it stick, append the previous line to
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">setxkbmap deedit
+</span></span></code></pre></div><p>If your happy with it and want to make it stick, append the previous line to
 your <code>xinit.rc</code> so that it is loaded on every boot.</p>
 
     </main>

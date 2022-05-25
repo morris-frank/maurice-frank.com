@@ -13,7 +13,7 @@
 
     
     
-    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.d0b4c698666d0b36d7f7e0c6a249bc445e1ee54dafc24a57635397dce7d08b09.css">
+    <link rel="stylesheet" href="https://morris-frank.dev/sass/main.383a71ce83b051fe221a7e457143731d50a479762e88c7bff5cf76eabbc7f361.css">
     <link rel="shortcut icon" type="image/png" href="/icon.png" />
 
     
@@ -87,72 +87,72 @@ places of a figure is best possible with the <code>inset_axes</code> function
 provided by the (probably) little known <code>axes_grid1</code> toolbox in
 <code>mpl_toolkits</code> (<a href="https://matplotlib.org/api/_as_gen/mpl_toolkits.axes_grid1.inset_locator.inset_axes.html#mpl_toolkits.axes_grid1.inset_locator.inset_axes">docs</a>).</p>
 <p><code>inset_axes</code> is called as:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="n">inset_axes</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="p">,</span> <span class="n">bbox_transform</span><span class="o">=</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="p">)</span>
-</code></pre></div><p>We want to position our new axis relative to the axis we position it into
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="n">inset_axes</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="p">,</span> <span class="n">bbox_transform</span><span class="o">=</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="p">)</span>
+</span></span></code></pre></div><p>We want to position our new axis relative to the axis we position it into
 (which is <code>ax</code>). To do so we can set <code>bbox_transform</code> to
 the bounding box of the parent axis: <code>ax.transAxes</code>. <code>bbox_to_anchor</code>
 will set the anchor/position of the new axis, as we are now setting relative
 values this can e.g. be <code>(0.05, 1.01)</code> which would be 5% from the
 left but 1% outside the figure to the bottom. <code>loc</code> sets which point
 in the new axis is the anchor. For the full list see the documentation, we will
-need <em>8</em> for <em>&lsquo;lower center&rsquo;</em> and <em>7</em> for <em>&lsquo;center right&rsquo;</em>.</p>
+need <em>8</em> for <em>&rsquo;lower center&rsquo;</em> and <em>7</em> for <em>&lsquo;center right&rsquo;</em>.</p>
 <p><code>inset_axes</code> will return the new axis which you than can proceed to
 plot into! So here the full function that will add <em>one</em> tick at a given
 position on either the upper x axis or the left y axis:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
-
-<span class="k">def</span> <span class="nf">add_plot_tick</span><span class="p">(</span>
-    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
-    <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">pos</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">where</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&#34;x&#34;</span><span class="p">,</span>
-    <span class="n">size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span>
-<span class="p">):</span>
-
-    <span class="k">if</span> <span class="s2">&#34;x&#34;</span> <span class="ow">in</span> <span class="n">where</span><span class="p">:</span>
-        <span class="n">anchor</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">),</span> <span class="mi">8</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">anchor</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">pos</span><span class="p">),</span> <span class="mi">7</span>
-
-    <span class="n">_ax</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span>
-        <span class="n">ax</span><span class="p">,</span>
-        <span class="n">width</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
-        <span class="n">height</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
-        <span class="n">bbox_transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
-        <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="n">anchor</span><span class="p">,</span>
-        <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">_ax</span><span class="o">.</span><span class="n">axison</span> <span class="o">=</span> <span class="kc">False</span>
-
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">τ</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="s2">&#34;sin&#34;</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">:</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="s2">&#34;tri&#34;</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">:</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">sawtooth</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="s2">&#34;saw&#34;</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">:</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">sawtooth</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="s2">&#34;sq&#34;</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">:</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&#34;unknown symbol&#34;</span><span class="p">)</span>
-
-    <span class="n">_ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&#34;k&#34;</span><span class="p">)</span>
-</code></pre></div><p>Obviously this code is specific to my use-case of those four signals. One could
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">add_plot_tick</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pos</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">where</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&#34;x&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span>
+</span></span><span class="line"><span class="cl"><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s2">&#34;x&#34;</span> <span class="ow">in</span> <span class="n">where</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">anchor</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">),</span> <span class="mi">8</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">anchor</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">pos</span><span class="p">),</span> <span class="mi">7</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">_ax</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ax</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">width</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">height</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bbox_transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="n">anchor</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_ax</span><span class="o">.</span><span class="n">axison</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">τ</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s2">&#34;sin&#34;</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="s2">&#34;tri&#34;</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="o">=</span> <span class="n">sawtooth</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="s2">&#34;saw&#34;</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="o">=</span> <span class="n">sawtooth</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="s2">&#34;sq&#34;</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&#34;unknown symbol&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">_ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&#34;k&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Obviously this code is specific to my use-case of those four signals. One could
 also just return the axis and then manually plot into it.</p>
 <p>To add all four singal ticks we utilize the new function and just loop over the
 signals. The outer code looks something like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="err">…</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
-
-<span class="n">pos_tick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;sin&#34;</span><span class="p">,</span> <span class="s2">&#34;sq&#34;</span><span class="p">,</span> <span class="s2">&#34;tri&#34;</span><span class="p">,</span> <span class="s2">&#34;saw&#34;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="n">add_plot_tick</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">symbols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos_tick</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">where</span><span class="o">=</span><span class="s2">&#34;x&#34;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
-    <span class="n">add_plot_tick</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">symbols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos_tick</span><span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">where</span><span class="o">=</span><span class="s2">&#34;y&#34;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="err">…</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pos_tick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;sin&#34;</span><span class="p">,</span> <span class="s2">&#34;sq&#34;</span><span class="p">,</span> <span class="s2">&#34;tri&#34;</span><span class="p">,</span> <span class="s2">&#34;saw&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">add_plot_tick</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">symbols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos_tick</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">where</span><span class="o">=</span><span class="s2">&#34;x&#34;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">add_plot_tick</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">symbols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos_tick</span><span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">where</span><span class="o">=</span><span class="s2">&#34;y&#34;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</span></span></code></pre></div>
     </main>
 
     <footer>
