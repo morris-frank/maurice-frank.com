@@ -15,7 +15,7 @@
       <description>If you never have written a TeX package, here the short-form with only the stuff we need. You start the file with
 \NeedsTeXFormat{LaTeX2e}[1994/06/01] \ProvidesPackage{YOUR-PACKAGE-NAME} end it with
 \endinput and save it with extension .sty instead of .tex.
-Things to add  Packages you always include. For example which fonts to use. In a package .sty file you use \RequirePackage instead of \usepackage to include other packages. \RequirePackage{newpxtext} \RequirePackage{mathpazo} \RequirePackage{dsfont}  Faster font changes.</description>
+Things to add Packages you always include. For example which fonts to use. In a package .sty file you use \RequirePackage instead of \usepackage to include other packages. \RequirePackage{newpxtext} \RequirePackage{mathpazo} \RequirePackage{dsfont} Faster font changes.</description>
     </item>
     
   </channel>

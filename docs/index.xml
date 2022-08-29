@@ -14,7 +14,7 @@
       <guid>https://morris-frank.dev/python-snippets/</guid>
       <description>Use underscores in numbers Underscores in numbers are ignored, but can increase readability:
 2_000_000 == 2000000 Use underscores to discard returns Use underscores to ignore return elemens. More advanced, use can use a wildcard * to discard a sub-set of the return arguments:
-def some_function(): … return a, b, c, d a, _, c, d = func() a, *_, d = func() Use type in add_argument to directly transform input A pattern I use a lot in ArgumentParser is to abuse the type argument.</description>
+def some_function(): … return a, b, c, d a, _, c, d = func() a, *_, d = func() Check for any of list of types if isinstance(variable, (int, float)): # … Use default if is None Instead of:</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@ import cv2 as cv import numpy as np file = &amp;#34;page.jpg&amp;#34; orignal_im
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/bitwig-controller/</guid>
-      <description>Shotrcuts          Ctrl + Shift + J Console   Ctrl + R Reload the script live while in the console    Functions Utilities          println(string) Print a line in the console   errorln(string) Print a error in the console   showPopupNotification(string) Show a popup in the GUI (not the console)   printMidi(status, key, value) Helper to print a Midi command    Global settings loadAPI(12); host.</description>
+      <description>Shotrcuts Ctrl + Shift + J Console Ctrl + R Reload the script live while in the console Functions Utilities println(string) Print a line in the console errorln(string) Print a error in the console showPopupNotification(string) Show a popup in the GUI (not the console) printMidi(status, key, value) Helper to print a Midi command Global settings loadAPI(12); host.setShouldFailOnDeprecatedUse(true); host.defineController( &amp;#34;M-Audio&amp;#34;, // Company Name &amp;#34;M-Audio Axiom 25 MK1&amp;#34;, // Device Name &amp;#34;0.1&amp;#34;, // Version of this script &amp;#34;62841c6e-c163-481f-aba4-88bb25697e9a&amp;#34;, // Random identifier of this script &amp;#34;morris-frank&amp;#34; // Name of the developer of this script ); host.</description>
     </item>
     
     <item>
@@ -95,7 +95,7 @@ Why? Most people that start going down this path and ask Which keyboard layout s
       <description>If you never have written a TeX package, here the short-form with only the stuff we need. You start the file with
 \NeedsTeXFormat{LaTeX2e}[1994/06/01] \ProvidesPackage{YOUR-PACKAGE-NAME} end it with
 \endinput and save it with extension .sty instead of .tex.
-Things to add  Packages you always include. For example which fonts to use. In a package .sty file you use \RequirePackage instead of \usepackage to include other packages. \RequirePackage{newpxtext} \RequirePackage{mathpazo} \RequirePackage{dsfont}  Faster font changes.</description>
+Things to add Packages you always include. For example which fonts to use. In a package .sty file you use \RequirePackage instead of \usepackage to include other packages. \RequirePackage{newpxtext} \RequirePackage{mathpazo} \RequirePackage{dsfont} Faster font changes.</description>
     </item>
     
     <item>
@@ -114,7 +114,7 @@ The problem Lets say we want to generate sound signals. This might happen in dif
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/bivy/</guid>
-      <description>   Item Product Price Weight Volume     Bivy bag BD/MSR/RAB 150-250 200-350 3L   Sleeping bag Mythic Ultra 180 450 400 5L    </description>
+      <description> Item Product Price Weight Volume Bivy bag BD/MSR/RAB 150-250 200-350 3L Sleeping bag Mythic Ultra 180 450 400 5L </description>
     </item>
     
     <item>
@@ -135,7 +135,7 @@ As an experienced researcher as well as seasoned industry developer I can help y
       <guid>https://morris-frank.dev/ai_music_video/</guid>
       <description>Let&amp;rsquo;s start right away with some results from the setup.
 Eating Hooks Eating Hooks - Moderat
- Input Screen-play     time prompt     0:0 psychedlic pattern jungle plants and people dancing   1:15 a crowd of dacing people in a techno club, electric colors   1:30 a oil painting of a person in a portal with a forrest inside   1:45 painting of Zdzisław Beksiński of a person without a face under the shade of a palm tree   2:00 monopoly the board game, the box of the monopoly board game   2:10 a art nouveau illustration of a sunflower   2:20 a painting of a colorful mosque, orientalism   2:25 an orientalistic painting of desert   2:30 a arabic prince on a camel   2:35 a yak standing by a stupa, watercolor   2:40 low poly ink drawing of buddha meditating, psychedlic   2:45 a stone statue of buddha   2:47 a colorful stone statue of buddha   2:50 a close up biological illustration of a mouth   2:55 a wide opened mouth biting into a piece of metal   3:00 a painting of a buddhist shrine stupa beautiful realistic   3:20 psychedlic painting of jungle plants and people dancing, acid, hippies   3:00 a colorful stained window of a church, colorful light, romantic painting   3:50 The girl is eating the hooks that tear her, She is walking back   4:00 the portal to hell, a renaissance painting of the entrance to the hell, flames   4:20 an empty room with a butcher hook at the ceiling&amp;quot;   4:30 meditation and medication, psychedlic   5:00 psychedlic painting of jungle plants and people dancing, acid, hippies, meditation   5:10 psychedlic painting of palm tree   5:15 psychedlic painting of hippie woman dancing   5:20 a pattern of flowers, 60s music posters   5:25 a van gogh painting of a hill with trees and flowers   5:30 under the skin of the person, lies the world, we see the world under the skin, psychedlic   5:35 the world as a globe, watercolor   5:40 an explosion of color   5:45 people dancing in a techno club with strobing lights   5:50 michelangelo painting in a church   5:55 painting of jesus at the cross   6:00 christian gothic painting of the sinner god and jesus   6:30 psychedlic painting of jungle plants and people dancing, acid, hippies, meditation</description>
+Input Screen-play time prompt 0:0 psychedlic pattern jungle plants and people dancing 1:15 a crowd of dacing people in a techno club, electric colors 1:30 a oil painting of a person in a portal with a forrest inside 1:45 painting of Zdzisław Beksiński of a person without a face under the shade of a palm tree 2:00 monopoly the board game, the box of the monopoly board game 2:10 a art nouveau illustration of a sunflower 2:20 a painting of a colorful mosque, orientalism 2:25 an orientalistic painting of desert 2:30 a arabic prince on a camel 2:35 a yak standing by a stupa, watercolor 2:40 low poly ink drawing of buddha meditating, psychedlic 2:45 a stone statue of buddha 2:47 a colorful stone statue of buddha 2:50 a close up biological illustration of a mouth 2:55 a wide opened mouth biting into a piece of metal 3:00 a painting of a buddhist shrine stupa beautiful realistic 3:20 psychedlic painting of jungle plants and people dancing, acid, hippies 3:00 a colorful stained window of a church, colorful light, romantic painting 3:50 The girl is eating the hooks that tear her, She is walking back 4:00 the portal to hell, a renaissance painting of the entrance to the hell, flames 4:20 an empty room with a butcher hook at the ceiling&amp;quot; 4:30 meditation and medication, psychedlic 5:00 psychedlic painting of jungle plants and people dancing, acid, hippies, meditation 5:10 psychedlic painting of palm tree 5:15 psychedlic painting of hippie woman dancing 5:20 a pattern of flowers, 60s music posters 5:25 a van gogh painting of a hill with trees and flowers 5:30 under the skin of the person, lies the world, we see the world under the skin, psychedlic 5:35 the world as a globe, watercolor 5:40 an explosion of color 5:45 people dancing in a techno club with strobing lights 5:50 michelangelo painting in a church 5:55 painting of jesus at the cross 6:00 christian gothic painting of the sinner god and jesus 6:30 psychedlic painting of jungle plants and people dancing, acid, hippies, meditation Lucy in the Sky with Diamonds As all the videos are pretty intense and inconsistent, I think psychdelic rock lends itself quite naturally to this kind of video… What better than the classic Lucy in the sky from The Beatle&amp;rsquo;s Sgt.</description>
     </item>
     
     <item>
@@ -144,7 +144,7 @@ Eating Hooks Eating Hooks - Moderat
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/maps/</guid>
-      <description>window.addEventListener(&#39;load&#39;, function() { let tileserver = &#34;https://tiles.morris-frank.dev/file/osm-tiles/&#34;; let basemaps = { &#34;Topology&#34;: L.tileLayer(tileserver + &#39;topo/{z}/{x}/{y}.png&#39;,{maxZoom:16}), &#34;Alpine club&#34;: L.tileLayer(tileserver + &#39;avk/{z}/{x}/{y}.png&#39;,{maxZoom:16}) }; let layers = {&#34;hikr_L&#34; : &#34;#b3a178&#34;, &#34;hikr_WS-&#34; : &#34;#a4735d&#34;, &#34;hikr_WS&#34; : &#34;#8b413f&#34;, &#34;hikr_WS+&#34; : &#34;#530609&#34;, &#34;bergrebell_L&#34;: &#34;#828d04&#34;, &#34;bergrebell_WS-&#34;: &#34;#4b6f21&#34;, &#34;bergrebell_WS&#34;: &#34;#245637&#34;, &#34;bergrebell_WS+&#34;: &#34;#04424b&#34;} let overlays = {} for (var d in layers) { overlays[d] = new L.GPX(&#34;./&#34; + d + &#34;.gpx&#34;, { async: true, marker_options: {startIconUrl: null, endIconUrl: null, shadowUrl: null}, polyline_options: {color: layers[d], opacity: 0.</description>
+      <description> </description>
     </item>
     
     <item>
@@ -153,7 +153,7 @@ Eating Hooks Eating Hooks - Moderat
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/projects/</guid>
-      <description>Audio-visual ruDALL-e  Experiments with fine-tuning and sampling from ruDALL-e   Making music videos with AI  Iteratively sampling from a generative image model to generate videos conditioned on the lyrics of songs.   Still in motion  A non-endless endless stream of images in motion through space and time.   Music I am learning to make amateurish music. Currently on a mission of one track per week in Bitwig (the only professional DAW running on Linux).</description>
+      <description>Audio-visual ruDALL-e Experiments with fine-tuning and sampling from ruDALL-e Making music videos with AI Iteratively sampling from a generative image model to generate videos conditioned on the lyrics of songs. Still in motion A non-endless endless stream of images in motion through space and time. Music I am learning to make amateurish music. Currently on a mission of one track per week in Bitwig (the only professional DAW running on Linux).</description>
     </item>
     
     <item>
@@ -162,7 +162,7 @@ Eating Hooks Eating Hooks - Moderat
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/rudalle/</guid>
-      <description>Bored Ape Yacht Club  - Initial weights: Malevich - Learning rate: 5e-6 or 1e-6 - Training amount: 1 epoch - Dataset: The 10_000 apes from their website, paired with their description.  As those stupid apes are fairly similar, getting the right learning rate is important at 1e-5 the model basically collapses on the mean monkey (no accessoiraces, brown background). 1e-6 gives fairly unconstrained results (less monkey-y), 5e-6 contrains strongly on the monkey shape but allows stuff to happen.</description>
+      <description>Bored Ape Yacht Club - Initial weights: Malevich - Learning rate: 5e-6 or 1e-6 - Training amount: 1 epoch - Dataset: The 10_000 apes from their website, paired with their description. As those stupid apes are fairly similar, getting the right learning rate is important at 1e-5 the model basically collapses on the mean monkey (no accessoiraces, brown background). 1e-6 gives fairly unconstrained results (less monkey-y), 5e-6 contrains strongly on the monkey shape but allows stuff to happen.</description>
     </item>
     
     <item>
@@ -171,7 +171,7 @@ Eating Hooks Eating Hooks - Moderat
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/scrub/</guid>
-      <description>import { Scroller } from &#34;./Scroller.js&#34;; const src = new URL(&#34;https://media.morris-frank.dev/file/morris-media/pytti_000.mp4&#34;, import.meta.url).href; new Scroller(src);   </description>
+      <description> </description>
     </item>
     
     <item>
@@ -181,7 +181,7 @@ Eating Hooks Eating Hooks - Moderat
       
       <guid>https://morris-frank.dev/motionstills/</guid>
       <description>I am really in love with an app made @ Google Research called MotionStills. It takes little videos that can be stabilized with some quite involved CV algorithm it seems… And the app is super slim… I assume Google will kill it in the future but until then it is super fun to use.
-2022   2021                                                                                                                                                                                                                               2020                                                                        2019                                                                       2018                                                                                                              </description>
+2022 2021 2020 2019 2018 </description>
     </item>
     
     <item>
@@ -190,7 +190,7 @@ Eating Hooks Eating Hooks - Moderat
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/apes/</guid>
-      <description> let idx = String(Math.floor(Math.random() * 703)).padStart(5, &#39;0&#39;); document.getElementById(&#34;ape&#34;).src = &#34;https://media.morris-frank.dev/file/morris-media/latents/rudalle/apes/selection/&#34; + idx + &#34;.png&#34; </description>
+      <description> </description>
     </item>
     
     <item>
@@ -199,7 +199,7 @@ Eating Hooks Eating Hooks - Moderat
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/tutorials/</guid>
-      <description>Python Collection of Python snippets 2021-12-04  On-going list of niche snippets for programming Python like an annoying know-it-all (also some actual good tips).   Persistant shared memory 2021-11-10  How to create a store in memory easily share and survive restarts etc… in pure Python   Using plots as ticks in PyPlot 2020-03-22  Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?</description>
+      <description>Python Collection of Python snippets 2021-12-04 On-going list of niche snippets for programming Python like an annoying know-it-all (also some actual good tips). Persistant shared memory 2021-11-10 How to create a store in memory easily share and survive restarts etc… in pure Python Using plots as ticks in PyPlot 2020-03-22 Another week another tutorial for something that you never thought about doing. Can we replace the ticks in a PyPlot figure with plots?</description>
     </item>
     
   </channel>
