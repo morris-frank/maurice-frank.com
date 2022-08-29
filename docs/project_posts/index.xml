@@ -11,7 +11,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/maps/</guid>
-      <description>window.addEventListener(&#39;load&#39;, function() { let tileserver = &#34;https://tiles.morris-frank.dev/file/osm-tiles/&#34;; let basemaps = { &#34;Topology&#34;: L.tileLayer(tileserver + &#39;topo/{z}/{x}/{y}.png&#39;,{maxZoom:16}), &#34;Alpine club&#34;: L.tileLayer(tileserver + &#39;avk/{z}/{x}/{y}.png&#39;,{maxZoom:16}) }; let layers = {&#34;hikr_L&#34; : &#34;#b3a178&#34;, &#34;hikr_WS-&#34; : &#34;#a4735d&#34;, &#34;hikr_WS&#34; : &#34;#8b413f&#34;, &#34;hikr_WS+&#34; : &#34;#530609&#34;, &#34;bergrebell_L&#34;: &#34;#828d04&#34;, &#34;bergrebell_WS-&#34;: &#34;#4b6f21&#34;, &#34;bergrebell_WS&#34;: &#34;#245637&#34;, &#34;bergrebell_WS+&#34;: &#34;#04424b&#34;} let overlays = {} for (var d in layers) { overlays[d] = new L.GPX(&#34;./&#34; + d + &#34;.gpx&#34;, { async: true, marker_options: {startIconUrl: null, endIconUrl: null, shadowUrl: null}, polyline_options: {color: layers[d], opacity: 0.</description>
+      <description> </description>
     </item>
     
     <item>
@@ -20,7 +20,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/rudalle/</guid>
-      <description>Bored Ape Yacht Club  - Initial weights: Malevich - Learning rate: 5e-6 or 1e-6 - Training amount: 1 epoch - Dataset: The 10_000 apes from their website, paired with their description.  As those stupid apes are fairly similar, getting the right learning rate is important at 1e-5 the model basically collapses on the mean monkey (no accessoiraces, brown background). 1e-6 gives fairly unconstrained results (less monkey-y), 5e-6 contrains strongly on the monkey shape but allows stuff to happen.</description>
+      <description>Bored Ape Yacht Club - Initial weights: Malevich - Learning rate: 5e-6 or 1e-6 - Training amount: 1 epoch - Dataset: The 10_000 apes from their website, paired with their description. As those stupid apes are fairly similar, getting the right learning rate is important at 1e-5 the model basically collapses on the mean monkey (no accessoiraces, brown background). 1e-6 gives fairly unconstrained results (less monkey-y), 5e-6 contrains strongly on the monkey shape but allows stuff to happen.</description>
     </item>
     
     <item>
@@ -29,7 +29,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/scrub/</guid>
-      <description>import { Scroller } from &#34;./Scroller.js&#34;; const src = new URL(&#34;https://media.morris-frank.dev/file/morris-media/pytti_000.mp4&#34;, import.meta.url).href; new Scroller(src);   </description>
+      <description> </description>
     </item>
     
     <item>
@@ -39,7 +39,7 @@
       
       <guid>https://morris-frank.dev/motionstills/</guid>
       <description>I am really in love with an app made @ Google Research called MotionStills. It takes little videos that can be stabilized with some quite involved CV algorithm it seems… And the app is super slim… I assume Google will kill it in the future but until then it is super fun to use.
-2022   2021                                                                                                                                                                                                                               2020                                                                        2019                                                                       2018                                                                                                              </description>
+2022 2021 2020 2019 2018 </description>
     </item>
     
     <item>
@@ -48,7 +48,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/apes/</guid>
-      <description> let idx = String(Math.floor(Math.random() * 703)).padStart(5, &#39;0&#39;); document.getElementById(&#34;ape&#34;).src = &#34;https://media.morris-frank.dev/file/morris-media/latents/rudalle/apes/selection/&#34; + idx + &#34;.png&#34; </description>
+      <description> </description>
     </item>
     
   </channel>

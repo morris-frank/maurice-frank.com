@@ -12,7 +12,7 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://morris-frank.dev/bitwig-controller/</guid>
-      <description>Shotrcuts          Ctrl + Shift + J Console   Ctrl + R Reload the script live while in the console    Functions Utilities          println(string) Print a line in the console   errorln(string) Print a error in the console   showPopupNotification(string) Show a popup in the GUI (not the console)   printMidi(status, key, value) Helper to print a Midi command    Global settings loadAPI(12); host.</description>
+      <description>Shotrcuts Ctrl + Shift + J Console Ctrl + R Reload the script live while in the console Functions Utilities println(string) Print a line in the console errorln(string) Print a error in the console showPopupNotification(string) Show a popup in the GUI (not the console) printMidi(status, key, value) Helper to print a Midi command Global settings loadAPI(12); host.setShouldFailOnDeprecatedUse(true); host.defineController( &amp;#34;M-Audio&amp;#34;, // Company Name &amp;#34;M-Audio Axiom 25 MK1&amp;#34;, // Device Name &amp;#34;0.1&amp;#34;, // Version of this script &amp;#34;62841c6e-c163-481f-aba4-88bb25697e9a&amp;#34;, // Random identifier of this script &amp;#34;morris-frank&amp;#34; // Name of the developer of this script ); host.</description>
     </item>
     
   </channel>
