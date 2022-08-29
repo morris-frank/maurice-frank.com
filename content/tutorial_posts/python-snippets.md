@@ -26,6 +26,30 @@ a, _, c, d = func()
 a, *_, d = func()
 ```
 
+### Check for any of list of types
+
+```py
+if isinstance(variable, (int, float)):
+    # …
+```
+
+### Use default if is None
+
+Instead of:
+
+```py
+def func(var = None):
+    if var is None:
+        var = "DEFAULT"
+```
+
+you can do:
+
+```py
+def func(var = None):
+    var = var or "DEFAULT"
+```
+
 ### Use type in `add_argument` to directly transform input
 
 A pattern I use a lot in `ArgumentParser` is to abuse the `type` argument. As the input argument is just casted by calling the `type` object you can also just give a function to transform the input. For example a config file:
@@ -153,3 +177,8 @@ def random_words(n: int) -> list[str]:
 
 
 <!-- ### Import sub-modules into alias -->
+
+```py
+def some_function():
+    some_function.attribure = 
+```
