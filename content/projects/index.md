@@ -44,13 +44,6 @@ While I am not a totally seasoned web-designer I have almost a decade of experie
         </div>
         <a href="/maps"><img src="web_maps.jpg" /></a>
     </div>
-    <div class="card">
-        <div>
-            <h4><a href="https://whac-a-scholz.de/">Whac-a-Scholz</a></h4>
-            <p>Trying to get hold of the chancellor to do something??</p>
-        </div>
-        <a href="https://whac-a-scholz.de/"><img src="web_scholz.png" /></a>
-    </div>
 </div>
 
 ### Research
