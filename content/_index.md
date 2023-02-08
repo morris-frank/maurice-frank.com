@@ -11,7 +11,7 @@ Academicum](https://collegiumacademicum.de) project group. A non-profit company 
 we are building a sustainable, innovative and really cool wooden housing complex
 for 200 young people.
 
-Besides that I like mountains, climbing and making and listening to music.
+Besides that I like mountains, climbing and making and listening to music…
 
 <ul class="icons">
     <li><a class="icon-twitter" href="https://twitter.com/morris_frank_/"><pre>morris_frank_</pre> on twitter</a></li>
