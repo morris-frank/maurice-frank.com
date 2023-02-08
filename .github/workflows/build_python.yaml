@@ -1,0 +1,14 @@
+name: Python Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+   runs-on: ubuntu-22.04
+   steps:
+    - uses: actions/checkout
+    - run:  python build.py
