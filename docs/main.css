@@ -13,7 +13,7 @@
   --white: hsl(0, 0%, 97%);
   --primary: hsl(100, 27%, 50%);
   --layout-gap: min(1vw, 1rem);
-  --content-gap: 2rem;
+  --content-gap: min(1vw, 2rem);
 
   --grey-dark: hsl(0, 0%, 29%);
   --grey: hsl(0, 0%, 48%);
@@ -43,7 +43,7 @@ header {
   background: var(--white);
   margin: 0 var(--layout-gap) var(--layout-gap) var(--layout-gap);
   max-width: var(--linewidth);
-  padding: var(--content-gap);
+  padding: 0 var(--content-gap) var(--content-gap) var(--content-gap);
   z-index: 2;
 }
 
@@ -51,8 +51,9 @@ header a:first-of-type {
   color: var(--primary);
   display: block;
   font-size: 3em;
-  text-decoration: overline;
-  transition: 200ms;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 header a:first-of-type:hover {
@@ -90,7 +91,7 @@ h1 {
   font-size: 3rem;
   font-weight: 200;
   line-height: 1;
-  margin: 0;
+  margin: 0 0 1rem 0;
 }
 
 h1:empty {
@@ -190,7 +191,7 @@ nav {
   margin-top: 1rem;
 }
 
-nav a {
+header a, nav a {
   display: inline-block;
   border: 1px solid var(--black);
   padding: 0.3rem 0.8rem;
