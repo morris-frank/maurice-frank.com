@@ -213,3 +213,7 @@ header a, nav a {
 p:first-of-type {
   margin-top: 0;
 }
+
+img {
+  max-width: 100%;
+}
