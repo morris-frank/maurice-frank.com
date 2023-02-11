@@ -2,7 +2,7 @@ import yaml
 from pathlib import Path
 import os
 
-BASE_URL = "https://morris-frank.dev/"
+BASE_URL = "morris-frank.dev"
 
 CONTENT_DIR = Path("./docs")
 LAYOUT = (CONTENT_DIR / "__layout.html").read_text()
@@ -19,8 +19,12 @@ def fill_layout(layout: str, content: str, head: str, config) -> str:
     layout = layout.replace("{{CONTENT}}", content)
     layout = layout.replace("{{HEAD}}", head)
 
-    layout = layout.replace("{{TITLE}}", config.get("title", "MISSING TITLE"))
-    layout = layout.replace("{{MAIN_CLASSNAME}}", config.get("main_classname", ""))
+    pagetitle = config.get("title", "")
+    pagetitle += f" - {config['base_url']}"
+    layout = layout.replace("{{PAGETITLE}}", pagetitle)
+
+    title = config.get("title", "")
+    layout = layout.replace("{{TITLE}}", title)
     return layout
 
 

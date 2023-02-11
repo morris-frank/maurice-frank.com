@@ -12,7 +12,7 @@
   --black: hsl(0, 0%, 20%);
   --white: hsl(0, 0%, 97%);
   --primary: hsl(100, 27%, 50%);
-  --layout-gap: 1rem;
+  --layout-gap: min(1vw, 1rem);
   --content-gap: 2rem;
 
   --grey-dark: hsl(0, 0%, 29%);
@@ -41,7 +41,7 @@ body {
 
 header {
   background: var(--white);
-  margin: 0 0 var(--layout-gap) var(--layout-gap);
+  margin: 0 var(--layout-gap) var(--layout-gap) var(--layout-gap);
   max-width: var(--linewidth);
   padding: var(--content-gap);
   z-index: 2;
@@ -61,7 +61,7 @@ header a:first-of-type:hover {
 
 footer {
   background: var(--white);
-  margin: var(--layout-gap) 0 0 var(--layout-gap);
+  margin: var(--layout-gap) var(--layout-gap) 0 var(--layout-gap);
   max-width: var(--linewidth);
   padding: var(--content-gap);
   z-index: 2;
@@ -71,7 +71,7 @@ footer {
 main {
   background: var(--white);
   box-shadow: 0 0 13rem 0 var(--black);
-  margin-left: var(--layout-gap);
+  margin: 0 var(--layout-gap) 0 var(--layout-gap);
   max-width: var(--linewidth);
   padding: var(--content-gap);
 }
@@ -86,12 +86,6 @@ a:hover {
   border-color: var(--primary);
 }
 
-h1,
-h2,
-h3, h4 {
-  margin-top: 0;
-}
-
 h1 {
   font-size: 3rem;
   font-weight: 200;
@@ -99,10 +93,19 @@ h1 {
   margin: 0;
 }
 
+h1:empty {
+  display: none;
+}
+
 h2 {
   font-size: 2rem;
   font-weight: 200;
-  margin-bottom: 0;
+  margin: 0;
+}
+
+h3,
+h4 {
+  margin-top: 0;
 }
 
 pre {
@@ -166,6 +169,12 @@ video {
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
   width: max(80vw, 100%);
+  align-items: center;
+  justify-items: center;
+}
+
+.motion_still_container h3 {
+  font-size: 4em;
 }
 
 .motion_still_container video {
@@ -178,16 +187,15 @@ dl {
 }
 
 nav {
-  display: flex;
-  gap: 15px;
-  margin: 2rem 0 0;
+  margin-top: 1rem;
 }
 
 nav a {
-  display: block;
+  display: inline-block;
   border: 1px solid var(--black);
   padding: 0.3rem 0.8rem;
   text-decoration: none;
+  margin: 0 1rem 0.5rem 0;
 }
 
 .map {
@@ -199,4 +207,8 @@ nav a {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+p:first-of-type {
+  margin-top: 0;
 }

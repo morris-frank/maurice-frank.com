@@ -25,19 +25,20 @@
 
     {{HEAD}}
 
-    <title>{{TITLE}}</title>
+    <title>{{PAGETITLE}}</title>
 </head>
 
 <body>
     <header>
         <a href="/">Morris-Frank</a>
-        <a href="/art">art</a>
-        <a href="/services">hire me</a>
-        <a href="/tutorials">tutorials</a>
+        <a href="/services">services</a>
+        <a href="/stuff">stuff</a>
+        <!-- <a href="/tutorials">tutorials</a> -->
         <a href="https://github.com/morris-frank/resume/raw/master/Frank_cv.pdf">cv</a>
     </header>
 
-    <main class="{{MAIN_CLASSNAME}}">
+    <main>
+        <h1>{{TITLE}}</h1>
         {{CONTENT}}
     </main>
 
