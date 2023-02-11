@@ -1,0 +1,26 @@
+<div id="map" class="map"></div>
+<script>
+window.addEventListener('load', function() {
+    let tileserver = "https://tiles.morris-frank.dev/file/osm-tiles/";
+    let basemaps = {
+        "Topology": L.tileLayer(tileserver + 'topo/{z}/{x}/{y}.png',{maxZoom:16}),
+        "Alpine club": L.tileLayer(tileserver + 'avk/{z}/{x}/{y}.png',{maxZoom:16})
+    };
+    let layers = {"hikr_L" : "#b3a178", "hikr_WS-" : "#a4735d", "hikr_WS" : "#8b413f", "hikr_WS+" : "#530609", "bergrebell_L": "#828d04", "bergrebell_WS-": "#4b6f21", "bergrebell_WS": "#245637", "bergrebell_WS+": "#04424b"}
+    let overlays = {}
+    for (var d in layers) {
+        overlays[d] =  new L.GPX("./" + d + ".gpx", {
+            async: true,
+            marker_options: {startIconUrl: null, endIconUrl: null, shadowUrl: null},
+            polyline_options: {color: layers[d], opacity: 0.75,},
+        });
+    }
+    console.log(overlays);
+    let map = L.map('map', {
+        center: [47.05, 12.2],
+        zoom: 11,
+        layers: [basemaps["Topology"],]
+    });
+    L.control.layers(basemaps,overlays,{collapsed:false}).addTo(map);
+  }, false);
+</script>
