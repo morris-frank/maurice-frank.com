@@ -19,8 +19,10 @@ def fill_layout(layout: str, content: str, head: str, config) -> str:
     layout = layout.replace("{{CONTENT}}", content)
     layout = layout.replace("{{HEAD}}", head)
 
-    pagetitle = config.get("title", "")
-    pagetitle += f" - {config['base_url']}"
+    if "title" in config:
+        pagetitle = f"{config['title']} - {config['base_url']}"
+    else:
+        pagetitle = config["base_url"]
     layout = layout.replace("{{PAGETITLE}}", pagetitle)
 
     title = config.get("title", "")

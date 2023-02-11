@@ -3,7 +3,7 @@
   src: url("/FiraCode-VariableFont_wght.ttf");
   font-style: normal;
   font-weight: normal;
-  font-display: optional;
+  font-display: swap;
 }
 
 :root {
