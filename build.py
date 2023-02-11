@@ -4,7 +4,7 @@ import os
 
 BASE_URL = "https://morris-frank.dev/"
 
-CONTENT_DIR = Path("./content")
+CONTENT_DIR = Path("./docs")
 LAYOUT = (CONTENT_DIR / "__layout.html").read_text()
 
 HEAD_FILE = "head.html"
