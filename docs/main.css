@@ -12,12 +12,21 @@
   --black: hsl(0, 0%, 20%);
   --white: hsl(0, 0%, 97%);
   --primary: hsl(100, 27%, 50%);
-  --layout-gap: min(1vw, 1rem);
-  --content-gap: min(1vw, 2rem);
+  --layout-gap: 1rem;
+  --content-gap: 2rem;
+  --container-border: 1rem solid var(--white);
 
   --grey-dark: hsl(0, 0%, 29%);
   --grey: hsl(0, 0%, 48%);
   --grey-light: hsl(0, 0%, 71%);
+}
+
+@media screen and (max-width: 55rem) {
+  :root {
+    --layout-gap: 0;
+    --content-gap: 5px;
+    --container-border: none;
+  }
 }
 
 * {
@@ -41,7 +50,7 @@ body {
 
 header {
   background: var(--white);
-  margin: 0 var(--layout-gap) var(--layout-gap) var(--layout-gap);
+  margin: 0 var(--layout-gap) 1rem var(--layout-gap);
   max-width: var(--linewidth);
   padding: 0 var(--content-gap) var(--content-gap) var(--content-gap);
   z-index: 2;
@@ -60,9 +69,22 @@ header a:first-of-type:hover {
   color: var(--black);
 }
 
+nav {
+  margin-top: 1rem;
+}
+
+header a,
+nav a {
+  display: inline-block;
+  border: 1px solid var(--black);
+  padding: 0.3rem 0.8rem;
+  text-decoration: none;
+  margin: 0 1rem 0.5rem 0;
+}
+
 footer {
   background: var(--white);
-  margin: var(--layout-gap) var(--layout-gap) 0 var(--layout-gap);
+  margin: 1rem var(--layout-gap) 0 var(--layout-gap);
   max-width: var(--linewidth);
   padding: var(--content-gap);
   z-index: 2;
@@ -85,6 +107,14 @@ a {
 a:hover {
   color: var(--primary);
   border-color: var(--primary);
+}
+
+p:first-of-type {
+  margin-top: 0;
+}
+
+dl {
+  margin: 0;
 }
 
 h1 {
@@ -126,6 +156,10 @@ article + article {
   margin-top: 1em;
 }
 
+img {
+  width: 100%;
+}
+
 picture {
   display: block;
   margin-bottom: 3rem;
@@ -156,7 +190,7 @@ audio::-webkit-media-controls-panel {
 }
 
 video {
-  border: 1rem solid var(--white);
+  border: var(--container-border);
   border-left-width: 0;
   height: auto;
   max-width: min(var(--max-width), max(90vw, 100%));
@@ -164,7 +198,7 @@ video {
 
 .motion_still_container {
   background: var(--white);
-  border: 1rem solid var(--white);
+  border: var(--container-border);
   border-left-width: 0;
   display: grid;
   grid-gap: 1rem;
@@ -183,22 +217,6 @@ video {
   max-width: 100%;
 }
 
-dl {
-  margin: 0;
-}
-
-nav {
-  margin-top: 1rem;
-}
-
-header a, nav a {
-  display: inline-block;
-  border: 1px solid var(--black);
-  padding: 0.3rem 0.8rem;
-  text-decoration: none;
-  margin: 0 1rem 0.5rem 0;
-}
-
 .map {
   display: flex;
   height: 97vh;
@@ -208,12 +226,4 @@ header a, nav a {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-}
-
-p:first-of-type {
-  margin-top: 0;
-}
-
-img {
-  max-width: 100%;
 }
