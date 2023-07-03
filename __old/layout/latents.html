@@ -1,0 +1,10 @@
+{{ $path := .Get "path" }}
+{{ $title := .Get "title" }}
+{{ $n := int ( .Get "n" ) }}
+
+<details>
+    <summary>{{$title}}</summary>
+    {{ range seq 0 $n }}
+    <img class="lazy small" data-src="https://media.morris-frank.com/file/morris-media/latents/{{$path}}/{{ printf "%05d" . }}.png" >
+    {{ end }}
+</details>
