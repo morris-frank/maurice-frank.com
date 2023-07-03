@@ -21,7 +21,7 @@ Here is a test for the finished script:
 <i>Here is a little test with one captcha and two little secrets:</i>
 <div class="secret-email">
     <div class="h-captcha" data-sitekey="149a0595-ac45-40e7-8587-c4d78364e156" data-callback="onSuccessfullCaptcha"></div>
-    ……@morris-frank.dev
+    ……@morris-frank.com
 </div>
 
 <div class="secret-secret">
@@ -132,7 +132,7 @@ And that's it! Now you might wanna make this a tad more complicated, e.g. the st
 
 <script src="https://hcaptcha.com/1/api.js" async defer></script>
 <script>
-var captcha_lambda_endpoint = "https://captcha.morris-frank.dev/morrisfrank";
+var captcha_lambda_endpoint = "https://captcha.morris-frank.com/morrisfrank";
 var replaceSecrets = function (secrets) {
     for (const key in secrets) {
         for (const root of document.getElementsByClassName("secret-" + key)){

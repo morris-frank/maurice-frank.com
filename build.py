@@ -1,8 +1,8 @@
-# import yaml
+import json
 from pathlib import Path
 import os
 
-BASE_URL = "morris-frank.dev"
+BASE_URL = "morris-frank.com"
 
 CONTENT_DIR = Path("./docs")
 LAYOUT = (CONTENT_DIR / "__layout.html").read_text()
@@ -10,7 +10,7 @@ LAYOUT = (CONTENT_DIR / "__layout.html").read_text()
 HEAD_FILE = "head.html"
 CONTENT_FILE = "content.html"
 PYCONTENT_FILE = "content.py"
-# CONFIG_FILE = "config.yaml"
+CONFIG_FILE = "config.json"
 
 PAGES = [CONTENT_DIR] + list(filter(Path.is_dir, CONTENT_DIR.iterdir()))
 
@@ -48,8 +48,8 @@ def build_page(page: Path, layout: str) -> None:
     if (page / HEAD_FILE).exists():
         head = (page / HEAD_FILE).read_text()
 
-    # config = yaml.safe_load((page / CONFIG_FILE).read_text())
-    config = {}
+    config = json.loads((page / CONFIG_FILE).read_text())
+    config = config or {}
     config = {"base_url": BASE_URL, **config}
 
     filled = fill_layout(layout=layout, content=content, head=head, config=config)

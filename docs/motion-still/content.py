@@ -1,5 +1,5 @@
 def generate():
-    import yaml
+    import json
     from pathlib import Path
 
     c = f"""
@@ -9,8 +9,8 @@ def generate():
     <div class="motion_still_container">
     """
 
-    bU = "https://motionstill.morris-frank.dev/file/motionstills/"
-    stills = yaml.load(Path("motionstills.yaml").read_text(), Loader=yaml.FullLoader)
+    bU = "https://motionstill.morris-frank.com/file/motionstills/"
+    stills = json.loads(Path("motionstills.json").read_text())
 
     for year in stills:
         c += f"<h3 id=\"{year['year']}\">{year['year']}</h3>"
