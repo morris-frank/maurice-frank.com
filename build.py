@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import os
 
-BASE_URL = "morris-frank.com"
+BASE_URL = "maurice-frank.com"
 
 CONTENT_DIR = Path("./docs")
 LAYOUT = (CONTENT_DIR / "__layout.html").read_text()
