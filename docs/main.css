@@ -40,33 +40,25 @@ body {
   color: var(--black);
   display: flex;
   flex-direction: column;
-  font-family: "FiraCode", monospace;
+  font-family: "Inter", monospace;
   font-size: 1rem;
   hyphens: auto;
   line-height: 1.5;
-  margin: 0;
+  margin: 0 auto;
   min-height: 100vh;
-}
-
-header {
+  width: var(--linewidth);
   background: var(--white);
-  margin: 0 var(--layout-gap) 1rem var(--layout-gap);
-  max-width: var(--linewidth);
-  padding: 0 var(--content-gap) var(--content-gap) var(--content-gap);
-  z-index: 2;
+  padding: var(--layout-gap);
+  box-shadow: 0 0 13rem 0 var(--black);
+  gap: var(--layout-gap);
 }
 
 header a:first-of-type {
-  color: var(--primary);
   display: block;
-  font-size: 3em;
+  font-size: 2em;
   border: none;
   padding: 0;
   margin: 0;
-}
-
-header a:first-of-type:hover {
-  color: var(--black);
 }
 
 nav {
@@ -83,20 +75,7 @@ nav a {
 }
 
 footer {
-  background: var(--white);
-  margin: 1rem var(--layout-gap) 0 var(--layout-gap);
-  max-width: var(--linewidth);
-  padding: var(--content-gap);
-  z-index: 2;
   font-size: 0.8rem;
-}
-
-main {
-  background: var(--white);
-  box-shadow: 0 0 13rem 0 var(--black);
-  margin: 0 var(--layout-gap) 0 var(--layout-gap);
-  max-width: var(--linewidth);
-  padding: var(--content-gap);
 }
 
 a {
