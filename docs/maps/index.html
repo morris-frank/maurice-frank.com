@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#a9384a">
     <meta name="description" name="The personal website of Maurice Frank.">
     <meta property="og:image" content="/icon.png" />
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="../main.css">
     <link rel="shortcut icon" type="image/png" href="/icon.png" />
 
     <!-- Leaflet -->
@@ -21,15 +21,16 @@
 
 <body>
     <header>
-            <a href="/">Maurice Frank</a>
+        <h1>Maurice Frank</h1>
+        <nav>
+            <a href="/projects">projects</a>
+            <a href="/cv">cv</a>
             <a href="/services">services</a>
-            <a href="/stuff">stuff</a>
-            <!-- <a href="/tutorials">tutorials</a> -->
-            <a href="https://github.com/morris-frank/resume/raw/master/Frank_cv.pdf" target="_blank">cv</a>
-    </header>
+            <a href="/hobbies">hobbies</a>
+        </nav>
+        </header>
 
     <main>
-        <h1>Maps</h1>
         <div id="map" class="map"></div>
 <script>
 window.addEventListener('load', function() {
@@ -61,15 +62,12 @@ window.addEventListener('load', function() {
     <div style="flex: 1;"></div>
 
     <footer>
-        <dl>
-            <dt>Responsible person</dt>
-            <dd>Maurice Frank</dd>
-            <dt>E-mail</dt>
-            <dd>firstname.lastname @ posteo de</dd>
-            <dt>Source code</dt>
-            <dd><a href="https://github.com/morris-frank/morris-frank.com">github (MIT)</a></dd>
-            <dt>Privacy statement</dt>
-            <dd>I don't collect any data from you. Neither do I want any data. So don't send me any!</dd>
+            <div><b>Responsible person</b>
+            <p>Maurice Frank</p></div>
+            <div><b>E-mail</b>
+            <p>firstname.lastname @ posteo de</p></div>
+            <div><b>Privacy statement</b>
+            <p>I don't collect any data from you. Neither do I want any data. So don't send me any!</p></div>
         </dl>
     </footer>
 </body>

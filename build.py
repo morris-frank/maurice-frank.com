@@ -15,7 +15,7 @@ CONFIG_FILE = "config.json"
 PAGES = [CONTENT_DIR] + list(filter(Path.is_dir, CONTENT_DIR.iterdir()))
 
 
-def fill_layout(layout: str, content: str, head: str, config) -> str:
+def fill_layout(slug: str, layout: str, content: str, head: str, config) -> str:
     layout = layout.replace("{{CONTENT}}", content)
     layout = layout.replace("{{HEAD}}", head)
 
@@ -27,6 +27,8 @@ def fill_layout(layout: str, content: str, head: str, config) -> str:
 
     title = config.get("title", "")
     layout = layout.replace("{{TITLE}}", title)
+
+    layout = layout.replace(f"href=\"/{slug}\"", f"href=\"/{slug}\" class=\"active\" ")
     return layout
 
 
@@ -52,7 +54,7 @@ def build_page(page: Path, layout: str) -> None:
     config = config or {}
     config = {"base_url": BASE_URL, **config}
 
-    filled = fill_layout(layout=layout, content=content, head=head, config=config)
+    filled = fill_layout(page.name, layout=layout, content=content, head=head, config=config)
 
     (page / "index.html").write_text(filled)
     print(f"Built {page.name}")
