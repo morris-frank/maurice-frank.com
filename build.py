@@ -1,11 +1,19 @@
+import hashlib
 import json
 from pathlib import Path
+from base64 import b64encode, b64decode
+
 import os
 
 BASE_URL = "maurice-frank.com"
 
 CONTENT_DIR = Path("./docs")
 LAYOUT = (CONTENT_DIR / "__layout.html").read_text()
+
+with open(CONTENT_DIR / "main.css", "rb") as f:
+    CSSHASH = hashlib.file_digest(f, "sha256").hexdigest()
+    CSSHASH = b64encode(bytes.fromhex(CSSHASH)).decode()
+    CSSHASH = f"sha256-{CSSHASH}"
 
 HEAD_FILE = "head.html"
 CONTENT_FILE = "content.html"
@@ -29,6 +37,8 @@ def fill_layout(slug: str, layout: str, content: str, head: str, config) -> str:
     layout = layout.replace("{{TITLE}}", title)
 
     layout = layout.replace(f"href=\"/{slug}\"", f"href=\"/{slug}\" class=\"active\" ")
+
+    layout = layout.replace("{{CSSHASH}}", CSSHASH)
     return layout
 
 
