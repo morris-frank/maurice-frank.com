@@ -114,6 +114,10 @@ h1 {
   margin: 0 0 1rem 0;
 }
 
+h1 a {
+  text-decoration: none;
+}
+
 h1:empty {
   display: none;
 }
@@ -121,7 +125,10 @@ h1:empty {
 h2 {
   font-size: 2rem;
   font-weight: 200;
-  margin: 0;
+  margin: var(--gap-lg) 0 var(--gap-sm) 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 h3,
@@ -134,17 +141,6 @@ pre {
   padding: 1rem;
   width: fit-content;
   font-size: 0.8rem;
-}
-
-article {
-  border: 0 solid var(--grey-light);
-  border-bottom-width: 1px;
-  margin-bottom: 9rem;
-  padding: 1rem 0 0.5rem;
-}
-
-article + article {
-  margin-top: 1em;
 }
 
 img {
