@@ -7,6 +7,8 @@ import os
 
 BASE_URL = "maurice-frank.com"
 
+DEV = "--dev" in os.sys.argv
+
 CONTENT_DIR = Path("./docs")
 LAYOUT = (CONTENT_DIR / "__layout.html").read_text()
 
@@ -36,9 +38,10 @@ def fill_layout(slug: str, layout: str, content: str, head: str, config) -> str:
     title = config.get("title", "")
     layout = layout.replace("{{TITLE}}", title)
 
-    layout = layout.replace(f"href=\"/{slug}\"", f"href=\"/{slug}\" class=\"active\" ")
+    layout = layout.replace("{{CSSHASH}}", "" if DEV else CSSHASH)
+    layout = layout.replace("{{ROOT}}", "/docs/" if DEV else "/")
 
-    layout = layout.replace("{{CSSHASH}}", CSSHASH)
+    layout = layout.replace(f"href=\"/{slug}\"", f"href=\"/{slug}\" class=\"active\" ")
     return layout
 
 

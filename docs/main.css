@@ -147,6 +147,34 @@ img {
   width: 100%;
 }
 
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-variant: small-caps;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--black);
+  border: 1px solid var(--grey-light);
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  background: var(--primary);
+  color: var(--white);
+  cursor: pointer;
+}
+
+canvas {
+  display: block;
+  margin: 1em auto;
+}
+
 .motion_still_container {
   background: var(--white);
   border: var(--container-border);
