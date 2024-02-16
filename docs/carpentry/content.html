@@ -59,7 +59,7 @@
       ctx.fillStyle = "#D2B48C";
       ctx.fillRect(0, i * (board_height + gap), boards[i] * px_per_cm, board_height);
       const woodTexture = new Image();
-      woodTexture.src = "/docs/carpentry/purty-wood.png";
+      woodTexture.src = "/carpentry/purty-wood.png";
       woodTexture.onload = function () {
         let pattern = ctx.createPattern(woodTexture, "repeat");
         ctx.fillStyle = pattern;
