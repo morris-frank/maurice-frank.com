@@ -1,8 +1,8 @@
 def generate():
-    import yaml
+    import json
     from pathlib import Path
 
-    data = yaml.safe_load(Path( "data.yaml").read_text())
+    data = json.loads(Path("data.json").read_text())
 
     c = """<style style="text/css">
 .movieRow {

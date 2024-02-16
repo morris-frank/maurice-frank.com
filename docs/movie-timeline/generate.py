@@ -1,15 +1,15 @@
 # %%
 from bs4 import BeautifulSoup
 from pathlib import Path
-import yaml
 import requests
+import json
 
 api_key = "----------"
 
-data_path = Path(__file__).parent / "data.yaml"
+data_path = Path(__file__).parent / "data.json"
 nMovies = 0
 nMoviesFound = 0
-data = yaml.safe_load(data_path.read_text())
+data = json.loads(data_path.read_text())
 if data is None:
     data = {}
 
@@ -71,7 +71,7 @@ keys = (
 for key in keys:
     if key not in data or len(data[key]) == 0:
         data = process_wikipage(key, data)
-        data_path.write_text(yaml.dump(data))
+        data_path.write_text(json.dumps(data, indent=4))
 print(f"Processed {nMoviesFound/nMovies:%} out of {nMovies} movies")
 
 # %%
