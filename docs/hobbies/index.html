@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#a9384a">
     <meta name="description" name="The personal website of Maurice Frank.">
     <meta property="og:image" content="/icon.png" />
-    <link rel="stylesheet" href="/main.css" integrity="sha256-Pkt2yxO+8pafO72gzGmPZ/Un07q4OKvhRrSasENl0MU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/main.css" integrity="sha256-5KoaMfjSbIxUhZH3nQQ/zvhF/A4UdXj0ln6HsalVIfc=" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="/avatar.png" />
 
     
@@ -16,15 +17,16 @@
 
 <body>
     <header>
-        <h1>
-            <a href="/">Maurice Frank</a></h1>
+        <a href="/">
+            <h1>Maurice Frank</h1>
+        </a>
         <nav>
             <a href="/projects">projects</a>
             <a href="/cv">cv</a>
             <a href="/services">services</a>
             <a href="/hobbies" class="active" >hobbies</a>
         </nav>
-        </header>
+    </header>
 
     <main>
         <style type="text/css">
@@ -32,17 +34,24 @@
         display: block;
         margin-bottom: 3rem;
         background: var(--white);
+
+        & img {
+            max-width: 100%;
+            vertical-align: middle;
+        }
+    
+        &  figcaption {
+            background-color: var(--white);
+            text-align: right;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        &:hover figcaption {
+            opacity: 1;
+        }
     }
 
-    picture img {
-        max-width: 100%;
-        vertical-align: middle;
-    }
-
-    picture figcaption {
-        background-color: var(--white);
-        text-align: right;
-    }
 
     audio {
         height: 2.5rem;
@@ -233,7 +242,7 @@
 
     <div class="project">
         <h3>Down-tempo for 18 musicians</h3>
-        <div>Steve Reichs classic as danceable down-tempo. Played on a Novation Launchpad (live).</div>
+        <div>Steve Reichs classic as danceable down-tempo. Live recording, played on a Novation Launchpad.</div>
         <audio controls>
             <source src="https://f003.backblazeb2.com/file/morris-media/music/music_for_18_musicians-001.mp3"
                 type="audio/mpeg">
@@ -243,7 +252,7 @@
 
     <div class="project">
         <h3>Piano Phase</h3>
-        <div>Piano Phase but its electronica</div>
+        <div>Piano Phase (Steve Reich) but its electronica</div>
         <audio controls>
             <source src="https://f003.backblazeb2.com/file/morris-media/music/electronica_piano-phase.mp3"
                 type="audio/mpeg">
@@ -252,8 +261,8 @@
     </div>
 
     <div class="project">
-        <h3>Repetitive</h3>
-        <div>Extremely simple cloudy, think Max Cooper or Funki Porcini</div>
+        <h3>A cloudy</h3>
+        <div>Extremely simple sonical soundscape</div>
         <audio controls>
             <source src="https://f003.backblazeb2.com/file/morris-media/music/week07.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
@@ -261,7 +270,7 @@
     </div>
 
     <div class="project">
-        <h3>Orchetral 1</h3>
+        <h3>A Orchetral</h3>
         <div>Random pick and choose from the symph orchestra</div>
         <audio controls>
             <source src="https://f003.backblazeb2.com/file/morris-media/music/classic_01.mp3" type="audio/mpeg">
@@ -271,7 +280,7 @@
 
     <div class="project">
         <h3>A waltz</h3>
-        <div>Like Yumeji's Theme (<a href="https://f003.backblazeb2.com/file/morris-media/music/waltz_001.pdf"
+        <div>(<a href="https://f003.backblazeb2.com/file/morris-media/music/waltz_001.pdf"
                 target="_blank">download sheet</a>)</div>
         <audio controls>
             <source src="https://f003.backblazeb2.com/file/morris-media/music/waltz_001.mp3" type="audio/mpeg">
@@ -280,7 +289,7 @@
     </div>
 
     <div class="project">
-        <h3>Some house</h3>
+        <h3>A house</h3>
         <div>Sounds like Kölsch</div>
         <audio controls>
             <source src="https://f003.backblazeb2.com/file/morris-media/music/week05.mp3" type="audio/mpeg">
@@ -289,7 +298,7 @@
     </div>
 
     <div class="project">
-        <h3>Basic techno</h3>
+        <h3>A techno</h3>
         <div>Just some techno.</div>
         <audio controls>
             <source src="https://f003.backblazeb2.com/file/morris-media/music/week08.mp3" type="audio/mpeg">
@@ -332,6 +341,18 @@
     <figcaption>Persepolis | 𐎱𐎠𐎼𐎿</figcaption>
 </picture>
 <picture>
+    <img src="https://f003.backblazeb2.com/file/morris-media/photography/PXL_20230726_185216099.webp">
+    <figcaption>Mont Blanc</figcaption>
+</picture>
+<picture>
+    <img src="https://f003.backblazeb2.com/file/morris-media/photography/PXL_20230803_063316867.webp">
+    <figcaption>Nadelhorn</figcaption>
+</picture>
+<picture>
+    <img src="https://f003.backblazeb2.com/file/morris-media/photography/PXL_20230920_164213120.webp">
+    <figcaption>Rheinfall</figcaption>
+</picture>
+<picture>
     <img src="https://f003.backblazeb2.com/file/morris-media/photography/P1080504.webp">
     <figcaption>Night-train in Azerbaijan</figcaption>
 </picture>
@@ -356,10 +377,6 @@
     <figcaption>Somewhere in the Khumbu | खुम्बु</figcaption>
 </picture>
 <picture>
-    <img src="https://f003.backblazeb2.com/file/morris-media/photography/P1090027.webp">
-    <figcaption>On the Pamir highway</figcaption>
-</picture>
-<picture>
     <img src="https://f003.backblazeb2.com/file/morris-media/photography/IMG_20220903_092307-01.webp">
     <figcaption>Top of Weissmiess</figcaption>
 </picture>
@@ -368,13 +385,17 @@
     <div style="flex: 1;"></div>
 
     <footer>
-            <div><b>Responsible person</b>
-            <p>Maurice Frank</p></div>
-            <div><b>E-mail</b>
-            <p>firstname.lastname @ posteo de</p></div>
-            <div><b>Privacy statement</b>
-            <p>I don't collect any data from you. Neither do I want any data. So don't send me any!</p></div>
+        <div><b>Responsible person</b>
+            <p>Maurice Frank</p>
+        </div>
+        <div><b>E-mail</b>
+            <p>firstname.lastname @ posteo de</p>
+        </div>
+        <div><b>Privacy statement</b>
+            <p>I don't collect any data from you. Neither do I want any data. So don't send me any!</p>
+        </div>
         </dl>
     </footer>
 </body>
+
 </html>
