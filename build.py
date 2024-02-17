@@ -38,7 +38,7 @@ def fill_layout(slug: str, layout: str, content: str, head: str, config) -> str:
     title = config.get("title", "")
     layout = layout.replace("{{TITLE}}", title)
 
-    layout = layout.replace("{{CSSHASH}}", "" if DEV else CSSHASH)
+    layout = layout.replace("{{CSSHASH}}", "" if DEV else f"integrity=\"{CSSHASH}\" crossorigin=\"anonymous\"")
     layout = layout.replace("{{ROOT}}", "/docs/" if DEV else "/")
 
     layout = layout.replace(f"href=\"/{slug}\"", f"href=\"/{slug}\" class=\"active\" ")
