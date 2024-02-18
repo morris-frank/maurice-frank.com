@@ -92,7 +92,7 @@
 
     let cuts = {};
     let max_rest_piece = 0;
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 200; i++) {
       const { cuts: cuts_, max_rest_piece: max_rest_piece_ } = findCuttingPattern(boards, parts);
       if (max_rest_piece_ > max_rest_piece) {
         cuts = cuts_;
