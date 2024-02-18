@@ -69,10 +69,13 @@
           }
         }
       }
+      for (let i = 0; i < boards.length; i++) {
+        cuts[i].sort((a, b) => b - a);
+      }
       if (parts_.length > 0) {
         continue;
       } else {
-        return cuts;
+        return { cuts: cuts, max_rest_piece: Math.max(...boards_) };
       }
     }
   }
@@ -87,7 +90,15 @@
       .value.split(",")
       .map((x) => parseInt(x));
 
-    const cuts = findCuttingPattern(boards, parts);
+    let cuts = {};
+    let max_rest_piece = 0;
+    for (let i = 0; i < 20; i++) {
+      const { cuts: cuts_, max_rest_piece: max_rest_piece_ } = findCuttingPattern(boards, parts);
+      if (max_rest_piece_ > max_rest_piece) {
+        cuts = cuts_;
+        max_rest_piece = max_rest_piece_;
+      }
+    }
 
     const canvas = document.getElementById("cutting-canvas");
     const ctx = canvas.getContext("2d");
@@ -125,18 +136,19 @@
 
 <h2>Board cutting arrangement</h2>
 <p>
-  Give a list of boards and a list of parts. The algorithm will try to find a cutting pattern that allows to cut all parts from the boards.
+  Give a list of boards and a list of parts. The algorithm will try to find a cutting pattern that allows to cut all
+  parts from the boards.
   This is a 1-D problem, so all boards and parts are assumed to have the same width.
 </p>
 
 <label for="cutting-boards">Boards:</label>
 <textarea id="cutting-boards" rows="1" cols="50">250,250,250,200,200</textarea>
 <label for="cutting-parts">Parts:</label>
-<textarea id="cutting-parts" rows="1" cols="50">44,30,30,44,30,30,44,50,50,116,20,20,20,70,70,45,75,70,60,30,70,40,40</textarea>
+<textarea id="cutting-parts" rows="1"
+  cols="50">44,30,30,44,30,30,44,50,50,116,20,20,20,70,70,45,75,70,60,30,70,40,40</textarea>
 <button onclick="runCuttingPattern()">Run</button>
 
 <canvas id="cutting-canvas" width="685" height="0"></canvas>
-
     </main>
 
     <div style="flex: 1;"></div>
