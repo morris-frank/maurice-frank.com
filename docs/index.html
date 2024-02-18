@@ -6,39 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#a9384a">
     <meta name="description" name="The personal website of Maurice Frank.">
-    <meta property="og:image" content="/icon.png" />
-    <link rel="stylesheet" href="/main.css" integrity="sha256-5KoaMfjSbIxUhZH3nQQ/zvhF/A4UdXj0ln6HsalVIfc=" crossorigin="anonymous">
+    <meta property="og:image" content="/avatar.png" />
+    <link rel="stylesheet" href="/main.css" integrity="sha256-oPaj2yTys7Ja/ficqCqZGXIZvGB7OOHeGeC4L50p8LM=" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="/avatar.png" />
 
     
 
-    <title>maurice-frank.com</title>
+    <title>Docs - maurice-frank.com</title>
 </head>
 
 <body>
     <header>
-        <a href="/">
-            <h1>Maurice Frank</h1>
-        </a>
+        <h1>
+                <a href="/">
+                Maurice Frank
+            </a>
+
+            </h1>
         <nav>
-            <a href="/projects">projects</a>
-            <a href="/cv">cv</a>
-            <a href="/services">services</a>
-            <a href="/hobbies">hobbies</a>
+            <a href="/projects">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 8l-4 4l4 4" /><path d="M17 8l4 4l-4 4" /><path d="M14 4l-4 16" /></svg> -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14l-2 -2l2 -2" /><path d="M14 10l2 2l-2 2" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /></svg>
+                projects</a>
+            <a href="/cv">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-history" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 8l0 4l2 2" /><path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" /></svg>
+                résumé</a>
+            <a href="/services">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-receipt-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" /><path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5" /></svg>
+                services</a>
+            <a href="/hobbies">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trekking" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M7 21l2 -4" /><path d="M13 21v-4l-3 -3l1 -6l3 4l3 2" /><path d="M10 14l-1.827 -1.218a2 2 0 0 1 -.831 -2.15l.28 -1.117a2 2 0 0 1 1.939 -1.515h1.439l4 1l3 -2" /><path d="M17 12v9" /><path d="M16 20h2" /></svg>
+                hobbies</a>
         </nav>
     </header>
 
     <main>
         <style type="text/css">
     .avatar {
-        background-image: url('avatar.png');
+        background-image: url('avatars.jpg');
         background-size: cover;
         background-position: center;
         width: 200px;
         height: 200px;
-        border-radius: 50%;
+        border-radius: 5%;
         margin: 0 auto;
         margin-bottom: 20px;
+        animation: avatars 20s infinite linear(0 0%, 0 100%, 1 100%);
+        filter: saturate(1.1) contrast(1.1) drop-shadow(0 0 1rem rgba(0, 0, 0, 0.1));
+    }
+
+    .avatar:hover {
+        animation-play-state: paused;
+        filter: saturate(1.1) contrast(1.1) drop-shadow(0 0 1.2rem rgba(0, 0, 0, 0.2));
+    }
+
+    @keyframes avatars {
+        0% {
+            background-position: 0 0;
+        }
+
+        11.11% {
+            background-position: 0 -200px;
+        }
+
+        22.22% {
+            background-position: 0 -400px;
+        }
+
+        33.33% {
+            background-position: 0 -600px;
+        }
+
+        44.44% {
+            background-position: 0 -800px;
+        }
+
+        55.55% {
+            background-position: 0 -1000px;
+        }
+
+        66.66% {
+            background-position: 0 -1200px;
+        }
+
+        77.77% {
+            background-position: 0 -1400px;
+        }
+
+        88.88% {
+            background-position: 0 -1600px;
+        }
+
+        100% {
+            background-position: 0 0;
+        }
     }
 
     section {
@@ -90,17 +151,30 @@
     }
 
     @keyframes move {
-        25% {
+        16.66% {
             transform: translatey(calc(var(--intro-line-height) * -1));
         }
 
-        50% {
+        33.33% {
             transform: translatey(calc(var(--intro-line-height) * -2));
         }
 
-        75% {
+        50% {
             transform: translatey(calc(var(--intro-line-height) * -3));
         }
+
+        66.66% {
+            transform: translatey(calc(var(--intro-line-height) * -4));
+        }
+
+        83.33% {
+            transform: translatey(calc(var(--intro-line-height) * -5));
+        }
+
+        100% {
+            transform: translatey(0);
+        }
+
     }
 
     ul {
@@ -113,6 +187,7 @@
 </style>
 
 <div class="avatar"></div>
+
 <nav>
     <a href="https://www.linkedin.com/in/morris-frank/">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="24"
@@ -184,20 +259,20 @@
 </section>
 
 <section>
-    I am a
+    I am
     <span class="wheel">
-        <span class="first">AI engineer</span>
-        <span class="second">data-viz specialist</span>
-        <span class="third">consultant</span>
-        <span class="fourth">climber</span>
-        <span class="fifth">runner</span>
-        <span class="sixth">autodidact</span>
+        <span class="first">an AI engineer</span>
+        <span class="second">a data-viz specialist</span>
+        <span class="third">a consultant</span>
+        <span class="fourth">a climber</span>
+        <span class="fifth">a runner</span>
+        <span class="sixth">an autodidact</span>
     </span>
 </section>
 
 <section>
     <p>
-        I try to live life by building
+        I live life by <i>building</i>. For example:
     </p>
     <ul>
         <li>
@@ -229,19 +304,7 @@
                 <path d="M10 8v.01" />
                 <path d="M14 8v.01" />
             </svg>
-            machine learning
-        </li>
-        <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-music" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                <path d="M13 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                <path d="M9 17v-13h10v13" />
-                <path d="M9 8h10" />
-            </svg>
-            music
+            machines
         </li>
         <li>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wood" width="24" height="24"
@@ -282,12 +345,24 @@
             </svg>
             visual art
         </li>
+        <li>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-music" width="24" height="24"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                <path d="M13 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                <path d="M9 17v-13h10v13" />
+                <path d="M9 8h10" />
+            </svg>
+            music
+        </li>
     </ul>
 </section>
 
 <section>
     <p>
-        And explore life in
+        And explore life
     </p>
     <ul>
         <li>
@@ -303,7 +378,7 @@
                 <path
                     d="M5.824 16a3 3 0 0 1 -2.743 -3.69a3 3 0 0 1 .304 -4.833a3 3 0 0 1 4.615 -3.707a3 3 0 0 1 4.614 3.707a3 3 0 0 1 .305 4.833a3 3 0 0 1 -2.919 3.695h-4z" />
             </svg>
-            wilderness
+            in wilderness
         </li>
         <li>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mountain" width="24" height="24"
@@ -313,26 +388,17 @@
                 <path d="M3 20h18l-6.921 -14.612a2.3 2.3 0 0 0 -4.158 0l-6.921 14.612z" />
                 <path d="M7.5 11l2 2.5l2.5 -2.5l2 3l2.5 -2" />
             </svg>
-            summits
+            on summits
         </li>
         <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-abacus" width="24" height="24"
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sparkles" width="24" height="24"
                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
                 stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M5 3v18" />
-                <path d="M19 21v-18" />
-                <path d="M5 7h14" />
-                <path d="M5 15h14" />
-                <path d="M8 13v4" />
-                <path d="M11 13v4" />
-                <path d="M16 13v4" />
-                <path d="M14 5v4" />
-                <path d="M11 5v4" />
-                <path d="M8 5v4" />
-                <path d="M3 21h18" />
+                <path
+                    d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z" />
             </svg>
-            beauty in data
+            in beauty of data
         </li>
         <li>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-movie" width="24" height="24"
@@ -348,7 +414,7 @@
                 <path d="M16 8l4 0" />
                 <path d="M16 16l4 0" />
             </svg>
-            cinema
+            through cinema
         </li>
     </ul>
 </section>

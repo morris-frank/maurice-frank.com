@@ -67,23 +67,18 @@ nav {
   gap: var(--gap-xs);
   justify-content: center;
   margin-bottom: var(--gap-md);
-}
 
-nav a {
-  border: 1px solid var(--black);
-  padding: 0.1rem 0.5rem;
-  text-decoration: none;
-}
+  & a {
+    border: 1px solid var(--black);
+    padding: 0.1rem 0.5rem;
+    text-decoration: none;
+  }
 
-nav a:has(> svg) {
-  padding: 0.2rem;
-  line-height: 0;
-}
-
-nav a.active {
-  border-color: var(--primary);
-  color: var(--white);
-  background: var(--primary);
+  & a.active {
+    border-color: var(--primary);
+    color: var(--white);
+    background: var(--primary);
+  }
 }
 
 footer {
@@ -105,8 +100,23 @@ a:hover {
   cursor: pointer;
 }
 
-p:first-of-type {
-  margin-top: 0;
+li:has(svg),
+a:has(svg),
+p:has(svg),
+h2:has(svg) {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-xs);
+  line-height: 1;
+}
+
+p:has(svg) {
+  gap: var(--gap-md);
+}
+
+p svg:first-child {
+  height: 2.5rem;
+  width: 7.5rem;
 }
 
 h1 {
@@ -114,10 +124,10 @@ h1 {
   font-weight: 200;
   line-height: 1;
   margin: 0 0 1rem 0;
-}
 
-a:has(h1) {
-  text-decoration: none;
+  & a {
+    text-decoration: none;
+  }
 }
 
 h1:empty {
@@ -128,21 +138,22 @@ h2 {
   font-size: 2rem;
   font-weight: 200;
   margin: var(--gap-lg) 0 var(--gap-sm) 0;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 h3,
 h4 {
-  margin-top: 0;
+  margin-top: 2em;
 }
 
 pre {
-  background: var(--white);
   padding: 1rem;
   width: fit-content;
   font-size: 0.8rem;
+  color: var(--grey);
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 img {
@@ -187,15 +198,15 @@ canvas {
   width: max(80vw, 100%);
   align-items: center;
   justify-items: center;
-}
 
-.motion_still_container h3 {
-  font-size: 4em;
-}
+  & h3 {
+    font-size: 4em;
+  }
 
-.motion_still_container video {
-  border: none;
-  max-width: 100%;
+  & video {
+    border: none;
+    max-width: 100%;
+  }
 }
 
 .map {
@@ -209,14 +220,14 @@ canvas {
   margin-right: -50vw;
 }
 
-.projects {
+.boxes {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: var(--gap-xs);
   align-items: start;
 }
 
-.project {
+.box {
   font-size: 0.9rem;
   border-radius: 5px;
   border: 1px solid var(--grey-light);
@@ -225,16 +236,20 @@ canvas {
   display: flex;
   flex-direction: column;
   gap: var(--gap-xs);
+
+  & h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  & pre {
+    margin: 0;
+    padding: 0;
+  }
 }
 
-.project h3 {
-  margin: 0;
-  font-size: 1.2rem;
-}
 
-.project pre {
-  margin: 0;
-  padding: 0;
-  color: var(--grey);
-  font-size: 0.8rem;
+/* ------ stupid fixes */
+#automa-palette {
+  display: none;
 }
