@@ -15,7 +15,12 @@ LAYOUT = (CONTENT_DIR / "__layout.html").read_text()
 with open(CONTENT_DIR / "main.css", "rb") as f:
     CSSHASH = hashlib.file_digest(f, "sha256").hexdigest()
     CSSHASH = b64encode(bytes.fromhex(CSSHASH)).decode()
-    CSSHASH = f"sha256-{CSSHASH}"
+
+for cssFile in CONTENT_DIR.glob("*.css"):
+    if cssFile.stem != "main":
+        cssFile.unlink()
+CONTENT_DIR.joinpath("main.css").with_stem(CSSHASH).write_text(CONTENT_DIR.joinpath("main.css").read_text())
+
 
 HEAD_FILE = "head.html"
 CONTENT_FILE = "content.html"
@@ -32,7 +37,7 @@ def fill_layout(slug: str, layout: str, content: str, head: str) -> str:
     pagetitle = f"{slug.replace('-', ' ').title()} - {BASE_URL}"
     layout = layout.replace("{{PAGETITLE}}", pagetitle)
 
-    layout = layout.replace("{{CSSHASH}}", "" if DEV else f"integrity=\"{CSSHASH}\" crossorigin=\"anonymous\"")
+    layout = layout.replace("{{CSSHASH}}", CSSHASH)
     layout = layout.replace("{{ROOT}}", "/docs/" if DEV else "/")
 
     layout = layout.replace(f"href=\"/{slug}\"", f"href=\"/{slug}\" class=\"active\" ")
