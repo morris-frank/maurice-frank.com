@@ -235,7 +235,8 @@ canvas {
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-xs);
+  align-items: start;
+  gap: var(--gap-sm);
 
   & h3 {
     margin: 0;
@@ -245,6 +246,13 @@ canvas {
   & pre {
     margin: 0;
     padding: 0;
+  }
+
+  & .aspace {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
