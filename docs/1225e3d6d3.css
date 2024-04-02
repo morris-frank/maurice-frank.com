@@ -230,7 +230,7 @@ canvas {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: var(--gap-xs);
-  align-items: start;
+  align-items: stretch;
 }
 
 .box {
@@ -243,6 +243,12 @@ canvas {
   flex-direction: column;
   align-items: start;
   gap: var(--gap-sm);
+  justify-content: space-between;
+
+  &:hover {
+    border-color: var(--grey);
+    box-shadow: 0 0 0.5rem 0 hsl(0, 0%, 90%);
+  }
 
   & h3 {
     margin: 0;
@@ -252,6 +258,10 @@ canvas {
   & pre {
     margin: 0;
     padding: 0;
+  }
+
+  & nav {
+    margin: 0;
   }
 
   & .aspace {
