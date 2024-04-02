@@ -41,6 +41,7 @@ html {
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
   color: var(--black);
   display: flex;
   flex-direction: column;
@@ -55,6 +56,7 @@ body {
   box-shadow: 0 0 13rem 0 var(--black);
   padding: var(--gap-md) var(--gap-md) var(--gap-xs) var(--gap-md);
   gap: var(--gap-md);
+  overflow-y: scroll;
 }
 
 header h1 {
@@ -108,6 +110,10 @@ h2:has(svg) {
   align-items: center;
   gap: var(--gap-xs);
   line-height: 1;
+}
+
+p {
+  margin-top: 0.2em;
 }
 
 p:has(svg) {
@@ -255,7 +261,6 @@ canvas {
     justify-content: space-between;
   }
 }
-
 
 /* ------ stupid fixes */
 #automa-palette {

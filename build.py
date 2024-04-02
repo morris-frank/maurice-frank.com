@@ -13,8 +13,7 @@ CONTENT_DIR = Path("./docs")
 LAYOUT = (CONTENT_DIR / "__layout.html").read_text()
 
 with open(CONTENT_DIR / "main.css", "rb") as f:
-    CSSHASH = hashlib.file_digest(f, "sha256").hexdigest()
-    CSSHASH = b64encode(bytes.fromhex(CSSHASH)).decode()
+    CSSHASH = hashlib.file_digest(f, "sha256").hexdigest()[:10]
 
 for cssFile in CONTENT_DIR.glob("*.css"):
     if cssFile.stem != "main":
