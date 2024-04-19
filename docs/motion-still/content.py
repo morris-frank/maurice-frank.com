@@ -9,7 +9,7 @@ def generate():
     <div class="motion_still_container">
     """
 
-    bU = "https://f003.backblazeb2.com/file/motionstills/"
+    bU = "https://cdn.maurice-frank.com/motionstills/"
     stills = json.loads(Path("motionstills.json").read_text())
 
     for year in stills:
