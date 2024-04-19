@@ -69,6 +69,7 @@ nav {
   gap: var(--gap-xs);
   justify-content: center;
   margin-bottom: var(--gap-md);
+  flex-wrap: wrap;
 
   & a {
     border: 1px solid var(--black);
