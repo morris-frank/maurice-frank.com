@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#a9384a">
     <meta name="description" name="The personal website of Maurice Frank.">
-    <meta property="og:image" content="/avatar.png" />
-    <link rel="stylesheet" href="/1225e3d6d3.css">
-    <link rel="shortcut icon" type="image/png" href="/avatar.png" />
+    <link rel="stylesheet" href="/e1310c5de5.css">
 
     <!-- Leaflet -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"
@@ -71,7 +69,7 @@
         <div id="map" class="map"></div>
 <script>
 window.addEventListener('load', function() {
-    let tileserver = "https://tiles.morris-frank.com/file/osm-tiles/";
+    let tileserver = "https://cdn.maurice-frank.com/osm-tiles/";
     let basemaps = {
         "Topology": L.tileLayer(tileserver + 'topo/{z}/{x}/{y}.png',{maxZoom:16}),
         "Alpine club": L.tileLayer(tileserver + 'avk/{z}/{x}/{y}.png',{maxZoom:16})
