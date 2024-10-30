@@ -1,9 +1,6 @@
 import hashlib
-import json
-from pathlib import Path
-from base64 import b64encode, b64decode
-
 import os
+from pathlib import Path
 
 BASE_URL = "maurice-frank.com"
 
@@ -39,7 +36,7 @@ def fill_layout(slug: str, layout: str, content: str, head: str) -> str:
     layout = layout.replace("{{CSSHASH}}", CSSHASH)
     layout = layout.replace("{{ROOT}}", "/docs/" if DEV else "/")
 
-    layout = layout.replace(f"href=\"/{slug}\"", f"href=\"/{slug}\" class=\"active\" ")
+    layout = layout.replace(f'href="/{slug}"', f'href="/{slug}" class="active" ')
     return layout
 
 
