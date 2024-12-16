@@ -12,3 +12,7 @@ node_modules/
 
 resources/
 *mp3
+
+index.html
+!main.css
+*.css
