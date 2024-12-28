@@ -1,6 +1,5 @@
 *~
 logs/
-.vscode/
 .sass-cache/
 node_modules/
 *.log
@@ -14,5 +13,3 @@ resources/
 *mp3
 
 index.html
-!main.css
-*.css
