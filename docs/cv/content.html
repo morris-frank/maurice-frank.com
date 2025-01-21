@@ -43,14 +43,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
 
     & img {
       width: 200px;
       filter: grayscale(100%) contrast(0) brightness(0.7);
+      padding: 1rem;
 
       &:hover {
         filter: none;
+
+        &.soilytix {
+          background-color: #29332d;
+        }
       }
     }
   }
@@ -58,13 +63,13 @@
 
 <div class="cv-logos">
   <a href="https://www.hummingbird-diagnostics.com/">
-    <img src="/cv/hbdx.png" alt="Hummingbird Diagnostics" />
+    <img src="/cv/hbdx.png" alt="Hummingbird Diagnostics" class="hbdx" />
   </a>
   <a href="https://www.soilytix.com/">
-    <img src="/cv/soilytix.webp" alt="Soilytix" />
+    <img src="/cv/soilytix.webp" alt="Soilytix" class="soilytix" />
   </a>
   <a href="https://www.muno.ai/">
-    <img src="/cv/muno.svg" alt="Muno" />
+    <img src="/cv/muno.svg" alt="Muno" class="muno" />
   </a>
 </div>
 
