@@ -39,10 +39,10 @@
   }
 
   .cv-logos {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
     align-items: center;
-    gap: 2rem;
 
     & img {
       width: 200px;
@@ -75,21 +75,33 @@
 </style>
 
 <div class="cv-logos">
-  <a href="https://www.hummingbird-diagnostics.com/">
-    <img src="/cv/hbdx.png" alt="Hummingbird Diagnostics" class="hbdx" />
+  <a href="https://www.peau.ai/">
+    <img src="/cv/peau.svg" alt="Peau" class="peau" />
   </a>
   <a href="https://www.soilytix.com/">
     <img src="/cv/soilytix.webp" alt="Soilytix" class="soilytix" />
   </a>
+  <a href="https://www.hummingbird-diagnostics.com/">
+    <img src="/cv/hbdx.png" alt="Hummingbird Diagnostics" class="hbdx" />
+  </a>
   <a href="https://www.muno.ai/">
     <img src="/cv/muno.svg" alt="Muno" class="muno" />
-  </a>
-  <a href="https://www.peau.ai/">
-    <img src="/cv/peau.svg" alt="Peau" class="peau" />
   </a>
 </div>
 
 <h2>Work</h2>
+<div class="cv-entry">
+  <div>
+    <a href="https://peau.ai/">Peau</a>
+    <time>since 2025</time>
+  </div>
+  <h3>Founding Engineer</h3>
+  <p>
+    <i>... in the making ...</i>
+  </p>
+  <pre>Flutter / NextJS</pre>
+</div>
+
 <div class="cv-entry">
   <div>
     <a href="https://muno.ai/">Muno</a>
