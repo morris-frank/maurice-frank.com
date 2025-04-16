@@ -481,13 +481,13 @@
 
         card.innerHTML = `
             <h3>${name}</h3>
-            <pre data-color="#${hexStr}">#${hexStr}</pre>
-            <pre data-color="${oklchStr}">${oklchStr}</pre>
+            <pre>${oklchStr}</pre>
+            <pre>${hexStr}</pre>
         `;
 
         document.querySelectorAll('pre').forEach(el => {
             el.addEventListener('click', async () => {
-                const success = await copyToClipboard(el.dataset.color);
+                const success = await copyToClipboard(el.textContent);
                 if (success) {
                     el.classList.add('copied');
                     setTimeout(() => el.classList.remove('copied'), 1500);
