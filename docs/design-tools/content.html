@@ -278,8 +278,7 @@
         }
     }
 
-    function createColorCard(name, l, c, h) {
-        const card = document.createElement('section');
+    function createColorCard(name, l, c, h, hide = false) {
 
         const oklchStr = `oklch(${l}% ${c}% ${h})`;
         const hexStr = oklchToHex(l, c, h);
@@ -289,15 +288,18 @@
 
         //   r.style.setProperty('--blue', 'lightblue');
 
-        card.style.backgroundColor = oklchStr;
-        card.style.gridArea = name;
-        card.style.color = getContrastColor(l, c, h);
-        card.innerHTML = `
+        if (!hide) {
+            const card = document.createElement('section');
+            card.style.backgroundColor = oklchStr;
+            card.style.gridArea = name;
+            card.style.color = getContrastColor(l, c, h);
+            card.innerHTML = `
             <h3>${name}</h3>
             <pre>${oklchStr}</pre>
             <pre>${hexStr}</pre>
         `;
-        document.getElementById('color-cards').appendChild(card);
+            document.getElementById('color-cards').appendChild(card);
+        }
     }
 
 
@@ -314,7 +316,7 @@
         document.getElementById('lightColorScheme').innerHTML = 'const kLightScheme = ColorScheme(\n  brightness: Brightness.light,\n';
         document.getElementById('darkColorScheme').innerHTML = 'const kDarkScheme = ColorScheme(\n  brightness: Brightness.dark,\n';
 
-        createColorCard('surfaceTint', 74, 43, primary);
+        createColorCard('surfaceTint', 74, 43, primary, true);
         createColorCard('primary', 74, 43, primary);
         createColorCard('onPrimary', 24, 0, hueDiff(primary, 90 - 53));
         createColorCard('primaryContainer', 81, 22, primary);
