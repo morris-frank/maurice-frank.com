@@ -1,0 +1,267 @@
+:root {
+  /* Colors based on the image */
+  --primary: #6750a4;
+  --on-primary: #ffffff;
+  --primary-container: #e9ddff;
+  --on-primary-container: #22005d;
+  --secondary: #625b71;
+  --on-secondary: #ffffff;
+  --secondary-container: #e8def8;
+  --on-secondary-container: #1e192b;
+  --tertiary: #7e5260;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #ffd9e3;
+  --on-tertiary-container: #31111d;
+  --error: #b3261e;
+  --on-error: #ffffff;
+  --error-container: #f9dedc;
+  --on-error-container: #410e0b;
+  --surface: #fffbff;
+  --surface-dim: #ded8e1;
+  --surface-bright: #fdf8ff;
+  --inverse-surface: #313033;
+  --inverse-primary: #d0bcff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+.design-system {
+  display: grid;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Common styles for all items */
+.design-system > .row > div {
+  padding: 1rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+}
+
+/* Row layouts */
+.row {
+  display: grid;
+  gap: 1rem;
+}
+
+/* First four rows: 4 columns */
+.colors,
+.on-colors,
+.containers,
+.on-containers {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Fixed variants: 3 columns */
+.fixed-variants {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.fixed-group {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.fixed-group > div:nth-child(3),
+.fixed-group > div:nth-child(4) {
+  grid-column: 1 / -1;
+}
+
+/* Surface variants: split into two sections */
+.surface-variants {
+  grid-template-columns: 2fr 1fr;
+}
+
+.surface-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.inverse-section {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Surface containers: 5 columns */
+.surface-containers {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* Bottom row: flexible columns */
+.bottom {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+/* Color styles */
+.primary {
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+.on-primary {
+  background-color: var(--on-primary);
+  color: var(--primary);
+}
+.primary-container {
+  background-color: var(--primary-container);
+  color: var(--on-primary-container);
+}
+.on-primary-container {
+  background-color: var(--on-primary-container);
+  color: var(--primary-container);
+}
+
+.secondary {
+  background-color: var(--secondary);
+  color: var(--on-secondary);
+}
+.on-secondary {
+  background-color: var(--on-secondary);
+  color: var(--secondary);
+}
+.secondary-container {
+  background-color: var(--secondary-container);
+  color: var(--on-secondary-container);
+}
+.on-secondary-container {
+  background-color: var(--on-secondary-container);
+  color: var(--secondary-container);
+}
+
+.tertiary {
+  background-color: var(--tertiary);
+  color: var(--on-tertiary);
+}
+.on-tertiary {
+  background-color: var(--on-tertiary);
+  color: var(--tertiary);
+}
+.tertiary-container {
+  background-color: var(--tertiary-container);
+  color: var(--on-tertiary-container);
+}
+.on-tertiary-container {
+  background-color: var(--on-tertiary-container);
+  color: var(--tertiary-container);
+}
+
+.error {
+  background-color: var(--error);
+  color: var(--on-error);
+}
+.on-error {
+  background-color: var(--on-error);
+  color: var(--error);
+}
+.error-container {
+  background-color: var(--error-container);
+  color: var(--on-error-container);
+}
+.on-error-container {
+  background-color: var(--on-error-container);
+  color: var(--error-container);
+}
+
+/* Surface variants */
+.surface {
+  background-color: var(--surface);
+  color: #1c1b1f;
+}
+.surface-dim {
+  background-color: var(--surface-dim);
+  color: #1c1b1f;
+}
+.surface-bright {
+  background-color: var(--surface-bright);
+  color: #1c1b1f;
+}
+.inverse-surface {
+  background-color: var(--inverse-surface);
+  color: #e6e1e5;
+}
+.inverse-primary {
+  background-color: var(--inverse-primary);
+  color: #381e72;
+}
+
+/* Surface containers */
+.surface-container-lowest {
+  background-color: #f7f2fa;
+}
+.surface-container-low {
+  background-color: #f3edf7;
+}
+.surface-container {
+  background-color: #fffbfe;
+}
+.surface-container-high {
+  background-color: #ece6f0;
+}
+.surface-container-highest {
+  background-color: #e6e0e9;
+}
+
+/* Bottom row special items */
+.outline {
+  background-color: #79747e;
+  color: white;
+}
+.outline-variant {
+  background-color: #cac4d0;
+  color: #49454f;
+}
+.scrim {
+  background-color: #000000;
+  color: white;
+}
+.shadow {
+  background-color: #000000;
+  color: white;
+}
+
+/* Fixed variants */
+.primary-fixed,
+.primary-fixed-dim {
+  background-color: var(--primary);
+  color: white;
+}
+.secondary-fixed,
+.secondary-fixed-dim {
+  background-color: var(--secondary);
+  color: white;
+}
+.tertiary-fixed,
+.tertiary-fixed-dim {
+  background-color: var(--tertiary);
+  color: white;
+}
+
+.on-primary-fixed,
+.on-primary-fixed-variant {
+  background-color: var(--on-primary);
+  color: var(--primary);
+}
+.on-secondary-fixed,
+.on-secondary-fixed-variant {
+  background-color: var(--on-secondary);
+  color: var(--secondary);
+}
+.on-tertiary-fixed,
+.on-tertiary-fixed-variant {
+  background-color: var(--on-tertiary);
+  color: var(--tertiary);
+}

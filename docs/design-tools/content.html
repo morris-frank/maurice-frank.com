@@ -121,8 +121,6 @@
             "onSurface onSurfaceVariant outline outlineVariant . . scrim shadow";
         gap: 0.4rem;
 
-
-
         section {
             padding: 1rem;
             border-radius: 8px;
@@ -140,189 +138,6 @@
                 color: gray;
                 mix-blend-mode: luminosity;
             }
-
-
-
-            &.primary {
-                grid-area: primary;
-            }
-
-            &.onPrimary {
-                grid-area: onPrimary;
-            }
-
-            &.primaryContainer {
-                grid-area: primaryContainer;
-            }
-
-            &.onPrimaryContainer {
-                grid-area: onPrimaryContainer;
-            }
-
-            &.primaryFixed {
-                grid-area: primaryFixed;
-            }
-
-            &.primaryFixedDim {
-                grid-area: primaryFixedDim;
-            }
-
-            &.onPrimaryFixed {
-                grid-area: onPrimaryFixed;
-            }
-
-            &.onPrimaryFixedVariant {
-                grid-area: onPrimaryFixedVariant;
-            }
-
-            &.inversePrimary {
-                grid-area: inversePrimary;
-            }
-
-            &.secondary {
-                grid-area: secondary;
-            }
-
-            &.onSecondary {
-                grid-area: onSecondary;
-            }
-
-            &.secondaryContainer {
-                grid-area: secondaryContainer;
-            }
-
-            &.onSecondaryContainer {
-                grid-area: onSecondaryContainer;
-            }
-
-            &.secondaryFixed {
-                grid-area: secondaryFixed;
-            }
-
-            &.secondaryFixedDim {
-                grid-area: secondaryFixedDim;
-            }
-
-            &.onSecondaryFixed {
-                grid-area: onSecondaryFixed;
-            }
-
-            &.onSecondaryFixedVariant {
-                grid-area: onSecondaryFixedVariant;
-            }
-
-            &.tertiary {
-                grid-area: tertiary;
-            }
-
-            &.onTertiary {
-                grid-area: onTertiary;
-            }
-
-            &.tertiaryContainer {
-                grid-area: tertiaryContainer;
-            }
-
-            &.onTertiaryContainer {
-                grid-area: onTertiaryContainer;
-            }
-
-            &.tertiaryFixed {
-                grid-area: tertiaryFixed;
-            }
-
-            &.tertiaryFixedDim {
-                grid-area: tertiaryFixedDim;
-            }
-
-            &.onTertiaryFixed {
-                grid-area: onTertiaryFixed;
-            }
-
-            &.onTertiaryFixedVariant {
-                grid-area: onTertiaryFixedVariant;
-            }
-
-            &.error {
-                grid-area: error;
-            }
-
-            &.onError {
-                grid-area: onError;
-            }
-
-            &.errorContainer {
-                grid-area: errorContainer;
-            }
-
-            &.onErrorContainer {
-                grid-area: onErrorContainer;
-            }
-
-            &.surfaceDim {
-                grid-area: surfaceDim;
-            }
-
-            &.surface {
-                grid-area: surface;
-            }
-
-            &.surfaceBright {
-                grid-area: surfaceBright;
-            }
-
-            &.surfaceContainerLowest {
-                grid-area: surfaceContainerLowest;
-            }
-
-            &.surfaceContainerLow {
-                grid-area: surfaceContainerLow;
-            }
-
-            &.surfaceContainer {
-                grid-area: surfaceContainer;
-            }
-
-            &.surfaceContainerHigh {
-                grid-area: surfaceContainerHigh;
-            }
-
-            &.surfaceContainerHighest {
-                grid-area: surfaceContainerHighest;
-            }
-
-            &.inverseSurface {
-                grid-area: inverseSurface;
-            }
-
-            &.inverseOnSurface {
-                grid-area: inverseOnSurface;
-            }
-
-            &.onSurface {
-                grid-area: onSurface;
-            }
-
-            &.onSurfaceVariant {
-                grid-area: onSurfaceVariant;
-            }
-
-            &.outline {
-                grid-area: outline;
-            }
-
-            &.outlineVariant {
-                grid-area: outlineVariant;
-            }
-
-            &.scrim {
-                grid-area: scrim;
-            }
-
-            &.shadow {
-                grid-area: shadow;
-            }
-
         }
     }
 </style>
@@ -472,8 +287,10 @@
         document.getElementById('lightColorScheme').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
         document.getElementById('darkColorScheme').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
 
-        card.className = name;
+        //   r.style.setProperty('--blue', 'lightblue');
+
         card.style.backgroundColor = oklchStr;
+        card.style.gridArea = name;
         card.style.color = getContrastColor(l, c, h);
         card.innerHTML = `
             <h3>${name}</h3>
