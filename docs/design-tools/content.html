@@ -98,7 +98,8 @@
 
     }
 
-    #flutter-code {
+    #lightColorScheme,
+    #darkColorScheme {
         max-height: 15rem;
         overflow: scroll;
         margin: 0 auto;
@@ -349,9 +350,10 @@
 <div id="color-cards"></div>
 
 <h2>Flutter Code</h2>
-<pre id="flutter-code">
-    <code></code>
-</pre>
+<div style="display: flex; gap: 2rem; justify-content: center;">
+    <pre id="lightColorScheme"></pre>
+    <pre id="darkColorScheme"></pre>
+</div>
 
 <script>
     const getContrastColor = (l, c, h) => {
@@ -421,7 +423,7 @@
             return hex.length === 1 ? "0" + hex : hex;
         };
 
-        return `#${toHex(R)}${toHex(G)}${toHex(B)}`;
+        return `${toHex(R)}${toHex(G)}${toHex(B)}`;
     }
 
 </script>
@@ -471,15 +473,15 @@
         const hexStr = oklchToHex(l, c, h);
         const textColor = getContrastColor(l, c, h);
 
-        document.querySelector('#flutter-code code').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
-
+        document.getElementById('lightColorScheme').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
+        document.getElementById('darkColorScheme').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
         card.className = name;
         card.style.backgroundColor = oklchStr;
         card.style.color = textColor;
 
         card.innerHTML = `
             <h3>${name}</h3>
-            <pre data-color="${hexStr}">${hexStr}</pre>
+            <pre data-color="#${hexStr}">#${hexStr}</pre>
             <pre data-color="${oklchStr}">${oklchStr}</pre>
         `;
 
@@ -507,8 +509,8 @@
             return;
         }
         document.getElementById('color-cards').innerHTML = '';
-        document.querySelector('#flutter-code code').innerHTML = 'import "package:flutter/material.dart";\n\n' +
-            'const kLightScheme = ColorScheme(\n';
+        document.getElementById('lightColorScheme').innerHTML = 'const kLightScheme = ColorScheme(\n  brightness: Brightness.light,\n';
+        document.getElementById('darkColorScheme').innerHTML = 'const kDarkScheme = ColorScheme(\n  brightness: Brightness.dark,\n';
 
         createColorCard('surfaceTint', 74, 43, primary);
         createColorCard('primary', 74, 43, primary);
@@ -561,6 +563,7 @@
         createColorCard('shadow', 0, 0, 0);
         createColorCard('scrim', 0, 0, 0);
 
-        document.querySelector('#flutter-code code').innerHTML += ');';
+        document.getElementById('lightColorScheme').innerHTML += ');';
+        document.getElementById('darkColorScheme').innerHTML += ');';
     }
 </script>
