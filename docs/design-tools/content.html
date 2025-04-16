@@ -426,9 +426,6 @@
         return `${toHex(R)}${toHex(G)}${toHex(B)}`;
     }
 
-</script>
-
-<script>
     const state = new Proxy({}, {
         set(target, prop, value) {
             target[prop] = value;
@@ -471,30 +468,18 @@
 
         const oklchStr = `oklch(${l}% ${c}% ${h})`;
         const hexStr = oklchToHex(l, c, h);
-        const textColor = getContrastColor(l, c, h);
 
         document.getElementById('lightColorScheme').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
         document.getElementById('darkColorScheme').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
+
         card.className = name;
         card.style.backgroundColor = oklchStr;
-        card.style.color = textColor;
-
+        card.style.color = getContrastColor(l, c, h);
         card.innerHTML = `
             <h3>${name}</h3>
             <pre>${oklchStr}</pre>
             <pre>${hexStr}</pre>
         `;
-
-        document.querySelectorAll('pre').forEach(el => {
-            el.addEventListener('click', async () => {
-                const success = await copyToClipboard(el.textContent);
-                if (success) {
-                    el.classList.add('copied');
-                    setTimeout(() => el.classList.remove('copied'), 1500);
-                }
-            });
-        });
-
         document.getElementById('color-cards').appendChild(card);
     }
 
@@ -565,5 +550,15 @@
 
         document.getElementById('lightColorScheme').innerHTML += ');';
         document.getElementById('darkColorScheme').innerHTML += ');';
+
+        document.querySelectorAll('pre').forEach(el => {
+            el.addEventListener('click', async () => {
+                const success = await copyToClipboard(el.textContent);
+                if (success) {
+                    el.classList.add('copied');
+                    setTimeout(() => el.classList.remove('copied'), 1500);
+                }
+            });
+        });
     }
 </script>
