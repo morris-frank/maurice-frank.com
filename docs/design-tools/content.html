@@ -105,39 +105,23 @@
         margin: 0 auto;
     }
 
-    #color-cards {
-        display: grid;
-        grid-template-columns: repeat(8, 1fr);
-        grid-template-areas:
-            "primary primary secondary secondary tertiary tertiary error error"
-            "onPrimary onPrimary onSecondary onSecondary onTertiary onTertiary onError onError"
-            "primaryContainer primaryContainer secondaryContainer secondaryContainer tertiaryContainer tertiaryContainer errorContainer errorContainer"
-            "onPrimaryContainer onPrimaryContainer onSecondaryContainer onSecondaryContainer onTertiaryContainer onTertiaryContainer onErrorContainer onErrorContainer"
-            "primaryFixed primaryFixedDim secondaryFixed secondaryFixedDim tertiaryFixed tertiaryFixedDim . ."
-            "onPrimaryFixed onPrimaryFixed onSecondaryFixed onSecondaryFixed onTertiaryFixed onTertiaryFixed inverseSurface inverseSurface"
-            "onPrimaryFixedVariant onPrimaryFixedVariant onSecondaryFixedVariant onSecondaryFixedVariant onTertiaryFixedVariant onTertiaryFixedVariant inverseOnSurface inverseOnSurface"
-            "surfaceDim surfaceDim surface surface surfaceBright surfaceBright inversePrimary inversePrimary"
-            "surfaceContainerLowest surfaceContainerLow surfaceContainer surfaceContainerHigh surfaceContainerHighest . . ."
-            "onSurface onSurfaceVariant outline outlineVariant . . scrim shadow";
-        gap: 0.4rem;
 
-        section {
-            padding: 1rem;
-            border-radius: 8px;
+    section {
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        min-width: 0;
+        overflow: scroll;
+
+        h3 {
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            min-width: 0;
-            overflow: scroll;
-
-            h3 {
-                margin: 0;
-                font-size: 0.7rem;
-                text-wrap: nowrap;
-                color: gray;
-                mix-blend-mode: luminosity;
-            }
+            font-size: 0.7rem;
+            text-wrap: nowrap;
+            color: gray;
+            mix-blend-mode: luminosity;
         }
     }
 </style>
@@ -162,13 +146,214 @@
     </div>
 </div>
 
-<div id="color-cards"></div>
+<div id="lightColorScheme">
+    <main style="display: flex; flex-direction: row; gap: 2rem;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <div>
+                <section class="primary"></section>
+                <section class="onPrimary"></section>
+            </div>
+            <div>
+                <section class="secondary"></section>
+                <section class="onSecondary"></section>
+            </div>
+            <div>
+                <section class="tertiary"></section>
+                <section class="onTertiary"></section>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <div>
+                <section class="primaryContainer"></section>
+                <section class="onPrimaryContainer"></section>
+            </div>
+            <div>
+                <section class="secondaryContainer"></section>
+                <section class="onSecondaryContainer"></section>
+            </div>
+            <div>
+                <section class="tertiaryContainer"></section>
+                <section class="onTertiaryContainer"></section>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                    <section class="primaryFixed"></section>
+                    <section class="primaryFixedDim"></section>
+                </div>
+                <section class="onPrimaryFixed"></section>
+                <section class="onPrimaryFixedVariant"></section>
+            </div>
+            <div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                    <section class="secondaryFixed"></section>
+                    <section class="secondaryFixedDim"></section>
+                </div>
+                <section class="onSecondaryFixed"></section>
+                <section class="onSecondaryFixedVariant"></section>
+            </div>
+            <div></div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                <section class="tertiaryFixed"></section>
+                <section class="tertiaryFixedDim"></section>
+            </div>
+            <section class="onTertiaryFixed"></section>
+            <section class="onTertiaryFixedVariant"></section>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+            <section class="surfaceDim"></section>
+            <section class="surface"></section>
+            <section class="surfaceBright"></section>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr);">
+            <section class="surfaceContainerLowest"></section>
+            <section class="surfaceContainerLow"></section>
+            <section class="surfaceContainer"></section>
+            <section class="surfaceContainerHigh"></section>
+            <section class="surfaceContainerHighest"></section>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr);">
+            <section class="onSurface"></section>
+            <section class="onSurfaceVariant"></section>
+            <section class="outline"></section>
+            <section class="outlineVariant"></section>
+        </div>
+    </main>
+    <aside style="display: flex; flex-direction: row; justify-content: space-between;">
+        <div style="display: flex; flex-direction: row;  gap: 1rem;">
+            <div>
+                <section class="error"></section>
+                <section class="onError"></section>
+            </div>
+            <div>
+                <section class="errorContainer"></section>
+                <section class="onErrorContainer"></section>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: row; gap: 2rem;">
+            <div>
+                <section class="inverseSurface"></section>
+                <section class="inverseOnSurface"></section>
+                <section class="inversePrimary"></section>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                <section class="scrim"></section>
+                <section class="shadow"></section>
+            </div>
+        </div>
+    </aside>
+</div>
+
+
+<div id="lightColorScheme">
+    <main style="display: flex; flex-direction: row; gap: 2rem;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <div>
+                <section class="primary"></section>
+                <section class="onPrimary"></section>
+            </div>
+            <div>
+                <section class="secondary"></section>
+                <section class="onSecondary"></section>
+            </div>
+            <div>
+                <section class="tertiary"></section>
+                <section class="onTertiary"></section>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <div>
+                <section class="primaryContainer"></section>
+                <section class="onPrimaryContainer"></section>
+            </div>
+            <div>
+                <section class="secondaryContainer"></section>
+                <section class="onSecondaryContainer"></section>
+            </div>
+            <div>
+                <section class="tertiaryContainer"></section>
+                <section class="onTertiaryContainer"></section>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                    <section class="primaryFixed"></section>
+                    <section class="primaryFixedDim"></section>
+                </div>
+                <section class="onPrimaryFixed"></section>
+                <section class="onPrimaryFixedVariant"></section>
+            </div>
+            <div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                    <section class="secondaryFixed"></section>
+                    <section class="secondaryFixedDim"></section>
+                </div>
+                <section class="onSecondaryFixed"></section>
+                <section class="onSecondaryFixedVariant"></section>
+            </div>
+            <div></div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                <section class="tertiaryFixed"></section>
+                <section class="tertiaryFixedDim"></section>
+            </div>
+            <section class="onTertiaryFixed"></section>
+            <section class="onTertiaryFixedVariant"></section>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+            <section class="surfaceDim"></section>
+            <section class="surface"></section>
+            <section class="surfaceBright"></section>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr);">
+            <section class="surfaceContainerLowest"></section>
+            <section class="surfaceContainerLow"></section>
+            <section class="surfaceContainer"></section>
+            <section class="surfaceContainerHigh"></section>
+            <section class="surfaceContainerHighest"></section>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr);">
+            <section class="onSurface"></section>
+            <section class="onSurfaceVariant"></section>
+            <section class="outline"></section>
+            <section class="outlineVariant"></section>
+        </div>
+    </main>
+    <aside style="display: flex; flex-direction: row; justify-content: space-between;">
+        <div style="display: flex; flex-direction: row;  gap: 1rem;">
+            <div>
+                <section class="error"></section>
+                <section class="onError"></section>
+            </div>
+            <div>
+                <section class="errorContainer"></section>
+                <section class="onErrorContainer"></section>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: row; gap: 2rem;">
+            <div>
+                <section class="inverseSurface"></section>
+                <section class="inverseOnSurface"></section>
+                <section class="inversePrimary"></section>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                <section class="scrim"></section>
+                <section class="shadow"></section>
+            </div>
+        </div>
+    </aside>
+</div>
 
 <h2>Flutter Code</h2>
 <div style="display: flex; gap: 2rem; justify-content: center;">
-    <pre id="lightColorScheme"></pre>
-    <pre id="darkColorScheme"></pre>
+    <pre id="lightColorSchemeCode"></pre>
+    <pre id="darkColorSchemeCode"></pre>
 </div>
+
+
 
 <script>
     const getContrastColor = (l, c, h) => {
@@ -278,26 +463,21 @@
         }
     }
 
-    function createColorCard(name, l, c, h) {
-
+    function updateColor(scheme, name, l, c, h) {
         const oklchStr = `oklch(${l}% ${c}% ${h})`;
         const hexStr = oklchToHex(l, c, h);
 
-        document.getElementById('lightColorScheme').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
-        document.getElementById('darkColorScheme').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
+        document.getElementById('lightColorSchemeCode').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
+        document.getElementById('darkColorSchemeCode').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
 
-        //   r.style.setProperty('--blue', 'lightblue');
-
-        const card = document.createElement('section');
+        const card = document.querySelector(`#${scheme}ColorScheme .${name}`);
         card.style.backgroundColor = oklchStr;
-        card.style.gridArea = name;
         card.style.color = getContrastColor(l, c, h);
         card.innerHTML = `
             <h3>${name}</h3>
             <pre>${oklchStr}</pre>
             <pre>${hexStr}</pre>
         `;
-        document.getElementById('color-cards').appendChild(card);
     }
 
 
@@ -310,62 +490,121 @@
             tertiary === null || tertiary === undefined) {
             return;
         }
-        document.getElementById('color-cards').innerHTML = '';
-        document.getElementById('lightColorScheme').innerHTML = 'const kLightScheme = ColorScheme(\n  brightness: Brightness.light,\n  surfaceTint: Colors.transparent,\n';
-        document.getElementById('darkColorScheme').innerHTML = 'const kDarkScheme = ColorScheme(\n  brightness: Brightness.dark,\n  surfaceTint: Colors.transparent,\n';
+        document.getElementById('lightColorSchemeCode').innerHTML = 'const kLightScheme = ColorScheme(\n  brightness: Brightness.light,\n  surfaceTint: Colors.transparent,\n';
+        document.getElementById('darkColorSchemeCode').innerHTML = 'const kDarkScheme = ColorScheme(\n  brightness: Brightness.dark,\n  surfaceTint: Colors.transparent,\n';
 
-        createColorCard('primary', 74, 43, primary);
-        createColorCard('onPrimary', 24, 0, hueDiff(primary, 90 - 53));
-        createColorCard('primaryContainer', 81, 22, primary);
-        createColorCard('onPrimaryContainer', 44, 29, hueDiff(primary, 50 - 53));
-        createColorCard('primaryFixed', 81, 26, hueDiff(primary, 297 - 53));
-        createColorCard('onPrimaryFixed', 22, 24, hueDiff(primary, 292 - 53));
-        createColorCard('primaryFixedDim', 72, 26, hueDiff(primary, 297 - 53));
-        createColorCard('onPrimaryFixedVariant', 35, 24, hueDiff(primary, 294 - 53));
-        createColorCard('inversePrimary', 84, 23, hueDiff(primary, 298 - 53));
+        updateColor('light', 'primary', 74, 43, primary);
+        updateColor('light', 'secondary', 74, 38, secondary);
+        updateColor('light', 'tertiary', 74, 38, tertiary);
+        updateColor('light', 'onPrimary', 24, 0, hueDiff(primary, 90 - 53));
+        updateColor('light', 'onSecondary', 24, 0, hueDiff(secondary, 90 - 106));
+        updateColor('light', 'onTertiary', 24, 0, hueDiff(tertiary, 90 - 24));
 
-        createColorCard('secondary', 74, 38, secondary);
-        createColorCard('onSecondary', 24, 0, hueDiff(secondary, 90 - 106));
-        createColorCard('secondaryContainer', 95, 2, secondary);
-        createColorCard('onSecondaryContainer', 24, 0, hueDiff(secondary, 90 - 106));
-        createColorCard('secondaryFixed', 92, 9, hueDiff(secondary, 290 - 106));
-        createColorCard('onSecondaryFixed', 23, 9, hueDiff(secondary, 280 - 106));
-        createColorCard('secondaryFixedDim', 83, 8, hueDiff(secondary, 291 - 106));
-        createColorCard('onSecondaryFixedVariant', 40, 8, hueDiff(secondary, 282 - 106));
+        updateColor('light', 'primaryContainer', 81, 22, primary);
+        updateColor('light', 'secondaryContainer', 95, 2, secondary);
+        updateColor('light', 'tertiaryContainer', 82, 26, tertiary);
+        updateColor('light', 'onPrimaryContainer', 44, 29, hueDiff(primary, 50 - 53));
+        updateColor('light', 'onSecondaryContainer', 24, 0, hueDiff(secondary, 90 - 106));
+        updateColor('light', 'onTertiaryContainer', 44, 29, hueDiff(tertiary, 24 - 24));
+
+        updateColor('light', 'primaryFixed', 92, 11, hueDiff(primary, 5));
+        updateColor('light', 'secondaryFixed', 92, 11, hueDiff(secondary, 5));
+        updateColor('light', 'tertiaryFixed', 92, 11, hueDiff(tertiary, 5));
+        updateColor('light', 'primaryFixedDim', 83, 26, hueDiff(primary, 3));
+        updateColor('light', 'secondaryFixedDim', 83, 11, hueDiff(secondary, 3));
+        updateColor('light', 'tertiaryFixedDim', 83, 33, hueDiff(tertiary, 3));
+        updateColor('light', 'onPrimaryFixed', 23, 24, hueDiff(primary, -5));
+        updateColor('light', 'onSecondaryFixed', 23, 14, hueDiff(secondary, -5));
+        updateColor('light', 'onTertiaryFixed', 23, 32, hueDiff(tertiary, -5));
+        updateColor('light', 'onPrimaryFixedVariant', 40, 24, hueDiff(primary, 1));
+        updateColor('light', 'onSecondaryFixedVariant', 40, 8, hueDiff(secondary, 1));
+        updateColor('light', 'onTertiaryFixedVariant', 40, 32, hueDiff(tertiary, 1));
+
+        updateColor('light', 'surfaceDim', 89, 3, 85);
+        updateColor('light', 'surface', 100, 0, 90);
+        updateColor('light', 'surfaceBright', 100, 0, 90);
+
+        updateColor('light', 'surfaceContainerLowest', 99, 3, 78);
+        updateColor('light', 'surfaceContainerLow', 99, 1, 85);
+        updateColor('light', 'surfaceContainer', 97, 1, 91);
+        updateColor('light', 'surfaceContainerHigh', 94, 1.3, 67.76);
+        updateColor('light', 'surfaceContainerHighest', 92, 4, 85);
+
+        updateColor('light', 'onSurface', 24, 0, 90);
+        updateColor('light', 'onSurfaceVariant', 82, 1, 78);
+        updateColor('light', 'outline', 80, 6, 101);
+        updateColor('light', 'outlineVariant', 83, 5, 101);
+
+        updateColor('light', 'error', 51, 48, 33);
+        updateColor('light', 'onError', 100, 0, 68);
+        updateColor('light', 'errorContainer', 92, 11, 25);
+        updateColor('light', 'onErrorContainer', 41, 28, 28);
+
+        updateColor('light', 'inverseSurface', 31, 3, 303);
+        updateColor('light', 'inverseOnSurface', 96, 3, 303);
+        updateColor('light', 'inversePrimary', 84, 23, hueDiff(primary, 3));
+
+        updateColor('light', 'shadow', 0, 0, 0);
+        updateColor('light', 'scrim', 0, 0, 0);
 
 
-        createColorCard('tertiary', 74, 38, tertiary);
-        createColorCard('onTertiary', 24, 0, hueDiff(tertiary, 90 - 24));
-        createColorCard('tertiaryContainer', 82, 26, tertiary);
-        createColorCard('onTertiaryContainer', 44, 29, hueDiff(tertiary, 24 - 24));
-        createColorCard('tertiaryFixed', 85, 34, hueDiff(tertiary, 326 - 24));
-        createColorCard('onTertiaryFixed', 27, 32, hueDiff(tertiary, 322 - 24));
-        createColorCard('tertiaryFixedDim', 76, 33, hueDiff(tertiary, 325 - 24));
-        createColorCard('onTertiaryFixedVariant', 40, 32, hueDiff(tertiary, 323 - 24));
+        updateColor('dark', 'primary', 86, 43, primary);
+        updateColor('dark', 'secondary', 86, 38, secondary);
+        updateColor('dark', 'tertiary', 86, 38, tertiary);
+        updateColor('dark', 'onPrimary', 24, 0, hueDiff(primary, 90 - 53));
+        updateColor('dark', 'onSecondary', 24, 0, hueDiff(secondary, 90 - 106));
+        updateColor('dark', 'onTertiary', 24, 0, hueDiff(tertiary, 90 - 24));
 
-        createColorCard('error', 51, 48, 33);
-        createColorCard('onError', 100, 0, 68);
-        createColorCard('errorContainer', 92, 11, 25);
-        createColorCard('onErrorContainer', 41, 28, 28);
+        updateColor('dark', 'primaryContainer', 41, 22, primary);
+        updateColor('dark', 'secondaryContainer', 40, 2, secondary);
+        updateColor('dark', 'tertiaryContainer', 40, 26, tertiary);
+        updateColor('dark', 'onPrimaryContainer', 81, 29, hueDiff(primary, 50 - 53));
+        updateColor('dark', 'onSecondaryContainer', 95, 0, hueDiff(secondary, 90 - 106));
+        updateColor('dark', 'onTertiaryContainer', 82, 29, hueDiff(tertiary, 24 - 24));
 
-        createColorCard('surface', 100, 0, 90);
-        createColorCard('onSurface', 24, 0, 90);
-        createColorCard('onSurfaceVariant', 82, 1, 78);
-        createColorCard('surfaceDim', 89, 3, 85);
-        createColorCard('surfaceBright', 100, 0, 90);
-        createColorCard('surfaceContainerLowest', 99, 3, 78);
-        createColorCard('surfaceContainerLow', 99, 1, 85);
-        createColorCard('surfaceContainer', 97, 1, 91);
-        createColorCard('surfaceContainerHigh', 94, 1.3, 67.76);
-        createColorCard('surfaceContainerHighest', 92, 4, 85);
-        createColorCard('inverseSurface', 31, 3, 303);
-        createColorCard('outline', 80, 6, 101);
-        createColorCard('outlineVariant', 83, 5, 101);
-        createColorCard('shadow', 0, 0, 0);
-        createColorCard('scrim', 0, 0, 0);
+        updateColor('dark', 'primaryFixed', 92, 11, hueDiff(primary, 5));
+        updateColor('dark', 'secondaryFixed', 92, 11, hueDiff(secondary, 5));
+        updateColor('dark', 'tertiaryFixed', 92, 11, hueDiff(tertiary, 5));
+        updateColor('dark', 'primaryFixedDim', 83, 26, hueDiff(primary, 3));
+        updateColor('dark', 'secondaryFixedDim', 83, 11, hueDiff(secondary, 3));
+        updateColor('dark', 'tertiaryFixedDim', 83, 33, hueDiff(tertiary, 3));
+        updateColor('dark', 'onPrimaryFixed', 23, 24, hueDiff(primary, -5));
+        updateColor('dark', 'onSecondaryFixed', 23, 14, hueDiff(secondary, -5));
+        updateColor('dark', 'onTertiaryFixed', 23, 32, hueDiff(tertiary, -5));
+        updateColor('dark', 'onPrimaryFixedVariant', 40, 24, hueDiff(primary, 1));
+        updateColor('dark', 'onSecondaryFixedVariant', 40, 8, hueDiff(secondary, 1));
+        updateColor('dark', 'onTertiaryFixedVariant', 40, 32, hueDiff(tertiary, 1));
 
-        document.getElementById('lightColorScheme').innerHTML += ');';
-        document.getElementById('darkColorScheme').innerHTML += ');';
+        updateColor('dark', 'surfaceDim', 19, 3, 85);
+        updateColor('dark', 'surface', 24, 0, 90);
+        updateColor('dark', 'surfaceBright', 35, 3, 90);
+
+        updateColor('dark', 'surfaceContainerLowest', 16, 3, 78);
+        updateColor('dark', 'surfaceContainerLow', 23, 2, 85);
+        updateColor('dark', 'surfaceContainer', 24, 3, 91);
+        updateColor('dark', 'surfaceContainerHigh', 29, 3, 67.76);
+        updateColor('dark', 'surfaceContainerHighest', 33, 3, 85);
+
+        updateColor('dark', 'onSurface', 95, 0, hueDiff(primary, 4));
+        updateColor('dark', 'onSurfaceVariant', 92, 4, hueDiff(primary, -10));
+        updateColor('dark', 'outline', 60, 6, 101);
+        updateColor('dark', 'outlineVariant', 40, 5, 101);
+
+        updateColor('dark', 'error', 51, 48, 33);
+        updateColor('dark', 'onError', 100, 0, 68);
+        updateColor('dark', 'errorContainer', 92, 11, 25);
+        updateColor('dark', 'onErrorContainer', 41, 28, 28);
+
+        updateColor('dark', 'inverseSurface', 96, 3, 303);
+        updateColor('dark', 'inverseOnSurface', 31, 3, 303);
+        updateColor('dark', 'inversePrimary', 50, 23, hueDiff(primary, 3));
+
+        updateColor('dark', 'shadow', 0, 0, 0);
+        updateColor('dark', 'scrim', 0, 0, 0);
+
+
+        document.getElementById('lightColorSchemeCode').innerHTML += ');';
+        document.getElementById('darkColorSchemeCode').innerHTML += ');';
 
         document.querySelectorAll('pre').forEach(el => {
             el.addEventListener('click', async () => {
