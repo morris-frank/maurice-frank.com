@@ -469,8 +469,7 @@
         const oklchStr = `oklch(${l}% ${c}% ${h})`;
         const hexStr = oklchToHex(l, c, h);
 
-        document.getElementById('lightColorSchemeCode').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
-        document.getElementById('darkColorSchemeCode').innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
+        document.getElementById(`${scheme}ColorSchemeCode`).innerHTML += `  ${name}: Color(0xff${hexStr}),\n`;
 
         const card = document.querySelector(`#${scheme}ColorScheme .${name}`);
         card.style.backgroundColor = oklchStr;
