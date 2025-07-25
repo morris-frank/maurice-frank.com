@@ -87,6 +87,10 @@ header {
 
   & a {
     text-decoration: none;
+    
+    &::first-letter {
+      font-size: 1.4rem;
+    }
   }
 }
 

@@ -45,31 +45,31 @@
     align-items: center;
 
     & img {
-      max-width: 200px;
+      max-width: min(200px, calc(50vw - var(--gap-md)));
       min-width: 0px;
       border-radius: 1rem;
-      filter: grayscale(100%) contrast(0) brightness(0.7);
+      filter: none;
       padding: 1rem;
 
+      &.soilytix {
+        background-color: #29332d;
+      }
+
+      &.hbdx {
+        background-color: #ffffff;
+      }
+
+      &.muno {
+        background-color: #fafafa;
+      }
+
+      &.peau {
+        background-color: #ff8a32;
+      }
+
       &:hover {
-        filter: none;
+        filter: contrast(0.8) brightness(1.4);
 
-
-        &.soilytix {
-          background-color: #29332d;
-        }
-
-        &.hbdx {
-          background-color: #ffffff;
-        }
-
-        &.muno {
-          background-color: #fafafa;
-        }
-
-        &.peau {
-          background-color: #ff8a32;
-        }
       }
     }
   }
@@ -77,16 +77,24 @@
 
 <div class="cv-logos">
   <a href="https://www.peau.ai/">
-    <img src="/cv/peau.svg" alt="Peau" class="peau" />
+    <img src="/resume/peau.svg"
+         alt="Peau"
+         class="peau" />
   </a>
   <a href="https://www.soilytix.com/">
-    <img src="/cv/soilytix.webp" alt="Soilytix" class="soilytix" />
+    <img src="/resume/soilytix.webp"
+         alt="Soilytix"
+         class="soilytix" />
   </a>
   <a href="https://www.hummingbird-diagnostics.com/">
-    <img src="/cv/hbdx.png" alt="Hummingbird Diagnostics" class="hbdx" />
+    <img src="/resume/hbdx.png"
+         alt="Hummingbird Diagnostics"
+         class="hbdx" />
   </a>
   <a href="https://www.muno.ai/">
-    <img src="/cv/muno.svg" alt="Muno" class="muno" />
+    <img src="/resume/muno.svg"
+         alt="Muno"
+         class="muno" />
   </a>
 </div>
 
