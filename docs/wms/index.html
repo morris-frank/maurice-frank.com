@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>MapLibre WMS Viewer</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/maplibre-gl@5.20.0/dist/maplibre-gl.css" />
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: system-ui, sans-serif;
+        }
+
+        #map {
+            position: fixed;
+            inset: 0;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            z-index: 10;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 10px;
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+            padding: 10px 12px;
+        }
+
+        .row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"],
+        select {
+            padding: 10px 12px;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            font-size: 14px;
+            min-width: 160px;
+        }
+
+        #endpointInput {
+            flex: 1 1 480px;
+            min-width: 320px;
+        }
+
+        button {
+            padding: 10px 14px;
+            border: 1px solid #999;
+            border-radius: 8px;
+            background: #f7f7f7;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #eee;
+        }
+
+        .meta {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.35;
+            word-break: break-word;
+        }
+
+        .ok {
+            color: #1f5f2c;
+        }
+
+        .error {
+            color: #9b1c1c;
+        }
+
+        label {
+            font-size: 13px;
+            color: #444;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <div class="overlay">
+        <div class="row">
+            <input id="endpointInput"
+                   type="text"
+                   placeholder="WMS endpoint URL"
+                   spellcheck="false" />
+            <button id="loadBtn"
+                    type="button">Load WMS</button>
+        </div>
+
+        <div class="row"
+             style="margin-top: 8px;">
+            <div>
+                <label for="baseLayerSelect">Base layer</label><br />
+                <select id="baseLayerSelect">
+                    <option value="osm">OpenStreetMap</option>
+                    <option value="esri">Esri World Imagery</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="layerSelect">WMS layer</label><br />
+                <select id="layerSelect"
+                        disabled>
+                    <option value="">No layer loaded</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="status"
+             class="meta">Waiting for a WMS endpoint.</div>
+    </div>
+
+    <script type="module">
+        import maplibregl from "https://esm.sh/maplibre-gl@5.20.0";
+        import "https://esm.sh/maplibre-gl-extend";
+
+        const endpointInput = document.getElementById("endpointInput");
+        const loadBtn = document.getElementById("loadBtn");
+        const baseLayerSelect = document.getElementById("baseLayerSelect");
+        const layerSelect = document.getElementById("layerSelect");
+        const statusEl = document.getElementById("status");
+
+        let currentWmsLayerId = null;
+        let currentWmsSourceId = null;
+        let currentEndpoint = "";
+
+        const map = new maplibregl.Map({
+            container: "map",
+            style: {
+                version: 8,
+                sources: {
+                    osm: {
+                        type: "raster",
+                        tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+                        tileSize: 256,
+                        attribution: "© OpenStreetMap contributors"
+                    },
+                    esri: {
+                        type: "raster",
+                        tiles: [
+                            "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                        ],
+                        tileSize: 256,
+                        attribution: "Tiles © Esri"
+                    }
+                },
+                layers: [
+                    {
+                        id: "baselayer-osm",
+                        type: "raster",
+                        source: "osm",
+                        layout: { visibility: "visible" }
+                    },
+                    {
+                        id: "baselayer-esri",
+                        type: "raster",
+                        source: "esri",
+                        layout: { visibility: "none" }
+                    }
+                ]
+            },
+            center: [5.3, 52.1],
+            zoom: 6
+        });
+
+        map.addControl(new maplibregl.NavigationControl(), "top-right");
+
+        function setStatus(message, kind = "") {
+            statusEl.innerHTML = kind ? `<span class="${kind}">${message}</span>` : message;
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+        }
+
+        function getUrlParam(name) {
+            const url = new URL(window.location.href);
+            return url.searchParams.get(name) || "";
+        }
+
+        function setUrlParam(name, value) {
+            const url = new URL(window.location.href);
+            if (value && value.trim()) {
+                url.searchParams.set(name, value.trim());
+            } else {
+                url.searchParams.delete(name);
+            }
+            window.history.replaceState({}, "", url.toString());
+        }
+
+        function syncUiToUrl() {
+            setUrlParam("endpoint", endpointInput.value);
+            setUrlParam("layer", layerSelect.value);
+            setUrlParam("baselayer", baseLayerSelect.value);
+        }
+
+        function normaliseEndpoint(rawEndpoint) {
+            const url = new URL(rawEndpoint);
+            const removeParams = [
+                "service", "request", "version", "layers", "styles", "format",
+                "transparent", "bbox", "width", "height", "crs", "srs"
+            ];
+            for (const key of removeParams) {
+                url.searchParams.delete(key);
+            }
+            return url.toString();
+        }
+
+        function buildCapabilitiesUrl(rawEndpoint) {
+            const url = new URL(rawEndpoint);
+            url.searchParams.set("service", "WMS");
+            url.searchParams.set("request", "GetCapabilities");
+            return url.toString();
+        }
+
+        function parseBoundsFromLayerNode(layerNode) {
+            const exGeo = layerNode.querySelector(":scope > EX_GeographicBoundingBox");
+            if (exGeo) {
+                const west = parseFloat(exGeo.querySelector("westBoundLongitude")?.textContent ?? "");
+                const south = parseFloat(exGeo.querySelector("southBoundLatitude")?.textContent ?? "");
+                const east = parseFloat(exGeo.querySelector("eastBoundLongitude")?.textContent ?? "");
+                const north = parseFloat(exGeo.querySelector("northBoundLatitude")?.textContent ?? "");
+                if ([west, south, east, north].every(Number.isFinite)) {
+                    return [[west, south], [east, north]];
+                }
+            }
+
+            const llbbox = layerNode.querySelector(":scope > LatLonBoundingBox");
+            if (llbbox) {
+                const west = parseFloat(llbbox.getAttribute("minx") ?? "");
+                const south = parseFloat(llbbox.getAttribute("miny") ?? "");
+                const east = parseFloat(llbbox.getAttribute("maxx") ?? "");
+                const north = parseFloat(llbbox.getAttribute("maxy") ?? "");
+                if ([west, south, east, north].every(Number.isFinite)) {
+                    return [[west, south], [east, north]];
+                }
+            }
+
+            const bbox4326 = Array.from(layerNode.querySelectorAll(":scope > BoundingBox")).find(
+                (el) => ["EPSG:4326", "CRS:84"].includes(el.getAttribute("CRS") || el.getAttribute("SRS"))
+            );
+
+            if (bbox4326) {
+                const west = parseFloat(bbox4326.getAttribute("minx") ?? "");
+                const south = parseFloat(bbox4326.getAttribute("miny") ?? "");
+                const east = parseFloat(bbox4326.getAttribute("maxx") ?? "");
+                const north = parseFloat(bbox4326.getAttribute("maxy") ?? "");
+                if ([west, south, east, north].every(Number.isFinite)) {
+                    return [[west, south], [east, north]];
+                }
+            }
+
+            return null;
+        }
+
+        function collectNamedLayers(layerNode, out = []) {
+            const nameNode = layerNode.querySelector(":scope > Name");
+            const titleNode = layerNode.querySelector(":scope > Title");
+
+            if (nameNode && nameNode.textContent && nameNode.textContent.trim()) {
+                out.push({
+                    name: nameNode.textContent.trim(),
+                    title: titleNode?.textContent?.trim() || nameNode.textContent.trim(),
+                    bounds: parseBoundsFromLayerNode(layerNode),
+                    node: layerNode
+                });
+            }
+
+            const children = layerNode.querySelectorAll(":scope > Layer");
+            for (const child of children) {
+                collectNamedLayers(child, out);
+            }
+
+            return out;
+        }
+
+        async function fetchCapabilitiesInfo(rawEndpoint) {
+            const url = buildCapabilitiesUrl(rawEndpoint);
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`GetCapabilities failed with HTTP ${response.status}`);
+            }
+
+            const text = await response.text();
+            const xml = new DOMParser().parseFromString(text, "text/xml");
+
+            if (xml.querySelector("parsererror")) {
+                throw new Error("Could not parse GetCapabilities XML");
+            }
+
+            const rootLayer =
+                xml.querySelector("WMS_Capabilities > Capability > Layer") ||
+                xml.querySelector("WMT_MS_Capabilities > Capability > Layer");
+
+            if (!rootLayer) {
+                throw new Error("No root layer found in WMS capabilities");
+            }
+
+            const layers = collectNamedLayers(rootLayer);
+            if (!layers.length) {
+                throw new Error("No named layers found in WMS capabilities");
+            }
+
+            return { layers };
+        }
+
+        function setBaseLayer(value) {
+            const useEsri = value === "esri";
+            map.setLayoutProperty("baselayer-osm", "visibility", useEsri ? "none" : "visible");
+            map.setLayoutProperty("baselayer-esri", "visibility", useEsri ? "visible" : "none");
+            syncUiToUrl();
+        }
+
+        function removeCurrentWms() {
+            if (currentWmsLayerId && map.getLayer(currentWmsLayerId)) {
+                map.removeLayer(currentWmsLayerId);
+            }
+            if (currentWmsSourceId && map.getSource(currentWmsSourceId)) {
+                map.removeSource(currentWmsSourceId);
+            }
+            currentWmsLayerId = null;
+            currentWmsSourceId = null;
+        }
+
+        function addSelectedWmsLayer(endpoint, layerName, bounds = null) {
+            removeCurrentWms();
+
+            const cleanEndpoint = normaliseEndpoint(endpoint);
+            const id = `wms-${Date.now()}`;
+
+            currentWmsLayerId = id;
+            currentWmsSourceId = id;
+
+            map.addSource(id, {
+                type: "raster",
+                tiles: [
+                    `${cleanEndpoint}${cleanEndpoint.includes("?") ? "&" : "?"}` +
+                    `service=WMS&request=GetMap&layers=${encodeURIComponent(layerName)}` +
+                    `&styles=&format=image/png&transparent=true&version=1.3.0` +
+                    `&width=256&height=256&crs=EPSG:3857&bbox={bbox-epsg-3857}`
+                ],
+                tileSize: 256
+            });
+
+            map.addLayer({
+                id,
+                type: "raster",
+                source: id,
+                paint: {
+                    "raster-opacity": 0.8
+                }
+            });
+
+            if (bounds) {
+                map.fitBounds(bounds, { padding: 40, animate: false });
+            }
+        }
+
+        function populateLayerSelect(layers, selectedLayerName = "") {
+            layerSelect.innerHTML = "";
+
+            for (const layer of layers) {
+                const option = document.createElement("option");
+                option.value = layer.name;
+                option.textContent = `${layer.title} (${layer.name})`;
+                if (layer.name === selectedLayerName) {
+                    option.selected = true;
+                }
+                layerSelect.appendChild(option);
+            }
+
+            layerSelect.disabled = false;
+        }
+
+        async function loadWms() {
+            const rawEndpoint = endpointInput.value.trim();
+
+            if (!rawEndpoint) {
+                removeCurrentWms();
+                layerSelect.innerHTML = `<option value="">No layer loaded</option>`;
+                layerSelect.disabled = true;
+                setUrlParam("endpoint", "");
+                setUrlParam("layer", "");
+                setStatus("Waiting for a WMS endpoint.");
+                return;
+            }
+
+            let parsedUrl;
+            try {
+                parsedUrl = new URL(rawEndpoint);
+            } catch {
+                setStatus("Invalid WMS endpoint URL.", "error");
+                return;
+            }
+
+            const endpoint = parsedUrl.toString();
+            currentEndpoint = endpoint;
+            endpointInput.value = endpoint;
+            syncUiToUrl();
+            setStatus("Reading WMS capabilities...");
+
+            try {
+                const info = await fetchCapabilitiesInfo(endpoint);
+                const requestedLayer = getUrlParam("layer");
+                const selected =
+                    info.layers.find(l => l.name === requestedLayer) ||
+                    info.layers[0];
+
+                populateLayerSelect(info.layers, selected.name);
+                addSelectedWmsLayer(endpoint, selected.name, selected.bounds);
+                syncUiToUrl();
+
+                setStatus(
+                    `Loaded <strong>${escapeHtml(selected.title)}</strong> ` +
+                    `(<code>${escapeHtml(selected.name)}</code>) from ` +
+                    `<code>${escapeHtml(normaliseEndpoint(endpoint))}</code>.`,
+                    "ok"
+                );
+            } catch (error) {
+                console.error(error);
+                removeCurrentWms();
+                layerSelect.innerHTML = `<option value="">No layer loaded</option>`;
+                layerSelect.disabled = true;
+                setStatus(
+                    `Could not load WMS: ${escapeHtml(error instanceof Error ? error.message : String(error))}`,
+                    "error"
+                );
+            }
+        }
+
+        async function reloadSelectedLayer() {
+            if (!currentEndpoint || !layerSelect.value) return;
+
+            try {
+                const info = await fetchCapabilitiesInfo(currentEndpoint);
+                const selected = info.layers.find(l => l.name === layerSelect.value);
+                addSelectedWmsLayer(currentEndpoint, layerSelect.value, selected?.bounds || null);
+                syncUiToUrl();
+
+                if (selected) {
+                    setStatus(
+                        `Loaded <strong>${escapeHtml(selected.title)}</strong> ` +
+                        `(<code>${escapeHtml(selected.name)}</code>).`,
+                        "ok"
+                    );
+                }
+            } catch (error) {
+                console.error(error);
+                setStatus(
+                    `Could not switch layer: ${escapeHtml(error instanceof Error ? error.message : String(error))}`,
+                    "error"
+                );
+            }
+        }
+
+        loadBtn.addEventListener("click", loadWms);
+
+        endpointInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                loadWms();
+            }
+        });
+
+        endpointInput.addEventListener("input", syncUiToUrl);
+
+        baseLayerSelect.addEventListener("change", () => {
+            setBaseLayer(baseLayerSelect.value);
+        });
+
+        layerSelect.addEventListener("change", reloadSelectedLayer);
+
+        map.on("load", async () => {
+            const initialEndpoint = getUrlParam("endpoint");
+            const initialBaseLayer = getUrlParam("baselayer") || "osm";
+
+            endpointInput.value = initialEndpoint;
+            baseLayerSelect.value = initialBaseLayer === "esri" ? "esri" : "osm";
+            setBaseLayer(baseLayerSelect.value);
+
+            if (initialEndpoint) {
+                await loadWms();
+            }
+        });
+    </script>
+</body>
+
+</html>
