@@ -259,6 +259,475 @@ canvas {
   align-items: stretch;
 }
 
+html.home-atlas-root {
+  background:
+    radial-gradient(circle at top, rgba(255, 248, 230, 0.9), transparent 42%),
+    linear-gradient(180deg, #c8b287 0%, #b99f75 100%);
+}
+
+body.home-atlas {
+  --atlas-paper: #e8dcc0;
+  --atlas-paper-deep: #d7c39f;
+  --atlas-paper-soft: rgba(251, 245, 227, 0.84);
+  --atlas-ink: #4c4338;
+  --atlas-ink-soft: #776756;
+  --atlas-line: rgba(114, 92, 69, 0.72);
+  --atlas-sage: #8f9681;
+  --atlas-water: #8ea6a0;
+  --atlas-rose: #bc937b;
+  --atlas-gold: #b59f6c;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 250, 236, 0.5), transparent 24%),
+    radial-gradient(circle at 80% 18%, rgba(188, 147, 123, 0.12), transparent 20%),
+    linear-gradient(180deg, #d4bf98 0%, #b89d73 100%);
+  box-shadow: none;
+  color: var(--atlas-ink);
+  gap: 0;
+  margin: 0;
+  max-width: none;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
+  width: 100%;
+}
+
+body.home-atlas > header,
+body.home-atlas > footer,
+body.home-atlas > div[style*="flex: 1"] {
+  display: none;
+}
+
+body.home-atlas main {
+  width: 100%;
+}
+
+body.home-atlas a {
+  color: inherit;
+}
+
+.atlas-page {
+  min-height: 100vh;
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.atlas-shell {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: clamp(1.25rem, 2vw, 2rem);
+  border: 1.5px solid rgba(84, 67, 45, 0.28);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(252, 246, 231, 0.92), rgba(226, 209, 176, 0.9)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(118, 98, 74, 0.04) 0,
+      rgba(118, 98, 74, 0.04) 2px,
+      transparent 2px,
+      transparent 11px
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 247, 225, 0.65),
+    0 24px 60px rgba(84, 63, 37, 0.18);
+  overflow: hidden;
+}
+
+.atlas-shell::before,
+.atlas-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.atlas-shell::before {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.42), transparent 12%),
+    radial-gradient(circle at 88% 18%, rgba(188, 147, 123, 0.14), transparent 10%),
+    radial-gradient(circle at 50% 86%, rgba(143, 150, 129, 0.14), transparent 20%);
+  mix-blend-mode: screen;
+}
+
+.atlas-shell::after {
+  border: 1px solid rgba(90, 71, 46, 0.16);
+  inset: 12px;
+  border-radius: 22px;
+}
+
+.atlas-legend {
+  position: relative;
+  z-index: 2;
+  max-width: 36rem;
+  padding: clamp(0.6rem, 1.2vw, 1rem) clamp(0.4rem, 1vw, 0.8rem) 1.2rem;
+}
+
+.atlas-legend .eyebrow,
+.card-kicker,
+.atlas-label,
+.atlas-footnote {
+  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.atlas-legend .eyebrow {
+  margin: 0 0 0.4rem;
+  color: var(--atlas-ink-soft);
+  font-size: 0.78rem;
+}
+
+.atlas-legend h1 {
+  border: none;
+  width: auto;
+  aspect-ratio: auto;
+  margin: 0;
+  padding: 0;
+  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+.atlas-legend .lede {
+  max-width: 28rem;
+  margin: 1rem 0 1.2rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--atlas-ink-soft);
+}
+
+.atlas-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.atlas-nav a,
+.card-links a {
+  text-decoration: none;
+}
+
+.atlas-nav a {
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(76, 67, 56, 0.25);
+  border-radius: 999px;
+  background: rgba(252, 245, 226, 0.74);
+  box-shadow: 0 4px 12px rgba(101, 82, 60, 0.08);
+}
+
+.atlas-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(4.75rem, auto));
+  gap: 1rem;
+  min-height: 60rem;
+  padding: 0.5rem;
+}
+
+.atlas-ink {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.atlas-ink path,
+.atlas-ink circle {
+  fill: none;
+  stroke: var(--atlas-line);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.atlas-ink--paths > path {
+  stroke-width: 2.5;
+  stroke-dasharray: 6 14;
+  animation: atlas-route 22s linear infinite;
+}
+
+.atlas-ink .route-small {
+  stroke-width: 2;
+  stroke-dasharray: 4 10;
+  opacity: 0.7;
+}
+
+.atlas-ink .compass path,
+.atlas-ink .compass circle,
+.atlas-ink .mountains path,
+.atlas-ink .waves path,
+.atlas-ink .spark path {
+  stroke-width: 2.1;
+}
+
+.atlas-ink .compass {
+  transform-origin: 1036px 126px;
+  animation: atlas-float 8s ease-in-out infinite;
+}
+
+.atlas-ink .spark {
+  animation: atlas-twinkle 7s ease-in-out infinite;
+}
+
+.atlas-ink .spark-b {
+  animation-delay: 1.6s;
+}
+
+.atlas-ink .spark-c {
+  animation-delay: 3.2s;
+}
+
+.atlas-ink .mountains,
+.atlas-ink .waves {
+  animation: atlas-float 11s ease-in-out infinite;
+}
+
+.atlas-label {
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+  color: rgba(119, 103, 86, 0.86);
+  font-size: 0.74rem;
+}
+
+.atlas-label--north {
+  top: 10.5rem;
+  right: 14rem;
+}
+
+.atlas-label--river {
+  top: 22rem;
+  left: 37%;
+  transform: rotate(-20deg);
+}
+
+.atlas-label--hills {
+  top: 29rem;
+  left: 10%;
+  transform: rotate(-12deg);
+}
+
+.atlas-label--shore {
+  right: 7%;
+  bottom: 13rem;
+  transform: rotate(12deg);
+}
+
+.map-card {
+  position: relative;
+  z-index: 2;
+  padding: 1.1rem 1.2rem 1.15rem;
+  border: 1px solid rgba(88, 68, 41, 0.25);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(251, 246, 231, 0.88), rgba(233, 218, 188, 0.86)),
+    rgba(255, 255, 255, 0.2);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 248, 231, 0.5),
+    0 18px 30px rgba(83, 64, 43, 0.08);
+  backdrop-filter: blur(0.5px);
+}
+
+.map-card h2 {
+  margin: 0;
+  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(1.45rem, 2.8vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.map-card p {
+  margin: 0.8rem 0 0;
+  max-width: 32rem;
+}
+
+.card-kicker {
+  margin: 0 0 0.55rem;
+  color: var(--atlas-ink-soft);
+  font-size: 0.72rem;
+}
+
+.card-mark {
+  width: 7rem;
+  margin-bottom: 0.85rem;
+}
+
+.card-mark svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.card-mark path {
+  fill: none;
+  stroke: rgba(95, 77, 58, 0.92);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: atlas-draw 2.4s ease forwards;
+}
+
+.card-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.card-links a {
+  display: inline-block;
+  padding: 0.38rem 0.68rem;
+  border: 1px solid rgba(88, 68, 41, 0.2);
+  border-radius: 999px;
+  background: rgba(252, 247, 232, 0.68);
+}
+
+.map-card--harbor {
+  grid-column: 1 / span 5;
+  grid-row: 1 / span 3;
+}
+
+.map-card--atelier {
+  grid-column: 8 / span 4;
+  grid-row: 2 / span 2;
+}
+
+.map-card--observatory {
+  grid-column: 8 / span 5;
+  grid-row: 4 / span 2;
+}
+
+.map-card--fieldnotes {
+  grid-column: 2 / span 4;
+  grid-row: 5 / span 2;
+}
+
+.map-card--camp {
+  grid-column: 4 / span 5;
+  grid-row: 7 / span 2;
+}
+
+.map-card--post {
+  grid-column: 10 / span 3;
+  grid-row: 7 / span 2;
+}
+
+.atlas-footnote {
+  position: relative;
+  z-index: 2;
+  margin: 0.5rem 0 0;
+  padding: 0.75rem 0.5rem 0.25rem;
+  color: var(--atlas-ink-soft);
+  font-size: 0.72rem;
+}
+
+@keyframes atlas-route {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -160;
+  }
+}
+
+@keyframes atlas-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes atlas-twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.92);
+  }
+
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes atlas-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 980px) {
+  .atlas-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    min-height: auto;
+    padding-top: 1.5rem;
+  }
+
+  .atlas-label,
+  .atlas-ink {
+    display: none;
+  }
+
+  .map-card--harbor,
+  .map-card--atelier,
+  .map-card--observatory,
+  .map-card--fieldnotes,
+  .map-card--camp,
+  .map-card--post {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 680px) {
+  .atlas-page {
+    padding: 0.6rem;
+  }
+
+  .atlas-shell {
+    padding: 0.9rem;
+    border-radius: 20px;
+  }
+
+  .atlas-board {
+    grid-template-columns: 1fr;
+  }
+
+  .map-card {
+    padding: 1rem;
+  }
+
+  .atlas-nav a,
+  .card-links a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-ink--paths > path,
+  .atlas-ink .compass,
+  .atlas-ink .spark,
+  .atlas-ink .mountains,
+  .atlas-ink .waves,
+  .card-mark path {
+    animation: none;
+  }
+}
+
 .box {
   font-size: 0.9rem;
   border-radius: 5px;

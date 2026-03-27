@@ -1,368 +1,190 @@
-<style type="text/css">
-    .avatar {
-        background-image: url('avatars.jpg');
-        background-size: cover;
-        background-position: center;
-        width: 200px;
-        height: 200px;
-        border-radius: 5%;
-        margin: 0 auto;
-        margin-bottom: 20px;
-        animation: avatars 20s infinite linear(0 0%, 0 85%, 1 100%);
-        filter: saturate(1.1) contrast(1.1) drop-shadow(0 0 1rem rgba(0, 0, 0, 0.1));
-    }
+<script>
+    document.documentElement.classList.add("home-atlas-root");
+    document.body.classList.add("home-atlas");
+</script>
 
-    .avatar:hover {
-        animation-play-state: paused;
-        filter: saturate(1.1) contrast(1.1) drop-shadow(0 0 1.2rem rgba(0, 0, 0, 0.2));
-    }
+<div class="atlas-page">
+    <div class="atlas-shell">
+        <header class="atlas-legend" aria-label="Map legend">
+            <p class="eyebrow">Field Guide</p>
+            <h1>Atlas of Maurice Frank</h1>
+            <p class="lede">
+                A small parchment map of the things I build, study, and follow into the hills.
+            </p>
+            <nav class="atlas-nav">
+                <a href="#harbor">Harbor</a>
+                <a href="#atelier">Atelier</a>
+                <a href="#observatory">Observatory</a>
+                <a href="#camp">Camp</a>
+                <a href="#post">Post</a>
+            </nav>
+        </header>
 
-    @keyframes avatars {
-        0% {
-            background-position: 0 0;
-        }
-
-        11.11% {
-            background-position: -200px 0;
-        }
-
-        22.22% {
-            background-position: -400px 0;
-        }
-
-        33.33% {
-            background-position: -600px 0;
-        }
-
-        44.44% {
-            background-position: -800px 0;
-        }
-
-        55.55% {
-            background-position: -1000px 0;
-        }
-
-        66.66% {
-            background-position: -1200px 0;
-        }
-
-        77.77% {
-            background-position: -1400px 0;
-        }
-
-        88.88% {
-            background-position: -1600px 0;
-        }
-
-        100% {
-            background-position: 0 0;
-        }
-    }
-
-    section {
-        --intro-font-size: 1.2rem;
-        --intro-line-height: 1.4rem;
-        font-size: var(--intro-font-size);
-        line-height: var(--intro-line-height);
-        max-width: 20rem;
-        margin: 0 auto;
-        margin-bottom: var(--intro-line-height);
-    }
-
-    section:has(.wheel) {
-
-        overflow: hidden;
-        height: var(--intro-line-height);
-
-
-        & .wheel {
-            display: inline-flex;
-            flex-direction: column;
-            animation: move 8s infinite linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%);
-
-            & .first {
-                color: #20a7d8;
-            }
-
-            & .second {
-                color: #f7b801;
-            }
-
-            & .third {
-                color: #f50a0a;
-            }
-
-            & .fourth {
-                color: #0a0af5;
-            }
-
-            & .fifth {
-                color: #0af50a;
-            }
-
-            & .sixth {
-                color: #f50af5;
-            }
-        }
-
-    }
-
-    @keyframes move {
-        16.66% {
-            transform: translatey(calc(var(--intro-line-height) * -1));
-        }
-
-        33.33% {
-            transform: translatey(calc(var(--intro-line-height) * -2));
-        }
-
-        50% {
-            transform: translatey(calc(var(--intro-line-height) * -3));
-        }
-
-        66.66% {
-            transform: translatey(calc(var(--intro-line-height) * -4));
-        }
-
-        83.33% {
-            transform: translatey(calc(var(--intro-line-height) * -5));
-        }
-
-        100% {
-            transform: translatey(0);
-        }
-
-    }
-
-    ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-
-    }
-</style>
-
-<div class="avatar"></div>
-
-<nav class="centered">
-    <a href="https://www.linkedin.com/in/morris-frank/">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="24"
-            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-            <path d="M8 11l0 5" />
-            <path d="M8 8l0 .01" />
-            <path d="M12 16l0 -5" />
-            <path d="M16 16v-3a2 2 0 0 0 -4 0" />
-        </svg>
-    </a>
-    <a href="https://github.com/morris-frank">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24"
-            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path
-                d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-        </svg>
-    </a>
-    <a href="https://instagram.com/morris_frank_">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="24"
-            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
-            <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-            <path d="M16.5 7.5l0 .01" />
-        </svg>
-    </a>
-    <a href="https://soundcloud.com/morris-frank/">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-soundcloud" width="24"
-            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M17 11h1c1.38 0 3 1.274 3 3c0 1.657 -1.5 3 -3 3l-6 0v-10c3 0 4.5 1.5 5 4z" />
-            <path d="M9 8l0 9" />
-            <path d="M6 17l0 -7" />
-            <path d="M3 16l0 -2" />
-        </svg>
-    </a>
-    <a href="https://letterboxd.com/morris_frank/">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-letterboxd" width="24"
-            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-            <path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-            <path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-            <path d="M16 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-        </svg>
-    </a>
-</nav>
-
-
-<section>
-    👋 Hoi, Maurice here
-</section>
-
-<section>
-    I am
-    <span class="wheel">
-        <span class="first">an AI engineer</span>
-        <span class="second">a data-viz specialist</span>
-        <span class="third">a consultant</span>
-        <span class="fourth">a climber</span>
-        <span class="fifth">a runner</span>
-        <span class="sixth">an autodidact</span>
-    </span>
-</section>
-
-<section>
-    <p>
-        where I build
-    </p>
-    <ul>
-        <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-histogram" width="24"
-                height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 3v18h18" />
-                <path d="M20 18v3" />
-                <path d="M16 16v5" />
-                <path d="M12 13v8" />
-                <path d="M8 16v5" />
-                <path d="M3 11c6 0 5 -5 9 -5s3 5 9 5" />
+        <section class="atlas-board" aria-label="Two-dimensional site map">
+            <svg class="atlas-ink atlas-ink--paths" viewBox="0 0 1200 920" aria-hidden="true">
+                <path d="M156 226C252 180 352 190 440 240C536 294 584 372 620 438C654 498 720 548 804 544C894 542 954 476 1014 410" />
+                <path d="M416 260C394 330 388 420 420 494C456 578 528 640 606 682C684 724 790 746 916 708" />
+                <path d="M214 650C310 600 392 586 470 616C548 648 588 706 652 756C718 808 824 826 938 786" />
+                <path class="route-small" d="M856 176C914 188 966 232 1002 284" />
+                <path class="route-small" d="M134 540C172 506 214 486 282 482" />
+                <g class="compass">
+                    <circle cx="1036" cy="126" r="56" />
+                    <path d="M1036 52V200M962 126H1110M988 78L1084 174M1084 78L988 174" />
+                    <path d="M1036 86L1054 126L1036 166L1018 126Z" />
+                </g>
+                <g class="spark spark-a">
+                    <path d="M210 138L214 156L232 160L214 164L210 182L206 164L188 160L206 156Z" />
+                </g>
+                <g class="spark spark-b">
+                    <path d="M848 102L852 118L868 122L852 126L848 142L844 126L828 122L844 118Z" />
+                </g>
+                <g class="spark spark-c">
+                    <path d="M108 720L112 736L128 740L112 744L108 760L104 744L88 740L104 736Z" />
+                </g>
+                <g class="mountains">
+                    <path d="M168 448L224 332L286 448" />
+                    <path d="M232 448L300 298L380 448" />
+                    <path d="M298 448L352 356L418 448" />
+                </g>
+                <g class="waves">
+                    <path d="M972 586C998 566 1018 566 1044 586C1070 606 1090 606 1116 586" />
+                    <path d="M952 626C978 606 998 606 1024 626C1050 646 1070 646 1096 626" />
+                    <path d="M930 666C956 646 976 646 1002 666C1028 686 1048 686 1074 666" />
+                </g>
             </svg>
-            data apps
-        </li>
-        <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-robot" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M6 4m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z" />
-                <path d="M12 2v2" />
-                <path d="M9 12v9" />
-                <path d="M15 12v9" />
-                <path d="M5 16l4 -2" />
-                <path d="M15 14l4 2" />
-                <path d="M9 18h6" />
-                <path d="M10 8v.01" />
-                <path d="M14 8v.01" />
-            </svg>
-            machines
-        </li>
-        <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wood" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 5.5m-6 0a6 2.5 0 1 0 12 0a6 2.5 0 1 0 -12 0" />
-                <path
-                    d="M18 5.5v4.626a1.415 1.415 0 0 1 1.683 2.18l-.097 .108l-1.586 1.586v4c0 1.61 -2.54 2.925 -5.725 3l-.275 0c-3.314 0 -6 -1.343 -6 -3v-2l-1.586 -1.586a1.414 1.414 0 0 1 1.586 -2.287v-6.627" />
-                <path d="M10 12.5v1.5" />
-                <path d="M14 16v1" />
-            </svg>
-            furniture
-        </li>
-        <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="24"
-                height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" />
-                <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                <path d="M17 10h2a2 2 0 0 1 2 2v1" />
-                <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
-            </svg>
-            community
-        </li>
-        <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M15 8h.01" />
-                <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" />
-                <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
-                <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
-            </svg>
-            visual art
-        </li>
-        <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-music" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                <path d="M13 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                <path d="M9 17v-13h10v13" />
-                <path d="M9 8h10" />
-            </svg>
-            music
-        </li>
-    </ul>
-</section>
 
-<section>
-    <p>
-        and explore life
-    </p>
-    <ul>
-        <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trees" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M16 5l3 3l-2 1l4 4l-3 1l4 4h-9" />
-                <path d="M15 21l0 -3" />
-                <path d="M8 13l-2 -2" />
-                <path d="M8 12l2 -2" />
-                <path d="M8 21v-13" />
-                <path
-                    d="M5.824 16a3 3 0 0 1 -2.743 -3.69a3 3 0 0 1 .304 -4.833a3 3 0 0 1 4.615 -3.707a3 3 0 0 1 4.614 3.707a3 3 0 0 1 .305 4.833a3 3 0 0 1 -2.919 3.695h-4z" />
-            </svg>
-            in wilderness
-        </li>
-        <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mountain" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 20h18l-6.921 -14.612a2.3 2.3 0 0 0 -4.158 0l-6.921 14.612z" />
-                <path d="M7.5 11l2 2.5l2.5 -2.5l2 3l2.5 -2" />
-            </svg>
-            on summits
-        </li>
-        <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sparkles" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path
-                    d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z" />
-            </svg>
-            through beauty in data
-        </li>
-        <li>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-movie" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                <path d="M8 4l0 16" />
-                <path d="M16 4l0 16" />
-                <path d="M4 8l4 0" />
-                <path d="M4 16l4 0" />
-                <path d="M4 12l16 0" />
-                <path d="M16 8l4 0" />
-                <path d="M16 16l4 0" />
-            </svg>
-            through cinema
-        </li>
-    </ul>
-</section>
+            <p class="atlas-label atlas-label--north">North of Quiet Work</p>
+            <p class="atlas-label atlas-label--river">River of Data</p>
+            <p class="atlas-label atlas-label--hills">Hills of Making</p>
+            <p class="atlas-label atlas-label--shore">Pastel Shore</p>
+
+            <article id="harbor" class="map-card map-card--harbor">
+                <div class="card-mark">
+                    <svg viewBox="0 0 120 80" aria-hidden="true">
+                        <path d="M16 58C34 40 48 38 62 58C78 40 94 40 104 58" />
+                        <path d="M58 16V58" />
+                        <path d="M58 18L34 34H82Z" />
+                    </svg>
+                </div>
+                <p class="card-kicker">Harbor</p>
+                <h2>Builder of maps, systems, and calm interfaces</h2>
+                <p>
+                    I work across AI, data visualization, software, and objects in the physical world. The thread
+                    between them is the same: make complexity legible and give it some grace.
+                </p>
+                <p>
+                    This version of the site is intentionally small, like a folded field map with only the useful
+                    places drawn on it.
+                </p>
+            </article>
+
+            <article id="atelier" class="map-card map-card--atelier">
+                <div class="card-mark">
+                    <svg viewBox="0 0 120 80" aria-hidden="true">
+                        <path d="M18 54H102" />
+                        <path d="M28 54V26L48 12L72 18L92 36V54" />
+                        <path d="M44 34H44.01M64 28H64.01M78 38H78.01" />
+                        <path d="M34 54L40 66M60 54V68M86 54L80 66" />
+                    </svg>
+                </div>
+                <p class="card-kicker">Atelier of Curious Machines</p>
+                <h2>Software and experiments</h2>
+                <p>
+                    AI engineering, data apps, maps, and tools that try to feel lucid instead of loud.
+                </p>
+                <ul class="card-links">
+                    <li><a href="projects">Projects</a></li>
+                    <li><a href="services">Services</a></li>
+                    <li><a href="maps">Maps</a></li>
+                </ul>
+            </article>
+
+            <article id="observatory" class="map-card map-card--observatory">
+                <div class="card-mark">
+                    <svg viewBox="0 0 120 80" aria-hidden="true">
+                        <path d="M30 60L56 18L76 26L50 60Z" />
+                        <path d="M44 52L28 68M66 48L84 68M58 60V72" />
+                        <path d="M78 20L102 10M82 30L108 26M74 12L86 2" />
+                    </svg>
+                </div>
+                <p class="card-kicker">Observatory</p>
+                <h2>Images, motion, and traces</h2>
+                <p>
+                    Visual art, motion studies, and small narrative pieces. Some are polished, some are field notes.
+                </p>
+                <ul class="card-links">
+                    <li><a href="art">Art</a></li>
+                    <li><a href="motion-still">Motion stills</a></li>
+                    <li><a href="movie-timeline">Movie timeline</a></li>
+                </ul>
+            </article>
+
+            <article class="map-card map-card--fieldnotes">
+                <div class="card-mark">
+                    <svg viewBox="0 0 120 80" aria-hidden="true">
+                        <path d="M18 58C28 22 48 22 58 58C66 32 82 32 92 58" />
+                        <path d="M16 58H100" />
+                        <path d="M72 22C82 14 96 16 104 28" />
+                    </svg>
+                </div>
+                <p class="card-kicker">Field Notes</p>
+                <h2>Outside the workbench</h2>
+                <p>
+                    Climbing, running, wilderness, cinema, carpentry, and the recurring lesson that beautiful systems
+                    are usually the ones that leave room for weather.
+                </p>
+                <ul class="card-links">
+                    <li><a href="carpentry">Carpentry</a></li>
+                    <li><a href="resume">Resume</a></li>
+                </ul>
+            </article>
+
+            <article id="camp" class="map-card map-card--camp">
+                <div class="card-mark">
+                    <svg viewBox="0 0 120 80" aria-hidden="true">
+                        <path d="M20 58L54 18L88 58" />
+                        <path d="M34 58L54 30L74 58" />
+                        <path d="M54 18V58" />
+                        <path d="M92 26C100 26 106 34 106 42C106 50 100 58 92 58" />
+                    </svg>
+                </div>
+                <p class="card-kicker">Camp</p>
+                <h2>How I like to work</h2>
+                <p>
+                    Close to the problem, attentive to craft, comfortable with ambiguity, and skeptical of unnecessary
+                    ornament. I prefer tools that make the path clearer.
+                </p>
+                <p>
+                    If you want a precise builder for systems, visuals, or product ideas, this is the campfire to walk
+                    toward.
+                </p>
+            </article>
+
+            <article id="post" class="map-card map-card--post">
+                <div class="card-mark">
+                    <svg viewBox="0 0 120 80" aria-hidden="true">
+                        <path d="M20 26H100V62H20Z" />
+                        <path d="M20 28L60 48L100 28" />
+                        <path d="M32 20L42 10M78 20L88 10" />
+                    </svg>
+                </div>
+                <p class="card-kicker">Post House</p>
+                <h2>Send a note</h2>
+                <p>
+                    For work, ideas, or an interesting route through the mountains of data:
+                    <span>firstname.lastname @ posteo de</span>
+                </p>
+                <ul class="card-links">
+                    <li><a href="https://github.com/morris-frank">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/morris-frank/">LinkedIn</a></li>
+                    <li><a href="https://instagram.com/morris_frank_">Instagram</a></li>
+                    <li><a href="https://letterboxd.com/morris_frank/">Letterboxd</a></li>
+                </ul>
+            </article>
+        </section>
+
+        <p class="atlas-footnote">
+            Drawn in muted inks. Best explored by wandering rather than scrolling straight through.
+        </p>
+    </div>
+</div>

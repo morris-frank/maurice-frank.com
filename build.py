@@ -10,13 +10,16 @@ from pathlib import Path
 
 
 class TemplatingEngine:
-    def __init__(self, docs_dir: Path, base_url: str, layout_file: Path = None, site_name: str = None, bib_file: Path = None):
+    def __init__(
+        self, docs_dir: Path, site_url: str, layout_file: Path = None, site_name: str = None, bib_file: Path = None, local: bool = False
+    ):
         layout_file = layout_file or docs_dir / "__layout.html"
         self.__layout = layout_file.read_text()
         self.__bibliography = self.parse_bibtex(bib_file) if bib_file else {}
 
+        self.local = local
         self.docs_dir = docs_dir
-        self.base_url = base_url
+        self.base_url = (docs_dir.as_uri() if self.local else site_url).rstrip("/") + "/"
         self.site_name = site_name
 
     def parse_bibtex(self, bibfile_path: Path) -> dict[str, dict[str, str]]:
@@ -87,30 +90,30 @@ class TemplatingEngine:
     def url_for(self, path: Path) -> str:
         return self.base_url + path.absolute().relative_to(self.docs_dir).as_posix()
 
-    @staticmethod
-    @cache
-    def integrity_attr(path: Path) -> str:
-        css_content = path.read_text()
-        hash_object = hashlib.sha384(css_content.encode("utf-8"))
-        hash_digest = hash_object.digest()
-        b64_hash = base64.b64encode(hash_digest).decode("utf-8")
-        return f'integrity="sha384-{b64_hash}" crossorigin="anonymous"'
+    def css_link(self, path: Path) -> str:
+        content = path.read_text()
+
+        if self.local:
+            return f"<style>{content}</style>"
+        else:
+            hash_object = hashlib.sha384(content.encode("utf-8"))
+            hash_digest = hash_object.digest()
+            b64_hash = base64.b64encode(hash_digest).decode("utf-8")
+            href = self.url_for(path)
+            return f'<link rel="stylesheet" href="{href}" integrity="sha384-{b64_hash}" crossorigin="anonymous">'
 
     def head_for(self, path: Path) -> str:
+        extra_head_file = path.with_name("head.html")
+        head = extra_head_file.read_text() if extra_head_file.exists() else ""
+
         css_files = list(self.docs_dir.glob("*.css"))
         if path.parent.absolute() != self.docs_dir:
             css_files += list(path.parent.glob("*.css"))
         css_files.sort()
-        css_tags = ""
         for file in css_files:
-            href = self.url_for(file)
-            integrity = self.integrity_attr(file)
-            css_tags += f'<link rel="stylesheet" href="{href}" {integrity}>'
+            head += self.css_link(file) + "\n"
 
-        extra_head_file = path.with_name("head.html")
-        extra_head = extra_head_file.read_text() if extra_head_file.exists() else ""
-
-        return f"{css_tags}\n{extra_head}"
+        return head
 
     @staticmethod
     def content_for(path: Path) -> str:
@@ -129,6 +132,8 @@ class TemplatingEngine:
             return path.read_text()
 
     def title_for(self, path: Path) -> str:
+        if path.parent.absolute() == self.docs_dir:
+            return self.site_name
         slug = path.parent.name
         return f"{slug.replace('_', ' ').title()} - {self.site_name}"
 
@@ -140,44 +145,47 @@ class TemplatingEngine:
         return layout
 
     def html_for(self, path: Path) -> None:
+        previous_cwd = Path.cwd()
         os.chdir(path.parent)
+        try:
+            # First assemble the base layout and execute the content script
+            layout = (
+                self.__layout.replace("{{ROOT}}", self.base_url)
+                .replace("{{TITLE}}", self.title_for(path))
+                .replace("{{CONTENT}}", self.content_for(path))
+                .replace("{{HEAD}}", self.head_for(path))
+            )
 
-        # First assemble the base layout and execute the content script
-        layout = (
-            self.__layout.replace("{{ROOT}}", self.base_url)
-            .replace("{{TITLE}}", self.title_for(path))
-            .replace("{{CONTENT}}", self.content_for(path))
-            .replace("{{HEAD}}", self.head_for(path))
-        )
+            # Apply fixes to the layout
+            layout = self.apply_fixes_for(path, layout)
 
-        # Apply fixes to the layout
-        layout = self.apply_fixes_for(path, layout)
+            # Execute the layout
+            layout = self.execute_expressions(layout)
 
-        # Execute the layout
-        layout = self.execute_expressions(layout)
-
-        # Write the layout to the output file
-        path.with_name("index.html").write_text(layout)
+            # Write the layout to the output file
+            path.with_name("index.html").write_text(layout)
+        finally:
+            os.chdir(previous_cwd)
 
     def build(self) -> None:
-        for content_file in itertools.chain(self.docs_dir.rglob("content.html"), self.docs_dir.rglob("content.py")):
+        content_files = sorted(
+            itertools.chain(self.docs_dir.rglob("content.html"), self.docs_dir.rglob("content.py")),
+            key=lambda path: path.as_posix(),
+        )
+        for content_file in content_files:
             self.html_for(content_file)
 
 
 if __name__ == "__main__":
     site_name = "Maurice Frank"
     site_url = "http://maurice-frank.com"
-    docs_dir_name = "docs"
-
     isDEV = "--dev" in os.sys.argv
 
-    docs_dir = (Path(__file__).parent / docs_dir_name).absolute()
-    base_url = f"/{docs_dir_name}" if isDEV else site_url
-    base_url = base_url.rstrip("/") + "/"
-
+    docs_dir = (Path(__file__).parent / "docs").absolute()
     engine = TemplatingEngine(
         docs_dir=docs_dir,
-        base_url=base_url,
+        site_url=site_url,
         site_name=site_name,
+        local=isDEV,
     )
     engine.build()
