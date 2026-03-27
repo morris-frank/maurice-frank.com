@@ -14,6 +14,30 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Libertinus Sans";
+  src: url("/LibertinusSans-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Libertinus Sans";
+  src: url("/LibertinusSans-Italic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Libertinus Sans";
+  src: url("/LibertinusSans-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
   --linewidth: 50rem;
   --max-width: 1920px;
@@ -261,27 +285,28 @@ canvas {
 
 html.home-atlas-root {
   background:
-    radial-gradient(circle at top, rgba(255, 248, 230, 0.9), transparent 42%),
-    linear-gradient(180deg, #c8b287 0%, #b99f75 100%);
+    linear-gradient(180deg, rgba(193, 182, 161, 0.24), transparent 22%),
+    linear-gradient(180deg, #d6ccba 0%, #c6bba6 100%);
 }
 
 body.home-atlas {
-  --atlas-paper: #e8dcc0;
-  --atlas-paper-deep: #d7c39f;
-  --atlas-paper-soft: rgba(251, 245, 227, 0.84);
-  --atlas-ink: #4c4338;
-  --atlas-ink-soft: #776756;
-  --atlas-line: rgba(114, 92, 69, 0.72);
-  --atlas-sage: #8f9681;
-  --atlas-water: #8ea6a0;
-  --atlas-rose: #bc937b;
-  --atlas-gold: #b59f6c;
+  --atlas-paper: #ece6d8;
+  --atlas-paper-deep: #ddd3bf;
+  --atlas-paper-soft: rgba(243, 238, 228, 0.92);
+  --atlas-ink: #3f3529;
+  --atlas-ink-soft: #6c5d4c;
+  --atlas-line: rgba(79, 64, 45, 0.74);
+  --atlas-sage: #8d967f;
+  --atlas-water: #8794ab;
+  --atlas-rose: #a87870;
+  --atlas-gold: #b6a078;
   background:
-    radial-gradient(circle at 20% 10%, rgba(255, 250, 236, 0.5), transparent 24%),
-    radial-gradient(circle at 80% 18%, rgba(188, 147, 123, 0.12), transparent 20%),
-    linear-gradient(180deg, #d4bf98 0%, #b89d73 100%);
+    radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.45), transparent 20%),
+    radial-gradient(circle at 78% 14%, rgba(161, 147, 122, 0.12), transparent 18%),
+    linear-gradient(180deg, #d6cbb8 0%, #c4b79f 100%);
   box-shadow: none;
   color: var(--atlas-ink);
+  font-family: "Libertinus Sans", "Finlandica", sans-serif;
   gap: 0;
   margin: 0;
   max-width: none;
@@ -308,28 +333,40 @@ body.home-atlas a {
 
 .atlas-page {
   min-height: 100vh;
-  padding: clamp(1rem, 2vw, 2rem);
+  padding: clamp(0.85rem, 1.8vw, 1.6rem);
 }
 
 .atlas-shell {
   position: relative;
   margin: 0 auto;
   max-width: 1400px;
-  padding: clamp(1.25rem, 2vw, 2rem);
-  border: 1.5px solid rgba(84, 67, 45, 0.28);
-  border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(252, 246, 231, 0.92), rgba(226, 209, 176, 0.9)),
-    repeating-linear-gradient(
-      90deg,
-      rgba(118, 98, 74, 0.04) 0,
-      rgba(118, 98, 74, 0.04) 2px,
-      transparent 2px,
-      transparent 11px
-    );
+  padding: clamp(1.1rem, 2vw, 1.8rem);
+  border: 1px solid rgba(79, 63, 42, 0.22);
+  border-radius: 10px;
+  background-color: var(--atlas-paper);
+  background-image:
+    linear-gradient(180deg, rgba(118, 134, 171, 0.22), rgba(118, 134, 171, 0.22)),
+    radial-gradient(circle at 16% 18%, rgba(113, 90, 63, 0.08) 0, transparent 18%),
+    radial-gradient(circle at 78% 22%, rgba(113, 90, 63, 0.07) 0, transparent 16%),
+    radial-gradient(circle at 48% 76%, rgba(94, 112, 90, 0.08) 0, transparent 20%),
+    linear-gradient(90deg, transparent 0, transparent 12%, rgba(99, 81, 56, 0.09) 12.15%, transparent 12.35%, transparent 49.2%, rgba(99, 81, 56, 0.06) 49.35%, transparent 49.55%),
+    linear-gradient(180deg, rgba(242, 237, 226, 0.96), rgba(229, 221, 206, 0.98)),
+    repeating-linear-gradient(0deg, rgba(94, 75, 51, 0.022) 0 2px, transparent 2px 5px),
+    repeating-linear-gradient(90deg, rgba(94, 75, 51, 0.014) 0 3px, transparent 3px 9px);
+  background-size:
+    100% 3.5rem,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  background-repeat: no-repeat;
   box-shadow:
-    inset 0 0 0 1px rgba(255, 247, 225, 0.65),
-    0 24px 60px rgba(84, 63, 37, 0.18);
+    inset 0 0 0 1px rgba(255, 250, 242, 0.55),
+    inset 0 0 42px rgba(98, 78, 53, 0.06),
+    0 12px 28px rgba(79, 63, 42, 0.08);
   overflow: hidden;
 }
 
@@ -337,44 +374,52 @@ body.home-atlas a {
 .atlas-shell::after {
   content: "";
   position: absolute;
-  inset: 0;
   pointer-events: none;
 }
 
 .atlas-shell::before {
+  inset: 0;
   background:
-    radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.42), transparent 12%),
-    radial-gradient(circle at 88% 18%, rgba(188, 147, 123, 0.14), transparent 10%),
-    radial-gradient(circle at 50% 86%, rgba(143, 150, 129, 0.14), transparent 20%);
-  mix-blend-mode: screen;
+    radial-gradient(circle at 8% 22%, rgba(255, 255, 255, 0.36), transparent 8%),
+    radial-gradient(circle at 88% 20%, rgba(255, 255, 255, 0.22), transparent 10%),
+    radial-gradient(circle at 28% 60%, rgba(111, 90, 59, 0.08), transparent 16%),
+    radial-gradient(circle at 72% 68%, rgba(111, 90, 59, 0.06), transparent 18%),
+    radial-gradient(circle at 50% 50%, rgba(111, 90, 59, 0.03) 0 1px, transparent 1.2px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    18px 18px;
+  opacity: 0.8;
 }
 
 .atlas-shell::after {
-  border: 1px solid rgba(90, 71, 46, 0.16);
-  inset: 12px;
-  border-radius: 22px;
+  inset: 10px;
+  border: 1px solid rgba(83, 67, 45, 0.14);
+  border-radius: 6px;
 }
 
 .atlas-legend {
   position: relative;
   z-index: 2;
-  max-width: 36rem;
-  padding: clamp(0.6rem, 1.2vw, 1rem) clamp(0.4rem, 1vw, 0.8rem) 1.2rem;
+  max-width: 40rem;
+  padding: clamp(0.9rem, 1.3vw, 1.1rem) clamp(0.6rem, 1vw, 0.95rem) 1.35rem;
 }
 
 .atlas-legend .eyebrow,
 .card-kicker,
 .atlas-label,
 .atlas-footnote {
-  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  letter-spacing: 0.08em;
+  font-family: "Libertinus Sans", "Finlandica", sans-serif;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .atlas-legend .eyebrow {
   margin: 0 0 0.4rem;
   color: var(--atlas-ink-soft);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
 }
 
 .atlas-legend h1 {
@@ -383,25 +428,26 @@ body.home-atlas a {
   aspect-ratio: auto;
   margin: 0;
   padding: 0;
-  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-size: clamp(2.6rem, 6vw, 5rem);
-  font-weight: 400;
-  line-height: 0.96;
+  font-family: "Libertinus Sans", "Finlandica", sans-serif;
+  font-size: clamp(2.65rem, 6vw, 4.9rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
   text-wrap: balance;
 }
 
 .atlas-legend .lede {
-  max-width: 28rem;
-  margin: 1rem 0 1.2rem;
-  font-size: 1.05rem;
-  line-height: 1.6;
+  max-width: 31rem;
+  margin: 1rem 0 1rem;
+  font-size: 1.08rem;
+  line-height: 1.55;
   color: var(--atlas-ink-soft);
 }
 
 .atlas-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.4rem 1rem;
 }
 
 .atlas-nav a,
@@ -410,11 +456,21 @@ body.home-atlas a {
 }
 
 .atlas-nav a {
-  padding: 0.45rem 0.8rem;
-  border: 1px solid rgba(76, 67, 56, 0.25);
-  border-radius: 999px;
-  background: rgba(252, 245, 226, 0.74);
-  box-shadow: 0 4px 12px rgba(101, 82, 60, 0.08);
+  position: relative;
+  padding-bottom: 0.15rem;
+  color: var(--atlas-ink-soft);
+  border-bottom: 1px solid rgba(90, 72, 49, 0.22);
+}
+
+.atlas-nav a::after {
+  content: "·";
+  margin-left: 1rem;
+  color: rgba(108, 93, 76, 0.55);
+}
+
+.atlas-nav a:last-child::after {
+  content: "";
+  margin: 0;
 }
 
 .atlas-board {
@@ -422,7 +478,7 @@ body.home-atlas a {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-template-rows: repeat(8, minmax(4.75rem, auto));
-  gap: 1rem;
+  gap: 1.1rem;
   min-height: 60rem;
   padding: 0.5rem;
 }
@@ -433,6 +489,7 @@ body.home-atlas a {
   width: 100%;
   height: 100%;
   z-index: 0;
+  opacity: 0.96;
 }
 
 .atlas-ink path,
@@ -444,15 +501,15 @@ body.home-atlas a {
 }
 
 .atlas-ink--paths > path {
-  stroke-width: 2.5;
-  stroke-dasharray: 6 14;
-  animation: atlas-route 22s linear infinite;
+  stroke-width: 2.3;
+  stroke-dasharray: 5 13;
+  animation: atlas-route 24s linear infinite;
 }
 
 .atlas-ink .route-small {
-  stroke-width: 2;
-  stroke-dasharray: 4 10;
-  opacity: 0.7;
+  stroke-width: 1.8;
+  stroke-dasharray: 3 10;
+  opacity: 0.62;
 }
 
 .atlas-ink .compass path,
@@ -460,12 +517,12 @@ body.home-atlas a {
 .atlas-ink .mountains path,
 .atlas-ink .waves path,
 .atlas-ink .spark path {
-  stroke-width: 2.1;
+  stroke-width: 2;
 }
 
 .atlas-ink .compass {
   transform-origin: 1036px 126px;
-  animation: atlas-float 8s ease-in-out infinite;
+  animation: atlas-float 9s ease-in-out infinite;
 }
 
 .atlas-ink .spark {
@@ -482,19 +539,19 @@ body.home-atlas a {
 
 .atlas-ink .mountains,
 .atlas-ink .waves {
-  animation: atlas-float 11s ease-in-out infinite;
+  animation: atlas-float 12s ease-in-out infinite;
 }
 
 .atlas-label {
   position: absolute;
   z-index: 1;
   margin: 0;
-  color: rgba(119, 103, 86, 0.86);
-  font-size: 0.74rem;
+  color: rgba(108, 93, 76, 0.8);
+  font-size: 0.72rem;
 }
 
 .atlas-label--north {
-  top: 10.5rem;
+  top: 10.6rem;
   right: 14rem;
 }
 
@@ -520,23 +577,34 @@ body.home-atlas a {
   position: relative;
   z-index: 2;
   padding: 1.1rem 1.2rem 1.15rem;
-  border: 1px solid rgba(88, 68, 41, 0.25);
-  border-radius: 22px;
+  border: 1px solid rgba(82, 66, 44, 0.24);
+  border-radius: 8px;
   background:
-    linear-gradient(180deg, rgba(251, 246, 231, 0.88), rgba(233, 218, 188, 0.86)),
-    rgba(255, 255, 255, 0.2);
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.24), transparent 12%),
+    radial-gradient(circle at 82% 72%, rgba(132, 115, 84, 0.08), transparent 20%),
+    linear-gradient(180deg, rgba(242, 237, 227, 0.94), rgba(231, 224, 210, 0.96)),
+    repeating-linear-gradient(0deg, rgba(92, 74, 51, 0.018) 0 2px, transparent 2px 6px);
   box-shadow:
-    inset 0 0 0 1px rgba(255, 248, 231, 0.5),
-    0 18px 30px rgba(83, 64, 43, 0.08);
-  backdrop-filter: blur(0.5px);
+    inset 0 0 0 1px rgba(255, 251, 243, 0.44),
+    0 3px 6px rgba(73, 59, 40, 0.05);
+}
+
+.map-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(84, 68, 45, 0.08);
+  border-radius: 4px;
+  pointer-events: none;
 }
 
 .map-card h2 {
   margin: 0;
-  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-size: clamp(1.45rem, 2.8vw, 2.25rem);
-  font-weight: 400;
-  line-height: 1.08;
+  font-family: "Libertinus Sans", "Finlandica", sans-serif;
+  font-size: clamp(1.42rem, 2.8vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
 }
 
 .map-card p {
@@ -547,7 +615,7 @@ body.home-atlas a {
 .card-kicker {
   margin: 0 0 0.55rem;
   color: var(--atlas-ink-soft);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
 }
 
 .card-mark {
@@ -563,8 +631,8 @@ body.home-atlas a {
 
 .card-mark path {
   fill: none;
-  stroke: rgba(95, 77, 58, 0.92);
-  stroke-width: 2.2;
+  stroke: rgba(72, 58, 39, 0.94);
+  stroke-width: 2.1;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: 120;
@@ -576,17 +644,40 @@ body.home-atlas a {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: 0.45rem 0.7rem;
   margin: 1rem 0 0;
   padding: 0;
 }
 
 .card-links a {
   display: inline-block;
-  padding: 0.38rem 0.68rem;
-  border: 1px solid rgba(88, 68, 41, 0.2);
-  border-radius: 999px;
-  background: rgba(252, 247, 232, 0.68);
+  padding: 0.18rem 0;
+  border-bottom: 1px solid rgba(82, 66, 44, 0.2);
+  color: #7d5f53;
+}
+
+.map-card--harbor {
+  transform: rotate(-0.45deg);
+}
+
+.map-card--atelier {
+  transform: rotate(0.65deg);
+}
+
+.map-card--observatory {
+  transform: rotate(-0.55deg);
+}
+
+.map-card--fieldnotes {
+  transform: rotate(0.45deg);
+}
+
+.map-card--camp {
+  transform: rotate(-0.35deg);
+}
+
+.map-card--post {
+  transform: rotate(0.75deg);
 }
 
 .map-card--harbor {
