@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+
+<html lang="en" style="box-sizing: border-box; margin: 0; padding: 0;">
+<head style="box-sizing: border-box;">
+<meta charset="UTF-8" style="box-sizing: border-box;"/>
+<title style="box-sizing: border-box;">The Life of a Soil Sample — Soilytix domain comic v0.3</title>
+
+<!-- CSS inlined; root custom properties resolved to literal values. Conditional @media rules cannot be represented as inline styles and were not preserved. --></head>
+<body style='box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; background: #f6f3ec; color: #29332e; font-family: "Inter", "Aptos", system-ui, sans-serif; line-height: 1.5;'>
+<main class="page" style="box-sizing: border-box; margin: 0 auto; max-width: 880px; padding: 48px 24px 96px;">
+<section class="cover" style="box-sizing: border-box; background: #fdfefc; border: 1.5pt solid #3e4641; box-shadow: 6px 6px 0 #86eb22; margin-bottom: 40px; padding: 36px 40px 32px; position: relative;">
+<div class="eyebrow" style="box-sizing: border-box; color: #426725; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; margin-bottom: 8px; text-transform: uppercase;">Soilytix · Domain comic v0.3 · Sample lineage</div>
+<h1 style="box-sizing: border-box; color: #3e4641; font-size: 36px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin: 0 0 8px;">The Life of a <em style="box-sizing: border-box; color: #1a4f8a; font-style: italic;">Soil Sample</em></h1>
+<p class="lede" style="box-sizing: border-box; color: #29332e; font-size: 14px; margin: 14px 0 0; max-width: 56ch;">A step-by-step story told from the sample's point of view — a low-level walkthrough of the canonical lineage, with every panel anchored to a domain aggregate, lifecycle rule, or invariant from the bounded contexts review. v0.3 adds a synthesis panel showing the full lineage tree shape.</p>
+<div class="meta" style="box-sizing: border-box; border-top: 0.5pt solid #8fb0a6; color: #837e75; display: flex; flex-wrap: wrap; font-size: 11px; gap: 24px; margin-top: 22px; padding-top: 14px;">
+<span style="box-sizing: border-box;"><b style="box-sizing: border-box; color: #3e4641; font-weight: 600;">Status</b>  Working draft</span>
+<span style="box-sizing: border-box;"><b style="box-sizing: border-box; color: #3e4641; font-weight: 600;">Source</b>  Domain Model v1 (2026-04-13), Aggregate matrix, Boundary decisions</span>
+<span style="box-sizing: border-box;"><b style="box-sizing: border-box; color: #3e4641; font-weight: 600;">Audience</b>  Engineering, science, product</span>
+</div>
+<div aria-hidden="true" style="box-sizing: border-box; background: #86eb22; bottom: -3px; height: 4px; left: 0; position: absolute; right: 0;"></div></section>
+<aside class="reading-guide" style="box-sizing: border-box; background: #ebf9e0; border-left: 2pt solid #86eb22; color: #426725; font-size: 12.5px; margin-bottom: 40px; padding: 14px 18px;">
+<b style="box-sizing: border-box; color: #3e4641;">How to read this.</b> Each panel has three parts: a picture of what's physically happening, a short narration, and a <b style="box-sizing: border-box; color: #3e4641;">domain strip</b> at the bottom that names the aggregate or rule. Where a common assumption is wrong, you'll see a red <b style="box-sizing: border-box; color: #3e4641;">watch out</b> box. Where a hard rule applies, you'll see a lime <b style="box-sizing: border-box; color: #3e4641;">invariant</b> box.
+</aside>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">1</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">Before I existed: just dirt in a field</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">Spatial context</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#c8dde8" height="120" style="box-sizing: border-box;" width="320" x="0" y="0"></rect>
+<circle cx="260" cy="44" fill="#f4cf6f" r="20" style="box-sizing: border-box;"></circle>
+<circle cx="260" cy="44" fill="#f4cf6f" opacity="0.25" r="28" style="box-sizing: border-box;"></circle>
+<line stroke="#8fb0a6" stroke-width="0.6" style="box-sizing: border-box;" x1="0" x2="320" y1="120" y2="120"></line>
+<rect fill="#b8895c" height="40" style="box-sizing: border-box;" width="320" x="0" y="120"></rect>
+<rect fill="#8a5e3a" height="40" style="box-sizing: border-box;" width="320" x="0" y="160"></rect>
+<rect fill="#5a3d28" height="40" style="box-sizing: border-box;" width="320" x="0" y="200"></rect>
+<polygon fill="none" points="40,134 280,128 296,196 28,206" stroke="#1a4f8a" stroke-dasharray="4 3" stroke-width="1.5" style="box-sizing: border-box;"></polygon>
+<polyline fill="none" points="120,131 132,202" stroke="#1a4f8a" stroke-dasharray="2 2" stroke-width="0.8" style="box-sizing: border-box;"></polyline>
+<polyline fill="none" points="210,129 220,200" stroke="#1a4f8a" stroke-dasharray="2 2" stroke-width="0.8" style="box-sizing: border-box;"></polyline>
+<g fill="#6ba84a" style="box-sizing: border-box;">
+<ellipse cx="60" cy="142" rx="3" ry="6" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="90" cy="146" rx="3" ry="6" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="160" cy="138" rx="3" ry="6" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="200" cy="140" rx="3" ry="6" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="248" cy="143" rx="3" ry="6" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="270" cy="148" rx="3" ry="6" style="box-sizing: border-box;"></ellipse>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="226">AreaAsset · ManagementZone</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"I'm a clump of soil somewhere on this field. I've been here for years. The field has a name and a boundary; I don't have either. I'm not yet a sample — just material in place."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">The land exists before any sample, any order, any engagement. The field has a versioned boundary and may be split into management zones. None of that requires a customer.</p>
+<div class="domain-strip" style="box-sizing: border-box; background: #e5e5e3; border-left: 2pt solid #1a4f8a; color: #3e4641; font-size: 11.5px; line-height: 1.55; margin-top: auto; padding: 10px 12px;">
+<span class="label" style="box-sizing: border-box; color: #1a4f8a; display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase;">Domain</span>
+<code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>AreaAsset</code> is a versioned spatial root, owned by an Organisation. <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>ManagementZone</code> lives inside an AreaAsset version (not an aggregate root). Neither belongs to an <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>Engagement</code>, <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>SamplingCampaign</code>, or <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>InvestigationFrame</code>.
+      </div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">2</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">Someone draws a plan over the field</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">Commercial → Material</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#fdfefc" height="240" style="box-sizing: border-box;" width="320" x="0" y="0"></rect>
+<polygon fill="#ebf9e0" points="36,40 280,32 292,196 28,210" stroke="#1a4f8a" stroke-width="1.4" style="box-sizing: border-box;"></polygon>
+<polyline fill="none" points="120,36 132,205" stroke="#8fb0a6" stroke-dasharray="2 2" stroke-width="0.8" style="box-sizing: border-box;"></polyline>
+<polyline fill="none" points="210,34 220,200" stroke="#8fb0a6" stroke-dasharray="2 2" stroke-width="0.8" style="box-sizing: border-box;"></polyline>
+<g fill="#1a4f8a" style="box-sizing: border-box;">
+<circle cx="70" cy="80" r="3.5" style="box-sizing: border-box;"></circle>
+<circle cx="100" cy="120" r="3.5" style="box-sizing: border-box;"></circle>
+<circle cx="68" cy="170" r="3.5" style="box-sizing: border-box;"></circle>
+<circle cx="160" cy="78" r="3.5" style="box-sizing: border-box;"></circle>
+<circle cx="155" cy="135" r="3.5" style="box-sizing: border-box;"></circle>
+<circle cx="170" cy="180" r="3.5" style="box-sizing: border-box;"></circle>
+<circle cx="240" cy="80" r="3.5" style="box-sizing: border-box;"></circle>
+<circle cx="245" cy="140" r="3.5" style="box-sizing: border-box;"></circle>
+<circle cx="255" cy="190" r="3.5" style="box-sizing: border-box;"></circle>
+</g>
+<rect fill="#fadbd0" height="22" opacity="0.5" stroke="#b14117" stroke-dasharray="2 2" stroke-width="0.6" style="box-sizing: border-box;" width="50" x="46" y="48"></rect>
+<text fill="#b14117" font-family="Inter" font-size="6.5" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="71" y="62">buffer</text>
+<g style="box-sizing: border-box;" transform="translate(296,18)">
+<polygon fill="#3e4641" points="0,-8 4,4 0,1 -4,4" style="box-sizing: border-box;"></polygon>
+<text fill="#837e75" font-family="Inter" font-size="7" style="box-sizing: border-box;" text-anchor="middle" x="0" y="14">N</text>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="228">9 planned sampling points · grid · 0.5/ha</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"A scientist looks at a map of my field and decides where they'd like to take samples. I'm not picked yet — these are just intentions on a screen."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">A <b style="box-sizing: border-box;">SamplingCampaign</b> is designed inside a ServiceSession. Sampling strategy, count, density, buffer zones, GPS export — all of this is <i style="box-sizing: border-box;">planning</i>, not collection. No physical sample exists yet.</p>
+<div class="domain-strip" style="box-sizing: border-box; background: #e5e5e3; border-left: 2pt solid #1a4f8a; color: #3e4641; font-size: 11.5px; line-height: 1.55; margin-top: auto; padding: 10px 12px;">
+<span class="label" style="box-sizing: border-box; color: #1a4f8a; display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase;">Domain</span>
+<code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>SamplingCampaign</code> in design phase, owned by a <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>ServiceSession</code> inside an <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>Engagement</code>. References <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>AreaAsset</code> by stable identity (does not own it). May still complete with zero collected samples.
+      </div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">3</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">Two areas decide to pool</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">Pooling strategy</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#fdfefc" height="240" style="box-sizing: border-box;" width="320" x="0" y="0"></rect>
+<polygon fill="#ebf9e0" points="20,40 144,32 152,140 24,150" stroke="#1a4f8a" stroke-width="1.4" style="box-sizing: border-box;"></polygon>
+<polygon fill="#e0faf1" points="160,32 296,28 304,150 168,140" stroke="#0f7a65" stroke-width="1.4" style="box-sizing: border-box;"></polygon>
+<text fill="#1a4f8a" font-family="Inter" font-size="8" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="84" y="58">Field A</text>
+<text fill="#0f7a65" font-family="Inter" font-size="8" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="232" y="54">Field B</text>
+<g fill="#1a4f8a" style="box-sizing: border-box;">
+<circle cx="50" cy="80" r="2.5" style="box-sizing: border-box;"></circle><circle cx="78" cy="74" r="2.5" style="box-sizing: border-box;"></circle><circle cx="106" cy="78" r="2.5" style="box-sizing: border-box;"></circle>
+<circle cx="56" cy="110" r="2.5" style="box-sizing: border-box;"></circle><circle cx="86" cy="106" r="2.5" style="box-sizing: border-box;"></circle><circle cx="118" cy="110" r="2.5" style="box-sizing: border-box;"></circle>
+<circle cx="64" cy="134" r="2.5" style="box-sizing: border-box;"></circle><circle cx="100" cy="130" r="2.5" style="box-sizing: border-box;"></circle><circle cx="130" cy="132" r="2.5" style="box-sizing: border-box;"></circle>
+</g>
+<g fill="#0f7a65" style="box-sizing: border-box;">
+<circle cx="190" cy="62" r="2.5" style="box-sizing: border-box;"></circle><circle cx="222" cy="58" r="2.5" style="box-sizing: border-box;"></circle><circle cx="256" cy="56" r="2.5" style="box-sizing: border-box;"></circle><circle cx="288" cy="58" r="2.5" style="box-sizing: border-box;"></circle>
+<circle cx="194" cy="92" r="2.5" style="box-sizing: border-box;"></circle><circle cx="226" cy="88" r="2.5" style="box-sizing: border-box;"></circle><circle cx="260" cy="86" r="2.5" style="box-sizing: border-box;"></circle><circle cx="292" cy="88" r="2.5" style="box-sizing: border-box;"></circle>
+<circle cx="200" cy="122" r="2.5" style="box-sizing: border-box;"></circle><circle cx="234" cy="118" r="2.5" style="box-sizing: border-box;"></circle><circle cx="266" cy="118" r="2.5" style="box-sizing: border-box;"></circle>
+</g>
+<g fill="none" opacity="0.4" stroke="#3e4641" stroke-width="0.7" style="box-sizing: border-box;">
+<line style="box-sizing: border-box;" x1="50" x2="84" y1="80" y2="160"></line><line style="box-sizing: border-box;" x1="78" x2="84" y1="74" y2="160"></line><line style="box-sizing: border-box;" x1="106" x2="84" y1="78" y2="160"></line>
+<line style="box-sizing: border-box;" x1="56" x2="84" y1="110" y2="160"></line><line style="box-sizing: border-box;" x1="86" x2="84" y1="106" y2="160"></line><line style="box-sizing: border-box;" x1="118" x2="84" y1="110" y2="160"></line>
+<line style="box-sizing: border-box;" x1="64" x2="84" y1="134" y2="160"></line><line style="box-sizing: border-box;" x1="100" x2="84" y1="130" y2="160"></line><line style="box-sizing: border-box;" x1="130" x2="84" y1="132" y2="160"></line>
+</g>
+<g fill="none" opacity="0.4" stroke="#3e4641" stroke-width="0.7" style="box-sizing: border-box;">
+<line style="box-sizing: border-box;" x1="190" x2="232" y1="62" y2="160"></line><line style="box-sizing: border-box;" x1="222" x2="232" y1="58" y2="160"></line><line style="box-sizing: border-box;" x1="256" x2="232" y1="56" y2="160"></line><line style="box-sizing: border-box;" x1="288" x2="232" y1="58" y2="160"></line>
+<line style="box-sizing: border-box;" x1="194" x2="232" y1="92" y2="160"></line><line style="box-sizing: border-box;" x1="226" x2="232" y1="88" y2="160"></line><line style="box-sizing: border-box;" x1="260" x2="232" y1="86" y2="160"></line><line style="box-sizing: border-box;" x1="292" x2="232" y1="88" y2="160"></line>
+<line style="box-sizing: border-box;" x1="200" x2="232" y1="122" y2="160"></line><line style="box-sizing: border-box;" x1="234" x2="232" y1="118" y2="160"></line><line style="box-sizing: border-box;" x1="266" x2="232" y1="118" y2="160"></line>
+</g>
+<g style="box-sizing: border-box;" transform="translate(70,160)">
+<rect fill="#1a4f8a" height="44" rx="3" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;" width="28" x="0" y="0"></rect>
+<rect fill="#86eb22" height="6" style="box-sizing: border-box;" width="22" x="3" y="3"></rect>
+<text fill="#fdfefc" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="14" y="26">Pool A</text>
+<text fill="#fdfefc" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="14" y="36">9 → 1</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(218,160)">
+<rect fill="#0f7a65" height="44" rx="3" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;" width="28" x="0" y="0"></rect>
+<rect fill="#86eb22" height="6" style="box-sizing: border-box;" width="22" x="3" y="3"></rect>
+<text fill="#fdfefc" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="14" y="26">Pool B</text>
+<text fill="#fdfefc" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="14" y="36">11 → 1</text>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="222">SamplingPool · area-based · planned, not yet physical</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"Before anyone goes outside, the team decides: all primary samples in Field A will be pooled into one composite analysis sample. Same for Field B. That's two pools planned, not 20 individual samples."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">Pooling is a <b style="box-sizing: border-box;">planning-time</b> commercial decision before any soil is touched. Pricing is area-based, so a 5 ha field at 1ha resolution becomes 5 primary samples but only 1 composite analysis sample — and the customer pays for the composite, not the 5.</p>
+<div class="domain-strip" style="box-sizing: border-box; background: #e5e5e3; border-left: 2pt solid #1a4f8a; color: #3e4641; font-size: 11.5px; line-height: 1.55; margin-top: auto; padding: 10px 12px;">
+<span class="label" style="box-sizing: border-box; color: #1a4f8a; display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase;">Domain</span>
+<code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>SamplingPool</code> is a planning artefact on <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>SamplingCampaign</code> / <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>AreaAsset</code> strategy. It declares "primary samples in this set will be physically combined into one analysis sample." A campaign may have many pools, or none — many sampling areas have no pools at all.
+      </div>
+<div class="invariant" style="box-sizing: border-box; background: #ebf9e0; border-left: 2pt solid #86eb22; color: #426725; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #3e4641;">Distinction.</b> The pool itself is a <i style="box-sizing: border-box;">plan</i>. The act of physically combining samples is a <i style="box-sizing: border-box;">CollectionEvent</i>. Two different things.</div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">4</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">A kit with QR-coded bags is dispatched</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">Campaign goes independent</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<g style="box-sizing: border-box;" transform="translate(40,60)">
+<polygon fill="#b8895c" points="0,40 60,10 140,30 80,60" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;"></polygon>
+<polygon fill="#8a5e3a" points="0,40 0,140 80,160 80,60" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;"></polygon>
+<polygon fill="#5a3d28" points="80,60 140,30 140,130 80,160" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;"></polygon>
+<polygon fill="#86eb22" opacity="0.9" points="0,80 80,100 140,70 60,50" style="box-sizing: border-box;"></polygon>
+<text fill="#3e4641" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" transform="rotate(-12 62 80)" x="62" y="80">SOILYTIX</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(200,80)">
+<rect fill="#fdfefc" height="50" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="40" x="0" y="0"></rect>
+<rect fill="#3e4641" height="22" style="box-sizing: border-box;" width="28" x="6" y="6"></rect>
+<g fill="#fdfefc" style="box-sizing: border-box;">
+<rect height="4" style="box-sizing: border-box;" width="4" x="9" y="9"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="15" y="9"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="25" y="9"></rect>
+<rect height="4" style="box-sizing: border-box;" width="4" x="9" y="15"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="21" y="15"></rect>
+<rect height="4" style="box-sizing: border-box;" width="4" x="9" y="21"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="15" y="21"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="25" y="21"></rect>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="20" y="38">SMP-A-001</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="20" y="46">field code</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(248,90)">
+<rect fill="#fdfefc" height="50" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="40" x="0" y="0"></rect>
+<rect fill="#3e4641" height="22" style="box-sizing: border-box;" width="28" x="6" y="6"></rect>
+<g fill="#fdfefc" style="box-sizing: border-box;">
+<rect height="4" style="box-sizing: border-box;" width="4" x="9" y="9"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="21" y="9"></rect>
+<rect height="4" style="box-sizing: border-box;" width="4" x="15" y="15"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="25" y="15"></rect>
+<rect height="4" style="box-sizing: border-box;" width="4" x="9" y="21"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="21" y="21"></rect>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="20" y="38">SMP-A-002</text>
+</g>
+<path d="M 180 110 L 198 105" fill="none" marker-end="url(#arrow3)" stroke="#3e4641" stroke-width="1.5" style="box-sizing: border-box;"></path>
+<defs style="box-sizing: border-box;">
+<marker id="arrow3" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3" style="box-sizing: border-box;">
+<polygon fill="#3e4641" points="0,0 6,3 0,6" style="box-sizing: border-box;"></polygon>
+</marker>
+</defs>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="226">Sampling kit dispatched · campaign now in execution</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"Bags with QR codes leave the office. Each bag is meant for a specific spot — but right now they're empty, and I'm still in the ground."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">The "Request Sampling Kit" button transitions the campaign from <b style="box-sizing: border-box;">session-owned design</b> to an <b style="box-sizing: border-box;">independent execution lifecycle</b>. From this moment, even if the engagement is paused or cancelled, the campaign carries its own state.</p>
+<div class="invariant" style="box-sizing: border-box; background: #ebf9e0; border-left: 2pt solid #86eb22; color: #426725; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #3e4641;">Lifecycle split.</b> Planning and execution of a campaign are different states; one cannot overwrite the other.</div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">5</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">A field worker scoops me up</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">Collection event</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#c8dde8" height="140" opacity="0.6" style="box-sizing: border-box;" width="320" x="0" y="0"></rect>
+<rect fill="#b8895c" height="40" style="box-sizing: border-box;" width="320" x="0" y="140"></rect>
+<rect fill="#8a5e3a" height="60" style="box-sizing: border-box;" width="320" x="0" y="180"></rect>
+<ellipse cx="160" cy="172" fill="#5a3d28" rx="38" ry="10" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="160" cy="170" fill="#3a2918" rx="34" ry="6" style="box-sizing: border-box;"></ellipse>
+<g style="box-sizing: border-box;" transform="translate(110,80)">
+<rect fill="#3e4641" height="70" style="box-sizing: border-box;" width="3" x="2" y="0"></rect>
+<path d="M -10 70 Q 0 92 14 88 Q 22 82 14 72 Z" fill="#1a4f8a" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;"></path>
+</g>
+<ellipse cx="111" cy="160" fill="#5a3d28" rx="8" ry="4" style="box-sizing: border-box;"></ellipse>
+<g style="box-sizing: border-box;" transform="translate(210,100)">
+<rect fill="#fdfefc" height="80" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;" width="60" x="0" y="0"></rect>
+<rect fill="#3e4641" height="32" style="box-sizing: border-box;" width="32" x="8" y="8"></rect>
+<g fill="#fdfefc" style="box-sizing: border-box;">
+<rect height="5" style="box-sizing: border-box;" width="5" x="11" y="11"></rect><rect height="5" style="box-sizing: border-box;" width="5" x="20" y="11"></rect><rect height="5" style="box-sizing: border-box;" width="5" x="29" y="11"></rect>
+<rect height="5" style="box-sizing: border-box;" width="5" x="11" y="20"></rect><rect height="5" style="box-sizing: border-box;" width="5" x="29" y="20"></rect>
+<rect height="5" style="box-sizing: border-box;" width="5" x="11" y="29"></rect><rect height="5" style="box-sizing: border-box;" width="5" x="20" y="29"></rect><rect height="5" style="box-sizing: border-box;" width="5" x="29" y="29"></rect>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="30" y="54">SMP-A-001</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="30" y="64">52.3°N 9.7°E</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="30" y="72">2026-05-07 09:14</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(40,28)">
+<rect fill="#3e4641" height="6" style="box-sizing: border-box;" width="14" x="0" y="0"></rect>
+<rect fill="#86eb22" height="2" style="box-sizing: border-box;" width="6" x="-8" y="2"></rect>
+<rect fill="#86eb22" height="2" style="box-sizing: border-box;" width="6" x="16" y="2"></rect>
+<line stroke="#3e4641" stroke-dasharray="2 2" stroke-width="0.4" style="box-sizing: border-box;" x1="7" x2="40" y1="6" y2="60"></line>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="228">CollectionEvent · FieldOrigin captured</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"I get scooped into a bag and the QR is scanned. The system writes down where I came from, when, and from which campaign — but I still don't have a stable name."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">A <b style="box-sizing: border-box;">CollectionEvent</b> is appended. It records the FieldOrigin: sampling point, campaign, AreaAsset version, coordinates, timestamp. Weather data is auto-pulled from nearby satellites.</p>
+<div class="domain-strip" style="box-sizing: border-box; background: #e5e5e3; border-left: 2pt solid #1a4f8a; color: #3e4641; font-size: 11.5px; line-height: 1.55; margin-top: auto; padding: 10px 12px;">
+<span class="label" style="box-sizing: border-box; color: #1a4f8a; display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase;">Domain</span>
+<code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>CollectionEvent</code> is append-only. Corrections are made by <i style="box-sizing: border-box;">superseding</i> events, never by overwrite. Geo-located events reference an <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>AreaAsset</code>; material imports do not.
+      </div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">6</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">In the bag, I'm not alone</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">Composite collection</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#c8dde8" height="120" opacity="0.5" style="box-sizing: border-box;" width="320" x="0" y="0"></rect>
+<rect fill="#b8895c" height="120" style="box-sizing: border-box;" width="320" x="0" y="120"></rect>
+<rect fill="#8a5e3a" height="80" style="box-sizing: border-box;" width="320" x="0" y="160"></rect>
+<g fill="#5a3d28" stroke="#3e4641" stroke-width="0.5" style="box-sizing: border-box;">
+<ellipse cx="32" cy="138" rx="6" ry="2" style="box-sizing: border-box;"></ellipse><ellipse cx="62" cy="142" rx="6" ry="2" style="box-sizing: border-box;"></ellipse><ellipse cx="92" cy="138" rx="6" ry="2" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="36" cy="156" rx="6" ry="2" style="box-sizing: border-box;"></ellipse><ellipse cx="68" cy="160" rx="6" ry="2" style="box-sizing: border-box;"></ellipse><ellipse cx="98" cy="156" rx="6" ry="2" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="40" cy="174" rx="6" ry="2" style="box-sizing: border-box;"></ellipse><ellipse cx="72" cy="178" rx="6" ry="2" style="box-sizing: border-box;"></ellipse><ellipse cx="104" cy="174" rx="6" ry="2" style="box-sizing: border-box;"></ellipse>
+</g>
+<g fill="none" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;">
+<path d="M 38 138 Q 100 110 168 132" marker-end="url(#arrow6n)" style="box-sizing: border-box;"></path>
+<path d="M 68 142 Q 110 116 168 138" marker-end="url(#arrow6n)" style="box-sizing: border-box;"></path>
+<path d="M 98 138 Q 130 122 168 144" marker-end="url(#arrow6n)" style="box-sizing: border-box;"></path>
+<path d="M 42 156 Q 110 134 168 148" marker-end="url(#arrow6n)" opacity="0.7" style="box-sizing: border-box;"></path>
+<path d="M 74 160 Q 120 144 168 152" marker-end="url(#arrow6n)" opacity="0.7" style="box-sizing: border-box;"></path>
+<path d="M 104 156 Q 134 148 168 154" marker-end="url(#arrow6n)" opacity="0.7" style="box-sizing: border-box;"></path>
+<path d="M 46 174 Q 110 160 168 158" marker-end="url(#arrow6n)" opacity="0.45" style="box-sizing: border-box;"></path>
+<path d="M 78 178 Q 130 168 168 162" marker-end="url(#arrow6n)" opacity="0.45" style="box-sizing: border-box;"></path>
+<path d="M 110 174 Q 140 168 168 164" marker-end="url(#arrow6n)" opacity="0.45" style="box-sizing: border-box;"></path>
+</g>
+<defs style="box-sizing: border-box;">
+<marker id="arrow6n" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3" style="box-sizing: border-box;">
+<polygon fill="#3e4641" points="0,0 6,3 0,6" style="box-sizing: border-box;"></polygon>
+</marker>
+</defs>
+<g style="box-sizing: border-box;" transform="translate(176,90)">
+<rect fill="#fdfefc" height="100" stroke="#3e4641" stroke-width="1.4" style="box-sizing: border-box;" width="80" x="0" y="0"></rect>
+<rect fill="#8a5e3a" height="46" style="box-sizing: border-box;" width="68" x="6" y="48"></rect>
+<ellipse cx="20" cy="62" fill="#5a3d28" opacity="0.7" rx="6" ry="3" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="44" cy="70" fill="#5a3d28" opacity="0.6" rx="7" ry="3" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="62" cy="60" fill="#5a3d28" opacity="0.5" rx="5" ry="2" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="30" cy="84" fill="#5a3d28" opacity="0.7" rx="6" ry="2" style="box-sizing: border-box;"></ellipse>
+<ellipse cx="56" cy="86" fill="#5a3d28" opacity="0.5" rx="6" ry="3" style="box-sizing: border-box;"></ellipse>
+<rect fill="#3e4641" height="22" style="box-sizing: border-box;" width="22" x="10" y="8"></rect>
+<g fill="#fdfefc" style="box-sizing: border-box;">
+<rect height="4" style="box-sizing: border-box;" width="4" x="13" y="11"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="19" y="11"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="25" y="11"></rect>
+<rect height="4" style="box-sizing: border-box;" width="4" x="13" y="17"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="25" y="17"></rect>
+<rect height="4" style="box-sizing: border-box;" width="4" x="13" y="23"></rect><rect height="4" style="box-sizing: border-box;" width="4" x="19" y="23"></rect>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" x="56" y="14">POOL-A</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" x="56" y="22">composite of 9</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" x="56" y="29">SMP-A-001…009</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" x="56" y="36">Field A</text>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="40" y="46">9 sub-samples mixed</text>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="8.5" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="220">CollectionEvent · type=composite_creation</text>
+<text fill="#837e75" font-family="Inter" font-size="7" style="box-sizing: border-box;" text-anchor="middle" x="160" y="232">9 source primary samples consumed into 1 composite</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"At each of nine spots in Field A, a small scoop is taken — but they all go into the <i style="box-sizing: border-box;">same</i> bag. By the time the bag is sealed, the nine sub-samples have lost their individual identities. They are now me — the composite."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">Pooling at collection is a real, recorded act. The 9 primary sample identities (with their individual coordinates and timestamps) are <i style="box-sizing: border-box;">preserved</i> as inputs to one CollectionEvent of type <code style="box-sizing: border-box;">composite_creation</code>, and the composite has its own identity downstream.</p>
+<div class="domain-strip" style="box-sizing: border-box; background: #e5e5e3; border-left: 2pt solid #1a4f8a; color: #3e4641; font-size: 11.5px; line-height: 1.55; margin-top: auto; padding: 10px 12px;">
+<span class="label" style="box-sizing: border-box; color: #1a4f8a; display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase;">Domain</span>
+        One <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>CollectionEvent</code> with N primary-sample inputs and 1 derived material output. The 9 underlying primary samples are never deleted — they remain queryable, with timestamps and coordinates intact. The composite carries forward.
+      </div>
+<div class="warning" style="box-sizing: border-box; background: #fadbd0; border-left: 2pt solid #b14117; color: #4a1b0c; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #b14117;">Watch out.</b> Don't lose the sub-sample provenance. The composite is one bag, but the model still has to remember "this composite was built from samples at these 9 coordinates" — that's required for spatial averaging, QC, and re-collection.</div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">7</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">In a box on its way to the lab</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">Provisional identity</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<g style="box-sizing: border-box;" transform="translate(40,90)">
+<rect fill="#fdfefc" height="50" stroke="#3e4641" stroke-width="1.4" style="box-sizing: border-box;" width="120" x="0" y="20"></rect>
+<rect fill="#1a4f8a" height="35" stroke="#3e4641" stroke-width="1.4" style="box-sizing: border-box;" width="40" x="120" y="35"></rect>
+<rect fill="#c8dde8" height="14" style="box-sizing: border-box;" width="20" x="128" y="40"></rect>
+<circle cx="30" cy="74" fill="#3e4641" r="10" style="box-sizing: border-box;"></circle>
+<circle cx="30" cy="74" fill="#837e75" r="5" style="box-sizing: border-box;"></circle>
+<circle cx="130" cy="74" fill="#3e4641" r="10" style="box-sizing: border-box;"></circle>
+<circle cx="130" cy="74" fill="#837e75" r="5" style="box-sizing: border-box;"></circle>
+<rect fill="#86eb22" height="20" style="box-sizing: border-box;" width="20" x="20" y="32"></rect>
+<rect fill="#ebf9e0" height="20" stroke="#3e4641" stroke-width="0.5" style="box-sizing: border-box;" width="20" x="50" y="32"></rect>
+<rect fill="#86eb22" height="20" style="box-sizing: border-box;" width="20" x="80" y="32"></rect>
+<text fill="#3e4641" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="60" y="64">SOILYTIX · cold chain</text>
+</g>
+<line stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;" x1="0" x2="320" y1="180" y2="180"></line>
+<line stroke="#3e4641" stroke-dasharray="10 6" stroke-width="1" style="box-sizing: border-box;" x1="0" x2="40" y1="190" y2="190"></line>
+<line stroke="#3e4641" stroke-dasharray="10 6" stroke-width="1" style="box-sizing: border-box;" x1="60" x2="100" y1="190" y2="190"></line>
+<line stroke="#3e4641" stroke-dasharray="10 6" stroke-width="1" style="box-sizing: border-box;" x1="120" x2="160" y1="190" y2="190"></line>
+<line stroke="#3e4641" stroke-dasharray="10 6" stroke-width="1" style="box-sizing: border-box;" x1="180" x2="220" y1="190" y2="190"></line>
+<line stroke="#3e4641" stroke-dasharray="10 6" stroke-width="1" style="box-sizing: border-box;" x1="240" x2="280" y1="190" y2="190"></line>
+<path d="M 220 130 L 280 130" fill="none" marker-end="url(#arrow5)" stroke="#426725" stroke-width="2" style="box-sizing: border-box;"></path>
+<defs style="box-sizing: border-box;">
+<marker id="arrow5" markerheight="8" markerwidth="8" orient="auto" refx="4" refy="4" style="box-sizing: border-box;">
+<polygon fill="#426725" points="0,0 8,4 0,8" style="box-sizing: border-box;"></polygon>
+</marker>
+</defs>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="220">CollectionEvent committed · no SampleLineage yet</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"The system knows I exist and where I came from, but I haven't been given my real, durable identity. The label on my bag is a <i style="box-sizing: border-box;">field code</i>, not my domain ID."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">This in-between state matters. The CollectionEvent is committed; provenance is captured. But until the lab physically receives the bag, no <b style="box-sizing: border-box;">SampleLineage</b> exists. A bag could be lost in transit and the campaign would still be valid.</p>
+<div class="warning" style="box-sizing: border-box; background: #fadbd0; border-left: 2pt solid #b14117; color: #4a1b0c; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #b14117;">Watch out.</b> Don't conflate the field code on the QR sticker with the SampleLineage ID. The field code is provenance metadata; the lineage ID is the durable scientific root, assigned later.</div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">8</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">Lab intake — I am given a name</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">★ SampleLineage stable ID</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#e5e5e3" height="80" style="box-sizing: border-box;" width="320" x="0" y="160"></rect>
+<line stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" x1="0" x2="320" y1="160" y2="160"></line>
+<rect fill="#e0faf1" height="160" style="box-sizing: border-box;" width="320" x="0" y="0"></rect>
+<line stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" x1="20" x2="120" y1="40" y2="40"></line>
+<rect fill="#1a4f8a" height="20" style="box-sizing: border-box;" width="10" x="28" y="20"></rect>
+<rect fill="#0f7a65" height="18" style="box-sizing: border-box;" width="10" x="42" y="22"></rect>
+<rect fill="#86eb22" height="22" style="box-sizing: border-box;" width="10" x="56" y="18"></rect>
+<g style="box-sizing: border-box;" transform="translate(40,110)">
+<rect fill="#fdfefc" height="55" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="44" x="0" y="0"></rect>
+<rect fill="#3e4641" height="22" style="box-sizing: border-box;" width="22" x="6" y="6"></rect>
+<text fill="#3e4641" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="22" y="42">SMP-A-001</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="22" y="50">field code</text>
+</g>
+<path d="M 100 138 L 138 138" fill="none" marker-end="url(#arrow6)" stroke="#426725" stroke-width="2" style="box-sizing: border-box;"></path>
+<defs style="box-sizing: border-box;">
+<marker id="arrow6" markerheight="8" markerwidth="8" orient="auto" refx="4" refy="4" style="box-sizing: border-box;">
+<polygon fill="#426725" points="0,0 8,4 0,8" style="box-sizing: border-box;"></polygon>
+</marker>
+</defs>
+<g style="box-sizing: border-box;" transform="translate(150,90)">
+<rect fill="#86eb22" height="90" opacity="0.35" style="box-sizing: border-box;" width="80" x="-6" y="-6"></rect>
+<rect fill="#fdfefc" height="78" stroke="#426725" stroke-width="1.6" style="box-sizing: border-box;" width="68" x="0" y="0"></rect>
+<rect fill="#426725" height="32" style="box-sizing: border-box;" width="32" x="10" y="10"></rect>
+<text fill="#426725" font-family="Inter" font-size="7" font-weight="800" style="box-sizing: border-box;" text-anchor="middle" x="34" y="56">SL-X9F2-7K</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="34" y="66">SampleLineage</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="34" y="74">2026-05-09 11:02</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(245,80)">
+<circle cx="20" cy="14" fill="#b8895c" r="10" style="box-sizing: border-box;"></circle>
+<rect fill="#fdfefc" height="36" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="24" x="8" y="22"></rect>
+<line stroke="#1a4f8a" stroke-width="0.8" style="box-sizing: border-box;" x1="8" x2="32" y1="38" y2="38"></line>
+<rect fill="#1a4f8a" height="8" style="box-sizing: border-box;" width="2" x="14" y="25"></rect>
+<rect fill="#1a4f8a" height="8" style="box-sizing: border-box;" width="2" x="18" y="25"></rect>
+<circle cx="16" cy="13" fill="none" r="3" stroke="#3e4641" stroke-width="0.6" style="box-sizing: border-box;"></circle>
+<circle cx="24" cy="13" fill="none" r="3" stroke="#3e4641" stroke-width="0.6" style="box-sizing: border-box;"></circle>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="228">ReceivedSample → stable SampleLineage ID assigned</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"At the lab bench I become <b style="box-sizing: border-box;">SL-X9F2-7K</b>. From this moment on, this is who I am. Even if my bag, the campaign, or the customer disappears — this name persists."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">This is the single most important step in the whole story. The <b style="box-sizing: border-box;">SampleLineage</b> aggregate is born. It is the durable provenance root of everything that follows.</p>
+<div class="invariant" style="box-sizing: border-box; background: #ebf9e0; border-left: 2pt solid #86eb22; color: #426725; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #3e4641;">Aggregate invariant.</b> SampleLineage does <i style="box-sizing: border-box;">not</i> require an Engagement to exist. It is not a child of Engagement, AssayOrder, or InvestigationFrame. Lineage can exist without any active commercial workflow.</div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">9</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">How do I know which land I came from?</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">★ Cross-context reference</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ebf9e0" height="78" opacity="0.5" style="box-sizing: border-box;" width="320" x="0" y="0"></rect>
+<rect fill="#e0faf1" height="78" opacity="0.7" style="box-sizing: border-box;" width="320" x="0" y="78"></rect>
+<rect fill="#e5e5e3" height="76" opacity="0.55" style="box-sizing: border-box;" width="320" x="0" y="156"></rect>
+<text fill="#426725" font-family="Inter" font-size="7" font-weight="800" letter-spacing="0.1em" style="box-sizing: border-box;" x="6" y="14">SPATIAL CONTEXT</text>
+<text fill="#0f7a65" font-family="Inter" font-size="7" font-weight="800" letter-spacing="0.1em" style="box-sizing: border-box;" x="6" y="92">PROVENANCE CONTEXT</text>
+<text fill="#3e4641" font-family="Inter" font-size="7" font-weight="800" letter-spacing="0.1em" style="box-sizing: border-box;" x="6" y="170">COMMERCIAL CONTEXT</text>
+<g style="box-sizing: border-box;" transform="translate(50,24)">
+<rect fill="#fdfefc" height="44" stroke="#426725" stroke-width="1.4" style="box-sizing: border-box;" width="80" x="0" y="0"></rect>
+<text fill="#426725" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="40" y="14">AreaAsset</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="40" y="24">Field A · v3</text>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="40" y="34">id: AA-7421</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(180,24)">
+<rect fill="#fdfefc" height="44" stroke="#426725" stroke-dasharray="3 2" stroke-width="1" style="box-sizing: border-box;" width="80" x="0" y="0"></rect>
+<text fill="#426725" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="40" y="14">SamplingPoint</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="40" y="24">52.31°N 9.71°E</text>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="40" y="34">id: SP-A-001</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(80,102)">
+<rect fill="#fdfefc" height="44" stroke="#0f7a65" stroke-width="1.6" style="box-sizing: border-box;" width="100" x="0" y="0"></rect>
+<text fill="#0f7a65" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="50" y="14">SampleLineage</text>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="50" y="24">id: SL-X9F2-7K</text>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="6" x2="94" y1="28" y2="28"></line>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="50" y="38">collectionEvents: [CE-44]</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(196,102)">
+<rect fill="#fdfefc" height="44" stroke="#0f7a65" stroke-width="1.2" style="box-sizing: border-box;" width="116" x="0" y="0"></rect>
+<rect fill="#0f7a65" height="12" style="box-sizing: border-box;" width="116" x="0" y="0"></rect>
+<text fill="#fdfefc" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="58" y="9">CollectionEvent · CE-44</text>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" x="6" y="22">FieldOrigin {</text>
+<text fill="#426725" font-family="Inter" font-size="5" style="box-sizing: border-box;" x="10" y="30">areaAssetId: AA-7421</text>
+<text fill="#426725" font-family="Inter" font-size="5" style="box-sizing: border-box;" x="10" y="36">samplingPointId: SP-A-001</text>
+<text fill="#426725" font-family="Inter" font-size="5" style="box-sizing: border-box;" x="10" y="42">campaignId: CAMP-19 }</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(80,178)">
+<rect fill="#fdfefc" height="44" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;" width="100" x="0" y="0"></rect>
+<text fill="#3e4641" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="50" y="14">SamplingCampaign</text>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="50" y="24">id: CAMP-19</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="50" y="34">references AA-7421</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(196,178)">
+<rect fill="#fdfefc" height="44" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;" width="100" x="0" y="0"></rect>
+<text fill="#3e4641" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="50" y="14">Engagement</text>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="50" y="24">id: ENG-4421</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="50" y="34">commissioned CAMP-19</text>
+</g>
+<path d="M 254 102 Q 220 84 90 68" fill="none" marker-end="url(#refarr)" stroke="#426725" stroke-dasharray="3 2" stroke-width="1.2" style="box-sizing: border-box;"></path>
+<path d="M 254 102 Q 230 86 220 68" fill="none" marker-end="url(#refarr)" stroke="#426725" stroke-dasharray="3 2" stroke-width="1" style="box-sizing: border-box;"></path>
+<path d="M 254 146 Q 230 162 180 178" fill="none" marker-end="url(#refarr)" stroke="#3e4641" stroke-dasharray="3 2" stroke-width="1" style="box-sizing: border-box;"></path>
+<path d="M 180 124 L 196 124" fill="none" marker-end="url(#refarrcyan)" stroke="#0f7a65" stroke-width="2" style="box-sizing: border-box;"></path>
+<path d="M 130 178 Q 90 130 90 68" fill="none" marker-end="url(#refarrgrey)" stroke="#837e75" stroke-dasharray="2 2" stroke-width="0.8" style="box-sizing: border-box;"></path>
+<path d="M 200 200 L 184 200" fill="none" marker-end="url(#refarrgrey)" stroke="#3e4641" stroke-dasharray="2 2" stroke-width="0.8" style="box-sizing: border-box;"></path>
+<defs style="box-sizing: border-box;">
+<marker id="refarr" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3" style="box-sizing: border-box;">
+<polygon fill="#426725" points="0,0 6,3 0,6" style="box-sizing: border-box;"></polygon>
+</marker>
+<marker id="refarrcyan" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3" style="box-sizing: border-box;">
+<polygon fill="#0f7a65" points="0,0 6,3 0,6" style="box-sizing: border-box;"></polygon>
+</marker>
+<marker id="refarrgrey" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3" style="box-sizing: border-box;">
+<polygon fill="#837e75" points="0,0 6,3 0,6" style="box-sizing: border-box;"></polygon>
+</marker>
+</defs>
+<g style="box-sizing: border-box;" transform="translate(10,238)">
+<line stroke="#0f7a65" stroke-width="2" style="box-sizing: border-box;" x1="0" x2="14" y1="2" y2="2"></line>
+<text fill="#3e4641" font-family="Inter" font-size="6" style="box-sizing: border-box;" x="18" y="5">owns (same context)</text>
+<line stroke="#426725" stroke-dasharray="3 2" stroke-width="1.2" style="box-sizing: border-box;" x1="120" x2="134" y1="2" y2="2"></line>
+<text fill="#3e4641" font-family="Inter" font-size="6" style="box-sizing: border-box;" x="138" y="5">references by stable ID (cross-context)</text>
+</g>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"My lineage record doesn't <i style="box-sizing: border-box;">contain</i> the field. It just remembers an ID. The field lives in its own context — Spatial. To find out which land I came from, the system follows the reference."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">This is the structural answer to your question: <b style="box-sizing: border-box;">SampleLineage</b> and <b style="box-sizing: border-box;">AreaAsset</b> live in different contexts and are never the same object. The bridge is the <b style="box-sizing: border-box;">CollectionEvent</b>, which carries <code style="box-sizing: border-box;">areaAssetId</code> as a value inside its <code style="box-sizing: border-box;">FieldOrigin</code> payload. That's a stable-ID reference — an association, not containment.</p>
+<div class="invariant" style="box-sizing: border-box; background: #ebf9e0; border-left: 2pt solid #86eb22; color: #426725; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #3e4641;">Reference rule.</b> Cross-context links are associations, not hidden containment. Don't infer parent-child ownership from workflow adjacency or convenience joins.</div>
+<div class="domain-strip" style="box-sizing: border-box; background: #e5e5e3; border-left: 2pt solid #1a4f8a; color: #3e4641; font-size: 11.5px; line-height: 1.55; margin-top: auto; padding: 10px 12px;">
+<span class="label" style="box-sizing: border-box; color: #1a4f8a; display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase;">Three resolutions</span>
+<b style="box-sizing: border-box;">Geo-located:</b> CollectionEvent carries <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>areaAssetId</code> + coordinates. Lineage answers "where" via the reference.<br style="box-sizing: border-box;"/>
+<b style="box-sizing: border-box;">Ad-hoc / non-geo:</b> CollectionEvent carries a <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>MaterialOrigin</code> payload — no <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>areaAssetId</code>. Lineage exists, just without spatial provenance.<br style="box-sizing: border-box;"/>
+<b style="box-sizing: border-box;">Land changed or dropped:</b> AreaAsset is versioned, so the old <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>areaAssetId@v</code> still resolves. If the AreaAsset is deleted, the reference becomes a dangling ID — lineage doesn't break.
+      </div>
+</div>
+</div>
+</article>
+<div class="meanwhile" style="box-sizing: border-box; margin: 36px 0 28px; position: relative; text-align: center;"><span aria-hidden="true" style="box-sizing: border-box; color: #837e75; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; padding: 0 16px; text-transform: uppercase; background: #8fb0a6; height: 0.5pt; left: 0; position: absolute; top: 50%; width: 38%;"></span><span style="box-sizing: border-box; background: #f6f3ec; color: #837e75; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; padding: 0 16px; text-transform: uppercase;">Two origin paths converge here</span><span aria-hidden="true" style="box-sizing: border-box; color: #837e75; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; padding: 0 16px; text-transform: uppercase; background: #8fb0a6; height: 0.5pt; position: absolute; right: 0; top: 50%; width: 38%;"></span></div>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">10</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">I'm not the only kind of sample arriving today</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">FieldOrigin · MaterialOrigin</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<g style="box-sizing: border-box;" transform="translate(20,40)">
+<text fill="#1a4f8a" font-family="Inter" font-size="9" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="60" y="0">FieldOrigin</text>
+<rect fill="#ebf9e0" height="44" stroke="#1a4f8a" stroke-width="1" style="box-sizing: border-box;" width="80" x="20" y="14"></rect>
+<circle cx="40" cy="30" fill="#1a4f8a" r="2.5" style="box-sizing: border-box;"></circle>
+<circle cx="60" cy="40" fill="#1a4f8a" r="2.5" style="box-sizing: border-box;"></circle>
+<circle cx="80" cy="28" fill="#1a4f8a" r="2.5" style="box-sizing: border-box;"></circle>
+<text fill="#837e75" font-family="Inter" font-size="6.5" style="box-sizing: border-box;" text-anchor="middle" x="60" y="74">samplingPoint · campaign</text>
+<text fill="#837e75" font-family="Inter" font-size="6.5" style="box-sizing: border-box;" text-anchor="middle" x="60" y="83">areaAsset · coordinates</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(190,40)">
+<text fill="#0f7a65" font-family="Inter" font-size="9" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="60" y="0">MaterialOrigin</text>
+<rect fill="#b8895c" height="40" stroke="#0f7a65" stroke-width="1" style="box-sizing: border-box;" width="56" x="32" y="14"></rect>
+<polygon fill="#8a5e3a" points="32,14 60,4 88,14" stroke="#0f7a65" stroke-width="1" style="box-sizing: border-box;"></polygon>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="60" y="38">supplier batch</text>
+<text fill="#837e75" font-family="Inter" font-size="6.5" style="box-sizing: border-box;" text-anchor="middle" x="60" y="74">matrixType · supplier</text>
+<text fill="#837e75" font-family="Inter" font-size="6.5" style="box-sizing: border-box;" text-anchor="middle" x="60" y="83">batchRef · description</text>
+</g>
+<path d="M 80 132 Q 110 152 150 162" fill="none" marker-end="url(#arrow7)" stroke="#3e4641" stroke-width="1.5" style="box-sizing: border-box;"></path>
+<path d="M 250 132 Q 220 152 180 162" fill="none" marker-end="url(#arrow7)" stroke="#3e4641" stroke-width="1.5" style="box-sizing: border-box;"></path>
+<defs style="box-sizing: border-box;">
+<marker id="arrow7" markerheight="8" markerwidth="8" orient="auto" refx="4" refy="4" style="box-sizing: border-box;">
+<polygon fill="#3e4641" points="0,0 8,4 0,8" style="box-sizing: border-box;"></polygon>
+</marker>
+</defs>
+<g style="box-sizing: border-box;" transform="translate(120,164)">
+<rect fill="#ebf9e0" height="40" stroke="#426725" stroke-width="1.5" style="box-sizing: border-box;" width="80" x="0" y="0"></rect>
+<text fill="#426725" font-family="Inter" font-size="9" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="40" y="16">ReceivedSample</text>
+<text fill="#426725" font-family="Inter" font-size="6.5" style="box-sizing: border-box;" text-anchor="middle" x="40" y="28">stable SampleLineage ID</text>
+<text fill="#426725" font-family="Inter" font-size="6.5" style="box-sizing: border-box;" text-anchor="middle" x="40" y="36">assigned here</text>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="8.5" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="226">Two typed origin paths · one identity</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"On the next bench, a tube of biofertilizer from a partner lab is being checked in too. Different origin, same milestone — they get a stable lineage ID just like I did."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">The model recognises two origin types — field-collected and material-imported — and they converge at the same moment: lab intake. After this, both look identical from the system's point of view.</p>
+<div class="domain-strip" style="box-sizing: border-box; background: #e5e5e3; border-left: 2pt solid #1a4f8a; color: #3e4641; font-size: 11.5px; line-height: 1.55; margin-top: auto; padding: 10px 12px;">
+<span class="label" style="box-sizing: border-box; color: #1a4f8a; display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase;">Domain</span>
+        Two typed structs (<code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>FieldOrigin</code>, <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>MaterialOrigin</code>) feed into a single <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>ReceivedSample</code>. No 1:1 field-sample-to-lab-sample mapping is required — composite, pooled, and transformed chains are valid.
+      </div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">11</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">My DNA is pulled out — I become a derivative</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">ExtractionSample</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<g style="box-sizing: border-box;" transform="translate(40,60)">
+<rect fill="#8a5e3a" height="80" rx="3" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="24" x="0" y="0"></rect>
+<ellipse cx="12" cy="0" fill="#3e4641" rx="12" ry="3" style="box-sizing: border-box;"></ellipse>
+<text fill="#3e4641" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="12" y="100">SL-X9F2-7K</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="12" y="110">received</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(90,60)">
+<circle cx="40" cy="40" fill="none" r="32" stroke="#3e4641" stroke-width="1.4" style="box-sizing: border-box;"></circle>
+<circle cx="40" cy="40" fill="#fdfefc" r="22" stroke="#3e4641" stroke-width="0.8" style="box-sizing: border-box;"></circle>
+<line stroke="#1a4f8a" stroke-width="2" style="box-sizing: border-box;" x1="40" x2="40" y1="14" y2="36"></line>
+<line stroke="#1a4f8a" stroke-width="2" style="box-sizing: border-box;" x1="64" x2="44" y1="50" y2="42"></line>
+<line stroke="#1a4f8a" stroke-width="2" style="box-sizing: border-box;" x1="22" x2="40" y1="58" y2="46"></line>
+<text fill="#3e4641" font-family="Inter" font-size="7" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="40" y="92">DNA extraction</text>
+</g>
+<path d="M 178 100 L 198 100" marker-end="url(#arrow8)" stroke="#3e4641" stroke-width="1.5" style="box-sizing: border-box;"></path>
+<defs style="box-sizing: border-box;">
+<marker id="arrow8" markerheight="8" markerwidth="8" orient="auto" refx="4" refy="4" style="box-sizing: border-box;">
+<polygon fill="#3e4641" points="0,0 8,4 0,8" style="box-sizing: border-box;"></polygon>
+</marker>
+</defs>
+<g style="box-sizing: border-box;" transform="translate(216,60)">
+<rect fill="none" height="80" rx="3" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="24" x="0" y="0"></rect>
+<rect fill="#0f7a65" height="28" opacity="0.65" rx="2" style="box-sizing: border-box;" width="20" x="2" y="50"></rect>
+<ellipse cx="12" cy="0" fill="#3e4641" rx="12" ry="3" style="box-sizing: border-box;"></ellipse>
+<text fill="#0f7a65" font-family="Inter" font-size="7" font-weight="800" style="box-sizing: border-box;" text-anchor="middle" x="12" y="100">SL-X9F2-7K-E1</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="12" y="110">extracted DNA</text>
+</g>
+<g fill="none" stroke="#0f7a65" stroke-width="1" style="box-sizing: border-box;" transform="translate(265,75)">
+<path d="M 0 0 Q 6 6 0 12 Q -6 18 0 24 Q 6 30 0 36" style="box-sizing: border-box;"></path>
+<path d="M 8 0 Q 2 6 8 12 Q 14 18 8 24 Q 2 30 8 36" style="box-sizing: border-box;"></path>
+<line style="box-sizing: border-box;" x1="2" x2="6" y1="3" y2="3"></line>
+<line style="box-sizing: border-box;" x1="2" x2="6" y1="9" y2="9"></line>
+<line style="box-sizing: border-box;" x1="2" x2="6" y1="15" y2="15"></line>
+<line style="box-sizing: border-box;" x1="2" x2="6" y1="21" y2="21"></line>
+<line style="box-sizing: border-box;" x1="2" x2="6" y1="27" y2="27"></line>
+<line style="box-sizing: border-box;" x1="2" x2="6" y1="33" y2="33"></line>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="222">New derivative node · same lineage root</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"My DNA gets pulled out. The original soil is mostly used up. The extract gets a new code, but it still descends from me — the lineage tree just grew a branch."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">Extraction creates a new <b style="box-sizing: border-box;">ExtractionSample</b> node under the same SampleLineage. It's not a different sample — it's a derivative of the same provenance root. Multiple extractions from the same received sample are possible.</p>
+<div class="domain-strip" style="box-sizing: border-box; background: #e5e5e3; border-left: 2pt solid #1a4f8a; color: #3e4641; font-size: 11.5px; line-height: 1.55; margin-top: auto; padding: 10px 12px;">
+<span class="label" style="box-sizing: border-box; color: #1a4f8a; display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase;">Domain</span>
+        New node in <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>SampleLineage</code> tree. The extraction is also recorded as an <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>ExecutionAttempt</code> with a <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>MaterialConsumption</code> value object — what was used, how much.
+      </div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">12</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">My extract is split for several assays</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">AnalysisSample[]</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<g style="box-sizing: border-box;" transform="translate(30,80)">
+<rect fill="none" height="60" rx="3" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="22" x="0" y="0"></rect>
+<rect fill="#0f7a65" height="22" opacity="0.65" rx="2" style="box-sizing: border-box;" width="18" x="2" y="36"></rect>
+<text fill="#0f7a65" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="11" y="78">SL-X9F2-7K-E1</text>
+</g>
+<g fill="none" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;">
+<path d="M 60 100 Q 90 80 130 70" style="box-sizing: border-box;"></path>
+<path d="M 60 110 Q 90 110 130 110" style="box-sizing: border-box;"></path>
+<path d="M 60 120 Q 90 140 130 150" style="box-sizing: border-box;"></path>
+</g>
+<g style="box-sizing: border-box;" transform="translate(140,46)">
+<rect fill="none" height="50" rx="3" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="20" x="0" y="0"></rect>
+<rect fill="#1a4f8a" height="16" opacity="0.6" rx="2" style="box-sizing: border-box;" width="16" x="2" y="32"></rect>
+<text fill="#1a4f8a" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="10" y="64">…E1-A1</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="10" y="73">16S</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(140,86)">
+<rect fill="none" height="50" rx="3" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="20" x="0" y="0"></rect>
+<rect fill="#426725" height="16" opacity="0.6" rx="2" style="box-sizing: border-box;" width="16" x="2" y="32"></rect>
+<text fill="#426725" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="10" y="64">…E1-A2</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="10" y="73">ITS</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(140,126)">
+<rect fill="none" height="50" rx="3" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="20" x="0" y="0"></rect>
+<rect fill="#b14117" height="16" opacity="0.6" rx="2" style="box-sizing: border-box;" width="16" x="2" y="32"></rect>
+<text fill="#b14117" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="10" y="64">…E1-A3</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="10" y="73">chemistry</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(200,40)">
+<rect fill="#fdfefc" height="60" stroke="#3e4641" stroke-width="0.8" style="box-sizing: border-box;" width="80" x="0" y="0"></rect>
+<text fill="#1a4f8a" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="40" y="14">16S sequencer</text>
+<rect fill="#1a4f8a" height="6" opacity="0.6" style="box-sizing: border-box;" width="60" x="10" y="22"></rect>
+<rect fill="#1a4f8a" height="6" opacity="0.4" style="box-sizing: border-box;" width="44" x="10" y="32"></rect>
+<rect fill="#1a4f8a" height="6" opacity="0.5" style="box-sizing: border-box;" width="52" x="10" y="42"></rect>
+</g>
+<g style="box-sizing: border-box;" transform="translate(200,108)">
+<rect fill="#fdfefc" height="38" stroke="#3e4641" stroke-width="0.8" style="box-sizing: border-box;" width="80" x="0" y="0"></rect>
+<text fill="#426725" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="40" y="14">ITS pipeline</text>
+<text fill="#837e75" font-family="Inter" font-size="6" style="box-sizing: border-box;" text-anchor="middle" x="40" y="28">fungal community</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(200,154)">
+<rect fill="#fdfefc" height="38" stroke="#3e4641" stroke-width="0.8" style="box-sizing: border-box;" width="80" x="0" y="0"></rect>
+<text fill="#b14117" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="40" y="14">chemistry</text>
+<text fill="#837e75" font-family="Inter" font-size="6" style="box-sizing: border-box;" text-anchor="middle" x="40" y="28">N · P · pH · OM</text>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="226">One ExtractionSample → many AnalysisSamples</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"The extract gets split into three tubes — one for each assay. Each tube is its own analysis sample, but they're all branches of the same lineage tree."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">An <b style="box-sizing: border-box;">AnalysisSample</b> is created per assay type. This is the structural reason a "sample" cannot be a single row in a table — it's a tree, and the tree's depth depends on how many assays were ordered.</p>
+<div class="warning" style="box-sizing: border-box; background: #fadbd0; border-left: 2pt solid #b14117; color: #4a1b0c; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #b14117;">Watch out.</b> The legacy schema's <code style="box-sizing: border-box;">primary_sample → analysis_sample</code> as a flat M:N relation hides this tree. Don't backsolve the new model from that join table.</div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">13</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">Pause: here is my whole family tree</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">Lineage tree shape</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 280" xmlns="http://www.w3.org/2000/svg">
+<g fill="#837e75" font-family="Inter" font-size="6" style="box-sizing: border-box;" text-anchor="end">
+<text fill="#3e4641" font-weight="700" style="box-sizing: border-box;" x="38" y="22">Origin</text>
+<text fill="#426725" font-weight="700" style="box-sizing: border-box;" x="38" y="74">Root</text>
+<text fill="#0f7a65" font-weight="700" style="box-sizing: border-box;" x="38" y="148">Extract</text>
+<text fill="#1a4f8a" font-weight="700" style="box-sizing: border-box;" x="38" y="234">Assay</text>
+</g>
+<line stroke="#8fb0a6" stroke-dasharray="1 2" stroke-width="0.3" style="box-sizing: border-box;" x1="42" x2="316" y1="20" y2="20"></line>
+<line stroke="#8fb0a6" stroke-dasharray="1 2" stroke-width="0.3" style="box-sizing: border-box;" x1="42" x2="316" y1="74" y2="74"></line>
+<line stroke="#8fb0a6" stroke-dasharray="1 2" stroke-width="0.3" style="box-sizing: border-box;" x1="42" x2="316" y1="148" y2="148"></line>
+<line stroke="#8fb0a6" stroke-dasharray="1 2" stroke-width="0.3" style="box-sizing: border-box;" x1="42" x2="316" y1="234" y2="234"></line>
+<g style="box-sizing: border-box;" transform="translate(60,8)">
+<g fill="#5a3d28" style="box-sizing: border-box;">
+<circle cx="0" cy="14" r="2" style="box-sizing: border-box;"></circle><circle cx="8" cy="14" r="2" style="box-sizing: border-box;"></circle><circle cx="16" cy="14" r="2" style="box-sizing: border-box;"></circle>
+<circle cx="0" cy="20" r="2" style="box-sizing: border-box;"></circle><circle cx="8" cy="20" r="2" style="box-sizing: border-box;"></circle><circle cx="16" cy="20" r="2" style="box-sizing: border-box;"></circle>
+<circle cx="0" cy="26" r="2" style="box-sizing: border-box;"></circle><circle cx="8" cy="26" r="2" style="box-sizing: border-box;"></circle><circle cx="16" cy="26" r="2" style="box-sizing: border-box;"></circle>
+</g>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="8" y="38">9 sub-samples</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(110,8)">
+<rect fill="#fdfefc" height="34" stroke="#0f7a65" stroke-width="1" style="box-sizing: border-box;" width="64" x="0" y="6"></rect>
+<rect fill="#0f7a65" height="9" style="box-sizing: border-box;" width="64" x="0" y="6"></rect>
+<text fill="#fdfefc" font-family="Inter" font-size="5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="32" y="13">CollectionEvent</text>
+<text fill="#3e4641" font-family="Inter" font-size="5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="32" y="23">CE-44</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="32" y="32">type=composite</text>
+<text fill="#837e75" font-family="Inter" font-size="4.5" style="box-sizing: border-box;" text-anchor="middle" x="32" y="40">→ FieldOrigin (panel 9)</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(186,8)">
+<rect fill="#fdfefc" height="34" stroke="#0f7a65" stroke-dasharray="3 2" stroke-width="1" style="box-sizing: border-box;" width="64" x="0" y="6"></rect>
+<rect fill="#0f7a65" height="9" opacity="0.5" style="box-sizing: border-box;" width="64" x="0" y="6"></rect>
+<text fill="#fdfefc" font-family="Inter" font-size="5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="32" y="13">CollectionEvent</text>
+<text fill="#3e4641" font-family="Inter" font-size="5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="32" y="23">CE-44b</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="32" y="32">type=correction</text>
+<text fill="#837e75" font-family="Inter" font-size="4.5" style="box-sizing: border-box;" text-anchor="middle" x="32" y="40">supersedes CE-44</text>
+</g>
+<text fill="#837e75" font-family="Inter" font-size="5.5" font-style="italic" style="box-sizing: border-box;" x="284" y="22">1..n events</text>
+<path d="M 142 50 L 162 70" fill="none" marker-end="url(#tarr-cyan)" stroke="#0f7a65" stroke-width="1.4" style="box-sizing: border-box;"></path>
+<path d="M 218 50 L 178 70" fill="none" marker-end="url(#tarr-cyan)" stroke="#0f7a65" stroke-dasharray="2 2" stroke-width="1" style="box-sizing: border-box;"></path>
+<g style="box-sizing: border-box;" transform="translate(132,68)">
+<rect fill="#86eb22" height="46" stroke="#3e4641" stroke-width="1.6" style="box-sizing: border-box;" width="80" x="0" y="0"></rect>
+<text fill="#3e4641" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="40" y="14">ReceivedSample</text>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="800" style="box-sizing: border-box;" text-anchor="middle" x="40" y="26">SL-X9F2-7K</text>
+<text fill="#426725" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="40" y="36">SampleLineage root</text>
+<text fill="#426725" font-family="Inter" font-size="4.5" style="box-sizing: border-box;" text-anchor="middle" x="40" y="43">stable identity</text>
+</g>
+<path d="M 152 114 L 110 142" fill="none" marker-end="url(#tarr)" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;"></path>
+<path d="M 192 114 L 226 142" fill="none" marker-end="url(#tarr)" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;"></path>
+<text fill="#837e75" font-family="Inter" font-size="4.5" font-style="italic" style="box-sizing: border-box;" x="116" y="128">consume 50g</text>
+<text fill="#837e75" font-family="Inter" font-size="4.5" font-style="italic" style="box-sizing: border-box;" x="208" y="128">consume 50g (rerun)</text>
+<g style="box-sizing: border-box;" transform="translate(70,142)">
+<rect fill="#fdfefc" height="32" stroke="#0f7a65" stroke-width="1.4" style="box-sizing: border-box;" width="78" x="0" y="0"></rect>
+<text fill="#0f7a65" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="39" y="11">ExtractionSample</text>
+<text fill="#3e4641" font-family="Inter" font-size="7" font-weight="800" style="box-sizing: border-box;" text-anchor="middle" x="39" y="22">…-E1</text>
+<text fill="#837e75" font-family="Inter" font-size="4.5" style="box-sizing: border-box;" text-anchor="middle" x="39" y="29">DNA · 1st extraction</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(192,142)">
+<rect fill="#fdfefc" height="32" stroke="#0f7a65" stroke-width="1.4" style="box-sizing: border-box;" width="78" x="0" y="0"></rect>
+<text fill="#0f7a65" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="39" y="11">ExtractionSample</text>
+<text fill="#3e4641" font-family="Inter" font-size="7" font-weight="800" style="box-sizing: border-box;" text-anchor="middle" x="39" y="22">…-E2</text>
+<text fill="#837e75" font-family="Inter" font-size="4.5" style="box-sizing: border-box;" text-anchor="middle" x="39" y="29">DNA · re-extracted</text>
+</g>
+<text fill="#837e75" font-family="Inter" font-size="5.5" font-style="italic" style="box-sizing: border-box;" x="288" y="160">1..n</text>
+<path d="M 90 174 L 70 226" fill="none" marker-end="url(#tarr)" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;"></path>
+<path d="M 109 174 L 110 226" fill="none" marker-end="url(#tarr)" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;"></path>
+<path d="M 128 174 L 150 226" fill="none" marker-end="url(#tarr)" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;"></path>
+<path d="M 230 174 L 230 226" fill="none" marker-end="url(#tarr)" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;"></path>
+<path d="M 240 174 L 270 226" fill="none" stroke="#837e75" stroke-dasharray="2 2" stroke-width="0.7" style="box-sizing: border-box;"></path>
+<g style="box-sizing: border-box;" transform="translate(54,226)">
+<rect fill="#fdfefc" height="28" stroke="#1a4f8a" stroke-width="1" style="box-sizing: border-box;" width="32" x="0" y="0"></rect>
+<text fill="#1a4f8a" font-family="Inter" font-size="5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="16" y="9">A1</text>
+<text fill="#3e4641" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="16" y="17">16S</text>
+<text fill="#426725" font-family="Inter" font-size="4.5" style="box-sizing: border-box;" text-anchor="middle" x="16" y="24">✓ ok</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(94,226)">
+<rect fill="#fdfefc" height="28" stroke="#1a4f8a" stroke-width="1" style="box-sizing: border-box;" width="32" x="0" y="0"></rect>
+<text fill="#1a4f8a" font-family="Inter" font-size="5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="16" y="9">A2</text>
+<text fill="#3e4641" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="16" y="17">ITS</text>
+<text fill="#b14117" font-family="Inter" font-size="4.5" style="box-sizing: border-box;" text-anchor="middle" x="16" y="24">✗ failed</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(134,226)">
+<rect fill="#fdfefc" height="28" stroke="#1a4f8a" stroke-width="1" style="box-sizing: border-box;" width="32" x="0" y="0"></rect>
+<text fill="#1a4f8a" font-family="Inter" font-size="5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="16" y="9">A3</text>
+<text fill="#3e4641" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="16" y="17">chem</text>
+<text fill="#426725" font-family="Inter" font-size="4.5" style="box-sizing: border-box;" text-anchor="middle" x="16" y="24">✓ ok</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(214,226)">
+<rect fill="#fdfefc" height="28" stroke="#1a4f8a" stroke-width="1" style="box-sizing: border-box;" width="32" x="0" y="0"></rect>
+<text fill="#1a4f8a" font-family="Inter" font-size="5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="16" y="9">A4</text>
+<text fill="#3e4641" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="16" y="17">ITS</text>
+<text fill="#426725" font-family="Inter" font-size="4.5" style="box-sizing: border-box;" text-anchor="middle" x="16" y="24">✓ rerun</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(254,226)">
+<rect fill="none" height="28" stroke="#837e75" stroke-dasharray="2 2" stroke-width="0.7" style="box-sizing: border-box;" width="32" x="0" y="0"></rect>
+<text fill="#837e75" font-family="Inter" font-size="5" font-style="italic" style="box-sizing: border-box;" text-anchor="middle" x="16" y="14">could</text>
+<text fill="#837e75" font-family="Inter" font-size="5" font-style="italic" style="box-sizing: border-box;" text-anchor="middle" x="16" y="22">exist</text>
+</g>
+<text fill="#837e75" font-family="Inter" font-size="5.5" font-style="italic" style="box-sizing: border-box;" x="288" y="244">1..n</text>
+<defs style="box-sizing: border-box;">
+<marker id="tarr" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3" style="box-sizing: border-box;">
+<polygon fill="#3e4641" points="0,0 6,3 0,6" style="box-sizing: border-box;"></polygon>
+</marker>
+<marker id="tarr-cyan" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3" style="box-sizing: border-box;">
+<polygon fill="#0f7a65" points="0,0 6,3 0,6" style="box-sizing: border-box;"></polygon>
+</marker>
+</defs>
+<text fill="#3e4641" font-family="Inter" font-size="7.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="160" y="270">SampleLineage = the whole tree under SL-X9F2-7K</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"Step back for a second. This is everything that happened to me — nine sub-samples below, one root, two extractions (the second a re-do), four analysis samples, one of them failed and rerun. The whole tree is one lineage."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">Up to here the story has been linear. The model is not. A <b style="box-sizing: border-box;">SampleLineage</b> is a tree, not a chain — and the cardinalities at every level are <code style="box-sizing: border-box;">1..n</code>. Re-extractions, re-runs, additional assays, supersedeing CollectionEvents all branch the tree without breaking identity.</p>
+<div class="domain-strip" style="box-sizing: border-box; background: #e5e5e3; border-left: 2pt solid #1a4f8a; color: #3e4641; font-size: 11.5px; line-height: 1.55; margin-top: auto; padding: 10px 12px;">
+<span class="label" style="box-sizing: border-box; color: #1a4f8a; display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase;">Cardinalities</span>
+<code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>SampleLineage</code> has 1..n <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>CollectionEvent</code>s (corrections, top-ups, derivative creation), exactly one <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>ReceivedSample</code> root, 1..n <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>ExtractionSample</code> derivatives, 1..n <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>AnalysisSample</code>s per extraction. Each derivation step is recorded as an <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>ExecutionAttempt</code> with a <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>MaterialConsumption</code> value object — <i style="box-sizing: border-box;">so the cost basis is in the tree, not bolted on later.</i>
+</div>
+<div class="invariant" style="box-sizing: border-box; background: #ebf9e0; border-left: 2pt solid #86eb22; color: #426725; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #3e4641;">Schema implication.</b> A "sample" cannot be a single row. It is a query over the tree rooted at SL-X9F2-7K. The tree is the persistence model.</div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">14</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">The sequencer runs (and sometimes fails)</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">ExecutionRun · ExecutionAttempt</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<g style="box-sizing: border-box;" transform="translate(40,40)">
+<rect fill="#3e4641" height="120" stroke="#111614" stroke-width="1.4" style="box-sizing: border-box;" width="160" x="0" y="20"></rect>
+<rect fill="#1a4f8a" height="22" style="box-sizing: border-box;" width="160" x="0" y="0"></rect>
+<text fill="#fdfefc" font-family="Inter" font-size="8" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="80" y="14">ILLUMINA · MiSeq</text>
+<rect fill="#86eb22" height="46" opacity="0.3" style="box-sizing: border-box;" width="80" x="14" y="34"></rect>
+<rect fill="none" height="46" stroke="#86eb22" stroke-width="1" style="box-sizing: border-box;" width="80" x="14" y="34"></rect>
+<text fill="#86eb22" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="54" y="50">RUN-2026-127</text>
+<text fill="#86eb22" font-family="Inter" font-size="6" style="box-sizing: border-box;" text-anchor="middle" x="54" y="62">attempt 1 of 1</text>
+<text fill="#86eb22" font-family="Inter" font-size="6" style="box-sizing: border-box;" text-anchor="middle" x="54" y="73">Q30 = 91.2%</text>
+<circle cx="116" cy="44" fill="#86eb22" r="4" style="box-sizing: border-box;"></circle>
+<circle cx="130" cy="44" fill="#b14117" r="4" style="box-sizing: border-box;"></circle>
+<circle cx="144" cy="44" fill="#837e75" r="4" style="box-sizing: border-box;"></circle>
+<rect fill="#111614" height="20" style="box-sizing: border-box;" width="42" x="110" y="56"></rect>
+</g>
+<g style="box-sizing: border-box;" transform="translate(216,40)">
+<rect fill="#fdfefc" height="160" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="92" x="0" y="0"></rect>
+<text fill="#3e4641" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="46" y="14">execution ledger</text>
+<line stroke="#8fb0a6" stroke-width="0.5" style="box-sizing: border-box;" x1="6" x2="86" y1="20" y2="20"></line>
+<text fill="#426725" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" x="6" y="32">RUN-127 · attempt 1</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="40">SL-X9F2-7K-E1-A1</text>
+<text fill="#426725" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="48">✓ ok · Q30 91%</text>
+<line stroke="#8fb0a6" stroke-width="0.3" style="box-sizing: border-box;" x1="6" x2="86" y1="54" y2="54"></line>
+<text fill="#b14117" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" x="6" y="66">RUN-128 · attempt 1</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="74">SL-X9F2-7K-E1-A2</text>
+<text fill="#b14117" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="82">✗ low yield</text>
+<line stroke="#8fb0a6" stroke-width="0.3" style="box-sizing: border-box;" x1="6" x2="86" y1="88" y2="88"></line>
+<text fill="#426725" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" x="6" y="100">RUN-128 · attempt 2</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="108">re-run, internal QC</text>
+<text fill="#426725" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="116">✓ ok · not billable</text>
+<line stroke="#8fb0a6" stroke-width="0.3" style="box-sizing: border-box;" x1="6" x2="86" y1="122" y2="122"></line>
+<text fill="#3e4641" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" x="6" y="134">RUN-129 · attempt 1</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="142">SL-X9F2-7K-E1-A3</text>
+<text fill="#426725" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="150">✓ chemistry ok</text>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="218">Append-only · retries are new attempts, not overwrites</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"The sequencer runs. The fungal assay fails the first time and is re-run. Both attempts are recorded — not just the successful one."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;"><b style="box-sizing: border-box;">ExecutionRun</b> is a first-class ledger primitive for any meaningful step: lab assay, bioinformatics pipeline, statistical compute. <b style="box-sizing: border-box;">ExecutionAttempt</b> distinguishes a fresh run from a retry, and tracks whether the retry is billable.</p>
+<div class="invariant" style="box-sizing: border-box; background: #ebf9e0; border-left: 2pt solid #86eb22; color: #426725; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #3e4641;">Lifecycle rule.</b> Executions are append-only. Retries create new attempts; nothing is overwritten. Internal QC reruns and customer-caused reruns are distinguished here, not later.</div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">15</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">Numbers fall out — raw measurements</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">EvidenceSet</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<g style="box-sizing: border-box;" transform="translate(30,30)">
+<rect fill="#fdfefc" height="180" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;" width="180" x="0" y="0"></rect>
+<rect fill="#3e4641" height="20" style="box-sizing: border-box;" width="180" x="0" y="0"></rect>
+<text fill="#86eb22" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" x="20" y="14">entity</text>
+<text fill="#86eb22" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" x="80" y="14">attribute</text>
+<text fill="#86eb22" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" x="142" y="14">value</text>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="0" x2="180" y1="36" y2="36"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="0" x2="180" y1="52" y2="52"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="0" x2="180" y1="68" y2="68"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="0" x2="180" y1="84" y2="84"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="0" x2="180" y1="100" y2="100"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="0" x2="180" y1="116" y2="116"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="0" x2="180" y1="132" y2="132"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="0" x2="180" y1="148" y2="148"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="0" x2="180" y1="164" y2="164"></line>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="32">16S_Abundance</text>
+<text fill="#0f7a65" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="76" y="32">g__Sphingomonas</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="142" y="32">0.0342</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="48">16S_Abundance</text>
+<text fill="#0f7a65" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="76" y="48">g__Bacillus</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="142" y="48">0.0218</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="64">ITS_Abundance</text>
+<text fill="#426725" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="76" y="64">g__Trichoderma</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="142" y="64">0.0091</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="80">Chem</text>
+<text fill="#b14117" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="76" y="80">pH</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="142" y="80">6.4</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="96">Chem</text>
+<text fill="#b14117" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="76" y="96">N_total</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="142" y="96">0.18 %</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="112">Chem</text>
+<text fill="#b14117" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="76" y="112">P_avail</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="142" y="112">14 mg/kg</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="128">…</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="76" y="128">…</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="142" y="128">…</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="144">1,229 rows</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="160">avg per sample</text>
+<text fill="#3e4641" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="90" y="176">EvidenceSet · immutable</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(232,80)">
+<rect fill="#86eb22" height="32" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;" width="40" x="6" y="20"></rect>
+<path d="M 14 20 L 14 12 Q 14 4 26 4 Q 38 4 38 12 L 38 20" fill="none" stroke="#3e4641" stroke-width="1.6" style="box-sizing: border-box;"></path>
+<circle cx="26" cy="35" fill="#3e4641" r="3" style="box-sizing: border-box;"></circle>
+<line stroke="#3e4641" stroke-width="1.4" style="box-sizing: border-box;" x1="26" x2="26" y1="35" y2="44"></line>
+<text fill="#3e4641" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="26" y="68">scientific truth</text>
+<text fill="#837e75" font-family="Inter" font-size="6" style="box-sizing: border-box;" text-anchor="middle" x="26" y="76">independent of</text>
+<text fill="#837e75" font-family="Inter" font-size="6" style="box-sizing: border-box;" text-anchor="middle" x="26" y="84">engagement, order,</text>
+<text fill="#837e75" font-family="Inter" font-size="6" style="box-sizing: border-box;" text-anchor="middle" x="26" y="92">report</text>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="226">Raw, immutable measurements anchored to lineage</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"At last — actual measurements about me. Thousands of rows: bacterial abundances, fungal counts, chemistry. They're locked once written. They are <i style="box-sizing: border-box;">about</i> me but they outlive me."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">An <b style="box-sizing: border-box;">EvidenceSet</b> is a durable, immutable scientific aggregate. Produced either by an internal ExecutionRun or by an accepted ExternalEvidenceImport, with explicit attestation class.</p>
+<div class="invariant" style="box-sizing: border-box; background: #ebf9e0; border-left: 2pt solid #86eb22; color: #426725; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #3e4641;">Forbidden parentage.</b> EvidenceSet is <i style="box-sizing: border-box;">not</i> a child of Engagement, AssayOrder, or ReportDeliverableVersion. It is its own root. Reports reference it; they do not own it.</div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">16</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">Numbers become findings</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">FindingSetVersion</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<g style="box-sizing: border-box;" transform="translate(20,40)">
+<rect fill="#fdfefc" height="100" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="76" x="0" y="0"></rect>
+<rect fill="#3e4641" height="14" style="box-sizing: border-box;" width="76" x="0" y="0"></rect>
+<text fill="#86eb22" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="38" y="10">Evidence</text>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="6" x2="70" y1="22" y2="22"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="6" x2="70" y1="34" y2="34"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="6" x2="70" y1="46" y2="46"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="6" x2="70" y1="58" y2="58"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="6" x2="70" y1="70" y2="70"></line>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="6" x2="70" y1="82" y2="82"></line>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="38" y="32">pH 6.4</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="38" y="44">N 0.18%</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="38" y="56">P 14 mg/kg</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="38" y="68">Sphingo. 3.4%</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="38" y="80">Tricho. 0.9%</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="38" y="94">…</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(110,30)">
+<ellipse cx="40" cy="60" fill="#ebf9e0" rx="48" ry="50" stroke="#426725" stroke-width="1.2" style="box-sizing: border-box;"></ellipse>
+<text fill="#426725" font-family="Inter" font-size="7" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="40" y="38">Benchmark</text>
+<text fill="#426725" font-family="Inter" font-size="6" style="box-sizing: border-box;" text-anchor="middle" x="40" y="50">corpus v2026.04</text>
+<line stroke="#426725" stroke-width="0.4" style="box-sizing: border-box;" x1="14" x2="66" y1="62" y2="62"></line>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="40" y="74">peer fields</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="40" y="84">N=412</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="40" y="98">cereal · NW EU</text>
+</g>
+<path d="M 100 90 L 110 90" marker-end="url(#arrow12)" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;"></path>
+<path d="M 196 90 L 210 90" marker-end="url(#arrow12)" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;"></path>
+<defs style="box-sizing: border-box;">
+<marker id="arrow12" markerheight="8" markerwidth="8" orient="auto" refx="4" refy="4" style="box-sizing: border-box;">
+<polygon fill="#3e4641" points="0,0 8,4 0,8" style="box-sizing: border-box;"></polygon>
+</marker>
+</defs>
+<g style="box-sizing: border-box;" transform="translate(214,36)">
+<rect fill="#e0faf1" height="108" stroke="#0f7a65" stroke-width="1.4" style="box-sizing: border-box;" width="92" x="0" y="0"></rect>
+<rect fill="#0f7a65" height="14" style="box-sizing: border-box;" width="92" x="0" y="0"></rect>
+<text fill="#fdfefc" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="46" y="10">FindingSet v1</text>
+<text fill="#3e4641" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" x="6" y="28">Primary constraint:</text>
+<text fill="#b14117" font-family="Inter" font-size="6" style="box-sizing: border-box;" x="6" y="38">low available P</text>
+<line stroke="#8fb0a6" stroke-width="0.4" style="box-sizing: border-box;" x1="6" x2="86" y1="44" y2="44"></line>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" x="6" y="56">vs peers (corpus):</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="66">P at 14% percentile</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="76">N within range</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="86">microbiome ok</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="46" y="102">corpus v2026.04 pinned</text>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="226">Evidence + benchmark → versioned interpretation</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"Now I become a story. The numbers are compared against a peer corpus, contextualised, and ranked. <i style="box-sizing: border-box;">"Low available phosphorus"</i> is the headline."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">Findings are an <i style="box-sizing: border-box;">interpretation</i> of evidence — produced by analysts (or the agentic harness) using approved methods and a pinned reference corpus. They are versioned independently and reissued when interpretation changes.</p>
+<div class="domain-strip" style="box-sizing: border-box; background: #e5e5e3; border-left: 2pt solid #1a4f8a; color: #3e4641; font-size: 11.5px; line-height: 1.55; margin-top: auto; padding: 10px 12px;">
+<span class="label" style="box-sizing: border-box; color: #1a4f8a; display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase;">Domain</span>
+<code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>FindingSetVersion</code> is derived from <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>EvidenceSet</code> using a pinned <code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>CorpusVersion</code>. Reinterpretation produces a new version. Old findings remain auditable.
+      </div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">17</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">Findings become recommendations</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">Recommendation</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<g style="box-sizing: border-box;" transform="translate(20,50)">
+<rect fill="#e0faf1" height="60" stroke="#0f7a65" stroke-width="1.2" style="box-sizing: border-box;" width="84" x="0" y="0"></rect>
+<text fill="#0f7a65" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="42" y="18">FindingSet v1</text>
+<text fill="#b14117" font-family="Inter" font-size="6" style="box-sizing: border-box;" text-anchor="middle" x="42" y="36">low available P</text>
+<text fill="#837e75" font-family="Inter" font-size="6" style="box-sizing: border-box;" text-anchor="middle" x="42" y="48">14th percentile</text>
+</g>
+<path d="M 110 80 L 130 80" marker-end="url(#arrow13)" stroke="#3e4641" stroke-width="1.2" style="box-sizing: border-box;"></path>
+<defs style="box-sizing: border-box;">
+<marker id="arrow13" markerheight="8" markerwidth="8" orient="auto" refx="4" refy="4" style="box-sizing: border-box;">
+<polygon fill="#3e4641" points="0,0 8,4 0,8" style="box-sizing: border-box;"></polygon>
+</marker>
+</defs>
+<g style="box-sizing: border-box;" transform="translate(134,30)">
+<rect fill="#fdfefc" height="36" stroke="#3e4641" stroke-width="0.6" style="box-sizing: border-box;" width="86" x="6" y="6"></rect>
+<rect fill="#fdfefc" height="36" stroke="#3e4641" stroke-width="0.6" style="box-sizing: border-box;" width="86" x="3" y="3"></rect>
+<rect fill="#ebf9e0" height="36" stroke="#426725" stroke-width="1.2" style="box-sizing: border-box;" width="86" x="0" y="0"></rect>
+<text fill="#426725" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="43" y="12">Recommendation</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="22">→ apply rock phosphate</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="6" y="30">→ trial mycorrhizal inoculant</text>
+</g>
+<path d="M 232 110 L 232 140" marker-end="url(#arrow13b)" stroke="#3e4641" stroke-dasharray="3 3" stroke-width="1.2" style="box-sizing: border-box;"></path>
+<defs style="box-sizing: border-box;">
+<marker id="arrow13b" markerheight="8" markerwidth="8" orient="auto" refx="4" refy="4" style="box-sizing: border-box;">
+<polygon fill="#3e4641" points="0,0 8,4 0,8" style="box-sizing: border-box;"></polygon>
+</marker>
+</defs>
+<g style="box-sizing: border-box;" transform="translate(174,144)">
+<rect fill="#fdfefc" height="60" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;" width="116" x="0" y="0"></rect>
+<text fill="#3e4641" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="58" y="14">marketplace ref</text>
+<rect fill="#ebf9e0" height="32" stroke="#8fb0a6" stroke-width="0.5" style="box-sizing: border-box;" width="32" x="6" y="22"></rect>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="22" y="42">myco</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="22" y="50">€38/ha</text>
+<rect fill="#e0faf1" height="32" stroke="#8fb0a6" stroke-width="0.5" style="box-sizing: border-box;" width="32" x="42" y="22"></rect>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="58" y="42">P input</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="58" y="50">€110/t</text>
+<rect fill="#ebf9e0" height="32" stroke="#8fb0a6" stroke-width="0.5" style="box-sizing: border-box;" width="32" x="78" y="22"></rect>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="94" y="42">cover</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="94" y="50">crop</text>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="9" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="224">Findings → recommendations → product references</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"Once it's clear what's wrong, the system suggests what to do — and links those suggestions to actual products in the catalogue."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;"><b style="box-sizing: border-box;">Recommendation</b> is modelled separately from FindingSetVersion. Two interpretations of the same finding can produce different recommendations; both are tracked, and recommendations may reference marketplace items.</p>
+<div class="domain-strip" style="box-sizing: border-box; background: #e5e5e3; border-left: 2pt solid #1a4f8a; color: #3e4641; font-size: 11.5px; line-height: 1.55; margin-top: auto; padding: 10px 12px;">
+<span class="label" style="box-sizing: border-box; color: #1a4f8a; display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase;">Domain</span>
+<code style='box-sizing: border-box; background: #fdfefc; border-radius: 3px; color: #1a4f8a; font-family: "Inter", monospace; font-size: 11px; font-weight: 600; padding: 1px 6px;'>Recommendation</code> is its own concept — not a sub-property of a Finding. Its lifecycle (generated → reviewed → actioned) is provisional, awaiting product clarity.
+      </div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">18</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">A report is published to the customer</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">ReportDeliverableVersion</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<g style="box-sizing: border-box;" transform="translate(40,40)">
+<rect fill="#ebf9e0" height="80" stroke="#426725" stroke-width="0.8" style="box-sizing: border-box;" width="60" x="0" y="0"></rect>
+<text fill="#426725" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="30" y="14">Lineage</text>
+<text fill="#426725" font-family="Inter" font-size="14" font-weight="800" style="box-sizing: border-box;" text-anchor="middle" x="30" y="44">SL</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="30" y="62">durable</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="30" y="72">scientific root</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(110,40)">
+<rect fill="#e0faf1" height="80" stroke="#0f7a65" stroke-width="0.8" style="box-sizing: border-box;" width="60" x="0" y="0"></rect>
+<text fill="#0f7a65" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="30" y="14">Evidence</text>
+<text fill="#0f7a65" font-family="Inter" font-size="14" font-weight="800" style="box-sizing: border-box;" text-anchor="middle" x="30" y="44">EV</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="30" y="62">immutable</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="30" y="72">measurements</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(180,40)">
+<rect fill="#ebf9e0" height="80" stroke="#426725" stroke-width="0.8" style="box-sizing: border-box;" width="60" x="0" y="0"></rect>
+<text fill="#426725" font-family="Inter" font-size="6" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="30" y="14">Findings</text>
+<text fill="#426725" font-family="Inter" font-size="14" font-weight="800" style="box-sizing: border-box;" text-anchor="middle" x="30" y="44">F v1</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="30" y="62">interpretation</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="30" y="72">versioned</text>
+</g>
+<g fill="none" stroke="#3e4641" stroke-dasharray="2 2" stroke-width="1" style="box-sizing: border-box;">
+<line style="box-sizing: border-box;" x1="70" x2="160" y1="124" y2="148"></line>
+<line style="box-sizing: border-box;" x1="140" x2="160" y1="124" y2="148"></line>
+<line style="box-sizing: border-box;" x1="210" x2="180" y1="124" y2="148"></line>
+</g>
+<g style="box-sizing: border-box;" transform="translate(80,144)">
+<rect fill="#fdfefc" height="76" stroke="#3e4641" stroke-width="0.6" style="box-sizing: border-box;" width="160" x="6" y="6"></rect>
+<rect fill="#fdfefc" height="76" stroke="#3e4641" stroke-width="1.4" style="box-sizing: border-box;" width="160" x="0" y="0"></rect>
+<rect fill="#1a4f8a" height="14" style="box-sizing: border-box;" width="160" x="0" y="0"></rect>
+<text fill="#fdfefc" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="80" y="10">SOIL HEALTH REPORT · v1</text>
+<line stroke="#8fb0a6" stroke-width="0.3" style="box-sizing: border-box;" x1="8" x2="152" y1="22" y2="22"></line>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" x="8" y="32">Customer:</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="48" y="32">AgriCo · Field 7</text>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" x="8" y="42">Sample:</text>
+<text fill="#29332e" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="48" y="42">SL-X9F2-7K · 1 of 9</text>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" x="8" y="52">Headline:</text>
+<text fill="#b14117" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="48" y="52">low available P</text>
+<text fill="#3e4641" font-family="Inter" font-size="5.5" font-weight="700" style="box-sizing: border-box;" x="8" y="62">Pinned:</text>
+<text fill="#426725" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" x="48" y="62">EV-… · F-v1 · corpus 2026.04</text>
+<text fill="#837e75" font-family="Inter" font-size="5" style="box-sizing: border-box;" text-anchor="middle" x="80" y="72">commissioned by Engagement #4421</text>
+</g>
+<text fill="#837e75" font-family="Inter" font-size="8" style="box-sizing: border-box;" text-anchor="middle" x="160" y="232">A view over truth — not the truth itself</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"Finally — the customer sees a PDF with my name on it. But the report is just a <i style="box-sizing: border-box;">presentation</i> over the real things: lineage, evidence, findings. They live separately."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">A <b style="box-sizing: border-box;">ReportDeliverableVersion</b> is commissioned by an Engagement and pins specific versions of evidence, findings, and corpus. Reissues are new versions; revocations are explicit acts.</p>
+<div class="invariant" style="box-sizing: border-box; background: #ebf9e0; border-left: 2pt solid #86eb22; color: #426725; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #3e4641;">Forbidden parentage.</b> ReportDeliverableVersion does not own findings or evidence truth. The Engagement <i style="box-sizing: border-box;">commissions</i>; it does not own the science.</div>
+</div>
+</div>
+</article>
+<article class="panel" style="box-sizing: border-box; background: #fdfefc; border: 1pt solid #3e4641; box-shadow: 4px 4px 0 #3e4641; display: grid; grid-template-columns: 1fr; margin-bottom: 28px; overflow: hidden;">
+<div class="panel-header" style="box-sizing: border-box; align-items: center; background: #3e4641; color: #fdfefc; display: flex; gap: 14px; padding: 12px 18px;">
+<span class="panel-num" style="box-sizing: border-box; align-items: center; background: #86eb22; border-radius: 50%; color: #3e4641; display: flex; flex-shrink: 0; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px;">19</span>
+<span class="panel-title" style="box-sizing: border-box; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">Long after I'm gone, my data persists</span>
+<span class="panel-stage" style="box-sizing: border-box; color: #86eb22; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; margin-left: auto; text-transform: uppercase;">Durability · auditability</span>
+</div>
+<div class="panel-body" style="box-sizing: border-box; display: grid; gap: 0; grid-template-columns: 320px 1fr;">
+<div class="panel-art" style="box-sizing: border-box; align-items: center; background: #f6f3ec; border-right: 0.5pt solid #8fb0a6; display: flex; justify-content: center; min-height: 220px; padding: 18px;">
+<svg style="box-sizing: border-box; height: auto; max-height: 260px; width: 100%;" viewbox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#3e4641" stroke-width="1.4" style="box-sizing: border-box;" x1="20" x2="300" y1="120" y2="120"></line>
+<g stroke="#3e4641" stroke-width="0.8" style="box-sizing: border-box;">
+<line style="box-sizing: border-box;" x1="40" x2="40" y1="116" y2="124"></line>
+<line style="box-sizing: border-box;" x1="100" x2="100" y1="116" y2="124"></line>
+<line style="box-sizing: border-box;" x1="170" x2="170" y1="116" y2="124"></line>
+<line style="box-sizing: border-box;" x1="240" x2="240" y1="116" y2="124"></line>
+<line style="box-sizing: border-box;" x1="290" x2="290" y1="116" y2="124"></line>
+</g>
+<g style="box-sizing: border-box;" transform="translate(40,80)">
+<circle cx="0" cy="40" fill="#8a5e3a" r="6" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;"></circle>
+<text fill="#3e4641" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="0" y="22">T0</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="0" y="58">collected</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(100,80)">
+<circle cx="0" cy="40" fill="#86eb22" r="6" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;"></circle>
+<text fill="#3e4641" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="0" y="22">T1</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="0" y="58">lineage born</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(170,80)">
+<circle cx="0" cy="40" fill="#0f7a65" r="6" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;"></circle>
+<text fill="#3e4641" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="0" y="22">T2</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="0" y="58">evidence locked</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(240,80)">
+<circle cx="0" cy="40" fill="#1a4f8a" r="6" stroke="#3e4641" stroke-width="1" style="box-sizing: border-box;"></circle>
+<text fill="#3e4641" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="0" y="22">T3</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="0" y="58">report v1</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(290,80)">
+<circle cx="0" cy="40" fill="#837e75" r="6" stroke="#3e4641" stroke-dasharray="2 1" stroke-width="1" style="box-sizing: border-box;"></circle>
+<text fill="#3e4641" font-family="Inter" font-size="6.5" font-weight="700" style="box-sizing: border-box;" text-anchor="middle" x="-2" y="22">+3y</text>
+<text fill="#837e75" font-family="Inter" font-size="5.5" style="box-sizing: border-box;" text-anchor="middle" x="-2" y="58">re-analysis</text>
+</g>
+<g style="box-sizing: border-box;" transform="translate(40,150)">
+<rect fill="#8a5e3a" height="40" rx="2" stroke="#3e4641" stroke-width="0.8" style="box-sizing: border-box;" width="14" x="0" y="0"></rect>
+</g>
+<g style="box-sizing: border-box;" transform="translate(100,150)">
+<rect fill="#8a5e3a" height="40" opacity="0.85" rx="2" stroke="#3e4641" stroke-width="0.8" style="box-sizing: border-box;" width="14" x="0" y="0"></rect>
+</g>
+<g style="box-sizing: border-box;" transform="translate(170,150)">
+<rect fill="#8a5e3a" height="40" opacity="0.55" rx="2" stroke="#3e4641" stroke-width="0.8" style="box-sizing: border-box;" width="14" x="0" y="0"></rect>
+</g>
+<g style="box-sizing: border-box;" transform="translate(240,150)">
+<rect fill="#8a5e3a" height="40" opacity="0.25" rx="2" stroke="#3e4641" stroke-dasharray="2 2" stroke-width="0.8" style="box-sizing: border-box;" width="14" x="0" y="0"></rect>
+</g>
+<g style="box-sizing: border-box;" transform="translate(290,150)">
+<text fill="#837e75" font-family="Inter" font-size="9" style="box-sizing: border-box;" text-anchor="middle" x="0" y="30">∅</text>
+</g>
+<text fill="#3e4641" font-family="Inter" font-size="8" font-weight="600" style="box-sizing: border-box;" text-anchor="middle" x="160" y="210">Physical sample fades · domain identity persists</text>
+<text fill="#837e75" font-family="Inter" font-size="7.5" style="box-sizing: border-box;" text-anchor="middle" x="160" y="222">Lineage + Evidence + Findings remain queryable, versioned, auditable</text>
+</svg>
+</div>
+<div class="panel-text" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 18px 22px;">
+<div class="speech" style="box-sizing: border-box; background: #e0faf1; border: 0.5pt solid #8fb0a6; border-radius: 14px 14px 14px 4px; color: #125849; font-size: 13.5px; font-style: italic; padding: 10px 14px;">"Three years later, a different scientist re-runs the analysis with a newer corpus. They produce <b style="box-sizing: border-box;">FindingSet v2</b> — without ever needing me again. My evidence and lineage are enough."</div>
+<p class="narration" style="box-sizing: border-box; color: #29332e; font-size: 13px; margin: 0;">This is why the structure matters. Lineage, evidence, and findings are <i style="box-sizing: border-box;">separate, durable, versioned</i> aggregates. Re-analysis, attestation, audit, and benchmark contribution all become possible without re-collection.</p>
+<div class="invariant" style="box-sizing: border-box; background: #ebf9e0; border-left: 2pt solid #86eb22; color: #426725; font-size: 11.5px; padding: 8px 12px;"><b style="box-sizing: border-box; color: #3e4641;">Why we model it this way.</b> Material exists independent of requests. Requests operate on material; they don't own it. Evidence outlives requests. Deliverables ≠ execution outputs. <i style="box-sizing: border-box;">(Infrastructure Invariants, Domain ground truth.)</i></div>
+</div>
+</div>
+</article>
+<section class="summary" style="box-sizing: border-box; background: #3e4641; box-shadow: 4px 4px 0 #86eb22; color: #fdfefc; margin-top: 40px; padding: 28px 32px;">
+<h2 style="box-sizing: border-box; color: #86eb22; font-size: 18px; letter-spacing: 0.14em; margin: 0 0 14px; text-transform: uppercase;">What this comic encodes</h2>
+<p style="box-sizing: border-box; font-size: 13px; line-height: 1.6; margin: 0 0 12px;">If a single soil sample's life can be told as 19 panels, the underlying domain model has 19 corresponding decisions. The structural ones, in order:</p>
+<ul style="box-sizing: border-box; font-size: 13px; margin: 0; padding-left: 18px;">
+<li style="box-sizing: border-box; margin-bottom: 6px;"><code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">AreaAsset</code> exists before any sample. Land is not owned by a campaign or engagement.</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">SamplingCampaign</code> has a planning phase (inside ServiceSession) and an independent execution phase.</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">SamplingPool</code> is a planning artefact — N primary samples are <i style="box-sizing: border-box;">declared</i> as one composite before any soil is touched. Pricing is area-based and pool-based.</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">CollectionEvent</code> captures provenance; it is append-only, corrected by superseding events. A composite is one event with N inputs; the underlying primary samples are preserved.</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">SampleLineage</code> stable identity is born <b style="box-sizing: border-box;">at lab intake</b>, not at field collection.</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><b style="box-sizing: border-box;">Cross-context references.</b> Lineage knows its land via a stable <code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">areaAssetId</code> reference inside <code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">CollectionEvent.FieldOrigin</code> — never via containment. Three cases: geo-located (ref present), ad-hoc/non-geo (no ref, MaterialOrigin instead), AreaAsset re-versioned or deleted (ref still resolves, lineage unbroken).</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">FieldOrigin</code> and <code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">MaterialOrigin</code> are typed paths that converge at <code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">ReceivedSample</code>.</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><b style="box-sizing: border-box;">SampleLineage is a tree, not a chain.</b> 1..n CollectionEvents → 1 ReceivedSample → 1..n ExtractionSamples → 1..n AnalysisSamples. Re-extractions, re-runs, supersedeing events all branch the tree without breaking identity. A "sample" is a query over the tree.</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">ExecutionRun</code> / <code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">ExecutionAttempt</code> are append-only ledgers. Retries are explicit. <code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">MaterialConsumption</code> is recorded on each derivation, so the cost basis lives in the tree.</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">EvidenceSet</code> is the durable scientific aggregate — independent of any commercial concept.</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">FindingSetVersion</code> is interpretation, versioned, with a pinned <code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">CorpusVersion</code>.</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">Recommendation</code> is its own concept, not a property of a finding.</li>
+<li style="box-sizing: border-box; margin-bottom: 6px;"><code style="box-sizing: border-box; background: #111614; border-radius: 3px; color: #86eb22; font-family: monospace; font-size: 12px; padding: 1px 6px;">ReportDeliverableVersion</code> is a view, commissioned by an Engagement; it does not own truth.</li>
+</ul>
+<p style="box-sizing: border-box; font-size: 13px; line-height: 1.6; margin: 0 0 12px; border-top: 0.5pt solid #837e75; color: #86eb22; font-style: italic; margin-top: 18px; padding-top: 14px;">Every "don't" in the boundary rules corresponds to a panel where a different design would have collapsed two distinct steps into one.</p>
+</section>
+<footer class="doc-footer" style="box-sizing: border-box; color: #837e75; font-size: 10.5px; letter-spacing: 0.05em; margin-top: 36px; text-align: center;">
+  Soilytix internal engineering reference · <b style="box-sizing: border-box; color: #426725; font-weight: 600;">domain comic v0.3 · sample lineage walkthrough</b><br style="box-sizing: border-box;"/>
+  Sources: Domain Model v1 (2026-04-13) · Aggregate matrix (2026-04-10) · Boundary decisions (2026-04-15) · Infrastructure Invariants (2026-04-13) · Pricing v2026
+</footer>
+</main>
+</body>
+</html>
