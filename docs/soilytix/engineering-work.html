@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Engineering work packages — Soilytix workshop building blocks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --surface-base: #fdfefc;
+    --surface-raised: #fdfefc;
+    --text: #29332e;
+    --text-bold: #111614;
+    --text-bold-dimmed: #3e4641;
+    --text-dimmed: #7d7a75;
+    --text-muted: #837e75;
+    --text-on-dark: #fdfefc;
+    --border: #8fb0a6;
+    --border-subtle: #95afa3;
+    --line: #423B2D;
+    --primary: #00ff87;
+    --primary-dimmed: #e0faf1;
+    --primary-text: #125849;
+
+    --cyan: #c6ede0; --cyan-bold: #0f7a65; --cyan-text: #125849;
+    --cyan-group-bg: #f2fbf8; --cyan-group-border: #94b0aa;
+    --green: #d9ebc0; --green-bold: #3d6b15; --green-text: #426725;
+    --green-group-bg: #f6faef; --green-group-border: #9aad8d;
+    --blue: #d2e5f9; --blue-bold: #1a4f8a; --blue-text: #0c447c;
+    --blue-group-bg: #f3f8fe; --blue-group-border: #96a6b8;
+    --purple: #e1dffa; --purple-bold: #3d3a8a; --purple-text: #443d8f;
+    --purple-group-bg: #f7f5fe; --purple-group-border: #a7a3b5;
+    --red: #fadbd0; --red-bold: #b14117; --red-text: #4a1b0c;
+    --red-group-bg: #fff5f1; --red-group-border: #b3a49f;
+    --orange: #fcdead; --orange-bold: #a8720f; --orange-text: #633806;
+    --grey: #e5e5e3; --grey-bold: #837e75; --grey-text: #3e4641;
+
+    --radius-none: 2px;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-pill: 16px;
+    --stroke-default: 0.5px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Inter', 'Aptos', system-ui, sans-serif;
+    background: var(--surface-base);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .brand-bar {
+    background: #1a1a1a;
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.32em; color: var(--text-on-dark); }
+  .brand-meta { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--primary); opacity: 0.85; }
+
+  .page-head { max-width: 1400px; margin: 40px auto 28px; padding: 0 32px; }
+  .eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-dimmed); margin-bottom: 12px; font-weight: 600; }
+  h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-bold); margin-bottom: 10px; }
+  .lede { color: var(--text-bold-dimmed); font-size: 15px; max-width: 800px; }
+  .hint { font-size: 12px; color: var(--text-dimmed); margin-top: 16px; font-style: italic; }
+
+  .legend {
+    max-width: 1400px; margin: 0 32px 22px; padding: 12px 18px;
+    display: flex; gap: 14px; flex-wrap: wrap;
+    background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none);
+    font-size: 11px; color: var(--text-bold-dimmed);
+  }
+  .legend-section { display: flex; gap: 14px; flex-wrap: wrap; padding-right: 14px; border-right: 1px solid var(--border); }
+  .legend-section:last-child { border-right: none; padding-right: 0; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+  .filter-bar {
+    max-width: 1400px; margin: 0 32px 18px;
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .filter {
+    padding: 6px 14px; background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-pill);
+    font-size: 11.5px; cursor: pointer; color: var(--text-bold-dimmed);
+    transition: all 0.15s; font-weight: 500;
+  }
+  .filter.active { background: var(--text-bold); color: var(--text-on-dark); border-color: var(--text-bold); }
+  .filter:hover:not(.active) { border-color: var(--cyan-bold); color: var(--cyan-bold); }
+
+  .grid {
+    max-width: 1400px; margin: 0 auto; padding: 0 32px 64px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 14px;
+  }
+  .tile {
+    background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none);
+    padding: 20px;
+    cursor: pointer; position: relative; overflow: hidden;
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex; flex-direction: column;
+  }
+  .tile::before {
+    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+  }
+  .tile.cap-platform::before { background: var(--cyan-bold); }
+  .tile.cap-cdl::before { background: var(--green-bold); }
+  .tile.cap-cdn::before { background: var(--blue-bold); }
+  .tile.cap-rd::before { background: var(--purple-bold); }
+  .tile.cap-decision::before { background: var(--red-bold); }
+  .tile.cap-shared::before { background: linear-gradient(180deg, var(--cyan-bold) 0%, var(--cyan-bold) 50%, var(--purple-bold) 50%, var(--purple-bold) 100%); }
+
+  .tile.cap-platform { background: var(--cyan-group-bg); border-color: var(--cyan-group-border); }
+  .tile.cap-cdl { background: var(--green-group-bg); border-color: var(--green-group-border); }
+  .tile.cap-cdn { background: var(--blue-group-bg); border-color: var(--blue-group-border); }
+  .tile.cap-rd { background: var(--purple-group-bg); border-color: var(--purple-group-border); }
+  .tile.cap-decision { background: var(--red-group-bg); border-color: var(--red-group-border); }
+  .tile.cap-shared { background: linear-gradient(135deg, var(--cyan-group-bg) 0%, var(--purple-group-bg) 100%); border-color: var(--purple-group-border); }
+
+  .tile:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(26, 73, 71, 0.08); }
+  .tile.hidden { display: none; }
+
+  .cap-tag {
+    display: inline-block; padding: 3px 10px; border-radius: var(--radius-none);
+    font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 10px; color: var(--text-on-dark); font-weight: 600;
+  }
+  .cap-platform .cap-tag { background: var(--cyan-bold); }
+  .cap-cdl .cap-tag { background: var(--green-bold); }
+  .cap-cdn .cap-tag { background: var(--blue-bold); }
+  .cap-rd .cap-tag { background: var(--purple-bold); }
+  .cap-decision .cap-tag { background: var(--red-bold); }
+  .cap-shared .cap-tag { background: linear-gradient(90deg, var(--cyan-bold), var(--purple-bold)); }
+
+  .tile h2 { font-size: 16.5px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; color: var(--text-bold); line-height: 1.25; }
+  .tile-desc { color: var(--text); font-size: 12.5px; margin-bottom: 14px; flex-grow: 1; line-height: 1.5; }
+  .tile-desc em { font-style: normal; font-weight: 600; color: var(--text-bold); }
+
+  .maturity-bar {
+    display: flex; align-items: center; gap: 8px; margin: 8px 0 12px;
+    font-size: 10.5px; color: var(--text-bold-dimmed);
+  }
+  .maturity-track {
+    flex-grow: 1; height: 6px; background: var(--surface-raised);
+    border-radius: var(--radius-pill); overflow: hidden;
+    border: var(--stroke-default) solid var(--border);
+  }
+  .maturity-fill { height: 100%; }
+  .maturity-fill.high { background: var(--green-bold); }
+  .maturity-fill.mid { background: var(--orange-bold); }
+  .maturity-fill.low { background: var(--red-bold); }
+  .maturity-fill.none { background: var(--grey-bold); }
+  .maturity-label { white-space: nowrap; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; }
+
+  .status-row {
+    display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px;
+    padding-top: 12px; border-top: 1px solid rgba(143, 176, 166, 0.35);
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 9px; border-radius: var(--radius-none);
+    background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    font-size: 10px; color: var(--text-bold-dimmed); font-weight: 500;
+  }
+  .chip.risk-low { background: var(--green); color: var(--green-text); border-color: var(--green-group-border); }
+  .chip.risk-mid { background: var(--orange); color: var(--orange-text); border-color: var(--green-group-border); }
+  .chip.risk-high { background: var(--red); color: var(--red-text); border-color: var(--red-group-border); }
+  .chip.risk-very-high { background: var(--red-bold); color: var(--text-on-dark); border-color: var(--red-bold); }
+
+  .overlay { position: fixed; inset: 0; background: rgba(26,73,71,0.55); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 40px; }
+  .overlay.active { display: flex; }
+  .overlay-card { background: var(--surface-raised); border-radius: var(--radius-none); border: var(--stroke-default) solid var(--border); padding: 52px 48px 40px; max-width: 680px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 60px rgba(26,73,71,0.25); position: relative; }
+  .overlay-card h2 { font-size: 28px; margin-bottom: 14px; }
+  .overlay-card .tile-desc { font-size: 15px; line-height: 1.55; margin-bottom: 18px; }
+  .overlay-card .chip { font-size: 11px; padding: 4px 11px; }
+  .close-btn { position: absolute; top: 14px; right: 20px; background: none; border: none; font-size: 28px; color: var(--text-dimmed); cursor: pointer; line-height: 1; }
+  .close-btn:hover { color: var(--text-bold); }
+
+  @media print {
+    body { padding: 16px; }
+    .brand-bar { background: white; color: black; }
+    .wordmark { color: black; }
+    .tile { page-break-inside: avoid; }
+    .hint, .overlay, .filter-bar { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="brand-bar">
+  <div class="wordmark">SOILYTIX</div>
+  <div class="brand-meta">Workshop building blocks</div>
+</div>
+
+<div class="page-head">
+  <div class="eyebrow">Dimension 2 of 3 · Engineering work</div>
+  <h1>Engineering work packages</h1>
+  <p class="lede">Fourteen concrete pieces of engineering work that together build out the five capabilities. Each card sits within one capability (or shared across two), with its definition clarity, implementation difficulty, risk grade, and current maturity in the codebase.</p>
+  <p class="hint">Click any tile to focus on it. Use the filter chips to view by capability.</p>
+</div>
+
+<div class="legend">
+  <div class="legend-section">
+    <div class="legend-item"><span class="dot" style="background: var(--cyan-bold)"></span> Platform core</div>
+    <div class="legend-item"><span class="dot" style="background: var(--green-bold)"></span> Customer delivery</div>
+    <div class="legend-item"><span class="dot" style="background: var(--blue-bold)"></span> Data normalisation</div>
+    <div class="legend-item"><span class="dot" style="background: var(--purple-bold)"></span> R&amp;D customisation</div>
+    <div class="legend-item"><span class="dot" style="background: var(--red-bold)"></span> Decision automation</div>
+  </div>
+  <div class="legend-section">
+    <div class="legend-item"><span class="dot" style="background: var(--green-bold)"></span> Mature</div>
+    <div class="legend-item"><span class="dot" style="background: var(--orange-bold)"></span> Partial</div>
+    <div class="legend-item"><span class="dot" style="background: var(--red-bold)"></span> Early</div>
+    <div class="legend-item"><span class="dot" style="background: var(--grey-bold)"></span> Greenfield</div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter active" data-filter="all">All 14</div>
+  <div class="filter" data-filter="cap-platform">Platform core</div>
+  <div class="filter" data-filter="cap-cdl">Customer delivery</div>
+  <div class="filter" data-filter="cap-cdn">Data normalisation</div>
+  <div class="filter" data-filter="cap-rd">R&amp;D customisation</div>
+  <div class="filter" data-filter="cap-decision">Decision automation</div>
+</div>
+
+<div class="grid" id="grid">
+
+  <div class="tile cap-platform" data-cap="cap-platform">
+    <span class="cap-tag">Platform core</span>
+    <h2>Sample plan designer</h2>
+    <p class="tile-desc">Interactive web app where field teams design sample plans — where to sample, in what density, across which layers — before going out. Replaces ad-hoc spreadsheets and PDFs.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill high" style="width: 85%;"></div></div>
+      <span class="maturity-label">Almost complete</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-low">Clear</span>
+      <span class="chip risk-low">Low effort</span>
+      <span class="chip risk-mid">Mid risk</span>
+    </div>
+  </div>
+
+  <div class="tile cap-platform" data-cap="cap-platform">
+    <span class="cap-tag">Platform core</span>
+    <h2>Sample lineage</h2>
+    <p class="tile-desc">The pipeline that follows a sample from the field through the lab to its result, with full provenance and batch tracking. Without it, no downstream report can credibly claim where a number came from.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill high" style="width: 70%;"></div></div>
+      <span class="maturity-label">Fairly complete</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-low">Clear</span>
+      <span class="chip risk-low">Low effort</span>
+      <span class="chip risk-mid">Mid risk</span>
+    </div>
+  </div>
+
+  <div class="tile cap-platform" data-cap="cap-platform">
+    <span class="cap-tag">Platform core</span>
+    <h2>Geo / remote sensing substrate</h2>
+    <p class="tile-desc">The combined remote-sensing pipeline, geodata server, and spatial reasoning layer underneath the sample plan designer. Lets every product reason about location, satellite imagery, and field geometry.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill mid" style="width: 50%;"></div></div>
+      <span class="maturity-label">Partial</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-low">Clear</span>
+      <span class="chip risk-low">Easy</span>
+      <span class="chip risk-mid">Mid risk</span>
+    </div>
+  </div>
+
+  <div class="tile cap-shared" data-cap="cap-platform cap-rd">
+    <span class="cap-tag">Platform core + R&amp;D</span>
+    <h2>Internal notebook platform</h2>
+    <p class="tile-desc">An interactive, versioned scientific notebook for the R&amp;D team to investigate data and run computation reproducibly. The single piece of work that simultaneously unlocks reproducible R&amp;D and provides the substrate for problem-specific reasoning.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill none" style="width: 5%;"></div></div>
+      <span class="maturity-label">Greenfield</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-mid">Diffuse</span>
+      <span class="chip risk-mid">Medium</span>
+      <span class="chip risk-mid">Mid risk</span>
+    </div>
+  </div>
+
+  <div class="tile cap-platform" data-cap="cap-platform">
+    <span class="cap-tag">Platform core</span>
+    <h2>Benchmark server</h2>
+    <p class="tile-desc">A system that collects reference corpora (e.g. soil-property distributions, crop performance baselines) on a schedule and keeps versioned comparative statistics. Lets a customer's result be expressed as "X above the relevant benchmark".</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill mid" style="width: 30%;"></div></div>
+      <span class="maturity-label">Early</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-mid">Diffuse</span>
+      <span class="chip risk-low">Low effort</span>
+      <span class="chip risk-mid">Mid risk</span>
+    </div>
+  </div>
+
+  <div class="tile cap-cdl" data-cap="cap-cdl">
+    <span class="cap-tag">Customer delivery</span>
+    <h2>Data export</h2>
+    <p class="tile-desc">A simple, reliable way for customers to pull their processed data out of our platform in standard formats (CSV, GeoJSON, etc.). Table stakes for any technical buyer.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill none" style="width: 5%;"></div></div>
+      <span class="maturity-label">Greenfield</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-low">Clear</span>
+      <span class="chip risk-low">Easy</span>
+      <span class="chip risk-low">Low risk</span>
+    </div>
+  </div>
+
+  <div class="tile cap-cdl" data-cap="cap-cdl">
+    <span class="cap-tag">Customer delivery</span>
+    <h2>API</h2>
+    <p class="tile-desc">A thin layer over the query server so customers and partner integrations can request specific slices of their data programmatically. The integration surface for any agri-data exchange.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill none" style="width: 5%;"></div></div>
+      <span class="maturity-label">Greenfield</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-low">Clear</span>
+      <span class="chip risk-low">Easy</span>
+      <span class="chip risk-low">Low risk</span>
+    </div>
+  </div>
+
+  <div class="tile cap-cdl" data-cap="cap-cdl">
+    <span class="cap-tag">Customer delivery</span>
+    <h2>Standardised report generation</h2>
+    <p class="tile-desc">A blob storage for generated deliverable files plus magic-link delivery and a versioning + lifecycle store. The pipe that turns "we have a result" into "the customer has a polished report in their inbox".</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill none" style="width: 5%;"></div></div>
+      <span class="maturity-label">Greenfield</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-mid">Diffuse</span>
+      <span class="chip risk-mid">Medium</span>
+      <span class="chip risk-low">Low risk</span>
+    </div>
+  </div>
+
+  <div class="tile cap-cdl" data-cap="cap-cdl">
+    <span class="cap-tag">Customer delivery</span>
+    <h2>Interactive result explorer</h2>
+    <p class="tile-desc">A customer-facing web app where users can click around their own results — drill into a field, compare regions, swap layers. A componentised refactor of today's dashboard, tailored per product surface.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill mid" style="width: 35%;"></div></div>
+      <span class="maturity-label">Partial</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-mid">Diffuse</span>
+      <span class="chip risk-low">Low effort</span>
+      <span class="chip risk-mid">Mid risk</span>
+    </div>
+  </div>
+
+  <div class="tile cap-cdn" data-cap="cap-cdn">
+    <span class="cap-tag">Data normalisation</span>
+    <h2>MIxS mapper</h2>
+    <p class="tile-desc">A standardisation layer that maps incoming customer data (any schema, any units) onto the MIxS biological-metadata standard. Required so every downstream product can assume a clean, consistent input shape.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill none" style="width: 5%;"></div></div>
+      <span class="maturity-label">Greenfield</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-mid">Diffuse</span>
+      <span class="chip risk-mid">Medium</span>
+      <span class="chip risk-mid">Mid risk</span>
+    </div>
+  </div>
+
+  <div class="tile cap-rd" data-cap="cap-rd">
+    <span class="cap-tag">R&amp;D customisation</span>
+    <h2>Research agent</h2>
+    <p class="tile-desc">An agent that ingests scientific literature, tracks claims and evidence, and keeps a categorised store of what the field knows about a given crop / soil / agronomic question. The literature scaffolding behind any companion-dx claim.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill none" style="width: 5%;"></div></div>
+      <span class="maturity-label">Greenfield</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-high">Very unclear</span>
+      <span class="chip risk-high">Very hard</span>
+      <span class="chip risk-high">Risky</span>
+    </div>
+  </div>
+
+  <div class="tile cap-rd" data-cap="cap-rd">
+    <span class="cap-tag">R&amp;D customisation</span>
+    <h2>Problem-specific scientific reasoning</h2>
+    <p class="tile-desc">A productised capability for plugging in the bespoke scientific reasoning each customer needs (different crops, different soil questions, different intervention claims) without re-building from scratch every engagement.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill none" style="width: 5%;"></div></div>
+      <span class="maturity-label">Greenfield</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-high">Unclear</span>
+      <span class="chip risk-mid">Medium</span>
+      <span class="chip risk-high">Risky</span>
+    </div>
+  </div>
+
+  <div class="tile cap-decision" data-cap="cap-decision">
+    <span class="cap-tag">Decision automation</span>
+    <h2>Algorithm for placement</h2>
+    <p class="tile-desc">An algorithm that takes soil, environmental and historical-performance data and recommends <em>where</em> to place a given seed variety, treatment, or intervention. Moves us from describing fields to advising on them.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill none" style="width: 5%;"></div></div>
+      <span class="maturity-label">Greenfield</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-high">Unclear</span>
+      <span class="chip risk-mid">Medium</span>
+      <span class="chip risk-high">Risky</span>
+    </div>
+  </div>
+
+  <div class="tile cap-decision" data-cap="cap-decision">
+    <span class="cap-tag">Decision automation</span>
+    <h2>Agentic agronomist</h2>
+    <p class="tile-desc">An autonomous agent that walks through farm and field data the way an experienced agronomist would — flagging anomalies, hypothesising causes, drafting interventions. The most ambitious item on the board and the one with the lowest definition clarity.</p>
+    <div class="maturity-bar">
+      <span class="maturity-label">Maturity</span>
+      <div class="maturity-track"><div class="maturity-fill none" style="width: 5%;"></div></div>
+      <span class="maturity-label">Greenfield</span>
+    </div>
+    <div class="status-row">
+      <span class="chip risk-very-high">Very unclear</span>
+      <span class="chip risk-very-high">Very hard</span>
+      <span class="chip risk-very-high">Very high risk</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-card" id="overlay-card">
+    <button class="close-btn" id="close-btn">×</button>
+    <div id="overlay-content"></div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById('overlay');
+  const overlayContent = document.getElementById('overlay-content');
+  const closeBtn = document.getElementById('close-btn');
+
+  document.querySelectorAll('.tile').forEach(tile => {
+    tile.addEventListener('click', () => {
+      overlayContent.innerHTML = tile.innerHTML;
+      overlay.classList.add('active');
+    });
+  });
+  function closeOverlay() { overlay.classList.remove('active'); }
+  closeBtn.addEventListener('click', closeOverlay);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+
+  document.querySelectorAll('.filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(f => f.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.tile').forEach(tile => {
+        if (filter === 'all') tile.classList.remove('hidden');
+        else tile.classList.toggle('hidden', !tile.dataset.cap.includes(filter));
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

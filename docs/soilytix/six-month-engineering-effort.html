@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Six-month engineering effort — May–Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --surface-base: #fdfefc;
+    --surface-raised: #fdfefc;
+    --text: #29332e;
+    --text-bold: #111614;
+    --text-bold-dimmed: #3e4641;
+    --text-dimmed: #7d7a75;
+    --text-on-dark: #fdfefc;
+    --border: #8fb0a6;
+    --border-subtle: #95afa3;
+    --line: #423B2D;
+    --primary: #00ff87;
+    --primary-dimmed: #e0faf1;
+    --primary-text: #125849;
+
+    --cyan: #c6ede0; --cyan-bold: #0f7a65; --cyan-text: #125849;
+    --cyan-group-bg: #f2fbf8; --cyan-group-border: #94b0aa;
+    --green: #d9ebc0; --green-bold: #3d6b15; --green-text: #426725;
+    --green-group-bg: #f6faef; --green-group-border: #9aad8d;
+    --blue: #d2e5f9; --blue-bold: #1a4f8a; --blue-text: #0c447c;
+    --blue-group-bg: #f3f8fe; --blue-group-border: #96a6b8;
+    --purple: #e1dffa; --purple-bold: #3d3a8a; --purple-text: #443d8f;
+    --purple-group-bg: #f7f5fe; --purple-group-border: #a7a3b5;
+    --red: #fadbd0; --red-bold: #b14117; --red-text: #4a1b0c;
+    --red-group-bg: #fff5f1; --red-group-border: #b3a49f;
+    --orange: #fcdead; --orange-bold: #a8720f; --orange-text: #633806;
+    --orange-group-bg: #fffaf0; --orange-group-border: #b5a896;
+    --grey: #e5e5e3; --grey-bold: #837e75; --grey-text: #3e4641;
+
+    --radius-none: 2px;
+    --stroke-default: 0.5px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Inter', 'Aptos', system-ui, sans-serif;
+    background: var(--surface-base); color: var(--text);
+    line-height: 1.45; -webkit-font-smoothing: antialiased;
+  }
+
+  .brand-bar {
+    background: #1a1a1a;
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.32em; color: var(--text-on-dark); }
+  .brand-meta { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--primary); opacity: 0.85; }
+
+  .page-head { max-width: 1700px; margin: 36px auto 24px; padding: 0 28px; }
+  .eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-dimmed); margin-bottom: 10px; font-weight: 600; }
+  h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-bold); margin-bottom: 8px; }
+  .lede { color: var(--text-bold-dimmed); font-size: 14px; max-width: 1000px; }
+  .hint { font-size: 11.5px; color: var(--text-dimmed); margin-top: 12px; font-style: italic; }
+
+  .canvas {
+    max-width: 1700px; margin: 0 28px 48px;
+    background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none);
+    padding: 28px;
+  }
+
+  /* Timeline header */
+  .time-grid {
+    display: grid;
+    grid-template-columns: 220px repeat(3, 1fr);
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  .lane-head-empty { }
+  .time-col-head {
+    padding: 10px 14px;
+    background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none);
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .time-col-head .q {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--text-dimmed); font-weight: 700;
+  }
+  .time-col-head .months {
+    font-size: 13.5px; font-weight: 700; color: var(--text-bold);
+    letter-spacing: -0.01em;
+  }
+  .time-col-head .sub {
+    font-size: 10.5px; color: var(--text-bold-dimmed); font-style: italic; margin-top: 1px;
+  }
+  .time-col-head.now { border-top: 3px solid var(--primary); }
+
+  /* Lane rows */
+  .lane {
+    display: grid;
+    grid-template-columns: 220px repeat(3, 1fr);
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .lane-head {
+    padding: 16px 14px;
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none);
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+  }
+  .lane-head::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  }
+  .lane-head .lane-tag {
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-dimmed); font-weight: 600; margin-bottom: 4px;
+  }
+  .lane-head .lane-name {
+    font-size: 14px; font-weight: 700; letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .lane-head .lane-sub {
+    font-size: 10.5px; color: var(--text-bold-dimmed); line-height: 1.35;
+  }
+
+  .lane.designed .lane-head { background: var(--purple-group-bg); border-color: var(--purple-group-border); }
+  .lane.designed .lane-head::before { background: var(--purple-bold); }
+  .lane.designed .lane-head .lane-name { color: var(--purple-bold); }
+
+  .lane.platform .lane-head { background: var(--green-group-bg); border-color: var(--green-group-border); }
+  .lane.platform .lane-head::before { background: var(--green-bold); }
+  .lane.platform .lane-head .lane-name { color: var(--green-bold); }
+
+  .lane.cloud .lane-head { background: var(--cyan-group-bg); border-color: var(--cyan-group-border); }
+  .lane.cloud .lane-head::before { background: var(--cyan-bold); }
+  .lane.cloud .lane-head .lane-name { color: var(--cyan-bold); }
+
+  .lane.onprem .lane-head { background: var(--orange-group-bg); border-color: var(--orange-group-border); }
+  .lane.onprem .lane-head::before { background: var(--orange-bold); }
+  .lane.onprem .lane-head .lane-name { color: var(--orange-bold); }
+
+  .cell {
+    padding: 12px;
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none);
+    display: flex; flex-direction: column; gap: 6px;
+    min-height: 200px;
+  }
+  .lane.designed .cell { background: #fbfaff; }
+  .lane.platform .cell { background: #fbfdf6; }
+  .lane.cloud .cell { background: #f9fdfb; }
+  .lane.onprem .cell { background: #fffbf3; }
+
+  .focus-line {
+    font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-dimmed); font-weight: 600; margin-bottom: 2px;
+  }
+
+  .work-chip {
+    padding: 7px 10px;
+    background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none);
+    font-size: 11px; line-height: 1.35;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 8px;
+  }
+  .work-chip .name { font-weight: 500; color: var(--text); }
+  .work-chip .badge {
+    font-size: 9px; padding: 2px 6px; border-radius: var(--radius-none);
+    color: var(--text-on-dark); white-space: nowrap; font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .work-chip .badge.low { background: var(--green-bold); }
+  .work-chip .badge.mid { background: var(--orange-bold); }
+  .work-chip .badge.high { background: var(--red-bold); }
+  .work-chip .badge.veryhigh { background: #8c2f24; }
+  .work-chip .badge.dec { background: var(--purple-bold); }
+  .work-chip .badge.fwd { background: var(--blue-bold); }
+  .work-chip.headline {
+    border-left: 3px solid var(--primary-text);
+    background: var(--primary-dimmed);
+  }
+  .work-chip.headline .name { font-weight: 700; color: var(--primary-text); }
+  .work-chip.gated {
+    border-style: dashed;
+  }
+  .work-chip.gated .name { color: var(--text-bold-dimmed); font-style: italic; }
+
+  /* Today marker */
+  .now-marker {
+    grid-column: 2 / 3;
+    height: 4px;
+    background: var(--primary);
+    position: relative;
+    margin: -2px 0 6px;
+  }
+  .now-marker::after {
+    content: 'Today · 11 May 2026';
+    position: absolute; top: -18px; left: 6px;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--primary-text); font-weight: 700;
+  }
+
+  /* Footer constraints */
+  .constraints {
+    margin-top: 24px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  }
+  .constraint {
+    padding: 14px;
+    background: #f4f1ea;
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none);
+  }
+  .constraint .ctitle {
+    font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-dimmed); font-weight: 700; margin-bottom: 6px;
+  }
+  .constraint .cbody {
+    font-size: 11.5px; color: var(--text-bold-dimmed); line-height: 1.4;
+  }
+  .constraint .cbody strong { color: var(--text-bold); font-weight: 600; }
+
+  .legend {
+    margin-top: 20px; display: flex; gap: 14px; flex-wrap: wrap;
+    padding: 12px 16px; background: var(--cyan-group-bg);
+    border: var(--stroke-default) solid var(--cyan-group-border);
+    border-radius: var(--radius-none);
+    font-size: 10.5px; color: var(--text-bold-dimmed); font-weight: 500;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-swatch { width: 22px; height: 14px; border-radius: var(--radius-none); }
+  .legend-swatch.low { background: var(--green-bold); }
+  .legend-swatch.mid { background: var(--orange-bold); }
+  .legend-swatch.high { background: var(--red-bold); }
+  .legend-swatch.veryhigh { background: #8c2f24; }
+  .legend-swatch.dec { background: var(--purple-bold); }
+  .legend-swatch.fwd { background: var(--blue-bold); }
+  .legend-swatch.headline { background: var(--primary-dimmed); border: 1px solid var(--primary-text); border-left: 3px solid var(--primary-text); }
+  .legend-swatch.gated { background: var(--surface-raised); border: 1px dashed var(--border); }
+
+  @media print {
+    body { padding: 12px; background: white; }
+    .canvas { border: none; padding: 0; }
+    .brand-bar { background: white; color: black; }
+    .wordmark { color: black; }
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="brand-bar">
+  <div class="wordmark">SOILYTIX</div>
+  <div class="brand-meta">Workshop building block · Six-month engineering effort</div>
+</div>
+
+<div class="page-head">
+  <div class="eyebrow">Engineering roadmap · May–Nov 2026 · four-lane view</div>
+  <h1>What engineering will be doing for the next six months</h1>
+  <p class="lede">Four lanes — the canonical domain model we are designing, the new commercial platform that implements it, the cloud surface where it runs, and the Hamburg on-premise tier underneath the V3 biological model. Each lane is read left-to-right across closing Q2, Q3, and the Q4 entry.</p>
+  <p class="hint">Colour = lane. Badge = risk band of the work item. Highlighted chips are the highest-leverage commitments. Dashed chips are gated — only landing if their upstream gate clears.</p>
+</div>
+
+<div class="canvas">
+
+  <!-- Time header -->
+  <div class="time-grid">
+    <div class="lane-head-empty"></div>
+    <div class="time-col-head now">
+      <div class="q">Closing Q2 · in flight</div>
+      <div class="months">May – Jul 2026</div>
+      <div class="sub">Base layer must land. Notebook is the unlock.</div>
+    </div>
+    <div class="time-col-head">
+      <div class="q">Q3 · differentiation</div>
+      <div class="months">Aug – Oct 2026</div>
+      <div class="sub">Productized science. Companion Diag. MVP window.</div>
+    </div>
+    <div class="time-col-head">
+      <div class="q">Entering Q4 · outlook</div>
+      <div class="months">Nov 2026 →</div>
+      <div class="sub">Conditional scope. Decisions due during Q3.</div>
+    </div>
+  </div>
+
+  <!-- Designed domain model lane -->
+  <div class="lane designed">
+    <div class="lane-head">
+      <div class="lane-tag">Lane 1 · Conceptual</div>
+      <div class="lane-name">Designed domain model</div>
+      <div class="lane-sub">V2 bounded contexts &amp; invariants. <em>packages/domain</em> — conceptual only, no DB or UI shape.</div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">Lock the seams</div>
+      <div class="work-chip headline"><span class="name">Finish bounded-context split off monolithic <code>project</code></span><span class="badge dec">design</span></div>
+      <div class="work-chip"><span class="name">Engagement / ServiceSession / AssayOrder lock</span><span class="badge low">clear</span></div>
+      <div class="work-chip"><span class="name">SampleLineage parentage resolved</span><span class="badge mid">open</span></div>
+      <div class="work-chip"><span class="name">InvestigationFrame frameType enum frozen</span><span class="badge mid">open</span></div>
+      <div class="work-chip"><span class="name">Hard invariants ratified (req ≠ exec, evidence ≠ interp.)</span><span class="badge low">clear</span></div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">Versioned outputs &amp; evidence</div>
+      <div class="work-chip"><span class="name">EvidenceSet / DerivedEvidenceSet semantics</span><span class="badge mid">open</span></div>
+      <div class="work-chip"><span class="name">BenchmarkCorpus / CorpusVersion / CorpusPolicy</span><span class="badge mid">open</span></div>
+      <div class="work-chip"><span class="name">FindingSetVersion ↔ ReportDeliverableVersion seam</span><span class="badge low">clear</span></div>
+      <div class="work-chip"><span class="name">CostEvent append-only model</span><span class="badge low">clear</span></div>
+      <div class="work-chip"><span class="name">Forbidden-parentage tests in CI</span><span class="badge low">clear</span></div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">Deferred / open</div>
+      <div class="work-chip gated"><span class="name">Farm / portfolio grouping — revisit</span><span class="badge fwd">defer</span></div>
+      <div class="work-chip gated"><span class="name">Interpretation ↔ Decision-automation seam</span><span class="badge fwd">defer</span></div>
+      <div class="work-chip gated"><span class="name">Recommendation aggregate shape</span><span class="badge fwd">defer</span></div>
+      <div class="work-chip"><span class="name">Trial-intelligence Mode B value objects</span><span class="badge mid">open</span></div>
+    </div>
+  </div>
+
+  <!-- New commercial platform lane -->
+  <div class="lane platform">
+    <div class="lane-head">
+      <div class="lane-tag">Lane 2 · Implementation</div>
+      <div class="lane-name">New commercial platform</div>
+      <div class="lane-sub">V2 product surface. <em>apps/dashboard</em>, <em>services/query-server</em>, Drizzle schema, tRPC contracts.</div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">Base layer + Soil Monitoring live</div>
+      <div class="work-chip headline"><span class="name">Internal notebook platform — bridges core ↔ R&amp;D</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">Sample plan designer · polish + multi-layer</span><span class="badge low">easy</span></div>
+      <div class="work-chip"><span class="name">Sample lineage · provenance + batch tracking</span><span class="badge low">easy</span></div>
+      <div class="work-chip"><span class="name">Standardised report generation</span><span class="badge low">easy</span></div>
+      <div class="work-chip"><span class="name">Data export + API thin layer</span><span class="badge low">easy</span></div>
+      <div class="work-chip"><span class="name">Geo / remote-sensing substrate · prod-hard GEE</span><span class="badge low">easy</span></div>
+      <div class="work-chip"><span class="name">MIxS mapper v1</span><span class="badge mid">mid</span></div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">Productize scientific customisation</div>
+      <div class="work-chip headline"><span class="name">Problem-specific scientific reasoning capability</span><span class="badge high">risky</span></div>
+      <div class="work-chip"><span class="name">Trial Analytics live for KWS-class</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">Seed-breeding characterisation reports</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">MIxS mapper · trial-data extensions</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">Benchmark server · versioned corpora</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">Web app · componentize current dashboard</span><span class="badge mid">mid</span></div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">Companion Diagnostics MVP window</div>
+      <div class="work-chip headline gated"><span class="name">Companion Diagnostics MVP · one named Ag-input pilot</span><span class="badge high">risky</span></div>
+      <div class="work-chip gated"><span class="name">Product-specific result explorer (Ag-input)</span><span class="badge mid">mid</span></div>
+      <div class="work-chip gated"><span class="name">Research agent prototype</span><span class="badge high">risky</span></div>
+      <div class="work-chip gated"><span class="name">Placement algorithm · internal, flagged off</span><span class="badge veryhigh">very high</span></div>
+    </div>
+  </div>
+
+  <!-- Cloud infrastructure lane -->
+  <div class="lane cloud">
+    <div class="lane-head">
+      <div class="lane-tag">Lane 3 · Online tier</div>
+      <div class="lane-name">Cloud infrastructure</div>
+      <div class="lane-sub">Small / fast / cheap derived layer. Neon · Vercel · GCP · Inngest · Cloud Workflows.</div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">Stabilise &amp; consolidate</div>
+      <div class="work-chip"><span class="name">Neon prod-v2 · per-PR branch DBs · PgBouncer</span><span class="badge low">low</span></div>
+      <div class="work-chip"><span class="name">query-server promoted to sole DB / PostGIS access</span><span class="badge low">low</span></div>
+      <div class="work-chip"><span class="name">Export server greenfield (blob + magic links + DB lifecycle)</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">Geodata server greenfield (raster / vector / TiTiler)</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">GCP Batch · Snakemake hardened</span><span class="badge low">low</span></div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">Split exec backbone; tighten observability</div>
+      <div class="work-chip headline"><span class="name">Cloud Workflows for sci/ML runs · Inngest for app-coupled</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">Mapbox → Maplibre migration in <em>packages/maps</em></span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">Sentry / observability package consolidation</span><span class="badge low">low</span></div>
+      <div class="work-chip"><span class="name">Cost monitoring · GCP (€397/mo) + Vercel ($127/mo) guardrails</span><span class="badge low">low</span></div>
+      <div class="work-chip"><span class="name">Cloud Run stats/ML hardening (AWC / CEC / SOC)</span><span class="badge low">low</span></div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">Forward-looking / optional</div>
+      <div class="work-chip gated"><span class="name">Temporal evaluation — kept open</span><span class="badge fwd">eval</span></div>
+      <div class="work-chip"><span class="name">SOC 2 evidence pack from sub-processors</span><span class="badge low">low</span></div>
+      <div class="work-chip"><span class="name">Latency mitigation on Neon cold-start paths</span><span class="badge low">low</span></div>
+      <div class="work-chip gated"><span class="name">Multi-region readiness check</span><span class="badge fwd">defer</span></div>
+    </div>
+  </div>
+
+  <!-- On-prem infrastructure lane -->
+  <div class="lane onprem">
+    <div class="lane-head">
+      <div class="lane-tag">Lane 4 · Raw biological tier</div>
+      <div class="lane-name">On-premise infrastructure</div>
+      <div class="lane-sub">Hamburg petabyte-scale storage + EU GPU cluster. Substrate for V3 generative biology track.</div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">Build the box. Use the clock.</div>
+      <div class="work-chip headline"><span class="name">EU GPU cluster · 5,000h · use-it-or-lose-it window opens</span><span class="badge high">risky</span></div>
+      <div class="work-chip"><span class="name">Hamburg petabyte storage · racks + network + ingest</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">FASTQ archive lifecycle (GCS → on-prem cold tier)</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">Raw-vs-derived layer split contract</span><span class="badge mid">mid</span></div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">V3 training campaign</div>
+      <div class="work-chip headline"><span class="name">V3 soil-genomic foundation training (Tim R.)</span><span class="badge high">risky</span></div>
+      <div class="work-chip"><span class="name">Reproducibility / checkpointing / lineage</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">Data egress / ingress between Hamburg ↔ GCP</span><span class="badge mid">mid</span></div>
+      <div class="work-chip"><span class="name">Bus-factor mitigation in V3 stack</span><span class="badge mid">mid</span></div>
+    </div>
+    <div class="cell">
+      <div class="focus-line">Operate &amp; govern</div>
+      <div class="work-chip"><span class="name">V3 model evaluation + claim provenance</span><span class="badge high">risky</span></div>
+      <div class="work-chip"><span class="name">Storage governance · retention · access policy</span><span class="badge mid">mid</span></div>
+      <div class="work-chip gated"><span class="name">Hand-off path V3 → V2 commercial surface</span><span class="badge fwd">defer</span></div>
+      <div class="work-chip"><span class="name">DR / restore drill on petabyte tier</span><span class="badge mid">mid</span></div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch headline"></span> Highest-leverage commitment</div>
+    <div class="legend-item"><span class="legend-swatch gated"></span> Gated · only lands if upstream clears</div>
+    <div class="legend-item"><span class="legend-swatch low"></span> Low risk · clear / easy</div>
+    <div class="legend-item"><span class="legend-swatch mid"></span> Mid risk · diffuse / medium</div>
+    <div class="legend-item"><span class="legend-swatch high"></span> Risky · very unclear / very hard</div>
+    <div class="legend-item"><span class="legend-swatch veryhigh"></span> Very high risk</div>
+    <div class="legend-item"><span class="legend-swatch dec"></span> Design decision</div>
+    <div class="legend-item"><span class="legend-swatch fwd"></span> Deferred / forward-looking</div>
+  </div>
+
+  <!-- Constraints / gates -->
+  <div class="constraints">
+    <div class="constraint">
+      <div class="ctitle">Central enabling bet</div>
+      <div class="cbody"><strong>AI leverage</strong> on diffuse / medium-difficulty work is the precondition for delivering this scope at current headcount. If the throughput gain doesn't materialise, <strong>scope reduces — pace doesn't change.</strong></div>
+    </div>
+    <div class="constraint">
+      <div class="ctitle">Q2 → Q3 gate</div>
+      <div class="cbody"><strong>Scientific customisation must productize in Q2.</strong> If Internal Notebook + reasoning capability don't land, Companion Diagnostics slips into 2027 — not Q4. Owner: Maurice + Julia.</div>
+    </div>
+    <div class="constraint">
+      <div class="ctitle">Pilot decision · End of Q1 latest</div>
+      <div class="cbody"><strong>Named Ag-input pilot</strong> must be picked before Q3 build starts. Compressing Companion Diagnostics into Q2 = bespoke R&amp;D, not platform. Owner: Bruno + Julien.</div>
+    </div>
+    <div class="constraint">
+      <div class="ctitle">Headcount &amp; bus factor</div>
+      <div class="cbody"><strong>4 engineers</strong>; Haydn join-or-no decision pending. Some R&amp;D domains at bus factor 1 — revisit at Series A. Platform-core ownership handover before EOY.</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

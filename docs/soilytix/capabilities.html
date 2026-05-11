@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Capabilities — Soilytix workshop building blocks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Soilytix tokens */
+    --surface-base: #fdfefc;
+    --surface-raised: #fdfefc;
+    --text: #29332e;
+    --text-bold: #111614;
+    --text-bold-dimmed: #3e4641;
+    --text-dimmed: #7d7a75;
+    --text-muted: #837e75;
+    --text-on-dark: #fdfefc;
+    --border: #8fb0a6;
+    --border-subtle: #95afa3;
+    --line: #423B2D;
+
+    --primary: #00ff87;
+    --primary-dimmed: #e0faf1;
+    --primary-text: #125849;
+
+    /* Semantic capability colours */
+    --cyan: #c6ede0; --cyan-bold: #0f7a65; --cyan-text: #125849;
+    --cyan-group-bg: #f2fbf8; --cyan-group-border: #94b0aa;
+    --green: #d9ebc0; --green-bold: #3d6b15; --green-text: #426725;
+    --green-group-bg: #f6faef; --green-group-border: #9aad8d;
+    --blue: #d2e5f9; --blue-bold: #1a4f8a; --blue-text: #0c447c;
+    --blue-group-bg: #f3f8fe; --blue-group-border: #96a6b8;
+    --purple: #e1dffa; --purple-bold: #3d3a8a; --purple-text: #443d8f;
+    --purple-group-bg: #f7f5fe; --purple-group-border: #a7a3b5;
+    --red: #fadbd0; --red-bold: #b14117; --red-text: #4a1b0c;
+    --red-group-bg: #fff5f1; --red-group-border: #b3a49f;
+    --orange: #fcdead; --orange-bold: #a8720f; --orange-text: #633806;
+    --grey: #e5e5e3; --grey-bold: #837e75; --grey-text: #3e4641;
+
+    --radius-none: 2px;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-pill: 16px;
+    --stroke-default: 0.5px;
+    --stroke-node: 1px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Inter', 'Aptos', system-ui, -apple-system, sans-serif;
+    background: var(--surface-base);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* SOILYTIX brand bar */
+  .brand-bar {
+    background: #1a1a1a;
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.32em;
+    color: var(--text-on-dark);
+  }
+  .brand-meta {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--primary);
+    opacity: 0.85;
+  }
+
+  .page-head { max-width: 1400px; margin: 40px auto 28px; padding: 0 32px; }
+  .eyebrow {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--text-dimmed); margin-bottom: 12px; font-weight: 600;
+  }
+  h1 {
+    font-size: 32px; font-weight: 700; letter-spacing: -0.02em;
+    color: var(--text-bold); margin-bottom: 10px;
+  }
+  .lede { color: var(--text-bold-dimmed); font-size: 15px; max-width: 760px; }
+  .lede em { color: var(--cyan-bold); font-style: normal; font-weight: 600; }
+  .hint {
+    font-size: 12px; color: var(--text-dimmed); margin-top: 16px;
+    font-style: italic;
+  }
+
+  .legend {
+    max-width: 1400px; margin: 0 auto 28px; padding: 12px 18px;
+    display: flex; gap: 22px; flex-wrap: wrap;
+    background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none);
+    font-size: 11px; color: var(--text-bold-dimmed);
+    margin-left: 32px; margin-right: 32px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+  .grid {
+    max-width: 1400px; margin: 0 auto; padding: 0 32px 64px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 18px;
+  }
+  .tile {
+    background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none);
+    padding: 26px 24px 22px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    display: flex; flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .tile::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(26, 73, 71, 0.08);
+  }
+
+  /* Capability colour mapping */
+  .tile.platform::before { background: var(--cyan-bold); }
+  .tile.platform { background: var(--cyan-group-bg); border-color: var(--cyan-group-border); }
+  .tile.cdl::before { background: var(--green-bold); }
+  .tile.cdl { background: var(--green-group-bg); border-color: var(--green-group-border); }
+  .tile.cdn::before { background: var(--blue-bold); }
+  .tile.cdn { background: var(--blue-group-bg); border-color: var(--blue-group-border); }
+  .tile.rd::before { background: var(--purple-bold); }
+  .tile.rd { background: var(--purple-group-bg); border-color: var(--purple-group-border); }
+  .tile.decision::before { background: var(--red-bold); }
+  .tile.decision { background: var(--red-group-bg); border-color: var(--red-group-border); }
+
+  .tile-label {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 12px; font-weight: 600;
+  }
+  .platform .tile-label { color: var(--cyan-bold); }
+  .cdl .tile-label { color: var(--green-bold); }
+  .cdn .tile-label { color: var(--blue-bold); }
+  .rd .tile-label { color: var(--purple-bold); }
+  .decision .tile-label { color: var(--red-bold); }
+
+  .tile h2 {
+    font-size: 22px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 12px;
+    color: var(--text-bold); line-height: 1.2;
+  }
+  .tile-desc {
+    color: var(--text); font-size: 14px; margin-bottom: 16px; line-height: 1.55;
+  }
+  .tile-desc em { font-style: normal; font-weight: 600; color: var(--text-bold); }
+
+  .section-label {
+    font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-dimmed); margin-bottom: 10px; margin-top: 8px; font-weight: 600;
+  }
+  .work-list { list-style: none; margin-bottom: 14px; }
+  .work-list li {
+    padding: 7px 0; font-size: 13px;
+    border-bottom: 1px solid rgba(143, 176, 166, 0.25);
+    color: var(--text);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .work-list li:last-child { border-bottom: none; }
+  .work-list li::before {
+    content: ""; width: 4px; height: 4px; border-radius: 50%;
+    background: var(--text-dimmed); flex-shrink: 0;
+  }
+  .platform .work-list li::before { background: var(--cyan-bold); }
+  .cdl .work-list li::before { background: var(--green-bold); }
+  .cdn .work-list li::before { background: var(--blue-bold); }
+  .rd .work-list li::before { background: var(--purple-bold); }
+  .decision .work-list li::before { background: var(--red-bold); }
+
+  .status-row {
+    display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 14px;
+    border-top: 1px solid rgba(143, 176, 166, 0.35);
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border-radius: var(--radius-none);
+    background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    font-size: 10.5px; color: var(--text-bold-dimmed); font-weight: 500;
+  }
+  .chip-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .chip.risk-low { background: var(--green); color: var(--green-text); border-color: var(--green-group-border); }
+  .chip.risk-mid { background: var(--orange); color: var(--orange-text); border-color: var(--green-group-border); }
+  .chip.risk-high { background: var(--red); color: var(--red-text); border-color: var(--red-group-border); }
+  .chip.risk-very-high { background: var(--red-bold); color: var(--text-on-dark); border-color: var(--red-bold); }
+
+  .pull-quote {
+    margin-top: 14px; padding: 12px 14px;
+    background: var(--surface-raised);
+    border-left: 3px solid;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 12.5px; color: var(--text);
+    line-height: 1.5;
+  }
+  .platform .pull-quote { border-left-color: var(--cyan-bold); }
+  .cdl .pull-quote { border-left-color: var(--green-bold); }
+  .cdn .pull-quote { border-left-color: var(--blue-bold); }
+  .rd .pull-quote { border-left-color: var(--purple-bold); }
+  .decision .pull-quote { border-left-color: var(--red-bold); }
+
+  /* Focus overlay */
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(26, 73, 71, 0.55);
+    backdrop-filter: blur(4px);
+    display: none; align-items: center; justify-content: center;
+    z-index: 100; padding: 40px;
+  }
+  .overlay.active { display: flex; }
+  .overlay-card {
+    background: var(--surface-raised);
+    border-radius: var(--radius-none);
+    border: var(--stroke-default) solid var(--border);
+    padding: 52px 48px 44px;
+    max-width: 760px; width: 100%; max-height: 90vh; overflow-y: auto;
+    box-shadow: 0 24px 60px rgba(26, 73, 71, 0.25);
+    position: relative;
+  }
+  .overlay-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  }
+  .overlay-card.platform::before { background: var(--cyan-bold); }
+  .overlay-card.cdl::before { background: var(--green-bold); }
+  .overlay-card.cdn::before { background: var(--blue-bold); }
+  .overlay-card.rd::before { background: var(--purple-bold); }
+  .overlay-card.decision::before { background: var(--red-bold); }
+  .overlay-card h2 { font-size: 32px; margin-bottom: 14px; }
+  .overlay-card .tile-desc { font-size: 16px; line-height: 1.55; margin-bottom: 22px; }
+  .overlay-card .work-list li { font-size: 14px; padding: 9px 0; }
+  .overlay-card .pull-quote { font-size: 14px; padding: 16px 18px; }
+  .close-btn {
+    position: absolute; top: 14px; right: 20px;
+    background: none; border: none; font-size: 28px;
+    color: var(--text-dimmed); cursor: pointer; line-height: 1;
+  }
+  .close-btn:hover { color: var(--text-bold); }
+
+  @media print {
+    body { padding: 16px; }
+    .brand-bar { background: white; color: black; border-bottom: 1px solid var(--line); }
+    .wordmark { color: black; }
+    .tile { page-break-inside: avoid; box-shadow: none; }
+    .hint, .overlay { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="brand-bar">
+  <div class="wordmark">SOILYTIX</div>
+  <div class="brand-meta">Workshop building blocks</div>
+</div>
+
+<div class="page-head">
+  <div class="eyebrow">Dimension 1 of 3 · Capabilities</div>
+  <h1>Engineering capabilities</h1>
+  <p class="lede">Five layers that describe what the platform <em>can do</em>, independent of any one product. Three are foundational — required by almost every direction. Two are differentiation axes — high-risk but high-leverage.</p>
+  <p class="hint">Click any tile to focus on it. Press Esc to return.</p>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="dot" style="background: var(--cyan-bold)"></span> Platform core</div>
+  <div class="legend-item"><span class="dot" style="background: var(--green-bold)"></span> Customer delivery</div>
+  <div class="legend-item"><span class="dot" style="background: var(--blue-bold)"></span> Client data normalisation</div>
+  <div class="legend-item"><span class="dot" style="background: var(--purple-bold)"></span> R&amp;D customisation</div>
+  <div class="legend-item"><span class="dot" style="background: var(--red-bold)"></span> Decision automation</div>
+  <div class="legend-item" style="margin-left: 16px; padding-left: 16px; border-left: 1px solid var(--border)"><span class="dot" style="background: var(--green-bold)"></span> Low risk</div>
+  <div class="legend-item"><span class="dot" style="background: var(--orange-bold)"></span> Mid risk</div>
+  <div class="legend-item"><span class="dot" style="background: var(--red-bold)"></span> Risky</div>
+</div>
+
+<div class="grid" id="grid">
+
+  <div class="tile platform">
+    <div class="tile-label">Foundational · Layer 1</div>
+    <h2>Platform core</h2>
+    <p class="tile-desc">The shared engineering foundation that sits beneath every product direction. Sample handling, lineage, the geo/remote-sensing substrate, the internal R&amp;D notebook, and the benchmark server.</p>
+    <div class="section-label">Work items inside</div>
+    <ul class="work-list">
+      <li>Sample plan designer</li>
+      <li>Sample lineage</li>
+      <li>Geo / remote sensing substrate</li>
+      <li>Internal notebook platform <span style="color:var(--text-dimmed)">(shared with R&amp;D)</span></li>
+      <li>Benchmark server</li>
+    </ul>
+    <div class="pull-quote">Built once, amortised across every product. Not a budget line under any one direction.</div>
+    <div class="status-row">
+      <span class="chip risk-mid">Definition: diffuse</span>
+      <span class="chip risk-mid">Implementation: medium</span>
+      <span class="chip risk-mid">Risk: mid</span>
+    </div>
+  </div>
+
+  <div class="tile cdl">
+    <div class="tile-label">Foundational · Layer 2</div>
+    <h2>Customer delivery layer</h2>
+    <p class="tile-desc">Everything that gets data and insight from our platform out to the customer — exports, APIs, generated reports, and the interactive explorer where customers click around their results.</p>
+    <div class="section-label">Work items inside</div>
+    <ul class="work-list">
+      <li>Data export</li>
+      <li>API</li>
+      <li>Standardised report / output generation</li>
+      <li>Interactive result explorer</li>
+    </ul>
+    <div class="pull-quote">Built incrementally per product surface. Mostly clear definition, mostly low risk — the easiest piece of the stack.</div>
+    <div class="status-row">
+      <span class="chip risk-low">Definition: clear–diffuse</span>
+      <span class="chip risk-low">Implementation: easy–medium</span>
+      <span class="chip risk-low">Risk: low–mid</span>
+    </div>
+  </div>
+
+  <div class="tile cdn">
+    <div class="tile-label">Foundational · Layer 3</div>
+    <h2>Client data normalisation</h2>
+    <p class="tile-desc">An ingestion engine that takes whatever-shape customer data comes in — different field schemas, units, sample identifiers — and normalises it to a standard the rest of the platform can use.</p>
+    <div class="section-label">Work items inside</div>
+    <ul class="work-list">
+      <li>MIxS mapper</li>
+    </ul>
+    <div class="pull-quote">Required for every direction except pure soil monitoring. Without it, every customer engagement re-invents data plumbing.</div>
+    <div class="status-row">
+      <span class="chip risk-mid">Definition: diffuse</span>
+      <span class="chip risk-mid">Implementation: medium</span>
+      <span class="chip risk-mid">Risk: mid</span>
+    </div>
+  </div>
+
+  <div class="tile rd">
+    <div class="tile-label">Differentiation axis · Layer 4</div>
+    <h2>Research / scientific customisation</h2>
+    <p class="tile-desc">The capability to customise scientific reasoning for each customer's specific question as a <em>productised</em> capability — rather than running it as bespoke R&amp;D per engagement.</p>
+    <div class="section-label">Work items inside</div>
+    <ul class="work-list">
+      <li>Research agent</li>
+      <li>Internal notebook platform <span style="color:var(--text-dimmed)">(shared with Platform core)</span></li>
+      <li>Problem-specific scientific reasoning</li>
+    </ul>
+    <div class="pull-quote">Scale blocker if left as manual R&amp;D. Caps how many companion-dx and trial-intelligence engagements we can run concurrently.</div>
+    <div class="status-row">
+      <span class="chip risk-high">Definition: very unclear</span>
+      <span class="chip risk-high">Implementation: very hard</span>
+      <span class="chip risk-high">Risk: risky</span>
+    </div>
+  </div>
+
+  <div class="tile decision">
+    <div class="tile-label">Differentiation axis · Layer 5</div>
+    <h2>Decision automation</h2>
+    <p class="tile-desc">Algorithms that move from <em>describing</em> what's happening in soil and crops to <em>recommending</em> what to do — placement, agronomic decisions, automated agronomist-style judgement.</p>
+    <div class="section-label">Work items inside</div>
+    <ul class="work-list">
+      <li>Algorithm for placement</li>
+      <li>Agentic agronomist</li>
+    </ul>
+    <div class="pull-quote">Differentiating but the riskiest layer. Best gated behind simpler reporting products which produce the data needed to make it tractable.</div>
+    <div class="status-row">
+      <span class="chip risk-very-high">Definition: very unclear</span>
+      <span class="chip risk-very-high">Implementation: very hard</span>
+      <span class="chip risk-very-high">Risk: very high</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-card" id="overlay-card">
+    <button class="close-btn" id="close-btn">×</button>
+    <div id="overlay-content"></div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById('overlay');
+  const overlayCard = document.getElementById('overlay-card');
+  const overlayContent = document.getElementById('overlay-content');
+  const closeBtn = document.getElementById('close-btn');
+  const capClasses = ['platform','cdl','cdn','rd','decision'];
+
+  document.querySelectorAll('.tile').forEach(tile => {
+    tile.addEventListener('click', () => {
+      overlayContent.innerHTML = tile.innerHTML;
+      const cap = capClasses.find(c => tile.classList.contains(c)) || '';
+      overlayCard.className = 'overlay-card ' + cap;
+      overlay.classList.add('active');
+    });
+  });
+  function closeOverlay() { overlay.classList.remove('active'); }
+  closeBtn.addEventListener('click', closeOverlay);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+</script>
+
+</body>
+</html>

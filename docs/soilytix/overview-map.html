@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Overview map — Soilytix workshop building blocks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --surface-base: #fdfefc;
+    --surface-raised: #fdfefc;
+    --text: #29332e;
+    --text-bold: #111614;
+    --text-bold-dimmed: #3e4641;
+    --text-dimmed: #7d7a75;
+    --text-on-dark: #fdfefc;
+    --border: #8fb0a6;
+    --border-subtle: #95afa3;
+    --line: #423B2D;
+    --primary: #00ff87;
+    --primary-dimmed: #e0faf1;
+    --primary-text: #125849;
+
+    --cyan: #c6ede0; --cyan-bold: #0f7a65; --cyan-text: #125849;
+    --cyan-group-bg: #f2fbf8; --cyan-group-border: #94b0aa;
+    --green: #d9ebc0; --green-bold: #3d6b15; --green-text: #426725;
+    --green-group-bg: #f6faef; --green-group-border: #9aad8d;
+    --blue: #d2e5f9; --blue-bold: #1a4f8a; --blue-text: #0c447c;
+    --blue-group-bg: #f3f8fe; --blue-group-border: #96a6b8;
+    --purple: #e1dffa; --purple-bold: #3d3a8a; --purple-text: #443d8f;
+    --purple-group-bg: #f7f5fe; --purple-group-border: #a7a3b5;
+    --red: #fadbd0; --red-bold: #b14117; --red-text: #4a1b0c;
+    --red-group-bg: #fff5f1; --red-group-border: #b3a49f;
+    --orange: #fcdead; --orange-bold: #a8720f; --orange-text: #633806;
+    --grey: #e5e5e3; --grey-bold: #837e75; --grey-text: #3e4641;
+
+    --radius-none: 2px;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-pill: 16px;
+    --stroke-default: 0.5px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Inter', 'Aptos', system-ui, sans-serif;
+    background: var(--surface-base); color: var(--text);
+    line-height: 1.45; -webkit-font-smoothing: antialiased;
+  }
+
+  .brand-bar {
+    background: #1a1a1a;
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.32em; color: var(--text-on-dark); }
+  .brand-meta { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--primary); opacity: 0.85; }
+
+  .page-head { max-width: 1600px; margin: 36px auto 24px; padding: 0 28px; }
+  .eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-dimmed); margin-bottom: 10px; font-weight: 600; }
+  h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-bold); margin-bottom: 8px; }
+  .lede { color: var(--text-bold-dimmed); font-size: 14px; max-width: 900px; }
+  .hint { font-size: 11.5px; color: var(--text-dimmed); margin-top: 12px; font-style: italic; }
+
+  .canvas {
+    max-width: 1600px; margin: 0 28px 48px;
+    background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none);
+    padding: 28px;
+  }
+
+  /* Top section: capability columns */
+  .top-section {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .cap-col {
+    border-radius: var(--radius-none); padding: 16px 14px;
+    border: var(--stroke-default) solid var(--border);
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .cap-col::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .cap-col.platform { background: var(--cyan-group-bg); border-color: var(--cyan-group-border); }
+  .cap-col.platform::before { background: var(--cyan-bold); }
+  .cap-col.cdl { background: var(--green-group-bg); border-color: var(--green-group-border); }
+  .cap-col.cdl::before { background: var(--green-bold); }
+  .cap-col.cdn { background: var(--blue-group-bg); border-color: var(--blue-group-border); }
+  .cap-col.cdn::before { background: var(--blue-bold); }
+  .cap-col.rd { background: var(--purple-group-bg); border-color: var(--purple-group-border); }
+  .cap-col.rd::before { background: var(--purple-bold); }
+  .cap-col.decision { background: var(--red-group-bg); border-color: var(--red-group-border); }
+  .cap-col.decision::before { background: var(--red-bold); }
+
+  .cap-tag {
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-dimmed); margin-bottom: 4px; margin-top: 6px; font-weight: 600;
+  }
+  .cap-name { font-size: 13.5px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .platform .cap-name { color: var(--cyan-bold); }
+  .cdl .cap-name { color: var(--green-bold); }
+  .cdn .cap-name { color: var(--blue-bold); }
+  .rd .cap-name { color: var(--purple-bold); }
+  .decision .cap-name { color: var(--red-bold); }
+  .cap-meta { font-size: 10.5px; color: var(--text-bold-dimmed); margin-bottom: 14px; line-height: 1.45; }
+
+  .work-chips { display: flex; flex-direction: column; gap: 5px; flex-grow: 1; }
+  .work-chip {
+    padding: 7px 9px; background: var(--surface-raised);
+    border: var(--stroke-default) solid var(--border);
+    border-radius: var(--radius-none); font-size: 10.5px; line-height: 1.3;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 6px;
+  }
+  .work-chip .name { font-weight: 500; color: var(--text); }
+  .work-chip .risk {
+    font-size: 9px; padding: 2px 6px; border-radius: var(--radius-none);
+    color: var(--text-on-dark); white-space: nowrap; font-weight: 600;
+  }
+  .work-chip .risk.low { background: var(--green-bold); }
+  .work-chip .risk.mid { background: var(--orange-bold); }
+  .work-chip .risk.high { background: var(--red-bold); }
+  .work-chip .risk.veryhigh { background: #8c2f24; }
+  .work-chip.shared {
+    border-left: 3px solid var(--purple-bold);
+    padding-left: 12px;
+  }
+
+  .divider {
+    height: 1px; background: var(--border); margin: 26px 0;
+    position: relative;
+  }
+  .divider-label {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    background: var(--surface-raised); padding: 0 14px;
+    font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--text-dimmed); font-weight: 600;
+  }
+
+  /* Matrix */
+  .matrix {
+    display: grid;
+    grid-template-columns: 220px repeat(5, 1fr) 180px;
+    gap: 3px;
+  }
+  .matrix-head {
+    font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 8px 6px; text-align: center; font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .matrix-head.col-name { background: transparent; }
+  .matrix-head.platform { color: var(--cyan-bold); }
+  .matrix-head.cdl { color: var(--green-bold); }
+  .matrix-head.cdn { color: var(--blue-bold); }
+  .matrix-head.rd { color: var(--purple-bold); }
+  .matrix-head.decision { color: var(--red-bold); }
+  .matrix-head.signal { color: var(--text-dimmed); }
+
+  .matrix-row-name {
+    padding: 12px 10px; font-size: 13px; font-weight: 700;
+    color: var(--text-bold);
+    display: flex; flex-direction: column; justify-content: center;
+    border-right: 2px solid var(--border);
+  }
+  .matrix-row-name .sub { font-size: 10px; color: var(--text-dimmed); font-weight: 400; font-style: italic; margin-top: 2px; }
+
+  .matrix-cell {
+    padding: 13px 6px; border-radius: var(--radius-none); margin: 2px 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9.5px; font-weight: 600;
+    background: #f4f1ea; color: var(--text-muted, #837e75);
+    border: var(--stroke-default) solid var(--border);
+  }
+  .matrix-cell.required { color: var(--text-on-dark); font-weight: 600; border: none; }
+  .matrix-cell.heavy {
+    color: var(--text-on-dark); font-weight: 700; border: none;
+    box-shadow: inset 0 0 0 3px rgba(0,0,0,0.20);
+  }
+  .matrix-cell.optional { background: var(--surface-raised); color: var(--text-dimmed); border-style: dashed; }
+  .matrix-cell.none { background: var(--surface-base); color: var(--text-dimmed); border-style: dotted; }
+
+  .matrix-cell.required.platform, .matrix-cell.heavy.platform { background: var(--cyan-bold); }
+  .matrix-cell.required.cdl, .matrix-cell.heavy.cdl { background: var(--green-bold); }
+  .matrix-cell.required.cdn, .matrix-cell.heavy.cdn { background: var(--blue-bold); }
+  .matrix-cell.required.rd, .matrix-cell.heavy.rd { background: var(--purple-bold); }
+  .matrix-cell.required.decision, .matrix-cell.heavy.decision { background: var(--red-bold); }
+
+  .matrix-signal {
+    padding: 12px 10px; font-size: 11px; color: var(--text-bold-dimmed);
+    display: flex; flex-direction: column; justify-content: center;
+    gap: 4px;
+    border-left: 2px solid var(--border);
+  }
+  .matrix-signal .signal-dot {
+    display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px;
+  }
+
+  .legend {
+    margin-top: 20px; display: flex; gap: 14px; flex-wrap: wrap;
+    padding: 12px 16px; background: var(--cyan-group-bg);
+    border: var(--stroke-default) solid var(--cyan-group-border);
+    border-radius: var(--radius-none);
+    font-size: 10.5px; color: var(--text-bold-dimmed); font-weight: 500;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-swatch { width: 22px; height: 14px; border-radius: var(--radius-none); }
+
+  .reading-guide {
+    margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  .guide-block { font-size: 12px; color: var(--text-bold-dimmed); }
+  .guide-block h3 {
+    font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--cyan-bold); margin-bottom: 8px; font-weight: 700;
+  }
+  .guide-block p { margin-bottom: 6px; line-height: 1.55; }
+  .guide-block strong { color: var(--text-bold); font-weight: 600; }
+
+  @media print {
+    body { padding: 12px; background: white; }
+    .canvas { border: none; padding: 0; }
+    .brand-bar { background: white; color: black; }
+    .wordmark { color: black; }
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="brand-bar">
+  <div class="wordmark">SOILYTIX</div>
+  <div class="brand-meta">Workshop building blocks · Overview map</div>
+</div>
+
+<div class="page-head">
+  <div class="eyebrow">Overview map · Three dimensions on one canvas</div>
+  <h1>Capabilities × Engineering work × Product prototypes</h1>
+  <p class="lede">Capabilities (top) hold the engineering work that builds them. Products (bottom) draw on combinations of capabilities. The colour of each cell tells you which capability is being used; the intensity tells you how much.</p>
+  <p class="hint">Print at A3 landscape for the workshop wall. Use the individual building-block files to zoom into any single tile.</p>
+</div>
+
+<div class="canvas">
+
+  <div class="top-section">
+
+    <div class="cap-col platform">
+      <div class="cap-tag">Foundational · Layer 1</div>
+      <div class="cap-name">Platform core</div>
+      <div class="cap-meta">Shared substrate. Required by every direction.</div>
+      <div class="work-chips">
+        <div class="work-chip"><span class="name">Sample plan designer</span><span class="risk mid">mid</span></div>
+        <div class="work-chip"><span class="name">Sample lineage</span><span class="risk mid">mid</span></div>
+        <div class="work-chip"><span class="name">Geo / remote sensing</span><span class="risk mid">mid</span></div>
+        <div class="work-chip shared"><span class="name">Internal notebook ↔ R&amp;D</span><span class="risk mid">mid</span></div>
+        <div class="work-chip"><span class="name">Benchmark server</span><span class="risk mid">mid</span></div>
+      </div>
+    </div>
+
+    <div class="cap-col cdl">
+      <div class="cap-tag">Foundational · Layer 2</div>
+      <div class="cap-name">Customer delivery</div>
+      <div class="cap-meta">Surfaces that take data out to customers.</div>
+      <div class="work-chips">
+        <div class="work-chip"><span class="name">Data export</span><span class="risk low">low</span></div>
+        <div class="work-chip"><span class="name">API</span><span class="risk low">low</span></div>
+        <div class="work-chip"><span class="name">Standardised report gen</span><span class="risk low">low</span></div>
+        <div class="work-chip"><span class="name">Interactive result explorer</span><span class="risk mid">mid</span></div>
+      </div>
+    </div>
+
+    <div class="cap-col cdn">
+      <div class="cap-tag">Foundational · Layer 3</div>
+      <div class="cap-name">Data normalisation</div>
+      <div class="cap-meta">Cleans incoming customer data to a standard.</div>
+      <div class="work-chips">
+        <div class="work-chip"><span class="name">MIxS mapper</span><span class="risk mid">mid</span></div>
+      </div>
+    </div>
+
+    <div class="cap-col rd">
+      <div class="cap-tag">Differentiation · Layer 4</div>
+      <div class="cap-name">R&amp;D customisation</div>
+      <div class="cap-meta">Productised scientific reasoning — the scale-blocker if left manual.</div>
+      <div class="work-chips">
+        <div class="work-chip"><span class="name">Research agent</span><span class="risk high">risky</span></div>
+        <div class="work-chip shared"><span class="name">Internal notebook ↔ Platform</span><span class="risk mid">mid</span></div>
+        <div class="work-chip"><span class="name">Problem-specific reasoning</span><span class="risk high">risky</span></div>
+      </div>
+    </div>
+
+    <div class="cap-col decision">
+      <div class="cap-tag">Differentiation · Layer 5</div>
+      <div class="cap-name">Decision automation</div>
+      <div class="cap-meta">From describing to recommending. Highest risk band.</div>
+      <div class="work-chips">
+        <div class="work-chip"><span class="name">Algorithm for placement</span><span class="risk high">risky</span></div>
+        <div class="work-chip"><span class="name">Agentic agronomist</span><span class="risk veryhigh">very high</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider">
+    <span class="divider-label">↓ Products draw from capabilities ↓</span>
+  </div>
+
+  <div class="matrix">
+    <div class="matrix-head col-name"></div>
+    <div class="matrix-head platform">Platform core</div>
+    <div class="matrix-head cdl">Customer delivery</div>
+    <div class="matrix-head cdn">Data norm.</div>
+    <div class="matrix-head rd">R&amp;D cust.</div>
+    <div class="matrix-head decision">Decision auto.</div>
+    <div class="matrix-head signal">Signal &amp; status</div>
+
+    <div class="matrix-row-name">Soil monitoring<span class="sub">Substrate / biodiversity report</span></div>
+    <div class="matrix-cell required platform">required</div>
+    <div class="matrix-cell required cdl">required</div>
+    <div class="matrix-cell optional">optional</div>
+    <div class="matrix-cell optional">optional</div>
+    <div class="matrix-cell none">—</div>
+    <div class="matrix-signal">
+      <div><span class="signal-dot" style="background: var(--green-bold)"></span>High signal</div>
+      <div style="color: var(--text-dimmed)">~€63k · unblocked</div>
+    </div>
+
+    <div class="matrix-row-name">Trial analytics<span class="sub">Trial-plot environment reports</span></div>
+    <div class="matrix-cell required platform">required</div>
+    <div class="matrix-cell required cdl">required</div>
+    <div class="matrix-cell required cdn">required</div>
+    <div class="matrix-cell required rd">required</div>
+    <div class="matrix-cell optional">optional</div>
+    <div class="matrix-signal">
+      <div><span class="signal-dot" style="background: var(--green-bold)"></span>High signal</div>
+      <div style="color: var(--text-dimmed)">KWS · slowed</div>
+    </div>
+
+    <div class="matrix-row-name">Seed / breeding support<span class="sub">Breeder-pipeline characterisation</span></div>
+    <div class="matrix-cell required platform">required</div>
+    <div class="matrix-cell required cdl">required</div>
+    <div class="matrix-cell required cdn">required</div>
+    <div class="matrix-cell required rd">required</div>
+    <div class="matrix-cell optional">optional</div>
+    <div class="matrix-signal">
+      <div><span class="signal-dot" style="background: var(--green-bold)"></span>High signal</div>
+      <div style="color: var(--text-dimmed)">~€18k · slowed</div>
+    </div>
+
+    <div class="matrix-row-name">Portfolio diagnostics<span class="sub">Cross-asset performance</span></div>
+    <div class="matrix-cell required platform">required</div>
+    <div class="matrix-cell required cdl">required</div>
+    <div class="matrix-cell required cdn">required</div>
+    <div class="matrix-cell optional">optional</div>
+    <div class="matrix-cell optional">optional</div>
+    <div class="matrix-signal">
+      <div><span class="signal-dot" style="background: var(--red-bold)"></span>Low signal</div>
+      <div style="color: var(--text-dimmed)">~€13k shared</div>
+    </div>
+
+    <div class="matrix-row-name">Companion diagnostics<span class="sub">Cause-of-performance, ag-input</span></div>
+    <div class="matrix-cell required platform">required</div>
+    <div class="matrix-cell heavy cdl">heavy</div>
+    <div class="matrix-cell heavy cdn">heavy</div>
+    <div class="matrix-cell heavy rd">heavy</div>
+    <div class="matrix-cell heavy decision">heavy</div>
+    <div class="matrix-signal">
+      <div><span class="signal-dot" style="background: var(--orange-bold)"></span>Medium signal</div>
+      <div style="color: var(--text-dimmed)">~€14k · slowed</div>
+    </div>
+
+    <div class="matrix-row-name">Farm-level DSS<span class="sub">Per-farm decision support</span></div>
+    <div class="matrix-cell required platform">required</div>
+    <div class="matrix-cell optional">optional</div>
+    <div class="matrix-cell optional">optional</div>
+    <div class="matrix-cell optional">optional</div>
+    <div class="matrix-cell heavy decision">heavy</div>
+    <div class="matrix-signal">
+      <div><span class="signal-dot" style="background: var(--grey-bold)"></span>Speculative</div>
+      <div style="color: var(--text-dimmed)">No deals · blocked</div>
+    </div>
+
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch" style="background: var(--cyan-bold)"></span>Required (filled colour)</div>
+    <div class="legend-item"><span class="legend-swatch" style="background: var(--cyan-bold); box-shadow: inset 0 0 0 3px rgba(0,0,0,0.20)"></span>Heavy use (thick inset)</div>
+    <div class="legend-item"><span class="legend-swatch" style="background: var(--surface-raised); border: 1px dashed var(--text-dimmed)"></span>Optional uplift</div>
+    <div class="legend-item"><span class="legend-swatch" style="background: var(--surface-base); border: 1px dotted var(--text-dimmed)"></span>Not used</div>
+    <div class="legend-item" style="margin-left: 12px; padding-left: 14px; border-left: 1px solid var(--border)"><span class="legend-swatch" style="background: var(--green-bold); border-radius: 50%; width: 14px; height: 14px"></span>High signal</div>
+    <div class="legend-item"><span class="legend-swatch" style="background: var(--orange-bold); border-radius: 50%; width: 14px; height: 14px"></span>Medium</div>
+    <div class="legend-item"><span class="legend-swatch" style="background: var(--red-bold); border-radius: 50%; width: 14px; height: 14px"></span>Low</div>
+    <div class="legend-item"><span class="legend-swatch" style="background: var(--grey-bold); border-radius: 50%; width: 14px; height: 14px"></span>Speculative</div>
+  </div>
+
+  <div class="reading-guide">
+    <div class="guide-block">
+      <h3>How to read top → bottom</h3>
+      <p>The top half names the <strong>five engineering capabilities</strong> and shows the concrete <strong>work packages</strong> that build each one.</p>
+      <p>The bottom half names the <strong>six product directions</strong> and shows which capabilities each one calls on. Same colour means same dependency.</p>
+    </div>
+    <div class="guide-block">
+      <h3>Three foundational columns</h3>
+      <p>Platform core, Customer delivery, and Data normalisation are shared infrastructure. Every product that progresses needs them; building them is a shared cost, not a per-product line.</p>
+      <p>These are also the lower-risk columns — mostly clear definitions, mostly low-to-medium implementation difficulty.</p>
+    </div>
+    <div class="guide-block">
+      <h3>Two differentiation columns</h3>
+      <p>R&amp;D customisation and Decision automation are the high-risk, high-leverage axes. They differentiate offerings but carry "very unclear" definition and "very hard" implementation risk grades.</p>
+      <p>Notice that Companion diagnostics is the only product that draws heavily on every column. That's where the heaviest engineering ask sits.</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
