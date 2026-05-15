@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en"
+      class="home-atlas-root">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1" />
+    <meta name="theme-color"
+          content="#e7e1d5" />
+    <meta name="description"
+          content="The personal website of Maurice Frank." />
+    <link rel="stylesheet"
+          href="41c90318c3.css" />
+    <title>Maurice Frank</title>
+    <style>
+        /* Layout tuned for a 1800px-wide design surface; scales with viewport width and scene height. */
+        body.home-scene-blog {
+            --scene-design-w: 1800;
+            --scene-min-h: max(265vh, 168rem);
+        }
+
+        body.home-scene-blog>header,
+        body.home-scene-blog>footer {
+            display: none;
+        }
+
+        .scene-page {
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .scene-masthead {
+            position: relative;
+            z-index: 12;
+            max-width: 38rem;
+            padding: clamp(1rem, 2.5vw, 2rem) clamp(1rem, 3vw, 2.5rem) 0.5rem;
+        }
+
+        .scene-masthead .eyebrow {
+            margin: 0 0 0.35rem;
+            color: var(--atlas-ink-soft);
+            font-size: 0.76rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .scene-masthead h1 {
+            margin: 0;
+            font-size: clamp(2.2rem, 4.8vw, 4.2rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+        }
+
+        .scene-meta {
+            margin: 0.65rem 0 0;
+            color: var(--atlas-ink-soft);
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+        }
+
+        .scene-masthead .lede {
+            max-width: 32rem;
+            margin: 0.85rem 0 0;
+            font-size: 1.02rem;
+            line-height: 1.55;
+            color: var(--atlas-ink-soft);
+        }
+
+        .scene-canvas {
+            position: relative;
+            min-height: var(--scene-min-h);
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .scene-backdrop {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .scene-backdrop--wash {
+            background:
+                url("paper-texture.png") center top / cover no-repeat,
+                linear-gradient(180deg,
+                    #efe7da 0%,
+                    #e8e0d4 18%,
+                    #dde3e0 42%,
+                    #d0d8dc 62%,
+                    #c4ccd0 82%,
+                    #bcc4c8 100%);
+            opacity: 0.97;
+            transform: translateY(calc(var(--atlas-scroll, 0) * -0.018px));
+        }
+
+        .scene-backdrop--blooms {
+            background:
+                radial-gradient(ellipse 48% 32% at 12% 6%, rgba(243, 211, 203, 0.42), transparent 68%),
+                radial-gradient(ellipse 38% 28% at 86% 4%, rgba(210, 224, 232, 0.38), transparent 70%),
+                radial-gradient(ellipse 44% 36% at 58% 44%, rgba(196, 208, 214, 0.32), transparent 72%),
+                radial-gradient(ellipse 52% 40% at 8% 40%, rgba(201, 198, 173, 0.28), transparent 74%),
+                radial-gradient(ellipse 46% 38% at 42% 66%, rgba(184, 196, 202, 0.34), transparent 72%),
+                radial-gradient(ellipse 36% 30% at 74% 56%, rgba(228, 218, 200, 0.26), transparent 70%),
+                radial-gradient(ellipse 28% 22% at 4% 88%, rgba(167, 176, 149, 0.22), transparent 68%),
+                radial-gradient(ellipse 24% 20% at 96% 54%, rgba(143, 168, 140, 0.2), transparent 65%);
+            mix-blend-mode: multiply;
+            opacity: 0.88;
+            transform: translateY(calc(var(--atlas-scroll, 0) * -0.04px));
+        }
+
+        .scene-backdrop--grain {
+            opacity: 0.35;
+            background-image:
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 3px,
+                    rgba(64, 52, 41, 0.018) 3px,
+                    rgba(64, 52, 41, 0.018) 4px),
+                repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 5px,
+                    rgba(255, 255, 255, 0.04) 5px,
+                    rgba(255, 255, 255, 0.04) 6px);
+        }
+
+        .scene-sprite {
+            position: absolute;
+            height: auto;
+            transform-origin: center bottom;
+            user-select: none;
+            pointer-events: none;
+            filter: drop-shadow(0 3px 14px rgba(36, 32, 28, 0.14));
+            will-change: transform;
+        }
+
+        /* Positions from 1800px-wide layout editor (% of canvas width / height). */
+        .scene-sprite--peak {
+            z-index: 3;
+            left: 0%;
+            top: 0%;
+            width: clamp(11rem, 39.4vw, 44rem);
+            opacity: 0.92;
+            --parallax: -0.09;
+        }
+
+        .scene-sprite--iceworld {
+            z-index: 2;
+            left: 78.3%;
+            top: 0%;
+            width: clamp(8rem, 21.7vw, 24rem);
+            opacity: 0.9;
+            --parallax: -0.075;
+        }
+
+        .scene-sprite--glacier {
+            z-index: 2;
+            left: 55.7%;
+            top: 45.6%;
+            width: clamp(7rem, 20.5vw, 22rem);
+            opacity: 0.94;
+            --parallax: -0.11;
+        }
+
+        .scene-sprite--cliff {
+            z-index: 3;
+            left: 0%;
+            top: 37.2%;
+            width: clamp(9rem, 24.9vw, 28rem);
+            opacity: 0.96;
+            --parallax: -0.135;
+        }
+
+        .scene-sprite--crevasse {
+            z-index: 3;
+            left: 39.1%;
+            top: 62.6%;
+            width: clamp(8rem, 22.1vw, 26rem);
+            opacity: 0.98;
+            --parallax: -0.17;
+        }
+
+        .scene-sprite--monastery {
+            z-index: 6;
+            left: 70.5%;
+            top: 55.1%;
+            width: clamp(5.5rem, 20.9vw, 18rem);
+            --parallax: -0.07;
+        }
+
+        .scene-sprite--rosemary {
+            z-index: 6;
+            left: 96.5%;
+            top: 52.9%;
+            width: clamp(3.5rem, 2.1vw, 5.5rem);
+            --parallax: -0.09;
+            --sprite-rotate: -6deg;
+        }
+
+        .scene-sprite--thyme {
+            z-index: 6;
+            left: 77%;
+            top: 37.4%;
+            width: clamp(3.5rem, 2.6vw, 5.5rem);
+            --parallax: -0.085;
+            --sprite-rotate: 6deg;
+        }
+
+        .scene-sprite--plantain {
+            z-index: 6;
+            left: 1.5%;
+            top: 89.6%;
+            width: clamp(3.25rem, 3.1vw, 5.25rem);
+            --parallax: -0.095;
+            --sprite-rotate: -2deg;
+        }
+
+        .scene-sprite[data-parallax] {
+            transform: translateY(calc(var(--atlas-scroll, 0) * var(--parallax) * 1px)) rotate(var(--sprite-rotate, 0deg));
+        }
+
+        .scene-essay {
+            position: absolute;
+            z-index: 8;
+            left: clamp(1rem, 14vw, 16rem);
+            top: 14%;
+            width: min(42rem, calc(100% - 2rem));
+            max-width: 38rem;
+            padding: clamp(1.1rem, 2vw, 1.6rem) clamp(1.2rem, 2.4vw, 1.8rem);
+            background: rgba(241, 236, 226, 0.82);
+            border: 1px solid rgba(90, 72, 49, 0.12);
+            box-shadow: 0 8px 32px rgba(48, 40, 32, 0.08);
+            backdrop-filter: blur(2px);
+            transform: translateY(calc(var(--atlas-scroll, 0) * -0.025px));
+        }
+
+        .scene-essay h2 {
+            margin: 0 0 0.35rem;
+            font-size: clamp(1.45rem, 2.8vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
+        }
+
+        .scene-essay .essay-kicker {
+            margin: 0 0 1rem;
+            color: var(--atlas-ink-soft);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .scene-essay p {
+            margin: 0 0 1rem;
+            font-size: 1rem;
+            line-height: 1.62;
+            color: var(--atlas-ink);
+            hyphens: auto;
+        }
+
+        .scene-essay p:last-child {
+            margin-bottom: 0;
+        }
+
+        .scene-essay blockquote {
+            margin: 1.25rem 0;
+            padding-left: 1rem;
+            border-left: 2px solid rgba(127, 137, 103, 0.55);
+            color: var(--atlas-ink-soft);
+            font-style: italic;
+        }
+
+        .scene-footer {
+            position: relative;
+            z-index: 12;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+            gap: 1.25rem 2rem;
+            margin-top: 0;
+            padding: 2.5rem clamp(1rem, 3vw, 2.5rem) 3rem;
+            border-top: 1px solid rgba(90, 72, 49, 0.14);
+            background: linear-gradient(180deg, transparent, rgba(236, 229, 216, 0.65));
+            font-size: 0.88rem;
+            color: var(--atlas-ink-soft);
+        }
+
+        .scene-footer b {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--atlas-ink);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .scene-footer nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.25rem;
+        }
+
+        .scene-footer a {
+            text-decoration: none;
+            border-bottom: 1px solid rgba(90, 72, 49, 0.16);
+        }
+
+        @media (max-width: 980px) {
+            body.home-scene-blog {
+                --scene-min-h: max(220vh, 120rem);
+            }
+
+            .scene-sprite--iceworld {
+                left: 72%;
+                width: clamp(7rem, 28vw, 16rem);
+            }
+
+            .scene-sprite--cliff {
+                width: clamp(8rem, 32vw, 18rem);
+            }
+
+            .scene-sprite--crevasse {
+                left: 28%;
+                width: clamp(7rem, 34vw, 20rem);
+            }
+
+            .scene-sprite--monastery {
+                left: 62%;
+                top: 52%;
+            }
+
+            .scene-essay {
+                left: 1rem;
+                right: 1rem;
+                width: auto;
+                max-width: none;
+                top: 11%;
+            }
+        }
+
+        @media (max-width: 680px) {
+            body.home-scene-blog {
+                --scene-min-h: max(200vh, 100rem);
+            }
+
+            .scene-sprite--iceworld,
+            .scene-sprite--cliff {
+                opacity: 0.55;
+            }
+
+            .scene-sprite--peak {
+                width: clamp(10rem, 72vw, 20rem);
+            }
+
+            .scene-sprite--glacier {
+                left: 48%;
+                top: 42%;
+            }
+
+            .scene-sprite--rosemary,
+            .scene-sprite--thyme {
+                display: none;
+            }
+
+            .scene-essay {
+                top: 8%;
+                padding: 1rem 1.1rem;
+            }
+
+            .scene-masthead h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .scene-backdrop--wash,
+            .scene-backdrop--blooms,
+            .scene-sprite[data-parallax],
+            .scene-essay {
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="home-atlas home-scene-blog">
+    <header>
+        <a href="./">
+            <h1>Maurice Frank</h1>
+        </a>
+        <nav>
+            <a href="./projects">Projects</a>
+            <a href="./resume">Resume</a>
+            <a href="./services">Services</a>
+            <a href="./art">Art</a>
+        </nav>
+    </header>
+
+    <main>
+        <article class="scene-page">
+            <header class="scene-masthead"
+                    aria-label="Page header">
+                <p class="eyebrow">Field notes</p>
+                <h1>Maurice Frank</h1>
+                <p class="scene-meta">
+                    <time datetime="2026-05-15">15 May 2026</time>
+                    · Draft · Atlas sketch
+                </p>
+                <p class="lede">
+                    A hand-placed page of mountains, herbs, and quiet work—laid out on a tall canvas and meant to read
+                    like a folded map you can scroll through.
+                </p>
+            </header>
+
+            <div class="scene-canvas"
+                 aria-label="Illustrated landscape">
+                <div class="scene-backdrop scene-backdrop--wash"
+                            aria-hidden="true"></div>
+                <div class="scene-backdrop scene-backdrop--blooms"
+                     aria-hidden="true"></div>
+                <div class="scene-backdrop scene-backdrop--grain"
+                     aria-hidden="true"></div>
+
+                <img class="scene-sprite scene-sprite--peak"
+                     data-parallax
+                     src="sprites/LE_ALCC_HE108P-001.webp"
+                     alt="" />
+                <img class="scene-sprite scene-sprite--iceworld"
+                     data-parallax
+                     src="sprites/LE_ALCC_ACL14322_1-001.webp"
+                     alt="" />
+                <img class="scene-sprite scene-sprite--glacier"
+                     data-parallax
+                     src="sprites/LE_ALCC_HD019P-001.webp"
+                     alt="" />
+                <img class="scene-sprite scene-sprite--cliff"
+                     data-parallax
+                     src="sprites/LE_ALCC_HD005P-001.webp"
+                     alt="" />
+                <img class="scene-sprite scene-sprite--crevasse"
+                     data-parallax
+                     src="sprites/LE_ALCC_HD083P-001.webp"
+                     alt="" />
+                <img class="scene-sprite scene-sprite--monastery"
+                     data-parallax
+                     src="kloster.png"
+                     alt="" />
+                <img class="scene-sprite scene-sprite--rosemary"
+                     data-parallax
+                     src="plant.png"
+                     alt="" />
+                <img class="scene-sprite scene-sprite--thyme"
+                     data-parallax
+                     src="quendel.png"
+                     alt="" />
+                <img class="scene-sprite scene-sprite--plantain"
+                     data-parallax
+                     src="wegerich.png"
+                     alt="" />
+
+                <article class="scene-essay"
+                         aria-labelledby="essay-title">
+                    <p class="essay-kicker">Placeholder entry</p>
+                    <h2 id="essay-title">Lorem ipsum in the high country</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus
+                        tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
+                        Maecenas ligula massa, varius a, semper congue, euismod non, mi.
+                    </p>
+                    <blockquote>
+                        Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit
+                        amet erat.
+                    </blockquote>
+                    <p>
+                        Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque
+                        congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent
+                        egestas leo in pede. Praesent blandit odio eu enim.
+                    </p>
+                    <p>
+                        Pellentesque sed dolor. Aliquam congue fermentum nisl. Mauris accumsan nulla vel diam. Sed in
+                        lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in,
+                        auctor ut, ligula.
+                    </p>
+                </article>
+            </div>
+
+            <footer class="scene-footer">
+                <div>
+                    <b>Responsible person</b>
+                    <p>Maurice Frank</p>
+                </div>
+                <div>
+                    <b>E-mail</b>
+                    <p>firstname.lastname @ posteo de</p>
+                </div>
+                <div>
+                    <b>Elsewhere</b>
+                    <nav>
+                        <a href="./projects">Projects</a>
+                        <a href="./resume">Resume</a>
+                        <a href="./art">Art</a>
+                        <a href="https://github.com/morris-frank">GitHub</a>
+                    </nav>
+                </div>
+                <div>
+                    <b>Privacy</b>
+                    <p>I don't collect any data from you. Neither do I want any.</p>
+                </div>
+            </footer>
+        </article>
+    </main>
+
+    <footer>
+        <div><b>Responsible person</b>
+            <p>Maurice Frank</p>
+        </div>
+    </footer>
+
+    <script>
+        document.documentElement.classList.add("home-atlas-root");
+        const syncScroll = () => {
+            document.documentElement.style.setProperty("--atlas-scroll", `${window.scrollY || 0}`);
+        };
+        let frame = 0;
+        const queueScroll = () => {
+            if (frame) return;
+            frame = requestAnimationFrame(() => {
+                frame = 0;
+                syncScroll();
+            });
+        };
+        window.addEventListener("scroll", queueScroll, { passive: true });
+        window.addEventListener("resize", queueScroll);
+        window.addEventListener("load", syncScroll, { once: true });
+        syncScroll();
+    </script>
+</body>
+
+</html>
