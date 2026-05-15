@@ -1,1093 +1,1035 @@
-@font-face {  
-  font-family: "Libertinus Sans";
-  src: url("/LibertinusSans-Regular.otf") format("opentype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
+@font-face {
+    font-family: "Libertinus Sans";
+    src: url("/LibertinusSans-Regular.otf") format("opentype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Libertinus Sans";
-  src: url("/LibertinusSans-Italic.otf") format("opentype");
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
+    font-family: "Libertinus Sans";
+    src: url("/LibertinusSans-Italic.otf") format("opentype");
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Libertinus Sans";
-  src: url("/LibertinusSans-Bold.otf") format("opentype");
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
+    font-family: "Libertinus Sans";
+    src: url("/LibertinusSans-Bold.otf") format("opentype");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
 }
 
 :root {
-  --linewidth: 50rem;
-  --max-width: 1920px;
-  --black: hsl(0, 0%, 20%);
-  --white: hsl(0, 0%, 97%);
-  --primary: hsl(100, 27%, 50%);
-  --container-border: 1rem solid var(--white);
-
-  --grey-dark: hsl(0, 0%, 29%);
-  --grey: hsl(0, 0%, 48%);
-  --grey-light: hsl(0, 0%, 71%);
-
-  --gap-xs: 0.5rem;
-  --gap-sm: 1rem;
-  --gap-md: 2rem;
-  --gap-lg: 4rem;
+    --linewidth: 50rem;
+    --max-width: 1920px;
+    --black: hsl(0, 0%, 20%);
+    --white: hsl(0, 0%, 97%);
+    --primary: hsl(100, 27%, 50%);
+    --container-border: 1rem solid var(--white);
+    --grey-dark: hsl(0, 0%, 29%);
+    --grey: hsl(0, 0%, 48%);
+    --grey-light: hsl(0, 0%, 71%);
+    --gap-xs: 0.5rem;
+    --gap-sm: 1rem;
+    --gap-md: 2rem;
+    --gap-lg: 4rem;
 }
 
 @media screen and (max-width: 55rem) {
-  :root {
-    --container-border: none;
-  }
+    :root {
+        --container-border: none;
+    }
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  background: var(--primary);
+    background: var(--primary);
 }
 
 body {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  -webkit-font-smoothing: subpixel-antialiased;
-  color: var(--black);
-  display: flex;
-  flex-direction: column;
-  font-family: "Libertinus Sans", sans-serif;
-  font-size: 1rem;
-  hyphens: auto;
-  line-height: 1.5;
-  margin: 0 auto;
-  min-height: 100vh;
-  max-width: var(--linewidth);
-  background: var(--white);
-  box-shadow: 0 0 13rem 0 var(--black);
-  padding: var(--gap-md) var(--gap-md) var(--gap-xs) var(--gap-md);
-  gap: var(--gap-md);
-  overflow-y: scroll;
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    font-family: "Libertinus Sans", sans-serif;
+    font-size: 1rem;
+    hyphens: auto;
+    line-height: 1.5;
+    margin: 0px auto;
+    min-height: 100vh;
+    max-width: var(--linewidth);
+    background: var(--white);
+    box-shadow: 0 0 13rem 0 var(--black);
+    padding: var(--gap-md) var(--gap-md) var(--gap-xs) var(--gap-md);
+    gap: var(--gap-md);
+    overflow-y: scroll;
 }
 
 a {
-  color: var(--black);
-  text-decoration: underline;
+    color: var(--black);
+    text-decoration: underline;
 }
 
 a:hover {
-  color: var(--primary);
-  border-color: var(--primary);
-  cursor: pointer;
+    color: var(--primary);
+    border-color: var(--primary);
+    cursor: pointer;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--gap-md);
-  flex-wrap: wrap;
-
-  & a {
-    text-decoration: none;
-    
-    &::first-letter {
-      font-size: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gap-md);
+    flex-wrap: wrap;
+    & a {
+        text-decoration: none;
+        &::first-letter {
+            font-size: 1.4rem;
+        }
     }
-  }
 }
 
 h1 {
-  border: 0.2rem solid var(--black);
-  font-size: 2rem;
-  font-weight: 500;
-  margin: 0;
-  width: 9rem;
-  aspect-ratio: 1.618;
-  line-height: 1em;
-  display: flex;
-  align-items: center;
-  padding: 0 0.6rem;
-
-  &:hover {
-    border-color: var(--primary);
-  }
+    border: 0.2rem solid var(--black);
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0px;
+    width: 9rem;
+    aspect-ratio: 1.618 / 1;
+    line-height: 1em;
+    display: flex;
+    align-items: center;
+    padding: 0px 0.6rem;
+    &:hover {
+        border-color: var(--primary);
+    }
 }
 
 nav {
-  display: flex;
-  flex-direction: row;
-  gap: var(--gap-xs);
-  justify-content: flex-start;
-  flex-wrap: wrap;
+    display: flex;
+    flex-flow: wrap;
+    gap: var(--gap-xs);
+    justify-content: flex-start;
+    & a {
+        border: 1px solid var(--black);
+        padding: 0.1rem 0.5rem;
+        text-decoration: none;
+    }
 
-  & a {
-    border: 1px solid var(--black);
-    padding: 0.1rem 0.5rem;
-    text-decoration: none;
-  }
+    & a.active {
+        border-color: var(--primary);
+        color: var(--white);
+        background: var(--primary);
+    }
 
-  & a.active {
-    border-color: var(--primary);
-    color: var(--white);
-    background: var(--primary);
-  }
-
-  &.centered {
-    justify-content: center;
-  }
+    &.centered {
+        justify-content: center;
+    }
 }
 
 footer {
-  color: var(--grey-dark);
-  font-size: 0.7rem;
-  display: flex;
-  flex-direction: row;
-  gap: var(--gap-xs);
+    color: var(--grey-dark);
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-xs);
 }
 
-li:has(svg),
-a:has(svg),
-p:has(svg),
-h2:has(svg) {
-  display: flex;
-  align-items: center;
-  gap: var(--gap-xs);
-  line-height: 1;
+li:has(svg), a:has(svg), p:has(svg), h2:has(svg) {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    line-height: 1;
 }
 
 p {
-  margin-top: 0.2em;
+    margin-top: 0.2em;
 }
 
 p:has(svg) {
-  gap: var(--gap-md);
+    gap: var(--gap-md);
 }
 
 p svg:first-child {
-  height: 2.5rem;
-  width: 7.5rem;
+    height: 2.5rem;
+    width: 7.5rem;
 }
 
 h2 {
-  font-size: 2rem;
-  font-weight: 200;
-  margin: var(--gap-lg) 0 var(--gap-sm) 0;
-  justify-content: space-between;
+    font-size: 2rem;
+    font-weight: 200;
+    margin: var(--gap-lg) 0 var(--gap-sm) 0;
+    justify-content: space-between;
 }
 
-h3,
-h4 {
-  margin-top: 2em;
+h3, h4 {
+    margin-top: 2em;
 }
 
 pre {
-  padding: 1rem;
-  width: fit-content;
-  font-size: 0.8rem;
-  color: var(--grey);
-  font-size: 0.8rem;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+    padding: 1rem;
+    width: fit-content;
+    color: var(--grey);
+    font-size: 0.8rem;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 
 img {
-  width: 100%;
+    width: 100%;
 }
 
 label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-variant: small-caps;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-variant: small-caps;
 }
 
 textarea {
-  width: 100%;
-  padding: 0.8rem;
-  font-size: 0.8rem;
-  color: var(--black);
-  border: 1px solid var(--grey-light);
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--black);
+    border: 1px solid var(--grey-light);
 }
 
 button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border: none;
-  background: var(--primary);
-  color: var(--white);
-  cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-width: medium;
+    border-style: none;
+    border-color: currentcolor;
+    border-image: initial;
+    background: var(--primary);
+    color: var(--white);
+    cursor: pointer;
 }
 
 canvas {
-  display: block;
-  margin: 1em auto;
+    display: block;
+    margin: 1em auto;
 }
 
 .motion_still_container {
-  background: var(--white);
-  border: var(--container-border);
-  border-left-width: 0;
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
-  width: max(80vw, 100%);
-  align-items: center;
-  justify-items: center;
+    background: var(--white);
+    border-top-color: ;
+    border-top-style: ;
+    border-top-width: ;
+    border-right-color: ;
+    border-right-style: ;
+    border-right-width: ;
+    border-bottom-color: ;
+    border-bottom-style: ;
+    border-bottom-width: ;
+    border-left-color: ;
+    border-left-style: ;
+    border-image-source: ;
+    border-image-slice: ;
+    border-image-width: ;
+    border-image-outset: ;
+    border-image-repeat: ;
+    border-left-width: 0px;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    width: max(80vw, 100%);
+    place-items: center;
+    & h3 {
+        font-size: 4em;
+    }
 
-  & h3 {
-    font-size: 4em;
-  }
-
-  & video {
-    border: none;
-    max-width: 100%;
-  }
+    & video {
+        border-width: medium;
+        border-style: none;
+        border-color: currentcolor;
+        border-image: initial;
+        max-width: 100%;
+    }
 }
 
 .map {
-  display: flex;
-  height: 97vh;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+    display: flex;
+    height: 97vh;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 }
 
 .boxes {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: var(--gap-xs);
-  align-items: stretch;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--gap-xs);
+    align-items: stretch;
 }
 
 html.home-atlas-root {
-  --atlas-scroll: 0;
-  background: #e7e1d5;
-  font-family: "Libertinus Sans", sans-serif;
+    --atlas-scroll: 0;
+    background: rgb(231, 225, 213);
+    font-family: "Libertinus Sans", sans-serif;
 }
 
 body.home-atlas {
-  --atlas-paper: #ece5d8;
-  --atlas-ink: #403429;
-  --atlas-ink-soft: #685a48;
-  --atlas-line: rgba(69, 55, 38, 0.58);
-  --atlas-sage: #a7b095;
-  --atlas-sage-deep: #7f8967;
-  --atlas-hill-light: #c9c6ad;
-  --atlas-hill-mid: #adb38d;
-  --atlas-hill-near: #8c996d;
-  --atlas-rose: #8c665b;
-  background: #e7e1d5;
-  box-shadow: none;
-  color: var(--atlas-ink);
-  gap: 0;
-  margin: 0;
-  max-width: none;
-  min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 0;
-  width: 100%;
+    --atlas-paper: #ece5d8;
+    --atlas-ink: #403429;
+    --atlas-ink-soft: #685a48;
+    --atlas-line: rgba(69, 55, 38, 0.58);
+    --atlas-sage: #a7b095;
+    --atlas-sage-deep: #7f8967;
+    --atlas-hill-light: #c9c6ad;
+    --atlas-hill-mid: #adb38d;
+    --atlas-hill-near: #8c996d;
+    --atlas-rose: #8c665b;
+    background: rgb(231, 225, 213);
+    box-shadow: none;
+    color: var(--atlas-ink);
+    gap: 0px;
+    margin: 0px;
+    max-width: none;
+    min-height: 100vh;
+    overflow: hidden auto;
+    padding: 0px;
+    width: 100%;
 }
 
-body.home-atlas > header,
-body.home-atlas > footer,
-body.home-atlas > div[style*="flex: 1"] {
-  display: none;
+body.home-atlas > header, body.home-atlas > footer, body.home-atlas > div[style*="flex: 1"] {
+    display: none;
 }
 
 body.home-atlas main {
-  width: 100%;
+    width: 100%;
 }
 
 body.home-atlas a {
-  color: inherit;
+    color: inherit;
 }
 
 .atlas-page {
-  position: relative;
-  min-height: 100vh;
-  padding: 0 0 1.5rem;
+    position: relative;
+    min-height: 100vh;
+    padding: 0px 0px 1.5rem;
 }
 
-.atlas-page::before,
-.atlas-page::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
+.atlas-page::before, .atlas-page::after {
+    content: "";
+    position: fixed;
+    inset: 0px;
+    pointer-events: none;
 }
 
 .atlas-page::before {
-  z-index: -2;
-  background:
-    linear-gradient(180deg, rgba(236, 229, 216, 0.58), rgba(236, 229, 216, 0.58)),
-    url("paper-texture.png") center top / cover no-repeat;
-  opacity: 0.95;
+    z-index: -2;
+    background: linear-gradient(rgba(236, 229, 216, 0.58), rgba(236, 229, 216, 0.58)), url("paper-texture.png") center top / cover no-repeat;
+    opacity: 0.95;
 }
 
 .atlas-page::after {
-  z-index: -1;
-  background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.36), transparent 18%),
-    linear-gradient(180deg, rgba(166, 153, 126, 0.08), transparent 24%);
+    z-index: -1;
+    background: radial-gradient(circle at center top, rgba(255, 255, 255, 0.36), transparent 18%), linear-gradient(rgba(166, 153, 126, 0.08), transparent 24%);
 }
 
 .atlas-legend {
-  position: relative;
-  z-index: 4;
-  max-width: 36rem;
-  padding: 1rem clamp(0.8rem, 2vw, 2rem) 1.2rem;
+    position: relative;
+    z-index: 4;
+    max-width: 36rem;
+    padding: 1rem clamp(0.8rem, 2vw, 2rem) 1.2rem;
 }
 
-.atlas-legend .eyebrow,
-.card-kicker,
-.atlas-label,
-.atlas-footnote {
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.atlas-legend .eyebrow, .card-kicker, .atlas-label, .atlas-footnote {
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .atlas-legend .eyebrow {
-  margin: 0 0 0.4rem;
-  color: var(--atlas-ink-soft);
-  font-size: 0.76rem;
+    margin: 0px 0px 0.4rem;
+    color: var(--atlas-ink-soft);
+    font-size: 0.76rem;
 }
 
 .atlas-legend h1 {
-  border: none;
-  width: auto;
-  aspect-ratio: auto;
-  margin: 0;
-  padding: 0;
-  font-size: clamp(2.5rem, 5.4vw, 4.7rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 0.94;
-  text-wrap: balance;
+    border-width: medium;
+    border-style: none;
+    border-color: currentcolor;
+    border-image: initial;
+    width: auto;
+    aspect-ratio: auto;
+    margin: 0px;
+    padding: 0px;
+    font-size: clamp(2.5rem, 5.4vw, 4.7rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.94;
+    text-wrap: balance;
 }
 
 .atlas-legend .lede {
-  max-width: 30rem;
-  margin: 0.85rem 0 1rem;
-  font-size: 1.02rem;
-  line-height: 1.55;
-  color: var(--atlas-ink-soft);
+    max-width: 30rem;
+    margin: 0.85rem 0px 1rem;
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: var(--atlas-ink-soft);
 }
 
 .atlas-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
 }
 
-.atlas-nav a,
-.card-links a {
-  text-decoration: none;
+.atlas-nav a, .card-links a {
+    text-decoration: none;
 }
 
 .atlas-nav a {
-  position: relative;
-  padding-bottom: 0.15rem;
-  color: var(--atlas-ink-soft);
-  border-bottom: 1px solid rgba(90, 72, 49, 0.16);
+    position: relative;
+    padding-bottom: 0.15rem;
+    color: var(--atlas-ink-soft);
+    border-bottom: 1px solid rgba(90, 72, 49, 0.16);
 }
 
 .atlas-nav a::after {
-  content: "·";
-  margin-left: 1rem;
-  color: rgba(108, 93, 76, 0.55);
+    content: "·";
+    margin-left: 1rem;
+    color: rgba(108, 93, 76, 0.55);
 }
 
 .atlas-nav a:last-child::after {
-  content: "";
-  margin: 0;
+    content: "";
+    margin: 0px;
 }
 
 .atlas-board {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: repeat(9, minmax(5.5rem, auto));
-  gap: 1.1rem;
-  min-height: 212rem;
-  padding: 0 0 28rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0px, 1fr));
+    grid-template-rows: repeat(9, minmax(5.5rem, auto));
+    gap: 1.1rem;
+    min-height: 212rem;
+    padding: 0px 0px 28rem;
 }
 
-.atlas-scene,
-.atlas-ink {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.atlas-scene, .atlas-ink {
+    position: absolute;
+    inset: 0px;
+    width: 100%;
+    height: 100%;
 }
 
 .atlas-scene {
-  z-index: 0;
-  overflow: hidden;
+    z-index: 0;
+    overflow: hidden;
 }
 
 .atlas-backdrop {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    inset: 0px;
+    width: 100%;
+    height: 100%;
 }
 
 .atlas-backdrop--sky {
-  z-index: 0;
-  opacity: 0.84;
-  transform: translateY(calc(var(--atlas-scroll) * -0.01px));
+    z-index: 0;
+    opacity: 0.84;
+    transform: translateY(calc(var(--atlas-scroll) * -0.01px));
 }
 
 .atlas-backdrop--far {
-  z-index: 0;
-  opacity: 0.82;
-  transform: translateY(calc(var(--atlas-scroll) * -0.05px));
+    z-index: 0;
+    opacity: 0.82;
+    transform: translateY(calc(var(--atlas-scroll) * -0.05px));
 }
 
 .atlas-backdrop--channel {
-  z-index: 1;
-  opacity: 0.9;
-  transform: translateY(calc(var(--atlas-scroll) * -0.08px));
+    z-index: 1;
+    opacity: 0.9;
+    transform: translateY(calc(var(--atlas-scroll) * -0.08px));
 }
 
 .atlas-backdrop--near {
-  z-index: 2;
-  opacity: 0.82;
-  transform: translateY(calc(var(--atlas-scroll) * -0.13px));
+    z-index: 2;
+    opacity: 0.82;
+    transform: translateY(calc(var(--atlas-scroll) * -0.13px));
 }
 
 .atlas-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 4;
-  pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    pointer-events: none;
 }
 
 .atlas-overlay--terrain {
-  opacity: 0.96;
-  transform: translateY(calc(var(--atlas-scroll) * -0.1px));
+    opacity: 0.96;
+    transform: translateY(calc(var(--atlas-scroll) * -0.1px));
 }
 
 .overlay-veil {
-  fill: rgba(236, 229, 216, 0.74);
+    fill: rgba(236, 229, 216, 0.74);
 }
 
 .overlay-ridge--upper {
-  fill: rgba(202, 201, 187, 0.92);
+    fill: rgba(202, 201, 187, 0.92);
 }
 
 .overlay-ridge--channel {
-  fill: rgba(184, 190, 189, 0.9);
+    fill: rgba(184, 190, 189, 0.9);
 }
 
 .overlay-ridge--lower {
-  fill: rgba(193, 202, 208, 0.82);
+    fill: rgba(193, 202, 208, 0.82);
 }
 
 .overlay-stroke {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .overlay-stroke--channel {
-  stroke: rgba(126, 125, 115, 0.55);
-  stroke-width: 5;
+    stroke: rgba(126, 125, 115, 0.55);
+    stroke-width: 5;
 }
 
 .overlay-stroke--lower {
-  stroke: rgba(108, 109, 104, 0.58);
-  stroke-width: 4;
+    stroke: rgba(108, 109, 104, 0.58);
+    stroke-width: 4;
 }
 
 .overlay-stroke--left {
-  stroke: rgba(156, 169, 181, 0.42);
-  stroke-width: 6;
+    stroke: rgba(156, 169, 181, 0.42);
+    stroke-width: 6;
 }
 
 .atlas-sprite {
-  position: absolute;
-  z-index: 1;
-  transform-origin: center bottom;
-  user-select: none;
+    position: absolute;
+    z-index: 1;
+    transform-origin: center bottom;
+    user-select: none;
 }
+
 .atlas-sprite--peak {
-  left: 0%;
-  top: 0%;
-  width: 54.4vw;
-  right: auto;
-  bottom: auto;
+    inset: 0% auto auto 0%;
+    width: 54.4vw;
 }
 
 .atlas-sprite--iceworld {
-  left: 71.2%;
-  top: 30.1%;
-  width: 26.6vw;
-  right: auto;
-  bottom: auto;
+    inset: 30.1% auto auto 71.2%;
+    width: 26.6vw;
 }
 
 .atlas-sprite--glacier {
-  left: 33.1%;
-  top: 43.2%;
-  width: 54.4vw;
-  right: auto;
-  bottom: auto;
+    inset: 43.2% auto auto 33.1%;
+    width: 54.4vw;
 }
 
 .atlas-sprite--cliff {
-  left: 0%;
-  top: 50.4%;
-  width: 34.5vw;
-  right: auto;
-  bottom: auto;
+    inset: 50.4% auto auto 0%;
+    width: 34.5vw;
 }
 
 .atlas-sprite--crevasse {
-  left: 68.5%;
-  top: 85.4%;
-  width: 29.6vw;
-  right: auto;
-  bottom: auto;
+    inset: 85.4% auto auto 68.5%;
+    width: 29.6vw;
 }
 
 .atlas-sprite--monastery {
-  left: 6.4%;
-  top: 90.7%;
-  width: 7.6vw;
-  right: auto;
-  bottom: auto;
+    inset: 90.7% auto auto 6.4%;
+    width: 7.6vw;
 }
 
 .atlas-sprite--rosemary {
-  left: 28%;
-  top: 81.7%;
-  width: 4.7vw;
-  right: auto;
-  bottom: auto;
+    inset: 81.7% auto auto 28%;
+    width: 4.7vw;
 }
 
 .atlas-sprite--thyme {
-  left: 11.8%;
-  top: 93.4%;
-  width: 3.4vw;
-  right: auto;
-  bottom: auto;
+    inset: 93.4% auto auto 11.8%;
+    width: 3.4vw;
 }
 
 .atlas-sprite--plantain {
-  left: 18.2%;
-  top: 94.7%;
-  width: 4.1vw;
-  right: auto;
-  bottom: auto;
+    inset: 94.7% auto auto 18.2%;
+    width: 4.1vw;
 }
 
 .atlas-ink {
-  z-index: 5;
-  opacity: 0.72;
+    z-index: 5;
+    opacity: 0.72;
 }
 
-.atlas-ink path,
-.atlas-ink circle {
-  fill: none;
-  stroke: var(--atlas-line);
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.atlas-ink path, .atlas-ink circle {
+    fill: none;
+    stroke: var(--atlas-line);
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .atlas-ink--paths > path {
-  stroke-width: 2;
-  stroke-dasharray: 5 15;
-  animation: atlas-route 24s linear infinite;
+    stroke-width: 2;
+    stroke-dasharray: 5, 15;
+    animation: 24s linear 0s infinite normal none running atlas-route;
 }
 
 .atlas-ink .route-small {
-  stroke-width: 1.8;
-  stroke-dasharray: 3 10;
-  opacity: 0.62;
+    stroke-width: 1.8;
+    stroke-dasharray: 3, 10;
+    opacity: 0.62;
 }
 
-.atlas-ink .compass path,
-.atlas-ink .compass circle,
-.atlas-ink .mountains path,
-.atlas-ink .waves path,
-.atlas-ink .spark path {
-  stroke-width: 2;
+.atlas-ink .compass path, .atlas-ink .compass circle, .atlas-ink .mountains path, .atlas-ink .waves path, .atlas-ink .spark path {
+    stroke-width: 2;
 }
 
 .atlas-ink .compass {
-  transform-origin: 1036px 126px;
-  animation: atlas-float 9s ease-in-out infinite;
+    transform-origin: 1036px 126px;
+    animation: 9s ease-in-out 0s infinite normal none running atlas-float;
 }
 
 .atlas-ink .spark {
-  animation: atlas-twinkle 7s ease-in-out infinite;
+    animation: 7s ease-in-out 0s infinite normal none running atlas-twinkle;
 }
 
 .atlas-ink .spark-b {
-  animation-delay: 1.6s;
+    animation-delay: 1.6s;
 }
 
 .atlas-ink .spark-c {
-  animation-delay: 3.2s;
+    animation-delay: 3.2s;
 }
 
-.atlas-ink .mountains,
-.atlas-ink .waves {
-  animation: atlas-float 12s ease-in-out infinite;
+.atlas-ink .mountains, .atlas-ink .waves {
+    animation: 12s ease-in-out 0s infinite normal none running atlas-float;
 }
 
 .atlas-label {
-  position: absolute;
-  z-index: 6;
-  margin: 0;
-  color: rgba(108, 93, 76, 0.8);
-  font-size: 0.72rem;
+    position: absolute;
+    z-index: 6;
+    margin: 0px;
+    color: rgba(108, 93, 76, 0.8);
+    font-size: 0.72rem;
 }
 
 .atlas-label--north {
-  top: 14rem;
-  right: 21rem;
+    top: 14rem;
+    right: 21rem;
 }
 
 .atlas-label--river {
-  top: 31rem;
-  left: 43%;
-  transform: rotate(-20deg);
+    top: 31rem;
+    left: 43%;
+    transform: rotate(-20deg);
 }
 
 .atlas-label--hills {
-  top: 46rem;
-  left: 9%;
-  transform: rotate(-12deg);
+    top: 46rem;
+    left: 9%;
+    transform: rotate(-12deg);
 }
 
 .atlas-label--shore {
-  right: 7%;
-  bottom: 24rem;
-  transform: rotate(12deg);
+    right: 7%;
+    bottom: 24rem;
+    transform: rotate(12deg);
 }
 
 .map-card {
-  position: relative;
-  z-index: 7;
-  padding: 0;
-  border: none;
-  background: none;
-  box-shadow: none;
-  max-width: 24rem;
+    position: relative;
+    z-index: 7;
+    padding: 0px;
+    border-width: medium;
+    border-style: none;
+    border-color: currentcolor;
+    border-image: initial;
+    background: none;
+    box-shadow: none;
+    max-width: 24rem;
 }
 
 .map-card h2 {
-  margin: 0;
-  font-size: clamp(1.35rem, 2.6vw, 2rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.04;
+    margin: 0px;
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
 }
 
 .map-card p {
-  margin: 0.6rem 0 0;
-  max-width: 23rem;
-  padding: 0.2rem 0.3rem 0.25rem;
-  background: rgba(241, 236, 226, 0.76);
-  width: fit-content;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+    margin: 0.6rem 0px 0px;
+    max-width: 23rem;
+    padding: 0.2rem 0.3rem 0.25rem;
+    background: rgba(241, 236, 226, 0.76);
+    width: fit-content;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
 
 .card-kicker {
-  margin: 0 0 0.55rem;
-  color: var(--atlas-ink-soft);
-  font-size: 0.68rem;
+    margin: 0px 0px 0.55rem;
+    color: var(--atlas-ink-soft);
+    font-size: 0.68rem;
 }
 
 .card-mark {
-  width: 7rem;
-  margin-bottom: 0.85rem;
+    width: 7rem;
+    margin-bottom: 0.85rem;
 }
 
 .card-mark svg {
-  display: block;
-  width: 100%;
-  height: auto;
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .card-mark path {
-  fill: none;
-  stroke: rgba(72, 58, 39, 0.94);
-  stroke-width: 2.1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 120;
-  stroke-dashoffset: 120;
-  animation: atlas-draw 2.4s ease forwards;
+    fill: none;
+    stroke: rgba(72, 58, 39, 0.94);
+    stroke-width: 2.1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+    animation: 2.4s ease 0s 1 normal forwards running atlas-draw;
 }
 
 .card-links {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1rem;
-  margin: 0.85rem 0 0;
-  padding: 0;
-  max-width: 20rem;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    margin: 0.85rem 0px 0px;
+    padding: 0px;
+    max-width: 20rem;
 }
 
 .card-links a {
-  display: inline-block;
-  padding: 0.12rem 0.08rem;
-  border-bottom: 1px solid rgba(82, 66, 44, 0.18);
-  background: rgba(241, 236, 226, 0.66);
-  color: #76584c;
+    display: inline-block;
+    padding: 0.12rem 0.08rem;
+    border-bottom: 1px solid rgba(82, 66, 44, 0.18);
+    background: rgba(241, 236, 226, 0.66);
+    color: rgb(118, 88, 76);
 }
 
 .map-card--harbor {
-  transform: rotate(-0.2deg);
+    transform: rotate(-0.2deg);
 }
 
 .map-card--atelier {
-  transform: rotate(0.25deg);
+    transform: rotate(0.25deg);
 }
 
 .map-card--observatory {
-  transform: rotate(-0.2deg);
+    transform: rotate(-0.2deg);
 }
 
 .map-card--fieldnotes {
-  transform: rotate(0.18deg);
+    transform: rotate(0.18deg);
 }
 
 .map-card--camp {
-  transform: rotate(-0.12deg);
+    transform: rotate(-0.12deg);
 }
 
 .map-card--post {
-  transform: rotate(0.22deg);
+    transform: rotate(0.22deg);
 }
 
 .map-card--harbor {
-  grid-column: 1 / span 5;
-  grid-row: 1 / span 2;
+    grid-area: 1 / 1 / span 2 / span 5;
 }
 
 .map-card--atelier {
-  grid-column: 8 / span 4;
-  grid-row: 3 / span 2;
+    grid-area: 3 / 8 / span 2 / span 4;
 }
 
 .map-card--observatory {
-  grid-column: 8 / span 5;
-  grid-row: 5 / span 2;
+    grid-area: 5 / 8 / span 2 / span 5;
 }
 
 .map-card--fieldnotes {
-  grid-column: 2 / span 4;
-  grid-row: 6 / span 2;
+    grid-area: 6 / 2 / span 2 / span 4;
 }
 
 .map-card--camp {
-  grid-column: 4 / span 5;
-  grid-row: 8 / span 2;
+    grid-area: 8 / 4 / span 2 / span 5;
 }
 
 .map-card--post {
-  grid-column: 10 / span 3;
-  grid-row: 8 / span 2;
+    grid-area: 8 / 10 / span 2 / span 3;
 }
 
 .atlas-footnote {
-  position: relative;
-  z-index: 4;
-  margin: -1rem 0 0;
-  padding: 0 0.2rem 0.25rem;
-  color: var(--atlas-ink-soft);
-  font-size: 0.72rem;
+    position: relative;
+    z-index: 4;
+    margin: -1rem 0px 0px;
+    padding: 0px 0.2rem 0.25rem;
+    color: var(--atlas-ink-soft);
+    font-size: 0.72rem;
 }
 
 @keyframes atlas-route {
-  from {
-    stroke-dashoffset: 0;
-  }
+    0% {
+        stroke-dashoffset: 0;
+    }
 
-  to {
-    stroke-dashoffset: -160;
-  }
+    100% {
+        stroke-dashoffset: -160;
+    }
 }
 
 @keyframes atlas-float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
+    0%, 100% {
+        transform: translateY(0px);
+    }
 
-  50% {
-    transform: translateY(-8px);
-  }
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 @keyframes atlas-twinkle {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: scale(0.92);
-  }
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.92);
+    }
 
-  50% {
-    opacity: 0.85;
-    transform: scale(1.02);
-  }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.02);
+    }
 }
 
 @keyframes atlas-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
+    100% {
+        stroke-dashoffset: 0;
+    }
 }
 
 @media (max-width: 980px) {
-  .atlas-board {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: auto;
-    min-height: 88rem;
-    padding-top: 0;
-    padding-bottom: 24rem;
-  }
+    .atlas-board {
+        grid-template-columns: repeat(2, minmax(0px, 1fr));
+        grid-template-rows: auto;
+        min-height: 88rem;
+        padding-top: 0px;
+        padding-bottom: 24rem;
+    }
 
-  .atlas-label {
-    display: none;
-  }
+    .atlas-label {
+        display: none;
+    }
 
-  .atlas-backdrop--far {
-    transform: translateY(calc(var(--atlas-scroll) * -0.04px));
-  }
+    .atlas-backdrop--far {
+        transform: translateY(calc(var(--atlas-scroll) * -0.04px));
+    }
 
-  .atlas-backdrop--channel {
-    transform: translateY(calc(var(--atlas-scroll) * -0.055px));
-  }
+    .atlas-backdrop--channel {
+        transform: translateY(calc(var(--atlas-scroll) * -0.055px));
+    }
 
-  .atlas-backdrop--near {
-    transform: translateY(calc(var(--atlas-scroll) * -0.085px));
-  }
+    .atlas-backdrop--near {
+        transform: translateY(calc(var(--atlas-scroll) * -0.085px));
+    }
 
-  .atlas-overlay--terrain {
-    transform: translateY(calc(var(--atlas-scroll) * -0.07px));
-  }
+    .atlas-overlay--terrain {
+        transform: translateY(calc(var(--atlas-scroll) * -0.07px));
+    }
 
-  .atlas-sprite--monastery {
-    width: 11rem;
-    left: 56%;
-    bottom: 25rem;
-  }
+    .atlas-sprite--monastery {
+        width: 11rem;
+        left: 56%;
+        bottom: 25rem;
+    }
 
-  .atlas-sprite--iceworld {
-    width: 24rem;
-    left: 0;
-    top: 16rem;
-  }
+    .atlas-sprite--iceworld {
+        width: 24rem;
+        left: 0px;
+        top: 16rem;
+    }
 
-  .atlas-sprite--peak {
-    width: 30rem;
-    right: -5rem;
-    top: -1rem;
-  }
+    .atlas-sprite--peak {
+        width: 30rem;
+        right: -5rem;
+        top: -1rem;
+    }
 
-  .atlas-sprite--glacier {
-    width: 20rem;
-    right: -2rem;
-    bottom: 30rem;
-  }
+    .atlas-sprite--glacier {
+        width: 20rem;
+        right: -2rem;
+        bottom: 30rem;
+    }
 
-  .atlas-sprite--cliff {
-    width: 24rem;
-    left: -7rem;
-    bottom: 26rem;
-  }
+    .atlas-sprite--cliff {
+        width: 24rem;
+        left: -7rem;
+        bottom: 26rem;
+    }
 
-  .atlas-sprite--crevasse {
-    width: 38rem;
-    left: -1rem;
-    bottom: 1rem;
-  }
+    .atlas-sprite--crevasse {
+        width: 38rem;
+        left: -1rem;
+        bottom: 1rem;
+    }
 
-  .atlas-sprite--rosemary {
-    width: 7rem;
-    left: 3%;
-    bottom: 15rem;
-  }
+    .atlas-sprite--rosemary {
+        width: 7rem;
+        left: 3%;
+        bottom: 15rem;
+    }
 
-  .atlas-sprite--thyme {
-    width: 7.5rem;
-    right: 3%;
-    bottom: 13rem;
-  }
+    .atlas-sprite--thyme {
+        width: 7.5rem;
+        right: 3%;
+        bottom: 13rem;
+    }
 
-  .atlas-sprite--plantain {
-    width: 7rem;
-    right: 26%;
-    bottom: 16rem;
-  }
+    .atlas-sprite--plantain {
+        width: 7rem;
+        right: 26%;
+        bottom: 16rem;
+    }
 
-  .map-card--harbor,
-  .map-card--atelier,
-  .map-card--observatory,
-  .map-card--fieldnotes,
-  .map-card--camp,
-  .map-card--post {
-    grid-column: auto;
-    grid-row: auto;
-  }
+    .map-card--harbor, .map-card--atelier, .map-card--observatory, .map-card--fieldnotes, .map-card--camp, .map-card--post {
+        grid-area: auto;
+    }
 }
 
 @media (max-width: 680px) {
-  .atlas-page {
-    padding: 0 0 1rem;
-  }
+    .atlas-page {
+        padding: 0px 0px 1rem;
+    }
 
-  .atlas-legend {
-    padding: 0.85rem 0.75rem 1rem;
-  }
+    .atlas-legend {
+        padding: 0.85rem 0.75rem 1rem;
+    }
 
-  .atlas-board {
-    grid-template-columns: 1fr;
-    min-height: auto;
-    padding-bottom: 18rem;
-  }
+    .atlas-board {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-bottom: 18rem;
+    }
 
-  .map-card {
-    max-width: none;
-    transform: none;
-  }
+    .map-card {
+        max-width: none;
+        transform: none;
+    }
 
-  .map-card p {
-    width: auto;
-    max-width: none;
-  }
+    .map-card p {
+        width: auto;
+        max-width: none;
+    }
 
-  .atlas-ink .compass,
-  .atlas-ink .spark {
-    display: none;
-  }
+    .atlas-ink .compass, .atlas-ink .spark {
+        display: none;
+    }
 
-  .atlas-overlay--terrain {
-    opacity: 0.9;
-  }
+    .atlas-overlay--terrain {
+        opacity: 0.9;
+    }
 
-  .atlas-sprite--monastery {
-    width: 9.5rem;
-    left: 55%;
-    bottom: 19rem;
-  }
+    .atlas-sprite--monastery {
+        width: 9.5rem;
+        left: 55%;
+        bottom: 19rem;
+    }
 
-  .atlas-sprite--iceworld,
-  .atlas-sprite--cliff {
-    display: none;
-  }
+    .atlas-sprite--iceworld, .atlas-sprite--cliff {
+        display: none;
+    }
 
-  .atlas-sprite--peak {
-    width: 19rem;
-    right: -6rem;
-    top: 1rem;
-  }
+    .atlas-sprite--peak {
+        width: 19rem;
+        right: -6rem;
+        top: 1rem;
+    }
 
-  .atlas-sprite--glacier {
-    width: 16rem;
-    right: -2rem;
-    bottom: 17rem;
-  }
+    .atlas-sprite--glacier {
+        width: 16rem;
+        right: -2rem;
+        bottom: 17rem;
+    }
 
-  .atlas-sprite--crevasse {
-    width: 24rem;
-    left: -4rem;
-    bottom: 1rem;
-  }
+    .atlas-sprite--crevasse {
+        width: 24rem;
+        left: -4rem;
+        bottom: 1rem;
+    }
 
-  .atlas-sprite--rosemary {
-    width: 6rem;
-    left: -0.5rem;
-    bottom: 14rem;
-  }
+    .atlas-sprite--rosemary {
+        width: 6rem;
+        left: -0.5rem;
+        bottom: 14rem;
+    }
 
-  .atlas-sprite--thyme {
-    display: none;
-  }
+    .atlas-sprite--thyme {
+        display: none;
+    }
 
-  .atlas-sprite--plantain {
-    width: 6rem;
-    right: 1rem;
-    bottom: 14rem;
-  }
+    .atlas-sprite--plantain {
+        width: 6rem;
+        right: 1rem;
+        bottom: 14rem;
+    }
 
-  .atlas-nav a,
-  .card-links a {
-    width: auto;
-    text-align: left;
-  }
+    .atlas-nav a, .card-links a {
+        width: auto;
+        text-align: left;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .atlas-ink--paths > path,
-  .atlas-ink .compass,
-  .atlas-ink .spark,
-  .atlas-ink .mountains,
-  .atlas-ink .waves,
-  .card-mark path {
-    animation: none;
-  }
+    .atlas-ink--paths > path, .atlas-ink .compass, .atlas-ink .spark, .atlas-ink .mountains, .atlas-ink .waves, .card-mark path {
+        animation: auto ease 0s 1 normal none running none;
+    }
 }
 
 .box {
-  font-size: 0.9rem;
-  border-radius: 5px;
-  border: 1px solid var(--grey-light);
-  padding: var(--gap-sm) var(--gap-sm);
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: var(--gap-sm);
-  justify-content: space-between;
-
-  &:hover {
-    border-color: var(--grey);
-    box-shadow: 0 0 0.5rem 0 hsl(0, 0%, 90%);
-  }
-
-  & h3 {
-    margin: 0;
-    font-size: 1.2rem;
-  }
-
-  & pre {
-    margin: 0;
-    padding: 0;
-  }
-
-  & nav {
-    margin: 0;
-  }
-
-  & .aspace {
+    font-size: 0.9rem;
+    border-radius: 5px;
+    border: 1px solid var(--grey-light);
+    padding: var(--gap-sm) var(--gap-sm);
+    text-decoration: none;
     display: flex;
-    width: 100%;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: start;
+    gap: var(--gap-sm);
     justify-content: space-between;
-  }
+    &:hover {
+        border-color: var(--grey);
+        box-shadow: rgb(230, 230, 230) 0px 0px 0.5rem 0px;
+    }
+
+    & h3 {
+        margin: 0px;
+        font-size: 1.2rem;
+    }
+
+    & pre {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    & nav {
+        margin: 0px;
+    }
+
+    & .aspace {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
-/* ------ stupid fixes */
 #automa-palette {
-  display: none;
+    display: none;
 }
