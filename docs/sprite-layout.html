@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1" />
+    <title>Sprite layout</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: system-ui, sans-serif;
+            background: #c9c4bc;
+        }
+
+        #stage {
+            position: fixed;
+            inset: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            background: #c9c4bc;
+            touch-action: pan-y;
+        }
+
+        #surface {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            box-sizing: border-box;
+            background: #c9c4bc;
+            --canvas-handle: 20px;
+            padding-bottom: var(--canvas-handle);
+        }
+
+        #canvas-resize-handle {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: var(--canvas-handle, 20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(60, 56, 52, 0.55);
+            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.06));
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            cursor: ns-resize;
+            user-select: none;
+            z-index: 120;
+        }
+
+        #canvas-resize-handle:hover {
+            color: rgba(40, 38, 36, 0.75);
+            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.1));
+        }
+
+        #canvas-resize-handle.dragging {
+            background: rgba(0, 0, 0, 0.12);
+        }
+
+        .sprite {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: auto;
+            user-select: none;
+            -webkit-user-drag: none;
+            cursor: grab;
+            touch-action: none;
+            z-index: 1;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+        }
+
+        .sprite.dragging {
+            cursor: grabbing;
+            z-index: 100;
+        }
+
+        .sprite.scaling {
+            cursor: ns-resize;
+        }
+
+        .sprite--iceworld {
+            z-index: 2;
+        }
+
+        .sprite--peak {
+            z-index: 3;
+        }
+
+        .sprite--glacier {
+            z-index: 2;
+        }
+
+        .sprite--cliff {
+            z-index: 3;
+        }
+
+        .sprite--crevasse {
+            z-index: 3;
+        }
+
+        .sprite--monastery,
+        .sprite--rosemary,
+        .sprite--thyme,
+        .sprite--plantain {
+            z-index: 6;
+        }
+
+        #toolbar {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            left: 10px;
+            max-width: 520px;
+            margin-left: auto;
+            padding: 10px 12px;
+            background: rgba(42, 40, 38, 0.92);
+            color: #eee;
+            border-radius: 10px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #toolbar .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        #toolbar button {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        #toolbar button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        #toolbar textarea {
+            width: 100%;
+            min-height: 120px;
+            box-sizing: border-box;
+            font-family: ui-monospace, monospace;
+            font-size: 11px;
+            line-height: 1.35;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.35);
+            color: #e8e6e3;
+            resize: vertical;
+        }
+
+        #toolbar label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        #toolbar .hint {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.35;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stage"
+         aria-label="Layout surface">
+        <div id="surface">
+        <img class="sprite sprite--peak"
+             data-sprite-id="peak"
+             src="sprites/LE_ALCC_HE108P-001.webp"
+             alt="" />
+        <img class="sprite sprite--iceworld"
+             data-sprite-id="iceworld"
+             src="sprites/LE_ALCC_ACL14322_1-001.webp"
+             alt="" />
+        <img class="sprite sprite--glacier"
+             data-sprite-id="glacier"
+             src="sprites/LE_ALCC_HD019P-001.webp"
+             alt="" />
+        <img class="sprite sprite--cliff"
+             data-sprite-id="cliff"
+             src="sprites/LE_ALCC_HD005P-001.webp"
+             alt="" />
+        <img class="sprite sprite--crevasse"
+             data-sprite-id="crevasse"
+             src="sprites/LE_ALCC_HD083P-001.webp"
+             alt="" />
+        <img class="sprite sprite--monastery"
+             data-sprite-id="monastery"
+             src="kloster.png"
+             alt="" />
+        <img class="sprite sprite--rosemary"
+             data-sprite-id="rosemary"
+             src="plant.png"
+             alt="" />
+        <img class="sprite sprite--thyme"
+             data-sprite-id="thyme"
+             src="quendel.png"
+             alt="" />
+        <img class="sprite sprite--plantain"
+             data-sprite-id="plantain"
+             src="wegerich.png"
+             alt="" />
+        <div id="canvas-resize-handle"
+             title="Drag vertically to extend the canvas">Stretch canvas</div>
+        </div>
+    </div>
+
+    <div id="toolbar">
+        <div class="row">
+            <button type="button"
+                    id="btn-copy-json">Copy JSON</button>
+            <button type="button"
+                    id="btn-copy-css">Copy CSS snippet</button>
+            <button type="button"
+                    id="btn-download">Download JSON</button>
+            <button type="button"
+                    id="btn-save-as">Save as…</button>
+        </div>
+        <label for="output">Positions (edit and use “Apply from box” to load)</label>
+        <textarea id="output"
+                  spellcheck="false"></textarea>
+        <div class="row">
+            <button type="button"
+                    id="btn-refresh-output">Refresh from sprites</button>
+            <button type="button"
+                    id="btn-apply">Apply from box</button>
+        </div>
+        <p class="hint">
+            <strong>Scroll</strong> the page to reach the full canvas height. Drag the bottom bar to stretch the canvas
+            vertically, then place sprites anywhere on it. Sprite <code>left</code>/<code>top</code>/<code>width</code> in
+            JSON are in <strong>canvas coordinates</strong> (px from the top-left of the tall surface). Wheel on a sprite
+            scales (Shift = finer). Export includes <code>canvasHeight</code>.
+        </p>
+    </div>
+
+    <script>
+        const STORAGE_KEY = "sprite-layout-editor-v1";
+        const CANVAS_HANDLE = 20;
+
+        const stage = document.getElementById("stage");
+        const surface = document.getElementById("surface");
+        const resizeHandle = document.getElementById("canvas-resize-handle");
+        const output = document.getElementById("output");
+
+        /** @type {{ pointerId: number, el: HTMLElement, dx: number, dy: number } | null} */
+        let drag = null;
+
+        /** @type {{ pointerId: number, startY: number, startH: number } | null} */
+        let canvasResize = null;
+
+        const MIN_SPRITE_W = 40;
+        const MAX_SPRITE_W = 2200;
+
+        /** @type {ReturnType<typeof setTimeout> | 0} */
+        let scalePersistTimer = 0;
+
+        function minCanvasHeight() {
+            return window.innerHeight;
+        }
+
+        function setSurfaceHeight(px) {
+            const h = Math.max(minCanvasHeight(), Math.round(px));
+            surface.style.height = `${h}px`;
+        }
+
+        function getSurfaceHeight() {
+            const h = surface.offsetHeight;
+            return h >= minCanvasHeight() ? h : minCanvasHeight();
+        }
+
+        function wheelDeltaPixels(event) {
+            let dy = event.deltaY;
+            if (event.deltaMode === 1) dy *= 16;
+            if (event.deltaMode === 2) dy *= 120;
+            return dy;
+        }
+
+        /**
+         * Scale sprite by wheel delta; keeps the point (clientX, clientY) anchored on the bitmap.
+         * @param {HTMLElement} el
+         * @param {WheelEvent} event
+         */
+        function scaleSpriteWithWheel(el, event) {
+            const rect = el.getBoundingClientRect();
+            const oldW = rect.width;
+            const oldH = rect.height;
+            if (oldW < 1 || oldH < 1) return;
+
+            const dy = wheelDeltaPixels(event);
+            const sensitivity = (event.shiftKey ? 0.00035 : 0.0011) * (event.ctrlKey ? 1.25 : 1);
+            let newW = oldW * (1 - dy * sensitivity);
+            newW = Math.max(MIN_SPRITE_W, Math.min(MAX_SPRITE_W, newW));
+            if (Math.abs(newW - oldW) < 0.4) return;
+
+            el.classList.add("scaling");
+
+            const ax = (event.clientX - rect.left) / oldW;
+            const ay = (event.clientY - rect.top) / oldH;
+            const newH = newW * (oldH / oldW);
+
+            let newL = event.clientX - ax * newW;
+            let newT = event.clientY - ay * newH;
+
+            const sr = surface.getBoundingClientRect();
+            const maxW = surface.clientWidth;
+            const maxH = surface.clientHeight - CANVAS_HANDLE;
+            newL = Math.max(sr.left, Math.min(sr.left + maxW - newW, newL));
+            newT = Math.max(sr.top, Math.min(sr.top + maxH - newH, newT));
+
+            el.style.width = `${Math.round(newW)}px`;
+            el.style.left = `${Math.round(newL - sr.left)}px`;
+            el.style.top = `${Math.round(newT - sr.top)}px`;
+
+            persistState();
+
+            clearTimeout(scalePersistTimer);
+            scalePersistTimer = setTimeout(() => {
+                scalePersistTimer = 0;
+                for (const s of getSprites()) {
+                    s.classList.remove("scaling");
+                }
+                refreshOutput();
+            }, 140);
+        }
+
+        function getSprites() {
+            return [...surface.querySelectorAll("[data-sprite-id]")];
+        }
+
+        function readLayoutFromDom() {
+            const layout = {};
+            const sw = surface.clientWidth;
+            const sh = surface.clientHeight;
+            const usableH = Math.max(1, sh - CANVAS_HANDLE);
+            for (const el of getSprites()) {
+                const id = el.dataset.spriteId;
+                layout[id] = {
+                    left: Math.round(el.offsetLeft),
+                    top: Math.round(el.offsetTop),
+                    width: Math.round(el.offsetWidth)
+                };
+                layout[id].leftPct = Math.round((el.offsetLeft / sw) * 1000) / 10;
+                layout[id].topPct = Math.round((el.offsetTop / usableH) * 1000) / 10;
+                layout[id].widthPct = Math.round((el.offsetWidth / sw) * 1000) / 10;
+            }
+            return layout;
+        }
+
+        function slimSprites(layout) {
+            const slim = {};
+            for (const [id, v] of Object.entries(layout)) {
+                slim[id] = { left: v.left, top: v.top, width: v.width };
+            }
+            return slim;
+        }
+
+        function layoutToJson(layout) {
+            return JSON.stringify(
+                {
+                    canvasHeight: getSurfaceHeight(),
+                    sprites: slimSprites(layout)
+                },
+                null,
+                2
+            );
+        }
+
+        function layoutToCssSnippet(layout) {
+            const lines = Object.entries(layout).map(([id, v]) => {
+                return `.atlas-sprite--${id} {\n  left: ${v.leftPct}%;\n  top: ${v.topPct}%;\n  width: ${v.widthPct}vw;\n  right: auto;\n  bottom: auto;\n}`;
+            });
+            return lines.join("\n\n");
+        }
+
+        function applyLayout(layout) {
+            for (const el of getSprites()) {
+                const id = el.dataset.spriteId;
+                const pos = layout[id];
+                if (!pos) continue;
+                const w = pos.width;
+                const l = pos.left;
+                const t = pos.top;
+                if ([w, l, t].every((n) => typeof n === "number" && Number.isFinite(n))) {
+                    el.style.width = `${w}px`;
+                    el.style.left = `${l}px`;
+                    el.style.top = `${t}px`;
+                    el.style.right = "auto";
+                    el.style.bottom = "auto";
+                }
+            }
+        }
+
+        function isLegacySpriteMap(data) {
+            if (!data || typeof data !== "object" || data.sprites) return false;
+            return Object.values(data).some(
+                (v) =>
+                    v &&
+                    typeof v === "object" &&
+                    typeof v.left === "number" &&
+                    typeof v.top === "number" &&
+                    typeof v.width === "number"
+            );
+        }
+
+        function loadFromStorage() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+                const data = JSON.parse(raw);
+                if (data && typeof data === "object" && data.sprites && typeof data.sprites === "object") {
+                    const ch = data.canvasHeight;
+                    return {
+                        canvasHeight: typeof ch === "number" && Number.isFinite(ch) ? ch : null,
+                        sprites: data.sprites
+                    };
+                }
+                if (data && typeof data === "object" && isLegacySpriteMap(data)) {
+                    return { canvasHeight: null, sprites: data };
+                }
+                return null;
+            } catch {
+                return null;
+            }
+        }
+
+        function persistState() {
+            const layout = readLayoutFromDom();
+            const payload = {
+                canvasHeight: getSurfaceHeight(),
+                sprites: slimSprites(layout)
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        }
+
+        function fitSurfaceHeightToSprites() {
+            let maxB = minCanvasHeight();
+            for (const el of getSprites()) {
+                maxB = Math.max(maxB, el.offsetTop + el.offsetHeight + CANVAS_HANDLE + 8);
+            }
+            setSurfaceHeight(Math.max(getSurfaceHeight(), maxB));
+        }
+
+        function clampAllSpritesToSurface() {
+            const maxL = surface.clientWidth;
+            const maxT = surface.clientHeight - CANVAS_HANDLE;
+            for (const el of getSprites()) {
+                const w = el.offsetWidth;
+                const h = el.offsetHeight;
+                let l = el.offsetLeft;
+                let t = el.offsetTop;
+                l = Math.max(0, Math.min(maxL - w, l));
+                t = Math.max(0, Math.min(maxT - h, t));
+                el.style.left = `${l}px`;
+                el.style.top = `${t}px`;
+            }
+        }
+
+        function spreadDefaults() {
+            setSurfaceHeight(Math.round(window.innerHeight * 1.35));
+            const sprites = getSprites();
+            const sw = surface.clientWidth;
+            const sh = surface.clientHeight - CANVAS_HANDLE;
+            sprites.forEach((el, i) => {
+                const cols = 3;
+                const col = i % cols;
+                const row = Math.floor(i / cols);
+                const slotW = sw / cols;
+                const rows = Math.ceil(sprites.length / cols);
+                const slotH = Math.max(160, sh / Math.max(rows, 3));
+                el.style.width = `${Math.min(280, slotW * 0.72)}px`;
+                el.style.left = `${Math.round(12 + col * slotW)}px`;
+                el.style.top = `${Math.round(12 + row * slotH)}px`;
+            });
+        }
+
+        /**
+         * Places a sprite during pointer drag; call from pointermove while dragging.
+         * @param {HTMLElement} el
+         * @param {number} clientX
+         * @param {number} clientY
+         */
+        function placeSpriteAtPointer(el, clientX, clientY) {
+            if (!drag || drag.el !== el) return;
+            const w = el.offsetWidth;
+            const h = el.offsetHeight;
+            const sr = surface.getBoundingClientRect();
+            let left = clientX - drag.dx - sr.left;
+            let top = clientY - drag.dy - sr.top;
+            const maxL = surface.clientWidth - w;
+            const maxT = surface.clientHeight - CANVAS_HANDLE - h;
+            left = Math.max(0, Math.min(maxL, left));
+            top = Math.max(0, Math.min(maxT, top));
+            el.style.left = `${left}px`;
+            el.style.top = `${top}px`;
+        }
+
+        /**
+         * Begin dragging the sprite under the pointer (attach to pointerdown on each sprite).
+         * @param {PointerEvent} event
+         * @param {HTMLElement} el
+         */
+        function startSpriteDrag(event, el) {
+            if (event.button !== 0) return;
+            event.preventDefault();
+            const rect = el.getBoundingClientRect();
+            drag = {
+                pointerId: event.pointerId,
+                el,
+                dx: event.clientX - rect.left,
+                dy: event.clientY - rect.top
+            };
+            el.classList.add("dragging");
+            el.setPointerCapture(event.pointerId);
+        }
+
+        function endSpriteDrag(event, el) {
+            if (!drag || drag.el !== el || event.pointerId !== drag.pointerId) return;
+            el.classList.remove("dragging");
+            try {
+                el.releasePointerCapture(event.pointerId);
+            } catch {
+                /* ignore */
+            }
+            drag = null;
+            persistState();
+            refreshOutput();
+        }
+
+        function refreshOutput() {
+            output.value = layoutToJson(readLayoutFromDom());
+        }
+
+        function exportPositionsForCopying() {
+            const layout = readLayoutFromDom();
+            const text =
+                layoutToJson(layout) +
+                "\n\n/* --- CSS (percent of canvas width / usable height) --- */\n\n" +
+                layoutToCssSnippet(layout);
+            return text;
+        }
+
+        async function copyToClipboard(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+            } catch {
+                output.select();
+                document.execCommand("copy");
+            }
+        }
+
+        function downloadJson(filename) {
+            const blob = new Blob([layoutToJson(readLayoutFromDom())], { type: "application/json" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(a.href);
+        }
+
+        async function saveWithFilePicker() {
+            const json = layoutToJson(readLayoutFromDom());
+            if (window.showSaveFilePicker) {
+                try {
+                    const handle = await window.showSaveFilePicker({
+                        suggestedName: "sprite-positions.json",
+                        types: [
+                            {
+                                description: "JSON",
+                                accept: { "application/json": [".json"] }
+                            }
+                        ]
+                    });
+                    const writable = await handle.createWritable();
+                    await writable.write(json);
+                    await writable.close();
+                    return;
+                } catch (e) {
+                    if (e && e.name === "AbortError") return;
+                    console.warn(e);
+                }
+            }
+            downloadJson("sprite-positions.json");
+        }
+
+        resizeHandle.addEventListener("pointerdown", (e) => {
+            if (e.button !== 0) return;
+            e.preventDefault();
+            canvasResize = {
+                pointerId: e.pointerId,
+                startY: e.clientY,
+                startH: getSurfaceHeight()
+            };
+            resizeHandle.classList.add("dragging");
+            resizeHandle.setPointerCapture(e.pointerId);
+        });
+
+        resizeHandle.addEventListener("pointermove", (e) => {
+            if (!canvasResize || e.pointerId !== canvasResize.pointerId) return;
+            const dy = e.clientY - canvasResize.startY;
+            setSurfaceHeight(canvasResize.startH + dy);
+            clampAllSpritesToSurface();
+        });
+
+        function endCanvasResize(e) {
+            if (!canvasResize || e.pointerId !== canvasResize.pointerId) return;
+            resizeHandle.classList.remove("dragging");
+            try {
+                resizeHandle.releasePointerCapture(e.pointerId);
+            } catch {
+                /* ignore */
+            }
+            canvasResize = null;
+            clampAllSpritesToSurface();
+            persistState();
+            refreshOutput();
+        }
+
+        resizeHandle.addEventListener("pointerup", endCanvasResize);
+        resizeHandle.addEventListener("pointercancel", endCanvasResize);
+
+        for (const el of getSprites()) {
+            el.addEventListener("pointerdown", (e) => startSpriteDrag(e, el));
+            el.addEventListener("pointermove", (e) => {
+                if (drag && drag.el === el && e.pointerId === drag.pointerId) {
+                    placeSpriteAtPointer(el, e.clientX, e.clientY);
+                }
+            });
+            el.addEventListener("pointerup", (e) => endSpriteDrag(e, el));
+            el.addEventListener("pointercancel", (e) => endSpriteDrag(e, el));
+            el.addEventListener("lostpointercapture", () => {
+                if (drag && drag.el === el) {
+                    el.classList.remove("dragging");
+                    drag = null;
+                    persistState();
+                    refreshOutput();
+                }
+            });
+
+            el.addEventListener(
+                "wheel",
+                (e) => {
+                    e.preventDefault();
+                    scaleSpriteWithWheel(el, e);
+                },
+                { passive: false }
+            );
+        }
+
+        window.addEventListener("resize", () => {
+            setSurfaceHeight(Math.max(getSurfaceHeight(), minCanvasHeight()));
+            clampAllSpritesToSurface();
+            persistState();
+            refreshOutput();
+        });
+
+        document.getElementById("btn-copy-json").addEventListener("click", async () => {
+            await copyToClipboard(layoutToJson(readLayoutFromDom()));
+            refreshOutput();
+        });
+
+        document.getElementById("btn-copy-css").addEventListener("click", async () => {
+            await copyToClipboard(layoutToCssSnippet(readLayoutFromDom()));
+            refreshOutput();
+        });
+
+        document.getElementById("btn-download").addEventListener("click", () => {
+            downloadJson("sprite-positions.json");
+        });
+
+        document.getElementById("btn-save-as").addEventListener("click", () => {
+            saveWithFilePicker();
+        });
+
+        document.getElementById("btn-refresh-output").addEventListener("click", refreshOutput);
+
+        document.getElementById("btn-apply").addEventListener("click", () => {
+            try {
+                const parsed = JSON.parse(output.value.trim());
+                if (parsed.sprites && typeof parsed.canvasHeight === "number") {
+                    setSurfaceHeight(parsed.canvasHeight);
+                    applyLayout(parsed.sprites);
+                } else if (parsed.sprites && typeof parsed.sprites === "object") {
+                    applyLayout(parsed.sprites);
+                    fitSurfaceHeightToSprites();
+                } else if (isLegacySpriteMap(parsed)) {
+                    applyLayout(parsed);
+                    fitSurfaceHeightToSprites();
+                } else {
+                    throw new Error("Expected { canvasHeight, sprites } or legacy sprite map");
+                }
+                persistState();
+                refreshOutput();
+            } catch (e) {
+                alert("Invalid JSON: " + (e && e.message ? e.message : String(e)));
+            }
+        });
+
+        const stored = loadFromStorage();
+        if (stored && stored.sprites) {
+            if (stored.canvasHeight != null) {
+                setSurfaceHeight(stored.canvasHeight);
+            } else {
+                setSurfaceHeight(minCanvasHeight());
+            }
+            applyLayout(stored.sprites);
+            fitSurfaceHeightToSprites();
+        } else {
+            spreadDefaults();
+        }
+        refreshOutput();
+
+        window.SpriteLayoutEditor = {
+            readLayoutFromDom,
+            applyLayout,
+            layoutToJson,
+            layoutToCssSnippet,
+            exportPositionsForCopying,
+            refreshOutput,
+            placeSpriteAtPointer,
+            startSpriteDrag,
+            scaleSpriteWithWheel,
+            setSurfaceHeight,
+            getSurfaceHeight,
+            fitSurfaceHeightToSprites,
+            clampAllSpritesToSurface
+        };
+    </script>
+</body>
+
+</html>

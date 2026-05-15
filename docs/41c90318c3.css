@@ -522,82 +522,76 @@ body.home-atlas a {
   transform-origin: center bottom;
   user-select: none;
 }
-
-.atlas-sprite--iceworld {
-  z-index: 2;
-  width: min(39vw, 38rem);
-  right: 8%;
-  top: 41rem;
-  opacity: 0.92;
-  transform: translateY(calc(var(--atlas-scroll) * -0.075px));
+.atlas-sprite--peak {
+  left: 0%;
+  top: 0%;
+  width: 54.4vw;
+  right: auto;
+  bottom: auto;
 }
 
-.atlas-sprite--peak {
-  z-index: 3;
-  width: min(54vw, 48rem);
-  left: 17%;
-  top: -2rem;
-  opacity: 0.9;
-  transform: translateY(calc(var(--atlas-scroll) * -0.095px));
+.atlas-sprite--iceworld {
+  left: 71.2%;
+  top: 30.1%;
+  width: 26.6vw;
+  right: auto;
+  bottom: auto;
 }
 
 .atlas-sprite--glacier {
-  z-index: 2;
-  width: min(47vw, 64rem);
-  left: 37%;
-  bottom: 65rem;
-  opacity: 0.94;
-  transform: translateY(calc(var(--atlas-scroll) * -0.11px));
+  left: 33.1%;
+  top: 43.2%;
+  width: 54.4vw;
+  right: auto;
+  bottom: auto;
 }
 
 .atlas-sprite--cliff {
-  z-index: 3;
-  width: min(67vw, 47rem);
-  left: 0;
-  top: 81rem;
-  opacity: 0.96;
-  transform: translateY(calc(var(--atlas-scroll) * -0.135px));
+  left: 0%;
+  top: 50.4%;
+  width: 34.5vw;
+  right: auto;
+  bottom: auto;
 }
 
 .atlas-sprite--crevasse {
-  z-index: 3;
-  width: min(88vw, 82rem);
-  left: 6%;
-  bottom: -2rem;
-  opacity: 0.98;
-  transform: translateY(calc(var(--atlas-scroll) * -0.17px));
+  left: 68.5%;
+  top: 85.4%;
+  width: 29.6vw;
+  right: auto;
+  bottom: auto;
 }
 
 .atlas-sprite--monastery {
-  z-index: 6;
-  width: min(18vw, 14rem);
-  left: 58%;
-  bottom: 24rem;
-  transform: translateY(calc(var(--atlas-scroll) * -0.07px));
+  left: 6.4%;
+  top: 90.7%;
+  width: 7.6vw;
+  right: auto;
+  bottom: auto;
 }
 
 .atlas-sprite--rosemary {
-  z-index: 6;
-  width: min(12vw, 8.5rem);
-  left: 5%;
-  bottom: 18rem;
-  transform: rotate(-6deg) translateY(calc(var(--atlas-scroll) * -0.09px));
+  left: 28%;
+  top: 81.7%;
+  width: 4.7vw;
+  right: auto;
+  bottom: auto;
 }
 
 .atlas-sprite--thyme {
-  z-index: 6;
-  width: min(13vw, 9rem);
-  right: 7%;
-  bottom: 18rem;
-  transform: rotate(6deg) translateY(calc(var(--atlas-scroll) * -0.085px));
+  left: 11.8%;
+  top: 93.4%;
+  width: 3.4vw;
+  right: auto;
+  bottom: auto;
 }
 
 .atlas-sprite--plantain {
-  z-index: 6;
-  width: min(12vw, 8rem);
-  right: 28%;
-  bottom: 20rem;
-  transform: rotate(-2deg) translateY(calc(var(--atlas-scroll) * -0.095px));
+  left: 18.2%;
+  top: 94.7%;
+  width: 4.1vw;
+  right: auto;
+  bottom: auto;
 }
 
 .atlas-ink {
