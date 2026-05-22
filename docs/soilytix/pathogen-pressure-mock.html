@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Val del Pino — pathogen-pressure profile (draft)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap">
+<style>
+:root {
+  --green-6: #1ab172;
+  --green-7: #118b61;
+  --green-8: #0b5e49;
+  --green-soft: #eaf8f1;
+  --gray-1: #c4d4cc;
+  --gray-3: #95afa3;
+  --gray-4: #7d9d8e;
+  --gray-7: #47554f;
+  --gray-8: #333f3a;
+  --dark-9: #1b221f;
+  --paper: #ffffff;
+  --chrome: #e9efec;
+  --bg-2: #f8faf9;
+  --border: #c4d4cc;
+  --border-soft: #e6ece9;
+  --orange-6: #ee7931;
+  --red-6: #ea335e;
+  --ink-red: #b14117;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-hand: "Caveat", "Segoe Script", cursive;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--chrome); color: var(--gray-8); font-family: var(--font-sans); }
+body { padding: 28px; display: flex; justify-content: center; }
+
+.page {
+  position: relative;
+  width: 794px;
+  height: 1123px;
+  background: var(--paper);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.08);
+  padding: 44px 48px 36px;
+  font-size: 11.2px;
+  line-height: 1.5;
+  color: var(--gray-8);
+  display: flex;
+  flex-direction: column;
+}
+
+/* draft stamp */
+.stamp {
+  position: absolute;
+  top: 38px; right: 44px;
+  transform: rotate(-4deg);
+  border: 1.5px solid var(--ink-red);
+  color: var(--ink-red);
+  padding: 4px 10px 3px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  opacity: 0.78;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.stamp small { display: block; font-size: 7.5px; letter-spacing: 0.12em; opacity: 0.75; margin-top: 1px; font-weight: 400; }
+
+/* ===== Title block ===== */
+.title-block {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 24px;
+  align-items: end;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.eyebrow {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-4);
+  margin: 0 0 8px;
+}
+.h-title {
+  font-size: 30px;
+  font-weight: 200;
+  letter-spacing: -0.018em;
+  color: var(--dark-9);
+  margin: 0;
+  line-height: 1.05;
+}
+.h-title em { font-style: normal; color: var(--gray-7); font-weight: 300; }
+.standfirst {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--gray-7);
+  max-width: 56ch;
+}
+.provenance {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--gray-7);
+  line-height: 1.65;
+}
+.provenance .k { color: var(--gray-4); }
+
+/* ===== Hero index ===== */
+.hero {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 26px;
+  align-items: start;
+  margin: 18px 0 12px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.idx-num {
+  font-family: var(--font-sans);
+  font-size: 92px;
+  font-weight: 200;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  color: var(--green-6);
+}
+.idx-num sup {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray-4);
+  letter-spacing: 0;
+  margin-left: 4px;
+  vertical-align: top;
+  position: relative;
+  top: 8px;
+}
+.idx-ci {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--gray-7);
+  margin-top: 4px;
+}
+.conf-bar { position: relative; flex: 1; height: 3px; background: var(--bg-2); }
+.conf-bar .ci { position: absolute; top: 0; height: 3px; background: rgba(26,177,114,0.32); }
+.conf-bar .mark { position: absolute; top: -3px; width: 2px; height: 9px; background: var(--green-7); }
+
+.idx-prose { padding-top: 4px; }
+.idx-prose h2 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark-9);
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+.idx-prose p {
+  margin: 0 0 6px;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--gray-7);
+  max-width: 58ch;
+}
+.idx-prose .anchor strong { color: var(--dark-9); font-weight: 500; }
+.idx-prose .anchor em { color: var(--green-7); font-style: normal; font-weight: 500; }
+
+.spark {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+.spark .caption {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--gray-4);
+  text-align: right;
+  line-height: 1.4;
+}
+
+/* ===== Editorial section header ===== */
+.sec-h {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dark-9);
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.sec-h .num {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--green-7);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+.sec-h .sub {
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--gray-4);
+}
+
+/* ===== Map + sidenote ===== */
+.map-row {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 20px;
+  margin: 14px 0 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.map-frame {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  margin-top: 6px;
+}
+.map-legend {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  color: var(--gray-4);
+  margin-top: 2px;
+}
+.map-legend .grad {
+  width: 160px; height: 5px;
+  background: linear-gradient(90deg, #eaf8f1 0%, #78ebb3 35%, #1ab172 65%, #0b5e49 100%);
+  border: 1px solid var(--border);
+}
+
+.sidenote {
+  font-size: 10.5px;
+  color: var(--gray-7);
+  line-height: 1.55;
+  margin-top: 6px;
+  padding-left: 12px;
+  border-left: 2px solid var(--green-6);
+}
+.sidenote h3 {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dark-9);
+  margin: 0 0 4px;
+}
+.sidenote p { margin: 0 0 6px; }
+.hand {
+  font-family: var(--font-hand);
+  font-size: 16px;
+  color: var(--ink-red);
+  line-height: 1.1;
+}
+
+/* ===== Pathogen table ===== */
+.path-row {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 22px;
+  margin: 12px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.path-table { width: 100%; border-collapse: collapse; font-size: 10.5px; margin-top: 6px; }
+.path-table th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 8.5px;
+  color: var(--gray-4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 6px 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+.path-table td { padding: 4px 6px 4px 0; border-bottom: 1px solid var(--border-soft); vertical-align: middle; }
+.path-table .vern { font-weight: 500; color: var(--dark-9); font-size: 10.5px; line-height: 1.25; }
+.path-table .sci { font-style: italic; color: var(--gray-4); font-size: 9.5px; }
+.bar-wrap { position: relative; height: 6px; background: var(--bg-2); border: 1px solid var(--border-soft); }
+.bar-wrap .fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--green-6); }
+.bar-wrap .fill.bg { background: var(--gray-3); }
+.bar-pct { display: inline-block; margin-left: 5px; font-family: var(--font-mono); font-size: 9.5px; color: var(--gray-7); }
+.flag {
+  display: inline-flex; padding: 0 6px;
+  font-size: 9px; font-weight: 500; line-height: 14px;
+}
+.flag.rel { color: var(--green-8); background: rgba(26,177,114,0.14); }
+.flag.bgflag { color: var(--gray-4); background: #eef2f0; }
+.trend {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+}
+.trend.up { color: var(--orange-6); }
+.trend.down { color: var(--green-7); }
+.trend.flat { color: var(--gray-4); }
+
+.path-commentary {
+  font-size: 10.5px;
+  color: var(--gray-7);
+  line-height: 1.55;
+  padding-top: 28px;
+}
+.path-commentary p { margin: 0 0 8px; }
+.path-commentary strong { color: var(--dark-9); font-weight: 500; }
+.path-commentary .qmark {
+  font-family: var(--font-hand);
+  font-size: 17px;
+  color: var(--ink-red);
+  display: block;
+  margin-top: 8px;
+  line-height: 1.1;
+}
+
+/* ===== Drivers ===== */
+.drivers-row {
+  margin: 10px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.drivers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 28px;
+  margin-top: 8px;
+  font-size: 10.5px;
+}
+.drivers-grid .col-h {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-7);
+  margin: 0 0 2px;
+}
+.driver-row {
+  display: grid;
+  grid-template-columns: 1fr 86px 40px;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+}
+.driver-row .name { color: var(--dark-9); font-size: 10.5px; }
+.driver-row .name .sub { color: var(--gray-4); font-size: 9.5px; margin-left: 4px; }
+.eff { position: relative; height: 6px; background: var(--bg-2); border: 1px solid var(--border-soft); }
+.eff .axis { position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--gray-3); }
+.eff .b { position: absolute; top: 0; bottom: 0; }
+.eff .b.pos { left: 50%; background: var(--orange-6); }
+.eff .b.neg { right: 50%; background: var(--green-6); }
+.eff-num { font-family: var(--font-mono); font-size: 9.5px; color: var(--gray-7); text-align: right; }
+.driver-note {
+  margin-top: 6px;
+  font-size: 9.5px;
+  color: var(--gray-4);
+  font-family: var(--font-mono);
+}
+
+/* ===== Recommendations as numbered prose ===== */
+.recs-row {
+  margin: 10px 0;
+  padding-bottom: 8px;
+}
+.rec-list {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: rec;
+}
+.rec-list li {
+  position: relative;
+  padding: 6px 0 6px 32px;
+  border-top: 1px solid var(--border-soft);
+  display: grid;
+  grid-template-columns: 1fr 160px;
+  gap: 16px;
+  align-items: start;
+}
+.rec-list li:first-child { border-top: none; padding-top: 4px; }
+.rec-list li::before {
+  counter-increment: rec;
+  content: counter(rec, decimal-leading-zero);
+  position: absolute;
+  left: 0; top: 8px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--green-6);
+  letter-spacing: -0.02em;
+}
+.rec-h-inline {
+  font-size: 11.5px;
+  color: var(--dark-9);
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
+}
+.rec-body {
+  font-size: 10.5px;
+  color: var(--gray-7);
+  line-height: 1.5;
+  margin: 2px 0 0;
+}
+.rec-meta {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--gray-4);
+  line-height: 1.5;
+  text-align: right;
+}
+.rec-meta .target { color: var(--green-7); }
+.conf {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 1px 7px;
+  margin-top: 4px;
+}
+.conf.high { background: rgba(26,177,114,0.16); color: var(--green-8); }
+.conf.med  { background: rgba(238,121,49,0.16); color: var(--orange-6); }
+.conf.low  { background: rgba(125,157,142,0.20); color: var(--gray-7); }
+
+/* ===== Spacer + footer ===== */
+.spacer { flex: 1; min-height: 4px; }
+.foot {
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  color: var(--gray-4);
+  letter-spacing: 0.02em;
+}
+.foot .ids { color: var(--gray-7); }
+.foot .brand { color: var(--green-7); font-weight: 600; }
+
+@media print {
+  body { background: white; padding: 0; }
+  .page { box-shadow: none; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="stamp">internal draft<small>for joao · v0.3</small></div>
+
+  <!-- ============ TITLE ============ -->
+  <div class="title-block">
+    <div>
+      <p class="eyebrow">Soilytix · pathogen-pressure profile · Iberian olive</p>
+      <h1 class="h-title">Val del Pino <em>— SHD olive, Aragón</em></h1>
+      <p class="standfirst">Pressure on this asset is elevated relative to comparable Iberian SHD olive — concentrated in the central-south parcel block and tracking the spring moisture pattern more closely than chemistry.</p>
+    </div>
+    <div class="provenance">
+      <div><span class="k">round</span> 02 baseline · 47 samples / 14 parcels</div>
+      <div><span class="k">protocol</span> ppx-soil-v2.1</div>
+      <div><span class="k">pipeline</span> ssx-pipe 2026.4.0</div>
+      <div><span class="k">model</span> pressure-idx v0.6.2</div>
+      <div><span class="k">built</span> 2026-05-22 · build a8f3c9</div>
+    </div>
+  </div>
+
+  <!-- ============ HERO INDEX ============ -->
+  <div class="hero">
+    <div>
+      <div class="idx-num">61<sup>.4 / 100</sup></div>
+      <div class="idx-ci">
+        <span>CI 56–67</span>
+        <div class="conf-bar">
+          <div class="ci" style="left:56%; width:11%;"></div>
+          <div class="mark" style="left:61.4%;"></div>
+        </div>
+        <span>n=47</span>
+      </div>
+    </div>
+    <div class="idx-prose">
+      <h2>Asset-level pressure index</h2>
+      <p class="anchor">This asset sits at the <strong>78th percentile</strong> of comparable Iberian SHD olive assets in the Soilytix corpus (<em>n=31 assets, 1,142 samples, protocol ≥ ppx-soil 2.0</em>). The signal is real at the asset level; the more useful question — where on the asset, and why — is below.</p>
+      <div class="spark">
+        <svg viewBox="0 0 360 56" width="100%" height="48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <line x1="8" y1="46" x2="352" y2="46" stroke="#c4d4cc" stroke-width="1"/>
+          <path d="M8,46 L8,44 C36,42 60,32 92,22 C124,12 154,6 180,6 C206,6 234,12 260,22 C290,34 320,42 352,44 L352,46 Z" fill="#c4d4cc" opacity="0.55"/>
+          <line x1="180" y1="6" x2="180" y2="46" stroke="#7d9d8e" stroke-width="1" stroke-dasharray="2 3"/>
+          <line x1="218" y1="0" x2="218" y2="46" stroke="#1ab172" stroke-width="1.6"/>
+          <circle cx="218" cy="20" r="3" fill="#1ab172"/>
+          <g font-family="IBM Plex Mono" font-size="8" fill="#7d9d8e">
+            <text x="8"   y="55">0</text>
+            <text x="180" y="55" text-anchor="middle">cohort med · 47</text>
+            <text x="352" y="55" text-anchor="end">100</text>
+          </g>
+          <text font-family="Inter" font-weight="600" font-size="9" fill="#118b61" x="218" y="-1" text-anchor="middle">Val del Pino · 61.4</text>
+        </svg>
+        <div class="caption">distribution of<br>comparable assets<br>(n=31)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MAP + SIDENOTE ============ -->
+  <div class="map-row">
+    <div>
+      <p class="sec-h"><span class="num">01 ·</span> Parcel-level pressure <span class="sub">across the 14 parcels sampled this round</span></p>
+      <div class="map-frame">
+        <svg viewBox="0 0 480 180" width="100%" height="170" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .pc { stroke: #ffffff; stroke-width: 1.2; }
+              .lbl  { font-family: 'IBM Plex Mono'; font-size: 8px; fill: #1b221f; }
+              .lblm { font-family: 'IBM Plex Mono'; font-size: 8px; fill: #7d9d8e; }
+              .lblw { font-family: 'IBM Plex Mono'; font-size: 8px; fill: #fff; }
+            </style>
+          </defs>
+
+          <!-- irregular parcel polygons -->
+          <polygon class="pc" points="8,22  118,12  136,68  22,78"           fill="#1ab172" />
+          <polygon class="pc" points="136,68 22,78 40,124 148,116"           fill="#118b61" />
+          <polygon class="pc" points="148,116 40,124 60,168 168,160"         fill="#78ebb3" />
+          <polygon class="pc" points="118,12 230,6 236,64 136,68"            fill="#78ebb3" />
+          <polygon class="pc" points="236,64 136,68 148,116 244,112"         fill="#1ab172" />
+          <polygon class="pc" points="244,112 148,116 168,160 256,160"       fill="#0b5e49" />
+          <polygon class="pc" points="230,6 332,14 336,66 236,64"            fill="#eaf8f1" />
+          <polygon class="pc" points="336,66 236,64 244,112 344,110"         fill="#78ebb3" />
+          <polygon class="pc" points="344,110 244,112 256,160 348,162"       fill="#1ab172" />
+          <polygon class="pc" points="332,14 392,22 398,68 336,66"           fill="#eaf8f1" />
+          <polygon class="pc" points="398,68 336,66 344,110 402,112"         fill="#1ab172" />
+          <polygon class="pc" points="402,112 344,110 348,162 406,164"       fill="#118b61" />
+          <!-- two trailing parcels -->
+          <polygon class="pc" points="392,22 444,28 448,72 398,68"           fill="#1ab172" />
+          <polygon class="pc" points="448,72 398,68 402,112 452,114"         fill="#0b5e49" />
+
+          <!-- labels: parcel id + sample density -->
+          <text class="lblw" x="62"  y="48">VDP-A1 · n=5</text>
+          <text class="lblw" x="68"  y="100">VDP-A2 · n=4</text>
+          <text class="lblm" x="84"  y="146">VDP-A3 · n=3</text>
+          <text class="lblm" x="166" y="38">VDP-B1 · n=4</text>
+          <text class="lblw" x="170" y="92">VDP-B2 · n=4</text>
+          <text class="lblw" x="174" y="140">VDP-B3 · n=6</text>
+          <text class="lblm" x="268" y="38">VDP-C1 · n=2</text>
+          <text class="lblm" x="270" y="92">VDP-C2 · n=3</text>
+          <text class="lblw" x="270" y="140">VDP-C3 · n=4</text>
+          <text class="lblm" x="354" y="42">VDP-D1 · n=2</text>
+          <text class="lblw" x="358" y="92">VDP-D2 · n=4</text>
+          <text class="lblw" x="358" y="142">VDP-D3 · n=4</text>
+          <text class="lblw" x="412" y="50">E1 · n=2</text>
+          <text class="lblw" x="412" y="92">E2 · n=2</text>
+
+          <!-- outlier ring on B-3 -->
+          <circle cx="200" cy="138" r="14" fill="none" stroke="#b14117" stroke-width="1.4"/>
+          <text font-family="Caveat" font-size="16" fill="#b14117" x="212" y="178">B-3 — the one that's actually moving</text>
+        </svg>
+        <div class="map-legend">
+          <span>low</span>
+          <div class="grad"></div>
+          <span>high</span>
+          <span style="margin-left: auto;">14 parcels · 47 samples · grid 30m</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidenote">
+      <h3>Concentration, not spread</h3>
+      <p>Eight of the top-decile sample pressures fall inside the B–C central block (B-3, B-2, C-3). The eastern edge (D, E) is at or below cohort median.</p>
+      <p>B-3 carries the highest parcel index (84) <em>and</em> the steepest round-on-round rise (+11). It's the parcel to interrogate first.</p>
+      <p class="hand">cf. Migdalo P-14 trajectory — same shape, one year earlier</p>
+    </div>
+  </div>
+
+  <!-- ============ PATHOGEN BREAKDOWN ============ -->
+  <div class="path-row">
+    <div>
+      <p class="sec-h"><span class="num">02 ·</span> Top pathogen contributors <span class="sub">measurement, not yet interpretation</span></p>
+      <table class="path-table">
+        <thead>
+          <tr>
+            <th style="width:36%">Taxon</th>
+            <th style="width:34%">Contribution to index</th>
+            <th style="width:14%">Olive-relevant</th>
+            <th style="width:16%">vs R01</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="vern">Verticillium wilt</div><div class="sci">Verticillium dahliae</div></td>
+            <td><div class="bar-wrap"><div class="fill" style="width:78%"></div></div><span class="bar-pct">28%</span></td>
+            <td><span class="flag rel">yes</span></td>
+            <td><span class="trend up">▲ +6.3</span></td>
+          </tr>
+          <tr>
+            <td><div class="vern">Anthracnose guild</div><div class="sci">Colletotrichum godetiae / acutatum</div></td>
+            <td><div class="bar-wrap"><div class="fill" style="width:55%"></div></div><span class="bar-pct">19%</span></td>
+            <td><span class="flag rel">yes</span></td>
+            <td><span class="trend up">▲ +2.8</span></td>
+          </tr>
+          <tr>
+            <td><div class="vern">Phytophthora root-rot guild</div><div class="sci">Phytophthora spp. (4 OTUs)</div></td>
+            <td><div class="bar-wrap"><div class="fill" style="width:46%"></div></div><span class="bar-pct">15%</span></td>
+            <td><span class="flag rel">yes</span></td>
+            <td><span class="trend flat">– flat</span></td>
+          </tr>
+          <tr>
+            <td><div class="vern">Fusarium soilborne complex</div><div class="sci">F. oxysporum / F. solani</div></td>
+            <td><div class="bar-wrap"><div class="fill" style="width:34%"></div></div><span class="bar-pct">11%</span></td>
+            <td><span class="flag rel">yes</span></td>
+            <td><span class="trend up">▲ +1.9</span></td>
+          </tr>
+          <tr>
+            <td><div class="vern">Charcoal rot</div><div class="sci">Macrophomina phaseolina</div></td>
+            <td><div class="bar-wrap"><div class="fill" style="width:25%"></div></div><span class="bar-pct">9%</span></td>
+            <td><span class="flag rel">yes</span></td>
+            <td><span class="trend down">▼ −0.9</span></td>
+          </tr>
+          <tr>
+            <td><div class="vern">Pythium (background)</div><div class="sci">ubiquitous OTUs, low effect</div></td>
+            <td><div class="bar-wrap"><div class="fill bg" style="width:20%"></div></div><span class="bar-pct">7%</span></td>
+            <td><span class="flag bgflag">background</span></td>
+            <td><span class="trend flat">– flat</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="path-commentary">
+      <p>Two-thirds of the index is carried by <strong>Verticillium + Anthracnose + Phytophthora</strong>. All three move with topsoil moisture; only Verticillium also covaries with management.</p>
+      <p>Pythium reads as a background signal — present, not informative. Worth keeping out of the headline.</p>
+      <p class="qmark">unit of aggregation OK for Joao? guild vs species vs functional group — flag for the call</p>
+    </div>
+  </div>
+
+  <!-- ============ DRIVERS ============ -->
+  <div class="drivers-row">
+    <p class="sec-h"><span class="num">03 ·</span> Drivers of elevated pressure <span class="sub">partial correlations · standardised β · not causal</span></p>
+    <div class="drivers-grid">
+      <div>
+        <p class="col-h">Environment &amp; structure</p>
+        <div class="driver-row"><div class="name">Spring topsoil moisture <span class="sub">0–30cm</span></div><div class="eff"><div class="axis"></div><div class="b pos" style="width:36%"></div></div><div class="eff-num">+0.42</div></div>
+        <div class="driver-row"><div class="name">Clay fraction <span class="sub">parcel mean</span></div><div class="eff"><div class="axis"></div><div class="b pos" style="width:28%"></div></div><div class="eff-num">+0.31</div></div>
+        <div class="driver-row"><div class="name">Topsoil bulk density</div><div class="eff"><div class="axis"></div><div class="b pos" style="width:22%"></div></div><div class="eff-num">+0.24</div></div>
+        <div class="driver-row"><div class="name">Slope · drainage class</div><div class="eff"><div class="axis"></div><div class="b neg" style="width:18%"></div></div><div class="eff-num">−0.19</div></div>
+      </div>
+      <div>
+        <p class="col-h">Chemistry &amp; management</p>
+        <div class="driver-row"><div class="name">Irrigation frequency <span class="sub">90d</span></div><div class="eff"><div class="axis"></div><div class="b pos" style="width:32%"></div></div><div class="eff-num">+0.36</div></div>
+        <div class="driver-row"><div class="name">Soil pH <span class="sub">CaCl₂</span></div><div class="eff"><div class="axis"></div><div class="b neg" style="width:30%"></div></div><div class="eff-num">−0.33</div></div>
+        <div class="driver-row"><div class="name">Organic C <span class="sub">% w/w</span></div><div class="eff"><div class="axis"></div><div class="b neg" style="width:26%"></div></div><div class="eff-num">−0.28</div></div>
+        <div class="driver-row"><div class="name">Cover-crop days <span class="sub">in-row</span></div><div class="eff"><div class="axis"></div><div class="b neg" style="width:24%"></div></div><div class="eff-num">−0.26</div></div>
+      </div>
+    </div>
+    <p class="driver-note">controlled for round and sample depth · airborne integration not in this model — see footnote ¹</p>
+  </div>
+
+  <!-- ============ RECOMMENDATIONS ============ -->
+  <div class="recs-row">
+    <p class="sec-h"><span class="num">04 ·</span> Where to push next <span class="sub">three hypotheses, parcel-scoped, framed to be falsifiable</span></p>
+    <ol class="rec-list">
+      <li>
+        <div>
+          <p class="rec-h-inline">Densify Round 03 sampling across the B–C block to test whether the moisture–Verticillium coupling holds at sub-parcel scale.</p>
+          <p class="rec-body">Add a 20m grid on B-2, B-3, C-3 with one 30–60cm sub-sample per primary. Decision in one round.</p>
+        </div>
+        <div class="rec-meta">
+          <span class="target">VDP-B2 · B3 · C3</span><br>
+          <span class="conf high">high evidence</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="rec-h-inline">Two-arm split on B-3: deficit-irrigation window against a Trichoderma-class soil amendment.</p>
+          <p class="rec-body">Working hypothesis: irrigation timing dominates the biological effect on this parcel. Co-design with the operator; outcome window one season.</p>
+        </div>
+        <div class="rec-meta">
+          <span class="target">VDP-B3</span><br>
+          <span class="conf med">medium evidence</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="rec-h-inline">Mark B-1 and D-1 in the operator's monitoring rhythm — chemistry drift resembles B-3 a year ago.</p>
+          <p class="rec-body">Trend marker, not action. Re-sample next round; no intervention yet.</p>
+        </div>
+        <div class="rec-meta">
+          <span class="target">VDP-B1 · D1</span><br>
+          <span class="conf low">low evidence</span>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- ============ FOOTER ============ -->
+  <div class="foot">
+    <div class="ids">
+      vdp-r02-001 … vdp-r02-047 · ppx-soil-v2.1 · ssx-pipe 2026.4.0 · pressure-idx v0.6.2 ·
+      ¹ airborne assay not in this report; Round 03 spore-trap mesh proposed for the Zaragoza baseline window
+    </div>
+    <div><span class="brand">soilytix</span> · 2026-05-22</div>
+  </div>
+
+</div>
+
+</body>
+</html>
