@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SLM co-design mock — draft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --surface: #fdfefc;
+  --text: #29332e;
+  --title: #3e4641;
+  --h2: #1a4f8a;
+  --h3: #0f7a65;
+  --mint: #00ff87;
+  --lime: #86eb22;
+  --border: #8fb0a6;
+  --muted: #837e75;
+  --note: #e0faf1;
+  --invariant: #ebf9e0;
+  --risk-bg: #fadbd0;
+  --risk-fg: #b14117;
+  --chip: #e5e5e3;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  color: var(--text);
+  background: var(--surface);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 32px 80px;
+}
+header.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+.wordmark {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--title);
+  letter-spacing: 0.5px;
+}
+.wordmark .dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: var(--lime);
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: 1px;
+}
+.draft-tag {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.draft-tag strong {
+  color: var(--risk-fg);
+  background: var(--risk-bg);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-weight: 600;
+  margin-right: 8px;
+}
+nav.tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+nav.tabs button {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: -1px;
+}
+nav.tabs button:hover { color: var(--text); }
+nav.tabs button.active {
+  color: var(--title);
+  border-bottom-color: var(--lime);
+  font-weight: 600;
+}
+section.view { display: none; }
+section.view.active { display: block; }
+h1.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--title);
+  margin: 0 0 4px;
+  letter-spacing: -0.3px;
+}
+h2 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--h2);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 28px 0 10px;
+}
+h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--h3);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin: 18px 0 8px;
+}
+.provenance {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: 'Inter', monospace;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.provenance span strong {
+  color: var(--text);
+  font-weight: 500;
+}
+.hero-row {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  align-items: center;
+  margin-top: 20px;
+  padding: 24px;
+  background: var(--note);
+  border: 1px solid var(--h3);
+  border-radius: 4px;
+}
+.index-block {
+  text-align: left;
+}
+.index-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--h3);
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.index-value {
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--title);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.index-value .band {
+  font-size: 18px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.index-scale {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+.index-hl {
+  background: var(--mint);
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: var(--text);
+}
+.index-explain {
+  font-size: 15px;
+  color: var(--text);
+}
+.index-explain strong { font-weight: 600; }
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 20px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+.card {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 16px 18px;
+  background: var(--surface);
+}
+.card.note { background: var(--note); border-color: var(--h3); }
+.card.invariant { background: var(--invariant); border-color: var(--lime); }
+.card.risk { background: var(--risk-bg); border-color: var(--risk-fg); }
+
+/* parcel map */
+.parcel-map {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+}
+.parcel {
+  aspect-ratio: 1.3;
+  border-radius: 3px;
+  padding: 8px;
+  font-size: 11px;
+  color: var(--text);
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.parcel .pid {
+  font-weight: 600;
+  font-size: 10px;
+  color: var(--title);
+}
+.parcel .pval {
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+  font-weight: 700;
+  font-size: 14px;
+}
+.parcel-legend {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-items: center;
+}
+.legend-scale {
+  flex: 1;
+  height: 8px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #e0faf1, #86eb22 40%, #f5c542 70%, #b14117 100%);
+}
+.var-label {
+  font-size: 10px;
+  text-align: center;
+  margin-bottom: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* ranked list */
+.ranked {
+  margin-top: 8px;
+}
+.ranked .row {
+  display: grid;
+  grid-template-columns: 1fr 90px 60px;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 12px;
+  border-bottom: 1px dashed var(--chip);
+}
+.ranked .row:last-child { border-bottom: none; }
+.ranked .name { color: var(--text); }
+.ranked .name .latin { color: var(--muted); font-style: italic; font-size: 11px; }
+.ranked .bar-cell {
+  background: var(--chip);
+  height: 8px;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.ranked .bar-cell .fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: var(--h3);
+  border-radius: 2px;
+}
+.ranked .flag {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: right;
+  font-weight: 600;
+}
+.flag.crop { color: var(--risk-fg); }
+.flag.bg { color: var(--muted); }
+
+/* driver table */
+table.drivers {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 6px;
+}
+table.drivers th {
+  text-align: left;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+table.drivers td {
+  padding: 7px 8px;
+  border-bottom: 1px dashed var(--chip);
+  vertical-align: middle;
+}
+table.drivers tr:last-child td { border-bottom: none; }
+.dir {
+  display: inline-block;
+  width: 14px;
+  text-align: center;
+  font-weight: 700;
+}
+.dir.up { color: var(--risk-fg); }
+.dir.dn { color: var(--h3); }
+.effect-bar {
+  display: inline-block;
+  background: var(--chip);
+  width: 80px;
+  height: 6px;
+  border-radius: 2px;
+  vertical-align: middle;
+  position: relative;
+}
+.effect-bar .fill {
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  background: var(--h3);
+  border-radius: 2px;
+}
+.effect-bar .fill.neg { background: var(--risk-fg); right: 50%; left: auto; }
+
+/* benchmark */
+.benchmark-plot {
+  width: 100%;
+  height: 80px;
+  margin-top: 6px;
+}
+.benchmark-caption {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* recommendations */
+.rec {
+  display: grid;
+  grid-template-columns: 28px 1fr 70px;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--chip);
+  font-size: 12px;
+  align-items: start;
+}
+.rec:last-child { border-bottom: none; }
+.rec .num {
+  background: var(--lime);
+  color: var(--title);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+.rec .body strong { color: var(--title); font-weight: 600; }
+.rec .body .where { color: var(--muted); font-size: 11px; margin-top: 2px; }
+.conf {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-align: center;
+  height: fit-content;
+}
+.conf.high { background: var(--invariant); color: var(--h3); }
+.conf.med { background: var(--note); color: var(--h2); }
+.conf.low { background: var(--chip); color: var(--muted); }
+
+/* operator view */
+.op-summary {
+  font-size: 14px;
+  color: var(--text);
+  background: var(--note);
+  border-left: 3px solid var(--h3);
+  padding: 14px 16px;
+  margin-top: 8px;
+}
+table.parcel-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 8px;
+}
+table.parcel-table th, table.parcel-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--chip);
+}
+table.parcel-table th {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+}
+.pressure-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.pressure-pill.low { background: var(--invariant); color: var(--h3); }
+.pressure-pill.med { background: var(--note); color: var(--h2); }
+.pressure-pill.high { background: var(--risk-bg); color: var(--risk-fg); }
+
+/* portfolio */
+.portfolio-bars {
+  margin-top: 8px;
+}
+.portfolio-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 60px;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--chip);
+  font-size: 12px;
+}
+.portfolio-row:last-child { border-bottom: none; }
+.portfolio-row .asset { font-weight: 500; color: var(--text); }
+.portfolio-row .asset .meta { color: var(--muted); font-size: 11px; display: block; }
+.portfolio-row .bar {
+  background: var(--chip);
+  height: 10px;
+  border-radius: 2px;
+  position: relative;
+}
+.portfolio-row .bar .fill {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  border-radius: 2px;
+}
+.portfolio-row .val { font-weight: 600; color: var(--title); text-align: right; }
+
+/* migdalo template */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 8px;
+}
+.kpi {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px 14px;
+  background: var(--surface);
+}
+.kpi .label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.kpi .value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--title);
+  line-height: 1;
+}
+.kpi .sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+/* spine diagram */
+.spine-diagram {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  align-items: stretch;
+}
+.spine-node {
+  background: var(--note);
+  border: 1px solid var(--h3);
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 11px;
+  text-align: center;
+  position: relative;
+  color: var(--text);
+}
+.spine-node strong {
+  display: block;
+  color: var(--h3);
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.spine-node:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--border);
+  font-size: 14px;
+  z-index: 1;
+}
+
+/* question list */
+.questions {
+  margin-top: 10px;
+}
+.q-row {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--chip);
+}
+.q-row .qnum {
+  background: var(--lime);
+  color: var(--title);
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 11px;
+}
+.q-row .qbody strong {
+  display: block;
+  color: var(--title);
+  font-weight: 600;
+  margin-bottom: 2px;
+  font-size: 13px;
+}
+.q-row .qbody span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* footer */
+.foot {
+  margin-top: 32px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 10px;
+  color: var(--muted);
+  font-family: 'Inter', monospace;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* inline elements */
+.chip {
+  display: inline-block;
+  background: var(--chip);
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  font-weight: 500;
+}
+.subtle { color: var(--muted); font-size: 12px; }
+
+/* draft watermark */
+.watermark {
+  position: fixed;
+  bottom: 14px;
+  right: 18px;
+  font-size: 10px;
+  color: var(--risk-fg);
+  background: var(--risk-bg);
+  padding: 6px 10px;
+  border-radius: 3px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-weight: 600;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+@media (max-width: 880px) {
+  .hero-row, .grid-2, .grid-3, .kpi-row, .spine-diagram { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="watermark">Draft · co-design · not for distribution</div>
+
+<div class="page">
+
+<header class="top">
+  <div class="wordmark"><span class="dot"></span>SOILYTIX</div>
+  <div class="draft-tag"><strong>Draft</strong>For co-design with SLM Partners · May 2026</div>
+</header>
+
+<nav class="tabs">
+  <button data-view="ic" class="active">Asset · IC-grade</button>
+  <button data-view="op">Asset · Operator-grade</button>
+  <button data-view="fund">Fund · Portfolio rollup</button>
+  <button data-view="migdalo">Analytical template</button>
+  <button data-view="spine">Spine &amp; co-design</button>
+</nav>
+
+<!-- VIEW 1: IC-grade pathogen profile -->
+<section class="view active" id="ic">
+
+  <h1 class="title">Asset — Nogam, walnut · Portugal</h1>
+  <p class="subtle">Re-presented in the V2 template · illustrative shape for co-design</p>
+
+  <div class="provenance">
+    <span>Asset · <strong>Nogam (Portugal)</strong></span>
+    <span>System · <strong>Walnut, 4 varieties</strong></span>
+    <span>Round · <strong>R-2025-06</strong></span>
+    <span>Samples · <strong>n = 36 · 12 parcels</strong></span>
+    <span>Protocol · <strong>v0.4-draft</strong></span>
+    <span>Pipeline · <strong>v2.1</strong></span>
+    <span>Report build · <strong>#a83e1f-draft</strong></span>
+    <span>Generated · <strong>2026-05-22</strong></span>
+  </div>
+
+  <div class="hero-row">
+    <div class="index-block">
+      <div class="index-label">Asset pressure index</div>
+      <div class="index-value"><span class="index-hl">61</span> <span class="band">± 4</span></div>
+      <div class="index-scale">0 — 100 · higher = more pressure</div>
+    </div>
+    <div class="index-explain">
+      Pressure level is at the <strong>74th percentile</strong> of comparable Iberian walnut assets in the Soilytix corpus (n = 38).
+      Variation across the asset is driven primarily by the <strong>Lara variety estate</strong>, which sits ~22 points above the asset mean.
+      <span class="subtle">Confidence band reflects sampling density and pipeline variance, not biological certainty.</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <h2>Parcel-level pressure</h2>
+      <div class="var-label">Sara &nbsp;·&nbsp; Lara &nbsp;·&nbsp; Chandler &nbsp;·&nbsp; Howard</div>
+      <div class="parcel-map">
+        <div class="parcel" style="background:#e0faf1" title="Sara S-01 · pressure 34"><span class="pid">S-01</span><span class="pval">34</span></div>
+        <div class="parcel" style="background:#f5c542" title="Lara L-01 · pressure 76"><span class="pid">L-01</span><span class="pval">76</span></div>
+        <div class="parcel" style="background:#c8e0a0" title="Chandler C-01 · pressure 52"><span class="pid">C-01</span><span class="pval">52</span></div>
+        <div class="parcel" style="background:#dff0c2" title="Howard H-01 · pressure 47"><span class="pid">H-01</span><span class="pval">47</span></div>
+
+        <div class="parcel" style="background:#e0faf1" title="Sara S-02 · pressure 38"><span class="pid">S-02</span><span class="pval">38</span></div>
+        <div class="parcel" style="background:#e89a3c" title="Lara L-02 · pressure 82"><span class="pid">L-02</span><span class="pval">82</span></div>
+        <div class="parcel" style="background:#c8e0a0" title="Chandler C-02 · pressure 54"><span class="pid">C-02</span><span class="pval">54</span></div>
+        <div class="parcel" style="background:#dff0c2" title="Howard H-02 · pressure 44"><span class="pid">H-02</span><span class="pval">44</span></div>
+
+        <div class="parcel" style="background:#dff0c2" title="Sara S-03 · pressure 42"><span class="pid">S-03</span><span class="pval">42</span></div>
+        <div class="parcel" style="background:#f5c542" title="Lara L-03 · pressure 78"><span class="pid">L-03</span><span class="pval">78</span></div>
+        <div class="parcel" style="background:#c8e0a0" title="Chandler C-03 · pressure 51"><span class="pid">C-03</span><span class="pval">51</span></div>
+        <div class="parcel" style="background:#dff0c2" title="Howard H-03 · pressure 46"><span class="pid">H-03</span><span class="pval">46</span></div>
+      </div>
+      <div class="parcel-legend">
+        <span>Low</span>
+        <div class="legend-scale"></div>
+        <span>High</span>
+      </div>
+    </div>
+
+    <div>
+      <h2>Soil pathogen breakdown</h2>
+      <p class="subtle" style="margin: 4px 0 6px;">Top contributors to the asset pressure index · DNA-detected, relative</p>
+      <div class="ranked">
+        <div class="row">
+          <div class="name">Phytophthora root rot <span class="latin">P. cinnamomi</span></div>
+          <div class="bar-cell"><div class="fill" style="width: 82%"></div></div>
+          <div class="flag crop">Crop pathogen</div>
+        </div>
+        <div class="row">
+          <div class="name">Verticillium wilt <span class="latin">V. dahliae</span></div>
+          <div class="bar-cell"><div class="fill" style="width: 64%"></div></div>
+          <div class="flag crop">Crop pathogen</div>
+        </div>
+        <div class="row">
+          <div class="name">Fusarium spp. <span class="latin">F. oxysporum cplx.</span></div>
+          <div class="bar-cell"><div class="fill" style="width: 51%"></div></div>
+          <div class="flag crop">Crop pathogen</div>
+        </div>
+        <div class="row">
+          <div class="name">Pythium spp.</div>
+          <div class="bar-cell"><div class="fill" style="width: 36%"></div></div>
+          <div class="flag bg">Opportunistic</div>
+        </div>
+        <div class="row">
+          <div class="name">Armillaria mellea</div>
+          <div class="bar-cell"><div class="fill" style="width: 22%"></div></div>
+          <div class="flag crop">Crop pathogen</div>
+        </div>
+        <div class="row">
+          <div class="name">Cylindrocladium spp.</div>
+          <div class="bar-cell"><div class="fill" style="width: 14%"></div></div>
+          <div class="flag bg">Background</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <h2>Driver decomposition</h2>
+      <p class="subtle" style="margin: 4px 0 6px;">Variables correlated with elevated pressure on this asset</p>
+      <table class="drivers">
+        <thead>
+          <tr><th>Variable</th><th>Dir.</th><th>Effect</th><th>Note</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Soil OC (low)</td>
+            <td><span class="dir up">↑</span></td>
+            <td><span class="effect-bar"><span class="fill" style="width: 36px"></span></span></td>
+            <td class="subtle">−18% vs benchmark mean</td>
+          </tr>
+          <tr>
+            <td>Available P (high)</td>
+            <td><span class="dir up">↑</span></td>
+            <td><span class="effect-bar"><span class="fill" style="width: 28px"></span></span></td>
+            <td class="subtle">+44% vs benchmark mean</td>
+          </tr>
+          <tr>
+            <td>Variety: Lara</td>
+            <td><span class="dir up">↑</span></td>
+            <td><span class="effect-bar"><span class="fill" style="width: 50px"></span></span></td>
+            <td class="subtle">Co-locates with low microbial biodiversity</td>
+          </tr>
+          <tr>
+            <td>Microbial biodiversity</td>
+            <td><span class="dir dn">↓</span></td>
+            <td><span class="effect-bar"><span class="fill neg" style="width: 32px"></span></span></td>
+            <td class="subtle">Lara estate: −31% Shannon vs Sara/Chandler</td>
+          </tr>
+          <tr>
+            <td>Irrigation depth (estimated)</td>
+            <td><span class="dir up">↑</span></td>
+            <td><span class="effect-bar"><span class="fill" style="width: 16px"></span></span></td>
+            <td class="subtle">Operator-reported · awaiting verification</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <h2>Benchmark frame</h2>
+      <p class="subtle" style="margin: 4px 0 6px;">Asset position vs comparable Iberian walnut (n = 38)</p>
+      <svg viewBox="0 0 360 80" class="benchmark-plot" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="distrib" x1="0" x2="1">
+            <stop offset="0" stop-color="#e0faf1"/>
+            <stop offset="0.5" stop-color="#86eb22" stop-opacity="0.5"/>
+            <stop offset="1" stop-color="#fadbd0"/>
+          </linearGradient>
+        </defs>
+        <path d="M 0 70 Q 60 65 100 50 Q 160 25 200 30 Q 250 38 300 55 Q 340 65 360 70 L 360 80 L 0 80 Z" fill="url(#distrib)" stroke="none"/>
+        <path d="M 0 70 Q 60 65 100 50 Q 160 25 200 30 Q 250 38 300 55 Q 340 65 360 70" stroke="#0f7a65" stroke-width="1.5" fill="none"/>
+        <line x1="265" y1="10" x2="265" y2="80" stroke="#b14117" stroke-width="2"/>
+        <circle cx="265" cy="50" r="5" fill="#b14117"/>
+        <text x="265" y="6" text-anchor="middle" fill="#b14117" font-size="9" font-weight="600">This asset · 61</text>
+        <text x="20" y="76" font-size="8" fill="#837e75">0</text>
+        <text x="180" y="76" font-size="8" fill="#837e75">50</text>
+        <text x="340" y="76" font-size="8" fill="#837e75">100</text>
+      </svg>
+      <div class="benchmark-caption">Cohort: <strong>Iberian walnut · permanent · low-OC soils</strong> · last refresh 2026-03</div>
+
+      <h3>Airborne pathogen panel</h3>
+      <div class="card risk" style="font-size: 12px;">
+        <strong>Airborne sampling not yet part of this report.</strong>
+        Spore-trap protocol proposed for Q3 2026 sampling round. Co-design opportunity: assay form, cadence, and how Joao wants the airborne layer integrated into the asset index versus reported separately.
+      </div>
+    </div>
+  </div>
+
+  <h2>Recommendations</h2>
+  <p class="subtle" style="margin: 4px 0 6px;">Framed as falsifiable hypotheses · mapped to parcels · confidence-tagged</p>
+  <div>
+    <div class="rec">
+      <div class="num">1</div>
+      <div class="body">
+        <strong>Intensify next-round sampling on the Lara estate (L-01, L-02, L-03).</strong>
+        <div class="where">Higher density (10 → 18 samples/ha) to resolve within-estate variation and confirm Phytophthora hot-spots before any intervention decision.</div>
+      </div>
+      <div class="conf high">High evidence</div>
+    </div>
+    <div class="rec">
+      <div class="num">2</div>
+      <div class="body">
+        <strong>Test cover-crop + OC-building intervention on L-01 and L-03 only, against L-02 as control.</strong>
+        <div class="where">If pressure index drops &gt;15 points at L-01/L-03 vs L-02 over 18 months, the OC-driver hypothesis is supported.</div>
+      </div>
+      <div class="conf med">Medium evidence</div>
+    </div>
+    <div class="rec">
+      <div class="num">3</div>
+      <div class="body">
+        <strong>Flag the asset as Phytophthora-sensitive in the fund's monitoring rhythm; revisit before any replanting decision.</strong>
+        <div class="where">No immediate action on Sara, Chandler, Howard — pressure within expected range for comparable assets.</div>
+      </div>
+      <div class="conf high">High evidence</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Samples · <strong>NG-2025-001 → NG-2025-036</strong></span>
+    <span>Protocol · <strong>SLX-PROT-v0.4-draft</strong></span>
+    <span>Pipeline · <strong>SLX-PL-v2.1</strong></span>
+    <span>Model · <strong>SLX-PP-v0.2-draft</strong></span>
+    <span>Report build · <strong>#a83e1f-draft</strong></span>
+    <span>Generated · <strong>2026-05-22T11:04Z</strong></span>
+  </div>
+
+</section>
+
+<!-- VIEW 2: Operator-grade -->
+<section class="view" id="op">
+
+  <h1 class="title">Asset — Nogam, walnut · operator view</h1>
+  <p class="subtle">Same underlying data and version as the IC view · different presentation layer · for Pedro / on-farm decisions</p>
+
+  <div class="provenance">
+    <span>Asset · <strong>Nogam (Portugal)</strong></span>
+    <span>Round · <strong>R-2025-06</strong></span>
+    <span>Pipeline · <strong>v2.1</strong></span>
+    <span>View · <strong>Operator-grade</strong></span>
+    <span>Same data as IC view · build <strong>#a83e1f-draft</strong></span>
+  </div>
+
+  <div class="op-summary">
+    Across the four varieties on the estate, <strong>Lara parcels carry the most soil-pathogen pressure</strong>, especially Phytophthora root rot.
+    Sara, Chandler and Howard sit within the range we'd expect for walnut in this region.
+    The likely contributors on Lara are <strong>lower soil organic carbon</strong> and <strong>low microbial biodiversity</strong>, both of which the platform can track year-on-year.
+    Nothing here calls for immediate intervention — the most useful next step is denser sampling on Lara to confirm where the hot-spots sit before any change in management.
+  </div>
+
+  <h2>Parcel summary</h2>
+  <table class="parcel-table">
+    <thead>
+      <tr>
+        <th>Parcel</th>
+        <th>Variety</th>
+        <th>Pressure</th>
+        <th>What to monitor</th>
+        <th>What could shift it</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>L-01 · L-02 · L-03</td>
+        <td>Lara</td>
+        <td><span class="pressure-pill high">High · 76-82</span></td>
+        <td>Phytophthora, root health, OC trend</td>
+        <td>Cover-crop rotation, OC-building inputs, irrigation review</td>
+      </tr>
+      <tr>
+        <td>C-01 · C-02 · C-03</td>
+        <td>Chandler</td>
+        <td><span class="pressure-pill med">Medium · 51-54</span></td>
+        <td>Verticillium, P trend</td>
+        <td>P-fertiliser review</td>
+      </tr>
+      <tr>
+        <td>H-01 · H-02 · H-03</td>
+        <td>Howard</td>
+        <td><span class="pressure-pill low">Low · 44-47</span></td>
+        <td>Baseline only</td>
+        <td>No change recommended</td>
+      </tr>
+      <tr>
+        <td>S-01 · S-02 · S-03</td>
+        <td>Sara</td>
+        <td><span class="pressure-pill low">Low · 34-42</span></td>
+        <td>Baseline only</td>
+        <td>No change recommended</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="grid-2">
+    <div>
+      <h2>Next steps · this season</h2>
+      <div class="rec">
+        <div class="num">1</div>
+        <div class="body">
+          <strong>Denser sampling on Lara before any management change.</strong>
+          <div class="where">10 → 18 samples/ha · plan with Soilytix in next sampling round (R-2026-09).</div>
+        </div>
+        <div class="conf high">Do</div>
+      </div>
+      <div class="rec">
+        <div class="num">2</div>
+        <div class="body">
+          <strong>Set L-01 + L-03 as cover-crop trial parcels; keep L-02 unchanged.</strong>
+          <div class="where">Outcome readout in 18 months · success criterion defined in IC report.</div>
+        </div>
+        <div class="conf med">Try</div>
+      </div>
+      <div class="rec">
+        <div class="num">3</div>
+        <div class="body">
+          <strong>No action on Sara, Chandler, Howard.</strong>
+          <div class="where">These parcels are within expected range. Continue normal management.</div>
+        </div>
+        <div class="conf low">Hold</div>
+      </div>
+    </div>
+    <div>
+      <h2>What we'll watch year-on-year</h2>
+      <ul style="font-size: 13px; padding-left: 18px; margin-top: 8px;">
+        <li>Pressure index per parcel — flagged if it moves more than 8 points between rounds.</li>
+        <li>Soil OC on Lara — target trajectory and check after cover-crop intervention.</li>
+        <li>Microbial biodiversity (Shannon) on Lara — gap vs Sara/Chandler should narrow if OC builds.</li>
+        <li>Phytophthora-specific markers, if cover-crop trial proceeds.</li>
+      </ul>
+
+      <h3>What this view does not include</h3>
+      <p class="subtle" style="margin: 4px 0;">
+        Microbiome composition charts, taxonomic detail tables, and statistical diagnostics live in the IC view and the appendix. Available on request — not surfaced here to keep the on-farm decision clear.
+      </p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Same data as IC view · build <strong>#a83e1f-draft</strong></span>
+    <span>Last updated · <strong>2026-05-22</strong></span>
+    <span>Next sampling · <strong>R-2026-09 (proposed)</strong></span>
+  </div>
+
+</section>
+
+<!-- VIEW 3: Fund-level portfolio rollup -->
+<section class="view" id="fund">
+
+  <h1 class="title">SLM Iberia — fund portfolio rollup</h1>
+  <p class="subtle">Cross-asset pressure view · prospective + active holdings · for Joao + IC</p>
+
+  <div class="provenance">
+    <span>Fund · <strong>SLM Iberia I</strong></span>
+    <span>Holdings · <strong>3 active + 1 prospective</strong></span>
+    <span>Last refresh · <strong>2026-05</strong></span>
+    <span>View · <strong>Fund rollup (Prototype 1 extension)</strong></span>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="label">Active assets</div>
+      <div class="value">3</div>
+      <div class="sub">Almond · walnut · forestry</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Avg. asset pressure</div>
+      <div class="value">48</div>
+      <div class="sub">Range 31 — 61</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Soft-spot assets</div>
+      <div class="value">1</div>
+      <div class="sub">Nogam, walnut</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Baselines pending</div>
+      <div class="value">1</div>
+      <div class="sub">Val del Pino · pre-planting</div>
+    </div>
+  </div>
+
+  <h2>Assets by pressure index</h2>
+  <div class="portfolio-bars">
+    <div class="portfolio-row">
+      <div class="asset">Nogam<span class="meta">Walnut · Portugal · 2025 baseline</span></div>
+      <div class="bar"><div class="fill" style="width: 61%; background: #b14117"></div></div>
+      <div class="val">61</div>
+    </div>
+    <div class="portfolio-row">
+      <div class="asset">Migdalo<span class="meta">Almond · Portugal · 2025 baseline</span></div>
+      <div class="bar"><div class="fill" style="width: 52%; background: #f5c542"></div></div>
+      <div class="val">52</div>
+    </div>
+    <div class="portfolio-row">
+      <div class="asset">Coillte SMA<span class="meta">Forestry · Ireland · baseline 2026</span></div>
+      <div class="bar"><div class="fill" style="width: 31%; background: #0f7a65"></div></div>
+      <div class="val">31</div>
+    </div>
+    <div class="portfolio-row">
+      <div class="asset">Val del Pino<span class="meta">SHD olive · Aragón · pre-planting (prospective)</span></div>
+      <div class="bar"><div class="fill" style="width: 0%; background: #8fb0a6"></div></div>
+      <div class="val">—</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <h2>Soft-spot callouts</h2>
+      <div class="card risk" style="font-size: 12px;">
+        <strong>Nogam · Lara estate.</strong> Pressure 74th-percentile vs comparable Iberian walnut. Phytophthora-led. Concentrated in 3 of 12 parcels. <span class="subtle">See IC view for decision detail.</span>
+      </div>
+      <div class="card note" style="font-size: 12px; margin-top: 8px;">
+        <strong>Migdalo · phosphate-yield interaction.</strong> Pressure within expected range; yield model is the more useful frame for this asset. <span class="subtle">See analytical template view.</span>
+      </div>
+    </div>
+    <div>
+      <h2>Pre-acquisition candidate</h2>
+      <div class="card invariant" style="font-size: 12px;">
+        <strong>Val del Pino · SHD olive · Aragón (200 ha).</strong>
+        Operator: CrowdFarming. Proposed pre-planting baseline scan: pathogen pressure + nutrient profile + chemistry. Sets the year-zero record for the asset and enters the V2 spine as a reproducible baseline.
+        <br><span class="subtle">Open: sampling depth, parcel partition, what gets locked into the protocol vs left to round-by-round refinement.</span>
+      </div>
+
+      <h3>Where the next fund (2027 close) embeds</h3>
+      <p class="subtle">Same rollup shape, populated from pre-acquisition baselines on every candidate asset before purchase. Sampling protocol and evidence-package schema co-designed during fund design (2026).</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Rollup spine · <strong>Prototype 1 + portfolio extension</strong></span>
+    <span>Benchmark cohorts · <strong>per-crop, per-region</strong></span>
+    <span>Last refresh · <strong>2026-05-22</strong></span>
+  </div>
+
+</section>
+
+<!-- VIEW 4: Migdalo-style template -->
+<section class="view" id="migdalo">
+
+  <h1 class="title">Analytical template — Migdalo (almond), generalised</h1>
+  <p class="subtle">The output shape that worked at Migdalo, lifted into the V2 standard template · same engine, response variable swaps</p>
+
+  <div class="provenance">
+    <span>Anchor case · <strong>Migdalo almond, Portugal</strong></span>
+    <span>Response variable · <strong>Yield</strong></span>
+    <span>Also drives · <strong>Pathogen pressure, risk index, soil health</strong></span>
+    <span>Same spine as IC view</span>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="label">Variance explained</div>
+      <div class="value">54%</div>
+      <div class="sub">Yield model · 12-parcel asset</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Top driver</div>
+      <div class="value">Variety</div>
+      <div class="sub">Bellona &gt; Solita &gt; Vairo</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Density optimum</div>
+      <div class="value">357</div>
+      <div class="sub">Trees / ha</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Reproducibility</div>
+      <div class="value">Versioned</div>
+      <div class="sub">Pipeline + model hash</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <h2>Ranked drivers (Migdalo · yield)</h2>
+      <table class="drivers">
+        <thead><tr><th>Variable</th><th>Dir.</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td>Variety (Bellona vs Vairo)</td><td><span class="dir up">↑</span></td><td><span class="effect-bar"><span class="fill" style="width: 64px"></span></span></td></tr>
+          <tr><td>Planting density (optimum)</td><td><span class="dir up">↑</span></td><td><span class="effect-bar"><span class="fill" style="width: 44px"></span></span></td></tr>
+          <tr><td>Soil phosphate</td><td><span class="dir dn">↓</span></td><td><span class="effect-bar"><span class="fill neg" style="width: 40px"></span></span></td></tr>
+          <tr><td>Plant-parasitic nematode</td><td><span class="dir dn">↓</span></td><td><span class="effect-bar"><span class="fill neg" style="width: 30px"></span></span></td></tr>
+          <tr><td>Soil organic carbon</td><td><span class="dir up">↑</span></td><td><span class="effect-bar"><span class="fill" style="width: 22px"></span></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <h2>Chemistry &amp; biology overlay</h2>
+      <table class="drivers">
+        <thead><tr><th>Layer</th><th>Status</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Cu, Zn</td><td><span class="pressure-pill low">Low</span></td><td class="subtle">Watch micronutrient stress</td></tr>
+          <tr><td>S, Mg</td><td><span class="pressure-pill high">High</span></td><td class="subtle">No action; flag for trend</td></tr>
+          <tr><td>OC</td><td><span class="pressure-pill med">Slightly low</span></td><td class="subtle">Building OC supports yield drivers above</td></tr>
+          <tr><td>pH</td><td><span class="pressure-pill med">Slightly low</span></td><td class="subtle">In-range for almond</td></tr>
+          <tr><td>Microbial biodiversity</td><td><span class="pressure-pill low">In-range</span></td><td class="subtle">No co-located weakness</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card note" style="margin-top: 24px; font-size: 13px;">
+    <strong>Same engine, different response variable.</strong>
+    The template above is the V2 standard analytical output: response variable on top, ranked drivers, overlay, benchmark, recommendations.
+    Set the response variable to <em>yield</em> and you get the Migdalo case. Set it to <em>pathogen pressure</em> and you get the Nogam IC view in the first tab. Set it to <em>microbiome × nutrient interaction</em> and you get Joao's #4-5 priority. Set it to <em>variety × environment</em> and you get the KWS trial-intelligence shape.
+    <br>
+    <span class="subtle">One engine; productised; reproducible; not a per-project bespoke.</span>
+  </div>
+
+  <div class="foot">
+    <span>Template · <strong>SLX-Analytical-v0.3-draft</strong></span>
+    <span>Pipeline · <strong>v2.1</strong></span>
+    <span>Anchor cases · <strong>Migdalo (yield), Nogam (pressure)</strong></span>
+  </div>
+
+</section>
+
+<!-- VIEW 5: Spine and co-design -->
+<section class="view" id="spine">
+
+  <h1 class="title">V2 spine &amp; co-design</h1>
+  <p class="subtle">What sits underneath every view above · and the open questions we want SLM to shape</p>
+
+  <h2>Spine — built once, amortised across surfaces</h2>
+  <div class="spine-diagram">
+    <div class="spine-node"><strong>Sample plan</strong>Parcel partition, sampling design, treatment metadata</div>
+    <div class="spine-node"><strong>Sample lineage</strong>Provenance from field to library to pipeline output</div>
+    <div class="spine-node"><strong>Execution run</strong>Versioned protocol, pipeline, model — reproducible</div>
+    <div class="spine-node"><strong>Evidence set</strong>Measurements, derived metrics, interpretations, separable</div>
+    <div class="spine-node"><strong>Report build</strong>IC, operator, fund rollup — same data, different render</div>
+  </div>
+  <p class="subtle" style="margin-top: 10px;">
+    Every tile in this mock — the asset IC view, the operator-grade variant, the fund rollup, the Migdalo template — is a different surface on the same spine. The shape we choose with SLM doesn't change the substrate; it shapes the surfaces.
+  </p>
+
+  <h2>Where SLM fits in the V2 picture</h2>
+  <div class="grid-3">
+    <div class="card invariant">
+      <h3 style="margin-top: 0;">Prototype 1 · Soil monitoring</h3>
+      <p style="font-size: 12px; margin: 0;">Per-asset soil/condition/biodiversity profile. Foundation surface. Every SLM asset sits here, including pre-acquisition baselines.</p>
+    </div>
+    <div class="card note">
+      <h3 style="margin-top: 0;">Portfolio rollup (extension)</h3>
+      <p style="font-size: 12px; margin: 0;">Cross-asset view on top of Prototype 1 — fund-level rather than its own track. Collapses what was sketched as Prototype 5.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top: 0;">Pathogen-pressure module</h3>
+      <p style="font-size: 12px; margin: 0;">Narrow Prototype-4-shaped analytical output pulled forward — applied to asset risk rather than ag-input efficacy. Lands Joao's #1–3 priority.</p>
+    </div>
+  </div>
+
+  <h2>What we want SLM to shape</h2>
+  <div class="questions">
+    <div class="q-row">
+      <div class="qnum">1</div>
+      <div class="qbody">
+        <strong>Pathogen unit of aggregation.</strong>
+        <span>Named taxa, functional guilds, or both? IC-grade vs operator-grade may need different units.</span>
+      </div>
+    </div>
+    <div class="q-row">
+      <div class="qnum">2</div>
+      <div class="qbody">
+        <strong>Airborne integration.</strong>
+        <span>Assay form (spore trap, qPCR, eDNA from air), cadence, and how it folds into the asset index — single combined number, or separate soil + airborne indices.</span>
+      </div>
+    </div>
+    <div class="q-row">
+      <div class="qnum">3</div>
+      <div class="qbody">
+        <strong>Audience layering.</strong>
+        <span>Two presentation layers (IC, operator) — is that the right split, or do LP / certifier / regulator views need their own render?</span>
+      </div>
+    </div>
+    <div class="q-row">
+      <div class="qnum">4</div>
+      <div class="qbody">
+        <strong>Pre-acquisition baseline scope.</strong>
+        <span>Val del Pino: minimum viable scan, what locks into the protocol, what stays flexible. Sets the template for the 2027 fund.</span>
+      </div>
+    </div>
+    <div class="q-row">
+      <div class="qnum">5</div>
+      <div class="qbody">
+        <strong>Evidence-package schema.</strong>
+        <span>IC, LP, Verra, certifier — what fields, what cadence, what level of provenance exposed. Defines the EvidenceSet shape, not just the report layout.</span>
+      </div>
+    </div>
+    <div class="q-row">
+      <div class="qnum">6</div>
+      <div class="qbody">
+        <strong>Recommendation intensity.</strong>
+        <span>Falsifiable hypotheses (as in this mock) vs prescriptive actions. Joao influences operators; the right intensity is the one that lands without bypassing them.</span>
+      </div>
+    </div>
+    <div class="q-row">
+      <div class="qnum">7</div>
+      <div class="qbody">
+        <strong>Sampling and monitoring cadence.</strong>
+        <span>Per-asset baseline + annual round + event-driven re-sampling — does this shape match how SLM decides interventions, or is the rhythm different?</span>
+      </div>
+    </div>
+    <div class="q-row">
+      <div class="qnum">8</div>
+      <div class="qbody">
+        <strong>Commercial shape.</strong>
+        <span>Per-asset baseline price + monitoring annuity + per-evidence-package fee — does this fit how SLM books and approves work, fund by fund?</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Reading guide for the room</h2>
+  <div class="card note" style="font-size: 13px;">
+    Nothing in this mock is a commitment. Numbers, taxa, parcels, and labels are placeholders to make the shape legible. The asks are the questions on this page. The aim is to walk out with a sharper version of the IC view, the operator view, and the fund rollup — co-designed, not pitched.
+  </div>
+
+  <div class="foot">
+    <span>Mock build · <strong>2026-05-22-draft</strong></span>
+    <span>For · <strong>SLM Partners co-design</strong></span>
+    <span>Prepared by · <strong>Soilytix</strong></span>
+    <span>Not for distribution</span>
+  </div>
+
+</section>
+
+</div>
+
+<script>
+const buttons = document.querySelectorAll('nav.tabs button');
+const views = document.querySelectorAll('section.view');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.view;
+    buttons.forEach(b => b.classList.toggle('active', b === btn));
+    views.forEach(v => v.classList.toggle('active', v.id === target));
+    window.scrollTo({top: 0, behavior: 'instant'});
+  });
+});
+// keyboard nav: left/right arrows
+document.addEventListener('keydown', e => {
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  const arr = Array.from(buttons);
+  const idx = arr.findIndex(b => b.classList.contains('active'));
+  const next = e.key === 'ArrowRight' ? (idx + 1) % arr.length : (idx - 1 + arr.length) % arr.length;
+  arr[next].click();
+});
+</script>
+
+</body>
+</html>
