@@ -1,0 +1,227 @@
+
+<h2 class="sr-only">AI meeting notetaker feature matrix — 13 tools across 42 rows including hard constraints section, pricing, and all feature categories.</h2>
+<style>
+:root{
+  --y-bg:#EAF3DE;--y-fg:#3B6D11;
+  --p-bg:#FAEEDA;--p-fg:#854F0B;
+  --n-bg:#FCEBEB;--n-fg:#A32D2D;
+  --hc-bg:#E6F1FB;--hc-fg:#185FA5;
+  --hc-border:#378ADD;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --y-bg:#27500A;--y-fg:#C0DD97;
+    --p-bg:#633806;--p-fg:#FAC775;
+    --n-bg:#791F1F;--n-fg:#F7C1C1;
+    --hc-bg:#0C447C;--hc-fg:#B5D4F4;
+    --hc-border:#378ADD;
+  }
+}
+.wrap{padding:0.75rem 0 0.5rem;}
+.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:0.6rem;}
+.controls select,.controls input{font-size:11px;padding:4px 7px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-primary);}
+.controls input{width:150px;}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:0.6rem;}
+.litem{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--color-text-secondary);}
+.dot{width:9px;height:9px;border-radius:2px;display:inline-block;}
+.count{font-size:11px;color:var(--color-text-secondary);}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table{border-collapse:collapse;table-layout:fixed;}
+th,td{padding:4px 7px;font-size:10.5px;border-bottom:0.5px solid var(--color-border-tertiary);vertical-align:middle;white-space:nowrap;}
+th{font-weight:500;color:var(--color-text-secondary);background:var(--color-background-secondary);position:sticky;top:0;z-index:2;text-align:left;}
+th.th-num{width:22px;min-width:22px;}
+th.th-cat{width:72px;min-width:72px;font-size:10px;}
+th.th-feat{width:195px;min-width:195px;white-space:normal;}
+th.th-tool{width:72px;min-width:72px;text-align:center;font-size:9.5px;font-weight:500;color:var(--color-text-primary);line-height:1.3;white-space:normal;word-break:break-word;}
+td.td-num{font-size:10px;color:var(--color-text-secondary);}
+td.td-cat{width:72px;font-size:10px;color:var(--color-text-secondary);white-space:normal;word-wrap:break-word;}
+td.td-feat{width:195px;min-width:195px;color:var(--color-text-primary);white-space:normal;word-wrap:break-word;line-height:1.35;}
+td.td-s{width:72px;min-width:72px;text-align:center;}
+.b{display:inline-block;font-size:10px;font-weight:500;padding:2px 5px;border-radius:3px;}
+.y{background:var(--y-bg);color:var(--y-fg);}
+.p{background:var(--p-bg);color:var(--p-fg);}
+.n{background:var(--n-bg);color:var(--n-fg);}
+.mb{display:inline-block;font-size:9.5px;padding:1px 5px;border-radius:3px;background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary);white-space:normal;word-break:break-all;line-height:1.4;text-align:left;}
+tr.grp td{background:var(--color-background-secondary);font-size:10px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:0.04em;padding:5px 7px;}
+tr.hc-grp td{background:var(--hc-bg);color:var(--hc-fg);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.04em;padding:5px 7px;border-left:2px solid var(--hc-border);}
+tr.hc-row td.td-cat,tr.hc-row td.td-feat{border-left:2px solid var(--hc-border);}
+tr.hc-row{background:color-mix(in srgb,var(--hc-bg) 8%,transparent);}
+tr:not(.grp):not(.hc-grp):not(.hc-row):hover td{background:var(--color-background-secondary);}
+tr.hidden{display:none;}
+</style>
+<div class="wrap">
+<div class="controls">
+  <input type="text" id="search" placeholder="Filter features…" oninput="applyF()">
+  <select id="catF" onchange="applyF()">
+    <option value="">All categories</option>
+    <option value="⚠ Hard constraints">⚠ Hard constraints</option>
+    <option value="Pricing">Pricing</option>
+    <option value="Core capture">Core capture</option>
+    <option value="Data & privacy">Data & privacy</option>
+    <option value="Integrations">Integrations</option>
+    <option value="Intelligence">Intelligence</option>
+    <option value="Coaching">Coaching</option>
+    <option value="Live features">Live features</option>
+    <option value="Output">Output</option>
+    <option value="Meta">Meta</option>
+  </select>
+  <select id="sF" onchange="applyF()">
+    <option value="">All statuses</option>
+    <option value="y">✓ Supported</option>
+    <option value="p">~ Partial</option>
+    <option value="n">✗ Not found</option>
+  </select>
+  <span class="count" id="cnt"></span>
+</div>
+<div class="legend">
+  <span class="litem"><span class="dot" style="background:var(--y-bg);border:1px solid var(--y-fg);"></span>✓ Supported</span>
+  <span class="litem"><span class="dot" style="background:var(--p-bg);border:1px solid var(--p-fg);"></span>~ Partial</span>
+  <span class="litem"><span class="dot" style="background:var(--n-bg);border:1px solid var(--n-fg);"></span>✗ Not found</span>
+  <span class="litem"><span class="dot" style="background:var(--hc-bg);border:1px solid var(--hc-border);"></span>Hard constraint row</span>
+</div>
+<div class="tbl-wrap">
+<table id="mx">
+<thead>
+<tr>
+  <th class="th-num">#</th>
+  <th class="th-cat">Category</th>
+  <th class="th-feat">Feature</th>
+  <th class="th-tool">Amber Notes</th>
+  <th class="th-tool">tldv</th>
+  <th class="th-tool">read.ai</th>
+  <th class="th-tool">Granola</th>
+  <th class="th-tool">Jamie</th>
+  <th class="th-tool">Fireflies</th>
+  <th class="th-tool">Grain</th>
+  <th class="th-tool">Notta</th>
+  <th class="th-tool">MeetGeek</th>
+  <th class="th-tool">Noota</th>
+  <th class="th-tool">Wudpecker</th>
+  <th class="th-tool">Sembly</th>
+  <th class="th-tool">Notion AI</th>
+</tr>
+</thead>
+<tbody id="tb"></tbody>
+</table>
+</div>
+</div>
+<script>
+const T=["Amber Notes","tldv","read.ai","Granola","Jamie","Fireflies","Grain","Notta","MeetGeek","Noota","Wudpecker","Sembly","Notion AI"];
+
+const rows=[
+  // cat, feat, ...13 vals
+  // ── HARD CONSTRAINTS ──
+  ["⚠ Hard constraints","EU data residency","y","y","p","n","y","n","n","n","y","y","y","p","n"],
+  ["⚠ Hard constraints","Bot-mode (perfect diarization)","y","y","y","p","n","y","y","y","y","y","y","y","n"],
+  ["⚠ Hard constraints","In-person (1 mic, many speakers)","y","p","y","y","y","y","y","y","y","y","n","p","y"],
+  ["⚠ Hard constraints","Calendar-triggered capture","p","y","y","y","p","y","y","y","y","y","y","y","p"],
+  ["⚠ Hard constraints","Live transcript (readable during call)","y","y","y","y","n","y","y","y","y","y","n","p","y"],
+  // ── PRICING ──
+  ["Pricing","Free tier","n","y","y","y","y","y","y","y","y","y","y","y","n"],
+  ["Pricing","Starter / Pro (annual)","Sales only","$18/u/mo","$15/u/mo","—","€24/mo","$10/u/mo","$15/u/mo","$8.17/u/mo","$9.99/u/mo","€19/u/mo","$13/u/mo","$20/u/mo","—"],
+  ["Pricing","Business / Team (annual)","Sales only","$59/u/mo","$22.50/u/mo","$14/u/mo","€39/u/mo","$19/u/mo","$25/u/mo","$16.67/u/mo","$17/u/mo","€35/u/mo","$25/u/mo","$20/u/mo (ent)","$20/u/mo"],
+  ["Pricing","Enterprise","Sales","Custom","$29.75+","$35/u/mo","Custom","Custom","Custom","Custom","Custom","Custom","Custom","Custom","Custom"],
+  // ── CORE CAPTURE ──
+  ["Core capture","MS Teams integration","y","y","y","y","y","y","y","y","y","y","y","y","y"],
+  ["Core capture","Google Meet integration","y","y","y","y","y","y","y","y","y","y","y","y","y"],
+  ["Core capture","Local capture (in-person)","y","p","y","y","y","y","y","y","y","y","n","p","y"],
+  ["Core capture","Bot-capture (diarization)","y","y","y","p","n","y","y","y","y","y","y","y","n"],
+  ["Core capture","Bot-free AND bot mode","y","y","y","n","n","y","y","y","p","y","y","n","n"],
+  ["Core capture","Video capture without bot","n","p","p","n","n","p","p","p","p","p","n","n","n"],
+  // ── DATA & PRIVACY ──
+  ["Data & privacy","Audio available for storage","y","y","y","n","n","y","y","y","y","y","y","y","n"],
+  ["Data & privacy","Video available for storage","n","y","p","n","n","p","y","p","y","y","n","y","n"],
+  ["Data & privacy","Data EU-residency","y","y","p","n","y","n","n","n","y","y","y","p","n"],
+  // ── INTEGRATIONS ──
+  ["Integrations","Notion integration","y","y","y","y","y","y","y","y","y","y","y","y","n"],
+  ["Integrations","Notion context for summarizer","n","n","p","y","n","p","n","n","n","n","n","n","y"],
+  ["Integrations","Linear integration","n","p","y","p","y","y","p","n","n","n","n","y","n"],
+  ["Integrations","Slack integration","y","y","y","y","n","y","y","y","y","y","y","y","n"],
+  ["Integrations","HubSpot integration","y","y","y","y","y","y","y","y","y","y","y","y","n"],
+  ["Integrations","Attio integration","n","n","n","y","y","y","n","n","y","n","n","y","n"],
+  ["Integrations","Zapier integration","p","y","y","y","p","y","y","y","y","y","y","y","p"],
+  ["Integrations","MCP server","n","y","y","y","y","y","y","n","y","p","n","y","n"],
+  // ── INTELLIGENCE ──
+  ["Intelligence","Company context for transcript","n","p","p","y","n","y","y","n","p","n","n","p","n"],
+  ["Intelligence","Custom vocabulary","n","n","p","p","y","y","p","p","y","y","n","y","n"],
+  ["Intelligence","Entity recognition","n","p","y","n","n","y","p","n","y","n","n","p","n"],
+  ["Intelligence","Keyword tracking across meetings","n","y","y","n","n","y","p","n","y","p","n","y","n"],
+  ["Intelligence","Decision tracking across meetings","n","y","y","p","p","y","p","n","p","p","n","y","n"],
+  ["Intelligence","AI chat with transcript","y","y","y","y","y","y","y","y","y","y","n","y","y"],
+  // ── COACHING ──
+  ["Coaching","Speaking coaching (pattern insights)","n","y","y","p","n","y","y","p","y","p","n","p","n"],
+  ["Coaching","Live coaching (during call)","n","n","y","p","n","y","n","n","p","y","n","n","n"],
+  ["Coaching","Speaker statistics","p","y","y","n","n","y","y","p","y","p","n","y","n"],
+  // ── LIVE FEATURES ──
+  ["Live features","Live transcript (readable during call)","y","y","y","y","n","y","y","y","y","y","n","p","y"],
+  ["Live features","AI chat during live meeting","n","n","y","y","n","y","n","n","p","n","n","n","n"],
+  ["Live features","Auto in-transcript summaries (live)","n","n","y","p","n","y","p","n","p","n","n","n","n"],
+  // ── OUTPUT ──
+  ["Output","Action items (AI insights)","y","y","y","y","y","y","y","y","y","y","y","y","y"],
+  ["Output","Custom meeting templates","p","y","y","y","y","y","y","y","y","y","n","y","p"],
+  ["Output","Personalized meeting summaries","y","y","y","y","y","y","y","y","y","y","y","y","y"],
+  ["Output","Video recording of call","n","y","p","n","n","p","y","p","y","y","n","y","n"],
+  // ── META ──
+  ["Meta","Company location","Belgium","Aachen DE","SF US","London UK","Cologne DE","Pleasanton US","SF US","Tokyo JP","Bucharest RO","Paris FR","Helsinki FI","New York US","SF US"],
+  ["Meta","Founded","~2023","2020","2021","2023","2022","2016","2019","2020","2020","2020","2022","2019","2016"],
+];
+
+const isMeta=r=>r[0]==="Meta"||(r[0]==="Pricing"&&!["y","p","n"].includes(r[3]));
+const isHC=r=>r[0]==="⚠ Hard constraints";
+
+function render(){
+  const tb=document.getElementById("tb");
+  let lastCat="";
+  rows.forEach((r,i)=>{
+    const[cat,feat,...vals]=r;
+    if(cat!==lastCat){
+      const g=document.createElement("tr");
+      g.className=cat==="⚠ Hard constraints"?"hc-grp":"grp";
+      g.dataset.cat=cat;
+      g.innerHTML=`<td colspan="16">${cat}</td>`;
+      tb.appendChild(g);
+      lastCat=cat;
+    }
+    const tr=document.createElement("tr");
+    if(isHC(r))tr.classList.add("hc-row");
+    tr.dataset.feat=feat.toLowerCase();
+    tr.dataset.cat=cat;
+    tr.dataset.sv=vals.join(",");
+    const isM=isMeta(r);
+    const cells=vals.map((v,ti)=>{
+      if(isM)return`<td class="td-s" data-ti="${ti}"><span class="mb" title="${T[ti]}">${v}</span></td>`;
+      const c={"y":"y","p":"p","n":"n"}[v]||"n";
+      const l={"y":"✓","p":"~","n":"✗"}[v]||"✗";
+      const f={"y":"Supported","p":"Partial","n":"Not found"}[v]||"";
+      return`<td class="td-s" data-ti="${ti}"><span class="b ${c}" title="${f} — ${T[ti]}">${l}</span></td>`;
+    }).join("");
+    tr.innerHTML=`<td class="td-num">${i+1}</td><td class="td-cat">${cat}</td><td class="td-feat">${feat}</td>${cells}`;
+    tb.appendChild(tr);
+  });
+  document.getElementById("cnt").textContent=`${rows.length} of ${rows.length} rows`;
+}
+
+function applyF(){
+  const q=document.getElementById("search").value.toLowerCase();
+  const cf=document.getElementById("catF").value;
+  const sf=document.getElementById("sF").value;
+  let vis=0;
+  document.querySelectorAll("#tb tr:not(.grp):not(.hc-grp)").forEach(tr=>{
+    const fm=!q||tr.dataset.feat.includes(q);
+    const cm=!cf||tr.dataset.cat===cf;
+    let sm=true;
+    if(sf){const sv=tr.dataset.sv.split(",");sm=sv.some(v=>v===sf);}
+    const show=fm&&cm&&sm;
+    tr.classList.toggle("hidden",!show);
+    if(show)vis++;
+  });
+  document.querySelectorAll("#tb tr.grp,#tb tr.hc-grp").forEach(g=>{
+    const cat=g.dataset.cat;
+    const any=[...document.querySelectorAll(`#tb tr:not(.grp):not(.hc-grp)`)].some(tr=>tr.dataset.cat===cat&&!tr.classList.contains("hidden"));
+    g.classList.toggle("hidden",!any);
+  });
+  document.getElementById("cnt").textContent=`${vis} of ${rows.length} rows`;
+}
+
+render();
+</script>
