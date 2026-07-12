@@ -1,0 +1,1329 @@
+@keyframes atlas-route {
+    0% {
+        stroke-dashoffset: 0
+    }
+
+    to {
+        stroke-dashoffset: -160
+    }
+}
+
+@keyframes atlas-float {
+
+    0%,
+    to {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-8px)
+    }
+}
+
+@keyframes atlas-twinkle {
+
+    0%,
+    to {
+        opacity: .3;
+        transform: scale(.92)
+    }
+
+    50% {
+        opacity: .85;
+        transform: scale(1.02)
+    }
+}
+
+@keyframes atlas-draw {
+    to {
+        stroke-dashoffset: 0
+    }
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    src: url(/LibertinusSans-Regular.otf)format("opentype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    src: url(/LibertinusSans-Italic.otf)format("opentype");
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    src: url(/LibertinusSans-Bold.otf)format("opentype");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap
+}
+
+:root {
+    --linewidth: 50rem;
+    --black: hsl(0, 0%, 20%);
+    --white: hsl(0, 0%, 97%);
+    --primary: hsl(100, 27%, 50%);
+    --grey-dark: hsl(0, 0%, 29%);
+    --grey: hsl(0, 0%, 48%);
+    --grey-light: hsl(0, 0%, 71%);
+    --gap-xs: 0.5rem;
+    --gap-sm: 1rem;
+    --gap-md: 2rem;
+    --gap-lg: 4rem
+}
+
+* {
+    box-sizing: border-box
+}
+
+html {
+    background: var(--primary)
+}
+
+a,
+body {
+    color: var(--black)
+}
+
+body {
+    -webkit-font-smoothing: subpixel-antialiased;
+    display: flex;
+    flex-direction: column;
+    font-family: "Libertinus Sans", sans-serif;
+    font-size: 1rem;
+    hyphens: auto;
+    line-height: 1.5;
+    margin: 0 auto;
+    min-height: 100vh;
+    max-width: var(--linewidth);
+    background: var(--white);
+    box-shadow: 0 0 13rem 0 var(--black);
+    padding: var(--gap-md) var(--gap-md) var(--gap-xs) var(--gap-md);
+    overflow-y: scroll
+}
+
+a {
+    text-decoration: underline
+}
+
+a:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    cursor: pointer
+}
+
+h1,
+header {
+    display: flex;
+    align-items: center
+}
+
+body,
+header {
+    gap: var(--gap-md)
+}
+
+header {
+    justify-content: space-between;
+    flex-wrap: wrap
+}
+
+h1 {
+    border: .2rem solid var(--black);
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0;
+    width: 9rem;
+    aspect-ratio: 1.618/1;
+    line-height: 1em;
+    padding: 0 .6rem
+}
+
+footer,
+nav {
+    display: flex;
+    gap: var(--gap-xs)
+}
+
+nav {
+    flex-flow: wrap;
+    justify-content: flex-start
+}
+
+footer {
+    color: var(--grey-dark);
+    font-size: .7rem;
+    flex-direction: row
+}
+
+a:has(svg),
+h2:has(svg),
+li:has(svg) {
+    gap: var(--gap-xs)
+}
+
+a:has(svg),
+h2:has(svg),
+li:has(svg),
+p:has(svg) {
+    display: flex;
+    align-items: center;
+    line-height: 1
+}
+
+p {
+    margin-top: .2em
+}
+
+p:has(svg) {
+    gap: var(--gap-md)
+}
+
+p svg:first-child {
+    height: 2.5rem;
+    width: 7.5rem
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 200;
+    margin: var(--gap-lg)0 var(--gap-sm)0;
+    justify-content: space-between
+}
+
+h3,
+h4 {
+    margin-top: 2em
+}
+
+pre {
+    padding: 1rem;
+    width: fit-content;
+    color: var(--grey);
+    white-space: pre-wrap;
+    overflow-wrap: break-word
+}
+
+body.home-atlas main,
+img,
+textarea {
+    width: 100%
+}
+
+label {
+    display: block;
+    margin-bottom: .5rem;
+    font-variant: small-caps
+}
+
+pre,
+textarea {
+    font-size: .8rem
+}
+
+textarea {
+    padding: .8rem;
+    color: var(--black);
+    border: 1px solid var(--grey-light)
+}
+
+.atlas-legend h1,
+button {
+    border-width: medium;
+    border-style: none;
+    border-color: currentcolor;
+    border-image: initial
+}
+
+button {
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    background: var(--primary);
+    color: var(--white);
+    cursor: pointer
+}
+
+canvas {
+    display: block;
+    margin: 1em auto
+}
+
+.motion_still_container {
+    background: var(--white);
+    border-left-width: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    width: max(80vw, 100%);
+    place-items: center
+}
+
+.map {
+    display: flex;
+    height: 97vh;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw
+}
+
+.boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--gap-xs);
+    align-items: stretch
+}
+
+html.home-atlas-root {
+    --atlas-scroll: 0;
+    background: #e7e1d5;
+    font-family: "Libertinus Sans", sans-serif
+}
+
+body.home-atlas {
+    --atlas-ink: #403429;
+    --atlas-ink-soft: #685a48;
+    --atlas-line: rgba(69, 55, 38, 0.58);
+    background: #e7e1d5;
+    box-shadow: none;
+    color: var(--atlas-ink);
+    gap: 0;
+    margin: 0;
+    max-width: none;
+    min-height: 100vh;
+    overflow: hidden auto;
+    padding: 0;
+    width: 100%
+}
+
+#automa-palette,
+body.home-atlas>footer,
+body.home-atlas>header,
+body.home-scene-blog>footer,
+body.home-scene-blog>header {
+    display: none
+}
+
+body.home-atlas a {
+    color: inherit
+}
+
+.atlas-page {
+    position: relative;
+    min-height: 100vh;
+    padding: 0 0 1.5rem
+}
+
+.atlas-page::after,
+.atlas-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none
+}
+
+.atlas-page::before {
+    z-index: -2;
+    background: linear-gradient(rgba(236, 229, 216, .58), rgba(236, 229, 216, .58)), url(paper-texture.png)center top/cover no-repeat;
+    opacity: .95
+}
+
+.atlas-page::after {
+    z-index: -1;
+    background: radial-gradient(circle at center top, rgba(255, 255, 255, .36), transparent 18%), linear-gradient(rgba(166, 153, 126, .08), transparent 24%)
+}
+
+.atlas-legend {
+    position: relative;
+    z-index: 4;
+    max-width: 36rem;
+    padding: 1rem clamp(.8rem, 2vw, 2rem) 1.2rem
+}
+
+.atlas-footnote,
+.atlas-label,
+.atlas-legend .eyebrow,
+.card-kicker {
+    letter-spacing: .12em;
+    text-transform: uppercase
+}
+
+.atlas-legend .eyebrow,
+.atlas-legend .lede {
+    margin: 0 0 .4rem;
+    color: var(--atlas-ink-soft);
+    font-size: .76rem
+}
+
+.atlas-legend h1 {
+    width: auto;
+    aspect-ratio: auto;
+    margin: 0;
+    padding: 0;
+    font-size: clamp(2.5rem, 5.4vw, 4.7rem);
+    font-weight: 700;
+    letter-spacing: -.04em;
+    line-height: .94;
+    text-wrap: balance
+}
+
+.atlas-legend .lede {
+    max-width: 30rem;
+    margin: .85rem 0 1rem;
+    font-size: 1.02rem;
+    line-height: 1.55
+}
+
+.atlas-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem 1rem
+}
+
+.atlas-nav a,
+.card-links a {
+    text-decoration: none
+}
+
+.atlas-nav a {
+    position: relative;
+    padding-bottom: .15rem;
+    color: var(--atlas-ink-soft);
+    border-bottom: 1px solid rgba(90, 72, 49, .16)
+}
+
+.atlas-nav a::after {
+    content: "·";
+    margin-left: 1rem;
+    color: rgba(108, 93, 76, .55)
+}
+
+.atlas-nav a:last-child::after {
+    content: "";
+    margin: 0
+}
+
+.atlas-board {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(9, minmax(5.5rem, auto));
+    gap: 1.1rem;
+    min-height: 212rem;
+    padding: 0 0 28rem
+}
+
+.atlas-ink,
+.atlas-scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%
+}
+
+.atlas-scene {
+    z-index: 0;
+    overflow: hidden
+}
+
+.atlas-backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%
+}
+
+.atlas-backdrop--sky {
+    z-index: 0;
+    opacity: .84;
+    transform: translateY(calc(var(--atlas-scroll)*-.01px))
+}
+
+.atlas-backdrop--far {
+    z-index: 0;
+    opacity: .82;
+    transform: translateY(calc(var(--atlas-scroll)*-.05px))
+}
+
+.atlas-backdrop--channel {
+    z-index: 1;
+    opacity: .9;
+    transform: translateY(calc(var(--atlas-scroll)*-.08px))
+}
+
+.atlas-backdrop--near {
+    z-index: 2;
+    opacity: .82;
+    transform: translateY(calc(var(--atlas-scroll)*-.13px))
+}
+
+.atlas-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    pointer-events: none
+}
+
+.atlas-overlay--terrain {
+    opacity: .96;
+    transform: translateY(calc(var(--atlas-scroll)*-.1px))
+}
+
+.overlay-veil {
+    fill: rgba(236, 229, 216, .74)
+}
+
+.overlay-ridge--upper {
+    fill: rgba(202, 201, 187, .92)
+}
+
+.overlay-ridge--channel {
+    fill: rgba(184, 190, 189, .9)
+}
+
+.overlay-ridge--lower {
+    fill: rgba(193, 202, 208, .82)
+}
+
+.atlas-ink circle,
+.atlas-ink path,
+.overlay-stroke {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
+
+.overlay-stroke--channel {
+    stroke: rgba(126, 125, 115, .55);
+    stroke-width: 5
+}
+
+.overlay-stroke--lower {
+    stroke: rgba(108, 109, 104, .58);
+    stroke-width: 4
+}
+
+.overlay-stroke--left {
+    stroke: rgba(156, 169, 181, .42);
+    stroke-width: 6
+}
+
+.atlas-sprite {
+    position: absolute;
+    z-index: 1;
+    transform-origin: center bottom;
+    user-select: none
+}
+
+.atlas-sprite--peak {
+    inset: 0 auto auto 0;
+    width: 54.4vw
+}
+
+.atlas-sprite--iceworld {
+    inset: 30.1%auto auto 71.2%;
+    width: 26.6vw
+}
+
+.atlas-sprite--glacier {
+    inset: 43.2%auto auto 33.1%;
+    width: 54.4vw
+}
+
+.atlas-sprite--cliff {
+    inset: 50.4%auto auto 0;
+    width: 34.5vw
+}
+
+.atlas-sprite--crevasse {
+    inset: 85.4%auto auto 68.5%;
+    width: 29.6vw
+}
+
+.atlas-sprite--monastery {
+    inset: 90.7%auto auto 6.4%;
+    width: 7.6vw
+}
+
+.atlas-sprite--rosemary {
+    inset: 81.7%auto auto 28%;
+    width: 4.7vw
+}
+
+.atlas-sprite--thyme {
+    inset: 93.4%auto auto 11.8%;
+    width: 3.4vw
+}
+
+.atlas-sprite--plantain {
+    inset: 94.7%auto auto 18.2%;
+    width: 4.1vw
+}
+
+.atlas-ink {
+    z-index: 5;
+    opacity: .72
+}
+
+.atlas-ink circle,
+.atlas-ink path {
+    stroke: var(--atlas-line)
+}
+
+.atlas-ink--paths>path {
+    stroke-width: 2;
+    stroke-dasharray: 5, 15;
+    animation: 24s linear 0s infinite normal none running atlas-route
+}
+
+.atlas-ink .route-small {
+    stroke-width: 1.8;
+    stroke-dasharray: 3, 10;
+    opacity: .62
+}
+
+.atlas-ink .compass circle,
+.atlas-ink .compass path,
+.atlas-ink .mountains path,
+.atlas-ink .spark path,
+.atlas-ink .waves path {
+    stroke-width: 2
+}
+
+.atlas-ink .compass {
+    transform-origin: 1036px 126px;
+    animation: 9s ease-in-out 0s infinite normal none running atlas-float
+}
+
+.atlas-ink .spark {
+    animation: 7s ease-in-out 0s infinite normal none running atlas-twinkle
+}
+
+.atlas-ink .spark-b {
+    animation-delay: 1.6s
+}
+
+.atlas-ink .spark-c {
+    animation-delay: 3.2s
+}
+
+.atlas-ink .mountains,
+.atlas-ink .waves {
+    animation: 12s ease-in-out 0s infinite normal none running atlas-float
+}
+
+.atlas-label {
+    position: absolute;
+    z-index: 6;
+    margin: 0;
+    color: rgba(108, 93, 76, .8);
+    font-size: .72rem
+}
+
+.atlas-label--north {
+    top: 14rem;
+    right: 21rem
+}
+
+.atlas-label--river {
+    top: 31rem;
+    left: 43%;
+    transform: rotate(-20deg)
+}
+
+.atlas-label--hills {
+    top: 46rem;
+    left: 9%;
+    transform: rotate(-12deg)
+}
+
+.atlas-label--shore {
+    right: 7%;
+    bottom: 24rem;
+    transform: rotate(12deg)
+}
+
+.map-card {
+    position: relative;
+    z-index: 7;
+    padding: 0;
+    border-width: medium;
+    border-style: none;
+    border-color: currentcolor;
+    border-image: initial;
+    background: 0 0;
+    box-shadow: none;
+    max-width: 24rem
+}
+
+.map-card h2,
+.scene-essay h2 {
+    font-weight: 700;
+    letter-spacing: -.03em
+}
+
+.map-card h2 {
+    margin: 0;
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    line-height: 1.04
+}
+
+.map-card p {
+    margin: .6rem 0 0;
+    max-width: 23rem;
+    padding: .2rem .3rem .25rem;
+    background: rgba(241, 236, 226, .76);
+    width: fit-content;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone
+}
+
+.card-kicker {
+    margin: 0 0 .55rem;
+    color: var(--atlas-ink-soft);
+    font-size: .68rem
+}
+
+.card-mark {
+    width: 7rem;
+    margin-bottom: .85rem
+}
+
+.card-mark svg {
+    display: block;
+    width: 100%;
+    height: auto
+}
+
+.card-mark path {
+    fill: none;
+    stroke: rgba(72, 58, 39, .94);
+    stroke-width: 2.1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+    animation: 2.4s ease 0s 1 normal forwards running atlas-draw
+}
+
+.card-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem 1rem;
+    margin: .85rem 0 0;
+    padding: 0;
+    max-width: 20rem
+}
+
+.card-links a {
+    display: inline-block;
+    padding: .12rem .08rem;
+    border-bottom: 1px solid rgba(82, 66, 44, .18);
+    background: rgba(241, 236, 226, .66);
+    color: #76584c
+}
+
+.map-card--harbor {
+    transform: rotate(-.2deg)
+}
+
+.map-card--atelier {
+    transform: rotate(.25deg)
+}
+
+.map-card--observatory {
+    transform: rotate(-.2deg)
+}
+
+.map-card--fieldnotes {
+    transform: rotate(.18deg)
+}
+
+.map-card--camp {
+    transform: rotate(-.12deg)
+}
+
+.map-card--post {
+    transform: rotate(.22deg)
+}
+
+.map-card--harbor {
+    grid-area: 1/1/span 2/span 5
+}
+
+.map-card--atelier {
+    grid-area: 3/8/span 2/span 4
+}
+
+.map-card--observatory {
+    grid-area: 5/8/span 2/span 5
+}
+
+.map-card--fieldnotes {
+    grid-area: 6/2/span 2/span 4
+}
+
+.map-card--camp {
+    grid-area: 8/4/span 2/span 5
+}
+
+.map-card--post {
+    grid-area: 8/10/span 2/span 3
+}
+
+.atlas-footnote {
+    position: relative;
+    z-index: 4;
+    margin: -1rem 0 0;
+    padding: 0 .2rem .25rem;
+    color: var(--atlas-ink-soft);
+    font-size: .72rem
+}
+
+@media (max-width:980px) {
+    .atlas-board {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: auto;
+        min-height: 88rem;
+        padding-top: 0;
+        padding-bottom: 24rem
+    }
+
+    .atlas-label {
+        display: none
+    }
+
+    .atlas-backdrop--far {
+        transform: translateY(calc(var(--atlas-scroll)*-.04px))
+    }
+
+    .atlas-backdrop--channel {
+        transform: translateY(calc(var(--atlas-scroll)*-.055px))
+    }
+
+    .atlas-backdrop--near {
+        transform: translateY(calc(var(--atlas-scroll)*-.085px))
+    }
+
+    .atlas-overlay--terrain {
+        transform: translateY(calc(var(--atlas-scroll)*-.07px))
+    }
+
+    .atlas-sprite--monastery {
+        width: 11rem;
+        left: 56%;
+        bottom: 25rem
+    }
+
+    .atlas-sprite--iceworld {
+        width: 24rem;
+        left: 0;
+        top: 16rem
+    }
+
+    .atlas-sprite--peak {
+        width: 30rem;
+        right: -5rem;
+        top: -1rem
+    }
+
+    .atlas-sprite--glacier {
+        width: 20rem;
+        right: -2rem;
+        bottom: 30rem
+    }
+
+    .atlas-sprite--cliff {
+        width: 24rem;
+        left: -7rem;
+        bottom: 26rem
+    }
+
+    .atlas-sprite--crevasse {
+        width: 38rem;
+        left: -1rem;
+        bottom: 1rem
+    }
+
+    .atlas-sprite--rosemary {
+        width: 7rem;
+        left: 3%;
+        bottom: 15rem
+    }
+
+    .atlas-sprite--thyme {
+        width: 7.5rem;
+        right: 3%;
+        bottom: 13rem
+    }
+
+    .atlas-sprite--plantain {
+        width: 7rem;
+        right: 26%;
+        bottom: 16rem
+    }
+
+    .map-card--atelier,
+    .map-card--camp,
+    .map-card--fieldnotes,
+    .map-card--harbor,
+    .map-card--observatory,
+    .map-card--post {
+        grid-area: auto
+    }
+}
+
+@media (max-width:680px) {
+    .atlas-page {
+        padding: 0 0 1rem
+    }
+
+    .atlas-legend {
+        padding: .85rem .75rem 1rem
+    }
+
+    .atlas-board {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-bottom: 18rem
+    }
+
+    .map-card {
+        max-width: none;
+        transform: none
+    }
+
+    .map-card p {
+        width: auto;
+        max-width: none
+    }
+
+    .atlas-ink .compass,
+    .atlas-ink .spark {
+        display: none
+    }
+
+    .atlas-overlay--terrain {
+        opacity: .9
+    }
+
+    .atlas-sprite--monastery {
+        width: 9.5rem;
+        left: 55%;
+        bottom: 19rem
+    }
+
+    .atlas-sprite--cliff,
+    .atlas-sprite--iceworld {
+        display: none
+    }
+
+    .atlas-sprite--peak {
+        width: 19rem;
+        right: -6rem;
+        top: 1rem
+    }
+
+    .atlas-sprite--glacier {
+        width: 16rem;
+        right: -2rem;
+        bottom: 17rem
+    }
+
+    .atlas-sprite--crevasse {
+        width: 24rem;
+        left: -4rem;
+        bottom: 1rem
+    }
+
+    .atlas-sprite--rosemary {
+        width: 6rem;
+        left: -.5rem;
+        bottom: 14rem
+    }
+
+    .atlas-sprite--thyme {
+        display: none
+    }
+
+    .atlas-sprite--plantain {
+        width: 6rem;
+        right: 1rem;
+        bottom: 14rem
+    }
+
+    .atlas-nav a,
+    .card-links a {
+        width: auto;
+        text-align: left
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+    .atlas-ink .compass,
+    .atlas-ink .mountains,
+    .atlas-ink .spark,
+    .atlas-ink .waves,
+    .atlas-ink--paths>path,
+    .card-mark path {
+        animation: auto ease 0s 1 normal none running none
+    }
+}
+
+.box {
+    font-size: .9rem;
+    border-radius: 5px;
+    border: 1px solid var(--grey-light);
+    padding: var(--gap-sm) var(--gap-sm);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: var(--gap-sm);
+    justify-content: space-between
+}
+
+body.home-scene-blog {
+    --scene-min-h: 400ex
+}
+
+.scene-page {
+    position: relative;
+    min-height: 100vh
+}
+
+.scene-masthead {
+    position: relative;
+    z-index: 12;
+    max-width: 38rem;
+    padding: clamp(1rem, 2.5vw, 2rem) clamp(1rem, 3vw, 2.5rem) .5rem
+}
+
+.scene-masthead .eyebrow {
+    margin: 0 0 .35rem;
+    color: var(--atlas-ink-soft);
+    font-size: .76rem;
+    letter-spacing: .12em;
+    text-transform: uppercase
+}
+
+.scene-masthead h1 {
+    margin: 0;
+    font-size: clamp(2.2rem, 4.8vw, 4.2rem);
+    font-weight: 700;
+    letter-spacing: -.04em;
+    line-height: .95
+}
+
+.scene-meta {
+    margin: .65rem 0 0;
+    color: var(--atlas-ink-soft);
+    font-size: .82rem;
+    letter-spacing: .06em
+}
+
+.scene-masthead .lede {
+    max-width: 32rem;
+    margin: .85rem 0 0;
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: var(--atlas-ink-soft)
+}
+
+.scene-canvas {
+    position: relative;
+    min-height: var(--scene-min-h);
+    margin-top: .5rem;
+    overflow: hidden
+}
+
+.scene-backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0
+}
+
+.scene-backdrop--wash {
+    background: linear-gradient(180deg, #efe7da 0, #e8e0d4 18%, #dde3e0 42%, #d0d8dc 62%, #c4ccd0 82%, #bcc4c8 100%);
+    opacity: .97;
+    transform: translateY(calc(var(--atlas-scroll, 0)*-.018px))
+}
+
+.scene-backdrop--blooms {
+    background: radial-gradient(ellipse 48% 32%at 12% 6%, rgba(243, 211, 203, .42), transparent 68%), radial-gradient(ellipse 38% 28%at 86% 4%, rgba(210, 224, 232, .38), transparent 70%), radial-gradient(ellipse 44% 36%at 58% 44%, rgba(196, 208, 214, .32), transparent 72%), radial-gradient(ellipse 52% 40%at 8% 40%, rgba(201, 198, 173, .28), transparent 74%), radial-gradient(ellipse 46% 38%at 42% 66%, rgba(184, 196, 202, .34), transparent 72%), radial-gradient(ellipse 36% 30%at 74% 56%, rgba(228, 218, 200, .26), transparent 70%), radial-gradient(ellipse 28% 22%at 4% 88%, rgba(167, 176, 149, .22), transparent 68%), radial-gradient(ellipse 24% 20%at 96% 54%, rgba(143, 168, 140, .2), transparent 65%);
+    mix-blend-mode: multiply;
+    opacity: .88;
+    transform: translateY(calc(var(--atlas-scroll, 0)*-.04px))
+}
+
+.scene-backdrop--grain {
+    opacity: 1;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(64, 52, 41, .018) 3px, rgba(64, 52, 41, .018) 4px), repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(255, 255, 255, .04) 5px, rgba(255, 255, 255, .04) 6px)
+}
+
+.scene-sprite {
+    position: absolute;
+    height: auto;
+    transform-origin: center bottom;
+    user-select: none;
+    pointer-events: none;
+    filter: drop-shadow(0 3px 14px rgba(36, 32, 28, .14));
+    will-change: transform
+}
+
+.scene-sprite--peak {
+    z-index: 3;
+    left: 0;
+    top: 20ex;
+    width: clamp(11rem, 39.4vw, 44rem);
+    opacity: .92;
+    --parallax: -0.09
+}
+
+.scene-sprite--iceworld {
+    z-index: 2;
+    right: 4ex;
+    top: 70vh;
+    width: 30vw;
+    opacity: .9;
+    --parallax: -0.075;
+}
+
+.scene-sprite--glacier {
+    z-index: 2;
+    right: 161ex;
+    top: 140ex;
+    width: 37vw;
+    opacity: .9;
+    --parallax: -0.075;
+}
+
+.scene-sprite--cliff {
+    z-index: 3;
+    left: 0;
+    bottom: 0;
+    width: clamp(9rem, 24.9vw, 28rem);
+    opacity: .96;
+    --parallax: -0.135
+}
+
+.scene-sprite--crevasse {
+    z-index: 3;
+    left: calc(50% - 15vw);
+    top: 249ex;
+    width: 30vw;
+    opacity: .98;
+    --parallax: -0.17
+}
+
+.scene-sprite--monastery {
+    z-index: 6;
+    left: 70.5%;
+    top: 344ex;
+    width: clamp(5.5rem, 20.9vw, 18rem);
+    --parallax: -0.07
+}
+
+.scene-sprite--rosemary {
+    z-index: 6;
+    left: 59.5%;
+    top: 338ex;
+    width: clamp(3.5rem, 5.1vw, 6.5rem);
+    --parallax: -0.09;
+    --sprite-rotate: -6deg
+}
+
+.scene-sprite--thyme {
+    z-index: 6;
+    left: 89%;
+    top: 380ex;
+    width: clamp(3.5rem, 2.6vw, 5.5rem);
+    --parallax: -0.085;
+    --sprite-rotate: 6deg
+}
+
+.scene-sprite--plantain {
+    z-index: 6;
+    left: 68%;
+    top: 396ex;
+    width: clamp(3.25rem, 3.1vw, 5.25rem);
+    --parallax: -0.095;
+    --sprite-rotate: -2deg
+}
+
+.scene-sprite[data-parallax] {
+    transform: translateY(calc(var(--atlas-scroll, 0)*var(--parallax)*1px)) rotate(var(--sprite-rotate, 0deg))
+}
+
+.scene-essay {
+    position: absolute;
+    z-index: 8;
+    left: clamp(1rem, 14vw, 16rem);
+    top: 14%;
+    width: min(42rem, calc(100% - 2rem));
+    max-width: 38rem;
+    padding: clamp(1.1rem, 2vw, 1.6rem) clamp(1.2rem, 2.4vw, 1.8rem);
+    background: rgba(241, 236, 226, .82);
+    border: 1px solid rgba(90, 72, 49, .12);
+    box-shadow: 0 8px 32px rgba(48, 40, 32, .08);
+    backdrop-filter: blur(2px);
+    transform: translateY(calc(var(--atlas-scroll, 0)*-.025px))
+}
+
+.scene-essay h2 {
+    margin: 0 0 .35rem;
+    font-size: clamp(1.45rem, 2.8vw, 2rem);
+    line-height: 1.08
+}
+
+.scene-essay .essay-kicker {
+    margin: 0 0 1rem;
+    color: var(--atlas-ink-soft);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase
+}
+
+.scene-essay p {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    line-height: 1.62;
+    color: var(--atlas-ink);
+    hyphens: auto
+}
+
+.scene-essay p:last-child {
+    margin-bottom: 0
+}
+
+.scene-essay blockquote {
+    margin: 1.25rem 0;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(127, 137, 103, .55);
+    color: var(--atlas-ink-soft);
+    font-style: italic
+}
+
+.scene-footer {
+    position: relative;
+    z-index: 12;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 1.25rem 2rem;
+    margin-top: 0;
+    padding: 2.5rem clamp(1rem, 3vw, 2.5rem) 3rem;
+    border-top: 1px solid rgba(90, 72, 49, .14);
+    background: linear-gradient(180deg, transparent, rgba(236, 229, 216, .65));
+    font-size: .88rem;
+    color: var(--atlas-ink-soft)
+}
+
+.scene-footer b {
+    display: block;
+    margin-bottom: .25rem;
+    color: var(--atlas-ink);
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase
+}
+
+.scene-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.25rem
+}
+
+.scene-footer a {
+    text-decoration: none;
+    border-bottom: 1px solid rgba(90, 72, 49, .16)
+}
+
+@media (max-width:980px) {
+    body.home-scene-blog {
+        --scene-min-h: max(220vh, 120rem)
+    }
+
+    .scene-sprite--iceworld {
+        left: 72%;
+        width: clamp(7rem, 28vw, 16rem)
+    }
+
+    .scene-sprite--cliff {
+        width: clamp(8rem, 32vw, 18rem)
+    }
+
+    .scene-sprite--crevasse {
+        left: 28%;
+        width: clamp(7rem, 34vw, 20rem)
+    }
+
+    .scene-sprite--monastery {
+        left: 62%;
+        top: 52%
+    }
+
+    .scene-essay {
+        left: 1rem;
+        right: 1rem;
+        width: auto;
+        max-width: none;
+        top: 11%
+    }
+}
+
+@media (max-width:680px) {
+    body.home-scene-blog {
+        --scene-min-h: max(200vh, 100rem)
+    }
+
+    .scene-sprite--cliff,
+    .scene-sprite--iceworld {
+        opacity: .55
+    }
+
+    .scene-sprite--peak {
+        width: clamp(10rem, 72vw, 20rem)
+    }
+
+    .scene-sprite--glacier {
+        left: 48%;
+        top: 42%
+    }
+
+    .scene-sprite--rosemary,
+    .scene-sprite--thyme {
+        display: none
+    }
+
+    .scene-essay {
+        top: 8%;
+        padding: 1rem 1.1rem
+    }
+
+    .scene-masthead h1 {
+        font-size: 2rem
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+    .scene-backdrop--blooms,
+    .scene-backdrop--wash,
+    .scene-essay,
+    .scene-sprite[data-parallax] {
+        transform: none !important
+    }
+}

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <meta name="theme-color"
+          content="#d2be95">
+    <meta name="description"
+          name="The personal website of Maurice Frank.">
+
+    <link rel="stylesheet" href="41c90318c3.css">
+
+
+    <title>Maurice Frank</title>
+</head>
+
+<body>
+    <header>
+        <a href="./">
+            <h1>
+                Maurice Frank
+            </h1>
+        </a>
+
+        <nav>
+            <a href="./projects">Projects</a>
+            <a href="./resume">Resume</a>
+            <a href="./services">Services</a>
+            <a href="./art">Art</a>
+        </nav>
+    </header>
+
+    <main>
+        <script>
+    document.documentElement.classList.add("home-atlas-root");
+    document.body.classList.add("home-atlas");
+    const syncAtlasScroll = () => {
+        document.documentElement.style.setProperty("--atlas-scroll", `${window.scrollY || 0}`);
+    };
+    let atlasFrame = 0;
+    const queueAtlasScroll = () => {
+        if (atlasFrame) return;
+        atlasFrame = requestAnimationFrame(() => {
+            atlasFrame = 0;
+            syncAtlasScroll();
+        });
+    };
+    window.addEventListener("scroll", queueAtlasScroll, { passive: true });
+    window.addEventListener("resize", queueAtlasScroll);
+    window.addEventListener("load", syncAtlasScroll, { once: true });
+    syncAtlasScroll();
+</script>
+
+<div class="atlas-page">
+    <header class="atlas-legend"
+            aria-label="Map legend">
+        <p class="eyebrow">Field Guide</p>
+        <h1>Maurice Frank</h1>
+        <p class="lede">
+            A small hand-drawn page of the things I build, study, and follow into the hills.
+        </p>
+        <nav class="atlas-nav">
+            <a href="#harbor">Harbor</a>
+            <a href="#atelier">Atelier</a>
+            <a href="#observatory">Observatory</a>
+            <a href="#camp">Camp</a>
+            <a href="#post">Post</a>
+        </nav>
+    </header>
+
+    <section class="atlas-board"
+             aria-label="Two-dimensional site map">
+        <div class="atlas-scene"
+             aria-hidden="true">
+            <svg class="atlas-backdrop atlas-backdrop--sky"
+                 viewBox="0 0 1440 1080"
+                 preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="atlasSkyWash"
+                                    x1="0%"
+                                    y1="0%"
+                                    x2="0%"
+                                    y2="100%">
+                        <stop offset="0%"
+                              stop-color="#efe7da" />
+                        <stop offset="42%"
+                              stop-color="#e9e0d5" />
+                        <stop offset="100%"
+                              stop-color="#ddd5c8" />
+                    </linearGradient>
+                    <radialGradient id="atlasGlow"
+                                    cx="38%"
+                                    cy="20%"
+                                    r="42%">
+                        <stop offset="0%"
+                              stop-color="#f3d3cb"
+                              stop-opacity="0.8" />
+                        <stop offset="52%"
+                              stop-color="#d7d8d1"
+                              stop-opacity="0.26" />
+                        <stop offset="100%"
+                              stop-color="#d7d8d1"
+                              stop-opacity="0" />
+                    </radialGradient>
+                </defs>
+                <rect width="1440"
+                      height="1080"
+                      fill="url(#atlasSkyWash)" />
+                <ellipse cx="560"
+                         cy="246"
+                         rx="350"
+                         ry="190"
+                         fill="url(#atlasGlow)" />
+            </svg>
+            <svg class="atlas-backdrop atlas-backdrop--far"
+                 viewBox="0 0 1440 1080"
+                 preserveAspectRatio="none">
+                <path d="M0 498L72 474L144 490L224 430L308 456L388 406L474 442L554 372L650 410L752 344L868 406L958 366L1070 422L1176 388L1288 430L1364 406L1440 436V1080H0Z"
+                      fill="#c3c2b1" />
+                <path d="M0 566L102 520L194 548L290 474L376 504L462 442L560 498L640 434L730 482L842 430L956 496L1058 462L1178 516L1292 486L1440 536V1080H0Z"
+                      fill="#adb3ac" />
+                <path d="M0 566L102 520L194 548L290 474L376 504L462 442L560 498L640 434L730 482L842 430L956 496L1058 462L1178 516L1292 486L1440 536"
+                      fill="none"
+                      stroke="#746a57"
+                      stroke-opacity="0.48"
+                      stroke-width="4" />
+            </svg>
+            <svg class="atlas-backdrop atlas-backdrop--channel"
+                 viewBox="0 0 1440 1080"
+                 preserveAspectRatio="none">
+                <path d="M0 650L108 602L226 624L344 574L454 612L548 554L640 592L730 566L814 596L902 564L994 606L1090 578L1218 618L1328 602L1440 624V1080H0Z"
+                      fill="#a8b2b5" />
+                <path d="M180 458C282 432 366 450 446 508C518 560 594 602 682 632C760 656 864 662 964 632C1060 604 1154 594 1272 614L1272 766C1144 750 1046 766 952 802C854 840 740 850 632 824C520 796 434 734 356 664C282 598 214 566 120 590L120 458Z"
+                      fill="#c4ccd0"
+                      fill-opacity="0.78" />
+                <path d="M180 458C282 432 366 450 446 508C518 560 594 602 682 632C760 656 864 662 964 632C1060 604 1154 594 1272 614"
+                      fill="none"
+                      stroke="#6c716f"
+                      stroke-opacity="0.45"
+                      stroke-width="4" />
+            </svg>
+            <svg class="atlas-backdrop atlas-backdrop--near"
+                 viewBox="0 0 1440 1080"
+                 preserveAspectRatio="none">
+                <path d="M0 760L94 734L188 748L286 694L364 722L440 690L544 734L636 678L726 710L840 648L966 712L1080 682L1200 726L1316 704L1440 738V1080H0Z"
+                      fill="#90a0a9" />
+                <path d="M0 846L118 798L224 838L320 774L416 818L516 776L620 824L722 758L834 808L954 748L1088 812L1218 782L1338 828L1440 810V1080H0Z"
+                      fill="#7e8e92" />
+                <path d="M0 846L118 798L224 838L320 774L416 818L516 776L620 824L722 758L834 808L954 748L1088 812L1218 782L1338 828L1440 810"
+                      fill="none"
+                      stroke="#5e5649"
+                      stroke-opacity="0.42"
+                      stroke-width="4" />
+            </svg>
+            <img class="atlas-sprite atlas-sprite--peak"
+                 src="sprites/LE_ALCC_HE108P-001.webp"
+                 alt="" />
+            <img class="atlas-sprite atlas-sprite--iceworld"
+                 src="sprites/LE_ALCC_ACL14322_1-001.webp"
+                 alt="" />
+            <img class="atlas-sprite atlas-sprite--glacier"
+                 src="sprites/LE_ALCC_HD019P-001.webp"
+                 alt="" />
+            <img class="atlas-sprite atlas-sprite--cliff"
+                 src="sprites/LE_ALCC_HD005P-001.webp"
+                 alt="" />
+            <img class="atlas-sprite atlas-sprite--crevasse"
+                 src="sprites/LE_ALCC_HD083P-001.webp"
+                 alt="" />
+            <svg class="atlas-overlay atlas-overlay--terrain"
+                 viewBox="0 0 1440 2200"
+                 preserveAspectRatio="none">
+                <path class="overlay-veil"
+                      d="M0 0H1440V404C1324 372 1208 388 1086 434C964 480 824 530 682 526C564 522 472 494 376 432C272 366 150 332 0 354Z" />
+                <path class="overlay-ridge overlay-ridge--upper"
+                      d="M0 938L104 894L206 922L312 860L412 904L510 844L610 898L704 822L796 874L886 812L980 868L1072 802L1170 868L1278 822L1390 878L1440 862V2200H0Z" />
+                <path class="overlay-ridge overlay-ridge--channel"
+                      d="M0 1182L114 1126L228 1160L332 1100L434 1146L538 1088L636 1148L734 1082L822 1132L902 1082L970 1116L1032 1192L1088 1290L1142 1396L1198 1486L1268 1556L1350 1602L1440 1640V2200H0Z" />
+                <path class="overlay-ridge overlay-ridge--lower"
+                      d="M0 1538L128 1478L256 1518L384 1458L512 1506L638 1444L782 1522L930 1456L1078 1524L1210 1472L1338 1530L1440 1490V2200H0Z" />
+                <path class="overlay-stroke overlay-stroke--channel"
+                      d="M22 1320C198 1226 352 1216 480 1288C606 1360 700 1474 808 1582C920 1692 1046 1740 1214 1714C1306 1700 1384 1666 1440 1622" />
+                <path class="overlay-stroke overlay-stroke--lower"
+                      d="M964 1772C1038 1730 1112 1736 1186 1780C1264 1826 1342 1828 1440 1754" />
+                <path class="overlay-stroke overlay-stroke--left"
+                      d="M0 1068C108 994 222 974 330 1010C430 1044 522 1118 616 1226" />
+            </svg>
+            <img class="atlas-sprite atlas-sprite--monastery"
+                 src="kloster.png"
+                 alt="" />
+            <img class="atlas-sprite atlas-sprite--rosemary"
+                 src="plant.png"
+                 alt="" />
+            <img class="atlas-sprite atlas-sprite--thyme"
+                 src="quendel.png"
+                 alt="" />
+            <img class="atlas-sprite atlas-sprite--plantain"
+                 src="wegerich.png"
+                 alt="" />
+        </div>
+
+        <svg class="atlas-ink atlas-ink--paths"
+             viewBox="0 0 1200 920"
+             aria-hidden="true">
+            <path
+                  d="M156 226C252 180 352 190 440 240C536 294 584 372 620 438C654 498 720 548 804 544C894 542 954 476 1014 410" />
+            <path d="M416 260C394 330 388 420 420 494C456 578 528 640 606 682C684 724 790 746 916 708" />
+            <path d="M214 650C310 600 392 586 470 616C548 648 588 706 652 756C718 808 824 826 938 786" />
+            <path class="route-small"
+                  d="M856 176C914 188 966 232 1002 284" />
+            <path class="route-small"
+                  d="M134 540C172 506 214 486 282 482" />
+            <g class="compass">
+                <circle cx="1036"
+                        cy="126"
+                        r="56" />
+                <path d="M1036 52V200M962 126H1110M988 78L1084 174M1084 78L988 174" />
+                <path d="M1036 86L1054 126L1036 166L1018 126Z" />
+            </g>
+            <g class="spark spark-a">
+                <path d="M210 138L214 156L232 160L214 164L210 182L206 164L188 160L206 156Z" />
+            </g>
+            <g class="spark spark-b">
+                <path d="M848 102L852 118L868 122L852 126L848 142L844 126L828 122L844 118Z" />
+            </g>
+            <g class="spark spark-c">
+                <path d="M108 720L112 736L128 740L112 744L108 760L104 744L88 740L104 736Z" />
+            </g>
+            <g class="mountains">
+                <path d="M168 448L224 332L286 448" />
+                <path d="M232 448L300 298L380 448" />
+                <path d="M298 448L352 356L418 448" />
+            </g>
+            <g class="waves">
+                <path d="M972 586C998 566 1018 566 1044 586C1070 606 1090 606 1116 586" />
+                <path d="M952 626C978 606 998 606 1024 626C1050 646 1070 646 1096 626" />
+                <path d="M930 666C956 646 976 646 1002 666C1028 686 1048 686 1074 666" />
+            </g>
+        </svg>
+
+        <p class="atlas-label atlas-label--north">North of Quiet Work</p>
+        <p class="atlas-label atlas-label--river">River of Data</p>
+        <p class="atlas-label atlas-label--hills">Hills of Making</p>
+        <p class="atlas-label atlas-label--shore">Pastel Shore</p>
+
+        <article id="harbor"
+                 class="map-card map-card--harbor">
+            <div class="card-mark">
+                <svg viewBox="0 0 120 80"
+                     aria-hidden="true">
+                    <path d="M16 58C34 40 48 38 62 58C78 40 94 40 104 58" />
+                    <path d="M58 16V58" />
+                    <path d="M58 18L34 34H82Z" />
+                </svg>
+            </div>
+            <p class="card-kicker">Harbor</p>
+            <h2>Builder of maps, systems, and calm interfaces</h2>
+            <p>
+                I work across AI, data visualization, software, and objects in the physical world. The thread
+                between them is the same: make complexity legible and give it some grace.
+            </p>
+            <p>
+                This version of the site is intentionally small, like a folded field map with only the useful
+                places drawn on it.
+            </p>
+        </article>
+
+        <article id="atelier"
+                 class="map-card map-card--atelier">
+            <div class="card-mark">
+                <svg viewBox="0 0 120 80"
+                     aria-hidden="true">
+                    <path d="M18 54H102" />
+                    <path d="M28 54V26L48 12L72 18L92 36V54" />
+                    <path d="M44 34H44.01M64 28H64.01M78 38H78.01" />
+                    <path d="M34 54L40 66M60 54V68M86 54L80 66" />
+                </svg>
+            </div>
+            <p class="card-kicker">Atelier of Curious Machines</p>
+            <h2>Software and experiments</h2>
+            <p>
+                AI engineering, data apps, maps, and tools that try to feel lucid instead of loud.
+            </p>
+            <ul class="card-links">
+                <li><a href="projects">Projects</a></li>
+                <li><a href="services">Services</a></li>
+                <li><a href="maps">Maps</a></li>
+            </ul>
+        </article>
+
+        <article id="observatory"
+                 class="map-card map-card--observatory">
+            <div class="card-mark">
+                <svg viewBox="0 0 120 80"
+                     aria-hidden="true">
+                    <path d="M30 60L56 18L76 26L50 60Z" />
+                    <path d="M44 52L28 68M66 48L84 68M58 60V72" />
+                    <path d="M78 20L102 10M82 30L108 26M74 12L86 2" />
+                </svg>
+            </div>
+            <p class="card-kicker">Observatory</p>
+            <h2>Images, motion, and traces</h2>
+            <p>
+                Visual art, motion studies, and small narrative pieces. Some are polished, some are field notes.
+            </p>
+            <ul class="card-links">
+                <li><a href="art">Art</a></li>
+                <li><a href="motion-still">Motion stills</a></li>
+                <li><a href="movie-timeline">Movie timeline</a></li>
+            </ul>
+        </article>
+
+        <article class="map-card map-card--fieldnotes">
+            <div class="card-mark">
+                <svg viewBox="0 0 120 80"
+                     aria-hidden="true">
+                    <path d="M18 58C28 22 48 22 58 58C66 32 82 32 92 58" />
+                    <path d="M16 58H100" />
+                    <path d="M72 22C82 14 96 16 104 28" />
+                </svg>
+            </div>
+            <p class="card-kicker">Field Notes</p>
+            <h2>Outside the workbench</h2>
+            <p>
+                Climbing, running, wilderness, cinema, carpentry, and the recurring lesson that beautiful systems
+                are usually the ones that leave room for weather.
+            </p>
+            <ul class="card-links">
+                <li><a href="carpentry">Carpentry</a></li>
+                <li><a href="resume">Resume</a></li>
+            </ul>
+        </article>
+
+        <article id="camp"
+                 class="map-card map-card--camp">
+            <div class="card-mark">
+                <svg viewBox="0 0 120 80"
+                     aria-hidden="true">
+                    <path d="M20 58L54 18L88 58" />
+                    <path d="M34 58L54 30L74 58" />
+                    <path d="M54 18V58" />
+                    <path d="M92 26C100 26 106 34 106 42C106 50 100 58 92 58" />
+                </svg>
+            </div>
+            <p class="card-kicker">Camp</p>
+            <h2>How I like to work</h2>
+            <p>
+                Close to the problem, attentive to craft, comfortable with ambiguity, and skeptical of unnecessary
+                ornament. I prefer tools that make the path clearer.
+            </p>
+            <p>
+                If you want a precise builder for systems, visuals, or product ideas, this is the campfire to walk
+                toward.
+            </p>
+        </article>
+
+        <article id="post"
+                 class="map-card map-card--post">
+            <div class="card-mark">
+                <svg viewBox="0 0 120 80"
+                     aria-hidden="true">
+                    <path d="M20 26H100V62H20Z" />
+                    <path d="M20 28L60 48L100 28" />
+                    <path d="M32 20L42 10M78 20L88 10" />
+                </svg>
+            </div>
+            <p class="card-kicker">Post House</p>
+            <h2>Send a note</h2>
+            <p>
+                For work, ideas, or an interesting route through the mountains of data:
+                <span>firstname.lastname @ posteo de</span>
+            </p>
+            <ul class="card-links">
+                <li><a href="https://github.com/morris-frank">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/morris-frank/">LinkedIn</a></li>
+                <li><a href="https://instagram.com/morris_frank_">Instagram</a></li>
+                <li><a href="https://letterboxd.com/morris_frank/">Letterboxd</a></li>
+            </ul>
+        </article>
+    </section>
+
+    <p class="atlas-footnote">
+        Drawn as a flat page with cutout herbs, old paper, and just enough movement to suggest a breeze.
+    </p>
+</div>
+
+    </main>
+
+    <div style="flex: 1;"></div>
+
+    <footer>
+        <div><b>Responsible person</b>
+            <p>Maurice Frank</p>
+        </div>
+        <div><b>E-mail</b>
+            <p>firstname.lastname @ posteo de</p>
+        </div>
+        <div><b>Privacy statement</b>
+            <p>I don't collect any data from you. Neither do I want any data. So don't send me any!</p>
+        </div>
+        </dl>
+    </footer>
+</body>
+
+</html>

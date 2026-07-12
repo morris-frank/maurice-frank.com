@@ -84,7 +84,6 @@
 
         .scene-backdrop--wash {
             background:
-                url("paper-texture.png") center top / cover no-repeat,
                 linear-gradient(180deg,
                     #efe7da 0%,
                     #e8e0d4 18%,
@@ -112,7 +111,7 @@
         }
 
         .scene-backdrop--grain {
-            opacity: 0.35;
+            opacity: 1.0;
             background-image:
                 repeating-linear-gradient(0deg,
                     transparent,
@@ -157,9 +156,9 @@
 
         .scene-sprite--glacier {
             z-index: 2;
-            left: 55.7%;
-            top: 45.6%;
-            width: clamp(7rem, 20.5vw, 22rem);
+            left: 45.7%;
+            top: 174ex;
+            width: 30vw;
             opacity: 0.94;
             --parallax: -0.11;
         }
@@ -175,9 +174,9 @@
 
         .scene-sprite--crevasse {
             z-index: 3;
-            left: 39.1%;
-            top: 62.6%;
-            width: clamp(8rem, 22.1vw, 26rem);
+            left: calc(50% - 15vw);
+            top: 249ex;
+            width: 30vw;
             opacity: 0.98;
             --parallax: -0.17;
         }
@@ -185,24 +184,24 @@
         .scene-sprite--monastery {
             z-index: 6;
             left: 70.5%;
-            top: 55.1%;
+            top: 344ex;
             width: clamp(5.5rem, 20.9vw, 18rem);
             --parallax: -0.07;
         }
 
         .scene-sprite--rosemary {
             z-index: 6;
-            left: 96.5%;
-            top: 52.9%;
-            width: clamp(3.5rem, 2.1vw, 5.5rem);
+            left: 59.5%;
+            top: 338ex;
+            width: clamp(3.5rem, 5.1vw, 6.5rem);
             --parallax: -0.09;
             --sprite-rotate: -6deg;
         }
 
         .scene-sprite--thyme {
             z-index: 6;
-            left: 77%;
-            top: 37.4%;
+            left: 89%;
+            top: 380ex;
             width: clamp(3.5rem, 2.6vw, 5.5rem);
             --parallax: -0.085;
             --sprite-rotate: 6deg;
@@ -210,8 +209,8 @@
 
         .scene-sprite--plantain {
             z-index: 6;
-            left: 1.5%;
-            top: 89.6%;
+            left: 68%;
+            top: 396ex;
             width: clamp(3.25rem, 3.1vw, 5.25rem);
             --parallax: -0.095;
             --sprite-rotate: -2deg;
@@ -400,24 +399,21 @@
 
     <main>
         <article class="scene-page">
-            <header class="scene-masthead"
-                    aria-label="Page header">
-                <p class="eyebrow">Field notes</p>
-                <h1>Maurice Frank</h1>
-                <p class="scene-meta">
-                    <time datetime="2026-05-15">15 May 2026</time>
-                    · Draft · Atlas sketch
-                </p>
-                <p class="lede">
-                    A hand-placed page of mountains, herbs, and quiet work—laid out on a tall canvas and meant to read
-                    like a folded map you can scroll through.
-                </p>
-            </header>
+
 
             <div class="scene-canvas"
                  aria-label="Illustrated landscape">
+                <header class="scene-masthead"
+                        aria-label="Page header">
+                    <p class="eyebrow">Field notes</p>
+                    <h1>Maurice Frank</h1>
+                    <p class="scene-meta">
+                        <time datetime="2026-05-15">15 May 2026</time>
+                        · Draft · Atlas sketch
+                    </p>
+                </header>
                 <div class="scene-backdrop scene-backdrop--wash"
-                            aria-hidden="true"></div>
+                     aria-hidden="true"></div>
                 <div class="scene-backdrop scene-backdrop--blooms"
                      aria-hidden="true"></div>
                 <div class="scene-backdrop scene-backdrop--grain"
