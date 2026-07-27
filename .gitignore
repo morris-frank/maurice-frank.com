@@ -12,5 +12,3 @@ node_modules/
 resources/
 *mp3
 
-index.html
-!docs/wms/index.html

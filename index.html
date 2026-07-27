@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maurice Frank</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Base layout inspired by clig.dev */
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: var(--line-height-relaxed);
+        }
+
+        @media (min-width: 768px) {
+            body {
+                flex-direction: row;
+            }
+        }
+
+        nav.sidebar {
+            padding: var(--spacing-xl);
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-medium);
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            nav.sidebar {
+                width: 250px;
+                height: 100vh;
+                position: sticky;
+                top: 0;
+                overflow-y: auto;
+            }
+        }
+
+        nav.sidebar h1 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+        }
+
+        nav.sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav.sidebar li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        nav.sidebar a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: var(--font-weight-medium);
+            transition: color var(--transition-fast);
+        }
+
+        nav.sidebar a:hover {
+            color: var(--text-accent);
+        }
+
+        main.content {
+            flex-grow: 1;
+            padding: var(--spacing-xl);
+            max-width: 800px;
+        }
+
+        section {
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        h2 {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-medium);
+            padding-bottom: var(--spacing-xs);
+        }
+
+        h3 {
+            font-size: var(--font-size-lg);
+            margin-top: var(--spacing-xl);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        ul.skills {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.skills li {
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-secondary);
+        }
+
+        .project, .resume-item {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .project h4, .resume-item h4 {
+            margin: 0 0 var(--spacing-xs) 0;
+            font-size: var(--font-size-md);
+        }
+
+        .project a, .resume-item a {
+            color: var(--text-accent);
+            text-decoration: none;
+        }
+
+        .project a:hover, .resume-item a:hover {
+            text-decoration: underline;
+        }
+
+        .meta {
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .tags {
+            font-family: monospace;
+            font-size: var(--font-size-xs);
+            color: var(--text-muted);
+            background: var(--bg-secondary);
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+            margin-top: var(--spacing-xs);
+        }
+
+        footer {
+            margin-top: var(--spacing-3xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--border-medium);
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h1>Maurice Frank</h1>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#art">Art & Media</a></li>
+        </ul>
+        
+        <h3 style="font-size: var(--font-size-sm); margin-top: var(--spacing-xl);">Links</h3>
+        <ul>
+            <li><a href="https://github.com/morris-frank">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/morris-frank/">LinkedIn</a></li>
+            <li><a href="mailto:hire@maurice-frank.com">Email</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <section id="about">
+            <h2>Hoi, Maurice here</h2>
+            <p>I am an AI engineer, a data-viz specialist, a consultant, a climber, a runner, and an autodidact.</p>
+            
+            <h3>Where I build</h3>
+            <ul class="skills">
+                <li>Data apps</li>
+                <li>Machines</li>
+                <li>Furniture</li>
+                <li>Community</li>
+                <li>Visual art</li>
+                <li>Music</li>
+            </ul>
+
+            <h3>And explore life</h3>
+            <ul class="skills">
+                <li>In wilderness</li>
+                <li>On summits</li>
+                <li>Through beauty in data</li>
+                <li>Through cinema</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            
+            <div class="project">
+                <h4><a href="https://github.com/gitHBDX/dash-prometheus">dash-prometheus</a></h4>
+                <div class="meta">Python / Plotly / Prometheus</div>
+                <p>Performance metrics for DASH (plotly) apps using Prometheus.</p>
+            </div>
+
+            <div class="project">
+                <h4><a href="https://github.com/gitHBDX/anndata-cache">anndata-cache</a></h4>
+                <div class="meta">Python / pyArrow</div>
+                <p>A shared-process in-memory store/cache for AnnData objects and their parts.</p>
+            </div>
+
+            <div class="project">
+                <h4><a href="https://collegiumacademicum.de">Collegium Academicum</a></h4>
+                <div class="meta">Hugo / Bulma / PHP / JS</div>
+                <p>Website for the Collegium Academicum, a student housing project in Heidelberg.</p>
+            </div>
+
+            <div class="project">
+                <h4><a href="https://ackersyndikat.org">Ackersyndikat</a></h4>
+                <div class="meta">Hugo</div>
+                <p>Website for the Ackersyndicat, a decentralized solidarity network of self-organized farms.</p>
+            </div>
+
+            <div class="project">
+                <h4><a href="https://github.com/morris-frank/BarTasks">BarTasks</a></h4>
+                <div class="meta">macOS / Swift</div>
+                <p>A (tiny) task manager that lives in the menu bar.</p>
+            </div>
+
+            <div class="project">
+                <h4><a href="https://github.com/morris-frank/letterboxd-ratings-for-cineville">Letterboxd Ratings for Cineville</a></h4>
+                <div class="meta">Chrome / JS</div>
+                <p>A browser extension to show Letterboxd ratings on the Cineville website.</p>
+            </div>
+
+            <div class="project">
+                <h4><a href="https://clue-to-drip.netlify.app/">Clue to Drip</a></h4>
+                <div class="meta">AlpineJS</div>
+                <p>A converter to import data from Clue into Drip.</p>
+            </div>
+        </section>
+
+        <section id="resume">
+            <h2>Resume</h2>
+            
+            <h3>Work</h3>
+            
+            <div class="resume-item">
+                <h4><a href="https://peau.ai/">Peau</a> — Founding Engineer</h4>
+                <div class="meta">2025 — Present</div>
+                <p>From 0 to MVP in 2 quarters. Cross-platform Flutter-based app for personalized skincare, full-stack solution on Firebase and custom UI. Custom Computer vision models for skin analysis and LLM-based agents for recommendations and product discovery.</p>
+                <span class="tags">Flutter / Firebase / Riverpod / ML Kit / Google Cloud</span>
+            </div>
+
+            <div class="resume-item">
+                <h4><a href="https://muno.ai/">Muno</a> — Founding Engineer</h4>
+                <div class="meta">2024 — Present</div>
+                <p>Engineering the full-stack B2C platform for immune health, from backend blood RNA analysis pipelines to the customer-facing application.</p>
+                <span class="tags">Python / Bioinformatics / ML Engineering</span>
+            </div>
+
+            <div class="resume-item">
+                <h4><a href="https://soilytix.com/">Soilytix</a> — Founding Engineer</h4>
+                <div class="meta">2023 — Present</div>
+                <p>From idea to revenue in 1 year. Architected and developed a data-driven platform for analyzing agricultural data, providing insights to farmers and agronomists. Full-stack developed in Next.js with scalable backend, supporting world spanning data-sets.</p>
+                <span class="tags">Next.js / TypeScript / Prisma / Mapbox / Nivo / Vercel</span>
+            </div>
+
+            <div class="resume-item">
+                <h4><a href="https://hummingbird-diagnostics.com/">Hummingbird Diagnostics</a> — Software Architect Advisor</h4>
+                <div class="meta">11/2024 — Present</div>
+                <p>Strategic consulting on ML architecture, MLOps, and software design for RNA sequencing analysis.</p>
+                <span class="tags">MLOps / Software Architecture / ML Engineering</span>
+            </div>
+
+            <div class="resume-item">
+                <h4><a href="https://hummingbird-diagnostics.com/">Hummingbird Diagnostics</a> — Machine Learning Scientist</h4>
+                <div class="meta">11/2020 — 11/2024</div>
+                <p>Causal machine learning research on RNA-Seq. NGS and Nanopore data. Working with sequence embedding models and graph networks. In-house platform for data, feature, and result analysis and MLOps to enable for code-free ML analysis across large set of datasets and objectives.</p>
+                <span class="tags">Python / PyTorch / sklearn / Biostatistics</span>
+            </div>
+
+            <div class="resume-item">
+                <h4><a href="https://amlab.science.uva.nl/">AMLab, University of Amsterdam</a> — Research Intern</h4>
+                <div class="meta">11/2019 — 06/2020</div>
+                <p>Intern at Max Welling's Machine Learning Lab at the University of Amsterdam.</p>
+                <span class="tags">Python / PyTorch / SLURM</span>
+            </div>
+
+            <div class="resume-item">
+                <h4><a href="https://www.bmwgroup.com/">BMW Group</a> — Machine Learning Engineer Intern</h4>
+                <div class="meta">06/2019 — 08/2019</div>
+                <p>Building statistical models to analyze engine part quality and live fleet monitoring. Building a production-ready data visualization app.</p>
+                <span class="tags">Python / PySpark / Palantir Foundry / Dash / Agile development</span>
+            </div>
+
+            <div class="resume-item">
+                <h4><a href="https://buergerwerke.de/">Bürgerwerke eG</a> — Full-stack Web Developer</h4>
+                <div class="meta">09/2017 — 08/2018</div>
+                <p>Ground-up development of a team communication and organization web portal in Ruby on Rails.</p>
+                <span class="tags">Rails / Ruby / Software Engineering</span>
+            </div>
+
+            <h3>Education</h3>
+            
+            <div class="resume-item">
+                <h4>University of Amsterdam — M.Sc. Artificial Intelligence</h4>
+                <div class="meta">2018 — 2020</div>
+                <p>Specialization in topics: Theoretical machine learning, Computer Vision, Reinforcement Learning, NLP, Information theory.</p>
+                <span class="tags">GPA 4/4, cum laude</span>
+            </div>
+
+            <div class="resume-item">
+                <h4>University Heidelberg — B.Sc. Applied Computer Science</h4>
+                <div class="meta">2014 — 2017</div>
+                <p>Specialization on image processing and pattern recognition: Deep Learning, 3D Computer vision, medical image analysis, fairness in AI.</p>
+                <span class="tags">GPA 3.58/4</span>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Services</h2>
+            <p><strong>Unlock the Power of Your Data with Expert Consulting Services!</strong></p>
+            <p>Are you ready to harness the full potential of your data? Look no further! As a seasoned freelance consultant specializing in data analytics and machine learning, I offer tailored solutions to propel your business forward.</p>
+            
+            <ul class="skills">
+                <li><strong>Data Dashboard & Interactive Apps:</strong> Transform your raw data into actionable insights with visually stunning dashboards and user-friendly applications.</li>
+                <li><strong>Custom Machine Learning Models:</strong> Gain a competitive edge by leveraging cutting-edge machine learning techniques.</li>
+                <li><strong>Diverse Industry Experience:</strong> With a proven track record across multiple industries, including finance, healthcare, e-commerce, and more.</li>
+                <li><strong>Web Technologies & AI Pipelines:</strong> From frontend user-facing applications to backend AI pipelines, I've got you covered.</li>
+            </ul>
+
+            <p>Ready to unlock the full potential of your data? Let's collaborate to drive innovation, optimize operations, and fuel growth for your business. Contact me today to schedule a consultation and take the first step toward data-driven success!</p>
+            
+            <p>Please contact me at <a href="mailto:hire@maurice-frank.com">hire@maurice-frank.com</a> if you're interested in working with me.</p>
+        </section>
+
+        <section id="art">
+            <h2>Art & Media</h2>
+            
+            <h3>Video</h3>
+            <div class="project">
+                <h4>The cats of Istanbul</h4>
+                <p>Little video cut together from shots taken in Istanbul January 2023. Music: Altın Gün - Kolbastı. Camera: Pixel 7, Editing: DaVinci Resolve.</p>
+            </div>
+            <div class="project">
+                <h4>Eating Hooks (AI music video)</h4>
+                <p>For Moderat's Eating Hooks. Generated with VQ-GAN given a custom screen-play. This is as far as I know the first real AI generated music video (Dec 2021).</p>
+            </div>
+            <div class="project">
+                <h4>Motion-still (2018-2022)</h4>
+                <p>Multiple years of using the Google app "Motion still", led to a long collection of moving pictures.</p>
+            </div>
+
+            <h3>Music</h3>
+            <div class="project">
+                <h4>Down-tempo for 18 musicians</h4>
+                <p>Steve Reichs classic as danceable down-tempo. Live recording, played on a Novation Launchpad.</p>
+            </div>
+            <div class="project">
+                <h4>ePiano Phase</h4>
+                <p>Again Steve Reich, here Piano Phase but its electronica.</p>
+            </div>
+            <div class="project">
+                <h4>Metropolitian mornings</h4>
+                <p>An evolving sonical soundscape.</p>
+            </div>
+            <div class="project">
+                <h4>Movement one</h4>
+                <p>Random pick and choose from the symph orchestra.</p>
+            </div>
+            <div class="project">
+                <h4>Chow's theme</h4>
+                <p>A simple waltz, watched "In the Mood for Love". For Violin, Cello and a Marimba.</p>
+            </div>
+            
+            <h3>Photography</h3>
+            <p>A collection of photography from the Alps, Himalayas, and travels around the world. (Images hidden in this text-only version).</p>
+        </section>
+
+        <footer>
+            <p><strong>Responsible person:</strong> Maurice Frank</p>
+            <p><strong>E-mail:</strong> firstname.lastname @ posteo de</p>
+            <p><strong>Privacy statement:</strong> I don't collect any data from you. Neither do I want any data. So don't send me any!</p>
+            <pre style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: var(--spacing-md);">
+Maurice-Frank is registered with the Dutch chamber of commerce (KVK)
+Maurice-Frank is ingeschreven bij de Kamer van Koophandel.
+KVK-nummer: 80834000
+Vestigingsnummer: 000047168390
+            </pre>
+        </footer>
+    </main>
+
+</body>
+</html>
