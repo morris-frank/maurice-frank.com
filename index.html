@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <style>
         /* Base layout inspired by clig.dev */
+        :root {
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
         body {
             display: flex;
             flex-direction: column;
@@ -24,16 +28,19 @@
             }
         }
 
+        /* Sidebar: Directory Tree Style */
         nav.sidebar {
             padding: var(--spacing-xl);
             background-color: var(--bg-secondary);
-            border-right: 1px solid var(--border-medium);
+            border-right: 2px solid var(--border-dark);
             flex-shrink: 0;
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
         }
 
         @media (min-width: 768px) {
             nav.sidebar {
-                width: 250px;
+                width: 280px;
                 height: 100vh;
                 position: sticky;
                 top: 0;
@@ -41,10 +48,21 @@
             }
         }
 
-        nav.sidebar h1 {
-            font-size: var(--font-size-xl);
-            margin-bottom: var(--spacing-lg);
+        nav.sidebar .prompt {
+            color: var(--text-accent);
+            font-weight: bold;
+            margin-bottom: var(--spacing-md);
+        }
+
+        nav.sidebar .prompt::before {
+            content: "$ ";
+            color: var(--text-muted);
+        }
+
+        nav.sidebar .tree-root {
+            font-weight: bold;
             color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
         }
 
         nav.sidebar ul {
@@ -54,24 +72,67 @@
         }
 
         nav.sidebar li {
-            margin-bottom: var(--spacing-sm);
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        nav.sidebar li::before {
+            content: "├──";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        nav.sidebar li:last-child::before {
+            content: "└──";
         }
 
         nav.sidebar a {
             text-decoration: none;
             color: var(--text-secondary);
-            font-weight: var(--font-weight-medium);
             transition: color var(--transition-fast);
         }
 
         nav.sidebar a:hover {
             color: var(--text-accent);
+            text-decoration: underline;
         }
 
+        /* Main Content */
         main.content {
             flex-grow: 1;
-            padding: var(--spacing-xl);
-            max-width: 800px;
+            padding: var(--spacing-2xl);
+            max-width: 900px;
+        }
+
+        .term-header {
+            margin-bottom: var(--spacing-3xl);
+            padding-bottom: var(--spacing-xl);
+            border-bottom: 2px dashed var(--border-medium);
+        }
+
+        .term-header pre {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-accent);
+            margin: 0 0 var(--spacing-md) 0;
+            overflow-x: auto;
+        }
+
+        @media (min-width: 768px) {
+            .term-header pre {
+                font-size: 14px;
+            }
+        }
+
+        .sys-info {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
         }
 
         section {
@@ -82,8 +143,17 @@
             font-size: var(--font-size-2xl);
             margin-bottom: var(--spacing-lg);
             color: var(--text-primary);
-            border-bottom: 1px solid var(--border-medium);
+            border-bottom: 2px solid var(--border-dark);
             padding-bottom: var(--spacing-xs);
+            font-weight: var(--font-weight-bold);
+        }
+
+        h2 .section-num {
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: var(--font-size-lg);
+            margin-right: var(--spacing-sm);
+            font-weight: normal;
         }
 
         h3 {
@@ -93,14 +163,23 @@
             color: var(--text-primary);
         }
 
+        h3::before {
+            content: "## ";
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
         p {
             margin-bottom: var(--spacing-md);
             color: var(--text-secondary);
         }
 
+        /* Lists */
         ul.skills {
             list-style: none;
             padding: 0;
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
         }
 
         ul.skills li {
@@ -108,73 +187,140 @@
             color: var(--text-secondary);
         }
 
+        ul.skills li::before {
+            content: "> ";
+            color: var(--text-accent);
+            font-weight: bold;
+        }
+
+        /* Projects & Resume Items */
         .project, .resume-item {
             margin-bottom: var(--spacing-xl);
+            padding-left: var(--spacing-md);
+            border-left: 2px solid var(--border-medium);
+        }
+
+        .project:hover, .resume-item:hover {
+            border-left-color: var(--text-accent);
         }
 
         .project h4, .resume-item h4 {
             margin: 0 0 var(--spacing-xs) 0;
             font-size: var(--font-size-md);
+            font-weight: var(--font-weight-bold);
+            display: flex;
+            align-items: center;
+        }
+
+        .project h4::before, .resume-item h4::before {
+            content: "ƒ ";
+            color: var(--text-accent);
+            font-family: var(--font-mono);
+            margin-right: var(--spacing-xs);
+            font-weight: normal;
         }
 
         .project a, .resume-item a {
-            color: var(--text-accent);
+            color: var(--text-primary);
             text-decoration: none;
+            border-bottom: 1px dashed var(--border-dark);
         }
 
         .project a:hover, .resume-item a:hover {
-            text-decoration: underline;
+            color: var(--text-accent);
+            border-bottom-style: solid;
         }
 
         .meta {
-            font-size: var(--font-size-sm);
+            font-family: var(--font-mono);
+            font-size: var(--font-size-xs);
             color: var(--text-muted);
             margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-wide);
         }
 
         .tags {
-            font-family: monospace;
+            font-family: var(--font-mono);
             font-size: var(--font-size-xs);
-            color: var(--text-muted);
+            color: var(--text-primary);
             background: var(--bg-secondary);
-            padding: 2px 6px;
-            border-radius: var(--radius-sm);
+            padding: 4px 8px;
+            border: 1px solid var(--border-medium);
+            border-radius: 0; /* Brutalist square corners */
             display: inline-block;
-            margin-top: var(--spacing-xs);
+            margin-top: var(--spacing-sm);
+            transition: all var(--transition-fast);
         }
 
+        .tags:hover {
+            background: var(--color-neutral-800);
+            color: var(--bg-primary);
+            border-color: var(--color-neutral-800);
+        }
+
+        /* Footer */
         footer {
             margin-top: var(--spacing-3xl);
             padding-top: var(--spacing-xl);
-            border-top: 1px solid var(--border-medium);
+            border-top: 2px solid var(--border-dark);
             font-size: var(--font-size-sm);
             color: var(--text-muted);
+        }
+
+        footer pre {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-xs);
+            color: var(--text-muted);
+            margin-top: var(--spacing-md);
+            background: var(--bg-secondary);
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-medium);
+            overflow-x: auto;
         }
     </style>
 </head>
 <body>
 
     <nav class="sidebar">
-        <h1>Maurice Frank</h1>
+        <div class="prompt">whoami</div>
+        <div class="tree-root">maurice_frank/</div>
         <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#resume">Resume</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#art">Art & Media</a></li>
+            <li><a href="#about">about.md</a></li>
+            <li><a href="#projects">projects/</a></li>
+            <li><a href="#resume">resume.json</a></li>
+            <li><a href="#services">services.txt</a></li>
+            <li><a href="#art">art_and_media/</a></li>
         </ul>
         
-        <h3 style="font-size: var(--font-size-sm); margin-top: var(--spacing-xl);">Links</h3>
+        <div class="prompt" style="margin-top: var(--spacing-2xl);">ls -l links/</div>
         <ul>
-            <li><a href="https://github.com/morris-frank">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/morris-frank/">LinkedIn</a></li>
-            <li><a href="mailto:hire@maurice-frank.com">Email</a></li>
+            <li><a href="https://github.com/morris-frank">github.url</a></li>
+            <li><a href="https://www.linkedin.com/in/morris-frank/">linkedin.url</a></li>
+            <li><a href="mailto:hire@maurice-frank.com">email.lnk</a></li>
         </ul>
     </nav>
 
     <main class="content">
+        <header class="term-header">
+            <pre>
+  __  __                  _               _____                 _    
+ |  \/  |                (_)             |  ___|               | |   
+ | \  / | __ _ _   _ _ __ _  ___ ___     | |__ _ __ __ _ _ __  | | __
+ | |\/| |/ _` | | | | '__| |/ __/ _ \    |  __| '__/ _` | '_ \ | |/ /
+ | |  | | (_| | |_| | |  | | (_|  __/    | |  | | | (_| | | | ||   < 
+ |_|  |_|\__,_|\__,_|_|  |_|\___\___|    \_|  |_|  \__,_|_| |_||_|\_\
+                                                                     
+            </pre>
+            <div class="sys-info">
+                <span>OS: MauriceOS v2.0</span>
+                <span>Uptime: 32 years</span>
+                <span>Shell: zsh</span>
+            </div>
+        </header>
+
         <section id="about">
-            <h2>Hoi, Maurice here</h2>
+            <h2><span class="section-num">1.0</span>About</h2>
             <p>I am an AI engineer, a data-viz specialist, a consultant, a climber, a runner, and an autodidact.</p>
             
             <h3>Where I build</h3>
@@ -197,23 +343,23 @@
         </section>
 
         <section id="projects">
-            <h2>Projects</h2>
+            <h2><span class="section-num">2.0</span>Projects</h2>
             
             <div class="project">
                 <h4><a href="https://github.com/gitHBDX/dash-prometheus">dash-prometheus</a></h4>
-                <div class="meta">Python / Plotly / Prometheus</div>
+                <div class="meta">Python | Plotly | Prometheus</div>
                 <p>Performance metrics for DASH (plotly) apps using Prometheus.</p>
             </div>
 
             <div class="project">
                 <h4><a href="https://github.com/gitHBDX/anndata-cache">anndata-cache</a></h4>
-                <div class="meta">Python / pyArrow</div>
+                <div class="meta">Python | pyArrow</div>
                 <p>A shared-process in-memory store/cache for AnnData objects and their parts.</p>
             </div>
 
             <div class="project">
                 <h4><a href="https://collegiumacademicum.de">Collegium Academicum</a></h4>
-                <div class="meta">Hugo / Bulma / PHP / JS</div>
+                <div class="meta">Hugo | Bulma | PHP | JS</div>
                 <p>Website for the Collegium Academicum, a student housing project in Heidelberg.</p>
             </div>
 
@@ -225,13 +371,13 @@
 
             <div class="project">
                 <h4><a href="https://github.com/morris-frank/BarTasks">BarTasks</a></h4>
-                <div class="meta">macOS / Swift</div>
+                <div class="meta">macOS | Swift</div>
                 <p>A (tiny) task manager that lives in the menu bar.</p>
             </div>
 
             <div class="project">
                 <h4><a href="https://github.com/morris-frank/letterboxd-ratings-for-cineville">Letterboxd Ratings for Cineville</a></h4>
-                <div class="meta">Chrome / JS</div>
+                <div class="meta">Chrome | JS</div>
                 <p>A browser extension to show Letterboxd ratings on the Cineville website.</p>
             </div>
 
@@ -243,7 +389,7 @@
         </section>
 
         <section id="resume">
-            <h2>Resume</h2>
+            <h2><span class="section-num">3.0</span>Resume</h2>
             
             <h3>Work</h3>
             
@@ -251,56 +397,56 @@
                 <h4><a href="https://peau.ai/">Peau</a> — Founding Engineer</h4>
                 <div class="meta">2025 — Present</div>
                 <p>From 0 to MVP in 2 quarters. Cross-platform Flutter-based app for personalized skincare, full-stack solution on Firebase and custom UI. Custom Computer vision models for skin analysis and LLM-based agents for recommendations and product discovery.</p>
-                <span class="tags">Flutter / Firebase / Riverpod / ML Kit / Google Cloud</span>
+                <div class="tags">[Flutter] [Firebase] [Riverpod] [ML Kit] [Google Cloud]</div>
             </div>
 
             <div class="resume-item">
                 <h4><a href="https://muno.ai/">Muno</a> — Founding Engineer</h4>
                 <div class="meta">2024 — Present</div>
                 <p>Engineering the full-stack B2C platform for immune health, from backend blood RNA analysis pipelines to the customer-facing application.</p>
-                <span class="tags">Python / Bioinformatics / ML Engineering</span>
+                <div class="tags">[Python] [Bioinformatics] [ML Engineering]</div>
             </div>
 
             <div class="resume-item">
                 <h4><a href="https://soilytix.com/">Soilytix</a> — Founding Engineer</h4>
                 <div class="meta">2023 — Present</div>
                 <p>From idea to revenue in 1 year. Architected and developed a data-driven platform for analyzing agricultural data, providing insights to farmers and agronomists. Full-stack developed in Next.js with scalable backend, supporting world spanning data-sets.</p>
-                <span class="tags">Next.js / TypeScript / Prisma / Mapbox / Nivo / Vercel</span>
+                <div class="tags">[Next.js] [TypeScript] [Prisma] [Mapbox] [Nivo] [Vercel]</div>
             </div>
 
             <div class="resume-item">
                 <h4><a href="https://hummingbird-diagnostics.com/">Hummingbird Diagnostics</a> — Software Architect Advisor</h4>
                 <div class="meta">11/2024 — Present</div>
                 <p>Strategic consulting on ML architecture, MLOps, and software design for RNA sequencing analysis.</p>
-                <span class="tags">MLOps / Software Architecture / ML Engineering</span>
+                <div class="tags">[MLOps] [Software Architecture] [ML Engineering]</div>
             </div>
 
             <div class="resume-item">
                 <h4><a href="https://hummingbird-diagnostics.com/">Hummingbird Diagnostics</a> — Machine Learning Scientist</h4>
                 <div class="meta">11/2020 — 11/2024</div>
                 <p>Causal machine learning research on RNA-Seq. NGS and Nanopore data. Working with sequence embedding models and graph networks. In-house platform for data, feature, and result analysis and MLOps to enable for code-free ML analysis across large set of datasets and objectives.</p>
-                <span class="tags">Python / PyTorch / sklearn / Biostatistics</span>
+                <div class="tags">[Python] [PyTorch] [sklearn] [Biostatistics]</div>
             </div>
 
             <div class="resume-item">
                 <h4><a href="https://amlab.science.uva.nl/">AMLab, University of Amsterdam</a> — Research Intern</h4>
                 <div class="meta">11/2019 — 06/2020</div>
                 <p>Intern at Max Welling's Machine Learning Lab at the University of Amsterdam.</p>
-                <span class="tags">Python / PyTorch / SLURM</span>
+                <div class="tags">[Python] [PyTorch] [SLURM]</div>
             </div>
 
             <div class="resume-item">
                 <h4><a href="https://www.bmwgroup.com/">BMW Group</a> — Machine Learning Engineer Intern</h4>
                 <div class="meta">06/2019 — 08/2019</div>
                 <p>Building statistical models to analyze engine part quality and live fleet monitoring. Building a production-ready data visualization app.</p>
-                <span class="tags">Python / PySpark / Palantir Foundry / Dash / Agile development</span>
+                <div class="tags">[Python] [PySpark] [Palantir Foundry] [Dash] [Agile]</div>
             </div>
 
             <div class="resume-item">
                 <h4><a href="https://buergerwerke.de/">Bürgerwerke eG</a> — Full-stack Web Developer</h4>
                 <div class="meta">09/2017 — 08/2018</div>
                 <p>Ground-up development of a team communication and organization web portal in Ruby on Rails.</p>
-                <span class="tags">Rails / Ruby / Software Engineering</span>
+                <div class="tags">[Rails] [Ruby] [Software Engineering]</div>
             </div>
 
             <h3>Education</h3>
@@ -309,19 +455,19 @@
                 <h4>University of Amsterdam — M.Sc. Artificial Intelligence</h4>
                 <div class="meta">2018 — 2020</div>
                 <p>Specialization in topics: Theoretical machine learning, Computer Vision, Reinforcement Learning, NLP, Information theory.</p>
-                <span class="tags">GPA 4/4, cum laude</span>
+                <div class="tags">[GPA 4/4, cum laude]</div>
             </div>
 
             <div class="resume-item">
                 <h4>University Heidelberg — B.Sc. Applied Computer Science</h4>
                 <div class="meta">2014 — 2017</div>
                 <p>Specialization on image processing and pattern recognition: Deep Learning, 3D Computer vision, medical image analysis, fairness in AI.</p>
-                <span class="tags">GPA 3.58/4</span>
+                <div class="tags">[GPA 3.58/4]</div>
             </div>
         </section>
 
         <section id="services">
-            <h2>Services</h2>
+            <h2><span class="section-num">4.0</span>Services</h2>
             <p><strong>Unlock the Power of Your Data with Expert Consulting Services!</strong></p>
             <p>Are you ready to harness the full potential of your data? Look no further! As a seasoned freelance consultant specializing in data analytics and machine learning, I offer tailored solutions to propel your business forward.</p>
             
@@ -338,7 +484,7 @@
         </section>
 
         <section id="art">
-            <h2>Art & Media</h2>
+            <h2><span class="section-num">5.0</span>Art & Media</h2>
             
             <h3>Video</h3>
             <div class="project">
@@ -384,11 +530,13 @@
             <p><strong>Responsible person:</strong> Maurice Frank</p>
             <p><strong>E-mail:</strong> firstname.lastname @ posteo de</p>
             <p><strong>Privacy statement:</strong> I don't collect any data from you. Neither do I want any data. So don't send me any!</p>
-            <pre style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: var(--spacing-md);">
-Maurice-Frank is registered with the Dutch chamber of commerce (KVK)
-Maurice-Frank is ingeschreven bij de Kamer van Koophandel.
-KVK-nummer: 80834000
-Vestigingsnummer: 000047168390
+            <pre>
+{
+  "registration": "Maurice-Frank",
+  "chamber_of_commerce": "KVK (Netherlands)",
+  "kvk_number": "80834000",
+  "vestigingsnummer": "000047168390"
+}
             </pre>
         </footer>
     </main>

@@ -67,6 +67,7 @@
   
   /* Font Families */
   --font-sans:  "Libertinus Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Font Sizes (Modular Scale - 1.25 Ratio) */
   --font-size-xs:   0.8rem;
@@ -130,6 +131,10 @@
 
 body {
   background-color: var(--bg-primary);
+  background-image: 
+    linear-gradient(rgba(81, 70, 62, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(81, 70, 62, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
   color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
