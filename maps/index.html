@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps — Alpine tracks — Maurice Frank</title>
+    <meta name="description" content="Slippy-tile map of alpine mountaineering tracks from Hikr and personal Bergrebell tours.">
+    <link rel="icon" href="../favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha256-BPfK9M5v34c2XP6p0cxVz1mUQLst0gTLk0mlc7kuodA=" crossorigin="anonymous">
+    <link rel="stylesheet" href="./maps.css">
+</head>
+<body>
+    <div id="map" role="application" aria-label="Alpine tracks map"></div>
+
+    <aside class="map-overlay" id="overlay">
+        <div class="map-overlay-header">
+            <div>
+                <a class="brand" href="../">Maurice Frank</a>
+                <div class="kicker">Maps / Alpine tracks</div>
+            </div>
+            <button type="button" class="panel-toggle" id="panel-toggle" aria-expanded="true">Hide</button>
+        </div>
+        <div class="map-overlay-body" id="overlay-body">
+            <section class="overlay-section">
+                <div class="section-label">Basemap</div>
+                <div class="seg" id="basemap-seg" role="group" aria-label="Basemap"></div>
+            </section>
+            <div id="track-groups"></div>
+            <p class="note">Routes from hikr.org and personal tours. Difficulty grades follow SAC mountaineering: L · WS− · WS · WS+.</p>
+        </div>
+    </aside>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha256-yDc0eil8GjWFKqN1OSzHSVCiuGghTosZCcRje4tj7iQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.1/gpx.min.js" crossorigin="anonymous"></script>
+    <script>
+        const TILESERVER = "https://cdn.maurice-frank.com/osm-tiles/";
+
+        const BASEMAPS = [
+            { id: "topo", label: "Topology", url: TILESERVER + "topo/{z}/{x}/{y}.png" },
+            { id: "avk", label: "Alpine club", url: TILESERVER + "avk/{z}/{x}/{y}.png" },
+        ];
+
+        const TRACK_GROUPS = [
+            {
+                name: "Hikr",
+                source: "community",
+                items: [
+                    { id: "hikr_L", label: "Leicht", grade: "L", color: "#b3a178" },
+                    { id: "hikr_WS-", label: "Wenig schwierig −", grade: "WS−", color: "#a4735d" },
+                    { id: "hikr_WS", label: "Wenig schwierig", grade: "WS", color: "#8b413f" },
+                    { id: "hikr_WS+", label: "Wenig schwierig +", grade: "WS+", color: "#530609" },
+                ],
+            },
+            {
+                name: "Bergrebell",
+                source: "personal",
+                items: [
+                    { id: "bergrebell_L", label: "Leicht", grade: "L", color: "#828d04" },
+                    { id: "bergrebell_WS-", label: "Wenig schwierig −", grade: "WS−", color: "#4b6f21" },
+                    { id: "bergrebell_WS", label: "Wenig schwierig", grade: "WS", color: "#245637" },
+                    { id: "bergrebell_WS+", label: "Wenig schwierig +", grade: "WS+", color: "#04424b" },
+                ],
+            },
+        ];
+
+        const overlayEl = document.getElementById("overlay");
+        const toggleEl = document.getElementById("panel-toggle");
+        const compact = window.matchMedia("(max-width: 640px)");
+
+        function setCollapsed(collapsed) {
+            overlayEl.classList.toggle("is-collapsed", collapsed);
+            toggleEl.setAttribute("aria-expanded", String(!collapsed));
+            toggleEl.textContent = collapsed ? "Layers" : "Hide";
+        }
+
+        setCollapsed(compact.matches);
+        compact.addEventListener("change", (event) => setCollapsed(event.matches));
+        toggleEl.addEventListener("click", () => {
+            setCollapsed(!overlayEl.classList.contains("is-collapsed"));
+        });
+
+        const baseLayers = {};
+        BASEMAPS.forEach((base) => {
+            baseLayers[base.id] = L.tileLayer(base.url, { maxZoom: 16 });
+        });
+
+        const map = L.map("map", {
+            center: [47.05, 12.2],
+            zoom: 11,
+            layers: [baseLayers.topo],
+            zoomControl: false,
+            attributionControl: true,
+        });
+        L.control.zoom({ position: "topright" }).addTo(map);
+
+        const seg = document.getElementById("basemap-seg");
+        BASEMAPS.forEach((base, index) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.textContent = base.label;
+            button.setAttribute("aria-pressed", index === 0 ? "true" : "false");
+            button.addEventListener("click", () => {
+                Object.entries(baseLayers).forEach(([id, layer]) => {
+                    if (id === base.id) {
+                        map.addLayer(layer);
+                    } else {
+                        map.removeLayer(layer);
+                    }
+                });
+                Array.from(seg.querySelectorAll("button")).forEach((el) => {
+                    el.setAttribute("aria-pressed", el === button ? "true" : "false");
+                });
+            });
+            seg.appendChild(button);
+        });
+
+        const groupsRoot = document.getElementById("track-groups");
+        const gpxLayers = {};
+
+        TRACK_GROUPS.forEach((group) => {
+            const section = document.createElement("section");
+            section.className = "overlay-section";
+
+            const label = document.createElement("div");
+            label.className = "section-label";
+            label.innerHTML = `${group.name} <span>${group.source}</span>`;
+            section.appendChild(label);
+
+            const list = document.createElement("div");
+            list.className = "track-list";
+
+            group.items.forEach((item) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "track-toggle";
+                button.setAttribute("aria-pressed", "false");
+                button.innerHTML = `<span class="swatch" style="background:${item.color}"></span><span>${item.label}</span><span class="grade">${item.grade}</span>`;
+                button.addEventListener("click", () => {
+                    const on = button.getAttribute("aria-pressed") === "true";
+                    if (on) {
+                        map.removeLayer(gpxLayers[item.id]);
+                        button.setAttribute("aria-pressed", "false");
+                        return;
+                    }
+                    if (!gpxLayers[item.id]) {
+                        gpxLayers[item.id] = new L.GPX("./" + item.id + ".gpx", {
+                            async: true,
+                            marker_options: { startIconUrl: null, endIconUrl: null, shadowUrl: null },
+                            polyline_options: { color: item.color, opacity: 0.75 },
+                        });
+                    }
+                    map.addLayer(gpxLayers[item.id]);
+                    button.setAttribute("aria-pressed", "true");
+                });
+                list.appendChild(button);
+            });
+
+            section.appendChild(list);
+            groupsRoot.appendChild(section);
+        });
+    </script>
+</body>
+</html>
