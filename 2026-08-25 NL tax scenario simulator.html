@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NL Tax Scenario Simulator — 2026</title>
+<style>
+:root{
+  --n50:#FAF8F5; --n100:#F3EFEA; --n200:#EAE4DA; --n300:#DCD4C7;
+  --n400:#B8AC9D; --n600:#8C7E72; --n800:#51463E; --n900:#2D2825;
+  --terra:#D78A7A; --terra-l:#F5D6D0; --glacier:#7E9688; --glacier-l:#C4D3CB;
+  --ochre:#A78D73; --slate:#4A3E36;
+  --card:rgba(250,248,245,0.75);
+  --shadow:0 10px 30px -10px rgba(81,70,62,.15), 0 1px 3px rgba(81,70,62,.05);
+  --font:"Libertinus Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--n100);color:var(--n900);line-height:1.5;
+  font-size:16px;-webkit-font-smoothing:antialiased;padding:0 0 6rem}
+h1,h2,h3{font-weight:400;letter-spacing:-.02em}
+header{padding:3rem 2rem 1.5rem;max-width:1400px;margin:0 auto}
+h1{font-size:2.441rem;line-height:1.15}
+.sub{color:var(--n600);font-size:1rem;margin-top:.5rem;max-width:58ch}
+.wrap{max-width:1400px;margin:0 auto;padding:0 2rem;display:grid;
+  grid-template-columns:minmax(300px,340px) 1fr;gap:2rem;align-items:start}
+@media(max-width:960px){.wrap{grid-template-columns:1fr}}
+.panel{background:var(--card);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.4);
+  border-radius:8px;box-shadow:var(--shadow);padding:1.5rem}
+.controls{position:sticky;top:1.5rem}
+@media(max-width:960px){.controls{position:static}}
+.lab{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;
+  color:var(--n600);margin:1.25rem 0 .4rem}
+.lab:first-child{margin-top:0}
+.grp{border-top:1px solid var(--n300);margin-top:1.5rem;padding-top:1.25rem}
+.grp>.ttl{font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;color:var(--terra);margin-bottom:.25rem}
+input[type=number],select{width:100%;font-family:var(--font);font-size:1rem;padding:.45rem .6rem;
+  border:1px solid var(--n300);border-radius:2px;background:var(--n50);color:var(--n900)}
+input[type=range]{width:100%;accent-color:var(--terra);margin-top:.35rem}
+.rowv{display:flex;justify-content:space-between;align-items:baseline;font-size:.875rem;color:var(--n600)}
+.rowv b{color:var(--n900);font-weight:500;font-variant-numeric:tabular-nums}
+.chk{display:flex;align-items:center;gap:.5rem;margin:.55rem 0;font-size:.9rem}
+.chk input{accent-color:var(--terra);width:16px;height:16px}
+section{margin-bottom:2rem}
+h2{font-size:1.563rem;margin-bottom:.25rem}
+.note{font-size:.875rem;color:var(--n600);margin-bottom:1.25rem;max-width:72ch}
+table{width:100%;border-collapse:collapse;font-size:.9rem;font-variant-numeric:tabular-nums}
+th{text-align:right;font-weight:500;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--n600);padding:.5rem .6rem;border-bottom:1px solid var(--n300)}
+th:first-child,td:first-child{text-align:left}
+td{padding:.55rem .6rem;border-bottom:1px solid rgba(220,212,199,.5);text-align:right}
+tr.win td{background:rgba(126,150,136,.13)}
+tr.tot td{font-weight:500;border-top:1px solid var(--n400);border-bottom:none}
+.tag{display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;
+  padding:.1rem .45rem;border-radius:9999px;background:var(--glacier-l);color:var(--slate);margin-left:.5rem}
+.tag.bad{background:var(--terra-l)}
+.bars{display:flex;flex-direction:column;gap:.55rem;margin-top:1rem}
+.bar{display:grid;grid-template-columns:170px 1fr 130px;gap:.75rem;align-items:center;font-size:.875rem}
+.bar .track{height:22px;background:var(--n200);border-radius:2px;overflow:hidden;position:relative}
+.bar .fill{height:100%;background:var(--glacier);border-radius:2px;transition:width .3s ease}
+.bar .fill.alt{background:var(--terra)}
+.bar .fill.dim{background:var(--ochre)}
+.bar .amt{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin-top:1rem}
+.stat{background:var(--n50);border:1px solid var(--n300);border-radius:4px;padding:1rem}
+.stat .k{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--n600)}
+.stat .v{font-size:1.563rem;margin-top:.3rem;font-variant-numeric:tabular-nums}
+.stat .d{font-size:.8rem;color:var(--n600);margin-top:.2rem}
+.callout{border-left:3px solid var(--terra);background:rgba(245,214,208,.35);padding:.9rem 1.1rem;
+  border-radius:0 4px 4px 0;font-size:.9rem;margin-top:1.25rem}
+.callout.g{border-color:var(--glacier);background:rgba(196,211,203,.35)}
+.callout b{font-weight:500}
+footer{max-width:1400px;margin:3rem auto 0;padding:2rem;border-top:1px solid var(--n300);
+  font-size:.8rem;color:var(--n600);line-height:1.75}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em;background:var(--n200);padding:.05em .3em;border-radius:2px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Dutch tax scenario simulator</h1>
+  <p class="sub">2026 parameters, set to a €108,000/yr rate, no 30% ruling, age 31. Structures are compared at equal <b>total cost to Soilytix</b>, which is the only fair basis — an invoice and a salary are not the same number. Everything is editable; nothing is advice.</p>
+</header>
+
+<div class="wrap">
+<div class="panel controls">
+  <div class="grp" style="border:0;margin:0;padding:0">
+    <div class="ttl">Compensation</div>
+    <label class="lab">Total annual cost to Soilytix (€)</label>
+    <input type="number" id="cost" value="108000" step="1000">
+    <div class="rowv"><span>Employer premies on wage (Awf/Aof/Whk)</span><b id="premOut">18%</b></div>
+    <input type="range" id="prem" min="10" max="24" step="0.5" value="18">
+  </div>
+
+  <div class="grp">
+    <div class="ttl">BV assumptions</div>
+    <label class="lab">DGA salary you can defend (€)</label>
+    <input type="range" id="dga" min="58000" max="200000" step="1000" value="90000">
+    <div class="rowv"><span>gebruikelijk loon floor €58,000</span><b id="dgaOut">€100,000</b></div>
+    <label class="lab">BV running cost / yr (€)</label>
+    <input type="number" id="bvcost" value="3500" step="500">
+    <div class="chk"><input type="checkbox" id="retain"><label for="retain">Retain profit in BV (defer box 2)</label></div>
+  </div>
+
+  <div class="grp">
+    <div class="ttl">Personal</div>
+    <label class="lab">Liquid assets in box 3 (€)</label>
+    <input type="number" id="assets" value="250000" step="10000">
+    <div class="chk"><input type="checkbox" id="partner"><label for="partner">Fiscal partner (married)</label></div>
+    <div class="chk"><input type="checkbox" id="baz"><label for="baz">BAZ mandatory AOV in force (2027+)</label></div>
+    <div class="chk"><input type="checkbox" id="wwr"><label for="wwr">Box 3 = werkelijk rendement (2028+)</label></div>
+    <label class="lab">Assumed portfolio return (for 2028 mode)</label>
+    <input type="range" id="ret" min="0" max="12" step="0.5" value="7">
+    <div class="rowv"><span>annual</span><b id="retOut">7.0%</b></div>
+  </div>
+
+  <div class="grp">
+    <div class="ttl">Home</div>
+    <div class="chk"><input type="checkbox" id="buy"><label for="buy">Buy a flat</label></div>
+    <label class="lab">Purchase price (€)</label>
+    <input type="number" id="price" value="1000000" step="25000">
+    <label class="lab">Mortgage (€)</label>
+    <input type="number" id="mort" value="700000" step="25000">
+    <label class="lab">Mortgage rate</label>
+    <input type="range" id="mrate" min="2" max="7" step="0.1" value="4">
+    <div class="rowv"><span>interest</span><b id="mrateOut">4.0%</b></div>
+  </div>
+
+  <div class="grp">
+    <div class="ttl">Equity exit</div>
+    <label class="lab">Gross payout at exit (€)</label>
+    <input type="range" id="exit" min="250000" max="5000000" step="50000" value="2000000">
+    <div class="rowv"><span></span><b id="exitOut">€2,000,000</b></div>
+    <label class="lab">Years to exit</label>
+    <input type="range" id="yrs" min="1" max="7" step="1" value="4">
+    <div class="rowv"><span></span><b id="yrsOut">4</b></div>
+    <label class="lab">Current notional value (€)</label>
+    <input type="number" id="notional" value="250000" step="25000">
+    <label class="lab">Price paid for ordinary shares (€)</label>
+    <input type="number" id="buyin" value="175000" step="25000">
+    <div class="rowv"><span>comes out of box 3, recovered at exit</span><b id="buyinOut"></b></div>
+  </div>
+</div>
+
+<div>
+  <section class="panel">
+    <h2>Annual position</h2>
+    <p class="note">Same cost to the company, four ways. CoR is modelled as your current ZZP position minus Deel's ~€3,600/yr fee coming out of the same budget. Employment gross is solved so that gross + employer Zvw + premies equals the budget.</p>
+    <div class="bars" id="annualBars"></div>
+    <table id="annualTable" style="margin-top:1.5rem"></table>
+    <div class="callout" id="annualNote"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Standing costs — box 3 and the flat</h2>
+    <p class="note">Independent of employment structure. The flat is the largest legal box-3 shelter available; the 2028 toggle shows what the werkelijk-rendement regime does to a buy-and-hold ETF position.</p>
+    <div class="cards" id="wealthCards"></div>
+    <div class="callout g" id="wealthNote"></div>
+  </section>
+
+  <section class="panel">
+    <h2>The equity — where the money actually is</h2>
+    <p class="note">Four possible characterisations of the same payout. This spread is larger than every annual decision above, combined, over the whole holding period.</p>
+    <div class="bars" id="exitBars"></div>
+    <table id="exitTable" style="margin-top:1.5rem"></table>
+    <div class="callout" id="exitNote"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Lifetime to exit</h2>
+    <p class="note">Cumulative net from work, minus standing wealth taxes, plus the net exit proceeds. Best annual structure combined with each equity treatment.</p>
+    <table id="lifeTable"></table>
+  </section>
+</div>
+</div>
+
+<footer>
+<b>2026 parameters used.</b> Box 1: 35.75% to €38,883 · 37.56% to €78,426 · 49.50% above. Algemene heffingskorting max €3,115, tapering 6.398% from €29,736 to zero at €78,426. Arbeidskorting max €5,685, tapering 6.51% from €45,592 to zero at €132,920 (build-up below €45,592 simplified — irrelevant at these incomes). Zvw: 4.85% self-employed, 6.10% employer levy, ceiling €79,409. Zelfstandigenaftrek €1,200; MKB-winstvrijstelling 12.7%. Vpb 19% to €200,000, 25.8% above. Box 2: 24.5% to €68,843, 31% above. Box 3: 6.00% forfait on other assets, 36% rate, heffingsvrij €59,357 (€118,714 with partner). Gebruikelijk loon floor €58,000, doelmatigheidsmarge abolished since 2023. Eigenwoningforfait 0.35% to €1,350,000; hypotheekrenteaftrek capped at 37.56%; overdrachtsbelasting 2% own-occupied. BAZ 5.4% of profit, capped €171/month, BV excluded. Werkelijk-rendement mode: 36% on actual return, heffingvrij resultaat €1,800/person.
+<br><br>
+<b>Deliberate simplifications.</b> Employer premies are a single slider, not itemised Awf/Aof/Whk. Pension accrual, holiday allowance, WW/WIA value and sick pay are not monetised on the employment side — they are real and favour employment beyond what is shown. A controlling DGA is assumed not insured for employee insurances, so only the Zvw employer levy applies. Full distribution from the BV is assumed unless the retain toggle is set. The lucratief-belang-via-holding rows assume the doorstootregeling conditions (≥95% distributed in the same calendar year) are met.
+<br><br>
+<b>Not modelled, and possibly decisive.</b> <b>The risk of total loss on the share purchase</b> — the single largest unmodelled factor on this page. The 30%/27% expat ruling (not applicable here). The Dutch start-up/scale-up option regime (65% inclusion, ~32% effective, targeted 1 Jan 2027, group companies excluded). The box 2 multiplier on doorstoot lucratief belang, deferred to 1 Jan 2028, which would push the holding route toward 36%. German withholding at source and DE–NL treaty apportionment by workdays. Any of these can move the answer by six figures.
+<br><br>
+Built 25 Aug 2026 from public sources. Not tax advice.
+</footer>
+
+<script>
+const P={
+  br:[[38883,.3575],[78426,.3756],[Infinity,.495]],
+  ahkMax:3115, ahkStart:29736, ahkRate:.06398, ahkZero:78426,
+  akMax:5685, akStart:45592, akRate:.0651, akZero:132920,
+  zvwSelf:.0485, zvwEmp:.0610, zvwCap:79409,
+  za:1200, mkb:.127,
+  vpb1:.19, vpbLim:200000, vpb2:.258,
+  b2a:.245, b2Lim:68843, b2b:.31,
+  b3f:.06, b3r:.36, b3free:59357, b3freeP:118714,
+  ewf:.0035, ewfHi:.0235, ewfLim:1350000, hra:.3756, otb:.02,
+  bazR:.054, bazMax:171*12, gl:58000, deel:3600,
+  wwrRate:.36, wwrFree:1800
+};
+const eur=n=>(n<0?'−€':'€')+Math.abs(Math.round(n)).toLocaleString('en-US');
+const pc=n=>(n*100).toFixed(1)+'%';
+
+function box1(i){let t=0,p=0;for(const[c,r]of P.br){if(i<=p)break;t+=(Math.min(i,c)-p)*r;p=c;}return t;}
+function ahk(i){return Math.max(0,Math.min(P.ahkMax,P.ahkMax-P.ahkRate*Math.max(0,i-P.ahkStart)));}
+function ak(i){return i<=P.akStart?P.akMax:Math.max(0,P.akMax-P.akRate*(i-P.akStart));}
+function box1Net(i){return Math.max(0,box1(i)-ahk(i)-ak(i));}
+function box2(x){return Math.min(x,P.b2Lim)*P.b2a+Math.max(0,x-P.b2Lim)*P.b2b;}
+function vpb(x){return x<=0?0:Math.min(x,P.vpbLim)*P.vpb1+Math.max(0,x-P.vpbLim)*P.vpb2;}
+
+function zzp(fee,baz){
+  const w=fee, na=Math.max(0,w-P.za), bel=na*(1-P.mkb);
+  const tax=box1Net(bel), zvw=P.zvwSelf*Math.min(bel,P.zvwCap);
+  const b=baz?Math.min(P.bazR*w,P.bazMax):0;
+  return {label:'ZZP (eenmanszaak)',gross:w,tax,social:zvw+b,net:w-tax-zvw-b,cost:fee};
+}
+function employee(cost,premR){
+  let g=cost/(1+P.zvwEmp+premR); // first pass ignoring the ceiling
+  for(let k=0;k<40;k++){
+    const load=Math.min(g,P.zvwCap)*(P.zvwEmp+premR);
+    g=cost-load;
+  }
+  const tax=box1Net(g);
+  return {label:'Employee (EOR / payroll)',gross:g,tax,social:0,net:g-tax,cost,
+    employerLoad:cost-g};
+}
+function bv(fee,sal,run,retain){
+  sal=Math.max(P.gl,Math.min(sal,fee-run-1));
+  const eZvw=P.zvwEmp*Math.min(sal,P.zvwCap);
+  const salTax=box1Net(sal), netSal=sal-salTax;
+  const profit=fee-sal-eZvw-run;
+  const v=vpb(profit), dist=Math.max(0,profit-v);
+  const b2=retain?0:box2(dist);
+  const cash=retain?netSal:netSal+dist-b2;
+  return {label:'Own BV + management fee',gross:fee,tax:salTax+v+b2,social:eZvw+run,
+    net:cash, retained:retain?dist:0, cost:fee, sal, profit, v, b2, dist};
+}
+
+function box3Tax(assets,partner,wwr,ret){
+  if(wwr){
+    const r=assets*ret, free=P.wwrFree*(partner?2:1);
+    return Math.max(0,r-free)*P.wwrRate;
+  }
+  const free=partner?P.b3freeP:P.b3free;
+  return Math.max(0,assets-free)*P.b3f*P.b3r;
+}
+
+const EQ=[
+  {k:'loon',s:'Loon / ROW',n:'Loon / ROW — box 1',d:'Plain virtual shares, SAR, phantom. The default.',
+   f:v=>v*.495, tag:'bad'},
+  {k:'lbd',s:'Lucratief belang, direct',n:'Lucratief belang, held directly',d:'Art. 3.92b. Same rate as loon.',
+   f:v=>v*.495, tag:'bad'},
+  {k:'lbh',s:'Lucratief belang via holding',n:'Lucratief belang via holding + &ge;95% doorstoot',
+   d:'Only works if the deelnemingsvrijstelling applies (&ge;5% stake). Multiplier to 36% lands 1 Jan 2028.',
+   f:v=>box2(v)},
+  {k:'lbn',s:'…same, holding under 5%',n:'…same, but holding stake &lt;5% (no deelnemingsvrijstelling)',
+   d:'The trap: 25.8% vpb, then box 2 on the remainder. No gain.',
+   f:v=>{const c=v*P.vpb2; return c+box2(v-c);}, tag:'bad'},
+  {k:'shr',s:'Real shares, under 5%',n:'Real shares, &lt;5%, not lucratief belang',
+   d:'Capital gain untaxed. Only box 3 carry on the value while held.',
+   f:v=>0}
+];
+
+function render(){
+  const cost=+cost_.value, premR=+prem_.value/100, salv=+dga_.value, run=+bvcost_.value,
+        ret=+ret_.value/100, assets=+assets_.value, partner=partner_.checked,
+        wwr=wwr_.checked, bazOn=baz_.checked, buying=buy_.checked,
+        price=+price_.value, mort=+mort_.value, mrate=+mrate_.value/100,
+        exitV=+exit_.value, years=+yrs_.value, notional=+notional_.value, buyin=+buyin_.value;
+
+  premOut.textContent=(premR*100).toFixed(1)+'%';
+  dgaOut.textContent=eur(salv);
+  retOut.textContent=(ret*100).toFixed(1)+'%';
+  mrateOut.textContent=(mrate*100).toFixed(1)+'%';
+  exitOut.textContent=eur(exitV);
+  yrsOut.textContent=years;
+
+  const rows=[zzp(cost,bazOn), zzp(cost-P.deel,bazOn), employee(cost,premR), bv(cost,salv,run,retain_.checked)];
+  rows[1].label='Deel CoR (ZZP minus platform fee)';
+  const best=Math.max(...rows.map(r=>r.net+(r.retained||0)));
+  const max=best;
+
+  annualBars.innerHTML=rows.map(r=>{
+    const v=r.net+(r.retained||0);
+    const cls=v===best?'':(r.label.startsWith('Employee')?'alt':'dim');
+    return `<div class="bar"><span>${r.label.split('(')[0].trim()}</span>
+      <span class="track"><span class="fill ${cls}" style="width:${(v/max*100).toFixed(1)}%"></span></span>
+      <span class="amt">${eur(v)}</span></div>`;
+  }).join('');
+
+  annualTable.innerHTML=`<tr><th>Structure</th><th>Taxable base</th><th>Income tax</th>
+    <th>Social / fees</th><th>Net to you</th><th>Effective</th></tr>`+
+    rows.map(r=>{const v=r.net+(r.retained||0);
+      return `<tr class="${v===best?'win':''}"><td>${r.label}${r.retained?'<span class="tag">incl. retained</span>':''}</td>
+      <td>${eur(r.gross)}</td><td>${eur(r.tax)}</td><td>${eur(r.social+(r.employerLoad||0))}</td>
+      <td><b>${eur(v)}</b></td><td>${pc(1-v/cost)}</td></tr>`;}).join('')+
+      (rows[3].profit<0?`<tr><td colspan="6" style="text-align:left;color:var(--terra);font-size:.85rem;border:0;padding-top:.7rem">
+       The BV cannot pay a &euro;${Math.round(rows[3].sal).toLocaleString('en-US')} salary out of a &euro;${Math.round(cost).toLocaleString('en-US')} fee
+       once Zvw and running costs are paid — the profit line is ${eur(rows[3].profit)}. Lower the DGA salary slider, or accept that
+       the gebruikelijk-loon rules make this structure unworkable at this rate.</td></tr>`:'');
+
+  const z=rows[0], e=rows[2], b=rows[3];
+  const upliftGross=(()=>{let g=z.net,lo=z.net,hi=cost*1.5;
+    for(let k=0;k<60;k++){const m=(lo+hi)/2; (m-box1Net(m)<z.net)?lo=m:hi=m;} return (lo+hi)/2;})();
+  const upliftCost=upliftGross+Math.min(upliftGross,P.zvwCap)*(P.zvwEmp+premR);
+  annualNote.innerHTML=`<b>The uplift ask.</b> To hold your net at ${eur(z.net)} on a salary, gross must be about
+    <b>${eur(upliftGross)}</b> and Soilytix's total cost about <b>${eur(upliftCost)}</b> — a
+    <b>${pc(upliftCost/cost-1)}</b> increase on today's ${eur(cost)}. That is the honest price of compliance, and it
+    buys WW, WIA, sick pay, pension accrual and a werkgeversverklaring for the mortgage — none of which are
+    monetised above. The BV's advantage over ZZP here is
+    <b>${eur(b.net+(b.retained||0)-z.net)}</b>/yr.`;
+
+  // wealth
+  const dp = buying ? (price-mort) + price*P.otb + 6000 : 0;
+  const liq = Math.max(0, assets - dp);
+  const b3now = box3Tax(assets,partner,wwr,ret);
+  const b3after = box3Tax(liq,partner,wwr,ret);
+  let ewf=0,hraB=0,intr=0;
+  if(buying){
+    ewf=Math.min(price,P.ewfLim)*P.ewf+Math.max(0,price-P.ewfLim)*P.ewfHi;
+    intr=mort*mrate; hraB=intr*P.hra;
+  }
+  const ewfCost=ewf*.495;
+  const housingNet=buying?(hraB-ewfCost):0;
+  wealthCards.innerHTML=`
+   <div class="stat"><div class="k">Box 3 today</div><div class="v">${eur(b3now)}</div>
+     <div class="d">${eur(assets)} · ${partner?'partner':'single'} · ${wwr?'werkelijk rendement':'forfait 6%'}</div></div>
+   <div class="stat"><div class="k">Box 3 after purchase</div><div class="v">${eur(b3after)}</div>
+     <div class="d">saves ${eur(b3now-b3after)}/yr</div></div>
+   <div class="stat"><div class="k">Housing tax effect</div><div class="v">${buying?(housingNet>=0?'+':'')+eur(housingNet):'—'}</div>
+     <div class="d">${buying?`HRA ${eur(hraB)} − forfait ${eur(ewfCost)}`:'no purchase'}</div></div>
+   <div class="stat"><div class="k">One-off on purchase</div><div class="v">${buying?eur(price*P.otb+6000):'—'}</div>
+     <div class="d">${buying?'2% overdrachtsbelasting + kosten koper':''}</div></div>
+   <div class="stat"><div class="k">Cash needed at close</div><div class="v">${buying?eur(dp):'—'}</div>
+     <div class="d">${buying?`down payment ${eur(price-mort)} + costs`:''}</div></div>
+   <div class="stat"><div class="k">Net annual swing</div><div class="v">${buying?((b3now-b3after+housingNet-intr)>=0?'+':'')+eur(b3now-b3after+housingNet-intr):'—'}</div>
+     <div class="d">${buying?'incl. '+eur(intr)+' interest paid':''}</div></div>`;
+
+  const cap = c=>c*4.5;
+  wealthNote.innerHTML=`<b>The constraint that actually binds.</b> Roughly 4.5× toetsinkomen.
+    On an employment contract that is ${eur(e.gross)} → ~<b>${eur(cap(e.gross))}</b> immediately.
+    As ZZP the bank uses a 3-year inkomensverklaring, capped at the most recent year and often discounted to
+    ~75% under three years → ~<b>${eur(cap(z.gross*0.75*0.873))}</b>. As DGA the bank tests salary
+    (${eur(b.sal)}) plus the BV's accounts. If the flat is real inside 2–3 years,
+    <b>be on payroll before you apply</b> — the gap here is larger than any income-tax delta on this page.`;
+
+  // exit
+  buyinOut.textContent=eur(buyin)+' of '+eur(assets);
+  const carry = notional*P.b3f*P.b3r*years;
+  const b3Saved = box3Tax(assets,partner,wwr,ret)-box3Tax(Math.max(0,assets-buyin),partner,wwr,ret);
+  const oppCost = (buyin*ret - b3Saved)*years;
+  const exitRows=EQ.map(t=>{const tax=t.f(exitV);
+    const extra = t.k==='shr'?(carry+oppCost):0;
+    return {...t,tax,extra,net:exitV-tax-extra};});
+  const bestE=Math.max(...exitRows.map(r=>r.net));
+  exitBars.innerHTML=exitRows.map(r=>`<div class="bar"><span style="font-size:.8rem">${r.s}</span>
+    <span class="track"><span class="fill ${r.net===bestE?'':(r.tag==='bad'?'alt':'dim')}" style="width:${(r.net/exitV*100).toFixed(1)}%"></span></span>
+    <span class="amt">${eur(r.net)}</span></div>`).join('');
+  exitTable.innerHTML=`<tr><th>Characterisation</th><th>Tax at exit</th><th>Carry + forgone return (${years}y)</th><th>Net</th><th>Effective</th></tr>`+
+    exitRows.map(r=>`<tr class="${r.net===bestE?'win':''}"><td>${r.n}${r.tag==='bad'?'<span class="tag bad">worst case</span>':''}<br>
+      <span style="color:var(--n600);font-size:.8rem">${r.d}</span></td>
+      <td>${eur(r.tax)}</td><td>${r.extra?eur(r.extra):'—'}</td><td><b>${eur(r.net)}</b></td>
+      <td>${pc((r.tax+r.extra)/exitV)}</td></tr>`).join('');
+  const spread=bestE-Math.min(...exitRows.map(r=>r.net));
+  const structSpread=Math.max(1,(best-Math.min(...rows.map(r=>r.net+(r.retained||0))))*years);
+  exitNote.innerHTML=`<b>The spread is ${eur(spread)}.</b> That is ${Math.round(spread/structSpread)}× what the whole
+    CoR-vs-BV-vs-employment choice is worth over ${years} years (${eur(structSpread)}). The characterisation of the German
+    instrument is the decision worth spending money and lawyer time on; the employment wrapper is not.
+    <br><br>The 2028 box 2 multiplier would push the holding route from ${eur(box2(exitV))} to
+    <b>${eur(exitV*.36)}</b> of tax — inside your exit window.
+    <br><br><b>The real-shares row is not free.</b> It assumes you pay ${eur(buyin)} for ordinary shares, which leaves box 3
+    (saving ${eur(b3Saved)}/yr) but stops earning ${(ret*100).toFixed(1)}% — a net drag of ${eur(oppCost)} over ${years} years,
+    charged above. The purchase price itself comes back at exit. What does <i>not</i> come back is the ${eur(buyin)} if the
+    company fails, and that risk is not modelled anywhere on this page.`;
+
+  // lifetime
+  const annualNet=best, annualWealth=buying?(b3after-housingNet+0):b3now;
+  lifeTable.innerHTML=`<tr><th>Equity treatment</th><th>Net from work (${years}y)</th>
+    <th>Wealth tax (${years}y)</th><th>Net at exit</th><th>Total</th></tr>`+
+    exitRows.map(r=>{const work=annualNet*years, wt=annualWealth*years;
+      const tot=work-wt+r.net;
+      return `<tr class="${r.net===bestE?'win':''}"><td>${r.s}</td>
+        <td>${eur(work)}</td><td>−${eur(wt)}</td><td>${eur(r.net)}</td><td><b>${eur(tot)}</b></td></tr>`;}).join('');
+}
+
+const cost_=document.getElementById('cost'), ret_=document.getElementById('ret'),
+      assets_=document.getElementById('assets'), partner_=document.getElementById('partner'),
+      wwr_=document.getElementById('wwr'), baz_=document.getElementById('baz'),
+      price_=document.getElementById('price'), mort_=document.getElementById('mort'),
+      mrate_=document.getElementById('mrate'), exit_=document.getElementById('exit'),
+      dga_=document.getElementById('dga'), prem_=document.getElementById('prem'),
+      bvcost_=document.getElementById('bvcost'), yrs_=document.getElementById('yrs'),
+      retain_=document.getElementById('retain'), buy_=document.getElementById('buy'),
+      notional_=document.getElementById('notional'), buyin_=document.getElementById('buyin');
+document.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',render));
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+/*
+  Proposal C: The Swiss Minimalist
+  Aesthetic: Pure reductionism, crisp typographical hierarchy, quiet luxury
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --min-bg: #FFFFFF;
+  --min-text: #111111;
+  --min-sub: #555555;
+  --min-muted: #888888;
+  --min-border: #EEEEEE;
+  --min-border-dark: #222222;
+  
+  --font-sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--min-bg);
+  color: var(--min-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  padding: 0 1.5rem 5rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+.proposal-banner {
+  background-color: #111111;
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 8px 1.5rem;
+  text-align: center;
+  margin: 0 -1.5rem 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.proposal-banner a {
+  color: #AAAAAA;
+  text-decoration: underline;
+}
+
+.min-wrapper {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+header.min-header {
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--min-border);
+}
+
+.min-name {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.min-role {
+  font-size: 1.1rem;
+  color: var(--min-sub);
+  margin-bottom: 1.5rem;
+}
+
+.min-links {
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+}
+
+.min-links a {
+  color: var(--min-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--min-text);
+}
+
+.min-links a:hover {
+  color: var(--min-muted);
+  border-color: var(--min-muted);
+}
+
+section.min-section {
+  margin-bottom: 4rem;
+}
+
+.min-section-title {
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--min-muted);
+  margin-bottom: 1.5rem;
+}
+
+.min-intro {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--min-text);
+  margin-bottom: 1.5rem;
+}
+
+.min-item {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--min-border);
+}
+
+.min-item:first-of-type {
+  border-top: 1px solid var(--min-border);
+}
+
+.min-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+
+.min-item-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.min-item-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.min-item-title a:hover {
+  text-decoration: underline;
+}
+
+.min-item-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--min-muted);
+}
+
+.min-item-desc {
+  font-size: 0.925rem;
+  color: var(--min-sub);
+  margin-top: 0.35rem;
+}
+
+.min-item-tags {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--min-muted);
+  margin-top: 0.5rem;
+}
+
+footer.min-footer {
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--min-border);
+  font-size: 0.85rem;
+  color: var(--min-muted);
+}

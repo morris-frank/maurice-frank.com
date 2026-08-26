@@ -3,543 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maurice Frank</title>
+    <title>Maurice Frank — CTO & AI Engineer</title>
+    <meta name="description" content="Maurice Frank is a CTO, founding engineer, and AI/data specialist building platforms for bioinformatics, agriculture, and intelligent applications.">
+    <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Base layout inspired by clig.dev */
-        :root {
-            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: var(--font-sans);
-            line-height: var(--line-height-relaxed);
-        }
-
-        @media (min-width: 768px) {
-            body {
-                flex-direction: row;
-            }
-        }
-
-        /* Sidebar: Directory Tree Style */
-        nav.sidebar {
-            padding: var(--spacing-xl);
-            background-color: var(--bg-secondary);
-            border-right: 2px solid var(--border-dark);
-            flex-shrink: 0;
-            font-family: var(--font-mono);
-            font-size: var(--font-size-sm);
-        }
-
-        @media (min-width: 768px) {
-            nav.sidebar {
-                width: 280px;
-                height: 100vh;
-                position: sticky;
-                top: 0;
-                overflow-y: auto;
-            }
-        }
-
-        nav.sidebar .prompt {
-            color: var(--text-accent);
-            font-weight: bold;
-            margin-bottom: var(--spacing-md);
-        }
-
-        nav.sidebar .prompt::before {
-            content: "$ ";
-            color: var(--text-muted);
-        }
-
-        nav.sidebar .tree-root {
-            font-weight: bold;
-            color: var(--text-primary);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        nav.sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav.sidebar li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: var(--spacing-xs);
-        }
-
-        nav.sidebar li::before {
-            content: "├──";
-            position: absolute;
-            left: 0;
-            color: var(--text-muted);
-        }
-
-        nav.sidebar li:last-child::before {
-            content: "└──";
-        }
-
-        nav.sidebar a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            transition: color var(--transition-fast);
-        }
-
-        nav.sidebar a:hover {
-            color: var(--text-accent);
-            text-decoration: underline;
-        }
-
-        /* Main Content */
-        main.content {
-            flex-grow: 1;
-            padding: var(--spacing-2xl);
-            max-width: 900px;
-        }
-
-        .term-header {
-            margin-bottom: var(--spacing-3xl);
-            padding-bottom: var(--spacing-xl);
-            border-bottom: 2px dashed var(--border-medium);
-        }
-
-        .term-header pre {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            color: var(--text-accent);
-            margin: 0 0 var(--spacing-md) 0;
-            overflow-x: auto;
-        }
-
-        @media (min-width: 768px) {
-            .term-header pre {
-                font-size: 14px;
-            }
-        }
-
-        .sys-info {
-            font-family: var(--font-mono);
-            font-size: var(--font-size-sm);
-            color: var(--text-muted);
-            display: flex;
-            gap: var(--spacing-lg);
-            flex-wrap: wrap;
-        }
-
-        section {
-            margin-bottom: var(--spacing-3xl);
-        }
-
-        h2 {
-            font-size: var(--font-size-2xl);
-            margin-bottom: var(--spacing-lg);
-            color: var(--text-primary);
-            border-bottom: 2px solid var(--border-dark);
-            padding-bottom: var(--spacing-xs);
-            font-weight: var(--font-weight-bold);
-        }
-
-        h2 .section-num {
-            color: var(--text-muted);
-            font-family: var(--font-mono);
-            font-size: var(--font-size-lg);
-            margin-right: var(--spacing-sm);
-            font-weight: normal;
-        }
-
-        h3 {
-            font-size: var(--font-size-lg);
-            margin-top: var(--spacing-xl);
-            margin-bottom: var(--spacing-sm);
-            color: var(--text-primary);
-        }
-
-        h3::before {
-            content: "## ";
-            color: var(--text-muted);
-            font-family: var(--font-mono);
-        }
-
-        p {
-            margin-bottom: var(--spacing-md);
-            color: var(--text-secondary);
-        }
-
-        /* Lists */
-        ul.skills {
-            list-style: none;
-            padding: 0;
-            font-family: var(--font-mono);
-            font-size: var(--font-size-sm);
-        }
-
-        ul.skills li {
-            margin-bottom: var(--spacing-xs);
-            color: var(--text-secondary);
-        }
-
-        ul.skills li::before {
-            content: "> ";
-            color: var(--text-accent);
-            font-weight: bold;
-        }
-
-        /* Projects & Resume Items */
-        .project, .resume-item {
-            margin-bottom: var(--spacing-xl);
-            padding-left: var(--spacing-md);
-            border-left: 2px solid var(--border-medium);
-        }
-
-        .project:hover, .resume-item:hover {
-            border-left-color: var(--text-accent);
-        }
-
-        .project h4, .resume-item h4 {
-            margin: 0 0 var(--spacing-xs) 0;
-            font-size: var(--font-size-md);
-            font-weight: var(--font-weight-bold);
-            display: flex;
-            align-items: center;
-        }
-
-        .project h4::before, .resume-item h4::before {
-            content: "ƒ ";
-            color: var(--text-accent);
-            font-family: var(--font-mono);
-            margin-right: var(--spacing-xs);
-            font-weight: normal;
-        }
-
-        .project a, .resume-item a {
-            color: var(--text-primary);
-            text-decoration: none;
-            border-bottom: 1px dashed var(--border-dark);
-        }
-
-        .project a:hover, .resume-item a:hover {
-            color: var(--text-accent);
-            border-bottom-style: solid;
-        }
-
-        .meta {
-            font-family: var(--font-mono);
-            font-size: var(--font-size-xs);
-            color: var(--text-muted);
-            margin-bottom: var(--spacing-sm);
-            text-transform: uppercase;
-            letter-spacing: var(--letter-spacing-wide);
-        }
-
-        .tags {
-            font-family: var(--font-mono);
-            font-size: var(--font-size-xs);
-            color: var(--text-primary);
-            background: var(--bg-secondary);
-            padding: 4px 8px;
-            border: 1px solid var(--border-medium);
-            border-radius: 0; /* Brutalist square corners */
-            display: inline-block;
-            margin-top: var(--spacing-sm);
-            transition: all var(--transition-fast);
-        }
-
-        .tags:hover {
-            background: var(--color-neutral-800);
-            color: var(--bg-primary);
-            border-color: var(--color-neutral-800);
-        }
-
-        /* Footer */
-        footer {
-            margin-top: var(--spacing-3xl);
-            padding-top: var(--spacing-xl);
-            border-top: 2px solid var(--border-dark);
-            font-size: var(--font-size-sm);
-            color: var(--text-muted);
-        }
-
-        footer pre {
-            font-family: var(--font-mono);
-            font-size: var(--font-size-xs);
-            color: var(--text-muted);
-            margin-top: var(--spacing-md);
-            background: var(--bg-secondary);
-            padding: var(--spacing-md);
-            border: 1px solid var(--border-medium);
-            overflow-x: auto;
-        }
-    </style>
 </head>
 <body>
 
-    <nav class="sidebar">
-        <div class="prompt">whoami</div>
-        <div class="tree-root">maurice_frank/</div>
-        <ul>
-            <li><a href="#about">about.md</a></li>
-            <li><a href="#projects">projects/</a></li>
-            <li><a href="#resume">resume.json</a></li>
-            <li><a href="#services">services.txt</a></li>
-            <li><a href="#art">art_and_media/</a></li>
-        </ul>
-        
-        <div class="prompt" style="margin-top: var(--spacing-2xl);">ls -l links/</div>
-        <ul>
-            <li><a href="https://github.com/morris-frank">github.url</a></li>
-            <li><a href="https://www.linkedin.com/in/morris-frank/">linkedin.url</a></li>
-            <li><a href="mailto:hire@maurice-frank.com">email.lnk</a></li>
-        </ul>
-    </nav>
+    <div class="site-wrapper">
+        <!-- Sticky Sidebar Navigation -->
+        <aside class="site-sidebar">
+            <div class="sidebar-top">
+                <header class="sidebar-header">
+                    <h1 class="site-title"><a href="#" style="color: inherit; text-decoration: none;">Maurice Frank</a></h1>
+                    <div class="site-subtitle">CTO & AI Engineer</div>
+                    <p class="sidebar-bio">
+                        Engineering data-driven platforms, causal ML systems, and human-centric software. Based in Amsterdam.
+                    </p>
+                </header>
 
-    <main class="content">
-        <header class="term-header">
-            <pre>
-  __  __                  _               _____                 _    
- |  \/  |                (_)             |  ___|               | |   
- | \  / | __ _ _   _ _ __ _  ___ ___     | |__ _ __ __ _ _ __  | | __
- | |\/| |/ _` | | | | '__| |/ __/ _ \    |  __| '__/ _` | '_ \ | |/ /
- | |  | | (_| | |_| | |  | | (_|  __/    | |  | | | (_| | | | ||   < 
- |_|  |_|\__,_|\__,_|_|  |_|\___\___|    \_|  |_|  \__,_|_| |_||_|\_\
-                                                                     
-            </pre>
-            <div class="sys-info">
-                <span>OS: MauriceOS v2.0</span>
-                <span>Uptime: 32 years</span>
-                <span>Shell: zsh</span>
-            </div>
-        </header>
-
-        <section id="about">
-            <h2><span class="section-num">1.0</span>About</h2>
-            <p>I am an AI engineer, a data-viz specialist, a consultant, a climber, a runner, and an autodidact.</p>
-            
-            <h3>Where I build</h3>
-            <ul class="skills">
-                <li>Data apps</li>
-                <li>Machines</li>
-                <li>Furniture</li>
-                <li>Community</li>
-                <li>Visual art</li>
-                <li>Music</li>
-            </ul>
-
-            <h3>And explore life</h3>
-            <ul class="skills">
-                <li>In wilderness</li>
-                <li>On summits</li>
-                <li>Through beauty in data</li>
-                <li>Through cinema</li>
-            </ul>
-        </section>
-
-        <section id="projects">
-            <h2><span class="section-num">2.0</span>Projects</h2>
-            
-            <div class="project">
-                <h4><a href="https://github.com/gitHBDX/dash-prometheus">dash-prometheus</a></h4>
-                <div class="meta">Python | Plotly | Prometheus</div>
-                <p>Performance metrics for DASH (plotly) apps using Prometheus.</p>
+                <nav class="sidebar-nav" aria-label="Section navigation">
+                    <div class="nav-label">Index</div>
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#focus" class="nav-link active">01 / Focus</a></li>
+                        <li class="nav-item"><a href="#ventures" class="nav-link">02 / Ventures & Roles</a></li>
+                        <li class="nav-item"><a href="#cv" class="nav-link">03 / Career & Education</a></li>
+                        <li class="nav-item"><a href="#software" class="nav-link">04 / Selected Software</a></li>
+                        <li class="nav-item"><a href="#media" class="nav-link">05 / Sound & Cinema</a></li>
+                        <li class="nav-item"><a href="#artifacts" class="nav-link">06 / Interactive Artifacts</a></li>
+                        <li class="nav-item"><a href="#colophon" class="nav-link">07 / Colophon</a></li>
+                    </ul>
+                </nav>
             </div>
 
-            <div class="project">
-                <h4><a href="https://github.com/gitHBDX/anndata-cache">anndata-cache</a></h4>
-                <div class="meta">Python | pyArrow</div>
-                <p>A shared-process in-memory store/cache for AnnData objects and their parts.</p>
+            <div class="sidebar-footer">
+                <div class="nav-label">Contact & Links</div>
+                <div class="social-links">
+                    <a href="mailto:maurice.frank@posteo.de" class="social-link">maurice.frank@posteo.de ↗</a>
+                    <a href="https://github.com/morris-frank" target="_blank" rel="noopener noreferrer" class="social-link">github.com/morris-frank ↗</a>
+                    <a href="https://www.linkedin.com/in/morris-frank/" target="_blank" rel="noopener noreferrer" class="social-link">linkedin.com/in/morris-frank ↗</a>
+                </div>
             </div>
+        </aside>
 
-            <div class="project">
-                <h4><a href="https://collegiumacademicum.de">Collegium Academicum</a></h4>
-                <div class="meta">Hugo | Bulma | PHP | JS</div>
-                <p>Website for the Collegium Academicum, a student housing project in Heidelberg.</p>
-            </div>
+        <!-- Main Content Stream -->
+        <main class="site-main">
+            <!-- Section 01: Focus -->
+            <section id="focus" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Focus & Background</h2>
+                    <span class="section-tag">01 / PROFILE</span>
+                </div>
+                
+                <p class="lead-intro">
+                    I build data platforms and machine learning systems from initial theoretical foundations to scalable production platforms.
+                </p>
 
-            <div class="project">
-                <h4><a href="https://ackersyndikat.org">Ackersyndikat</a></h4>
-                <div class="meta">Hugo</div>
-                <p>Website for the Ackersyndicat, a decentralized solidarity network of self-organized farms.</p>
-            </div>
+                <p class="intro-body">
+                    My work spans causal inference on clinical RNA sequencing data, geospatial soil intelligence platforms, and zero-to-one full-stack applications. Outside engineering, I spend time on summits in the Alps, in woodcraft, through auteur cinema, and composing soundscapes.
+                </p>
 
-            <div class="project">
-                <h4><a href="https://github.com/morris-frank/BarTasks">BarTasks</a></h4>
-                <div class="meta">macOS | Swift</div>
-                <p>A (tiny) task manager that lives in the menu bar.</p>
-            </div>
+                <div class="dual-focus-grid">
+                    <div class="focus-col">
+                        <h4>Engineering Practice</h4>
+                        <ul class="focus-list">
+                            <li><span>Full-stack data platforms</span> <span class="tag">TypeScript / Python</span></li>
+                            <li><span>Causal ML & high-throughput pipelines</span> <span class="tag">PyTorch</span></li>
+                            <li><span>Geospatial analytics & map visualizers</span> <span class="tag">Mapbox / GIS</span></li>
+                            <li><span>Cross-platform mobile apps</span> <span class="tag">Flutter</span></li>
+                        </ul>
+                    </div>
 
-            <div class="project">
-                <h4><a href="https://github.com/morris-frank/letterboxd-ratings-for-cineville">Letterboxd Ratings for Cineville</a></h4>
-                <div class="meta">Chrome | JS</div>
-                <p>A browser extension to show Letterboxd ratings on the Cineville website.</p>
-            </div>
+                    <div class="focus-col">
+                        <h4>Explorations</h4>
+                        <ul class="focus-list">
+                            <li><span>Alpine summits & trail running</span> <span class="tag">Wilderness</span></li>
+                            <li><span>Visual beauty in complex data</span> <span class="tag">Data-Viz</span></li>
+                            <li><span>Auteur & world cinema</span> <span class="tag">Film</span></li>
+                            <li><span>Minimalist & electronic sound</span> <span class="tag">Synthesis</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-            <div class="project">
-                <h4><a href="https://clue-to-drip.netlify.app/">Clue to Drip</a></h4>
-                <div class="meta">AlpineJS</div>
-                <p>A converter to import data from Clue into Drip.</p>
-            </div>
-        </section>
+            <!-- Section 02: Ventures & Leadership (Cards) -->
+            <section id="ventures" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Ventures & Leadership</h2>
+                    <span class="section-tag">02 / VENTURES</span>
+                </div>
 
-        <section id="resume">
-            <h2><span class="section-num">3.0</span>Resume</h2>
-            
-            <h3>Work</h3>
-            
-            <div class="resume-item">
-                <h4><a href="https://peau.ai/">Peau</a> — Founding Engineer</h4>
-                <div class="meta">2025 — Present</div>
-                <p>From 0 to MVP in 2 quarters. Cross-platform Flutter-based app for personalized skincare, full-stack solution on Firebase and custom UI. Custom Computer vision models for skin analysis and LLM-based agents for recommendations and product discovery.</p>
-                <div class="tags">[Flutter] [Firebase] [Riverpod] [ML Kit] [Google Cloud]</div>
-            </div>
+                <div class="cards-grid">
+                    <!-- Soilytix -->
+                    <div class="card-item">
+                        <div>
+                            <div class="card-item-header">
+                                <span class="card-item-title"><a href="https://soilytix.com/" target="_blank" rel="noopener noreferrer">Soilytix ↗</a></span>
+                                <span class="card-item-date">2023 — Present</span>
+                            </div>
+                            <div class="card-item-role">CTO & Founding Engineer</div>
+                            <p class="card-item-desc">
+                                Scaled from idea to revenue in one year. Architected and engineered the data-driven agricultural soil intelligence platform, processing global datasets with interactive geospatial visualization and farmer-facing analytics.
+                            </p>
+                        </div>
+                        <div class="card-item-tags">Next.js · TypeScript · Prisma · Mapbox GL · Nivo · Vercel</div>
+                    </div>
 
-            <div class="resume-item">
-                <h4><a href="https://muno.ai/">Muno</a> — Founding Engineer</h4>
-                <div class="meta">2024 — Present</div>
-                <p>Engineering the full-stack B2C platform for immune health, from backend blood RNA analysis pipelines to the customer-facing application.</p>
-                <div class="tags">[Python] [Bioinformatics] [ML Engineering]</div>
-            </div>
+                    <!-- Peau -->
+                    <div class="card-item">
+                        <div>
+                            <div class="card-item-header">
+                                <span class="card-item-title"><a href="https://peau.ai/" target="_blank" rel="noopener noreferrer">Peau ↗</a></span>
+                                <span class="card-item-date">2025 — Present</span>
+                            </div>
+                            <div class="card-item-role">Founding Engineer</div>
+                            <p class="card-item-desc">
+                                Shipped from 0 to MVP in two quarters. Cross-platform mobile app for personalized skincare, full-stack Firebase architecture, on-device/cloud Computer Vision models for skin analysis, and LLM recommendation agents.
+                            </p>
+                        </div>
+                        <div class="card-item-tags">Flutter · Firebase · Riverpod · ML Kit · Google Cloud</div>
+                    </div>
 
-            <div class="resume-item">
-                <h4><a href="https://soilytix.com/">Soilytix</a> — Founding Engineer</h4>
-                <div class="meta">2023 — Present</div>
-                <p>From idea to revenue in 1 year. Architected and developed a data-driven platform for analyzing agricultural data, providing insights to farmers and agronomists. Full-stack developed in Next.js with scalable backend, supporting world spanning data-sets.</p>
-                <div class="tags">[Next.js] [TypeScript] [Prisma] [Mapbox] [Nivo] [Vercel]</div>
-            </div>
+                    <!-- Muno -->
+                    <div class="card-item">
+                        <div>
+                            <div class="card-item-header">
+                                <span class="card-item-title"><a href="https://muno.ai/" target="_blank" rel="noopener noreferrer">Muno ↗</a></span>
+                                <span class="card-item-date">2024 — Present</span>
+                            </div>
+                            <div class="card-item-role">Founding Engineer</div>
+                            <p class="card-item-desc">
+                                Engineered the full-stack B2C platform for immune health, connecting high-throughput automated RNA blood analysis pipelines directly to user-facing applications.
+                            </p>
+                        </div>
+                        <div class="card-item-tags">Python · Bioinformatics · ML Engineering · Cloud Architecture</div>
+                    </div>
 
-            <div class="resume-item">
-                <h4><a href="https://hummingbird-diagnostics.com/">Hummingbird Diagnostics</a> — Software Architect Advisor</h4>
-                <div class="meta">11/2024 — Present</div>
-                <p>Strategic consulting on ML architecture, MLOps, and software design for RNA sequencing analysis.</p>
-                <div class="tags">[MLOps] [Software Architecture] [ML Engineering]</div>
-            </div>
+                    <!-- Hummingbird Diagnostics Advisor -->
+                    <div class="card-item">
+                        <div>
+                            <div class="card-item-header">
+                                <span class="card-item-title"><a href="https://hummingbird-diagnostics.com/" target="_blank" rel="noopener noreferrer">Hummingbird Diagnostics ↗</a></span>
+                                <span class="card-item-date">11/2024 — Present</span>
+                            </div>
+                            <div class="card-item-role">Software Architect Advisor</div>
+                            <p class="card-item-desc">
+                                Advisory on machine learning architecture, MLOps, and scalable software pipelines for clinical RNA sequencing analysis and biomarker discovery.
+                            </p>
+                        </div>
+                        <div class="card-item-tags">MLOps · System Architecture · Bio-pipelines</div>
+                    </div>
+                </div>
+            </section>
 
-            <div class="resume-item">
-                <h4><a href="https://hummingbird-diagnostics.com/">Hummingbird Diagnostics</a> — Machine Learning Scientist</h4>
-                <div class="meta">11/2020 — 11/2024</div>
-                <p>Causal machine learning research on RNA-Seq. NGS and Nanopore data. Working with sequence embedding models and graph networks. In-house platform for data, feature, and result analysis and MLOps to enable for code-free ML analysis across large set of datasets and objectives.</p>
-                <div class="tags">[Python] [PyTorch] [sklearn] [Biostatistics]</div>
-            </div>
+            <!-- Section 03: Career & Education (Minimal CV Layout) -->
+            <section id="cv" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Career & Education</h2>
+                    <span class="section-tag">03 / CV</span>
+                </div>
 
-            <div class="resume-item">
-                <h4><a href="https://amlab.science.uva.nl/">AMLab, University of Amsterdam</a> — Research Intern</h4>
-                <div class="meta">11/2019 — 06/2020</div>
-                <p>Intern at Max Welling's Machine Learning Lab at the University of Amsterdam.</p>
-                <div class="tags">[Python] [PyTorch] [SLURM]</div>
-            </div>
+                <table class="cv-table">
+                    <tbody>
+                        <tr>
+                            <td class="cv-date-col">2025 — Present</td>
+                            <td class="cv-title-col"><a href="https://peau.ai/" target="_blank" rel="noopener noreferrer">Peau</a> — Founding Engineer</td>
+                            <td class="cv-detail-col">Skincare AI / Flutter / Firebase</td>
+                        </tr>
+                        <tr>
+                            <td class="cv-date-col">2024 — Present</td>
+                            <td class="cv-title-col"><a href="https://muno.ai/" target="_blank" rel="noopener noreferrer">Muno</a> — Founding Engineer</td>
+                            <td class="cv-detail-col">Immune Health / RNA-Seq</td>
+                        </tr>
+                        <tr>
+                            <td class="cv-date-col">2023 — Present</td>
+                            <td class="cv-title-col"><a href="https://soilytix.com/" target="_blank" rel="noopener noreferrer">Soilytix</a> — CTO & Founding Engineer</td>
+                            <td class="cv-detail-col">Soil Intelligence / Next.js</td>
+                        </tr>
+                        <tr>
+                            <td class="cv-date-col">2024 — Present</td>
+                            <td class="cv-title-col"><a href="https://hummingbird-diagnostics.com/" target="_blank" rel="noopener noreferrer">Hummingbird Diagnostics</a> — Architect Advisor</td>
+                            <td class="cv-detail-col">ML Architecture / MLOps</td>
+                        </tr>
+                        <tr>
+                            <td class="cv-date-col">2020 — 2024</td>
+                            <td class="cv-title-col"><a href="https://hummingbird-diagnostics.com/" target="_blank" rel="noopener noreferrer">Hummingbird Diagnostics</a> — ML Scientist</td>
+                            <td class="cv-detail-col">Causal ML / PyTorch / Graph Nets</td>
+                        </tr>
+                        <tr>
+                            <td class="cv-date-col">2019 — 2020</td>
+                            <td class="cv-title-col"><a href="https://amlab.science.uva.nl/" target="_blank" rel="noopener noreferrer">AMLab (Max Welling Lab, UvA)</a> — Research Intern</td>
+                            <td class="cv-detail-col">Deep Learning / SLURM</td>
+                        </tr>
+                        <tr>
+                            <td class="cv-date-col">2019</td>
+                            <td class="cv-title-col"><a href="https://www.bmwgroup.com/" target="_blank" rel="noopener noreferrer">BMW Group</a> — ML Engineer Intern</td>
+                            <td class="cv-detail-col">PySpark / Palantir / Dash</td>
+                        </tr>
+                        <tr>
+                            <td class="cv-date-col">2017 — 2018</td>
+                            <td class="cv-title-col"><a href="https://buergerwerke.de/" target="_blank" rel="noopener noreferrer">Bürgerwerke eG</a> — Full-stack Web Developer</td>
+                            <td class="cv-detail-col">Ruby on Rails</td>
+                        </tr>
+                        <tr>
+                            <td class="cv-date-col">2018 — 2020</td>
+                            <td class="cv-title-col"><a href="https://www.uva.nl/en/" target="_blank" rel="noopener noreferrer">University of Amsterdam</a> — M.Sc. Artificial Intelligence</td>
+                            <td class="cv-detail-col">GPA 4.0/4.0 · cum laude</td>
+                        </tr>
+                        <tr>
+                            <td class="cv-date-col">2014 — 2017</td>
+                            <td class="cv-title-col"><a href="https://www.uni-heidelberg.de/en" target="_blank" rel="noopener noreferrer">Heidelberg University</a> — B.Sc. Applied Computer Science</td>
+                            <td class="cv-detail-col">GPA 3.58/4.0 · Computer Vision</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
-            <div class="resume-item">
-                <h4><a href="https://www.bmwgroup.com/">BMW Group</a> — Machine Learning Engineer Intern</h4>
-                <div class="meta">06/2019 — 08/2019</div>
-                <p>Building statistical models to analyze engine part quality and live fleet monitoring. Building a production-ready data visualization app.</p>
-                <div class="tags">[Python] [PySpark] [Palantir Foundry] [Dash] [Agile]</div>
-            </div>
+            <!-- Section 04: Selected Software & Open Source (with GitHub indicators) -->
+            <section id="software" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Selected Software & Open Source</h2>
+                    <span class="section-tag">04 / CODE</span>
+                </div>
 
-            <div class="resume-item">
-                <h4><a href="https://buergerwerke.de/">Bürgerwerke eG</a> — Full-stack Web Developer</h4>
-                <div class="meta">09/2017 — 08/2018</div>
-                <p>Ground-up development of a team communication and organization web portal in Ruby on Rails.</p>
-                <div class="tags">[Rails] [Ruby] [Software Engineering]</div>
-            </div>
+                <div class="software-list">
+                    <a href="https://github.com/gitHBDX/dash-prometheus" target="_blank" rel="noopener noreferrer" class="software-item">
+                        <div class="software-left">
+                            <span class="software-name">
+                                dash-prometheus
+                                <span class="gh-pill">GitHub ↗</span>
+                            </span>
+                            <span class="software-summary">Performance metrics and Prometheus exporter for Plotly Dash applications.</span>
+                        </div>
+                        <span class="software-tech">Python · Plotly · Prometheus</span>
+                    </a>
 
-            <h3>Education</h3>
-            
-            <div class="resume-item">
-                <h4>University of Amsterdam — M.Sc. Artificial Intelligence</h4>
-                <div class="meta">2018 — 2020</div>
-                <p>Specialization in topics: Theoretical machine learning, Computer Vision, Reinforcement Learning, NLP, Information theory.</p>
-                <div class="tags">[GPA 4/4, cum laude]</div>
-            </div>
+                    <a href="https://github.com/gitHBDX/anndata-cache" target="_blank" rel="noopener noreferrer" class="software-item">
+                        <div class="software-left">
+                            <span class="software-name">
+                                anndata-cache
+                                <span class="gh-pill">GitHub ↗</span>
+                            </span>
+                            <span class="software-summary">Shared-process in-memory caching store for large AnnData genomic matrices.</span>
+                        </div>
+                        <span class="software-tech">Python · pyArrow · IPC</span>
+                    </a>
 
-            <div class="resume-item">
-                <h4>University Heidelberg — B.Sc. Applied Computer Science</h4>
-                <div class="meta">2014 — 2017</div>
-                <p>Specialization on image processing and pattern recognition: Deep Learning, 3D Computer vision, medical image analysis, fairness in AI.</p>
-                <div class="tags">[GPA 3.58/4]</div>
-            </div>
-        </section>
+                    <a href="https://github.com/morris-frank/BarTasks" target="_blank" rel="noopener noreferrer" class="software-item">
+                        <div class="software-left">
+                            <span class="software-name">
+                                BarTasks
+                                <span class="gh-pill">GitHub ↗</span>
+                            </span>
+                            <span class="software-summary">Lightweight, distraction-free task management utility that lives in the macOS menu bar.</span>
+                        </div>
+                        <span class="software-tech">macOS · Swift · SwiftUI</span>
+                    </a>
 
-        <section id="services">
-            <h2><span class="section-num">4.0</span>Services</h2>
-            <p><strong>Unlock the Power of Your Data with Expert Consulting Services!</strong></p>
-            <p>Are you ready to harness the full potential of your data? Look no further! As a seasoned freelance consultant specializing in data analytics and machine learning, I offer tailored solutions to propel your business forward.</p>
-            
-            <ul class="skills">
-                <li><strong>Data Dashboard & Interactive Apps:</strong> Transform your raw data into actionable insights with visually stunning dashboards and user-friendly applications.</li>
-                <li><strong>Custom Machine Learning Models:</strong> Gain a competitive edge by leveraging cutting-edge machine learning techniques.</li>
-                <li><strong>Diverse Industry Experience:</strong> With a proven track record across multiple industries, including finance, healthcare, e-commerce, and more.</li>
-                <li><strong>Web Technologies & AI Pipelines:</strong> From frontend user-facing applications to backend AI pipelines, I've got you covered.</li>
-            </ul>
+                    <a href="https://github.com/morris-frank/letterboxd-ratings-for-cineville" target="_blank" rel="noopener noreferrer" class="software-item">
+                        <div class="software-left">
+                            <span class="software-name">
+                                Letterboxd for Cineville
+                                <span class="gh-pill">GitHub ↗</span>
+                            </span>
+                            <span class="software-summary">Browser extension displaying Letterboxd film community scores on Cineville movie pages.</span>
+                        </div>
+                        <span class="software-tech">Chrome · WebExtensions · JS</span>
+                    </a>
 
-            <p>Ready to unlock the full potential of your data? Let's collaborate to drive innovation, optimize operations, and fuel growth for your business. Contact me today to schedule a consultation and take the first step toward data-driven success!</p>
-            
-            <p>Please contact me at <a href="mailto:hire@maurice-frank.com">hire@maurice-frank.com</a> if you're interested in working with me.</p>
-        </section>
+                    <a href="https://clue-to-drip.netlify.app/" target="_blank" rel="noopener noreferrer" class="software-item">
+                        <div class="software-left">
+                            <span class="software-name">
+                                Clue to Drip
+                                <span class="gh-pill">Live Web ↗</span>
+                            </span>
+                            <span class="software-summary">Client-side privacy-first data converter migrating health tracking records into open-source Drip.</span>
+                        </div>
+                        <span class="software-tech">AlpineJS · Static Web</span>
+                    </a>
 
-        <section id="art">
-            <h2><span class="section-num">5.0</span>Art & Media</h2>
-            
-            <h3>Video</h3>
-            <div class="project">
-                <h4>The cats of Istanbul</h4>
-                <p>Little video cut together from shots taken in Istanbul January 2023. Music: Altın Gün - Kolbastı. Camera: Pixel 7, Editing: DaVinci Resolve.</p>
-            </div>
-            <div class="project">
-                <h4>Eating Hooks (AI music video)</h4>
-                <p>For Moderat's Eating Hooks. Generated with VQ-GAN given a custom screen-play. This is as far as I know the first real AI generated music video (Dec 2021).</p>
-            </div>
-            <div class="project">
-                <h4>Motion-still (2018-2022)</h4>
-                <p>Multiple years of using the Google app "Motion still", led to a long collection of moving pictures.</p>
-            </div>
+                    <a href="https://collegiumacademicum.de" target="_blank" rel="noopener noreferrer" class="software-item">
+                        <div class="software-left">
+                            <span class="software-name">
+                                Collegium Academicum
+                                <span class="gh-pill">Website ↗</span>
+                            </span>
+                            <span class="software-summary">Digital platform for the self-governed timber-constructed student housing project in Heidelberg.</span>
+                        </div>
+                        <span class="software-tech">Hugo · Bulma · PHP</span>
+                    </a>
 
-            <h3>Music</h3>
-            <div class="project">
-                <h4>Down-tempo for 18 musicians</h4>
-                <p>Steve Reichs classic as danceable down-tempo. Live recording, played on a Novation Launchpad.</p>
-            </div>
-            <div class="project">
-                <h4>ePiano Phase</h4>
-                <p>Again Steve Reich, here Piano Phase but its electronica.</p>
-            </div>
-            <div class="project">
-                <h4>Metropolitian mornings</h4>
-                <p>An evolving sonical soundscape.</p>
-            </div>
-            <div class="project">
-                <h4>Movement one</h4>
-                <p>Random pick and choose from the symph orchestra.</p>
-            </div>
-            <div class="project">
-                <h4>Chow's theme</h4>
-                <p>A simple waltz, watched "In the Mood for Love". For Violin, Cello and a Marimba.</p>
-            </div>
-            
-            <h3>Photography</h3>
-            <p>A collection of photography from the Alps, Himalayas, and travels around the world. (Images hidden in this text-only version).</p>
-        </section>
+                    <a href="https://ackersyndikat.org" target="_blank" rel="noopener noreferrer" class="software-item">
+                        <div class="software-left">
+                            <span class="software-name">
+                                Ackersyndikat
+                                <span class="gh-pill">Website ↗</span>
+                            </span>
+                            <span class="software-summary">Web presence for a decentralized solidarity network securing land commons for farming.</span>
+                        </div>
+                        <span class="software-tech">Hugo · Open Web</span>
+                    </a>
+                </div>
+            </section>
 
-        <footer>
-            <p><strong>Responsible person:</strong> Maurice Frank</p>
-            <p><strong>E-mail:</strong> firstname.lastname @ posteo de</p>
-            <p><strong>Privacy statement:</strong> I don't collect any data from you. Neither do I want any data. So don't send me any!</p>
-            <pre>
-{
-  "registration": "Maurice-Frank",
-  "chamber_of_commerce": "KVK (Netherlands)",
-  "kvk_number": "80834000",
-  "vestigingsnummer": "000047168390"
-}
-            </pre>
-        </footer>
-    </main>
+            <!-- Section 05: Sound, Cinema & Photography (Playable Cards) -->
+            <section id="media" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Sound, Cinema & Photography</h2>
+                    <span class="section-tag">05 / MEDIA</span>
+                </div>
 
+                <div class="media-cards-grid">
+                    <!-- Video Card: Cats of Istanbul -->
+                    <div class="media-card full-width">
+                        <div class="media-card-top">
+                            <span class="media-card-title">The Cats of Istanbul</span>
+                            <span class="media-card-tag">Video · 2023</span>
+                        </div>
+                        <p class="media-card-desc">Visual vignette capturing street cats in Istanbul (Jan 2023). Music: Altın Gün (<em>Kolbastı</em>). Filmed on Pixel 7, edited in DaVinci Resolve.</p>
+                        <video controls preload="metadata" poster="https://cdn.maurice-frank.com/morris-media/KediIstanbul.jpg">
+                            <source src="https://cdn.maurice-frank.com/morris-media/KediIstanbul.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+
+                    <!-- Audio: Down-tempo for 18 musicians -->
+                    <div class="media-card">
+                        <div>
+                            <div class="media-card-top">
+                                <span class="media-card-title">Down-tempo for 18 Musicians</span>
+                                <span class="media-card-tag">Audio</span>
+                            </div>
+                            <p class="media-card-desc">Steve Reich’s minimalist piece reimagined as danceable down-tempo electronica. Live recording on Novation Launchpad.</p>
+                        </div>
+                        <audio controls preload="none">
+                            <source src="https://cdn.maurice-frank.com/morris-media/music/music_for_18_musicians-001.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Audio: ePiano Phase -->
+                    <div class="media-card">
+                        <div>
+                            <div class="media-card-top">
+                                <span class="media-card-title">ePiano Phase</span>
+                                <span class="media-card-tag">Audio</span>
+                            </div>
+                            <p class="media-card-desc">Steve Reich’s Piano Phase adapted for electronica and phased synthesizers.</p>
+                        </div>
+                        <audio controls preload="none">
+                            <source src="https://cdn.maurice-frank.com/morris-media/music/electronica_piano-phase.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Audio: Chow's Theme -->
+                    <div class="media-card">
+                        <div>
+                            <div class="media-card-top">
+                                <span class="media-card-title">Chow’s Theme</span>
+                                <span class="media-card-tag">Chamber</span>
+                            </div>
+                            <p class="media-card-desc">A gentle chamber waltz composed after watching <em>In the Mood for Love</em>. Scored for Violin, Cello, and Marimba.</p>
+                        </div>
+                        <audio controls preload="none">
+                            <source src="https://cdn.maurice-frank.com/morris-media/music/waltz_001.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Audio: Metropolitan Mornings -->
+                    <div class="media-card">
+                        <div>
+                            <div class="media-card-top">
+                                <span class="media-card-title">Metropolitan Mornings</span>
+                                <span class="media-card-tag">Soundscape</span>
+                            </div>
+                            <p class="media-card-desc">An evolving sonic soundscape and ambient synthesis exploration.</p>
+                        </div>
+                        <audio controls preload="none">
+                            <source src="https://cdn.maurice-frank.com/morris-media/music/week07.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- Minimal Photography Gallery -->
+                <div style="margin-top: var(--space-xl);">
+                    <div class="nav-label" style="margin-bottom: var(--space-xs);">Photography & Mountains</div>
+                    <div class="photo-gallery">
+                        <figure class="photo-item">
+                            <img src="https://cdn.maurice-frank.com/morris-media/photography/IMG_20220904_073653-02.webp" alt="Sunrise at Fletschhorn" loading="lazy">
+                            <figcaption>Sunrise at Fletschhorn</figcaption>
+                        </figure>
+                        <figure class="photo-item">
+                            <img src="https://cdn.maurice-frank.com/morris-media/photography/PXL_20240806_064438578.RAW-02.ORIGINAL.webp" alt="Matterhorn summit" loading="lazy">
+                            <figcaption>Matterhorn summit</figcaption>
+                        </figure>
+                        <figure class="photo-item">
+                            <img src="https://cdn.maurice-frank.com/morris-media/photography/PXL_20230726_185216099.webp" alt="Mont Blanc" loading="lazy">
+                            <figcaption>Mont Blanc</figcaption>
+                        </figure>
+                        <figure class="photo-item">
+                            <img src="https://cdn.maurice-frank.com/morris-media/photography/IMG_20180210_162716.webp" alt="Bothe Koshi valley, Khumbu" loading="lazy">
+                            <figcaption>Bothe Koshi valley · खुम्बु</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 06: Interactive Artifacts & Explorations (Moved to Bottom, Cards) -->
+            <section id="artifacts" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Interactive Artifacts & Explorations</h2>
+                    <span class="section-tag">06 / LABS</span>
+                </div>
+                <p class="intro-body">
+                    Live calculators, explorable knowledge graphs, and technical investigations:
+                </p>
+
+                <div class="cards-grid">
+                    <!-- NL Tax Simulator -->
+                    <a href="./nl-tax-simulator.html" class="card-item">
+                        <div>
+                            <div class="card-item-header">
+                                <span class="card-item-title">Netherlands Tax Scenario Simulator (2026) ↗</span>
+                                <span class="card-item-date">Interactive Tool</span>
+                            </div>
+                            <p class="card-item-desc">
+                                Parametric financial model calculating Dutch Box 1/2/3 taxes, 30% ruling thresholds, and freelance vs. BV dividend distribution optimization with real-time reactive charting.
+                            </p>
+                        </div>
+                        <div class="card-item-tags">Vanilla JS · CSS Grid · Financial Modeling</div>
+                    </a>
+
+                    <!-- Open Source Claim Graphs -->
+                    <a href="./soilytix/open-source-claim-graphs.html" class="card-item">
+                        <div>
+                            <div class="card-item-header">
+                                <span class="card-item-title">Open-Source Claim Graph Landscape ↗</span>
+                                <span class="card-item-date">Research Lab</span>
+                            </div>
+                            <p class="card-item-desc">
+                                Explorable multi-dimensional graph landscape analyzing data freshness, multilingual corpus coverage, and band guidance for agricultural verification.
+                            </p>
+                        </div>
+                        <div class="card-item-tags">Knowledge Graphs · Interactive Visualization</div>
+                    </a>
+
+                    <!-- AI Usage Report -->
+                    <a href="./soilytix/aiusage-report-2026-08-04.html" class="card-item">
+                        <div>
+                            <div class="card-item-header">
+                                <span class="card-item-title">LLM Usage & Token Spend Analysis ↗</span>
+                                <span class="card-item-date">Engineering Audit</span>
+                            </div>
+                            <p class="card-item-desc">
+                                Comprehensive audit of inference spend, prompt caching efficiency, token unit costs, and latency benchmarks across production model providers.
+                            </p>
+                        </div>
+                        <div class="card-item-tags">LLMOps · Cost Optimization · Metrics</div>
+                    </a>
+
+                    <!-- Pathogen Pressure Mock -->
+                    <a href="./soilytix/pathogen-pressure-mock.html" class="card-item">
+                        <div>
+                            <div class="card-item-header">
+                                <span class="card-item-title">Pathogen Pressure & Parcel Risk Modeling ↗</span>
+                                <span class="card-item-date">Spatial Interface</span>
+                            </div>
+                            <p class="card-item-desc">
+                                High-precision geospatial interface modeling pathogen propagation vectors across irregular farm parcels with cohort risk distributions.
+                            </p>
+                        </div>
+                        <div class="card-item-tags">SVG Vector Analytics · Spatial UI</div>
+                    </a>
+
+                    <!-- The Life of a Soil Sample -->
+                    <a href="./soilytix/the-life-of-a-soil-sample.html" class="card-item">
+                        <div>
+                            <div class="card-item-header">
+                                <span class="card-item-title">The Life of a Soil Sample ↗</span>
+                                <span class="card-item-date">Visual Narrative</span>
+                            </div>
+                            <p class="card-item-desc">
+                                Illustrated narrative detailing the journey of physical soil samples from agricultural fields through wet lab assays into digital intelligence.
+                            </p>
+                        </div>
+                        <div class="card-item-tags">Science Communication · Comic</div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Section 07: Colophon -->
+            <section id="colophon" class="colophon-section">
+                <div class="section-header">
+                    <h2 class="section-title">Colophon & Legal</h2>
+                    <span class="section-tag">07 / IMPRINT</span>
+                </div>
+
+                <p style="margin-bottom: var(--space-md);">
+                    Set in <em>Instrument Sans</em> and <em>JetBrains Mono</em>. Built with zero tracking, zero cookies, and zero analytics.
+                </p>
+
+                <div class="colophon-legal">
+                    <div class="colophon-block">
+                        <dt>Registration</dt>
+                        <dd>Maurice-Frank</dd>
+                    </div>
+                    <div class="colophon-block">
+                        <dt>Chamber of Commerce (NL)</dt>
+                        <dd>KVK 80834000</dd>
+                    </div>
+                    <div class="colophon-block">
+                        <dt>Vestigingsnummer</dt>
+                        <dd>000047168390</dd>
+                    </div>
+                    <div class="colophon-block">
+                        <dt>Direct Email</dt>
+                        <dd>maurice.frank [at] posteo.de</dd>
+                    </div>
+                </div>
+
+                <div class="proposals-nav-bar">
+                    <span>Design Prototypes Hub:</span>
+                    <div class="proposals-links">
+                        <a href="proposals/index.html">View Comparison Hub →</a>
+                        <a href="proposals/technical.html">CLIG Style</a>
+                        <a href="proposals/minimal.html">Swiss Minimal</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scrollspy Navigator -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section, .colophon-section');
+            const navLinks = document.querySelectorAll('.sidebar-nav .nav-link');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-20% 0px -70% 0px' });
+
+            sections.forEach(s => observer.observe(s));
+        });
+    </script>
 </body>
 </html>

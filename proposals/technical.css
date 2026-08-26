@@ -1,0 +1,421 @@
+/*
+  Proposal B: The Modern Technical Standard
+  Aesthetic: High-contrast technical documentation inspired by clig.dev
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --tech-bg: #F8FAFC;
+  --tech-surface: #FFFFFF;
+  --tech-border: #E2E8F0;
+  --tech-border-dark: #CBD5E1;
+  --tech-text-main: #0F172A;
+  --tech-text-sub: #475569;
+  --tech-text-muted: #64748B;
+  
+  --tech-cyan: #0284C7;
+  --tech-cyan-light: #E0F2FE;
+  --tech-teal: #0D9488;
+  --tech-teal-light: #CCFBF1;
+  --tech-amber: #D97706;
+  --tech-amber-light: #FEF3C7;
+
+  --font-display: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-code: "JetBrains Mono", monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--tech-bg);
+  color: var(--tech-text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.proposal-banner {
+  background-color: var(--tech-text-main);
+  color: #FFFFFF;
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  padding: 8px 1.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.proposal-banner a {
+  color: var(--tech-teal-light);
+  text-decoration: underline;
+}
+
+.tech-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 960px) {
+  .tech-container {
+    flex-direction: row;
+    gap: 3.5rem;
+    padding: 0 2rem;
+  }
+}
+
+/* Sidebar */
+.tech-sidebar {
+  padding: 2.5rem 0 1.5rem;
+  border-bottom: 1px solid var(--tech-border);
+}
+
+@media (min-width: 960px) {
+  .tech-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 2.5rem;
+    height: calc(100vh - 2.5rem);
+    overflow-y: auto;
+    border-bottom: none;
+    border-right: 1px solid var(--tech-border);
+    padding: 3rem 1.5rem 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.tech-brand {
+  margin-bottom: 2rem;
+}
+
+.tech-brand h1 {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--tech-text-main);
+}
+
+.tech-title-tag {
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--tech-cyan);
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.tech-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  background: var(--tech-teal-light);
+  color: var(--tech-teal);
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+.tech-nav-heading {
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--tech-text-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.tech-nav-list {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.tech-nav-list li {
+  margin-bottom: 0.25rem;
+}
+
+.tech-nav-list a {
+  display: block;
+  font-family: var(--font-code);
+  font-size: 0.825rem;
+  color: var(--tech-text-sub);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.tech-nav-list a:hover {
+  background-color: var(--tech-surface);
+  color: var(--tech-cyan);
+  border-left: 2px solid var(--tech-cyan);
+}
+
+.tech-contacts {
+  padding-top: 1rem;
+  border-top: 1px solid var(--tech-border);
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+}
+
+.tech-contacts a {
+  display: block;
+  color: var(--tech-text-sub);
+  text-decoration: none;
+  margin-bottom: 0.4rem;
+}
+
+.tech-contacts a:hover {
+  color: var(--tech-cyan);
+}
+
+/* Main Content */
+.tech-main {
+  flex-grow: 1;
+  max-width: 840px;
+  padding: 2.5rem 0 4rem;
+}
+
+@media (min-width: 960px) {
+  .tech-main {
+    padding: 3rem 0 4rem;
+  }
+}
+
+.tech-section {
+  margin-bottom: 3.5rem;
+}
+
+.tech-sec-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--tech-text-main);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tech-sec-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.tech-sec-index {
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--tech-text-muted);
+}
+
+.tech-intro-statement {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--tech-text-main);
+  margin-bottom: 1.5rem;
+}
+
+.tech-subtext {
+  font-size: 0.95rem;
+  color: var(--tech-text-sub);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Cards & Grid */
+.tech-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 600px) {
+  .tech-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tech-card {
+  background-color: var(--tech-surface);
+  border: 1px solid var(--tech-border);
+  border-radius: 6px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.15s ease;
+}
+
+.tech-card:hover {
+  border-color: var(--tech-cyan);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+  transform: translateY(-2px);
+}
+
+.tech-card.full-width {
+  grid-column: 1 / -1;
+  border-left: 4px solid var(--tech-cyan);
+}
+
+.tech-pill {
+  display: inline-block;
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--tech-cyan-light);
+  color: var(--tech-cyan);
+  margin-bottom: 0.5rem;
+  align-self: flex-start;
+}
+
+.tech-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--tech-text-main);
+}
+
+.tech-card p {
+  font-size: 0.88rem;
+  color: var(--tech-text-sub);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.tech-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: var(--tech-text-muted);
+  border-top: 1px solid var(--tech-border);
+  padding-top: 0.5rem;
+}
+
+.tech-link-arrow {
+  color: var(--tech-cyan);
+  font-weight: 600;
+}
+
+/* Experience Ledger */
+.tech-ledger {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tech-ledger-item {
+  background-color: var(--tech-surface);
+  border: 1px solid var(--tech-border);
+  border-radius: 6px;
+  padding: 1.25rem;
+}
+
+.tech-ledger-top {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 600px) {
+  .tech-ledger-top {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}
+
+.tech-ledger-role {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.tech-ledger-company {
+  color: var(--tech-cyan);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.tech-ledger-date {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  color: var(--tech-text-muted);
+}
+
+.tech-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 0.75rem;
+}
+
+.tech-tag {
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  background: var(--tech-bg);
+  border: 1px solid var(--tech-border);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--tech-text-sub);
+}
+
+/* Footer / Imprint */
+.tech-imprint {
+  border-top: 2px solid var(--tech-text-main);
+  padding-top: 1.5rem;
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--tech-text-muted);
+}
+
+.tech-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.tech-table td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--tech-border);
+}
+
+.tech-table td:first-child {
+  font-weight: 600;
+  width: 30%;
+  color: var(--tech-text-main);
+}
