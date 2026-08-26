@@ -1,0 +1,17 @@
+{
+  "name": "maurice-frank.com",
+  "install": "python3 build.py --dev",
+  "terminals": [
+    {
+      "name": "site-server",
+      "command": "python3 -m http.server 8000",
+      "description": "Serves the generated static site from the repo root. Open http://localhost:8000/docs/ to preview pages built by `python3 build.py --dev`."
+    }
+  ],
+  "ports": [
+    {
+      "name": "site",
+      "port": 8000
+    }
+  ]
+}
