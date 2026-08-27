@@ -81,6 +81,18 @@ body {
   margin-bottom: var(--space-xl);
 }
 
+.sidebar-portrait {
+  display: block;
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border: 1px solid var(--border-hairline);
+  margin-bottom: var(--space-md);
+  background: var(--bg-subtle);
+}
+
 .site-title {
   font-size: 1.65rem;
   font-weight: 700;
