@@ -672,36 +672,6 @@ video {
   font-weight: 500;
 }
 
-.proposals-nav-bar {
-  margin-top: var(--space-3xl);
-  padding: var(--space-md) 0;
-  border-top: 1px solid var(--border-hairline);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-sm);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.proposals-links {
-  display: flex;
-  gap: var(--space-sm);
-}
-
-.proposals-links a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  border-bottom: 1px solid var(--border-hairline);
-}
-
-.proposals-links a:hover {
-  color: var(--text-primary);
-  border-color: var(--text-primary);
-}
-
 /* Print */
 @media print {
   body {
