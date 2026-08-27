@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion stills — Maurice Frank</title>
+    <meta name="description" content="A collection of stabilized Motion Stills — short looping videos made with Google's MotionStills app.">
+    <link rel="icon" href="../favicon.ico">
+    <link rel="stylesheet" href="./motion-stills.css">
+</head>
+<body>
+    <header class="still-overlay">
+        <div class="still-overlay-inner">
+            <div class="brand-block">
+                <a class="brand" href="../">Maurice Frank</a>
+                <div class="kicker">Media / Motion stills</div>
+            </div>
+            <nav class="year-nav" id="year-nav" aria-label="Years"></nav>
+            <div class="count" id="count"></div>
+        </div>
+    </header>
+
+    <section class="intro">
+        <h1>Motion stills</h1>
+        <p>
+            I am really in love with an app made at Google Research called
+            <a href="https://ai.googleblog.com/2016/06/motion-stills-create-beautiful-gifs.html">MotionStills</a>.
+            It takes little videos and stabilizes them with some quite involved CV.
+            The app is super slim. I assume Google will kill it; until then it is super fun to use.
+            Hover or tap a frame to play.
+        </p>
+    </section>
+
+    <p class="status" id="status">Loading stills…</p>
+    <div class="grid" id="grid" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js"></script>
+    <script>
+        const CDN = "https://cdn.maurice-frank.com/motionstills/";
+
+        function attachPlayback(video) {
+            video.addEventListener("mouseenter", () => {
+                video.play().catch(() => {});
+            });
+            video.addEventListener("mouseleave", () => {
+                video.pause();
+            });
+            video.addEventListener("click", (event) => {
+                event.preventDefault();
+                if (video.paused) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            });
+            video.addEventListener("play", () => video.classList.add("is-playing"));
+            video.addEventListener("pause", () => video.classList.remove("is-playing"));
+        }
+
+        function buildStill(id) {
+            const path = CDN + id;
+            const video = document.createElement("video");
+            video.className = "lazy motion-still";
+            video.preload = "none";
+            video.loop = true;
+            video.muted = true;
+            video.playsInline = true;
+            video.setAttribute("playsinline", "");
+            video.dataset.poster = path + ".jpg";
+            video.dataset.src = path + ".webm";
+            video.setAttribute("aria-label", id);
+
+            const webm = document.createElement("source");
+            webm.dataset.src = path + ".webm";
+            webm.type = "video/webm";
+            const mp4 = document.createElement("source");
+            mp4.dataset.src = path + ".mp4";
+            mp4.type = "video/mp4";
+            video.append(webm, mp4);
+            attachPlayback(video);
+            return video;
+        }
+
+        fetch("./motionstills.json")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Could not load motionstills.json");
+                }
+                return response.json();
+            })
+            .then((years) => {
+                const grid = document.getElementById("grid");
+                const nav = document.getElementById("year-nav");
+                const status = document.getElementById("status");
+                const total = years.reduce((sum, year) => sum + year.stills.length, 0);
+                document.getElementById("count").textContent = `${total} stills`;
+
+                years.forEach((year, index) => {
+                    const href = `#y${year.year}`;
+                    const link = document.createElement("a");
+                    link.href = href;
+                    link.textContent = year.year;
+                    if (index === 0) {
+                        link.classList.add("active");
+                    }
+                    nav.appendChild(link);
+
+                    const heading = document.createElement("h2");
+                    heading.className = "year-break";
+                    heading.id = `y${year.year}`;
+                    heading.textContent = `${year.year} / ${year.stills.length}`;
+                    grid.appendChild(heading);
+
+                    year.stills.forEach((id) => {
+                        grid.appendChild(buildStill(id));
+                    });
+                });
+
+                status.remove();
+                grid.hidden = false;
+
+                if (typeof LazyLoad === "function") {
+                    new LazyLoad({ elements_selector: ".lazy" });
+                }
+
+                const headings = Array.from(document.querySelectorAll(".year-break"));
+                const links = Array.from(nav.querySelectorAll("a"));
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+                        const id = entry.target.id;
+                        links.forEach((link) => {
+                            link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+                        });
+                    });
+                }, { rootMargin: "-20% 0px -70% 0px" });
+                headings.forEach((heading) => observer.observe(heading));
+            })
+            .catch((error) => {
+                document.getElementById("status").textContent = error.message;
+            });
+    </script>
+</body>
+</html>
