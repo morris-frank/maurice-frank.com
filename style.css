@@ -1,7 +1,7 @@
 /*
   Maurice Frank — Design System & Styles
   Aesthetic: Swiss Minimalist UI + Structured Editorial UX
-  Typography: Instrument Sans & JetBrains Mono
+  Typography: Instrument Sans
   Palette: Pure monochrome, crisp hairline geometry, high-density clarity
 */
 
@@ -606,42 +606,180 @@ video {
   display: block;
 }
 
-/* Photography Grid */
-.photo-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--space-sm);
-  margin-top: var(--space-md);
+/* Photography scroller */
+.photo-scroller-wrap {
+  position: relative;
+  margin-top: var(--space-sm);
+}
+
+.photo-scroller-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 56px;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, var(--bg-app));
+}
+
+.photo-scroller {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 0;
+  padding: 0 0 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-medium) transparent;
+}
+
+.photo-scroller::-webkit-scrollbar {
+  height: 6px;
+}
+
+.photo-scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.photo-scroller::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 3px;
 }
 
 .photo-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
   border: 1px solid var(--border-hairline);
   border-radius: 3px;
   overflow: hidden;
-  background: var(--bg-surface);
+  background: var(--bg-subtle);
+  padding: 0;
+  margin: 0;
+  cursor: zoom-in;
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  line-height: 0;
+  color: inherit;
+}
+
+.photo-item:hover img,
+.photo-item:focus-visible img {
+  opacity: 0.9;
+}
+
+.photo-item:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
 }
 
 .photo-item img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
   display: block;
-  transition: var(--transition-fast);
+  height: 152px;
+  width: auto;
+  max-width: 240px;
+  object-fit: cover;
+  transition: opacity 0.15s ease;
 }
 
-.photo-item:hover img {
-  opacity: 0.92;
+/* Full-screen photo lightbox */
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  border: none;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  background: rgba(10, 10, 10, 0.96);
+  color: #f5f5f5;
 }
 
-.photo-item figcaption {
-  padding: 5px 8px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  border-top: 1px solid var(--border-hairline);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.photo-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.photo-lightbox-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 48px 56px 40px;
+  box-sizing: border-box;
+}
+
+.photo-lightbox img {
+  width: auto;
+  height: auto;
+  max-width: min(96vw, 1400px);
+  max-height: calc(100vh - 96px);
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  margin: 0;
+}
+
+.photo-lightbox-caption {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.72);
+  min-height: 1.2em;
+}
+
+.photo-lightbox-btn {
+  position: absolute;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+  padding: 8px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.photo-lightbox-btn:hover,
+.photo-lightbox-btn:focus-visible {
+  color: #ffffff;
+}
+
+.photo-lightbox-close {
+  top: 12px;
+  right: 16px;
+  font-size: 1.5rem;
+}
+
+.photo-lightbox-prev,
+.photo-lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  padding: 16px 12px;
+}
+
+.photo-lightbox-prev { left: 4px; }
+.photo-lightbox-next { right: 4px; }
+
+@media (max-width: 600px) {
+  .photo-lightbox-inner {
+    padding: 40px 12px 32px;
+  }
+  .photo-lightbox-prev,
+  .photo-lightbox-next {
+    font-size: 1.5rem;
+    padding: 12px 6px;
+  }
 }
 
 /* Colophon */
