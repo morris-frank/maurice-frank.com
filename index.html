@@ -634,7 +634,7 @@
         </main>
     </div>
 
-    <dialog class="photo-lightbox" id="photo-lightbox" aria-modal="true" aria-label="Full-screen photograph">
+    <div class="photo-lightbox" id="photo-lightbox" hidden role="dialog" aria-modal="true" aria-label="Full-screen photograph">
         <div class="photo-lightbox-stage">
             <img class="photo-lightbox-image" src="" alt="">
             <div class="photo-lightbox-hud">
@@ -655,7 +655,7 @@
                 </div>
             </div>
         </div>
-    </dialog>
+    </div>
 
     <!-- Scrollspy Navigator + photography lightbox + audio players -->
     <script>
@@ -680,15 +680,22 @@
 
             sections.forEach(s => observer.observe(s));
 
+            const siteWrapper = document.querySelector('.site-wrapper');
             const photos = Array.from(document.querySelectorAll('.photo-item'));
             const lightbox = document.getElementById('photo-lightbox');
             const lightboxImg = lightbox.querySelector('.photo-lightbox-image');
             const lightboxCap = lightbox.querySelector('.photo-lightbox-caption');
             const lightboxIndex = lightbox.querySelector('.photo-lightbox-index');
+            const lightboxClose = lightbox.querySelector('[data-lightbox-close]');
             let current = 0;
+            let lastFocus = null;
 
             function padIndex(n) {
                 return String(n).padStart(2, '0');
+            }
+
+            function isLightboxOpen() {
+                return lightbox.classList.contains('is-open');
             }
 
             function showPhoto(index) {
@@ -702,33 +709,36 @@
             }
 
             function openPhoto(index) {
+                lastFocus = document.activeElement;
                 showPhoto(index);
-                if (typeof lightbox.showModal === 'function') {
-                    lightbox.showModal();
-                } else {
-                    lightbox.setAttribute('open', '');
-                }
+                lightbox.hidden = false;
+                lightbox.classList.add('is-open');
+                if (siteWrapper) siteWrapper.inert = true;
+                lightboxClose.focus();
             }
 
             function closeLightbox() {
-                if (typeof lightbox.close === 'function' && lightbox.open) {
-                    lightbox.close();
-                } else {
-                    lightbox.removeAttribute('open');
-                }
+                if (!isLightboxOpen()) return;
+                lightbox.classList.remove('is-open');
+                lightbox.hidden = true;
+                if (siteWrapper) siteWrapper.inert = false;
+                if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
             }
 
             photos.forEach((item, index) => {
                 item.addEventListener('click', () => openPhoto(index));
             });
 
-            lightbox.querySelector('[data-lightbox-close]').addEventListener('click', closeLightbox);
+            lightboxClose.addEventListener('click', closeLightbox);
             lightbox.querySelector('[data-lightbox-prev]').addEventListener('click', () => showPhoto(current - 1));
             lightbox.querySelector('[data-lightbox-next]').addEventListener('click', () => showPhoto(current + 1));
 
             document.addEventListener('keydown', (event) => {
-                if (!lightbox.open) return;
-                if (event.key === 'ArrowLeft') {
+                if (!isLightboxOpen()) return;
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    closeLightbox();
+                } else if (event.key === 'ArrowLeft') {
                     event.preventDefault();
                     showPhoto(current - 1);
                 } else if (event.key === 'ArrowRight') {

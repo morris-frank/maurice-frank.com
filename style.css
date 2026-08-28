@@ -652,7 +652,7 @@ body {
 
 .video-card {
   flex: 0 0 auto;
-  width: min(32rem, 82%);
+  width: min(26rem, 78%);
   scroll-snap-align: start;
 }
 
@@ -862,29 +862,37 @@ body {
 }
 
 /* Full-screen photo lightbox — edge-to-edge, chrome over the image */
-html:has(.photo-lightbox[open]) {
+html:has(.photo-lightbox.is-open) {
   overflow: hidden;
 }
 
-.photo-lightbox,
-.photo-lightbox:modal {
+.photo-lightbox {
+  display: none;
   position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
   height: 100dvh;
   max-width: none;
   max-height: none;
   margin: 0;
   padding: 0;
-  border: none;
+  border: 0;
   background: #000;
   color: #fff;
   overflow: hidden;
 }
 
-.photo-lightbox::backdrop {
-  background: #000;
+.photo-lightbox.is-open {
+  display: block;
+}
+
+.photo-lightbox[hidden] {
+  display: none !important;
 }
 
 .photo-lightbox-stage {
