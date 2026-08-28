@@ -337,8 +337,38 @@ body {
 .card-item-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
+  gap: var(--space-sm);
   margin-bottom: var(--space-2xs);
+}
+
+.card-item-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.card-item-logo {
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.card-item-logo.is-mark {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.card-item-logo.is-wordmark {
+  height: 1.15rem;
+  width: auto;
+  max-width: 7.5rem;
+}
+
+.card-item-logo.is-wide {
+  height: 1.7rem;
+  max-width: 9.5rem;
 }
 
 .card-item-title {
@@ -356,10 +386,20 @@ body {
   text-decoration: underline;
 }
 
+a.card-item {
+  color: inherit;
+}
+
+a.card-item:hover .card-item-title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .card-item-date {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text-muted);
+  flex-shrink: 0;
 }
 
 .card-item-role {
@@ -616,17 +656,6 @@ body {
   background: linear-gradient(to right, transparent, var(--bg-app));
 }
 
-.photo-scroller,
-.video-scroller {
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: auto;
-  scrollbar-color: var(--text-muted) var(--bg-subtle);
-}
-
 .photo-scroller::-webkit-scrollbar,
 .video-scroller::-webkit-scrollbar {
   height: 10px;
@@ -648,12 +677,21 @@ body {
   align-items: stretch;
   gap: var(--space-md);
   padding-bottom: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: auto;
+  scrollbar-color: var(--text-muted) var(--bg-subtle);
 }
 
 .video-card {
-  flex: 0 0 auto;
-  width: min(34rem, 86%);
+  flex: 0 0 100%;
+  width: 100%;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .video-card video {
@@ -668,31 +706,30 @@ body {
   display: block;
 }
 
-/* Photography: 2 rows, up to 4 on wider strips, then scroll sideways */
+/* Photography: equal-gap mosaic rows, then scroll sideways */
 .photo-scroller {
   --photo-h: 7.5rem;
   --photo-gap: 6px;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: repeat(2, var(--photo-h));
-  grid-auto-columns: max-content;
-  justify-items: start;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
   gap: var(--photo-gap);
-  box-sizing: content-box;
   padding-bottom: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: auto;
+  scrollbar-color: var(--text-muted) var(--bg-subtle);
 }
 
-@container media-strip (min-width: 480px) {
-  .photo-scroller {
-    grid-template-rows: repeat(3, var(--photo-h));
-  }
-}
-
-@container media-strip (min-width: 680px) {
-  .photo-scroller {
-    grid-template-rows: repeat(4, var(--photo-h));
-  }
+.photo-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: var(--photo-gap);
+  height: var(--photo-h);
+  width: max-content;
 }
 
 .photo-item {
@@ -753,17 +790,17 @@ body {
   width: 2.25rem;
   height: 2.25rem;
   padding: 0;
-  border: 1px solid var(--border-strong);
+  border: 1px solid transparent;
   border-radius: 3px;
-  background: var(--text-primary);
-  color: var(--bg-app);
+  background: transparent;
+  color: var(--text-primary);
   cursor: pointer;
   appearance: none;
 }
 
 .audio-player-play:hover,
 .audio-player-play:focus-visible {
-  background: color-mix(in srgb, var(--text-primary) 82%, white);
+  background: var(--bg-hover);
 }
 
 .audio-player-play:focus-visible {
@@ -1019,6 +1056,7 @@ html:has(.photo-lightbox.is-open) {
 /* Colophon */
 .colophon-section {
   padding-top: var(--space-2xl);
+  padding-bottom: var(--space-3xl);
   border-top: 1px solid var(--border-hairline);
   font-size: 0.85rem;
   color: var(--text-muted);

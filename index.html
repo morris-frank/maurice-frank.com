@@ -95,11 +95,13 @@
                 </div>
 
                 <div class="cards-grid">
-                    <!-- Soilytix -->
-                    <div class="card-item">
+                    <a href="https://soilytix.com/" target="_blank" rel="noopener noreferrer" class="card-item">
                         <div>
                             <div class="card-item-header">
-                                <span class="card-item-title"><a href="https://soilytix.com/" target="_blank" rel="noopener noreferrer">Soilytix ↗</a></span>
+                                <span class="card-item-brand">
+                                    <img class="card-item-logo is-mark" src="logos/soilytix.svg" alt="" width="32" height="32">
+                                    <span class="card-item-title">Soilytix</span>
+                                </span>
                                 <span class="card-item-date">2023 — Present</span>
                             </div>
                             <div class="card-item-role">CTO & Founding Engineer</div>
@@ -108,13 +110,15 @@
                             </p>
                         </div>
                         <div class="card-item-tags">Next.js · TypeScript · Prisma · Mapbox GL · Nivo · Vercel</div>
-                    </div>
+                    </a>
 
-                    <!-- Peau -->
-                    <div class="card-item">
+                    <a href="https://peau.ai/" target="_blank" rel="noopener noreferrer" class="card-item">
                         <div>
                             <div class="card-item-header">
-                                <span class="card-item-title"><a href="https://peau.ai/" target="_blank" rel="noopener noreferrer">Peau ↗</a></span>
+                                <span class="card-item-brand">
+                                    <img class="card-item-logo is-mark" src="logos/peau.png" alt="" width="32" height="32">
+                                    <span class="card-item-title">peau.ai</span>
+                                </span>
                                 <span class="card-item-date">2025 — Present</span>
                             </div>
                             <div class="card-item-role">Founding Engineer</div>
@@ -123,13 +127,14 @@
                             </p>
                         </div>
                         <div class="card-item-tags">Flutter · Firebase · Riverpod · ML Kit · Google Cloud</div>
-                    </div>
+                    </a>
 
-                    <!-- Muno -->
-                    <div class="card-item">
+                    <a href="https://muno.ai/" target="_blank" rel="noopener noreferrer" class="card-item">
                         <div>
                             <div class="card-item-header">
-                                <span class="card-item-title"><a href="https://muno.ai/" target="_blank" rel="noopener noreferrer">Muno ↗</a></span>
+                                <span class="card-item-brand">
+                                    <img class="card-item-logo is-wordmark" src="logos/muno.svg" alt="Muno" width="104" height="28">
+                                </span>
                                 <span class="card-item-date">2024 — Present</span>
                             </div>
                             <div class="card-item-role">Founding Engineer</div>
@@ -138,13 +143,14 @@
                             </p>
                         </div>
                         <div class="card-item-tags">Python · Bioinformatics · ML Engineering · Cloud Architecture</div>
-                    </div>
+                    </a>
 
-                    <!-- Hummingbird Diagnostics Advisor -->
-                    <div class="card-item">
+                    <a href="https://hummingbird-diagnostics.com/" target="_blank" rel="noopener noreferrer" class="card-item">
                         <div>
                             <div class="card-item-header">
-                                <span class="card-item-title"><a href="https://hummingbird-diagnostics.com/" target="_blank" rel="noopener noreferrer">Hummingbird Diagnostics ↗</a></span>
+                                <span class="card-item-brand">
+                                    <img class="card-item-logo is-wordmark is-wide" src="logos/hummingbird.svg" alt="Hummingbird Diagnostics" width="160" height="40">
+                                </span>
                                 <span class="card-item-date">11/2024 — Present</span>
                             </div>
                             <div class="card-item-role">Software Architect Advisor</div>
@@ -153,7 +159,7 @@
                             </p>
                         </div>
                         <div class="card-item-tags">MLOps · System Architecture · Bio-pipelines</div>
-                    </div>
+                    </a>
                 </div>
             </section>
 
@@ -168,7 +174,7 @@
                     <tbody>
                         <tr>
                             <td class="cv-date-col">2025 — Present</td>
-                            <td class="cv-title-col"><a href="https://peau.ai/" target="_blank" rel="noopener noreferrer">Peau</a> — Founding Engineer</td>
+                            <td class="cv-title-col"><a href="https://peau.ai/" target="_blank" rel="noopener noreferrer">peau.ai</a> — Founding Engineer</td>
                             <td class="cv-detail-col">Skincare AI / Flutter / Firebase</td>
                         </tr>
                         <tr>
@@ -604,7 +610,7 @@
             <!-- Section 07: Colophon -->
             <section id="colophon" class="colophon-section">
                 <div class="section-header">
-                    <h2 class="section-title">Colophon & Legal</h2>
+                    <h2 class="section-title">Colophon</h2>
                     <span class="section-tag">07 / IMPRINT</span>
                 </div>
 
@@ -663,22 +669,78 @@
             const sections = document.querySelectorAll('.content-section, .colophon-section');
             const navLinks = document.querySelectorAll('.sidebar-nav .nav-link');
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute('id');
-                        navLinks.forEach(link => {
-                            if (link.getAttribute('href') === `#${id}`) {
-                                link.classList.add('active');
-                            } else {
-                                link.classList.remove('active');
-                            }
-                        });
-                    }
+            function setActiveNav(id) {
+                navLinks.forEach((link) => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
                 });
-            }, { rootMargin: '-20% 0px -70% 0px' });
+            }
 
-            sections.forEach(s => observer.observe(s));
+            function updateActiveNav() {
+                const el = document.scrollingElement || document.documentElement;
+                const maxScroll = el.scrollHeight - window.innerHeight;
+                if (maxScroll <= 0 || el.scrollTop >= maxScroll - 96) {
+                    setActiveNav('colophon');
+                    return;
+                }
+                const marker = window.innerHeight * 0.28;
+                let current = sections[0];
+                sections.forEach((section) => {
+                    if (section.getBoundingClientRect().top <= marker) current = section;
+                });
+                if (current) setActiveNav(current.id);
+            }
+
+            window.addEventListener('scroll', updateActiveNav, { passive: true });
+            window.addEventListener('scrollend', updateActiveNav);
+            window.addEventListener('resize', updateActiveNav);
+            window.addEventListener('hashchange', updateActiveNav);
+            updateActiveNav();
+
+            const photoScroller = document.getElementById('photo-scroller');
+            function photoRowCount() {
+                const width = photoScroller.parentElement.clientWidth;
+                if (width >= 680) return 4;
+                if (width >= 480) return 3;
+                return 2;
+            }
+            function packPhotoMosaic() {
+                if (!photoScroller) return;
+                const items = Array.from(photoScroller.querySelectorAll('.photo-item'));
+                const rowCount = photoRowCount();
+                const gap = 6;
+                const rowHeight = 120;
+                items.forEach((item) => photoScroller.appendChild(item));
+                photoScroller.querySelectorAll('.photo-row').forEach((row) => row.remove());
+                const rows = Array.from({ length: rowCount }, () => {
+                    const row = document.createElement('div');
+                    row.className = 'photo-row';
+                    row.setAttribute('role', 'presentation');
+                    photoScroller.appendChild(row);
+                    return row;
+                });
+                const rowWidths = rows.map(() => 0);
+                items.forEach((item) => {
+                    const img = item.querySelector('img');
+                    let itemWidth = rowHeight;
+                    if (img && img.naturalWidth > 0 && img.naturalHeight > 0) {
+                        itemWidth = (img.naturalWidth / img.naturalHeight) * rowHeight;
+                    }
+                    let shortest = 0;
+                    for (let i = 1; i < rowWidths.length; i += 1) {
+                        if (rowWidths[i] < rowWidths[shortest]) shortest = i;
+                    }
+                    rows[shortest].appendChild(item);
+                    rowWidths[shortest] += itemWidth + gap;
+                });
+                photoScroller.dataset.rows = String(rowCount);
+            }
+            packPhotoMosaic();
+            if (photoScroller) {
+                Array.from(photoScroller.querySelectorAll('img')).forEach((img) => {
+                    if (!img.complete) img.addEventListener('load', packPhotoMosaic, { once: true });
+                });
+            }
+            window.addEventListener('resize', packPhotoMosaic);
 
             const siteWrapper = document.querySelector('.site-wrapper');
             const photos = Array.from(document.querySelectorAll('.photo-item'));
