@@ -507,6 +507,7 @@ a.card-item:hover .card-item-title {
 }
 
 .software-item {
+  position: relative;
   padding: var(--space-md) 0;
   border-bottom: 1px solid var(--border-hairline);
   display: flex;
@@ -560,8 +561,16 @@ a.card-item:hover .card-item-title {
 }
 
 @media (max-width: 599px) {
-  .software-tech {
+  .software-right {
     padding-left: calc(40px + var(--space-md));
+    margin-top: var(--space-xs);
+  }
+}
+
+@media (min-width: 600px) {
+  .software-right {
+    align-items: flex-end;
+    padding-left: var(--space-md);
   }
 }
 
@@ -575,19 +584,69 @@ a.card-item:hover .card-item-title {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-primary);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  text-decoration: none;
+}
+
+/* The name's link covers the whole row; the badges sit above it as their own links. */
+.software-name::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.software-item:hover .software-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.software-name:focus-visible {
+  outline: none;
+}
+
+.software-item:has(.software-name:focus-visible) {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+.software-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.software-links {
+  display: flex;
+  gap: 4px;
 }
 
 .gh-pill {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-family: var(--font-mono);
   font-size: 0.68rem;
+  line-height: 1.4;
   border: 1px solid var(--border-hairline);
   background: var(--bg-subtle);
   padding: 1px 5px;
   border-radius: 3px;
   color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.gh-pill svg {
+  width: 11px;
+  height: 11px;
+}
+
+.gh-pill:hover,
+.gh-pill:focus-visible {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
 }
 
 .software-summary {
@@ -600,15 +659,11 @@ a.card-item:hover .card-item-title {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--text-muted);
-  margin-top: var(--space-xs);
-  flex-shrink: 0;
 }
 
 @media (min-width: 600px) {
   .software-tech {
-    margin-top: 0;
     text-align: right;
-    padding-left: var(--space-md);
   }
 }
 
@@ -728,20 +783,117 @@ a.card-item:hover .card-item-title {
 .video-card {
   flex: 0 0 100%;
   width: 100%;
+  padding: 0;
+  overflow: hidden;
+  justify-content: flex-start;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
-.video-card video {
-  width: 100%;
-  height: auto;
+.video-card .media-card-desc {
+  padding: var(--space-sm) var(--space-md) 0;
+}
+
+/* Poster fills the tile; title, year and length sit over it until playback starts. */
+.video-tile {
+  position: relative;
   aspect-ratio: 16 / 9;
-  margin-top: auto;
-  object-fit: contain;
-  border-radius: 3px;
-  border: 1px solid var(--border-hairline);
   background: oklch(0 0 0);
+  cursor: pointer;
+}
+
+.video-tile video {
   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: oklch(0 0 0);
+}
+
+.video-card.is-floating video {
+  position: fixed;
+  right: var(--space-lg);
+  bottom: var(--space-lg);
+  z-index: 50;
+  width: min(640px, calc(100vw - 2.5rem));
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 8px 30px oklch(0 0 0 / 0.35);
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.65rem 0.8rem;
+  background: linear-gradient(180deg, oklch(0 0 0 / 0.6) 0, transparent 40%, transparent 58%, oklch(0 0 0 / 0.6) 100%);
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.video-card.is-playing .video-overlay {
+  opacity: 0;
+}
+
+.video-card.is-playing .video-play {
+  pointer-events: none;
+}
+
+.video-overlay-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.video-overlay .media-card-title {
+  color: oklch(1 0 0);
+  text-shadow: 0 1px 3px oklch(0 0 0 / 0.65);
+}
+
+.video-overlay-meta {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: oklch(1 0 0 / 0.85);
+  text-shadow: 0 1px 3px oklch(0 0 0 / 0.65);
+}
+
+.video-play {
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: oklch(0 0 0 / 0.55);
+  color: oklch(1 0 0);
+  cursor: pointer;
+  pointer-events: auto;
+  backdrop-filter: blur(8px);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.video-play svg {
+  width: 18px;
+  height: 18px;
+}
+
+.video-play:hover,
+.video-play:focus-visible {
+  background: oklch(1 0 0);
+  color: oklch(0 0 0);
+}
+
+.video-play:focus-visible {
+  outline: 2px solid oklch(1 0 0);
+  outline-offset: 2px;
 }
 
 /* Photography: equal-gap mosaic rows, then scroll sideways */
@@ -825,12 +977,12 @@ a.card-item:hover .card-item-title {
   flex-shrink: 0;
   display: grid;
   place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2rem;
+  height: 2rem;
   padding: 0;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  background: transparent;
+  border: 1px solid var(--border-medium);
+  border-radius: 50%;
+  background: var(--bg-subtle);
   color: var(--text-primary);
   cursor: pointer;
   appearance: none;
@@ -838,7 +990,13 @@ a.card-item:hover .card-item-title {
 
 .audio-player-play:hover,
 .audio-player-play:focus-visible {
-  background: var(--bg-hover);
+  border-color: var(--text-primary);
+}
+
+.audio-player.is-playing .audio-player-play {
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--bg-app);
 }
 
 .audio-player-play:focus-visible {
@@ -847,18 +1005,127 @@ a.card-item:hover .card-item-title {
 }
 
 .audio-player-play svg {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
+  width: 12px;
+  height: 12px;
 }
 
-.audio-player-play .audio-icon-pause,
-.audio-player.is-playing .audio-icon-play {
+.audio-icon-pause,
+.is-playing .audio-icon-play {
   display: none;
 }
 
-.audio-player.is-playing .audio-icon-pause {
+.is-playing .audio-icon-pause {
   display: block;
+}
+
+/* One bar at the bottom of the window, saying what is playing and stopping it. */
+body:has(.playback-bar:not([hidden])) {
+  padding-bottom: 5rem;
+}
+
+.playback-bar {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-md);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  width: min(560px, calc(100vw - 2rem));
+  transform: translateX(-50%);
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border-medium);
+  border-radius: 999px;
+  background: var(--bg-surface);
+  box-shadow: 0 6px 24px oklch(0 0 0 / 0.14);
+}
+
+.playback-bar[hidden] {
+  display: none;
+}
+
+:where(.playback-bar button) {
+  appearance: none;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.playback-bar button:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+.playback-bar-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: var(--text-primary);
+  color: var(--bg-app);
+}
+
+.playback-bar-toggle svg {
+  width: 13px;
+  height: 13px;
+}
+
+.playback-bar-info {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.playback-bar-title {
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--text-primary);
+}
+
+.playback-bar-meta {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.playback-bar-show {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-underline-offset: 4px;
+}
+
+.playback-bar-show:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.playback-bar-stop {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-muted);
+}
+
+.playback-bar-stop:hover {
+  color: var(--text-primary);
+}
+
+.playback-bar-stop svg {
+  width: 13px;
+  height: 13px;
 }
 
 .audio-player-seek {

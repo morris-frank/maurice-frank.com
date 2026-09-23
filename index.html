@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-web" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2.5h4.5V7M13.5 2.5 7.5 8.5M12 10v3.5H2.5V4H6"/></symbol>
+        <symbol id="i-git" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol>
+        <symbol id="i-npm" viewBox="0 0 16 16"><path fill="currentColor" d="M0 4h16v7H8v1.5H4.5V11H0zm1 1v5h2V6h1v4h1V5zm5 0v6.5h2V10h2V5zm2 1h1v3H8zm3-1v5h2V6h1v4h1V5z"/></symbol>
+        <symbol id="i-play" viewBox="0 0 16 16"><path fill="currentColor" d="M4 2.4v11.2L14 8z"/></symbol>
+        <symbol id="i-pause" viewBox="0 0 16 16"><path fill="currentColor" d="M4 3h3v10H4zm5 0h3v10H9z"/></symbol>
+        <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    </svg>
 
     <div class="site-wrapper">
         <!-- Sticky Sidebar Navigation -->
@@ -18,7 +26,7 @@
                 <header class="sidebar-header">
                     <img class="sidebar-portrait" src="favicon.ico" alt="Maurice Frank, pixel portrait" width="72" height="72">
                     <h1 class="site-title"><a href="./" style="color: inherit; text-decoration: none;">Maurice Frank</a></h1>
-                    <div class="site-subtitle">CTO & AI Engineer</div>
+                    <div class="site-subtitle">CTO &amp; engineer</div>
                     <p class="sidebar-bio">
                         Engineering data-driven platforms, causal ML systems, and human-centric software. Based in Amsterdam.
                     </p>
@@ -240,161 +248,191 @@
                 </div>
 
                 <div class="software-list">
-                    <a href="https://github.com/morris-frank/aiusage" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon" src="brand/icon/icon-aiusage-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                aiusage
-                                <span class="gh-pill">GitHub ↗</span>
-                            </span>
+                            <a href="https://github.com/morris-frank/aiusage" target="_blank" rel="noopener noreferrer" class="software-name">aiusage</a>
                             <span class="software-summary">CLI that reads platform billing APIs and reports AI spend by account, key, model, and workspace.</span>
                         </div>
-                        <span class="software-tech">TypeScript · CLI</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://github.com/morris-frank/aiusage" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="aiusage source on GitHub">git<svg aria-hidden="true"><use href="#i-git"/></svg></a>
+                                <a href="https://www.npmjs.com/package/@maurice-frank/aiusage" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="aiusage package on npm">npm<svg aria-hidden="true"><use href="#i-npm"/></svg></a>
+                            </span>
+                            <span class="software-tech">TypeScript · CLI</span>
+                        </div>
+                    </div>
 
-                    <a href="https://github.com/morris-frank/obsidian-typst" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon" src="brand/icon/icon-obsidian-typst-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                obsidian-typst
-                                <span class="gh-pill">GitHub ↗</span>
-                            </span>
+                            <a href="https://github.com/morris-frank/obsidian-typst" target="_blank" rel="noopener noreferrer" class="software-name">obsidian-typst</a>
                             <span class="software-summary">Obsidian plugin to preview and compile Typst, and export Markdown notes to PDF.</span>
                         </div>
-                        <span class="software-tech">TypeScript · Obsidian · Typst</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://github.com/morris-frank/obsidian-typst" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="obsidian-typst source on GitHub">git<svg aria-hidden="true"><use href="#i-git"/></svg></a>
+                            </span>
+                            <span class="software-tech">TypeScript · Obsidian · Typst</span>
+                        </div>
+                    </div>
 
-                    <a href="https://github.com/morris-frank/ask-maurice" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon" src="brand/icon/icon-ask-maurice-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                ask-maurice
-                                <span class="gh-pill">GitHub ↗</span>
-                            </span>
+                            <a href="https://github.com/morris-frank/ask-maurice" target="_blank" rel="noopener noreferrer" class="software-name">ask-maurice</a>
                             <span class="software-summary">Slack doppelgänger that answers in Maurice’s voice, grounded in the shared Soilytix vault.</span>
                         </div>
-                        <span class="software-tech">Python · Slack · Agents</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://github.com/morris-frank/ask-maurice" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="ask-maurice source on GitHub">git<svg aria-hidden="true"><use href="#i-git"/></svg></a>
+                            </span>
+                            <span class="software-tech">Python · Slack · Agents</span>
+                        </div>
+                    </div>
 
-                    <a href="https://github.com/morris-frank/dna" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon" src="brand/icon/icon-dna-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                dna
-                                <span class="gh-pill">GitHub ↗</span>
-                            </span>
+                            <a href="https://dna.maurice-frank.com/" target="_blank" rel="noopener noreferrer" class="software-name">dna</a>
                             <span class="software-summary">A genome unfurling itself exactly once, base by base — live at 30 bases per second.</span>
                         </div>
-                        <span class="software-tech">Cloudflare Workers · R2 · Genomics</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://dna.maurice-frank.com/" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="dna website">web<svg aria-hidden="true"><use href="#i-web"/></svg></a>
+                                <a href="https://github.com/morris-frank/dna" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="dna source on GitHub">git<svg aria-hidden="true"><use href="#i-git"/></svg></a>
+                            </span>
+                            <span class="software-tech">Cloudflare Workers · R2 · Genomics</span>
+                        </div>
+                    </div>
 
-                    <a href="https://github.com/morris-frank/agent-plugin-template" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon" src="brand/icon/icon-agent-plugin-template-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                agent-plugin-template
-                                <span class="gh-pill">GitHub ↗</span>
-                            </span>
+                            <a href="https://github.com/morris-frank/agent-plugin-template" target="_blank" rel="noopener noreferrer" class="software-name">agent-plugin-template</a>
                             <span class="software-summary">Canonical marketplace template for Claude, Codex, and Cursor plugins from one repository.</span>
                         </div>
-                        <span class="software-tech">JavaScript · Claude · Cursor · Codex</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://github.com/morris-frank/agent-plugin-template" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="agent-plugin-template source on GitHub">git<svg aria-hidden="true"><use href="#i-git"/></svg></a>
+                            </span>
+                            <span class="software-tech">JavaScript · Claude · Cursor · Codex</span>
+                        </div>
+                    </div>
 
-                    <a href="https://github.com/morris-frank/auto-alias" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon" src="brand/icon/icon-auto-alias-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                auto-alias
-                                <span class="gh-pill">GitHub ↗</span>
-                            </span>
+                            <a href="https://github.com/morris-frank/auto-alias" target="_blank" rel="noopener noreferrer" class="software-name">auto-alias</a>
                             <span class="software-summary">zsh hook that tells you when a command you just typed already has an alias.</span>
                         </div>
-                        <span class="software-tech">Rust · zsh · CLI</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://github.com/morris-frank/auto-alias" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="auto-alias source on GitHub">git<svg aria-hidden="true"><use href="#i-git"/></svg></a>
+                            </span>
+                            <span class="software-tech">Rust · zsh · CLI</span>
+                        </div>
+                    </div>
 
-                    <a href="https://github.com/morris-frank/chrome-time-clock" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon" src="brand/icon/icon-chrome-time-clock-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                chrome-time-clock
-                                <span class="gh-pill">GitHub ↗</span>
-                            </span>
+                            <a href="https://github.com/morris-frank/chrome-time-clock" target="_blank" rel="noopener noreferrer" class="software-name">chrome-time-clock</a>
                             <span class="software-summary">Infers workday hours from Chrome, Chromium, or Brave history and plots the resulting timeline.</span>
                         </div>
-                        <span class="software-tech">Python · CLI</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://github.com/morris-frank/chrome-time-clock" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="chrome-time-clock source on GitHub">git<svg aria-hidden="true"><use href="#i-git"/></svg></a>
+                            </span>
+                            <span class="software-tech">Python · CLI</span>
+                        </div>
+                    </div>
 
-                    <a href="https://github.com/morris-frank/QLGIS" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon" src="brand/icon/icon-qlgis-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                QLGIS
-                                <span class="gh-pill">GitHub ↗</span>
-                            </span>
+                            <a href="https://github.com/morris-frank/QLGIS" target="_blank" rel="noopener noreferrer" class="software-name">QLGIS</a>
                             <span class="software-summary">macOS Quick Look previews for PMTiles, GeoTIFF, and GeoJSON.</span>
                         </div>
-                        <span class="software-tech">Swift · TypeScript · macOS</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://github.com/morris-frank/QLGIS" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="QLGIS source on GitHub">git<svg aria-hidden="true"><use href="#i-git"/></svg></a>
+                            </span>
+                            <span class="software-tech">Swift · TypeScript · macOS</span>
+                        </div>
+                    </div>
 
-                    <a href="https://github.com/morris-frank/notion-slides" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon" src="brand/icon/icon-notion-slides-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                notion-slides
-                                <span class="gh-pill">GitHub ↗</span>
-                            </span>
+                            <a href="https://github.com/morris-frank/notion-slides" target="_blank" rel="noopener noreferrer" class="software-name">notion-slides</a>
                             <span class="software-summary">Converts Notion-style Markdown into themed PowerPoint decks.</span>
                         </div>
-                        <span class="software-tech">JavaScript · CLI</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://github.com/morris-frank/notion-slides" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="notion-slides source on GitHub">git<svg aria-hidden="true"><use href="#i-git"/></svg></a>
+                            </span>
+                            <span class="software-tech">JavaScript · CLI</span>
+                        </div>
+                    </div>
 
-                    <a href="https://sarai-keestra.com" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon" src="brand/icon/icon-saraikeestra-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                sarai-keestra.com
-                                <span class="gh-pill">Website ↗</span>
-                            </span>
+                            <a href="https://sarai-keestra.com" target="_blank" rel="noopener noreferrer" class="software-name">sarai-keestra.com</a>
                             <span class="software-summary">Academic site for a medical researcher, generated from JSON and BibTeX with click-to-edit on GitHub.</span>
                         </div>
-                        <span class="software-tech">Node · Static Web</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://sarai-keestra.com" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="sarai-keestra.com website">web<svg aria-hidden="true"><use href="#i-web"/></svg></a>
+                                <a href="https://github.com/morris-frank/saraikeestra.com" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="sarai-keestra.com source on GitHub">git<svg aria-hidden="true"><use href="#i-git"/></svg></a>
+                            </span>
+                            <span class="software-tech">Node · Static Web</span>
+                        </div>
+                    </div>
 
-                    <a href="https://abrazodelmigrante.com" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon" src="brand/icon/icon-abrazodelmigrante.svg" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                Abrazo del migrante
-                                <span class="gh-pill">Website ↗</span>
-                            </span>
+                            <a href="https://abrazodelmigrante.com" target="_blank" rel="noopener noreferrer" class="software-name">Abrazo del migrante</a>
                             <span class="software-summary">Multilingual milonga site that non-technical editors update through a git-backed CMS.</span>
                         </div>
-                        <span class="software-tech">Astro · Sveltia CMS · Cloudflare</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://abrazodelmigrante.com" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="Abrazo del migrante website">web<svg aria-hidden="true"><use href="#i-web"/></svg></a>
+                                <a href="https://github.com/morris-frank/abrazodelmigrante" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="Abrazo del migrante source on GitHub">git<svg aria-hidden="true"><use href="#i-git"/></svg></a>
+                            </span>
+                            <span class="software-tech">Astro · Sveltia CMS · Cloudflare</span>
+                        </div>
+                    </div>
 
-                    <a href="https://collegiumacademicum.de" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon software-icon--logo" src="brand/icon/icon-collegium-academicum-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                Collegium Academicum
-                                <span class="gh-pill">Website ↗</span>
-                            </span>
+                            <a href="https://collegiumacademicum.de" target="_blank" rel="noopener noreferrer" class="software-name">Collegium Academicum</a>
                             <span class="software-summary">Digital platform for the self-governed timber-constructed student housing project in Heidelberg.</span>
                         </div>
-                        <span class="software-tech">Hugo · Bulma · PHP</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://collegiumacademicum.de" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="Collegium Academicum website">web<svg aria-hidden="true"><use href="#i-web"/></svg></a>
+                            </span>
+                            <span class="software-tech">Hugo · Bulma · PHP</span>
+                        </div>
+                    </div>
 
-                    <a href="https://ackersyndikat.org" target="_blank" rel="noopener noreferrer" class="software-item">
+                    <div class="software-item">
                         <div class="software-left">
                             <img class="software-icon software-icon--logo" src="brand/icon/icon-ackersyndikat-128.png" alt="" width="40" height="40" loading="lazy">
-                            <span class="software-name">
-                                Ackersyndikat
-                                <span class="gh-pill">Website ↗</span>
-                            </span>
+                            <a href="https://ackersyndikat.org" target="_blank" rel="noopener noreferrer" class="software-name">Ackersyndikat</a>
                             <span class="software-summary">Web presence for a decentralized solidarity network securing land commons for farming.</span>
                         </div>
-                        <span class="software-tech">Hugo · Open Web</span>
-                    </a>
+                        <div class="software-right">
+                            <span class="software-links">
+                                <a href="https://ackersyndikat.org" target="_blank" rel="noopener noreferrer" class="gh-pill" aria-label="Ackersyndikat website">web<svg aria-hidden="true"><use href="#i-web"/></svg></a>
+                            </span>
+                            <span class="software-tech">Hugo · Open Web</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -410,27 +448,37 @@
                     <div class="media-scroller-wrap">
                         <div class="video-scroller" role="list" aria-label="Video gallery, scroll sideways">
                             <article class="video-card" role="listitem">
-                                <div class="media-card-top">
-                                    <span class="media-card-title">The Cats of Istanbul</span>
-                                    <span class="media-card-tag">Video · 2023</span>
+                                <div class="video-tile">
+                                    <video preload="metadata" playsinline poster="https://cdn.maurice-frank.com/morris-media/KediIstanbul.jpg" src="https://cdn.maurice-frank.com/morris-media/KediIstanbul.mp4"></video>
+                                    <div class="video-overlay">
+                                        <div class="video-overlay-row">
+                                            <span class="media-card-title">The Cats of Istanbul</span>
+                                            <span class="video-overlay-meta">2023</span>
+                                        </div>
+                                        <button type="button" class="video-play" aria-label="Play The Cats of Istanbul"><svg aria-hidden="true"><use href="#i-play"/></svg></button>
+                                        <div class="video-overlay-row">
+                                            <span class="video-overlay-meta" data-video-duration></span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <p class="media-card-desc">Visual vignette capturing street cats in Istanbul (Jan 2023). Music: Altın Gün (<em>Kolbastı</em>). Filmed on Pixel 7, edited in DaVinci Resolve.</p>
-                                <video controls preload="metadata" poster="https://cdn.maurice-frank.com/morris-media/KediIstanbul.jpg">
-                                    <source src="https://cdn.maurice-frank.com/morris-media/KediIstanbul.mp4" type="video/mp4">
-                                    Your browser does not support HTML5 video.
-                                </video>
                             </article>
 
                             <article class="video-card" role="listitem">
-                                <div class="media-card-top">
-                                    <span class="media-card-title">Eating Hooks</span>
-                                    <span class="media-card-tag">Video · 2020</span>
+                                <div class="video-tile">
+                                    <video preload="metadata" playsinline poster="https://cdn.maurice-frank.com/morris-media/Eating%20Hooks.jpg" src="https://cdn.maurice-frank.com/morris-media/Eating%20Hooks.mp4"></video>
+                                    <div class="video-overlay">
+                                        <div class="video-overlay-row">
+                                            <span class="media-card-title">Eating Hooks</span>
+                                            <span class="video-overlay-meta">2020</span>
+                                        </div>
+                                        <button type="button" class="video-play" aria-label="Play Eating Hooks"><svg aria-hidden="true"><use href="#i-play"/></svg></button>
+                                        <div class="video-overlay-row">
+                                            <span class="video-overlay-meta" data-video-duration></span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <p class="media-card-desc">Most likely the first high-quality, non-experimental, fully AI-generated music video in this form, dating to 2020.</p>
-                                <video controls preload="metadata" poster="https://cdn.maurice-frank.com/morris-media/Eating%20Hooks.jpg">
-                                    <source src="https://cdn.maurice-frank.com/morris-media/Eating%20Hooks.mp4" type="video/mp4">
-                                    Your browser does not support HTML5 video.
-                                </video>
                             </article>
                         </div>
                     </div>
@@ -452,8 +500,8 @@
                                     <source src="https://cdn.maurice-frank.com/morris-media/music/music_for_18_musicians-001.mp3" type="audio/mpeg">
                                 </audio>
                                 <button type="button" class="audio-player-play" aria-label="Play">
-                                    <svg class="audio-icon-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.4v11.2L14 8z"/></svg>
-                                    <svg class="audio-icon-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zm5 0h3v10H9z"/></svg>
+                                    <svg class="audio-icon-play" aria-hidden="true"><use href="#i-play"/></svg>
+                                    <svg class="audio-icon-pause" aria-hidden="true"><use href="#i-pause"/></svg>
                                 </button>
                                 <input type="range" class="audio-player-seek" min="0" max="1000" value="0" step="1" aria-label="Seek">
                                 <span class="audio-player-time"><span data-audio-current>0:00</span><span class="audio-player-sep">/</span><span data-audio-duration>0:00</span></span>
@@ -473,8 +521,8 @@
                                     <source src="https://cdn.maurice-frank.com/morris-media/music/electronica_piano-phase.mp3" type="audio/mpeg">
                                 </audio>
                                 <button type="button" class="audio-player-play" aria-label="Play">
-                                    <svg class="audio-icon-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.4v11.2L14 8z"/></svg>
-                                    <svg class="audio-icon-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zm5 0h3v10H9z"/></svg>
+                                    <svg class="audio-icon-play" aria-hidden="true"><use href="#i-play"/></svg>
+                                    <svg class="audio-icon-pause" aria-hidden="true"><use href="#i-pause"/></svg>
                                 </button>
                                 <input type="range" class="audio-player-seek" min="0" max="1000" value="0" step="1" aria-label="Seek">
                                 <span class="audio-player-time"><span data-audio-current>0:00</span><span class="audio-player-sep">/</span><span data-audio-duration>0:00</span></span>
@@ -494,8 +542,8 @@
                                     <source src="https://cdn.maurice-frank.com/morris-media/music/waltz_001.mp3" type="audio/mpeg">
                                 </audio>
                                 <button type="button" class="audio-player-play" aria-label="Play">
-                                    <svg class="audio-icon-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.4v11.2L14 8z"/></svg>
-                                    <svg class="audio-icon-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zm5 0h3v10H9z"/></svg>
+                                    <svg class="audio-icon-play" aria-hidden="true"><use href="#i-play"/></svg>
+                                    <svg class="audio-icon-pause" aria-hidden="true"><use href="#i-pause"/></svg>
                                 </button>
                                 <input type="range" class="audio-player-seek" min="0" max="1000" value="0" step="1" aria-label="Seek">
                                 <span class="audio-player-time"><span data-audio-current>0:00</span><span class="audio-player-sep">/</span><span data-audio-duration>0:00</span></span>
@@ -515,8 +563,8 @@
                                     <source src="https://cdn.maurice-frank.com/morris-media/music/week07.mp3" type="audio/mpeg">
                                 </audio>
                                 <button type="button" class="audio-player-play" aria-label="Play">
-                                    <svg class="audio-icon-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.4v11.2L14 8z"/></svg>
-                                    <svg class="audio-icon-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zm5 0h3v10H9z"/></svg>
+                                    <svg class="audio-icon-play" aria-hidden="true"><use href="#i-play"/></svg>
+                                    <svg class="audio-icon-pause" aria-hidden="true"><use href="#i-pause"/></svg>
                                 </button>
                                 <input type="range" class="audio-player-seek" min="0" max="1000" value="0" step="1" aria-label="Seek">
                                 <span class="audio-player-time"><span data-audio-current>0:00</span><span class="audio-player-sep">/</span><span data-audio-duration>0:00</span></span>
@@ -718,6 +766,19 @@
         </div>
     </div>
 
+    <div class="playback-bar" id="playback-bar" hidden>
+        <button type="button" class="playback-bar-toggle" data-bar-toggle aria-label="Pause">
+            <svg class="audio-icon-play" aria-hidden="true"><use href="#i-play"/></svg>
+            <svg class="audio-icon-pause" aria-hidden="true"><use href="#i-pause"/></svg>
+        </button>
+        <span class="playback-bar-info">
+            <b class="playback-bar-title"></b>
+            <span class="playback-bar-meta"></span>
+        </span>
+        <button type="button" class="playback-bar-show" data-bar-show>Show</button>
+        <button type="button" class="playback-bar-stop" data-bar-stop aria-label="Stop playback"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+
     <!-- Scrollspy Navigator + photography lightbox + audio players -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -903,11 +964,6 @@
 
                 playBtn.addEventListener('click', () => {
                     if (audio.paused) {
-                        audioPlayers.forEach((other) => {
-                            if (other === player) return;
-                            const otherAudio = other.querySelector('audio');
-                            otherAudio.pause();
-                        });
                         audio.play().catch(() => {});
                     } else {
                         audio.pause();
@@ -936,6 +992,70 @@
                 audio.addEventListener('timeupdate', syncTime);
                 audio.addEventListener('loadedmetadata', syncTime);
                 audio.addEventListener('durationchange', syncTime);
+            });
+
+            /* Video tiles: the poster fills the card with title, year and length over it. The
+               click that starts playback is the gesture fullscreen needs; a browser that
+               refuses gets the frame pinned bottom-right instead. */
+            document.querySelectorAll('.video-card').forEach((card) => {
+                const video = card.querySelector('video');
+                const durationEl = card.querySelector('[data-video-duration]');
+                const toggle = () => (video.paused ? video.play().catch(() => {}) : video.pause());
+                card.querySelector('.video-play').addEventListener('click', toggle);
+                video.addEventListener('click', () => { if (!video.controls) toggle(); });
+                video.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(video.duration); });
+                video.addEventListener('play', () => {
+                    card.classList.add('is-playing');
+                    video.controls = true;
+                    if (document.fullscreenElement) return;
+                    if (!video.requestFullscreen) { card.classList.add('is-floating'); return; }
+                    video.requestFullscreen().catch(() => card.classList.add('is-floating'));
+                });
+                video.addEventListener('pause', () => card.classList.remove('is-playing', 'is-floating'));
+                video.addEventListener('ended', () => { video.controls = false; });
+            });
+
+            /* One item plays at a time, and one bar at the bottom of the window says which. */
+            const bar = document.getElementById('playback-bar');
+            const barToggle = bar.querySelector('[data-bar-toggle]');
+            const media = Array.from(document.querySelectorAll('.media-card audio, .video-card video'));
+            let nowPlaying = null;
+
+            function syncBar() {
+                const playing = nowPlaying && !nowPlaying.paused;
+                bar.classList.toggle('is-playing', Boolean(playing));
+                barToggle.setAttribute('aria-label', playing ? 'Pause' : 'Resume');
+            }
+
+            media.forEach((el) => {
+                const card = el.closest('.media-card, .video-card');
+                el.addEventListener('play', () => {
+                    media.forEach((other) => { if (other !== el && !other.paused) other.pause(); });
+                    nowPlaying = el;
+                    bar.querySelector('.playback-bar-title').textContent = card.querySelector('.media-card-title').textContent;
+                    bar.querySelector('.playback-bar-meta').textContent = card.querySelector('.media-card-tag, .video-overlay-meta').textContent;
+                    bar.hidden = false;
+                    syncBar();
+                });
+                el.addEventListener('pause', syncBar);
+            });
+
+            barToggle.addEventListener('click', () => {
+                if (!nowPlaying) return;
+                if (nowPlaying.paused) nowPlaying.play().catch(() => {});
+                else nowPlaying.pause();
+            });
+            bar.querySelector('[data-bar-show]').addEventListener('click', () => {
+                nowPlaying?.closest('.media-card, .video-card').scrollIntoView({
+                    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                    block: 'center',
+                    inline: 'center',
+                });
+            });
+            bar.querySelector('[data-bar-stop]').addEventListener('click', () => {
+                nowPlaying?.pause();
+                nowPlaying = null;
+                bar.hidden = true;
             });
         });
     </script>
