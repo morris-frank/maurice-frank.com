@@ -731,6 +731,15 @@ a.card-item:hover .card-item-title {
   margin-bottom: var(--space-sm);
 }
 
+.media-card-link {
+  display: inline-block;
+  margin-bottom: var(--space-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-underline-offset: 3px;
+}
+
 /* Horizontal media strips */
 .media-scroller-wrap {
   position: relative;
@@ -1300,6 +1309,24 @@ html:has(.photo-lightbox.is-open) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.photo-lightbox-desc {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 72px 28px calc(22px + env(safe-area-inset-bottom, 0px));
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: oklch(1 0 0 / 0.9);
+  background: linear-gradient(to top, oklch(0 0 0 / 0.72) 0%, oklch(0 0 0 / 0.3) 55%, transparent 100%);
+  pointer-events: none;
+}
+
+.photo-lightbox-desc:empty {
+  display: none;
 }
 
 .photo-lightbox-index {
