@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://maurice-frank.com">
-    <img src="https://img.shields.io/badge/%E2%86%97%20maurice--frank.com-8EDE3D?style=for-the-badge&amp;labelColor=16211B" alt="Open maurice-frank.com">
+    <img src="https://img.shields.io/badge/%E2%86%97%20maurice--frank.com-D78A7A?style=for-the-badge&amp;labelColor=2D2825" alt="Open maurice-frank.com">
   </a>
 </p>
 
@@ -14,9 +14,9 @@
   <strong>Personal site of Maurice Frank: profile, ventures, CV, code, media and labs.</strong>
   <br>
   <br>
-  <img src="https://img.shields.io/badge/HTML%20%2B%20CSS-static-8EDE3D?style=flat-square&amp;labelColor=16211B" alt="Static HTML and CSS">
-  <a href="tokens.css"><img src="https://img.shields.io/badge/theme-light%20%2B%20dark-8EDE3D?style=flat-square&amp;labelColor=16211B" alt="Light and dark theme"></a>
-  <a href="_redirects"><img src="https://img.shields.io/badge/routing-_redirects-1AB172?style=flat-square&amp;labelColor=16211B" alt="Routing via _redirects"></a>
+  <img src="https://img.shields.io/badge/HTML%20%2B%20CSS-static-D78A7A?style=flat-square&amp;labelColor=2D2825" alt="Static HTML and CSS">
+  <a href="tokens.css"><img src="https://img.shields.io/badge/theme-light%20%2B%20dark-D78A7A?style=flat-square&amp;labelColor=2D2825" alt="Light and dark theme"></a>
+  <a href="_redirects"><img src="https://img.shields.io/badge/routing-_redirects-7E9688?style=flat-square&amp;labelColor=2D2825" alt="Routing via _redirects"></a>
 </p>
 
 <br clear="left">
