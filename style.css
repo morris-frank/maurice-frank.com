@@ -554,6 +554,11 @@ a.card-item:hover .card-item-title {
   background: var(--bg-subtle);
 }
 
+.software-icon--logo {
+  object-fit: contain;
+  padding: 4px;
+}
+
 @media (max-width: 599px) {
   .software-tech {
     padding-left: calc(40px + var(--space-md));
