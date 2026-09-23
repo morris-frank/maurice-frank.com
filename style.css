@@ -732,12 +732,7 @@ a.card-item:hover .card-item-title {
 }
 
 .media-card-link {
-  display: inline-block;
   margin-bottom: var(--space-sm);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-underline-offset: 3px;
 }
 
 /* Horizontal media strips */
