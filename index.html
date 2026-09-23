@@ -899,16 +899,14 @@
             const photoScroller = document.getElementById('photo-scroller');
             function photoRowCount() {
                 const width = photoScroller.parentElement.clientWidth;
-                if (width >= 680) return 4;
-                if (width >= 480) return 3;
-                return 2;
+                return width >= 680 ? 3 : 2;
             }
             function packPhotoMosaic() {
                 if (!photoScroller) return;
                 const items = Array.from(photoScroller.querySelectorAll('.photo-item'));
                 const rowCount = photoRowCount();
                 const gap = 6;
-                const rowHeight = 120;
+                const rowHeight = 160;
                 items.forEach((item) => photoScroller.appendChild(item));
                 photoScroller.querySelectorAll('.photo-row').forEach((row) => row.remove());
                 const rows = Array.from({ length: rowCount }, () => {
@@ -941,6 +939,17 @@
                 });
             }
             window.addEventListener('resize', packPhotoMosaic);
+
+            /* Media lanes run out to the viewport's right edge rather than the column's. */
+            function setMediaBleed() {
+                document.querySelectorAll('.media-scroller-wrap').forEach((wrap) => {
+                    wrap.style.removeProperty('--bleed');
+                    const bleed = document.documentElement.clientWidth - wrap.getBoundingClientRect().right;
+                    wrap.style.setProperty('--bleed', `${Math.max(0, bleed)}px`);
+                });
+            }
+            setMediaBleed();
+            window.addEventListener('resize', setMediaBleed);
 
             const siteWrapper = document.querySelector('.site-wrapper');
             const photos = Array.from(document.querySelectorAll('.photo-item'));

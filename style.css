@@ -729,6 +729,8 @@ a.card-item:hover .card-item-title {
 /* Horizontal media strips */
 .media-scroller-wrap {
   position: relative;
+  /* Lanes bleed past the column to the viewport edge; --bleed is set by script. */
+  margin-right: calc(-1 * var(--bleed, 0px));
   container-type: inline-size;
   container-name: media-strip;
 }
@@ -744,17 +746,14 @@ a.card-item:hover .card-item-title {
   background: linear-gradient(to right, transparent, var(--bg-app));
 }
 
-.photo-scroller::-webkit-scrollbar,
 .video-scroller::-webkit-scrollbar {
   height: 10px;
 }
 
-.photo-scroller::-webkit-scrollbar-track,
 .video-scroller::-webkit-scrollbar-track {
   background: var(--bg-subtle);
 }
 
-.photo-scroller::-webkit-scrollbar-thumb,
 .video-scroller::-webkit-scrollbar-thumb {
   background: var(--text-faint);
   border-radius: 3px;
@@ -765,6 +764,7 @@ a.card-item:hover .card-item-title {
   align-items: stretch;
   gap: var(--space-md);
   padding-bottom: 8px;
+  padding-right: var(--bleed, 0px);
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
@@ -913,20 +913,13 @@ a.card-item:hover .card-item-title {
   outline-offset: 2px;
 }
 
-/* Photography: equal-gap mosaic rows, then scroll sideways */
+/* Photography: equal-gap mosaic rows, each scrolling sideways on its own */
 .photo-scroller {
-  --photo-h: 7.5rem;
+  --photo-h: 10rem;
   --photo-gap: 6px;
   display: flex;
   flex-direction: column;
   gap: var(--photo-gap);
-  padding-bottom: 10px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: auto;
-  scrollbar-color: var(--text-muted) var(--bg-subtle);
 }
 
 .photo-row {
@@ -936,7 +929,16 @@ a.card-item:hover .card-item-title {
   align-items: stretch;
   gap: var(--photo-gap);
   height: var(--photo-h);
-  width: max-content;
+  padding-right: var(--bleed, 0px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.photo-row::-webkit-scrollbar {
+  display: none;
 }
 
 .photo-item {
