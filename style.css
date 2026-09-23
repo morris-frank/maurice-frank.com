@@ -747,23 +747,13 @@ a.card-item:hover .card-item-title {
 }
 
 .video-scroller::-webkit-scrollbar {
-  height: 10px;
-}
-
-.video-scroller::-webkit-scrollbar-track {
-  background: var(--bg-subtle);
-}
-
-.video-scroller::-webkit-scrollbar-thumb {
-  background: var(--text-faint);
-  border-radius: 3px;
+  display: none;
 }
 
 .video-scroller {
   display: flex;
   align-items: stretch;
   gap: var(--space-md);
-  padding-bottom: 8px;
   padding-right: var(--bleed, 0px);
   overflow-x: auto;
   overflow-y: hidden;
@@ -771,8 +761,7 @@ a.card-item:hover .card-item-title {
   scroll-snap-type: x mandatory;
   scroll-padding-inline: 0;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: auto;
-  scrollbar-color: var(--text-muted) var(--bg-subtle);
+  scrollbar-width: none;
 }
 
 .video-card {
