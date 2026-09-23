@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Abrazo del migrante</title>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#c78f68" />
+      <stop offset="100%" stop-color="#6d4a39" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#bg)" />
+  <path d="M32 16L47 46h-6.8l-3.2-6.8H26.8L23.6 46H17L32 16Zm2.1 18.4-4.9-10.5-4.9 10.5h9.8Z" fill="#fff8f1" />
+</svg>

@@ -536,8 +536,34 @@ a.card-item:hover .card-item-title {
 }
 
 .software-left {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  min-width: 0;
+  column-gap: var(--space-md);
+}
+
+.software-left > :not(.software-icon) {
+  grid-column: 2;
+}
+
+.software-icon {
+  grid-row: 1 / span 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  background: var(--bg-subtle);
+}
+
+@media (max-width: 599px) {
+  .software-tech {
+    padding-left: calc(40px + var(--space-md));
+  }
+}
+
+@media (min-width: 600px) {
+  .software-item {
+    align-items: center;
+  }
 }
 
 .software-name {
