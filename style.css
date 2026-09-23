@@ -215,10 +215,16 @@ body {
 .section-header {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border-hairline);
-  padding-bottom: var(--space-sm);
+  gap: var(--space-md);
   margin-bottom: var(--space-lg);
+}
+
+/* Rule runs from the title to the right edge; an empty box sits on the text baseline. */
+.section-header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--text-primary);
 }
 
 .section-title {
@@ -226,13 +232,6 @@ body {
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-}
-
-.section-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-faint);
-  letter-spacing: 0.05em;
 }
 
 /* Lead & Intro */
@@ -448,10 +447,6 @@ a.card-item:hover .card-item-title {
   border-bottom: 1px solid var(--border-hairline);
 }
 
-.cv-table tr:first-child {
-  border-top: 1px solid var(--border-hairline);
-}
-
 .cv-table td {
   padding: 0.6rem 0;
   vertical-align: baseline;
@@ -515,10 +510,6 @@ a.card-item:hover .card-item-title {
   text-decoration: none;
   color: inherit;
   transition: var(--transition-fast);
-}
-
-.software-item:first-of-type {
-  border-top: 1px solid var(--border-hairline);
 }
 
 @media (min-width: 600px) {
@@ -785,8 +776,7 @@ a.card-item:hover .card-item-title {
 }
 
 .video-card {
-  flex: 0 0 100%;
-  width: 100%;
+  flex: 0 0 min(78%, 34rem);
   padding: 0;
   overflow: hidden;
   justify-content: flex-start;
@@ -794,11 +784,19 @@ a.card-item:hover .card-item-title {
   scroll-snap-stop: always;
 }
 
-.video-card .media-card-desc {
-  padding: var(--space-sm) var(--space-md) 0;
+.video-overlay .media-card-desc {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: oklch(1 0 0 / 0.9);
+  text-shadow: 0 1px 3px oklch(0 0 0 / 0.65);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* Poster fills the tile; title, year and length sit over it until playback starts. */
+/* Poster fills the tile; title, year, length and description sit over it until playback starts. */
 .video-tile {
   position: relative;
   aspect-ratio: 16 / 9;
@@ -832,7 +830,7 @@ a.card-item:hover .card-item-title {
   flex-direction: column;
   justify-content: space-between;
   padding: 0.65rem 0.8rem;
-  background: linear-gradient(180deg, oklch(0 0 0 / 0.6) 0, transparent 40%, transparent 58%, oklch(0 0 0 / 0.6) 100%);
+  background: linear-gradient(180deg, oklch(0 0 0 / 0.6) 0, transparent 35%, transparent 45%, oklch(0 0 0 / 0.8) 100%);
   pointer-events: none;
   transition: opacity 0.15s ease;
 }
@@ -859,12 +857,27 @@ a.card-item:hover .card-item-title {
 
 .video-overlay-meta {
   flex-shrink: 0;
+  margin-left: auto;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   font-variant-numeric: tabular-nums;
   color: oklch(1 0 0 / 0.85);
   text-shadow: 0 1px 3px oklch(0 0 0 / 0.65);
+}
+
+/* Year and length share the top-right corner as "2023 · 3:12". */
+.video-overlay-meta + .video-overlay-meta {
+  margin-left: 0;
+}
+
+.video-overlay-meta + .video-overlay-meta:empty {
+  display: none;
+}
+
+.video-overlay-meta + .video-overlay-meta::before {
+  content: "·";
+  margin-right: 10px;
 }
 
 .video-play {
