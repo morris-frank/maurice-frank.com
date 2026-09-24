@@ -106,7 +106,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em;bac
     <input type="number" id="assets" value="250000" step="10000">
     <div class="chk"><input type="checkbox" id="partner"><label for="partner">Fiscal partner (married)</label></div>
     <div class="chk"><input type="checkbox" id="baz"><label for="baz">BAZ mandatory AOV in force (2027+)</label></div>
-    <div class="chk"><input type="checkbox" id="wwr"><label for="wwr">Box 3 = werkelijk rendement (2028+)</label></div>
+    <div class="chk"><input type="checkbox" id="wwr"><label for="wwr">Box 3 = werkelijk rendement (2028+, uncertain)</label></div>
     <label class="lab">Assumed portfolio return (for 2028 mode)</label>
     <input type="range" id="ret" min="0" max="12" step="0.5" value="7">
     <div class="rowv"><span>annual</span><b id="retOut">7.0%</b></div>
@@ -151,7 +151,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em;bac
 
   <section class="panel">
     <h2>Standing costs — box 3 and the flat</h2>
-    <p class="note">Independent of employment structure. The flat is the largest legal box-3 shelter available; the 2028 toggle shows what the werkelijk-rendement regime does to a buy-and-hold ETF position.</p>
+    <p class="note">Independent of employment structure. The flat is the largest legal box-3 shelter available; the 2028 toggle shows what the werkelijk-rendement regime does to a buy-and-hold ETF position. That start date is now uncertain: the promised novelle was missing from Prinsjesdag 2026 and the cabinet will propose a vermogenswinstbelasting in spring 2027.</p>
     <div class="cards" id="wealthCards"></div>
     <div class="callout g" id="wealthNote"></div>
   </section>
@@ -177,9 +177,9 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em;bac
 <br><br>
 <b>Deliberate simplifications.</b> Employer premies are a single slider, not itemised Awf/Aof/Whk. Pension accrual, holiday allowance, WW/WIA value and sick pay are not monetised on the employment side — they are real and favour employment beyond what is shown. A controlling DGA is assumed not insured for employee insurances, so only the Zvw employer levy applies. Full distribution from the BV is assumed unless the retain toggle is set. The lucratief-belang-via-holding rows assume the doorstootregeling conditions (≥95% distributed in the same calendar year) are met.
 <br><br>
-<b>Not modelled, and possibly decisive.</b> <b>The risk of total loss on the share purchase</b> — the single largest unmodelled factor on this page. The 30%/27% expat ruling (not applicable here). The Dutch start-up/scale-up option regime (65% inclusion, ~32% effective, targeted 1 Jan 2027, group companies excluded). The box 2 multiplier on doorstoot lucratief belang, deferred to 1 Jan 2028, which would push the holding route toward 36%. German withholding at source and DE–NL treaty apportionment by workdays. Any of these can move the answer by six figures.
+<b>Not modelled, and possibly decisive.</b> <b>The risk of total loss on the share purchase</b> — the single largest unmodelled factor on this page. The 30%/27% expat ruling (not applicable here). The Dutch start-up/scale-up option regime (65% inclusion, ~32% effective, taxed at sale, bill sent to the Tweede Kamer 15 Sep 2026, targeted 1 Jan 2027 subject to EU state-aid approval, group companies excluded; covers options on real shares — no source indicates plain virtual shares qualify). The box 2 multiplier on doorstoot lucratief belang, deferred to 1 Jan 2028, which would push the holding route toward 36%. German withholding at source and DE–NL treaty apportionment by workdays. Any of these can move the answer by six figures.
 <br><br>
-Built 25 Aug 2026 from public sources. Not tax advice.
+Built 25 Aug 2026 from public sources, updated 24 Sep 2026 for Prinsjesdag. Not tax advice.
 </footer>
 
 <script>
