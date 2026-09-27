@@ -1,5 +1,5 @@
 /*
-  Maurice Frank — Design System & Styles
+  Maurice-Frank.com Design System & Styles
   Aesthetic: Swiss Minimalist UI + Structured Editorial UX
   Typography: Atkinson Hyperlegible
   Palette: Pure monochrome, crisp hairline geometry, high-density clarity
@@ -1209,7 +1209,7 @@ body:has(.playback-bar:not([hidden])) {
   color: var(--text-faint);
 }
 
-/* Full-screen photo lightbox — edge-to-edge, chrome over the image */
+/* Full-screen photo lightbox*/
 html:has(.photo-lightbox.is-open) {
   overflow: hidden;
 }

@@ -1,40 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light dark">
-    <title>Maps — Alpine tracks — Maurice Frank</title>
-    <meta name="description" content="Slippy-tile map of alpine mountaineering tracks from Hikr and personal Bergrebell tours.">
-    <link rel="icon" href="../favicon.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"
-          integrity="sha256-BPfK9M5v34c2XP6p0cxVz1mUQLst0gTLk0mlc7kuodA=" crossorigin="anonymous">
-    <link rel="stylesheet" href="./maps.css">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme"
+          content="light dark">
+    <title>Maps — Alpine tracks¯ Maurice Frank</title>
+    <meta name="description"
+          content="Slippy-tile map of alpine mountaineering tracks from Hikr and personal Bergrebell tours.">
+    <link rel="icon"
+          href="../favicon.ico">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha256-BPfK9M5v34c2XP6p0cxVz1mUQLst0gTLk0mlc7kuodA="
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="./maps.css">
 </head>
-<body>
-    <div id="map" role="application" aria-label="Alpine tracks map"></div>
 
-    <aside class="map-overlay" id="overlay">
+<body>
+    <div id="map"
+         role="application"
+         aria-label="Alpine tracks map"></div>
+
+    <aside class="map-overlay"
+           id="overlay">
         <div class="map-overlay-header">
             <div>
-                <a class="brand" href="../">Maurice Frank</a>
+                <a class="brand"
+                   href="../">Maurice Frank</a>
                 <div class="kicker">Maps / Alpine tracks</div>
             </div>
-            <button type="button" class="panel-toggle" id="panel-toggle" aria-expanded="true">Hide</button>
+            <button type="button"
+                    class="panel-toggle"
+                    id="panel-toggle"
+                    aria-expanded="true">Hide</button>
         </div>
-        <div class="map-overlay-body" id="overlay-body">
+        <div class="map-overlay-body"
+             id="overlay-body">
             <section class="overlay-section">
                 <div class="section-label">Basemap</div>
-                <div class="seg" id="basemap-seg" role="group" aria-label="Basemap"></div>
+                <div class="seg"
+                     id="basemap-seg"
+                     role="group"
+                     aria-label="Basemap"></div>
             </section>
             <div id="track-groups"></div>
-            <p class="note">Routes from hikr.org and personal tours. Difficulty grades follow SAC mountaineering: L · WS− · WS · WS+.</p>
+            <p class="note">Routes from hikr.org and personal tours. Difficulty grades follow SAC mountaineering: L ·
+                WS− · WS · WS+.</p>
         </div>
     </aside>
 
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"
-            integrity="sha256-yDc0eil8GjWFKqN1OSzHSVCiuGghTosZCcRje4tj7iQ=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.1/gpx.min.js" crossorigin="anonymous"></script>
+            integrity="sha256-yDc0eil8GjWFKqN1OSzHSVCiuGghTosZCcRje4tj7iQ="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.1/gpx.min.js"
+            crossorigin="anonymous"></script>
     <script>
         const TILESERVER = "https://cdn.maurice-frank.com/osm-tiles/";
 
@@ -163,4 +186,5 @@
         });
     </script>
 </body>
+
 </html>

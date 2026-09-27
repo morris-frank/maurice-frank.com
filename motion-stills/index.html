@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light dark">
-    <title>Motion stills — Maurice Frank</title>
-    <meta name="description" content="A collection of stabilized Motion Stills — short looping videos made with Google's MotionStills app.">
-    <link rel="icon" href="../favicon.ico">
-    <link rel="stylesheet" href="./motion-stills.css">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme"
+          content="light dark">
+    <title>Motion stills¯ Maurice Frank</title>
+    <meta name="description"
+          content="A collection of stabilized Motion Stills — short looping videos made with Google's MotionStills app.">
+    <link rel="icon"
+          href="../favicon.ico">
+    <link rel="stylesheet"
+          href="./motion-stills.css">
 </head>
+
 <body>
     <header class="still-overlay">
         <div class="still-overlay-inner">
             <div class="brand-block">
-                <a class="brand" href="../">Maurice Frank</a>
+                <a class="brand"
+                   href="../">Maurice Frank</a>
                 <div class="kicker">Media / Motion stills</div>
             </div>
-            <nav class="year-nav" id="year-nav" aria-label="Years"></nav>
-            <div class="count" id="count"></div>
+            <nav class="year-nav"
+                 id="year-nav"
+                 aria-label="Years"></nav>
+            <div class="count"
+                 id="count"></div>
         </div>
     </header>
 
@@ -32,8 +43,11 @@
         </p>
     </section>
 
-    <p class="status" id="status">Loading stills…</p>
-    <div class="grid" id="grid" hidden></div>
+    <p class="status"
+       id="status">Loading stills…</p>
+    <div class="grid"
+         id="grid"
+         hidden></div>
 
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js"></script>
     <script>
@@ -41,7 +55,7 @@
 
         function attachPlayback(video) {
             video.addEventListener("mouseenter", () => {
-                video.play().catch(() => {});
+                video.play().catch(() => { });
             });
             video.addEventListener("mouseleave", () => {
                 video.pause();
@@ -49,7 +63,7 @@
             video.addEventListener("click", (event) => {
                 event.preventDefault();
                 if (video.paused) {
-                    video.play().catch(() => {});
+                    video.play().catch(() => { });
                 } else {
                     video.pause();
                 }
@@ -144,4 +158,5 @@
             });
     </script>
 </body>
+
 </html>
