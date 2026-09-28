@@ -2044,7 +2044,8 @@
 
             const photoScroller = document.getElementById('photo-scroller');
             function photoRowCount() {
-                const width = photoScroller.parentElement.clientWidth;
+                const wrap = photoScroller.parentElement;
+                const width = wrap.clientWidth - (parseFloat(wrap.style.getPropertyValue('--bleed-left')) || 0);
                 return width >= 680 ? 4 : 2;
             }
             /* Deal photos into rows in source order; repack only when the row count changes so scroll position survives. */
@@ -2074,6 +2075,14 @@
                     wrap.style.removeProperty('--bleed');
                     const bleed = document.documentElement.clientWidth - wrap.getBoundingClientRect().right;
                     wrap.style.setProperty('--bleed', `${Math.max(0, bleed)}px`);
+                });
+                /* Photo rows also run left, up to the sidebar's edge when it sits beside the column. */
+                document.querySelectorAll('.photo-scroller-wrap').forEach((wrap) => {
+                    wrap.style.removeProperty('--bleed-left');
+                    const left = wrap.getBoundingClientRect().left;
+                    const sidebar = document.querySelector('.site-sidebar')?.getBoundingClientRect();
+                    const edge = sidebar && sidebar.right <= left ? sidebar.right : 0;
+                    wrap.style.setProperty('--bleed-left', `${Math.max(0, left - edge)}px`);
                 });
             }
             setMediaBleed();
