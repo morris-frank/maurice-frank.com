@@ -901,6 +901,11 @@ a.card-item:hover .card-item-title {
 }
 
 /* Photography: equal-gap mosaic rows, each scrolling sideways on its own */
+/* Rows also bleed left into the page gutter; padding keeps the first photo on the column at rest. */
+.photo-scroller-wrap {
+  margin-left: calc(-1 * var(--bleed-left, 0px));
+}
+
 .photo-scroller {
   --photo-h: 25rem;
   --photo-gap: 6rem;
@@ -917,6 +922,8 @@ a.card-item:hover .card-item-title {
   gap: var(--photo-gap);
   height: var(--photo-h);
   padding-right: var(--bleed, 0px);
+  padding-left: var(--bleed-left, 0px);
+  scroll-padding-left: var(--bleed-left, 0px);
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
