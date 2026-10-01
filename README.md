@@ -30,8 +30,17 @@
 | `maps/`, `logos/` | GPX tracks and venture logos |
 | `brand/icon/` | tool icons used in the *Code* section |
 | `_redirects` | old URLs → current paths |
+| `tools/gallery/` | local-only photo mosaic editor, never deployed |
 
 Preview by opening `index.html`, or serve the folder: `python3 -m http.server`.
+
+## Gallery editor
+
+```sh
+python3 tools/gallery/server.py   # then open http://localhost:8001
+```
+
+Shows the photography mosaic dealt into lanes the way `index.html` does (5 desktop, 2 phone). Drag a photo within or across lanes, hide it (adds `hidden`, kept in the file, skipped by the packer) or remove it (deletes its item), then *Write index.html*. Lane *r* position *j* is source slot `j × rows + r`, so a cross-lane drag rewrites source order and the target lane hands its last photo to the end of the lane you dragged from. Hiding or removing re-deals everything after it. Review with `git diff index.html`.
 
 ## Avatars
 

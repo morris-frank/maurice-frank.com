@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Gallery editor · local</title>
+    <style>
+        body { margin: 0; font: 14px/1.4 system-ui, sans-serif; background: #f4f1ec; color: #2d2825; }
+        header { position: sticky; top: 0; z-index: 1; display: flex; gap: 12px; align-items: center; padding: 12px 20px; background: #2d2825; color: #f4f1ec; }
+        header .status { margin-left: auto; opacity: 0.8; }
+        button { font: inherit; cursor: pointer; }
+        main { padding: 20px; }
+        h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; margin: 24px 0 8px; }
+        .lane { display: flex; gap: 8px; min-height: 110px; padding: 8px; margin-bottom: 10px; overflow-x: auto; background: #e8e3db; }
+        .lane.is-over { outline: 2px dashed #d78a7a; }
+        .lane-label { flex: 0 0 24px; align-self: center; font-variant-numeric: tabular-nums; opacity: 0.6; }
+        .photo { position: relative; flex: 0 0 auto; height: 110px; background: var(--tone); cursor: grab; }
+        .photo img { display: block; height: 100%; width: auto; pointer-events: none; }
+        .photo.is-dragging { opacity: 0.3; }
+        .photo.is-target { box-shadow: -4px 0 0 #d78a7a; }
+        .photo .index { position: absolute; top: 4px; left: 4px; padding: 0 4px; background: rgba(0, 0, 0, 0.6); color: #fff; font-size: 11px; }
+        .photo .actions { position: absolute; right: 4px; bottom: 4px; display: none; gap: 4px; }
+        .photo:hover .actions { display: flex; }
+        .photo .actions button { font-size: 11px; padding: 1px 6px; }
+        #hidden-tray .photo { opacity: 0.6; cursor: default; }
+    </style>
+</head>
+<body>
+<header>
+    <strong>Gallery editor</strong>
+    <label>Lanes
+        <select id="rows">
+            <option value="5">5 · desktop</option>
+            <option value="2">2 · phone</option>
+        </select>
+    </label>
+    <button type="button" id="save" disabled>Write index.html</button>
+    <button type="button" id="reload">Reload from file</button>
+    <span class="status" id="status"></span>
+</header>
+<main>
+    <h2>Mosaic, as index.html deals it</h2>
+    <div id="lanes"></div>
+    <h2>Hidden (kept in the file, skipped by the packer)</h2>
+    <div class="lane" id="hidden-tray"></div>
+</main>
+<script>
+    /* order is index.html's source order, hidden photos included; the site deals visible photo i into lane i % rows. */
+    let order = [];
+    let version = '';
+    let dragged = null;
+    const rowsSelect = document.getElementById('rows');
+    const lanesEl = document.getElementById('lanes');
+    const trayEl = document.getElementById('hidden-tray');
+    const saveBtn = document.getElementById('save');
+    const statusEl = document.getElementById('status');
+
+    const rows = () => Number(rowsSelect.value);
+    const visible = () => order.filter((p) => !p.hidden);
+
+    function deal(photos) {
+        const lanes = Array.from({ length: rows() }, () => []);
+        photos.forEach((p, i) => lanes[i % rows()].push(p));
+        return lanes;
+    }
+
+    /* Inverse of the deal: lane r position j becomes source slot j * rows + r. Hidden photos keep their slots. */
+    function undeal(lanes) {
+        const next = [];
+        for (let k = 0; next.length < lanes.flat().length; k++) next.push(lanes[k % rows()][Math.floor(k / rows())]);
+        let v = 0;
+        order = order.map((p) => (p.hidden ? p : next[v++]));
+    }
+
+    function move(photo, toLane, beforePhoto) {
+        const lanes = deal(visible());
+        const fromLane = lanes.findIndex((lane) => lane.includes(photo));
+        lanes[fromLane].splice(lanes[fromLane].indexOf(photo), 1);
+        const target = lanes[toLane];
+        const at = beforePhoto ? target.indexOf(beforePhoto) : target.length;
+        target.splice(at < 0 ? target.length : at, 0, photo);
+        /* The deal fixes each lane's length, so the target lane hands its last other photo to the end of the source lane. */
+        if (fromLane !== toLane) {
+            const bumped = target[target.length - 1] === photo ? target.length - 2 : target.length - 1;
+            lanes[fromLane].push(target.splice(bumped, 1)[0]);
+        }
+        undeal(lanes);
+        changed();
+    }
+
+    function tile(photo, index) {
+        const el = document.createElement('div');
+        el.className = 'photo';
+        el.style.setProperty('--tone', photo.tone);
+        el.title = photo.caption;
+        el.innerHTML = `<img src="${photo.src}" alt="" loading="lazy"><span class="index">${index}</span>
+            <span class="actions"><button type="button" data-act="hide">${photo.hidden ? 'Unhide' : 'Hide'}</button>
+            <button type="button" data-act="remove">Remove</button></span>`;
+        el.querySelector('[data-act="hide"]').onclick = () => { photo.hidden = !photo.hidden; changed(); };
+        el.querySelector('[data-act="remove"]').onclick = () => {
+            if (!confirm(`Remove "${photo.caption}" from index.html?`)) return;
+            order = order.filter((p) => p !== photo);
+            changed();
+        };
+        if (!photo.hidden) {
+            el.draggable = true;
+            el.addEventListener('dragstart', () => { dragged = photo; el.classList.add('is-dragging'); });
+            el.addEventListener('dragend', () => { dragged = null; render(); });
+            el.addEventListener('dragover', (e) => { e.preventDefault(); el.classList.add('is-target'); });
+            el.addEventListener('dragleave', () => el.classList.remove('is-target'));
+            el.dataset.id = photo.id;
+        }
+        return el;
+    }
+
+    function render() {
+        const vis = visible();
+        lanesEl.replaceChildren(...deal(vis).map((lane, r) => {
+            const laneEl = document.createElement('div');
+            laneEl.className = 'lane';
+            laneEl.innerHTML = `<span class="lane-label">${r + 1}</span>`;
+            lane.forEach((p) => laneEl.appendChild(tile(p, vis.indexOf(p) + 1)));
+            laneEl.addEventListener('dragover', (e) => { e.preventDefault(); laneEl.classList.add('is-over'); });
+            laneEl.addEventListener('dragleave', () => laneEl.classList.remove('is-over'));
+            laneEl.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const onto = e.target.closest('.photo');
+                const before = onto && order.find((p) => String(p.id) === onto.dataset.id);
+                if (dragged && before !== dragged) move(dragged, r, before);
+            });
+            return laneEl;
+        }));
+        trayEl.replaceChildren(...order.filter((p) => p.hidden).map((p) => tile(p, '–')));
+    }
+
+    function changed() {
+        saveBtn.disabled = false;
+        statusEl.textContent = 'Unsaved changes';
+        render();
+    }
+
+    async function apply(res) {
+        const body = await res.json();
+        if (!res.ok) throw new Error(body.error);
+        ({ version, photos: order } = body);
+        saveBtn.disabled = true;
+        render();
+    }
+
+    async function load() {
+        await apply(await fetch('/photos'));
+        statusEl.textContent = `${visible().length} shown, ${order.length - visible().length} hidden`;
+    }
+
+    saveBtn.onclick = async () => {
+        try {
+            await apply(await fetch('/photos', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ version, photos: order.map(({ id, hidden }) => ({ id, hidden })) }),
+            }));
+            statusEl.textContent = 'Wrote index.html';
+        } catch (err) {
+            statusEl.textContent = err.message;
+        }
+    };
+    document.getElementById('reload').onclick = () => {
+        if (saveBtn.disabled || confirm('Discard unsaved changes?')) load();
+    };
+    rowsSelect.onchange = render;
+    load();
+</script>
+</body>
+</html>
