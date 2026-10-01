@@ -914,6 +914,12 @@ a.card-item:hover .card-item-title {
   gap: var(--photo-gap);
 }
 
+/* Five desktop lanes fill the same 118rem block four 25rem lanes did. */
+.photo-scroller[data-rows="5"] {
+  --photo-h: 20rem;
+  --photo-gap: 4.5rem;
+}
+
 .photo-row {
   display: flex;
   flex-direction: row;
