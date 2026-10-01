@@ -2474,12 +2474,12 @@
                 const width = wrap.clientWidth - (parseFloat(wrap.style.getPropertyValue('--bleed-left')) || 0);
                 return width >= 680 ? 5 : 2;
             }
-            /* Deal photos into rows in source order; repack only when the row count changes so scroll position survives. */
+            /* Deal shown photos into rows in source order (hidden ones stay in the file, unplaced); repack only when the row count changes so scroll position survives. */
             function packPhotoMosaic() {
                 if (!photoScroller) return;
                 const rowCount = photoRowCount();
                 if (photoScroller.dataset.rows === String(rowCount)) return;
-                const items = Array.from(photoScroller.querySelectorAll('.photo-item'));
+                const items = Array.from(photoScroller.querySelectorAll('.photo-item:not([hidden])'));
                 items.forEach((item) => photoScroller.appendChild(item));
                 photoScroller.querySelectorAll('.photo-row').forEach((row) => row.remove());
                 const rows = Array.from({ length: rowCount }, () => {
@@ -2515,7 +2515,7 @@
             window.addEventListener('resize', setMediaBleed);
 
             const siteWrapper = document.querySelector('.site-wrapper');
-            const photos = Array.from(document.querySelectorAll('.photo-item'));
+            const photos = Array.from(document.querySelectorAll('.photo-item:not([hidden])'));
             const lightbox = document.getElementById('photo-lightbox');
             const lightboxImg = lightbox.querySelector('.photo-lightbox-image');
             const lightboxCap = lightbox.querySelector('.photo-lightbox-caption');
