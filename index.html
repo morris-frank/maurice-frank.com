@@ -2472,7 +2472,7 @@
             function photoRowCount() {
                 const wrap = photoScroller.parentElement;
                 const width = wrap.clientWidth - (parseFloat(wrap.style.getPropertyValue('--bleed-left')) || 0);
-                return width >= 680 ? 4 : 2;
+                return width >= 680 ? 5 : 2;
             }
             /* Deal photos into rows in source order; repack only when the row count changes so scroll position survives. */
             function packPhotoMosaic() {
