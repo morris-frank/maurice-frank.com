@@ -251,6 +251,17 @@ body {
   margin-bottom: var(--space-lg);
 }
 
+.focus-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2048 / 853;
+  object-fit: cover;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-hairline);
+  border-radius: 4px;
+}
+
 /* Dual Focus List */
 .dual-focus-grid {
   display: grid;
