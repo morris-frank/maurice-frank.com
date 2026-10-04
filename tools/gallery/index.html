@@ -33,9 +33,10 @@
             <option value="2">2 · phone</option>
         </select>
     </label>
-    <button type="button" id="save" disabled>Write index.html</button>
+    <button type="button" id="save" disabled>Save &amp; commit index.html</button>
     <button type="button" id="reload">Reload from file</button>
     <span class="status" id="status"></span>
+    <a href="/site/index.html" style="color: inherit">Edit page texts</a>
 </header>
 <main>
     <h2>Mosaic, as index.html deals it</h2>
@@ -94,8 +95,17 @@
         el.title = photo.caption;
         el.innerHTML = `<img src="${photo.src}" alt="" loading="lazy"><span class="index">${index}</span>
             <span class="actions"><button type="button" data-act="hide">${photo.hidden ? 'Unhide' : 'Hide'}</button>
+            <button type="button" data-act="caption">Caption</button>
             <button type="button" data-act="remove">Remove</button></span>`;
         el.querySelector('[data-act="hide"]').onclick = () => { photo.hidden = !photo.hidden; changed(); };
+        el.querySelector('[data-act="caption"]').onclick = () => {
+            const caption = prompt('Caption (shown under the photo full screen)', photo.caption);
+            if (caption === null) return;
+            const description = prompt('Description (also the alt text when they match)', photo.description);
+            if (description === null) return;
+            Object.assign(photo, { caption: caption.trim(), description: description.trim() });
+            changed();
+        };
         el.querySelector('[data-act="remove"]').onclick = () => {
             if (!confirm(`Remove "${photo.caption}" from index.html?`)) return;
             order = order.filter((p) => p !== photo);
@@ -156,9 +166,9 @@
             await apply(await fetch('/photos', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ version, photos: order.map(({ id, hidden }) => ({ id, hidden })) }),
+                body: JSON.stringify({ version, photos: order.map(({ id, hidden, caption, description }) => ({ id, hidden, caption, description })) }),
             }));
-            statusEl.textContent = 'Wrote index.html';
+            statusEl.textContent = 'Committed index.html';
         } catch (err) {
             statusEl.textContent = err.message;
         }
