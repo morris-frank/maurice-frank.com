@@ -25,6 +25,8 @@
 |---|---|
 | `index.html`, `style.css`, `tokens.css` | the whole site |
 | `artifacts/` | standalone interactive pages, e.g. the NL tax simulator |
+| `artifacts/drift/` | Drift, the endless downtempo generator (built output and valley plates) |
+| `tools/drift/` | Drift's source: `pnpm install && pnpm build` writes `artifacts/drift/` |
 | `soilytix/` | Soilytix engineering write-ups and mocks |
 | `motion-stills/` | the motion-stills gallery page |
 | `maps/`, `logos/` | GPX tracks and venture logos |

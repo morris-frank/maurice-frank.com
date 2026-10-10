@@ -1,0 +1,308 @@
+/* Drift: a dark instrument page. Colours of the page chrome; the pictures bring their own. */
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&display=swap");
+
+:root {
+  color-scheme: dark;
+  --color-surface-hero-dark: #161c19;
+  --color-text-on-dark-warm: #f0eee1;
+  --color-primary-green: #d78a7a;
+  --color-primary-dark-green: #2d2825;
+  --spacing-md: 16px;
+  --radius-card: 16px;
+  --radius-button: 8px;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--color-surface-hero-dark);
+  color: var(--color-text-on-dark-warm);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+p {
+  margin: 0;
+}
+h1 {
+  font-family: "Alegreya", Georgia, serif;
+  line-height: 1.2;
+}
+button {
+  font: inherit;
+  color: inherit;
+}
+.drift-meta {
+  font-family: var(--font-mono);
+}
+
+.drift-body {
+  overflow: auto;
+}
+
+.drift {
+  --dark-glass: rgb(22 28 25 / 0.66);
+  --dark-line: rgb(240 238 225 / 0.14);
+  position: relative;
+  min-height: 100%;
+  color: var(--color-text-on-dark-warm);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "head surface"
+    ". surface"
+    "now macros";
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+}
+
+.drift-stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: var(--color-surface-hero-dark);
+  --drift-bright: 0.8;
+  --drift-sat: 1;
+}
+.drift-plate {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 2.5s ease;
+  filter: brightness(var(--drift-bright)) saturate(var(--drift-sat));
+}
+.drift-plate.on {
+  opacity: 1;
+}
+.drift-plate img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+.drift-motes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.drift-head,
+.drift-now,
+.drift-surface,
+.drift-macros,
+.drift-help {
+  position: relative;
+  background: var(--dark-glass);
+  border: 1px solid var(--dark-line);
+  border-radius: var(--radius-card);
+  padding: var(--spacing-md);
+  backdrop-filter: blur(10px);
+}
+
+.drift-head {
+  grid-area: head;
+  align-self: start;
+  max-width: 34rem;
+  display: grid;
+  gap: 10px;
+}
+.drift-head h1 {
+  font-size: 28px;
+}
+.drift-head h1 span {
+  font-weight: 400;
+  opacity: 0.75;
+}
+.drift-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.drift-btn {
+  border: 1px solid var(--dark-line);
+  background: rgb(240 238 225 / 0.08);
+  border-radius: var(--radius-button);
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.drift-btn:hover {
+  background: rgb(240 238 225 / 0.16);
+}
+.drift-btn:focus-visible,
+.drift-cell:focus-visible {
+  outline: 2px solid var(--color-text-on-dark-warm);
+  outline-offset: 2px;
+}
+.drift-play[aria-pressed="true"] {
+  background: var(--color-primary-green);
+  color: var(--color-primary-dark-green);
+  border-color: transparent;
+}
+.drift-small {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.drift-now {
+  grid-area: now;
+  align-self: end;
+  max-width: 40rem;
+  display: grid;
+  gap: 4px;
+}
+.drift-scene {
+  font-size: 22px;
+  font-weight: 600;
+}
+.drift-scene span {
+  font-weight: 400;
+  font-size: 15px;
+  opacity: 0.7;
+}
+.drift-meta {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.drift-surface {
+  grid-area: surface;
+  align-self: start;
+  display: grid;
+  gap: 8px;
+}
+.drift-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 40px);
+  grid-auto-rows: 40px;
+  gap: 6px;
+  touch-action: none;
+}
+.drift-cell {
+  --cell: rgb(0 0 0);
+  border: 0;
+  border-radius: 6px;
+  background: var(--cell);
+  box-shadow:
+    inset 0 0 0 1px rgb(240 238 225 / 0.12),
+    0 0 12px -4px var(--cell);
+  cursor: pointer;
+  padding: 0;
+}
+.drift-cell.top,
+.drift-cell.side,
+.drift-cell.logo {
+  border-radius: 50%;
+  transform: scale(0.8);
+}
+.drift-cell.side[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 2px var(--color-text-on-dark-warm);
+}
+.drift-legend {
+  display: grid;
+  grid-template-columns: repeat(8, 40px) 40px;
+  gap: 6px;
+  font-size: 10px;
+  opacity: 0.75;
+  text-align: center;
+  overflow: hidden;
+}
+.drift-legend span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drift-macros {
+  grid-area: macros;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 16px;
+  font-size: 13px;
+}
+.drift-macros label {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  align-items: center;
+  gap: 8px;
+}
+.drift-macros input {
+  accent-color: var(--color-primary-green);
+  width: 100%;
+}
+
+.drift-help {
+  position: fixed;
+  right: var(--spacing-md);
+  bottom: var(--spacing-md);
+  max-width: 26rem;
+  font-size: 13px;
+  z-index: 1;
+  display: none;
+}
+.drift-help ul {
+  padding-left: 1.1rem;
+  margin: 8px 0;
+}
+.drift-help summary {
+  cursor: pointer;
+}
+
+@media (min-width: 1100px) {
+  .drift-help {
+    display: block;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    grid-area: help;
+    align-self: end;
+  }
+  .drift {
+    grid-template-areas:
+      "head surface"
+      ". macros"
+      "now help";
+    grid-template-rows: auto auto 1fr;
+  }
+  .drift-macros {
+    align-self: start;
+  }
+}
+
+@media (max-width: 760px) {
+  .drift {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "head" "now" "surface" "macros";
+    grid-template-rows: none;
+  }
+  .drift-grid {
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    grid-auto-rows: auto;
+  }
+  .drift-cell {
+    aspect-ratio: 1;
+  }
+  .drift-legend {
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+  }
+  .drift-macros {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drift-plate {
+    transition: none;
+  }
+}
