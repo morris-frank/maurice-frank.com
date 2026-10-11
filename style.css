@@ -443,13 +443,6 @@ a.card-item:hover .card-item-title {
   flex-grow: 1;
 }
 
-.card-item-tags {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  margin-top: var(--space-xs);
-}
-
 /* Minimal CV Table */
 .cv-compact-section {
   margin-top: var(--space-xl);
@@ -485,12 +478,14 @@ a.card-item:hover .card-item-title {
   color: var(--text-primary);
 }
 
-.cv-title-col a {
-  color: var(--text-primary);
+.cv-title-col a,
+.cv-detail-col a {
+  color: inherit;
   text-decoration: none;
 }
 
-.cv-title-col a:hover {
+.cv-title-col a:hover,
+.cv-detail-col a:hover {
   text-decoration: underline;
 }
 
