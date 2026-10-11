@@ -222,7 +222,7 @@ body {
   display: flex;
   align-items: baseline;
   gap: var(--space-md);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 /* Rule runs from the title to the right edge; an empty box sits on the text baseline. */
@@ -241,29 +241,23 @@ body {
 }
 
 /* Lead & Intro */
-.lead-intro {
-  font-size: 1.25rem;
+.lead {
+  font-size: 1.05rem;
   font-weight: 500;
   line-height: 1.5;
   color: var(--text-primary);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-xl);
   letter-spacing: -0.01em;
+  max-width: 35rem;
 }
 
-.lead-intro p + p {
+.lead p + p {
   margin-top: var(--space-sm);
 }
 
-.lead-intro a {
+.lead a {
   color: inherit;
   font: inherit;
-}
-
-.intro-body {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.65;
-  margin-bottom: var(--space-lg);
 }
 
 .focus-photo {
@@ -274,7 +268,7 @@ body {
   object-fit: cover;
   background: var(--bg-subtle);
   border: 1px solid var(--border-hairline);
-  border-radius: 4px;
+  border-radius: 20px;
 }
 
 /* Dual Focus List */
@@ -933,8 +927,8 @@ a.card-item:hover .card-item-title {
 }
 
 .photo-scroller {
-  --photo-h: 25rem;
-  --photo-gap: 6rem;
+  --photo-h: 20rem;
+  --photo-gap: 5rem;
   display: flex;
   flex-direction: column;
   gap: var(--photo-gap);
@@ -942,8 +936,8 @@ a.card-item:hover .card-item-title {
 
 /* Five desktop lanes fill the same 118rem block four 25rem lanes did. */
 .photo-scroller[data-rows="5"] {
-  --photo-h: 20rem;
-  --photo-gap: 4.5rem;
+  --photo-h: 17rem;
+  --photo-gap: 4rem;
 }
 
 .photo-row {
