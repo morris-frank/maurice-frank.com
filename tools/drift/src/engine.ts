@@ -115,6 +115,9 @@ export function createEngine(seed = 20261010) {
   let synth: Synth | null = null;
   let r: Rng = mulberry(seed ^ 0x9e37);
   const macros = { ...DEFAULT_MACROS };
+  /** Where a pad sent each macro; big jumps glide there over a bar from the next beat. */
+  const target = { ...DEFAULT_MACROS };
+  const glide: Partial<Record<MacroId, { rate: number; started: boolean }>> = {};
   const mutes = each(() => false);
   let solo: VoiceId | null = null;
   const accent = each(() => 1);
@@ -262,6 +265,7 @@ export function createEngine(seed = 20261010) {
     const b = current!;
     if (s % 4 === 0) emit({ voice: "beat", time: grid, vel: s === 0 && b.at % 8 === 0 ? 1 : 0.5 });
     bpm += (targetBpm() - bpm) * 0.02; // glide over a few bars
+    glideMacros(s);
     const fill = b.fill;
     const scene = SCENES[b.scene]!;
     const { d, degrees } = chordAt(b.bar);
@@ -365,6 +369,22 @@ export function createEngine(seed = 20261010) {
     onStep: step,
   });
 
+  function glideMacros(s: number) {
+    let moved = false;
+    for (const id of Object.keys(glide) as MacroId[]) {
+      const g = glide[id]!;
+      g.started ||= s % 4 === 0;
+      if (!g.started) continue;
+      const d = target[id] - macros[id];
+      macros[id] = Math.abs(d) <= g.rate ? target[id] : macros[id] + Math.sign(d) * g.rate;
+      if (macros[id] === target[id]) delete glide[id];
+      moved = true;
+    }
+    if (!moved) return;
+    applyMacros();
+    if (s % 4 === 0) publish();
+  }
+
   function applyMacros() {
     if (!bus || !ctx) return;
     const t = ctx.currentTime;
@@ -410,9 +430,18 @@ export function createEngine(seed = 20261010) {
       clock.stop();
       void ctx?.suspend().then(publish);
     },
-    macro(id: MacroId, v: number) {
-      macros[id] = Math.max(0, Math.min(1, v));
-      applyMacros();
+    /**
+     * Set a macro. A step of one pad row or less lands now, so sliding over the
+     * pads plays live; a bigger jump glides there over one bar from the next beat.
+     */
+    macro(id: MacroId, v: number, instant = false) {
+      target[id] = Math.max(0, Math.min(1, v));
+      const d = Math.abs(target[id] - macros[id]);
+      if (instant || d <= 1 / 7 + 1e-6 || !clock.running) {
+        macros[id] = target[id];
+        delete glide[id];
+        applyMacros();
+      } else glide[id] = { rate: d / 16, started: false };
       publish();
     },
     level(v: VoiceId, level: number) {

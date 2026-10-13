@@ -148,3 +148,32 @@ export function leds(
   });
   return out;
 }
+
+const SCENE_GLYPHS = ["Va", "Fi", "Pr", "Cr", "Ro", "Ce"];
+const VOICE_GLYPHS = ["K", "P", "H", "C", "B", "Ch", "Ka", "V"];
+const SIDE_GLYPHS = ["dl", "♪", "↗", "✺", "↘", "◡", "▶", "⇧"];
+const MACRO_GLYPHS = ["En", "Fi", "Sp", "Sw", "Pu", "Ai", "Te", "Co"];
+
+/** A short glyph printed on the pad; level pads stay blank so the meter reads. */
+export function glyphOf(c: Cell, shift: boolean, v: DriftView): string {
+  const a = actionAt(c, shift);
+  if (!a) return "";
+  switch (a.kind) {
+    case "scene":
+      return SCENE_GLYPHS[a.index]!;
+    case "auto":
+      return "∞";
+    case "hold":
+      return "br";
+    case "side":
+      return a.index === 6 && v.running ? "❚❚" : SIDE_GLYPHS[a.index]!;
+    case "macro":
+      return c.y === 0 ? MACRO_GLYPHS[c.x]! : "";
+    case "level":
+      return "";
+    case "reroll":
+      return "↻";
+    case "mute":
+      return v.solo === a.voice ? "S" : VOICE_GLYPHS[c.x]!;
+  }
+}

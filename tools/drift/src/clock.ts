@@ -44,6 +44,9 @@ export function createClock(o: ClockOptions) {
     get step() {
       return step;
     },
+    get running() {
+      return timer !== null;
+    },
     start() {
       if (timer) return;
       next = o.now() + 0.05;

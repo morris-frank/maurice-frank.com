@@ -49,9 +49,12 @@ button {
 }
 
 .drift {
-  --dark-glass: rgb(22 28 25 / 0.66);
+  --dark-glass: rgb(22 28 25 / 0.8);
+  /* Pads shrink with the window so the whole surface fits without scrolling. */
+  --pad: clamp(26px, calc((100dvh - 190px) / 9 - 6px), 40px);
   --dark-line: rgb(240 238 225 / 0.14);
   position: relative;
+  box-sizing: border-box;
   min-height: 100%;
   color: var(--color-text-on-dark-warm);
   display: grid;
@@ -60,7 +63,7 @@ button {
   grid-template-areas:
     "head surface"
     ". surface"
-    "now macros";
+    "now surface";
   gap: var(--spacing-md);
   padding: var(--spacing-md);
 }
@@ -77,11 +80,16 @@ button {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 2.5s ease;
+  visibility: hidden;
+  transition:
+    opacity 2.5s ease,
+    visibility 0s 2.5s;
   filter: brightness(var(--drift-bright)) saturate(var(--drift-sat));
 }
 .drift-plate.on {
   opacity: 1;
+  visibility: visible;
+  transition: opacity 2.5s ease;
 }
 .drift-plate img {
   position: absolute;
@@ -89,7 +97,6 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  will-change: transform;
 }
 .drift-motes {
   position: absolute;
@@ -98,17 +105,15 @@ button {
   height: 100%;
 }
 
+/* No backdrop blur: re-blurring a picture that moves every frame overloaded the GPU. */
 .drift-head,
 .drift-now,
-.drift-surface,
-.drift-macros,
-.drift-help {
+.drift-surface {
   position: relative;
   background: var(--dark-glass);
   border: 1px solid var(--dark-line);
   border-radius: var(--radius-card);
   padding: var(--spacing-md);
-  backdrop-filter: blur(10px);
 }
 
 .drift-head {
@@ -146,7 +151,14 @@ button {
   outline: 2px solid var(--color-text-on-dark-warm);
   outline-offset: 2px;
 }
-.drift-play[aria-pressed="true"] {
+.drift-home {
+  color: inherit;
+  text-decoration: none;
+}
+.drift-home:hover {
+  text-decoration: underline;
+}
+.drift-btn[aria-pressed="true"] {
   background: var(--color-primary-green);
   color: var(--color-primary-dark-green);
   border-color: transparent;
@@ -182,11 +194,13 @@ button {
   align-self: start;
   display: grid;
   gap: 8px;
+  max-height: calc(100dvh - 2 * var(--spacing-md));
+  overflow: auto;
 }
 .drift-grid {
   display: grid;
-  grid-template-columns: repeat(9, 40px);
-  grid-auto-rows: 40px;
+  grid-template-columns: repeat(9, var(--pad));
+  grid-auto-rows: var(--pad);
   gap: 6px;
   touch-action: none;
 }
@@ -200,6 +214,10 @@ button {
     0 0 12px -4px var(--cell);
   cursor: pointer;
   padding: 0;
+  font-family: var(--font-mono);
+  font-size: calc(var(--pad) * 0.3);
+  color: rgb(240 238 225 / 0.85);
+  text-shadow: 0 0 3px rgb(0 0 0 / 0.9);
 }
 .drift-cell.top,
 .drift-cell.side,
@@ -212,7 +230,7 @@ button {
 }
 .drift-legend {
   display: grid;
-  grid-template-columns: repeat(8, 40px) 40px;
+  grid-template-columns: repeat(9, var(--pad));
   gap: 6px;
   font-size: 10px;
   opacity: 0.75;
@@ -224,32 +242,9 @@ button {
   text-overflow: ellipsis;
 }
 
-.drift-macros {
-  grid-area: macros;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px 16px;
-  font-size: 13px;
-}
-.drift-macros label {
-  display: grid;
-  grid-template-columns: 4.5rem 1fr;
-  align-items: center;
-  gap: 8px;
-}
-.drift-macros input {
-  accent-color: var(--color-primary-green);
-  width: 100%;
-}
-
 .drift-help {
-  position: fixed;
-  right: var(--spacing-md);
-  bottom: var(--spacing-md);
-  max-width: 26rem;
   font-size: 13px;
-  z-index: 1;
-  display: none;
+  max-width: calc(9 * var(--pad) + 48px);
 }
 .drift-help ul {
   padding-left: 1.1rem;
@@ -259,31 +254,10 @@ button {
   cursor: pointer;
 }
 
-@media (min-width: 1100px) {
-  .drift-help {
-    display: block;
-    position: relative;
-    right: auto;
-    bottom: auto;
-    grid-area: help;
-    align-self: end;
-  }
-  .drift {
-    grid-template-areas:
-      "head surface"
-      ". macros"
-      "now help";
-    grid-template-rows: auto auto 1fr;
-  }
-  .drift-macros {
-    align-self: start;
-  }
-}
-
 @media (max-width: 760px) {
   .drift {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "head" "now" "surface" "macros";
+    grid-template-areas: "head" "now" "surface";
     grid-template-rows: none;
   }
   .drift-grid {
@@ -296,8 +270,11 @@ button {
   .drift-legend {
     grid-template-columns: repeat(9, minmax(0, 1fr));
   }
-  .drift-macros {
-    grid-template-columns: minmax(0, 1fr);
+  .drift-surface {
+    max-height: none;
+  }
+  .drift-help {
+    max-width: none;
   }
 }
 

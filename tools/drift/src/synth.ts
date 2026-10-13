@@ -13,6 +13,8 @@ export interface Bus {
   perc: GainNode;
   music: GainNode;
   duck: GainNode;
+  /** Reverb and delay returns, ducked by the kick too so the wash never piles onto it. */
+  wetDuck: GainNode;
   tone: BiquadFilterNode;
   reverbSend: GainNode;
   delaySend: GainNode;
@@ -110,21 +112,32 @@ export function karplus(
 }
 
 export function createBus(ctx: AudioContext): Bus {
+  // Headroom first: the full mix sums well past 0 dBFS, and the shaper hard-clips anything beyond ±1.
   const master = ctx.createGain();
-  master.gain.value = 0.8;
+  master.gain.value = 0.4;
+  // Glue: slow-ish bus compression rides the build-ups before they reach the saturation.
+  const glue = ctx.createDynamicsCompressor();
+  glue.threshold.value = -18;
+  glue.knee.value = 10;
+  glue.ratio.value = 3;
+  glue.attack.value = 0.02;
+  glue.release.value = 0.25;
+  const makeup = ctx.createGain();
+  makeup.gain.value = 1.4;
   const shaper = ctx.createWaveShaper();
   shaper.curve = saturation(0.25);
   shaper.oversample = "2x";
+  // Ceiling: near-brickwall at -1.5 dB, fast enough to catch the kick's transient.
   const limiter = ctx.createDynamicsCompressor();
-  limiter.threshold.value = -8;
-  limiter.knee.value = 6;
-  limiter.ratio.value = 6;
-  limiter.attack.value = 0.004;
-  limiter.release.value = 0.2;
+  limiter.threshold.value = -1.5;
+  limiter.knee.value = 0;
+  limiter.ratio.value = 20;
+  limiter.attack.value = 0.001;
+  limiter.release.value = 0.1;
   const analyser = ctx.createAnalyser();
   analyser.fftSize = 1024;
   analyser.smoothingTimeConstant = 0.8;
-  master.connect(shaper).connect(limiter).connect(analyser).connect(ctx.destination);
+  master.connect(glue).connect(makeup).connect(shaper).connect(limiter).connect(analyser).connect(ctx.destination);
 
   const reverb = ctx.createConvolver();
   reverb.buffer = impulse(ctx, 4.5);
@@ -132,7 +145,9 @@ export function createBus(ctx: AudioContext): Bus {
   reverbSend.gain.value = 0.5;
   const reverbBack = ctx.createGain();
   reverbBack.gain.value = 0.55;
-  reverbSend.connect(reverb).connect(reverbBack).connect(master);
+  const wetDuck = ctx.createGain();
+  wetDuck.connect(master);
+  reverbSend.connect(reverb).connect(reverbBack).connect(wetDuck);
 
   const delay = ctx.createDelay(2);
   const fbFilter = ctx.createBiquadFilter();
@@ -145,13 +160,16 @@ export function createBus(ctx: AudioContext): Bus {
   const delayBack = ctx.createGain();
   delayBack.gain.value = 0.5;
   delaySend.connect(delay).connect(fbFilter).connect(feedback).connect(delay);
-  fbFilter.connect(delayBack).connect(master);
+  fbFilter.connect(delayBack).connect(wetDuck);
   delayBack.connect(reverbSend);
 
   // The kick stays dry; percussion and music feed the space (Mode Audio, Attack: kick dry, perc in the reverb).
+  // Bus trims: the kick leads, everything else sits under it.
   const drums = ctx.createGain();
+  drums.gain.value = 0.9;
   drums.connect(master);
   const perc = ctx.createGain();
+  perc.gain.value = 0.7;
   // A gentle high shelf: hours of shaker should not tire the ear.
   const shelf = ctx.createBiquadFilter();
   shelf.type = "highshelf";
@@ -163,6 +181,7 @@ export function createBus(ctx: AudioContext): Bus {
   perc.connect(percSend).connect(reverbSend);
 
   const music = ctx.createGain();
+  music.gain.value = 0.75;
   const duck = ctx.createGain();
   const tone = ctx.createBiquadFilter();
   tone.type = "lowpass";
@@ -192,7 +211,7 @@ export function createBus(ctx: AudioContext): Bus {
   src.start();
   lfo.start();
 
-  return { ctx, master, drums, perc, music, duck, tone, reverbSend, delaySend, delay, air, analyser };
+  return { ctx, master, drums, perc, music, duck, wetDuck, tone, reverbSend, delaySend, delay, air, analyser };
 }
 
 export function createSynth(bus: Bus) {
@@ -250,12 +269,17 @@ export function createSynth(bus: Bus) {
     kick(t: number, vel: number, duckDepth: number, tail: number) {
       tone(t, bus.drums, "sine", 130, tail, 0.09, 0.95 * vel, 0.55, 0.001);
       tone(t, bus.drums, "triangle", 900, 120, 0.012, 0.18 * vel, 0.012, 0.0005);
-      const d = bus.duck.gain;
-      // Firefox has no cancelAndHoldAtTime; there the duck restarts from 1, which a 12 ms glide hides.
-      if (d.cancelAndHoldAtTime) d.cancelAndHoldAtTime(t);
-      else d.cancelScheduledValues(t).setValueAtTime(1, t);
-      d.setTargetAtTime(1 - duckDepth, t, 0.012);
-      d.setTargetAtTime(1, t + 0.06, 0.12);
+      // The wet returns always duck a little, even with Pump at zero.
+      for (const [d, depth] of [
+        [bus.duck.gain, duckDepth],
+        [bus.wetDuck.gain, 0.3 + duckDepth * 0.6],
+      ] as const) {
+        // Firefox has no cancelAndHoldAtTime; there the duck restarts from 1, which a 12 ms glide hides.
+        if (d.cancelAndHoldAtTime) d.cancelAndHoldAtTime(t);
+        else d.cancelScheduledValues(t).setValueAtTime(1, t);
+        d.setTargetAtTime(1 - depth, t, 0.012);
+        d.setTargetAtTime(1, t + 0.06, 0.12);
+      }
     },
     /** Hand drum: tuned membrane with a bend, plus a slap of band noise. `alt` 0 low, 1 high, 2 slap. */
     perc(t: number, vel: number, alt: number, pitch: number) {

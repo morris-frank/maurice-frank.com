@@ -95,7 +95,7 @@ export function createStage(host: HTMLElement, opts: { still: boolean }) {
       motes.push({ vx: 0, vy: 0, r: 3, grow: 0, life: 1.5, age: 0, colour: c, ring: false, ...m });
     switch (e.voice) {
       case "kick":
-        add({ x: w / 2, y: h * 0.92, r: 20, grow: 260, life: 1.1, ring: true });
+        add({ x: w / 2, y: h * 0.92, r: 30, grow: 420, life: 1.3, ring: true });
         break;
       case "perc":
       case "hats":
@@ -110,7 +110,7 @@ export function createStage(host: HTMLElement, opts: { still: boolean }) {
           });
         break;
       case "clap":
-        add({ x: w * (0.3 + Math.random() * 0.4), y: h * 0.55, r: 8, grow: 90, life: 0.6, ring: true });
+        add({ x: w * (0.3 + Math.random() * 0.4), y: h * 0.55, r: 10, grow: 160, life: 0.8, ring: true });
         break;
       case "bass":
         add({ x: w * at(e.pitch, 30, 60), y: h * 0.85, r: 40, grow: 30, life: 2.5 });
@@ -159,11 +159,11 @@ export function createStage(host: HTMLElement, opts: { still: boolean }) {
     ls.forEach((img, k) => {
       const depth = ls.length > 1 ? k / (ls.length - 1) : 0;
       const sway = Math.sin(now * 0.07 + k * 1.3) * 10 * depth;
-      const lift = f.flash.kick * 3 * depth;
-      const scale = 1.03 + 0.012 * f.flash.kick * depth + 0.015 * f.level;
+      const lift = f.flash.kick * 8 * depth;
+      const scale = 1.04 + 0.03 * f.flash.kick * depth + 0.03 * f.level;
       img.style.transform = `translate3d(${sway.toFixed(2)}px, ${lift.toFixed(2)}px, 0) scale(${scale.toFixed(4)})`;
     });
-    host.style.setProperty("--drift-bright", (0.62 + 0.3 * filter + 0.12 * f.level).toFixed(3));
+    host.style.setProperty("--drift-bright", (0.6 + 0.3 * filter + 0.2 * f.level + 0.1 * f.beat).toFixed(3));
     host.style.setProperty("--drift-sat", (0.7 + 0.45 * energy).toFixed(3));
     if (!g) return;
     g.clearRect(0, 0, w, h);
@@ -179,11 +179,11 @@ export function createStage(host: HTMLElement, opts: { still: boolean }) {
       m.y += m.vy * dt;
       const p = m.age / m.life;
       const r = m.r + m.grow * p;
-      const a = (1 - p) * (m.ring ? 0.35 : 0.5);
+      const a = (1 - p) * (m.ring ? 0.6 : 0.8);
       g.globalAlpha = a;
       if (m.ring) {
         g.strokeStyle = m.colour;
-        g.lineWidth = 1.5;
+        g.lineWidth = 2.5;
         g.beginPath();
         g.arc(m.x, m.y, r, 0, Math.PI * 2);
         g.stroke();

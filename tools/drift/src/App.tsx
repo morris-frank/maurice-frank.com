@@ -5,8 +5,8 @@
  */
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { createController } from "./controller";
-import { createEngine, MACROS, roman, type MacroId, type NoteEvent } from "./engine";
-import { actionAt, labelOf, leds, LOGO } from "./grid";
+import { createEngine, MACROS, roman, type NoteEvent } from "./engine";
+import { actionAt, glyphOf, labelOf, leds, LOGO } from "./grid";
 import { connect, ledIndex, type Cell, type Pad } from "./launchpad";
 import { VOICES, type VoiceId } from "./patterns";
 import { SCENES } from "./scenes";
@@ -153,6 +153,20 @@ export function DriftApp() {
     return () => removeEventListener("keydown", onKey);
   }, [engine]);
 
+  // Play on arrival; where the browser blocks audio until a gesture, the first press anywhere starts it.
+  useEffect(() => {
+    engine.start();
+    const kick = () => {
+      if (!engine.view.running) engine.start();
+    };
+    addEventListener("pointerdown", kick, { once: true, capture: true });
+    addEventListener("keydown", kick, { once: true, capture: true });
+    return () => {
+      removeEventListener("pointerdown", kick, { capture: true });
+      removeEventListener("keydown", kick, { capture: true });
+    };
+  }, [engine]);
+
   // Leave Programmer mode when the page goes away, so the Launchpad is usable elsewhere.
   useEffect(() => {
     const bye = () => unlinkRef.current?.();
@@ -227,6 +241,9 @@ export function DriftApp() {
       <div className="drift-stage" ref={stageRef} aria-hidden="true" />
 
       <header className="drift-head">
+        <a className="drift-home drift-small" href="/">
+          ← maurice-frank.com
+        </a>
         <h1>
           Drift <span>endless downtempo</span>
         </h1>
@@ -252,7 +269,7 @@ export function DriftApp() {
             aria-pressed={view.auto}
             onClick={() => engine.auto(!view.auto)}
           >
-            Auto drift {view.auto ? "on" : "off"}
+            Auto drift
           </button>
         </div>
         {(pad || midiError) && (
@@ -320,7 +337,9 @@ export function DriftApp() {
                   onKeyUp={(e) => {
                     if (e.key === "Enter" || e.key === " ") controller.handle({ kind: "up", cell: c }, false);
                   }}
-                />
+                >
+                  <span aria-hidden="true">{glyphOf(c, macroPage, view)}</span>
+                </button>
               );
             }),
           )}
@@ -330,53 +349,40 @@ export function DriftApp() {
             <span key={n}>{n}</span>
           ))}
         </div>
+        <details className="drift-help">
+          <summary>How to play</summary>
+          <ul>
+            <li>Top row: the six scales (keys z-n), auto drift (a), hold for a break.</li>
+            <li>
+              Each column is a voice: kick, hand drums, shaker and hats, clap, bass, chords, kalimba, voice.
+            </li>
+            <li>
+              Rows 1-6 set a voice&rsquo;s level and hold it for two phrases; press the lit level again to hand
+              it back to auto.
+            </li>
+            <li>
+              Row 7: a new pattern for that voice (keys q-i). Row 8: mute (1-8), double-tap or Shift+number to
+              solo, hold to mute only while held.
+            </li>
+            <li>
+              Side column: delay throw (d), new chord loop, rise, bloom, hush, filter dip, play (space), Shift
+              for the macro page.
+            </li>
+            <li>
+              Shift page: each column is a macro (energy, filter, space, swing, pump, air, tempo, colour), the
+              row sets its value. On screen, Shift latches.
+            </li>
+            <li>
+              On a Launchpad X or Pro, velocity sets the accent and pressure opens the filter and the voice; on
+              a Mini, hold a level pad to swell.
+            </li>
+          </ul>
+          <p className="drift-small">
+            A synthesised study of a style, not a recording, a sample or an imitation of any artist. The valley
+            pictures come from Terrikus, a playable soil-science textbook by Soilytix.
+          </p>
+        </details>
       </section>
-
-      <section className="drift-macros" aria-label="Macros">
-        {MACROS.map((m) => (
-          <label key={m.id} title={m.hint}>
-            <span>{m.label}</span>
-            <input
-              type="range"
-              min={0}
-              max={1}
-              step={0.01}
-              value={view.macros[m.id]}
-              onChange={(e) => engine.macro(m.id as MacroId, Number(e.target.value))}
-            />
-          </label>
-        ))}
-      </section>
-
-      <details className="drift-help">
-        <summary>How to play</summary>
-        <ul>
-          <li>Top row: the six scales (keys z-n), auto drift (a), hold for a break.</li>
-          <li>
-            Each column is a voice: kick, hand drums, shaker and hats, clap, bass, chords, kalimba, voice.
-          </li>
-          <li>
-            Rows 1-6 set a voice&rsquo;s level and hold it for two phrases; press the lit level again to hand
-            it back to auto.
-          </li>
-          <li>
-            Row 7: a new pattern for that voice (keys q-i). Row 8: mute (1-8), double-tap or Shift+number to
-            solo, hold to mute only while held.
-          </li>
-          <li>
-            Side column: delay throw (d), new chord loop, rise, bloom, hush, filter dip, play (space), Shift
-            for the macro page.
-          </li>
-          <li>
-            On a Launchpad X or Pro, velocity sets the accent and pressure opens the filter and the voice; on
-            a Mini, hold a level pad to swell.
-          </li>
-        </ul>
-        <p className="drift-small">
-          A synthesised study of a style, not a recording, a sample or an imitation of any artist. The valley
-          pictures come from Terrikus, a playable soil-science textbook by Soilytix.
-        </p>
-      </details>
     </main>
   );
 }

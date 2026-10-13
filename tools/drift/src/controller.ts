@@ -84,7 +84,7 @@ export function createController(engine: Engine, now: () => number = () => perfo
     else if (i === 4) engine.jump("hush");
     else if (i === 5) {
       dipFrom = engine.view.macros.filter;
-      engine.macro("filter", 0.15);
+      engine.macro("filter", 0.15, true);
     } else if (i === 6) {
       if (engine.view.running) engine.stop();
       else engine.start();
@@ -97,7 +97,7 @@ export function createController(engine: Engine, now: () => number = () => perfo
     down.delete(k);
     if (cell.x === 8 && cell.y === 7) shift = false;
     if (cell.x === 8 && cell.y === 5 && dipFrom !== null) {
-      engine.macro("filter", dipFrom);
+      engine.macro("filter", dipFrom, true);
       dipFrom = null;
     }
     if (cell.y === -1 && cell.x === 7) engine.hold(false);

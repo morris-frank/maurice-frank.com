@@ -64,7 +64,7 @@ export interface ConductorState {
 
 export function createConductor(seed: number, start: Partial<ConductorState> = {}) {
   const r: Rng = mulberry(seed);
-  const st: ConductorState = { auto: true, energy: 0.6, scene: 2, pins: {}, holding: false, ...start };
+  const st: ConductorState = { auto: true, energy: 0.6, scene: 3, pins: {}, holding: false, ...start };
   let section: Section = "arrive";
   let at = 0;
   let of = 16;
@@ -108,6 +108,8 @@ export function createConductor(seed: number, start: Partial<ConductorState> = {
       if (st.holding && section !== "hush") {
         enter("hush");
         fresh = true;
+      } else if (at >= of && !st.auto && !st.holding) {
+        at = 0; // auto off: the section loops, nothing moves on by itself
       } else if (at >= of && !(st.holding && section === "hush")) {
         enter(AFTER[section][Math.floor(r() * AFTER[section].length)]!);
         if (section === "settle") cycles++;
@@ -136,6 +138,7 @@ export function createConductor(seed: number, start: Partial<ConductorState> = {
     scene(i: number) {
       wantScene = Math.max(0, Math.min(SCENES.length - 1, i));
       at = of; // close the section so the next bar re-rolls in the new scene
+      jumped = true; // with auto off the section loops, but the scene still changes
     },
     /** Skip to a section now (the next bar starts it). */
     jump(s: Section) {

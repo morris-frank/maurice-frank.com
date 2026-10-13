@@ -61,7 +61,7 @@ describe("theory", () => {
 describe("conductor", () => {
   it("opens fresh, then plays the groove at default energy in a bloom", () => {
     const c = createConductor(1);
-    expect(c.next()).toMatchObject({ bar: 0, section: "arrive", fresh: true, scene: 2 });
+    expect(c.next()).toMatchObject({ bar: 0, section: "arrive", fresh: true, scene: 3 });
     c.jump("bloom");
     const b = c.next();
     expect(b).toMatchObject({ section: "bloom", at: 0, fresh: true });
