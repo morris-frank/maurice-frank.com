@@ -164,7 +164,7 @@ body {
   padding-left: 8px;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 899px) {
   .sidebar-nav {
     display: none;
   }
@@ -514,6 +514,10 @@ a.card-item:hover .card-item-title {
 .software-list {
   display: flex;
   flex-direction: column;
+}
+
+.software-group-label {
+  margin: var(--space-xl) 0 0;
 }
 
 .software-item {
@@ -1065,13 +1069,13 @@ body:has(.playback-bar:not([hidden])) {
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  width: min(560px, calc(100vw - 2rem));
+  width: min(350px, calc(100vw - 2rem));
   transform: translateX(-50%);
   padding: 0.5rem 0.65rem;
   border: 1px solid var(--border-medium);
-  border-radius: 999px;
+  border-radius: 10px;
   background: var(--bg-surface);
-  box-shadow: 0 6px 24px oklch(0 0 0 / 0.14);
+  box-shadow: 0 2px 8px oklch(0 0 0 / 0.08);
 }
 
 .playback-bar[hidden] {
@@ -1111,7 +1115,7 @@ body:has(.playback-bar:not([hidden])) {
 
 .playback-bar-info {
   display: grid;
-  flex: 1;
+  flex: 1 1 0;
   min-width: 0;
   line-height: 1.25;
 }
@@ -1131,6 +1135,15 @@ body:has(.playback-bar:not([hidden])) {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+/* Equal flex with the info keeps the toggle centred. */
+.playback-bar-actions {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-sm);
 }
 
 .playback-bar-show {
