@@ -686,7 +686,7 @@ a.card-item:hover .card-item-title {
 }
 
 .media-subsection .nav-label {
-  font-family: "Rock Salt", cursive;
+  font-family: var(--font-hand);
   margin-bottom: var(--space-xs);
 }
 
@@ -722,6 +722,7 @@ a.card-item:hover .card-item-title {
 }
 
 .media-card-title {
+  font-family: var(--font-hand);
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -1357,6 +1358,7 @@ html:has(.photo-lightbox.is-open) {
 }
 
 .photo-lightbox-caption {
+  font-family: var(--font-hand);
   margin: 0;
   padding: 0 8px;
   font-size: 1.05rem;

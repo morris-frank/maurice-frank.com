@@ -21,6 +21,7 @@
 
   --font-sans: "Alegreya", Georgia, "Times New Roman", serif;
   --font-mono: var(--font-sans);
+  --font-hand: "Rock Salt", cursive;
 
   --sidebar-width: 280px;
   --content-max-width: 800px;
