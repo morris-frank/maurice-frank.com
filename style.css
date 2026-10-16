@@ -53,7 +53,7 @@ body {
 
 /* Sticky Sidebar */
 .site-sidebar {
-  padding: var(--space-2xl) 0 var(--space-xl);
+  padding: var(--space-2xl) 0 var(--space-lg);
   border-bottom: 1px solid var(--border-hairline);
 }
 
@@ -67,7 +67,7 @@ body {
     overflow-y: auto;
     border-bottom: none;
     border-right: 1px solid var(--border-hairline);
-    padding: var(--space-3xl) var(--space-xl) var(--space-2xl) 0;
+    padding: var(--space-3xl) var(--space-xl) var(--space-lg) 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -100,6 +100,7 @@ body {
   letter-spacing: -0.03em;
   color: var(--text-primary);
   line-height: 1.15;
+  text-shadow: -1px 0px #b7b8774d;
   margin-bottom: var(--space-xs);
 }
 
@@ -685,6 +686,7 @@ a.card-item:hover .card-item-title {
 }
 
 .media-subsection .nav-label {
+  font-family: "Rock Salt", cursive;
   margin-bottom: var(--space-xs);
 }
 
@@ -772,17 +774,18 @@ a.card-item:hover .card-item-title {
   align-items: stretch;
   gap: var(--space-md);
   padding-right: var(--bleed, 0px);
+  padding-left: var(--bleed-left, 0px);
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
-  scroll-padding-inline: 0;
+  scroll-padding-left: var(--bleed-left, 0px);
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
 
 .video-card {
-  flex: 0 0 min(78%, 34rem);
+  flex: 0 0 min(78%, 40rem);
   padding: 0;
   overflow: hidden;
   justify-content: flex-start;
@@ -920,8 +923,8 @@ a.card-item:hover .card-item-title {
 }
 
 /* Photography: equal-gap mosaic rows, each scrolling sideways on its own */
-/* Rows also bleed left into the page gutter; padding keeps the first photo on the column at rest. */
-.photo-scroller-wrap {
+/* Lanes also bleed left into the page gutter; padding keeps the first item on the column at rest. */
+.media-scroller-wrap {
   margin-left: calc(-1 * var(--bleed-left, 0px));
 }
 
@@ -1192,6 +1195,23 @@ body:has(.playback-bar:not([hidden])) {
   background-repeat: no-repeat;
   accent-color: var(--text-primary);
   cursor: pointer;
+}
+
+/* Material-style wavy fill while playing: a tiled, drifting wave sized to the played part. */
+.audio-player {
+  --audio-wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpattern id='w' width='12' height='8' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 4q3-4 6 0t6 0' fill='none' stroke='%23171717' stroke-width='2'/%3E%3CanimateTransform attributeName='patternTransform' type='translate' from='0 0' to='12 0' dur='1s' repeatCount='indefinite'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23w)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  .audio-player {
+    --audio-wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpattern id='w' width='12' height='8' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 4q3-4 6 0t6 0' fill='none' stroke='%23f1f1f1' stroke-width='2'/%3E%3CanimateTransform attributeName='patternTransform' type='translate' from='0 0' to='12 0' dur='1s' repeatCount='indefinite'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23w)'/%3E%3C/svg%3E");
+  }
+}
+
+.audio-player.is-playing .audio-player-seek {
+  background:
+    var(--audio-wave) left center / var(--audio-progress) 8px no-repeat,
+    linear-gradient(to right, transparent 0 var(--audio-progress), var(--border-hairline) var(--audio-progress) 100%) center / 100% 2px no-repeat;
 }
 
 .audio-player-seek:focus-visible {

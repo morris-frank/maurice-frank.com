@@ -13,7 +13,7 @@
     <link rel="icon"
           href="favicon.ico">
     <link rel="stylesheet"
-          href="style.css?v=4">
+          href="style.css?v=5">
 </head>
 
 <body>
@@ -111,29 +111,28 @@
                          height="72">
                     <h1 class="site-title"><a href="./"
                            style="color: inherit; text-decoration: none;">Maurice Frank</a></h1>
-                    <div class="site-subtitle">Founding engineer &amp; adventurer</div>
+                    <div class="site-subtitle">engineer &amp; adventurer</div>
                     <p class="sidebar-bio">
-                        Engineering data platforms, develop causal ML, and champion human-centric knowledge systems.
+                        Building data systems, develop causal ML, and champion human-centric knowledge systems.
                         Based in Amsterdam. Home in the mountains.
                     </p>
                 </header>
 
                 <nav class="sidebar-nav"
                      aria-label="Section navigation">
-                    <div class="nav-label">Index</div>
                     <ul class="nav-list">
                         <li class="nav-item"><a href="#focus"
-                               class="nav-link active">¯ Focus</a></li>
+                               class="nav-link active">Focus</a></li>
                         <li class="nav-item"><a href="#ventures"
-                               class="nav-link">¯ Ventures</a></li>
+                               class="nav-link">Ventures</a></li>
                         <li class="nav-item"><a href="#cv"
-                               class="nav-link">¯ Career & Education</a></li>
+                               class="nav-link">Career & Education</a></li>
                         <li class="nav-item"><a href="#software"
-                               class="nav-link">¯ Selected Software</a></li>
+                               class="nav-link">Selected Software</a></li>
                         <li class="nav-item"><a href="#media"
-                               class="nav-link">¯ Video, Audio & Photography</a></li>
+                               class="nav-link">Video, Audio & Photography</a></li>
                         <li class="nav-item"><a href="#colophon"
-                               class="nav-link">¯ Colophon</a></li>
+                               class="nav-link">Colophon</a></li>
                     </ul>
                 </nav>
             </div>
@@ -213,9 +212,8 @@
                             </div>
                             <div class="card-item-role">Founding CTO</div>
                             <p class="card-item-desc">
-                                Scaled from idea to revenue in one year. Architected and engineered the data-driven
-                                agricultural soil intelligence platform, processing global datasets with interactive
-                                geospatial visualization and farmer-facing analytics.
+                                Soil intelligence company modelling microbiome, chemical, environmental and trial data
+                                so seed, breeding and agri-input companies can decide on evidence.
                             </p>
                         </div>
                     </a>
@@ -238,32 +236,8 @@
                             </div>
                             <div class="card-item-role">Founding Engineer</div>
                             <p class="card-item-desc">
-                                Shipped from 0 to MVP in two quarters. Cross-platform mobile app for personalized
-                                skincare, full-stack Firebase architecture, on-device/cloud Computer Vision models for
-                                skin analysis, and LLM recommendation agents.
-                            </p>
-                        </div>
-                    </a>
-
-                    <a href="https://muno.ai/"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="card-item">
-                        <div>
-                            <div class="card-item-header">
-                                <span class="card-item-brand">
-                                    <img class="card-item-logo is-wordmark is-ink"
-                                         src="logos/muno.svg"
-                                         alt="Muno"
-                                         width="104"
-                                         height="28">
-                                </span>
-                                <span class="card-item-date">2024 – 2026</span>
-                            </div>
-                            <div class="card-item-role">Founding Engineer</div>
-                            <p class="card-item-desc">
-                                Engineered the full-stack B2C platform for immune health, connecting high-throughput
-                                automated RNA blood analysis pipelines directly to user-facing applications.
+                                Personalised skincare app that analyses skin from a photo and recommends a routine to
+                                match.
                             </p>
                         </div>
                     </a>
@@ -285,8 +259,8 @@
                             </div>
                             <div class="card-item-role">ML Scientist</div>
                             <p class="card-item-desc">
-                                Advisory on machine learning architecture, MLOps, and scalable software pipelines for
-                                clinical RNA sequencing analysis and biomarker discovery.
+                                Heidelberg biotech developing blood-based diagnostics from small-RNA sequencing and
+                                biomarker discovery.
                             </p>
                         </div>
                     </a>
@@ -724,6 +698,13 @@
                                    class="gh-pill"
                                    aria-label="Terrikus website">web<svg aria-hidden="true">
                                         <use href="#i-web" />
+                                    </svg></a>
+                                <a href="https://github.com/Soilytix/terrikus"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="gh-pill"
+                                   aria-label="Terrikus on GitHub">git<svg aria-hidden="true">
+                                        <use href="#i-git" />
                                     </svg></a>
                             </span>
                         </div>
@@ -2422,8 +2403,8 @@
                     const bleed = document.documentElement.clientWidth - wrap.getBoundingClientRect().right;
                     wrap.style.setProperty('--bleed', `${Math.max(0, bleed)}px`);
                 });
-                /* Photo rows also run left, up to the sidebar's edge when it sits beside the column. */
-                document.querySelectorAll('.photo-scroller-wrap').forEach((wrap) => {
+                /* Photo and video lanes also run left, up to the sidebar's edge when it sits beside the column. */
+                document.querySelectorAll('.media-scroller-wrap').forEach((wrap) => {
                     wrap.style.removeProperty('--bleed-left');
                     const left = wrap.getBoundingClientRect().left;
                     const sidebar = document.querySelector('.site-sidebar')?.getBoundingClientRect();
