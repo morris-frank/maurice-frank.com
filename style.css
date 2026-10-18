@@ -190,8 +190,14 @@ body {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   transition: var(--transition-fast);
+}
+
+.social-link svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
 }
 
 .social-link:hover {
@@ -535,6 +541,45 @@ a.card-item {
   .cv-detail-col {
     text-align: left;
   }
+}
+
+/* Publications: author line under the title, collapsed to first, self and last until clicked. */
+.pub-table .cv-title-col a {
+  text-decoration: none;
+}
+
+.pub-authors {
+  display: block;
+  margin-top: 2px;
+  font: 400 0.75rem/1.4 var(--font-sans);
+  color: var(--text-muted);
+}
+
+button.pub-authors {
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+button.pub-authors .ellip {
+  color: var(--text-primary);
+}
+
+.pub-authors[aria-expanded="false"] .a-full,
+.pub-authors[aria-expanded="true"] .a-short {
+  display: none;
+}
+
+.pub-authors strong {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.pub-table .cv-detail-col {
+  vertical-align: top;
+  padding-left: var(--space-md);
 }
 
 /* Software & GitHub Items */
