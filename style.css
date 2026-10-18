@@ -157,7 +157,7 @@ body {
   color: var(--text-primary);
   font-weight: 600;
   border-left: 2px solid var(--text-primary);
-  padding-left: 8px;
+  padding-left: 10px;
 }
 
 @media (max-width: 899px) {
@@ -166,12 +166,9 @@ body {
   }
 }
 
-/* Sidebar Footer & Links */
-.sidebar-footer {
-  padding-top: var(--space-lg);
-}
-
+/* Sidebar Links */
 .social-links {
+  padding-top: var(--space-lg);
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
@@ -200,19 +197,8 @@ body {
   text-underline-offset: 3px;
 }
 
-.sidebar-legal {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
-.sidebar-legal p + p {
-  margin-top: var(--space-xs);
-}
-
 /* Mobile: flatten the sidebar into the page grid so the socials sit beside the
-   portrait/name as an icon grid and the imprint drops below the main content. */
+   portrait as an icon grid. */
 @media (max-width: 899px) {
   .site-wrapper {
     display: grid;
@@ -221,9 +207,7 @@ body {
   }
   .site-sidebar,
   .sidebar-top,
-  .sidebar-header,
-  .sidebar-footer,
-  .sidebar-links {
+  .sidebar-header {
     display: contents;
   }
   .sidebar-portrait {
@@ -237,20 +221,22 @@ body {
     grid-area: 3 / 1;
   }
   .social-links {
-    grid-area: 1 / 2 / 4 / 3;
-    align-self: end;
+    grid-area: 1 / 2;
+    align-self: center;
     display: grid;
     grid-template-columns: repeat(3, 36px);
     gap: var(--space-xs);
-    margin-bottom: var(--space-md);
+    padding-top: 0;
+    margin-top: var(--space-2xl);
   }
   .social-link {
     font-size: 0;
+    gap: 0;
     justify-content: center;
     width: 36px;
     height: 36px;
     border: 1px solid var(--border-hairline);
-    border-radius: 8px;
+    border-radius: 4px;
   }
   .social-link svg {
     width: 16px;
@@ -265,30 +251,15 @@ body {
   .site-main {
     grid-area: 5 / 1 / 6 / 3;
   }
-  .sidebar-legal {
-    grid-area: 6 / 1 / 7 / 3;
-    padding: var(--space-lg) 0 var(--space-xl);
-    border-top: 1px solid var(--border-hairline);
-  }
 }
 
-@media (min-width: 900px) {
-  .sidebar-legal {
-    display: grid;
-    grid-template-rows: 0fr;
-    opacity: 0;
-    transition: grid-template-rows 0.4s ease, opacity 0.4s ease;
-  }
-  .sidebar-legal > div {
-    overflow: hidden;
-  }
-  .sidebar-legal .nav-label {
-    margin-top: var(--space-lg);
-  }
-  .is-scrolled .sidebar-legal {
-    grid-template-rows: 1fr;
-    opacity: 1;
-  }
+/* Imprint: one line at the page bottom. */
+.site-footer {
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-hairline);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
 }
 
 /* Main Content Area */
@@ -337,7 +308,6 @@ body {
   font-size: 1.05rem;
   line-height: 1.5;
   color: var(--text-primary);
-  margin-bottom: var(--space-xl);
   letter-spacing: -0.01em;
   max-width: 40rem;
 }
@@ -360,6 +330,7 @@ body {
   background: var(--bg-subtle);
   border: 1px solid var(--border-hairline);
   border-radius: 20px;
+  margin-top: var(--space-xl);
 }
 
 /* Dual Focus List */
@@ -455,8 +426,8 @@ body {
 
 .card-item-brand {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-end;
+  gap: 16px;
   min-width: 0;
 }
 
@@ -825,7 +796,8 @@ button.pub-authors .ellip {
 
 .media-subsection .nav-label {
   font-family: var(--font-hand);
-  margin-bottom: var(--space-xs);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-lg);
 }
 
 .media-cards-grid {
@@ -864,13 +836,6 @@ button.pub-authors .ellip {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-primary);
-}
-
-.media-card-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  flex-shrink: 0;
 }
 
 .media-card-desc {
