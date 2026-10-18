@@ -89,7 +89,6 @@ body {
   object-fit: cover;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  border: 1px solid var(--border-hairline);
   margin-bottom: var(--space-md);
   background: var(--bg-subtle);
 }
@@ -252,7 +251,7 @@ body {
 
 @media (min-width: 900px) {
   .site-main {
-    padding: var(--space-3xl) 0 var(--space-3xl);
+    padding: var(--space-2xl) 0 var(--space-3xl);
   }
 }
 
