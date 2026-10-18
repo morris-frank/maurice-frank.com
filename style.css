@@ -328,8 +328,7 @@ body {
   aspect-ratio: 2048 / 853;
   object-fit: cover;
   background: var(--bg-subtle);
-  border: 1px solid var(--border-hairline);
-  border-radius: 20px;
+  border-radius: 2rem;
   margin-top: var(--space-xl);
 }
 
