@@ -2401,30 +2401,6 @@
                  alt="">
             <div class="photo-lightbox-hud">
                 <div class="photo-lightbox-hud-start">
-                    <button type="button"
-                            class="photo-lightbox-btn"
-                            data-lightbox-prev
-                            aria-label="Previous photograph">
-                        <svg viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.6"
-                             aria-hidden="true">
-                            <path d="M15 5l-7 7 7 7" />
-                        </svg>
-                    </button>
-                    <button type="button"
-                            class="photo-lightbox-btn"
-                            data-lightbox-next
-                            aria-label="Next photograph">
-                        <svg viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.6"
-                             aria-hidden="true">
-                            <path d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
                     <p class="photo-lightbox-caption"
                        aria-live="polite"></p>
                 </div>
@@ -2445,6 +2421,30 @@
                 </div>
             </div>
             <p class="photo-lightbox-desc"></p>
+            <button type="button"
+                    class="photo-lightbox-btn photo-lightbox-nav"
+                    data-lightbox-prev
+                    aria-label="Previous photograph">
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.6"
+                     aria-hidden="true">
+                    <path d="M15 5l-7 7 7 7" />
+                </svg>
+            </button>
+            <button type="button"
+                    class="photo-lightbox-btn photo-lightbox-nav"
+                    data-lightbox-next
+                    aria-label="Next photograph">
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.6"
+                     aria-hidden="true">
+                    <path d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -2525,7 +2525,7 @@
             function photoRowCount() {
                 const wrap = photoScroller.parentElement;
                 const width = wrap.clientWidth - (parseFloat(wrap.style.getPropertyValue('--bleed-left')) || 0);
-                return width >= 680 ? 5 : 2;
+                return width >= 680 ? 5 : 8;
             }
             /* Deal shown photos into rows in source order (hidden ones stay in the file, unplaced); repack only when the row count changes so scroll position survives. */
             function packPhotoMosaic() {
@@ -2621,6 +2621,19 @@
             lightboxClose.addEventListener('click', closeLightbox);
             lightbox.querySelector('[data-lightbox-prev]').addEventListener('click', () => showPhoto(current - 1));
             lightbox.querySelector('[data-lightbox-next]').addEventListener('click', () => showPhoto(current + 1));
+
+            /* Horizontal swipe steps through photographs. */
+            let swipeStart = null;
+            lightbox.addEventListener('touchstart', (event) => {
+                swipeStart = event.touches.length === 1 ? event.touches[0] : null;
+            }, { passive: true });
+            lightbox.addEventListener('touchend', (event) => {
+                if (!swipeStart) return;
+                const dx = event.changedTouches[0].clientX - swipeStart.clientX;
+                const dy = event.changedTouches[0].clientY - swipeStart.clientY;
+                swipeStart = null;
+                if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) showPhoto(current + (dx < 0 ? 1 : -1));
+            });
 
             document.addEventListener('keydown', (event) => {
                 if (!isLightboxOpen()) return;
