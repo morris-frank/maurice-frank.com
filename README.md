@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<img src="brand/icon/icon-maurice-frank-512.png" align="left" width="128" hspace="16" alt="Maurice Frank, pixel portrait">
+<img src="favicon.jpg" align="left" width="128" hspace="16" alt="Maurice Frank, pixel portrait">
 
 <h3>maurice-frank.com</h3>
 
