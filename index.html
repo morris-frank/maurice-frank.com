@@ -131,25 +131,33 @@
                                class="nav-link">Selected Software</a></li>
                         <li class="nav-item"><a href="#media"
                                class="nav-link">Video, Audio & Photography</a></li>
-                        <li class="nav-item"><a href="#colophon"
-                               class="nav-link">Colophon</a></li>
                     </ul>
                 </nav>
             </div>
 
             <div class="sidebar-footer">
-                <div class="nav-label">Links</div>
-                <div class="social-links">
-                    <a href="mailto:hello@maurice-frank.com"
-                       class="social-link">hello@maurice-frank [dot] com ↗</a>
-                    <a href="https://github.com/morris-frank"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="social-link">github.com/morris-frank ↗</a>
-                    <a href="https://www.linkedin.com/in/morris-frank/"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="social-link">linkedin.com/in/morris-frank ↗</a>
+                <div class="sidebar-links">
+                    <div class="nav-label">Links</div>
+                    <div class="social-links">
+                        <a href="mailto:hello@maurice-frank.com"
+                           class="social-link">hello@maurice-frank [dot] com ↗</a>
+                        <a href="https://github.com/morris-frank"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="social-link">github.com/morris-frank ↗</a>
+                        <a href="https://www.linkedin.com/in/morris-frank/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="social-link">linkedin.com/in/morris-frank ↗</a>
+                    </div>
+                </div>
+                <!-- Desktop: unfolds below the links once the page scrolls; mobile: second column. -->
+                <div class="sidebar-legal">
+                    <div>
+                        <div class="nav-label">Imprint</div>
+                        <p>Maurice-Frank<br>KVK 80834000</p>
+                        <p>sans tracking, sans cookies, and sans analytics</p>
+                    </div>
                 </div>
             </div>
         </aside>
@@ -210,7 +218,6 @@
                                 </span>
                                 <span class="card-item-date">2022 – Present</span>
                             </div>
-                            <div class="card-item-role">Founding CTO</div>
                             <p class="card-item-desc">
                                 Soil intelligence company modelling microbiome, chemical, environmental and trial data
                                 so seed, breeding and agri-input companies can decide on evidence.
@@ -225,16 +232,14 @@
                         <div>
                             <div class="card-item-header">
                                 <span class="card-item-brand">
-                                    <img class="card-item-logo is-mark"
-                                         src="logos/peau.png"
-                                         alt=""
-                                         width="32"
-                                         height="32">
-                                    <span class="card-item-title">peau.ai</span>
+                                    <img class="card-item-logo is-wordmark is-wide is-ink"
+                                         src="logos/peau.svg"
+                                         alt="peau.ai"
+                                         width="133"
+                                         height="43">
                                 </span>
                                 <span class="card-item-date">2025 – 2026</span>
                             </div>
-                            <div class="card-item-role">Founding Engineer</div>
                             <p class="card-item-desc">
                                 Personalised skincare app that analyses skin from a photo and recommends a routine to
                                 match.
@@ -242,25 +247,24 @@
                         </div>
                     </a>
 
-                    <a href="https://hummingbird-diagnostics.com/"
+                    <a href="https://collegiumacademicum.de/"
                        target="_blank"
                        rel="noopener noreferrer"
                        class="card-item">
                         <div>
                             <div class="card-item-header">
                                 <span class="card-item-brand">
-                                    <img class="card-item-logo is-wordmark is-wide"
-                                         src="logos/hummingbird.svg"
-                                         alt="Hummingbird Diagnostics"
+                                    <img class="card-item-logo is-wordmark is-tall"
+                                         src="logos/collegium-academicum.png"
+                                         alt=""
                                          width="160"
-                                         height="40">
+                                         height="110">
+                                    <span class="card-item-title">Collegium Academicum</span>
                                 </span>
-                                <span class="card-item-date">11/2024 – 2025</span>
+                                <span class="card-item-date">2015 – 2019</span>
                             </div>
-                            <div class="card-item-role">ML Scientist</div>
                             <p class="card-item-desc">
-                                Heidelberg biotech developing blood-based diagnostics from small-RNA sequencing and
-                                biomarker discovery.
+                                Self-organised, non-profit student housing project in Heidelberg.
                             </p>
                         </div>
                     </a>
@@ -2218,29 +2222,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Section 07: Colophon -->
-            <section id="colophon"
-                     class="colophon-section">
-                <div class="section-header">
-                    <h2 class="section-title">Colophon</h2>
-                </div>
-
-                <p style="margin-bottom: var(--space-md);">
-                    sans tracking, sans cookies, and sans analytics
-                </p>
-
-                <div class="colophon-legal">
-                    <div class="colophon-block">
-                        <dt>Chamber of Commerce (NL)</dt>
-                        <dd>Maurice-Frank<br>KVK 80834000</dd>
-                    </div>
-                    <div class="colophon-block">
-                        <dt>Direct Email</dt>
-                        <dd>hello@maurice-frank.com</dd>
-                    </div>
-                </div>
-            </section>
         </main>
     </div>
 
@@ -2339,7 +2320,7 @@
     <!-- Scrollspy Navigator + photography lightbox + audio players -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.content-section, .colophon-section');
+            const sections = document.querySelectorAll('.content-section');
             const navLinks = document.querySelectorAll('.sidebar-nav .nav-link');
 
             function setActiveNav(id) {
@@ -2351,8 +2332,9 @@
             function updateActiveNav() {
                 const el = document.scrollingElement || document.documentElement;
                 const maxScroll = el.scrollHeight - window.innerHeight;
+                document.body.classList.toggle('is-scrolled', el.scrollTop > 0);
                 if (maxScroll <= 0 || el.scrollTop >= maxScroll - 96) {
-                    setActiveNav('colophon');
+                    setActiveNav(sections[sections.length - 1].id);
                     return;
                 }
                 const marker = window.innerHeight * 0.28;
