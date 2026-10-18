@@ -440,8 +440,8 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .card-item-logo.is-ink {
-    filter: invert(1);
+  .card-item-logo {
+    filter: brightness(0) invert(1);
   }
 }
 
@@ -542,6 +542,12 @@ a.card-item {
 /* Publications: author line under the title, collapsed to first, self and last until clicked. */
 .pub-table .cv-title-col a {
   text-decoration: none;
+}
+
+.pub-table .cv-title-col a:hover,
+.pub-table .cv-title-col a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .pub-authors {
