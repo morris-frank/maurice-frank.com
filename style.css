@@ -128,7 +128,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-faint);
+  color: var(--text-secondary);
   margin-bottom: var(--space-sm);
 }
 
@@ -190,10 +190,18 @@ body {
   flex-shrink: 0;
 }
 
-.social-link:hover {
-  color: var(--text-primary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+/* Desktop: same link/hover treatment as the sidebar nav. */
+@media (min-width: 900px) {
+  .social-link {
+    color: var(--text-muted);
+    padding: 2px 6px;
+    margin: 0 -6px;
+    border-radius: 2px;
+  }
+  .social-link:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-subtle);
+  }
 }
 
 /* Mobile: flatten the sidebar into the page grid so the socials sit beside the
@@ -510,8 +518,9 @@ a.card-item {
   font-size: 0.875rem;
 }
 
-.cv-table tr {
-  border-bottom: 1px solid var(--border-hairline);
+/* Only rule in the list: between career and education. */
+.cv-table tr.cv-edu-start {
+  border-top: 1px solid var(--border-hairline);
 }
 
 .cv-table td {
@@ -639,7 +648,6 @@ button.pub-authors .ellip {
 .software-item {
   position: relative;
   padding: var(--space-md) 0;
-  border-bottom: 1px solid var(--border-hairline);
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -1407,7 +1415,7 @@ body:has(.playback-bar:not([hidden])) {
 
 .audio-player-sep {
   margin: 0 0.2em;
-  color: var(--text-faint);
+  color: var(--text-secondary);
 }
 
 /* Full-screen photo lightbox*/
