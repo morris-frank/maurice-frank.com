@@ -343,7 +343,7 @@ body {
   aspect-ratio: 2048 / 853;
   object-fit: cover;
   background: var(--bg-subtle);
-  border-radius: 2rem;
+  border-radius: 13px;
   margin-top: var(--space-xl);
 }
 
@@ -880,7 +880,17 @@ button.pub-authors .ellip {
   width: var(--bleed, 0px);
   height: 100%;
   pointer-events: none;
-  background: linear-gradient(90deg, rgb(99.608% 99.608% 99.608% / 0) 0%, rgb(99.609% 99.609% 99.609% / 0.00390625) 6.25%, rgb(99.614% 99.614% 99.614% / 0.015625) 12.5%, rgb(99.622% 99.622% 99.622% / 0.03515625) 18.75%, rgb(99.632% 99.632% 99.632% / 0.0625) 25%, rgb(99.646% 99.646% 99.646% / 0.09765625) 31.25%, rgb(99.663% 99.663% 99.663% / 0.140625) 37.5%, rgb(99.683% 99.683% 99.683% / 0.19140625) 43.75%, rgb(99.706% 99.706% 99.706% / 0.25) 50%, rgb(99.732% 99.732% 99.732% / 0.31640625) 56.25%, rgb(99.761% 99.761% 99.761% / 0.390625) 62.5%, rgb(99.793% 99.793% 99.793% / 0.47265625) 68.75%, rgb(99.828% 99.828% 99.828% / 0.5625) 75%, rgb(99.867% 99.867% 99.867% / 0.66015625) 81.25%, rgb(99.908% 99.908% 99.908% / 0.765625) 87.5%, rgb(99.953% 99.953% 99.953% / 0.87890625) 93.75%, rgb(100% 100% 100%) 100% );
+  /* Eased (t²) fade into the page background, so it follows the colour scheme. */
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--bg-app) 0%, transparent) 0%,
+    color-mix(in srgb, var(--bg-app) 1.5625%, transparent) 12.5%,
+    color-mix(in srgb, var(--bg-app) 6.25%, transparent) 25%,
+    color-mix(in srgb, var(--bg-app) 14.0625%, transparent) 37.5%,
+    color-mix(in srgb, var(--bg-app) 25%, transparent) 50%,
+    color-mix(in srgb, var(--bg-app) 39.0625%, transparent) 62.5%,
+    color-mix(in srgb, var(--bg-app) 56.25%, transparent) 75%,
+    color-mix(in srgb, var(--bg-app) 76.5625%, transparent) 87.5%,
+    var(--bg-app) 100%);
 }
 
 .video-scroller::-webkit-scrollbar {
