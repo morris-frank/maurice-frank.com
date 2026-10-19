@@ -3,10 +3,6 @@ description = "Run the local gallery editor"
 run = "python3 tools/gallery/server.py"
 
 [tasks.serve]
-description = "Serve the site (and the built drift at /artifacts/drift/) on localhost:8000"
-run = "python3 -m http.server 8000"
-
-[tasks.drift]
-description = "Run the drift dev server with hot reload on localhost:5199"
+description = "Run the dev server with hot reload on localhost:5199"
 dir = "tools/drift"
 run = "pnpm install --silent && pnpm dev"

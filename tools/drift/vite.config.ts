@@ -6,10 +6,10 @@ export default defineConfig(({ command }) => ({
   base: "./",
   plugins: [react()],
   // The dev server serves the plates from the deployed folder.
-  publicDir: command === "serve" ? "../../artifacts/drift" : false,
+  publicDir: command === "serve" ? "../../drift" : false,
   server: { port: 5199 },
   build: {
-    outDir: "../../artifacts/drift",
+    outDir: "../../drift",
     emptyOutDir: false,
     rollupOptions: { output: { entryFileNames: "drift.js", assetFileNames: "drift.[ext]" } },
   },
