@@ -319,6 +319,14 @@ body {
 .lead a {
   color: inherit;
   font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 0.5px;
+}
+
+.lead a:hover {
+  text-underline-offset: 2px;
+  text-decoration-thickness: 0.7px;
 }
 
 .focus-photo {
@@ -723,7 +731,7 @@ button.pub-authors .ellip {
 }
 
 .software-item:has(.software-name:focus-visible) {
-  outline: 2px solid var(--text-primary);
+  outline: 1px solid var(--border-hairline);
   outline-offset: 2px;
 }
 
