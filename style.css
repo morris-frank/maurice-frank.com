@@ -686,7 +686,7 @@ button.pub-authors .ellip {
   width: 40px;
   height: 40px;
   border-radius: 9px;
-  background: var(--border-strong);
+  background: oklch(27.282% 0.01782 165.717);
 }
 
 .software-icon--logo {
