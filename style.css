@@ -99,7 +99,6 @@ body {
   letter-spacing: -0.03em;
   color: var(--text-primary);
   line-height: 1.15;
-  text-shadow: -1px 0px #b7b8774d;
   margin-bottom: var(--space-xs);
 }
 
@@ -1105,6 +1104,17 @@ button.pub-authors .ellip {
   font: inherit;
   line-height: 0;
   color: inherit;
+  position: relative;
+}
+
+/* Blurred tiny preview under each photo until the full image fades in. */
+.photo-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--lqip) center / cover no-repeat;
+  filter: blur(12px);
+  transform: scale(1.15);
 }
 
 .photo-item:hover img,
@@ -1122,7 +1132,12 @@ button.pub-authors .ellip {
   height: var(--photo-h);
   width: auto;
   object-fit: cover;
-  transition: opacity 0.15s ease;
+  position: relative;
+  transition: opacity 0.4s ease;
+}
+
+.photo-scroller.is-fading .photo-item img:not(.is-loaded) {
+  opacity: 0;
 }
 
 /* Custom audio controls */
