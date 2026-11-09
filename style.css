@@ -110,6 +110,10 @@ body {
   margin-bottom: var(--space-md);
 }
 
+.site-subtitle-hand {
+  font-family: var(--font-hand);
+}
+
 .sidebar-bio {
   font-size: 0.85rem;
   color: var(--text-muted);
