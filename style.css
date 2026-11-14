@@ -742,7 +742,7 @@ button.pub-authors .ellip {
 }
 
 .software-item:has(.software-name:focus-visible) {
-  outline: 1px solid var(--border-hairline);
+  outline: 2px solid var(--text-primary);
   outline-offset: 2px;
 }
 
@@ -804,6 +804,58 @@ button.pub-authors .ellip {
 }
 
 /* Playable Media & Audio Cards */
+/* Prev/next for the sideways lanes, which a plain mouse wheel can't reach. */
+.media-subsection .nav-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.lane-nav {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.lane-nav button {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--border-medium);
+  border-radius: 50%;
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lane-nav button:hover:not([aria-disabled="true"]) {
+  border-color: var(--text-primary);
+}
+
+.lane-nav button:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+.lane-nav button[aria-disabled="true"] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.lane-nav svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (hover: none) {
+  .lane-nav {
+    display: none;
+  }
+}
+
 .media-subsection {
   margin-top: var(--space-xl);
 }
@@ -1212,6 +1264,27 @@ button.pub-authors .ellip {
   height: 12px;
 }
 
+/* Waiting for the first audio: an arc on the button's ring until sound starts. */
+.audio-player-play {
+  position: relative;
+}
+
+.audio-player.is-pending .audio-player-play::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1.5px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: audio-pending 0.8s linear infinite;
+}
+
+@keyframes audio-pending {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .audio-icon-pause,
 .is-playing .audio-icon-play {
   display: none;
@@ -1397,6 +1470,14 @@ body:has(.playback-bar:not([hidden])) {
   background: var(--text-primary);
 }
 
+.audio-player-seek::-webkit-slider-thumb {
+  transition: transform 0.15s ease;
+}
+
+.audio-player-seek:active::-webkit-slider-thumb {
+  transform: scale(1.4);
+}
+
 .audio-player-seek::slider-track {
   background: transparent;
   height: 2px;
@@ -1414,6 +1495,14 @@ body:has(.playback-bar:not([hidden])) {
   border: 0;
   border-radius: 50%;
   background: var(--text-primary);
+}
+
+.audio-player-seek::slider-thumb {
+  transition: transform 0.15s ease;
+}
+
+.audio-player-seek:active::slider-thumb {
+  transform: scale(1.4);
 }
 
 .audio-player-time {
@@ -1471,6 +1560,15 @@ html:has(.photo-lightbox.is-open) {
   inset: 0;
 }
 
+/* The photo's blurred preview holds its place until the full image fades in. */
+.photo-lightbox-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--lqip, none) center / contain no-repeat;
+  filter: blur(24px);
+}
+
 .photo-lightbox-image {
   position: absolute;
   inset: 0;
@@ -1480,9 +1578,14 @@ html:has(.photo-lightbox.is-open) {
   max-height: none;
   margin: 0;
   object-fit: contain;
-  background: oklch(0 0 0);
+  background: transparent;
   border: none;
   border-radius: 0;
+  transition: opacity 0.4s ease;
+}
+
+.photo-lightbox-image:not(.is-loaded) {
+  opacity: 0;
 }
 
 .photo-lightbox-hud {
@@ -1615,6 +1718,33 @@ html:has(.photo-lightbox.is-open) {
   }
   .photo-lightbox-index {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  /* Keep the flat fill instead of the drifting wave. */
+  .audio-player.is-playing .audio-player-seek {
+    background: linear-gradient(
+      to right,
+      var(--text-primary) 0 var(--audio-progress),
+      var(--border-hairline) var(--audio-progress) 100%
+    ) center / 100% 2px no-repeat;
+  }
+  .audio-player.is-pending .audio-player-play::after {
+    animation: none;
+  }
+  /* Separate rules: an unknown thumb pseudo-element drops the whole list. */
+  .photo-lightbox-image {
+    transition: none;
+  }
+  .audio-player-seek::-webkit-slider-thumb {
+    transition: none;
+  }
+  .audio-player-seek::slider-thumb {
+    transition: none;
   }
 }
 
