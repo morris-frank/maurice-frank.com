@@ -33,7 +33,7 @@
   --space-2xl: 3.5rem;
   --space-3xl: 5rem;
 
-  --transition-fast: all 0.15s ease;
+  --transition-fast: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 @media (prefers-color-scheme: dark) {
