@@ -10,6 +10,7 @@
 /* Reset */
 *, *::before, *::after {
   box-sizing: border-box;
+  corner-shape: squircle; /* Chromium only; elsewhere border-radius stays round */
   margin: 0;
   padding: 0;
 }
