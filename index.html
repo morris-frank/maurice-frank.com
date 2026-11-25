@@ -2571,10 +2571,6 @@
     <div class="playback-bar"
          id="playback-bar"
          hidden>
-        <span class="playback-bar-info">
-            <b class="playback-bar-title"></b>
-            <span class="playback-bar-meta"></span>
-        </span>
         <button type="button"
                 class="playback-bar-toggle"
                 data-bar-toggle
@@ -2588,17 +2584,26 @@
                 <use href="#i-pause" />
             </svg>
         </button>
-        <span class="playback-bar-actions">
-            <button type="button"
-                    class="playback-bar-show"
-                    data-bar-show>Show</button>
-            <button type="button"
-                    class="playback-bar-stop"
-                    data-bar-stop
-                    aria-label="Stop playback"><svg aria-hidden="true">
-                    <use href="#i-x" />
-                </svg></button>
+        <span class="playback-bar-info">
+            <b class="playback-bar-title"></b>
+            <span class="playback-bar-meta"></span>
         </span>
+        <button type="button"
+                class="playback-bar-stop"
+                data-bar-stop
+                aria-label="Stop playback"><svg aria-hidden="true">
+                <use href="#i-x" />
+            </svg></button>
+        <div class="audio-player">
+            <input type="range"
+                   class="audio-player-seek"
+                   data-bar-seek
+                   min="0"
+                   max="1000"
+                   value="0"
+                   step="1"
+                   aria-label="Seek">
+        </div>
     </div>
 
     <!-- Scrollspy Navigator + photography lightbox + audio players -->
@@ -2609,6 +2614,52 @@
                     btn.setAttribute('aria-expanded', String(btn.getAttribute('aria-expanded') !== 'true'));
                 });
             });
+
+            /* Section separators: a flat line that starts to oscillate, turns chaotic and fades out,
+               drawn per section from its own seed; a faint glint runs along it once it scrolls into view. */
+            const svgNS = 'http://www.w3.org/2000/svg';
+            document.querySelectorAll('.section-header').forEach((header, i) => {
+                const W = 1000, H = 28, N = 400;
+                const seed = i * 2.399 + 1.3;
+                const pts = [];
+                for (let k = 0; k <= N; k++) {
+                    const t = k / N;
+                    const grow = Math.min(1, t * 1.6) ** 2;
+                    const chaos = Math.max(0, (t - 0.35) / 0.65) ** 1.5;
+                    const calm = Math.sin(2 * Math.PI * (3 * t + 9 * t * t) + seed);
+                    const wild = Math.sin(71 * t + seed * 3) * 0.6 + Math.sin(173 * t * t + seed * 7) * 0.5
+                        + Math.sin(311 * t + Math.sin(23 * t + seed) * 4) * 0.4;
+                    const y = H / 2 - (H / 2 - 2) * grow * ((1 - chaos) * calm + chaos * wild / 1.5);
+                    pts.push(`${(t * W).toFixed(1)},${y.toFixed(2)}`);
+                }
+                const svg = document.createElementNS(svgNS, 'svg');
+                svg.setAttribute('class', 'section-curve');
+                svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+                svg.setAttribute('preserveAspectRatio', 'none');
+                svg.setAttribute('aria-hidden', 'true');
+                const id = `section-fade-${i}`;
+                svg.innerHTML = `<defs><linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="0" x2="${W}" y1="0" y2="0">`
+                    + '<stop offset="0" stop-color="currentColor" stop-opacity="1"/>'
+                    + '<stop offset="0.55" stop-color="currentColor" stop-opacity="0.85"/>'
+                    + '<stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>';
+                ['section-curve-line', 'section-curve-glint'].forEach((cls) => {
+                    const path = document.createElementNS(svgNS, 'path');
+                    path.setAttribute('class', cls);
+                    path.setAttribute('d', `M${pts.join('L')}`);
+                    path.setAttribute('pathLength', '100');
+                    path.setAttribute('stroke', `url(#${id})`);
+                    svg.appendChild(path);
+                });
+                header.appendChild(svg);
+            });
+            const curveObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('is-lit');
+                    curveObserver.unobserve(entry.target);
+                });
+            }, { rootMargin: '0px 0px -15% 0px' });
+            document.querySelectorAll('.section-header').forEach((h) => curveObserver.observe(h));
 
             const sections = document.querySelectorAll('.content-section');
             const navLinks = document.querySelectorAll('.sidebar-nav .nav-link');
@@ -2694,35 +2745,6 @@
             window.addEventListener('resize', setMediaBleed);
 
             const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            /* Prev/next beside each lane label, since a plain mouse wheel can't scroll sideways. */
-            const chevron = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="${d}" /></svg>`;
-            document.querySelectorAll('.media-subsection').forEach((sub) => {
-                const label = sub.querySelector('.nav-label');
-                const wrap = sub.querySelector('.media-scroller-wrap');
-                if (!label || !wrap) return;
-                const name = label.textContent.trim();
-                const nav = document.createElement('span');
-                nav.className = 'lane-nav';
-                nav.innerHTML = `<button type="button" aria-label="Scroll ${name} back">${chevron('M15 5l-7 7 7 7')}</button>`
-                    + `<button type="button" aria-label="Scroll ${name} forward">${chevron('M9 5l7 7-7 7')}</button>`;
-                label.appendChild(nav);
-                const [prev, next] = nav.querySelectorAll('button');
-                const lanes = () => Array.from(wrap.querySelectorAll('.video-scroller, .photo-row'));
-                function syncLaneNav() {
-                    const ls = lanes();
-                    prev.setAttribute('aria-disabled', String(!ls.some((l) => l.scrollLeft > 1)));
-                    next.setAttribute('aria-disabled', String(!ls.some((l) => l.scrollLeft < l.scrollWidth - l.clientWidth - 1)));
-                }
-                function step(dir) {
-                    lanes().forEach((l) => l.scrollBy({ left: dir * l.clientWidth * 0.8, behavior: reduceMotion() ? 'auto' : 'smooth' }));
-                }
-                prev.addEventListener('click', () => { if (prev.getAttribute('aria-disabled') !== 'true') step(-1); });
-                next.addEventListener('click', () => { if (next.getAttribute('aria-disabled') !== 'true') step(1); });
-                wrap.addEventListener('scroll', syncLaneNav, { capture: true, passive: true });
-                window.addEventListener('resize', syncLaneNav);
-                syncLaneNav();
-            });
 
             const siteWrapper = document.querySelector('.site-wrapper');
             const photos = Array.from(document.querySelectorAll('.photo-item:not([hidden])'));
@@ -2955,11 +2977,30 @@
             const media = Array.from(document.querySelectorAll('.media-card audio, .video-card video'));
             let nowPlaying = null;
 
+            const barPlayer = bar.querySelector('.audio-player');
+            const barSeek = bar.querySelector('[data-bar-seek]');
+            let barSeeking = false;
             function syncBar() {
                 const playing = nowPlaying && !nowPlaying.paused;
                 bar.classList.toggle('is-playing', Boolean(playing));
+                barPlayer.classList.toggle('is-playing', Boolean(playing));
                 barToggle.setAttribute('aria-label', playing ? 'Pause' : 'Resume');
             }
+            /* The bar's scrubber mirrors the playing item; seeking either one moves both. */
+            function syncBarProgress() {
+                const d = nowPlaying?.duration;
+                if (barSeeking || !(d > 0)) return;
+                const ratio = Math.min(1, nowPlaying.currentTime / d);
+                barPlayer.style.setProperty('--audio-progress', `${ratio * 100}%`);
+                barSeek.value = String(Math.round(ratio * 1000));
+            }
+            barSeek.addEventListener('pointerdown', () => { barSeeking = true; });
+            barSeek.addEventListener('pointerup', () => { barSeeking = false; });
+            barSeek.addEventListener('input', () => {
+                const ratio = Number(barSeek.value) / 1000;
+                barPlayer.style.setProperty('--audio-progress', `${ratio * 100}%`);
+                if (nowPlaying?.duration > 0) nowPlaying.currentTime = ratio * nowPlaying.duration;
+            });
 
             media.forEach((el) => {
                 const card = el.closest('.media-card, .video-card');
@@ -2970,21 +3011,16 @@
                     bar.querySelector('.playback-bar-meta').textContent = card.dataset.date ?? card.querySelector('.video-overlay-meta').textContent;
                     bar.hidden = false;
                     syncBar();
+                    syncBarProgress();
                 });
                 el.addEventListener('pause', syncBar);
+                el.addEventListener('timeupdate', () => { if (el === nowPlaying) syncBarProgress(); });
             });
 
             barToggle.addEventListener('click', () => {
                 if (!nowPlaying) return;
                 if (nowPlaying.paused) nowPlaying.play().catch(() => { });
                 else nowPlaying.pause();
-            });
-            bar.querySelector('[data-bar-show]').addEventListener('click', () => {
-                nowPlaying?.closest('.media-card, .video-card').scrollIntoView({
-                    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-                    block: 'center',
-                    inline: 'center',
-                });
             });
             bar.querySelector('[data-bar-stop]').addEventListener('click', () => {
                 nowPlaying?.pause();

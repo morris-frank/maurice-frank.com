@@ -294,25 +294,55 @@ body {
 }
 
 .section-header {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-md);
   margin-bottom: var(--space-md);
-}
-
-/* Rule runs from the title to the right edge; an empty box sits on the text baseline. */
-.section-header::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--text-primary);
-}
-
-.section-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
   color: var(--text-primary);
+}
+
+/* The sidebar names the sections; the title stays for screen readers only. */
+.section-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Separator: a drawn oscillation (see the script), with a faint glint run along it on entering view. */
+.section-curve {
+  display: block;
+  width: 100%;
+  height: 28px;
+  overflow: visible;
+}
+
+.section-curve path {
+  fill: none;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.section-curve-line {
+  stroke-width: 1;
+}
+
+.section-curve-glint {
+  stroke-width: 3;
+  stroke-dasharray: 10 110;
+  stroke-dashoffset: 10;
+  opacity: 0;
+  filter: blur(1.5px);
+}
+
+.section-header.is-lit .section-curve-glint {
+  animation: section-glint 2.6s ease-in-out forwards;
+}
+
+@keyframes section-glint {
+  0% { stroke-dashoffset: 10; opacity: 0; }
+  15% { opacity: 0.3; }
+  85% { opacity: 0.3; }
+  100% { stroke-dashoffset: -100; opacity: 0; }
 }
 
 /* Lead & Intro */
@@ -765,58 +795,6 @@ button.pub-authors .ellip {
 }
 
 /* Playable Media & Audio Cards */
-/* Prev/next for the sideways lanes, which a plain mouse wheel can't reach. */
-.media-subsection .nav-label {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-sm);
-}
-
-.lane-nav {
-  display: flex;
-  gap: var(--space-xs);
-}
-
-.lane-nav button {
-  display: grid;
-  place-items: center;
-  width: 2rem;
-  height: 2rem;
-  padding: 0;
-  border: 1px solid var(--border-medium);
-  border-radius: 50%;
-  background: var(--bg-subtle);
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: var(--transition-fast);
-}
-
-.lane-nav button:hover:not([aria-disabled="true"]) {
-  border-color: var(--text-primary);
-}
-
-.lane-nav button:focus-visible {
-  outline: 2px solid var(--text-primary);
-  outline-offset: 2px;
-}
-
-.lane-nav button[aria-disabled="true"] {
-  opacity: 0.35;
-  cursor: default;
-}
-
-.lane-nav svg {
-  width: 14px;
-  height: 14px;
-}
-
-@media (hover: none) {
-  .lane-nav {
-    display: none;
-  }
-}
-
 .media-subsection {
   margin-top: var(--space-xl);
 }
@@ -852,6 +830,15 @@ button.pub-authors .ellip {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.media-cards-grid .media-card {
+  transition: var(--transition-fast);
+}
+
+.media-cards-grid .media-card:hover {
+  border-color: var(--text-primary);
+  box-shadow: var(--shadow-card);
 }
 
 .media-card-top {
@@ -1196,23 +1183,12 @@ button.pub-authors .ellip {
   width: 2rem;
   height: 2rem;
   padding: 0;
-  border: 1px solid var(--border-medium);
-  border-radius: 50%;
-  background: var(--bg-subtle);
+  border: 2px solid var(--text-primary);
+  border-radius: 6px;
+  background: transparent;
   color: var(--text-primary);
   cursor: pointer;
   appearance: none;
-}
-
-.audio-player-play:hover,
-.audio-player-play:focus-visible {
-  border-color: var(--text-primary);
-}
-
-.audio-player.is-playing .audio-player-play {
-  background: var(--text-primary);
-  border-color: var(--text-primary);
-  color: var(--bg-app);
 }
 
 .audio-player-play:focus-visible {
@@ -1225,24 +1201,14 @@ button.pub-authors .ellip {
   height: 12px;
 }
 
-/* Waiting for the first audio: an arc on the button's ring until sound starts. */
-.audio-player-play {
-  position: relative;
-}
-
-.audio-player.is-pending .audio-player-play::after {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border: 1.5px solid transparent;
-  border-top-color: currentColor;
-  border-radius: 50%;
-  animation: audio-pending 0.8s linear infinite;
+/* Waiting for the first audio: the button pulses until sound starts. */
+.audio-player.is-pending .audio-player-play {
+  animation: audio-pending 1s ease-in-out infinite alternate;
 }
 
 @keyframes audio-pending {
   to {
-    transform: rotate(360deg);
+    opacity: 0.35;
   }
 }
 
@@ -1265,10 +1231,11 @@ body:has(.playback-bar:not([hidden])) {
   left: 50%;
   bottom: var(--space-md);
   z-index: 40;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: var(--space-md);
-  width: min(350px, calc(100vw - 2rem));
+  column-gap: var(--space-sm);
+  width: min(380px, calc(100vw - 2rem));
   transform: translateX(-50%);
   padding: 0.5rem 0.65rem;
   border: 1px solid var(--border-medium);
@@ -1300,11 +1267,11 @@ body:has(.playback-bar:not([hidden])) {
 .playback-bar-toggle {
   display: grid;
   place-items: center;
-  width: 2.1rem;
-  height: 2.1rem;
-  border-radius: 50%;
-  background: var(--text-primary);
-  color: var(--bg-app);
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--text-primary);
+  border-radius: 6px;
+  color: var(--text-primary);
 }
 
 .playback-bar-toggle svg {
@@ -1314,7 +1281,6 @@ body:has(.playback-bar:not([hidden])) {
 
 .playback-bar-info {
   display: grid;
-  flex: 1 1 0;
   min-width: 0;
   line-height: 1.25;
 }
@@ -1336,25 +1302,10 @@ body:has(.playback-bar:not([hidden])) {
   color: var(--text-muted);
 }
 
-/* Equal flex with the info keeps the toggle centred. */
-.playback-bar-actions {
-  display: flex;
-  flex: 1 1 0;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--space-sm);
-}
-
-.playback-bar-show {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-underline-offset: 4px;
-}
-
-.playback-bar-show:hover {
-  color: var(--text-primary);
-  text-decoration: underline;
+.playback-bar .audio-player {
+  grid-column: 1 / -1;
+  margin-top: 0.15rem;
+  min-height: 0;
 }
 
 .playback-bar-stop {
@@ -1700,7 +1651,8 @@ html:has(.photo-lightbox.is-open) {
       var(--border-hairline) var(--audio-progress) 100%
     ) center / 100% 2px no-repeat;
   }
-  .audio-player.is-pending .audio-player-play::after {
+  .audio-player.is-pending .audio-player-play,
+  .section-header.is-lit .section-curve-glint {
     animation: none;
   }
   /* Separate rules: an unknown thumb pseudo-element drops the whole list. */
