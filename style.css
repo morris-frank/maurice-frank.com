@@ -1190,8 +1190,8 @@ button.pub-authors .ellip {
   width: 2rem;
   height: 2rem;
   padding: 0;
-  border: 2px solid var(--text-primary);
-  border-radius: 6px;
+  border: 1.5px solid var(--text-primary);
+  border-radius: 50%;
   background: transparent;
   color: var(--text-primary);
   cursor: pointer;
@@ -1276,8 +1276,8 @@ body:has(.playback-bar:not([hidden])) {
   place-items: center;
   width: 2rem;
   height: 2rem;
-  border: 2px solid var(--text-primary);
-  border-radius: 6px;
+  border: 1.5px solid var(--text-primary);
+  border-radius: 50%;
   color: var(--text-primary);
 }
 
