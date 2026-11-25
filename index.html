@@ -2872,7 +2872,7 @@
                 return `${m}:${String(s).padStart(2, '0')}`;
             }
 
-            const audioPlayers = Array.from(document.querySelectorAll('.audio-player'));
+            const audioPlayers = Array.from(document.querySelectorAll('.media-card .audio-player'));
 
             audioPlayers.forEach((player) => {
                 const audio = player.querySelector('audio');
