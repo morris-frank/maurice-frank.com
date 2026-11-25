@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>AI Decodes Hidden Microproteins in DNA · transcript</title>
+<link rel="icon" href="../../favicon.jpg">
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../podcast.css">
+<link rel="alternate" type="application/rss+xml" title="Audio overviews" href="../feed.xml">
+<script defer src="https://analytics.maurice-frank.com/script.js" data-website-id="da520d47-746b-405f-a4f7-6a01936b1219" data-domains="maurice-frank.com"></script>
+<script defer src="https://analytics.maurice-frank.com/recorder.js" data-website-id="da520d47-746b-405f-a4f7-6a01936b1219" data-domains="maurice-frank.com"></script>
+</head>
+<body>
+<main>
+<p class="note"><a href="../#bcd1c7c7-f5c6-403d-a21d-d4f52190cc6d">← All episodes</a></p>
+<h1>AI Decodes Hidden Microproteins in DNA</h1>
+<div class="rule"></div>
+<p class="note">Transcript of an aI-generated NotebookLM audio overview, not a publication. Machine transcription, speakers
+labelled A and B. <a href="https://cdn.maurice-frank.com/morris-media/podcast/993ab966-a885-41dd-b202-01f3c32e2c49/bcd1c7c7-f5c6-403d-a21d-d4f52190cc6d.transcript.pdf">PDF</a></p>
+<audio controls preload="none" src="https://cdn.maurice-frank.com/morris-media/podcast/993ab966-a885-41dd-b202-01f3c32e2c49/bcd1c7c7-f5c6-403d-a21d-d4f52190cc6d.m4a"></audio>
+<div class="turn"><span class="who">A</span><p>Imagine you are handed this, um, massive, incredibly complex encyclopedia. It is basically the master blueprint that holds the secrets to how the entire world works.</p></div>
+<div class="turn"><span class="who">B</span><p>Sounds like quite the reading assignment.</p></div>
+<div class="turn"><span class="who">A</span><p>Right. But you sit down to read it, and you decide to just completely ignore all the three-letter words.</p></div>
+<div class="turn"><span class="who">B</span><p>Wait, all of them?</p></div>
+<div class="turn"><span class="who">A</span><p>All of them. Words like the, and, but, for, you just, uh, skip right over them because, frankly, they&#x27;re too small to seem important in the grand scheme of such a huge text. I feel like you would miss a lot of context doing that. Exactly. I mean, think about how much meaning gets lost. A sentence like, the bear ate a man suddenly becomes bear ate man, which is, you know, bad enough on its own.</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah, totally changes the vibe.</p></div>
+<div class="turn"><span class="who">A</span><p>But imagine dropping words like not. The entire meaning of the text just fundamentally changes.</p></div>
+<div class="turn"><span class="who">B</span><p>Right.</p></div>
+<div class="turn"><span class="who">A</span><p>And as strange as that sounds, that is essentially what science has been doing for decades with a massive portion of our biological blueprints.</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah, it really is.</p></div>
+<div class="turn"><span class="who">A</span><p>We are talking about small open reading frames, or SMERFs. These are tiny genetic sequences that encode microproteins, usually under 50 amino acids in length.</p></div>
+<div class="turn"><span class="who">B</span><p>Which is incredibly short for a protein.</p></div>
+<div class="turn"><span class="who">A</span><p>Right. And for a very long time, researchers just sort of, well, scrolled right past them. Our mission in this deep dive is to explore this hidden miniature universe inside microbes.</p></div>
+<div class="turn"><span class="who">B</span><p>It is such a fascinating space.</p></div>
+<div class="turn"><span class="who">A</span><p>It really is. And we are drawing from a 2021 study by researchers Matthew Durant and Ami Bhatt, which was published in Cell Host and Microbe.</p></div>
+<div class="turn"><span class="who">B</span><p>A really groundbreaking paper.</p></div>
+<div class="turn"><span class="who">A</span><p>Yeah. They built a new automated AI tool called Smore Finder. Okay, let&#x27;s unpack this. The core issue we are looking at is that these tiny proteins aren&#x27;t just biological noise, right?</p></div>
+<div class="turn"><span class="who">B</span><p>No, not at all.</p></div>
+<div class="turn"><span class="who">A</span><p>They are actually playing massive roles in things like cell-to-cell signaling and defending against phages, yet our standard genomic tools just routinely miss them.</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah, and to really ground why this matters to you, the listener, we have to look at where these microbes actually live.</p></div>
+<div class="turn"><span class="who">A</span><p>Because they aren&#x27;t just out in the wild.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. We aren&#x27;t just talking about abstract bacteria in a deep sea vent somewhere. These microbes make up the human microbiome.</p></div>
+<div class="turn"><span class="who">A</span><p>Our own bodies.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. They are in your gut, on your skin, in your mouth. This vast, unexplored space of microproteins could be mediating crucial communication right inside your own body at this very second.</p></div>
+<div class="turn"><span class="who">A</span><p>That is wild to think about.</p></div>
+<div class="turn"><span class="who">B</span><p>They could be interacting with your immune system, your digestion, maybe even your nervous system. And honestly, we have essentially been blind to the entire conversation.</p></div>
+<div class="turn"><span class="who">A</span><p>It is a staggering thought. But, I mean, if they are doing all this heavy lifting inside our bodies, why has it been so incredibly hard to just find them?</p></div>
+<div class="turn"><span class="who">B</span><p>Well...</p></div>
+<div class="turn"><span class="who">A</span><p>I know finding a specific gene in a genome is tough, kind of like trying to pick out a single whisper in a crowded football stadium. But we map entire genomes all the time now. What makes these SMERFs so, uh, elusive to our normal software?</p></div>
+<div class="turn"><span class="who">B</span><p>It basically comes down to the signal-to-noise ratio. You see, traditional computational tools look for specific statistical signatures to identify a gene.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay.</p></div>
+<div class="turn"><span class="who">B</span><p>But because microproteins are so incredibly short, they just don&#x27;t generate a strong enough statistical signal to stand out from the random, meaningless sequences of DNA.</p></div>
+<div class="turn"><span class="who">A</span><p>So the software just ignores them?</p></div>
+<div class="turn"><span class="who">B</span><p>Pretty much. The software just brushes past them, because if it didn&#x27;t, it would flag thousands of false positives. It is trying to be efficient.</p></div>
+<div class="turn"><span class="who">A</span><p>Now, I guess that makes sense computationally, but I would assume we could just, you know, look at what the bacteria are actively building in a lab.</p></div>
+<div class="turn"><span class="who">B</span><p>You mean experimentally?</p></div>
+<div class="turn"><span class="who">A</span><p>Yeah. Don&#x27;t we have techniques that can just take a snapshot of the proteins being produced in real time?</p></div>
+<div class="turn"><span class="who">B</span><p>We do, yeah, and the main technique for that is called Riboseek, or ribosome profiling.</p></div>
+<div class="turn"><span class="who">A</span><p>Right.</p></div>
+<div class="turn"><span class="who">B</span><p>It is a brilliant experimental method. It actually physically captures the ribosomes, which are the cellular machines that build proteins, while they are actively sliding along the RNA.</p></div>
+<div class="turn"><span class="who">A</span><p>So it proves a protein is genuinely being made right then and there.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. It proves it is being translated. But, uh, there is a massive bottleneck with that approach.</p></div>
+<div class="turn"><span class="who">A</span><p>Which is?</p></div>
+<div class="turn"><span class="who">B</span><p>To run ribosec, you generally have to isolate an organism and culture it in a lab.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, you have to grow it in a petri dish.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. And a lot of the microbes in our gut, they just flat out refuse to grow outside the human body.</p></div>
+<div class="turn"><span class="who">A</span><p>Because the gut is such a specific environment.</p></div>
+<div class="turn"><span class="who">B</span><p>It is a highly complex, mostly oxygen-free environment. You have thousands of species relying on each other to survive.</p></div>
+<div class="turn"><span class="who">A</span><p>So you pull one out.</p></div>
+<div class="turn"><span class="who">B</span><p>You pull a single species out and put it on a sterile lab bench, and it often just dies.</p></div>
+<div class="turn"><span class="who">A</span><p>Wow.</p></div>
+<div class="turn"><span class="who">B</span><p>And if you can&#x27;t keep it alive, you obviously can&#x27;t run ribosac, which means you remain completely blind to whatever microproteins it produces in the wild.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, so if we can&#x27;t keep them alive to watch them work, we are forced to find these tiny genes hidden in the raw, dead DNA code.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly.</p></div>
+<div class="turn"><span class="who">A</span><p>How did we attempt to do that before AI came into the picture? What was the old way?</p></div>
+<div class="turn"><span class="who">B</span><p>Well, the bioinformatic workhorse has traditionally been something called Profile Hidden Markov Models, or PHMMs.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, PHMMs. How do those work?</p></div>
+<div class="turn"><span class="who">B</span><p>Think of them as, uh, statistical composite sketches. To build one, scientists take a group of known related proteins, like a specific protein family. They align their sequences and figure out what features they have in common.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, I see.</p></div>
+<div class="turn"><span class="who">B</span><p>Then they program the software to look for that specific profile in new data.</p></div>
+<div class="turn"><span class="who">A</span><p>So it is essentially like a highly trained bloodhound, but it only works if you give it a scent that you already have in a jar.</p></div>
+<div class="turn"><span class="who">B</span><p>That is a great analogy.</p></div>
+<div class="turn"><span class="who">A</span><p>So if a microbe has a totally novel microprotein, like a completely new scent, the software just walks right past it.</p></div>
+<div class="turn"><span class="who">B</span><p>It walks right past it because it doesn&#x27;t match the composite sketch at all.</p></div>
+<div class="turn"><span class="who">A</span><p>Wow.</p></div>
+<div class="turn"><span class="who">B</span><p>That captures the limitation perfectly. And Durant and Bott recognized this massive blind spot, so they turned to deep learning to bypass it.</p></div>
+<div class="turn"><span class="who">A</span><p>Enter the AI.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. They built two neural network architectures called Deep SmorfNets, specifically DSN1 and DSN2.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay.</p></div>
+<div class="turn"><span class="who">B</span><p>What&#x27;s fascinating here is that they bypassed the whole feature engineering stage entirely.</p></div>
+<div class="turn"><span class="who">A</span><p>Meaning they didn&#x27;t build a composite sketch?</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. They didn&#x27;t build a sketch. They just fed raw nucleotide sequences, you know, the basic A, C, T, and G letters of DNA, directly into the AI and tasked it with figuring out the underlying patterns entirely on its own.</p></div>
+<div class="turn"><span class="who">A</span><p>Wait, you just feed an AI a massive wall of raw letters?</p></div>
+<div class="turn"><span class="who">B</span><p>Pretty much.</p></div>
+<div class="turn"><span class="who">A</span><p>But how does it not just get completely overwhelmed by the noise? I mean, a tiny gene by itself doesn&#x27;t offer much context.</p></div>
+<div class="turn"><span class="who">B</span><p>It doesn&#x27;t, and the researchers knew that. They solved that by giving the AI the neighborhood, not just the house.</p></div>
+<div class="turn"><span class="who">A</span><p>What do you mean?</p></div>
+<div class="turn"><span class="who">B</span><p>When they fed a potential SMORF sequence into the models, they also included the 100 base pairs of DNA immediately upstream of it.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay.</p></div>
+<div class="turn"><span class="who">B</span><p>And the 100 base pairs immediately downstream.</p></div>
+<div class="turn"><span class="who">A</span><p>Why those flanking regions, though?</p></div>
+<div class="turn"><span class="who">B</span><p>What is hiding next door to the gene?</p></div>
+<div class="turn"><span class="who">A</span><p>Ah.</p></div>
+<div class="turn"><span class="who">B</span><p>The areas flanking a gene usually contain the start signals, the stop signals, and the binding sites for the cellular machinery.</p></div>
+<div class="turn"><span class="who">A</span><p>So they basically gave it the environmental clues.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. They gave the models the context needed to determine if a tiny sequence was actually functional, and, uh, the two models they built actually processed that environment differently.</p></div>
+<div class="turn"><span class="who">A</span><p>How so?</p></div>
+<div class="turn"><span class="who">B</span><p>Well, DSN 1 uses what are called convolutional layers, and it has fewer parameters, while DSN 2 utilizes bidirectional long short-term memory layers, or LSTMs.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, I have heard of convolutional networks being used a lot in image recognition, right?</p></div>
+<div class="turn"><span class="who">B</span><p>Right.</p></div>
+<div class="turn"><span class="who">A</span><p>But LSTMs sound more like something used for text or language. How do those two approaches differ when reading DNA?</p></div>
+<div class="turn"><span class="who">B</span><p>So a convolutional layer is excellent at scanning a sequence for local rigid patterns.</p></div>
+<div class="turn"><span class="who">A</span><p>Like visually?</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah. Imagine sliding a magnifying glass across a page looking for a very specific sequence of letters.</p></div>
+<div class="turn"><span class="who">A</span><p>Mm-hmm.</p></div>
+<div class="turn"><span class="who">B</span><p>It is fast and very efficient.</p></div>
+<div class="turn"><span class="who">A</span><p>And the LSTMs?</p></div>
+<div class="turn"><span class="who">B</span><p>Well, LSTMs, which you are right, do come from natural language processing, are designed to remember context over time.</p></div>
+<div class="turn"><span class="who">A</span><p>So it reads it like a sentence?</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. A bidirectional LSTM reads the DNA sequence forwards, and then it actually reads it backwards.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh wow.</p></div>
+<div class="turn"><span class="who">B</span><p>It maintains the memory of what it read at the beginning of the sequence to help it interpret what it sees at the very end.</p></div>
+<div class="turn"><span class="who">A</span><p>Kind of like trying to figure out if the word bark means a tree or a dog.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes.</p></div>
+<div class="turn"><span class="who">A</span><p>You might need to read the end of the sentence to understand the context of the word at the beginning.</p></div>
+<div class="turn"><span class="who">B</span><p>That is a brilliant way to conceptualize it. It treats DNA as a complex language rather than just a string of independent letters.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, so we have this incredibly sophisticated AI reading DNA like a language. How did it actually perform against the old bloodhound, the statistical models?</p></div>
+<div class="turn"><span class="who">B</span><p>The paper really demonstrated the severe limitations of the traditional tools.</p></div>
+<div class="turn"><span class="who">A</span><p>Really?</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah. I mean, if a statistical model flagged a sequence as a SMORF, it was almost always right. They used an E-value cutoff of less than 1 times 10 to the negative 6th.</p></div>
+<div class="turn"><span class="who">A</span><p>Which means they are very precise.</p></div>
+<div class="turn"><span class="who">B</span><p>Extremely precise when identifying things they already know. But they failed entirely at novel discovery.</p></div>
+<div class="turn"><span class="who">A</span><p>Because they need that composite sketch.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. So the researchers tested the AI on families of microproteins that had been intentionally excluded from the training data.</p></div>
+<div class="turn"><span class="who">A</span><p>So unobserved families.</p></div>
+<div class="turn"><span class="who">B</span><p>Completely novel ones.</p></div>
+<div class="turn"><span class="who">A</span><p>Yes.</p></div>
+<div class="turn"><span class="who">B</span><p>Sequences the AI had literally never seen before. And both DSN1 and DSN2 vastly outperformed the older PHMM tools.</p></div>
+<div class="turn"><span class="who">A</span><p>That&#x27;s incredible.</p></div>
+<div class="turn"><span class="who">B</span><p>They successfully identified these novel microproteins because the AI wasn&#x27;t just memorizing known examples.</p></div>
+<div class="turn"><span class="who">A</span><p>It was actually learning.</p></div>
+<div class="turn"><span class="who">B</span><p>It was generalizing the fundamental rules of what makes a sequence a true microprotein. The older models simply threw their hands up when faced with something outside their programming. Did they just throw the old statistical models in the trash then? Not at all. Here&#x27;s what they did. They combined them. Oh. Here&#x27;s where it gets really interesting. They packed them all together. Yeah. They packed DSN1, DSN2, and the traditional statistical models into a single automated command line tool, and they named it SmoorFinder.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, SmoorFinder.</p></div>
+<div class="turn"><span class="who">B</span><p>They built an ensemble model to leverage the complementary strengths of all three approaches.</p></div>
+<div class="turn"><span class="who">A</span><p>But how do you force three different algorithms to agree with each other if they work in such different ways?</p></div>
+<div class="turn"><span class="who">B</span><p>They used a dual threshold system.</p></div>
+<div class="turn"><span class="who">A</span><p>A dual threshold system.</p></div>
+<div class="turn"><span class="who">B</span><p>Right.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay.</p></div>
+<div class="turn"><span class="who">B</span><p>The ensemble takes the union of strict predictions and the intersection of lenient predictions.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, let me make sure I&#x27;m getting this. So if one of the three models is absolutely screaming, this is definitely a smorf with 99% certainty, the system just lets it through.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. That is the strict union.</p></div>
+<div class="turn"><span class="who">A</span><p>But if all three models are looking at a sequence and saying, eh, this looks reasonably good, but I&#x27;m only somewhat confident, the system also lets it through because there&#x27;s a broad consensus.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes, that is the lenient intersection.</p></div>
+<div class="turn"><span class="who">A</span><p>That feels like having three bouncers at a club.</p></div>
+<div class="turn"><span class="who">B</span><p>Okay, I like this.</p></div>
+<div class="turn"><span class="who">A</span><p>Like, one bouncer has a strict VIP list, but if all three bouncers agree that someone standing in line generally looks the part, they open the velvet rope.</p></div>
+<div class="turn"><span class="who">B</span><p>That captures the logic perfectly. But, you know, the researchers still had to prove they weren&#x27;t just letting party crashers into the club.</p></div>
+<div class="turn"><span class="who">A</span><p>Right, they had to prove the AI isn&#x27;t just making things up.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. They had to validate that the AI wasn&#x27;t just hallucinating genes that didn&#x27;t exist in reality.</p></div>
+<div class="turn"><span class="who">A</span><p>So how do they do that?</p></div>
+<div class="turn"><span class="who">B</span><p>To do that, they went back to human stool samples, four of them to be exact, and they used a technique called metaribo-seq.</p></div>
+<div class="turn"><span class="who">A</span><p>Metaribo-seq.</p></div>
+<div class="turn"><span class="who">B</span><p>It&#x27;s like the ribo-seq we talked about earlier, but it looks for ribosomes actively translating RNA in a complex microbial community rather than a single isolated strain. Ah. So if the AI is correct, we should see physical evidence of cellular machines attaching to these exact sequences right in the messy environment of the human gut. And that is exactly what they found.</p></div>
+<div class="turn"><span class="who">A</span><p>Wow.</p></div>
+<div class="turn"><span class="who">B</span><p>The SMORs predicted by the AI were heavily enriched for actual physical ribosome signals compared to the sequences the tool rejected.</p></div>
+<div class="turn"><span class="who">A</span><p>So it was working.</p></div>
+<div class="turn"><span class="who">B</span><p>It was finding real biologically active genes in actual human microbiome data.</p></div>
+<div class="turn"><span class="who">A</span><p>You know, what I found incredible in the source material is that the AI didn&#x27;t just find new things. It actually corrected mistakes that humans and older software had been making for years.</p></div>
+<div class="turn"><span class="who">B</span><p>Oh, the false positives.</p></div>
+<div class="turn"><span class="who">A</span><p>Yeah. There was a specific mention of the PRFB gene, or RF2. The AI automatically threw out 15 microprotein families that standard tools have been incorrectly flagging as real.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. The PRFB gene is a classic trap for genomic software.</p></div>
+<div class="turn"><span class="who">A</span><p>Really?</p></div>
+<div class="turn"><span class="who">B</span><p>It codes for a crucial protein, but it relies on a biological trick called a programmed frameshift.</p></div>
+<div class="turn"><span class="who">A</span><p>How does a frameshift trick the software?</p></div>
+<div class="turn"><span class="who">B</span><p>Well, the cellular machinery reads genetic code in chunks of three letters at a time, right?</p></div>
+<div class="turn"><span class="who">A</span><p>Right.</p></div>
+<div class="turn"><span class="who">B</span><p>In a programmed frameshift, the ribosome reaches a very specific sequence and intentionally slips. It moves forward or backward by one single letter before it continues reading.</p></div>
+<div class="turn"><span class="who">A</span><p>Like reading a ticker tape, tripping and starting to read from one letter over.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly.</p></div>
+<div class="turn"><span class="who">A</span><p>It would turn the rest of the message into complete gibberish.</p></div>
+<div class="turn"><span class="who">B</span><p>And to our older software, it does look like gibberish. The standard annotation tools see that intentional slip, they get confused by the break in the pattern, and they just assume the gene abruptly stopped.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, I see.</p></div>
+<div class="turn"><span class="who">B</span><p>They then misannotate that little broken fragment as a tiny independent microprotein.</p></div>
+<div class="turn"><span class="who">A</span><p>But the SMOR finder AI didn&#x27;t fall for it.</p></div>
+<div class="turn"><span class="who">B</span><p>No.</p></div>
+<div class="turn"><span class="who">A</span><p>Hmm.</p></div>
+<div class="turn"><span class="who">B</span><p>Because it looked at the broader context of the sequence, it correctly identified that it was just a mechanical slip, not a real microprotein. It caught the error and threw all those false positives out.</p></div>
+<div class="turn"><span class="who">A</span><p>That is so cool. But, you know, this leads me to my biggest skepticism with this entire field.</p></div>
+<div class="turn"><span class="who">B</span><p>Let&#x27;s hear it.</p></div>
+<div class="turn"><span class="who">A</span><p>If an AI is finding hidden genes and fixing human software errors, how is it actually making these decisions? I mean, deep learning is notorious for being a quote-unquote black box.</p></div>
+<div class="turn"><span class="who">B</span><p>It is, yeah.</p></div>
+<div class="turn"><span class="who">A</span><p>You put raw DNA in, you get a prediction out, but you have no idea why the computer made that choice. I always question whether the AI is actually learning biology or if it just, you know, found some random mathematical artifact in the data that happens to correlate with the right answer.</p></div>
+<div class="turn"><span class="who">B</span><p>That is honestly the most rigorous question you can ask about deep learning in genomics, and the researchers completely anticipated it. Did they? Oh yeah. They used a feature importance analysis method called Deep Lift, which is implemented through a package called SHAP.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, Deep Lift and SHAP. How does that let us peek inside the black box?</p></div>
+<div class="turn"><span class="who">B</span><p>It essentially traces the logic backward.</p></div>
+<div class="turn"><span class="who">A</span><p>Backward?</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah. Imagine a sports team wins a championship game. A standard deep learning model just tells you they won, but SHAP actually reviews the game tape and assigns a specific percentage of the victory to every single pass, every block, and every shot.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, wow.</p></div>
+<div class="turn"><span class="who">B</span><p>In this case, it back propagates through the neural network to assign an exact importance score to every individual A, C, T, and G in the sequence.</p></div>
+<div class="turn"><span class="who">A</span><p>So it literally tells us precisely which letters convinced the AI that a gene was real.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, so they mapped out exactly what the AI cared about. What did they find when they looked at the scores?</p></div>
+<div class="turn"><span class="who">B</span><p>If we connect this to the bigger picture, they found that this AI entirely on its own had organically discovered some of the most fundamental laws of molecular biology.</p></div>
+<div class="turn"><span class="who">A</span><p>Without anyone programming it in?</p></div>
+<div class="turn"><span class="who">B</span><p>Without anyone ever programming those rules into it.</p></div>
+<div class="turn"><span class="who">A</span><p>That&#x27;s crazy.</p></div>
+<div class="turn"><span class="who">B</span><p>For example, looking at the region upstream of the genes, both the DSN1 and DSN2 models independently discovered a massive spike in importance, exactly 12 base pairs before the start of the sequence.</p></div>
+<div class="turn"><span class="who">A</span><p>12 base pairs upstream.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. They zeroed in on the letters AGGAGG.</p></div>
+<div class="turn"><span class="who">A</span><p>The models just taught themselves to look for that specific six-letter pattern.</p></div>
+<div class="turn"><span class="who">B</span><p>They did.</p></div>
+<div class="turn"><span class="who">A</span><p>What does that sequence actually do in a real cell?</p></div>
+<div class="turn"><span class="who">B</span><p>In microbiology, that is known as the Shine Delgarno sequence.</p></div>
+<div class="turn"><span class="who">A</span><p>The Shine Delgarno sequence.</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah. It is literally the physical landing pad for the ribosome. It is how bacteria know exactly where to attach their machinery to start building a protein.</p></div>
+<div class="turn"><span class="who">A</span><p>Wow.</p></div>
+<div class="turn"><span class="who">B</span><p>The AI figured out that if this specific landing pad is sitting exactly 12 letters upstream, there is a phenomenally high probability that a real microprotein follows it.</p></div>
+<div class="turn"><span class="who">A</span><p>That is unbelievable. And it also figured out how the genes end, right? Because the source material mentioned, uh, a downstream discovery too. Yes,</p></div>
+<div class="turn"><span class="who">B</span><p>exactly. DSN2 placed heavy importance on a region just downstream of the gene that was overwhelmingly rich in the letter A, adenine.</p></div>
+<div class="turn"><span class="who">A</span><p>Adenine, okay.</p></div>
+<div class="turn"><span class="who">B</span><p>What does that mean? The researchers realized the AI had learned to identify the row-independent transcription termination mechanism.</p></div>
+<div class="turn"><span class="who">A</span><p>That sounds complicated.</p></div>
+<div class="turn"><span class="who">B</span><p>It&#x27;s basically an intrinsic stopping point. It creates a chain of uracils in the RNA, which physically signals the cellular machinery to detach.</p></div>
+<div class="turn"><span class="who">A</span><p>So a built-in stop sign.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. Standard tools often completely ignore this termination sequence, but the AI actively looked for it to confirm the gene was legitimate. Discovering the start and stop signals is amazing on its own, but the detail that really blew my mind was how the models analyzed the actual genes themselves. Ah, you are referring to the codon structure.</p></div>
+<div class="turn"><span class="who">A</span><p>Yes.</p></div>
+<div class="turn"><span class="who">B</span><p>So DNA is read in triplets called codons. When the researchers averaged the important scores across all the codons inside the genes, they found something remarkable.</p></div>
+<div class="turn"><span class="who">A</span><p>Right, because the AI treated the letters differently.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. The AI placed very high importance on the first and second letters of the triplet, but it heavily deprioritized the third letter.</p></div>
+<div class="turn"><span class="who">A</span><p>Wait, why would the third letter matter less than the first two? It&#x27;s literally part of the same word.</p></div>
+<div class="turn"><span class="who">B</span><p>Because of a biological phenomenon known as the wobble position.</p></div>
+<div class="turn"><span class="who">A</span><p>The wobble position.</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah. The genetic code has built-in redundancy. There are 64 possible three-letter combinations, but they only code for 20 amino acids.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, I see.</p></div>
+<div class="turn"><span class="who">B</span><p>For instance, if the first two letters of a codon are G and C, it will always encode the amino acid alanine, regardless of whether that third letter is A, C, T, or G.</p></div>
+<div class="turn"><span class="who">A</span><p>So the third position can just sort of wobble without changing the physical outcome.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly.</p></div>
+<div class="turn"><span class="who">A</span><p>And the deep learning models, simply by staring at raw sequences of DNA, independently deduced this biological redundancy.</p></div>
+<div class="turn"><span class="who">B</span><p>They absolutely did. The AI realized the third letter wasn&#x27;t providing useful information, so it dynamically learned to stop paying attention to it.</p></div>
+<div class="turn"><span class="who">A</span><p>That is just brilliant.</p></div>
+<div class="turn"><span class="who">B</span><p>And it goes further. The models grouped synonymous codons together.</p></div>
+<div class="turn"><span class="who">A</span><p>Meaning what?</p></div>
+<div class="turn"><span class="who">B</span><p>All the different three-letter combinations that code for the exact same amino acid were assigned almost identical mathematical scores.</p></div>
+<div class="turn"><span class="who">A</span><p>Wow.</p></div>
+<div class="turn"><span class="who">B</span><p>The AI essentially reconstructed the universal genetic code from scratch just by observing patterns.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, that definitely proves it isn&#x27;t just memorizing artifacts. It actually understands the syntax of life.</p></div>
+<div class="turn"><span class="who">B</span><p>It really does.</p></div>
+<div class="turn"><span class="who">A</span><p>So once they had this powerful, validated tool that fundamentally understands biological grammar, what did they do with it?</p></div>
+<div class="turn"><span class="who">B</span><p>They unleashed it at scale.</p></div>
+<div class="turn"><span class="who">A</span><p>How big of a scale?</p></div>
+<div class="turn"><span class="who">B</span><p>They ran SMERF Finder across 191,138 bacterial genomes from the RefSeq database.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh my God.</p></div>
+<div class="turn"><span class="who">B</span><p>They annotated all the hidden microproteins and made the entire data set publicly available for the scientific community.</p></div>
+<div class="turn"><span class="who">A</span><p>191,000 genomes. The scale of that is just hard to wrap your head around.</p></div>
+<div class="turn"><span class="who">B</span><p>It is massive. So to make that mountain of data actionable, they zoomed in and performed a core genome analysis on 26 common bacterial species.</p></div>
+<div class="turn"><span class="who">A</span><p>Core genome, meaning the genes that are present in nearly every single strain or isolate of specific species, right?</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly.</p></div>
+<div class="turn"><span class="who">A</span><p>Doing a core genome analysis across these species feels a bit like dissecting millions of cars from 26 different manufacturers, like Fords, Hondas, Toyotas, and looking for a universal spare part.</p></div>
+<div class="turn"><span class="who">B</span><p>I like where you&#x27;re going with this.</p></div>
+<div class="turn"><span class="who">A</span><p>You pull apart the engines and you find this one tiny identical bolt inside every single car. And when you ask the mechanics what it does, no one knows its name or what it is for.</p></div>
+<div class="turn"><span class="who">B</span><p>Right.</p></div>
+<div class="turn"><span class="who">A</span><p>But because it is in literally every car on the road, you know it must be absolutely critical to how the engine runs.</p></div>
+<div class="turn"><span class="who">B</span><p>That is a highly accurate analogy because when they ran the strict filters of SmoreFinder over the core genomes, they initially had 692 putative core SMORFs.</p></div>
+<div class="turn"><span class="who">A</span><p>Putative, so potential ones.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. But they filtered it down to 213 highly confident core SMORFs, conserved across these 26 species.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay.</p></div>
+<div class="turn"><span class="who">B</span><p>And here is the most shocking statistic. 38.5% of these universally conserved microproteins contain absolutely no known PFAM domain.</p></div>
+<div class="turn"><span class="who">A</span><p>We- I saw that term in the study. What exactly is a PFAM domain?</p></div>
+<div class="turn"><span class="who">B</span><p>Think of it as a recognized functional module. Proteins are often made of common building blocks that we understand, like a piece that attaches to a membrane or a piece that binds to DNA.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay.</p></div>
+<div class="turn"><span class="who">B</span><p>So saying a protein lacks a known PFAM domain means it has no recognized functional parts whatsoever. They are completely uncharacterized.</p></div>
+<div class="turn"><span class="who">A</span><p>So we know these tiny genes are real.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes.</p></div>
+<div class="turn"><span class="who">A</span><p>We know they are conserved across almost all strains of a given species.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes.</p></div>
+<div class="turn"><span class="who">A</span><p>But we have absolutely no idea what they are doing.</p></div>
+<div class="turn"><span class="who">B</span><p>None.</p></div>
+<div class="turn"><span class="who">A</span><p>That is wild. And the study highlighted a few specific examples that make this incredibly relevant, didn&#x27;t they?</p></div>
+<div class="turn"><span class="who">B</span><p>They did. There&#x27;s a microprotein family called SMORFAM02479.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay.</p></div>
+<div class="turn"><span class="who">B</span><p>SMORFinder found it sitting squarely in the core genomes of E. coli and Klebsiella pneumoniae. And it turns out it is homologous to a protein called YSHB, which is linked to virulence in salmonella. Wait, so a completely unknown microprotein could be playing a key role in how these major pathogens cause disease in humans. Exactly. And another fascinating one is SMORF-M02447. What does that one do? Well, it is a tiny 40-amino acid protein found right between two highly studied genes, YJIA and ZNUA, in the genomes of Enterococcus faecalis and Staphylococcus aureus.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh wow. Two incredibly dangerous bacteria, especially in hospital settings.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. This tiny protein is just sitting there, right between known genes, doing something presumably essential for these major human pathogens.</p></div>
+<div class="turn"><span class="who">A</span><p>And we just ignored it.</p></div>
+<div class="turn"><span class="who">B</span><p>We ignored it purely because it was too small to trip the alarms on our older software.</p></div>
+<div class="turn"><span class="who">A</span><p>So, what does this all mean? We started this deep dive by talking about how we&#x27;ve been ignoring the tiny three-letter words in the encyclopedia of life.</p></div>
+<div class="turn"><span class="who">B</span><p>Right.</p></div>
+<div class="turn"><span class="who">A</span><p>We&#x27;ve traced how a team of researchers built an AI that didn&#x27;t just find those missing words, but actively taught itself the rules of biological grammar.</p></div>
+<div class="turn"><span class="who">B</span><p>The Shine Delgarno landing pads, the intrinsic termination signals.</p></div>
+<div class="turn"><span class="who">A</span><p>Exactly. The redundancy of the wobble position. And by understanding that grammar, it mapped out a massive treasure trove of completely uncharacterized microproteins operating right now in our microbiomes.</p></div>
+<div class="turn"><span class="who">B</span><p>This raises an important question.</p></div>
+<div class="turn"><span class="who">A</span><p>Yeah.</p></div>
+<div class="turn"><span class="who">B</span><p>The implications of having an AI that deeply understands this biological grammar offer a truly profound next step.</p></div>
+<div class="turn"><span class="who">A</span><p>What&#x27;s that?</p></div>
+<div class="turn"><span class="who">B</span><p>If the AI can read this hidden language well enough to find sequences we missed, it means the AI also knows how to write it.</p></div>
+<div class="turn"><span class="who">A</span><p>Wait, really?</p></div>
+<div class="turn"><span class="who">B</span><p>Think about it. We could potentially use this exact same deep learning architecture to design completely novel synthetic microproteins from scratch.</p></div>
+<div class="turn"><span class="who">A</span><p>Like custom-built biology?</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. Imagine engineering custom SMORFs that act as a completely new class of highly targeted antibiotics.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh wow.</p></div>
+<div class="turn"><span class="who">B</span><p>Or using them to send specific regulatory signals to the microbiome in our gut to treat immune diseases. We are moving from just discovering the hidden text to potentially writing the next chapter ourselves.</p></div>
+<div class="turn"><span class="who">A</span><p>Using the AI&#x27;s grammar to write our own custom biological code. That is a wild thought to leave on. The encyclopedia isn&#x27;t just missing words, it is waiting for us to add some of our own. Thanks for taking this deep dive with us, and we&#x27;ll catch you on the next one.</p></div>
+</main>
+</body>
+</html>

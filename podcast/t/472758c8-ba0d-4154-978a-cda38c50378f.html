@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>How Actuaries Price Your Car Insurance · transcript</title>
+<link rel="icon" href="../../favicon.jpg">
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../podcast.css">
+<link rel="alternate" type="application/rss+xml" title="Audio overviews" href="../feed.xml">
+<script defer src="https://analytics.maurice-frank.com/script.js" data-website-id="da520d47-746b-405f-a4f7-6a01936b1219" data-domains="maurice-frank.com"></script>
+<script defer src="https://analytics.maurice-frank.com/recorder.js" data-website-id="da520d47-746b-405f-a4f7-6a01936b1219" data-domains="maurice-frank.com"></script>
+</head>
+<body>
+<main>
+<p class="note"><a href="../#472758c8-ba0d-4154-978a-cda38c50378f">← All episodes</a></p>
+<h1>How Actuaries Price Your Car Insurance</h1>
+<div class="rule"></div>
+<p class="note">Transcript of an aI-generated NotebookLM audio overview, not a publication. Machine transcription, speakers
+labelled A and B. <a href="https://cdn.maurice-frank.com/morris-media/podcast/fd310c93-f197-44fc-9cd6-132d08621c93/472758c8-ba0d-4154-978a-cda38c50378f.transcript.pdf">PDF</a></p>
+<audio controls preload="none" src="https://cdn.maurice-frank.com/morris-media/podcast/fd310c93-f197-44fc-9cd6-132d08621c93/472758c8-ba0d-4154-978a-cda38c50378f.m4a"></audio>
+<div class="turn"><span class="who">A</span><p>You know, it, uh, it always happens the exact same way. You&#x27;re sitting at your kitchen table, you&#x27;re staring at your car insurance bill after, like, a minor fender bender.</p></div>
+<div class="turn"><span class="who">B</span><p>Oh yeah, and you&#x27;re just dreading that new number.</p></div>
+<div class="turn"><span class="who">A</span><p>Exactly. And you find yourself wondering, well, how exactly did they calculate this new premium? Because it feels intensely personal, right? Like it&#x27;s your car, your mistake, your money.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. But at the exact same time, you get this sinking feeling that you&#x27;re just, I don&#x27;t know, trapped in a giant demographic bucket.</p></div>
+<div class="turn"><span class="who">A</span><p>Yes.</p></div>
+<div class="turn"><span class="who">B</span><p>You feel like you aren&#x27;t really a person to them.</p></div>
+<div class="turn"><span class="who">A</span><p>You&#x27;re just a row on a spreadsheet. You know, you&#x27;re a married homeowner, age 35, drives a sedan.</p></div>
+<div class="turn"><span class="who">B</span><p>And suddenly it feels like you are paying for literally everyone else&#x27;s mistakes in your town too.</p></div>
+<div class="turn"><span class="who">A</span><p>Which is incredibly frustrating.</p></div>
+<div class="turn"><span class="who">B</span><p>Which is incredibly frustrating.</p></div>
+<div class="turn"><span class="who">A</span><p>And, well, that is exactly the mission of our deep dive today. So I was recently reading through this incredibly dense but really fascinating actuarial textbook.</p></div>
+<div class="turn"><span class="who">B</span><p>The one by, uh, Hans Buhlmann and Alois Gissler, right?</p></div>
+<div class="turn"><span class="who">A</span><p>Yeah, that&#x27;s the one. A Course in Credibility Theory and Its Applications.</p></div>
+<div class="turn"><span class="who">B</span><p>Light reading for a Tuesday.</p></div>
+<div class="turn"><span class="who">A</span><p>I know, I know, but going through it, I realized it actually holds the secret to why we pay what we pay. Like, we are going to explore this profound mathematical balancing act between who you are as an individual and, you know, who you are as a statistic.</p></div>
+<div class="turn"><span class="who">B</span><p>Which I realize, um, when you hear the phrase actuarial textbook, it sounds like we&#x27;re about to do some really heavy mathematics.</p></div>
+<div class="turn"><span class="who">A</span><p>A little bit, yeah.</p></div>
+<div class="turn"><span class="who">B</span><p>And there is math here, for sure. But beneath all the equations, it&#x27;s really a story about human behavior. That&#x27;s about fairness and, uh, how we basically attempt to predict the future.</p></div>
+<div class="turn"><span class="who">A</span><p>Right. So before we can even understand how modern insurance actually prices your specific personal risk, we have to look at why the older traditional models completely failed the individual.</p></div>
+<div class="turn"><span class="who">B</span><p>Because for a really long time, the classical view of insurance was all about grouping people into these massive buckets.</p></div>
+<div class="turn"><span class="who">A</span><p>Yeah, these big pools of people.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. The classical approach relied on creating what actuaries called homogeneous risk classes.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, homogeneous meaning like all the same.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. And the idea was actually pretty simple. If you group people together based on highly quantifiable characteristics,</p></div>
+<div class="turn"><span class="who">A</span><p>Like their age or the type of car they drive.</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah, or their zip code, then you can use the law of large numbers.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, let&#x27;s unpack that really quick.</p></div>
+<div class="turn"><span class="who">B</span><p>Okay.</p></div>
+<div class="turn"><span class="who">A</span><p>The law of large numbers basically says, um, if you have enough people in a group, the chaotic kind of random behavior of individuals smooths out.</p></div>
+<div class="turn"><span class="who">B</span><p>Right, it averages out.</p></div>
+<div class="turn"><span class="who">A</span><p>And then you can predict the group&#x27;s average behavior pretty accurately, right?</p></div>
+<div class="turn"><span class="who">B</span><p>Precisely. Like, you can&#x27;t predict if one specific 30-year-old is going to crash tomorrow.</p></div>
+<div class="turn"><span class="who">A</span><p>Obviously not.</p></div>
+<div class="turn"><span class="who">B</span><p>But you absolutely can predict how many crashes 10,000 30-year-olds will have over the next year.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, that makes sense.</p></div>
+<div class="turn"><span class="who">B</span><p>But here is the massive mathematical trap that Bühlmann and Giesler point out in the text. To make those groups accurate, you start adding criteria.</p></div>
+<div class="turn"><span class="who">A</span><p>Because you want the groups to be more specific.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. So let&#x27;s say you use just four characteristics to define a driver, and let&#x27;s assume each characteristic has 10 possible values.</p></div>
+<div class="turn"><span class="who">A</span><p>So like age group is 1, car type is 2, region is 3, and maybe, uh, driving history is 4, and there are 10 variations of each of those.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. If you multiply that out, so 10 times 10 times 10 times 10.</p></div>
+<div class="turn"><span class="who">A</span><p>You suddenly have 10,000 distinct risk classes.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes, 10,000.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, wow, that is a lot of buckets.</p></div>
+<div class="turn"><span class="who">B</span><p>It is, and that completely destroys your statistical reliability because the law of large numbers, well, it needs large numbers.</p></div>
+<div class="turn"><span class="who">A</span><p>Right, the clue is in the name.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. If you have 10,000 hyper-specific classes, most of them are going to be practically empty.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, I see.</p></div>
+<div class="turn"><span class="who">B</span><p>You, you can&#x27;t predict the future based on, like, 2 guys in a specific rural zip code driving a very specific green hatchback. The data is just way too thin to mean anything.</p></div>
+<div class="turn"><span class="who">A</span><p>So the insurance companies basically have to do the exact opposite. They have to make the buckets wider just to get enough people inside them to make the math work.</p></div>
+<div class="turn"><span class="who">B</span><p>They do. But the moment they make the buckets wider, they embrace a fundamental lie. The textbook actually states this outright, which I found to be a surprisingly bold thing for a math text to say.</p></div>
+<div class="turn"><span class="who">A</span><p>What does it say?</p></div>
+<div class="turn"><span class="who">B</span><p>It says there are no homogeneous risk classes in insurance.</p></div>
+<div class="turn"><span class="who">A</span><p>Meaning, basically, no two drivers are exactly the same.</p></div>
+<div class="turn"><span class="who">B</span><p>None. Not a single one. Even if you and I are completely identical on paper.</p></div>
+<div class="turn"><span class="who">A</span><p>Like same age, same exact car, same commute.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. Even then, our underlying temperaments are completely different. Maybe I&#x27;m someone who gets easily distracted by the radio.</p></div>
+<div class="turn"><span class="who">A</span><p>And maybe I have, you know, slightly better reflexes because I play a lot of tennis or something.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. Those behavioral factors are huge drivers of risk, but they are incredibly difficult to quantify.</p></div>
+<div class="turn"><span class="who">A</span><p>Yeah, and culturally tricky to ask about on a form?</p></div>
+<div class="turn"><span class="who">B</span><p>Totally. Or they&#x27;d just be an absolute administrative nightmare to try and track.</p></div>
+<div class="turn"><span class="who">A</span><p>Well, this is exactly what I was talking about at the kitchen table. It sounds like grading on a curve in the worst possible way.</p></div>
+<div class="turn"><span class="who">B</span><p>It really does.</p></div>
+<div class="turn"><span class="who">A</span><p>Like, if I&#x27;m an A+ driver, why am I subsidizing the terrible drivers in my zip code? I mean, if an insurer insists on charging me the collective average of my big wide bucket, what&#x27;s stopping me from just leaving?</p></div>
+<div class="turn"><span class="who">B</span><p>Absolutely nothing is stopping you. And you&#x27;ve just hit on the ultimate tension in the whole insurance market. Okay, what do you mean? Well, the textbook argues that the most competitive rate an insurer can offer is the correct individual premium.</p></div>
+<div class="turn"><span class="who">A</span><p>The one tailored exactly to me.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. If a company just charges the collective average, the good risks, you know, people like you, are overpaying, and the bad risks are underpaying.</p></div>
+<div class="turn"><span class="who">A</span><p>So naturally, another insurance company is going to come along, see that I&#x27;m a really good driver who is being overcharged, and they&#x27;ll offer me a slightly cheaper rate and just steal me away.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes. And that dynamic is a well-recognized phenomenon called anti-selection.</p></div>
+<div class="turn"><span class="who">A</span><p>Anti-selection.</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah, and it is absolutely terrifying for an insurance company.</p></div>
+<div class="turn"><span class="who">A</span><p>Why is it terrifying?</p></div>
+<div class="turn"><span class="who">B</span><p>Think about how it plays out in reality. The first company loses all its good drivers to their competitors. So who is left in their risk pool?</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, only the terrible drivers.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. Only the terrible drivers, and they are paying artificially low rates because, remember, they used to be subsidized by you.</p></div>
+<div class="turn"><span class="who">A</span><p>Wow, so the whole system just breaks down.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. Eventually, the claims roll in, the math collapses entirely, and that company goes bankrupt. So survival dictates that insurers are highly, highly motivated to figure out your true underlying individual risk. Okay, but if the traditional demographic buckets don&#x27;t work and they can&#x27;t ask me for a full psychological profile to see if I have good reflexes, um, how do they actually isolate me from the group? So to do that, actuaries had to step out of traditional averages. They had to move into a much more dynamic framework called Bayesian statistics.</p></div>
+<div class="turn"><span class="who">A</span><p>Bayesian statistics, okay.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. They bridge the gap between your individual history and the collective data using a concept known as the two-urn model.</p></div>
+<div class="turn"><span class="who">A</span><p>Wait, so I&#x27;m an urn, like I&#x27;m having a hard time visualizing this. Break that down for me.</p></div>
+<div class="turn"><span class="who">B</span><p>Okay, imagine two literal physical urns sitting on a table in front of you. Urn 1 represents the collective portfolio.</p></div>
+<div class="turn"><span class="who">A</span><p>The whole group of drivers.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. The whole structural distribution of drivers out there. Imagine the urn is filled with thousands of slips of paper, and each slip has a specific risk parameter written on it.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, a risk parameter.</p></div>
+<div class="turn"><span class="who">B</span><p>We call that parameter theta. When you buy a policy, it&#x27;s as if you reach blindly into urn 1 and pull out a theta. That theta is your inherent true risk profile.</p></div>
+<div class="turn"><span class="who">A</span><p>So it&#x27;s my reflexes, my distractibility, my patience in traffic.</p></div>
+<div class="turn"><span class="who">B</span><p>All of it rolled into one variable.</p></div>
+<div class="turn"><span class="who">A</span><p>But the insurance company doesn&#x27;t get to see what&#x27;s written on my slip of paper, right?</p></div>
+<div class="turn"><span class="who">B</span><p>Nobody does.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay.</p></div>
+<div class="turn"><span class="who">B</span><p>It&#x27;s totally hidden. All the insurance company gets to see is what comes out of Earn 2.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, and what&#x27;s in Earn 2?</p></div>
+<div class="turn"><span class="who">B</span><p>Earn 2 represents the actual real-world claims you generate over time.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, I see.</p></div>
+<div class="turn"><span class="who">B</span><p>And here is the key. The claims that pop out of Earn 2 are entirely dictated by the specific hidden theta you originally pulled from Earn 1.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh man, here&#x27;s where it gets really interesting. It&#x27;s, um, it&#x27;s almost like a culinary school.</p></div>
+<div class="turn"><span class="who">B</span><p>A culinary school?</p></div>
+<div class="turn"><span class="who">A</span><p>Yeah. Think about it. Earn 1 is like blindly picking a student chef to cater a week of dinners for you.</p></div>
+<div class="turn"><span class="who">B</span><p>Okay.</p></div>
+<div class="turn"><span class="who">A</span><p>You have absolutely no idea if they are a culinary prodigy or if they&#x27;re, like, gonna burn water. That is their hidden theta.</p></div>
+<div class="turn"><span class="who">B</span><p>Right, their underlying skill level.</p></div>
+<div class="turn"><span class="who">A</span><p>Exactly. And then earn two is the experience of actually tasting the meals they cook for you over five days. On day one, maybe they burn the chicken.</p></div>
+<div class="turn"><span class="who">B</span><p>But you might just think, hey, maybe they just had a bad night.</p></div>
+<div class="turn"><span class="who">A</span><p>Right. But by day five, based on the consistent quality of the actual meals they&#x27;ve served you, you have a pretty reliable statistical idea of their true skill level.</p></div>
+<div class="turn"><span class="who">B</span><p>That is a phenomenal analogy. Yes. You are using the observed data, which are the meals, or in our case, the insurance claims over time, to deduce the hidden parameter. That makes total sense. And the ultimate mathematical goal of all this is to calculate something called the Bayes premium. The Bayes premium. Yeah, sometimes they call it the best experience premium. It is the absolute optimal estimator of your true individual premium, based entirely on your past claims data. Okay, but does this Bayes premium just arbitrarily punish you the second you make a claim? Like, how does it keep the math actually fair? It&#x27;s grounded by a very specific mathematical rule. The textbook explains that the Bayes premium relies on a, well, a symmetric quadratic loss function.</p></div>
+<div class="turn"><span class="who">A</span><p>Whoa, okay, stop right there. Symmetric quadratic loss function. My eyes literally just glazed over. What does that actually mean for the person paying the bill?</p></div>
+<div class="turn"><span class="who">B</span><p>Fair enough. Let&#x27;s strip away the jargon. Think of a loss function simply as a way to measure the penalty for guessing wrong.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay. Guessing my risk wrong.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. When the insurer tries to guess your true risk, they are inevitably going to be a little off. A symmetric quadratic loss function basically means the mathematical penalty for the insurer guessing too high is exactly the same as the penalty for guessing too low. Oh, I see. So it means the formula doesn&#x27;t have a built-in bias to overcharge people just to be safe. Exactly. It represents a state of equal bargaining power between the insurer and the insured. So if we connect this to the bigger picture, um, we use terms like a priori.</p></div>
+<div class="turn"><span class="who">A</span><p>A priori.</p></div>
+<div class="turn"><span class="who">B</span><p>Right, which is a Latin term basically meaning before the fact. So before you&#x27;ve ever driven a single mile on their policy, everyone in the collective looks exactly the same.</p></div>
+<div class="turn"><span class="who">A</span><p>We all just look like mysterious people reaching into urn one.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes.</p></div>
+<div class="turn"><span class="who">A</span><p>Because they haven&#x27;t tasted my cooking yet.</p></div>
+<div class="turn"><span class="who">B</span><p>Right, exactly.</p></div>
+<div class="turn"><span class="who">A</span><p>Right.</p></div>
+<div class="turn"><span class="who">B</span><p>It is only a posteriori, meaning after the fact, after we actually observe your claims history coming out of Earn 2 over a few years, that the math can start to deduce which specific risk profile you likely pulled.</p></div>
+<div class="turn"><span class="who">A</span><p>That makes total sense in theory. You watch someone&#x27;s behavior and you adjust their price based on that behavior.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes.</p></div>
+<div class="turn"><span class="who">A</span><p>But, I mean, theory is one thing. Do insurance companies actually use this? Because the source material gives us this incredible historical example that takes all this abstract math and drops it right onto the highway.</p></div>
+<div class="turn"><span class="who">B</span><p>Oh yes.</p></div>
+<div class="turn"><span class="who">A</span><p>We are going to Switzerland in the 1960s.</p></div>
+<div class="turn"><span class="who">B</span><p>It&#x27;s a fantastic case study in how theory actually meets reality. So in the 1960s, Swiss motor insurers went to their supervisory authority and basically asked to raise rates across the board.</p></div>
+<div class="turn"><span class="who">A</span><p>Why did they want to raise them?</p></div>
+<div class="turn"><span class="who">B</span><p>Well, at the time, your premium was heavily based on the horsepower of your car.</p></div>
+<div class="turn"><span class="who">A</span><p>Mm-hmm.</p></div>
+<div class="turn"><span class="who">B</span><p>And the insurers were saying, we are losing money. Crashes are way too expensive. We just need higher base rates for everyone.</p></div>
+<div class="turn"><span class="who">A</span><p>But the regulators pushed back on that. They effectively said, we aren&#x27;t just going to let you blindly raise rates on everyone. You need a system that actually respects individual claims experience.</p></div>
+<div class="turn"><span class="who">B</span><p>Right, because good drivers were totally tired of subsidizing bad drivers just because they both drove cars with the exact same horsepower engine.</p></div>
+<div class="turn"><span class="who">A</span><p>Right. So the industry tasks this Swiss actuary named F. Bichsel with solving this giant problem.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes. He had to figure out how to mathematically evaluate an individual&#x27;s true risk, and he realized something profound about human behavior.</p></div>
+<div class="turn"><span class="who">A</span><p>What did he find?</p></div>
+<div class="turn"><span class="who">B</span><p>He hypothesized that claim frequency, meaning exactly how often you get into an accident, is a far better predictor of your inherent risk profile than claim size.</p></div>
+<div class="turn"><span class="who">A</span><p>Wait, claim size meaning how expensive the crash actually is?</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly.</p></div>
+<div class="turn"><span class="who">A</span><p>Wait, so what does this all mean in practice? Let&#x27;s say I&#x27;m like looking for a parking spot, I get distracted, and I barely tap someone&#x27;s bumper.</p></div>
+<div class="turn"><span class="who">B</span><p>Okay, a minor fender bender.</p></div>
+<div class="turn"><span class="who">A</span><p>Yeah, like $500 of damage versus I am driving on the highway and I completely total a brand new Ferrari, $300,000 of damage.</p></div>
+<div class="turn"><span class="who">B</span><p>Right.</p></div>
+<div class="turn"><span class="who">A</span><p>Are you saying for my specific risk profile, those two events count exactly the same?</p></div>
+<div class="turn"><span class="who">B</span><p>I am.</p></div>
+<div class="turn"><span class="who">A</span><p>That is wild.</p></div>
+<div class="turn"><span class="who">B</span><p>I know. I know it feels completely counterintuitive. The cost difference to the insurer is massive, but you have to think about it from a predictive standpoint. The severity of a crash is heavily dictated by physics and pure luck.</p></div>
+<div class="turn"><span class="who">A</span><p>Luck.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes.</p></div>
+<div class="turn"><span class="who">A</span><p>Really?</p></div>
+<div class="turn"><span class="who">B</span><p>Yes. Think about it. If you run a red light, whether you happen to hit a rusty old sedan or a brand new Ferrari is totally up to chance.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, fair point.</p></div>
+<div class="turn"><span class="who">B</span><p>And whether your bumper just dents or the entire frame of the car bends is really just up to the specific physics of that split second.</p></div>
+<div class="turn"><span class="who">A</span><p>Ah, I get it now. But the frequency.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. The frequency is behavioral. How often are you distracted? How often do you tailgate the car in front of you? How often are you misjudging the distance in a grocery store parking lot?</p></div>
+<div class="turn"><span class="who">A</span><p>Right.</p></div>
+<div class="turn"><span class="who">B</span><p>If you are constantly hitting things, even really minor things, it reveals a fundamental deficit in your spatial awareness or your attention span. That frequency is what truly defines your underlying behavioral risk parameter.</p></div>
+<div class="turn"><span class="who">A</span><p>So, okay, the person who dings three mailboxes a year is fundamentally a worse risk, like a genuinely worse driver, than the person who drives flawlessly for a whole decade but hits an unavoidable patch of black ice and totals their car once.</p></div>
+<div class="turn"><span class="who">B</span><p>Mathematically and behaviorally, yes, absolutely. And to model this, Beeksel used what actuaries call a Poisson Gamma model.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, hold on. We are not letting another piece of math jargon slip by unexamined. What exactly is a Poisson Gamma model?</p></div>
+<div class="turn"><span class="who">B</span><p>Okay, let&#x27;s break it down into our two urns. The Poisson distribution is a statistical tool used to model how many times a rare, random, independent event happens over a fixed period of time.</p></div>
+<div class="turn"><span class="who">A</span><p>Like a car crash.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly like a car crash. So Poisson perfectly models urn 2. It models your individual claim frequency.</p></div>
+<div class="turn"><span class="who">A</span><p>And the gamma part?</p></div>
+<div class="turn"><span class="who">B</span><p>Gamma is an incredibly flexible statistical curve used to model the whole collective. That&#x27;s urn 1.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay. Gamma can draw a shape that shows a giant mountain of very safe drivers, and then a really long, skinny tail of really terrible drivers. And the data he used to prove this fit is just staggering to look at. The textbook shares the actual numbers from 1961. Oh, the numbers are wild. Out of roughly, I think it was 119,853 Swiss drivers, a massive 103,704 of them had exactly zero claims that year. It&#x27;s a hugely skewed distribution. The vast majority of people are actually perfectly safe. They go year after year without a single incident. But on the other end of that gamma tail, you had a tiny, tiny fraction of drivers who had up to six claims in a single year.</p></div>
+<div class="turn"><span class="who">B</span><p>Which is just absolute menace behavior on the roads. I mean, if you are crashing six times a year, you are definitely the problem.</p></div>
+<div class="turn"><span class="who">A</span><p>Truly. And proving that frequency matters way more than severity is what directly led to the creation of the famous Swiss bonus malus system in 1964.</p></div>
+<div class="turn"><span class="who">B</span><p>Which was revolutionary.</p></div>
+<div class="turn"><span class="who">A</span><p>Bonus malus, I have to say, it sounds like a Harry Potter spell.</p></div>
+<div class="turn"><span class="who">B</span><p>It really does, but it&#x27;s just Latin. Bonus means good, malus means bad.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, that tracks.</p></div>
+<div class="turn"><span class="who">B</span><p>Under this system, your individual premium becomes a dynamic percentage of the collective base rate.</p></div>
+<div class="turn"><span class="who">A</span><p>So how does it shift?</p></div>
+<div class="turn"><span class="who">B</span><p>Well, if you crash frequently, you get a malus, which is a penalty. Your rate skyrockets. You might pay double the base rate.</p></div>
+<div class="turn"><span class="who">A</span><p>Ouch.</p></div>
+<div class="turn"><span class="who">B</span><p>But if you prove your hidden theta is good by staying claim-free year after year, you earn a bonus discount.</p></div>
+<div class="turn"><span class="who">A</span><p>So they successfully implemented the Bayesian ideal in real life. They found a way to charge the individual based on their actual behavior using that to earn concept.</p></div>
+<div class="turn"><span class="who">B</span><p>They did. But, um, here&#x27;s the catch.</p></div>
+<div class="turn"><span class="who">A</span><p>There&#x27;s always a catch.</p></div>
+<div class="turn"><span class="who">B</span><p>Always. The Swiss model was brilliant, but it only worked because they had such a massive, highly specific data set that they could pinpoint the exact mathematical shape of those drivers.</p></div>
+<div class="turn"><span class="who">A</span><p>The Poisson Gamma model fit perfectly.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. But in reality, across different types of insurance, like, say, workers&#x27; comp or commercial fire insurance, insurers often just don&#x27;t know the true underlying distribution of the collective.</p></div>
+<div class="turn"><span class="who">A</span><p>So you can&#x27;t always just calculate the exact perfect base premium.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. Calculating the true base premium in the real world is usually way too complex, or it just requires historical data the insurer doesn&#x27;t have yet.</p></div>
+<div class="turn"><span class="who">A</span><p>Which raises a really important question. If they can&#x27;t do the perfect math, aren&#x27;t they just guessing again? Like, are we right back to the awful demographic buckets?</p></div>
+<div class="turn"><span class="who">B</span><p>Well, there has to be a workaround, right?</p></div>
+<div class="turn"><span class="who">A</span><p>There has to be.</p></div>
+<div class="turn"><span class="who">B</span><p>And there is. It&#x27;s a mathematical shortcut called credibility theory.</p></div>
+<div class="turn"><span class="who">A</span><p>Credibility theory, okay.</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah, credibility theory steps in to essentially force simplicity. Instead of looking for a wildly complex, perfect curve to fit the messy data, it just looks for the best linear approximation.</p></div>
+<div class="turn"><span class="who">A</span><p>The textbook calls this the general intuitive principle.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes.</p></div>
+<div class="turn"><span class="who">A</span><p>And the way they explain it is actually surprisingly elegant. It basically says your new premium is just a weighted average.</p></div>
+<div class="turn"><span class="who">B</span><p>Right.</p></div>
+<div class="turn"><span class="who">A</span><p>It takes the collective premium, like the bucket average, and your individual observed average, and it just weights them against each other.</p></div>
+<div class="turn"><span class="who">B</span><p>And how it determines that weight is the absolute genius part. The weight is determined by precision, which the math defines as the inverse of the quadratic loss.</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, you&#x27;re losing me again with inverse of the quadratic loss. Are we basically just talking about how much they trust the data?</p></div>
+<div class="turn"><span class="who">B</span><p>That&#x27;s exactly it. How much credible evidence do we actually have that your individual average is the real truth?</p></div>
+<div class="turn"><span class="who">A</span><p>Okay, let&#x27;s use a real world translation for that. I like to think of it like trusting a restaurant&#x27;s star rating on a food delivery app.</p></div>
+<div class="turn"><span class="who">B</span><p>Okay, I like where this is going.</p></div>
+<div class="turn"><span class="who">A</span><p>So if you&#x27;re visiting a totally new city and a restaurant has a perfect five-star rating, but it only has like two reviews, you don&#x27;t really trust it, right?</p></div>
+<div class="turn"><span class="who">B</span><p>Right, because two reviews is low precision. It&#x27;s just not credible yet.</p></div>
+<div class="turn"><span class="who">A</span><p>Exactly. You&#x27;d probably just assume it&#x27;s going to be an average meal, relying on the baseline quality of all restaurants in that city.</p></div>
+<div class="turn"><span class="who">B</span><p>So in this scenario, you&#x27;re giving almost all the weight to the collective average.</p></div>
+<div class="turn"><span class="who">A</span><p>Yes. But if that exact same restaurant has 2,000 reviews and it&#x27;s still holding a five-star rating.</p></div>
+<div class="turn"><span class="who">B</span><p>Then you&#x27;d trust that specific rating entirely. You&#x27;d completely ignore the city average because the individual volume of data is so incredibly high, the precision is unquestionable.</p></div>
+<div class="turn"><span class="who">A</span><p>That is precisely how the Bühlmann-Strauß model works. Our authors, Hans Bühlmann, along with Erwin Straub, upgraded this basic credibility math in the 1970s by adding what they call volume measures to automatically determine those exact weights.</p></div>
+<div class="turn"><span class="who">B</span><p>Yes. So if a volume measure is like the number of restaurant reviews, what does it actually look like in insurance?</p></div>
+<div class="turn"><span class="who">A</span><p>Right.</p></div>
+<div class="turn"><span class="who">B</span><p>Well, in motor insurance, a volume measure is usually years at risk. If you&#x27;ve held a policy for, say, two months, your individual claim average has very little weight.</p></div>
+<div class="turn"><span class="who">A</span><p>So the insurer relies on the collective bucket.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. But if you&#x27;ve been driving safely for 20 years, your individual history gets almost all the weight.</p></div>
+<div class="turn"><span class="who">A</span><p>What about other types of insurance?</p></div>
+<div class="turn"><span class="who">B</span><p>In workers&#x27; compensation insurance, for example, the volume measure might be the total annual payroll of a firm.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, because more payroll means more employees.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. A massive corporation with a huge payroll generates a lot of operational data very, very quickly, so their individual claim frequency becomes highly credible much faster than, say, a tiny mom and pop shop with just two employees. So the math is literally dynamically shifting how much it believes you based on how much data you&#x27;ve actually generated. And what&#x27;s fascinating here is that the credibility weight doesn&#x27;t just shift based on your personal volume of data. It also shifts based on the collective.</p></div>
+<div class="turn"><span class="who">A</span><p>Oh, really?</p></div>
+<div class="turn"><span class="who">B</span><p>Yeah. For example, the weight given to your personal history automatically increases if the collective portfolio is highly heterogeneous.</p></div>
+<div class="turn"><span class="who">A</span><p>Heterogeneous, meaning the risk pool is incredibly diverse.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. If everyone in your demographic bucket is totally different from one another, the collective average is functionally useless.</p></div>
+<div class="turn"><span class="who">A</span><p>So the math just relies more heavily on whatever individual data you do have, even if it&#x27;s not a lot.</p></div>
+<div class="turn"><span class="who">B</span><p>Exactly. Conversely, if everyone in the collective is practically identical, the math relies heavily on the collective average because it&#x27;s a very safe bet.</p></div>
+<div class="turn"><span class="who">A</span><p>So it&#x27;s constantly sliding the scale back and forth.</p></div>
+<div class="turn"><span class="who">B</span><p>It is. Furthermore, your individual weight increases if your personal within-risk variability is low.</p></div>
+<div class="turn"><span class="who">A</span><p>Meaning your behavior is consistent over time, like you don&#x27;t have zero claims one year, then five claims the next year, and two claims a year after that.</p></div>
+<div class="turn"><span class="who">B</span><p>Right. If your behavior is highly consistent, the math decides your data is highly credible. It&#x27;s this beautiful, self-adjusting formula that just continuously slides between the group average and your individual truth, all based on where the statistical certainty is most likely hiding. It</p></div>
+<div class="turn"><span class="who">A</span><p>really is incredible when you step back and look at the whole journey. We started with this frustrating reality of being dumped into a demographic bucket.</p></div>
+<div class="turn"><span class="who">B</span><p>The classical myth that any two drivers of a red sedan are exactly alike.</p></div>
+<div class="turn"><span class="who">A</span><p>Which we learned is a complete mathematical fiction.</p></div>
+<div class="turn"><span class="who">B</span><p>Total fiction.</p></div>
+<div class="turn"><span class="who">A</span><p>And then we saw how statisticians really fought back against that fiction with the two-earn model, basically separating our hidden risk profile from the actual claims we generate.</p></div>
+<div class="turn"><span class="who">B</span><p>And we watched how that exact concept revolutionized Swiss motor insurance in the 60s, proving that our frequency of mistakes reveals our true behavior much better than the random cost of those mistakes.</p></div>
+<div class="turn"><span class="who">A</span><p>And then we finally arrived at the Bohlmann-Strout credibility compromise, which provides a really practical, mathematical shortcut that constantly weighs your personal history against the crowd.</p></div>
+<div class="turn"><span class="who">B</span><p>It really changes how you look at the whole system, doesn&#x27;t it?</p></div>
+<div class="turn"><span class="who">A</span><p>It does. You&#x27;re not just a passive victim of a spreadsheet. Your behavior is actively negotiating your price over time. But you know, exploring all this leaves me with one final, kind of provocative thought to chew on, something that pushes all this math into the future.</p></div>
+<div class="turn"><span class="who">C</span><p>Oh, where are we going with this?</p></div>
+<div class="turn"><span class="who">A</span><p>Well, everything we&#x27;ve talked about today is based on the idea that Earn2, right, your actual behavior takes years and years to reveal itself through insurance claims.</p></div>
+<div class="turn"><span class="who">C</span><p>True. They basically have to wait for you to crash to know who you are.</p></div>
+<div class="turn"><span class="who">A</span><p>Exactly. But think about the rise of modern telematics.</p></div>
+<div class="turn"><span class="who">B</span><p>Oh, you mean those tracking apps and the plug-in devices that auto insurers are offering now?</p></div>
+<div class="turn"><span class="who">A</span><p>Yes. They track your exact braking speed, how hard you take a corner, what time of night you drive, your real-time mileage, even whether you pick up your phone while moving.</p></div>
+<div class="turn"><span class="who">C</span><p>That&#x27;s a lot of data.</p></div>
+<div class="turn"><span class="who">A</span><p>We are rapidly moving toward a world where the insurer doesn&#x27;t have to wait five years for you to make a claim. They are getting closer to perfectly knowing the contents of your Earn2 in advance.</p></div>
+<div class="turn"><span class="who">B</span><p>Wow. That is a staggering shift to think about. Because if algorithms eventually allow insurers to calculate an individual&#x27;s exact hidden risk parameter with almost zero uncertainty, does the concept of an insurance collective completely collapse?</p></div>
+<div class="turn"><span class="who">A</span><p>That&#x27;s exactly the question. Like, if you can perfectly predict your own risk and they know you are never going to crash, is it even insurance anymore?</p></div>
+<div class="turn"><span class="who">B</span><p>Right, because the whole foundational premise of insurance is shared risk. It&#x27;s the unknown.</p></div>
+<div class="turn"><span class="who">A</span><p>If they know exactly what you&#x27;re going to cost them, the pool just disappears. It just becomes a personalized savings account for future accidents.</p></div>
+<div class="turn"><span class="who">B</span><p>That&#x27;s true. The fundamental premise of that first collective earn relies on some level of shared uncertainty. Take that away, and the math might actually get too perfect for the traditional insurance model to even survive.</p></div>
+<div class="turn"><span class="who">A</span><p>It&#x27;s a fascinating problem for the actuaries of tomorrow, for sure.</p></div>
+<div class="turn"><span class="who">C</span><p>It really is.</p></div>
+<div class="turn"><span class="who">A</span><p>Well, it&#x27;s definitely something for you to think about the next time you&#x27;re sitting at your kitchen table staring at that car insurance bill. The math has finally figured out how to pull you out of the demographic bucket, but escaping that bucket entirely might bring a whole new set of problems. Thanks for taking this deep dive with us. We&#x27;ll see you next time.</p></div>
+</main>
+</body>
+</html>
