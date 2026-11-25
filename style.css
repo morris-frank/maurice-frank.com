@@ -1570,6 +1570,12 @@ html:has(.photo-lightbox.is-open) {
   filter: blur(24px);
 }
 
+/* Fade the preview out once the photo has faded in over it, so no blurred halo is left around the edges. */
+.photo-lightbox-stage:has(.photo-lightbox-image.is-loaded)::before {
+  opacity: 0;
+  transition: opacity 0.6s ease 0.3s;
+}
+
 .photo-lightbox-image {
   position: absolute;
   inset: 0;
