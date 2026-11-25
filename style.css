@@ -45,10 +45,16 @@ body {
 }
 
 @media (min-width: 900px) {
+  /* Fluid gutters from 1244px (content at 768px) down to 900px: the right gutter first
+     narrows to the content's left gutter (80px, via the centring margin), then both narrow
+     to 36px; the sidebar's own gutters go 36px -> 24px and its width 280px -> 240px. */
   .site-wrapper {
+    --gutter: clamp(36px, 12.791vw - 79.12px, 80px);
+    --side-gutter: clamp(24px, 3.4884vw - 7.395px, 36px);
     flex-direction: row;
-    padding: 0 var(--space-xl);
-    gap: var(--space-3xl);
+    max-width: 1244px;
+    padding: 0 var(--gutter) 0 var(--side-gutter);
+    gap: var(--gutter);
   }
 }
 
@@ -60,7 +66,7 @@ body {
 
 @media (min-width: 900px) {
   .site-sidebar {
-    width: var(--sidebar-width);
+    width: clamp(240px, 11.628vw + 135.35px, var(--sidebar-width));
     flex-shrink: 0;
     position: sticky;
     top: 0;
@@ -68,7 +74,7 @@ body {
     overflow-y: auto;
     border-bottom: none;
     border-right: 1px solid var(--border-hairline);
-    padding: var(--space-2xl) var(--space-xl) var(--space-lg) 0;
+    padding: var(--space-2xl) var(--side-gutter) var(--space-lg) 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -283,6 +289,7 @@ body {
 
 @media (min-width: 900px) {
   .site-main {
+    min-width: 0;
     padding: var(--space-2xl) 0 var(--space-lg);
   }
 }
