@@ -2615,51 +2615,54 @@
                 });
             });
 
-            /* Section separators: a flat line that starts to oscillate, turns chaotic and fades out,
-               drawn per section from its own seed; a faint glint runs along it once it scrolls into view. */
+            /* Section separators: straight as they enter from below, a taut-rope tremble as they cross the
+               screen, and a burst of chaos as they leave through the top. The first section gets none. */
             const svgNS = 'http://www.w3.org/2000/svg';
-            document.querySelectorAll('.section-header').forEach((header, i) => {
-                const W = 1000, H = 28, N = 400;
-                const seed = i * 2.399 + 1.3;
-                const pts = [];
-                for (let k = 0; k <= N; k++) {
-                    const t = k / N;
-                    const grow = Math.min(1, t * 1.6) ** 2;
-                    const chaos = Math.max(0, (t - 0.35) / 0.65) ** 1.5;
-                    const calm = Math.sin(2 * Math.PI * (3 * t + 9 * t * t) + seed);
-                    const wild = Math.sin(71 * t + seed * 3) * 0.6 + Math.sin(173 * t * t + seed * 7) * 0.5
-                        + Math.sin(311 * t + Math.sin(23 * t + seed) * 4) * 0.4;
-                    const y = H / 2 - (H / 2 - 2) * grow * ((1 - chaos) * calm + chaos * wild / 1.5);
-                    pts.push(`${(t * W).toFixed(1)},${y.toFixed(2)}`);
-                }
+            const W = 1000, H = 28, N = 200, AMP = H / 2 - 2;
+            const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const curves = [...document.querySelectorAll('.section-header')].slice(1).map((header, i) => {
                 const svg = document.createElementNS(svgNS, 'svg');
                 svg.setAttribute('class', 'section-curve');
                 svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
                 svg.setAttribute('preserveAspectRatio', 'none');
                 svg.setAttribute('aria-hidden', 'true');
-                const id = `section-fade-${i}`;
-                svg.innerHTML = `<defs><linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="0" x2="${W}" y1="0" y2="0">`
-                    + '<stop offset="0" stop-color="currentColor" stop-opacity="1"/>'
-                    + '<stop offset="0.55" stop-color="currentColor" stop-opacity="0.85"/>'
-                    + '<stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>';
-                ['section-curve-line', 'section-curve-glint'].forEach((cls) => {
-                    const path = document.createElementNS(svgNS, 'path');
-                    path.setAttribute('class', cls);
-                    path.setAttribute('d', `M${pts.join('L')}`);
-                    path.setAttribute('pathLength', '100');
-                    path.setAttribute('stroke', `url(#${id})`);
-                    svg.appendChild(path);
-                });
+                const path = document.createElementNS(svgNS, 'path');
+                path.setAttribute('d', `M0,${H / 2}L${W},${H / 2}`);
+                svg.appendChild(path);
                 header.appendChild(svg);
+                return { header, path, seed: i * 2.399 + 1.3, visible: false };
             });
-            const curveObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('is-lit');
-                    curveObserver.unobserve(entry.target);
+            const drawCurve = (c, time) => {
+                const r = c.header.getBoundingClientRect();
+                const p = Math.min(1, Math.max(0, 1 - (r.top + r.height / 2) / innerHeight));
+                const tension = Math.min(1, p / 0.6) * 1.5;
+                const burst = Math.max(0, (p - 0.8) / 0.2) ** 2;
+                const pts = [];
+                for (let k = 0; k <= N; k++) {
+                    const t = k / N, s = c.seed, env = Math.sin(Math.PI * t);
+                    const hum = Math.sin(Math.PI * 7 * t) * Math.sin(time * 41 + s)
+                        + Math.sin(Math.PI * 13 * t) * Math.sin(time * 67 + s * 2) * 0.6
+                        + Math.sin(Math.PI * 23 * t) * Math.sin(time * 97 + s * 3) * 0.4;
+                    const wild = Math.sin(71 * t + time * 9 + s * 3) * 0.6 + Math.sin(173 * t * t - time * 14 + s * 7) * 0.5
+                        + Math.sin(311 * t + Math.sin(23 * t + time * 5 + s) * 4) * 0.4;
+                    const off = tension * hum / 2 * (1 - burst) + AMP * burst * wild / 1.5 * env ** 0.5;
+                    pts.push(`${(t * W).toFixed(1)},${(H / 2 - Math.max(-AMP, Math.min(AMP, off * env))).toFixed(2)}`);
+                }
+                c.path.setAttribute('d', `M${pts.join('L')}`);
+            };
+            let curveFrame = 0;
+            const tickCurves = (ms) => {
+                const live = curves.filter((c) => c.visible);
+                live.forEach((c) => drawCurve(c, ms / 1000));
+                curveFrame = live.length ? requestAnimationFrame(tickCurves) : 0;
+            };
+            if (!still) {
+                const curveObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((e) => { curves.find((c) => c.header === e.target).visible = e.isIntersecting; });
+                    if (!curveFrame) curveFrame = requestAnimationFrame(tickCurves);
                 });
-            }, { rootMargin: '0px 0px -15% 0px' });
-            document.querySelectorAll('.section-header').forEach((h) => curveObserver.observe(h));
+                curves.forEach((c) => curveObserver.observe(c.header));
+            }
 
             const sections = document.querySelectorAll('.content-section');
             const navLinks = document.querySelectorAll('.sidebar-nav .nav-link');

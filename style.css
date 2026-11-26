@@ -315,7 +315,7 @@ body {
   white-space: nowrap;
 }
 
-/* Separator: a drawn oscillation (see the script), with a faint glint run along it on entering view. */
+/* Separator: a line drawn and animated by the script as it crosses the screen. */
 .section-curve {
   display: block;
   width: 100%;
@@ -325,31 +325,10 @@ body {
 
 .section-curve path {
   fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;
-}
-
-.section-curve-line {
-  stroke-width: 1;
-}
-
-.section-curve-glint {
-  stroke-width: 3;
-  stroke-dasharray: 10 110;
-  stroke-dashoffset: 10;
-  opacity: 0;
-  filter: blur(1.5px);
-}
-
-.section-header.is-lit .section-curve-glint {
-  animation: section-glint 2.6s ease-in-out forwards;
-}
-
-@keyframes section-glint {
-  0% { stroke-dashoffset: 10; opacity: 0; }
-  15% { opacity: 0.3; }
-  85% { opacity: 0.3; }
-  100% { stroke-dashoffset: -100; opacity: 0; }
 }
 
 /* Lead & Intro */
@@ -1658,8 +1637,7 @@ html:has(.photo-lightbox.is-open) {
       var(--border-hairline) var(--audio-progress) 100%
     ) center / 100% 2px no-repeat;
   }
-  .audio-player.is-pending .audio-player-play,
-  .section-header.is-lit .section-curve-glint {
+  .audio-player.is-pending .audio-player-play {
     animation: none;
   }
   /* Separate rules: an unknown thumb pseudo-element drops the whole list. */
