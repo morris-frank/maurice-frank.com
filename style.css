@@ -687,6 +687,7 @@ button.pub-authors .ellip {
 
 .software-icon {
   grid-row: 1 / span 2;
+  align-self: center;
   width: 40px;
   height: 40px;
   border-radius: 9px;
@@ -699,6 +700,12 @@ button.pub-authors .ellip {
 }
 
 @media (max-width: 599px) {
+  /* Centre the icon over the whole stacked row, links included. */
+  .software-icon {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+  }
   .software-right {
     padding-left: calc(40px + var(--space-md));
     margin-top: var(--space-xs);
@@ -842,6 +849,8 @@ button.pub-authors .ellip {
 }
 
 .media-cards-grid .media-card {
+  background-color: transparent;
+  border-color: transparent;
   border-radius: 10px;
   transition: var(--transition-fast);
 }
