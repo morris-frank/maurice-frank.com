@@ -419,7 +419,6 @@ body {
 /* Ventures: logo box on the left spanning date + description; borderless until hovered. */
 .ventures {
   display: grid;
-  gap: var(--space-sm);
 }
 
 .venture {
@@ -427,17 +426,15 @@ body {
   grid-template-columns: 5rem 1fr;
   column-gap: var(--space-md);
   row-gap: var(--space-xs);
-  padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-md);
-  border: 1px solid transparent;
-  border-radius: 4px;
+  padding: 0.625rem var(--space-sm) 0.625rem var(--space-md);
+  border-radius: 10px;
   color: inherit;
   text-decoration: none;
   transition: var(--transition-fast);
 }
 
 .venture:hover {
-  border-color: var(--text-primary);
-  box-shadow: var(--shadow-card);
+  background-color: var(--bg-subtle);
 }
 
 .venture-logo {
@@ -599,6 +596,21 @@ button.pub-authors .ellip {
   padding-left: var(--space-md);
 }
 
+/* Row hover: same fill as software rows, bled past the column by the end cells' shadows. */
+.pub-table tr:hover td {
+  background-color: var(--bg-subtle);
+}
+
+.pub-table tr:hover td:first-child {
+  border-radius: 10px 0 0 10px;
+  box-shadow: calc(-1 * var(--space-sm)) 0 var(--bg-subtle);
+}
+
+.pub-table tr:hover td:last-child {
+  border-radius: 0 10px 10px 0;
+  box-shadow: var(--space-sm) 0 var(--bg-subtle);
+}
+
 /* Mobile: journal on the date line, right-aligned; title below. */
 @media (max-width: 550px) {
   .pub-table tr {
@@ -614,6 +626,16 @@ button.pub-authors .ellip {
     order: 1;
     flex-basis: 100%;
   }
+  .pub-table tr:hover {
+    background-color: var(--bg-subtle);
+    border-radius: 10px;
+    margin: 0 calc(-1 * var(--space-sm));
+    padding-inline: var(--space-sm);
+  }
+  .pub-table tr:hover td {
+    background: none;
+    box-shadow: none;
+  }
 }
 
 /* Software & GitHub Items */
@@ -628,7 +650,8 @@ button.pub-authors .ellip {
 
 .software-item {
   position: relative;
-  padding: var(--space-md) 0;
+  padding: 0.625rem 0;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -819,12 +842,12 @@ button.pub-authors .ellip {
 }
 
 .media-cards-grid .media-card {
+  border-radius: 10px;
   transition: var(--transition-fast);
 }
 
 .media-cards-grid .media-card:hover {
-  border-color: var(--text-primary);
-  box-shadow: var(--shadow-card);
+  background-color: var(--bg-subtle);
 }
 
 .media-card-top {
