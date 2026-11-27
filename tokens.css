@@ -1,47 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Rock+Salt&display=swap');
 
 :root {
-  color-scheme: dark;
-  --canvas: #08090A;
-  --surface: #121414;
-  --surface-raised: #1C1C1F;
-  --ink: #F7F8F8;
-  --ink-secondary: #D0D6E0;
-  --muted: #8A8F98;
-  --subtle: #62666D;
-  --faint: #3E3E44;
-  --hairline: #23252A;
-  --border: #24282C;
-  --border-strong: #34343A;
-  --primary: #5E6AD2;
-  --on-dark-surface: #E5E5E6;
-  --white-wash: #FFFFFF14;
+  color-scheme: light;
+  --bg-app: oklch(1 0 0);
+  --bg-subtle: oklch(0.982 0.0017 248);
+  --bg-surface: oklch(1 0 0);
+  --bg-hover: oklch(0.963 0.0034 248);
+  --bg-overlay: oklch(1 0 0 / 0.92);
 
-  --bg-app: var(--canvas);
-  --bg-subtle: var(--surface);
-  --bg-surface: var(--surface);
-  --bg-hover: var(--surface-raised);
-  --bg-overlay: #08090ACC;
+  --text-primary: oklch(0.178 0 0);
+  --text-secondary: oklch(0.409 0 0);
+  --text-muted: oklch(0.566 0 0);
 
-  --text-primary: var(--ink);
-  --text-secondary: var(--ink-secondary);
-  --text-muted: var(--muted);
-  --text-subtle: var(--subtle);
-  --text-faint: var(--faint);
+  --border-hairline: oklch(0.928 0.0058 265);
+  --border-medium: oklch(0.872 0.0093 258);
+  --border-strong: oklch(27.282% 0.01782 165.717);
 
-  --border-hairline: var(--hairline);
-  --border-medium: var(--border);
-  --shadow-card: 0 0 0 1px #FFFFFF0D inset;
-  --shadow-float: 0 4px 24px #00000033;
+  --shadow-card: 0 2px 10px oklch(0 0 0 / 0.04);
 
-  --font-sans: "Inter", "SF Pro Display", -apple-system, system-ui, "Segoe UI", sans-serif;
+  --font-sans: "Atkinson Hyperlegible Next", system-ui, sans-serif;
   --font-mono: var(--font-sans);
-  --font-hand: var(--font-sans);
-  --weight-medium: 510;
-  --weight-strong: 590;
-  --radius-card: 8px;
-  --radius-panel: 12px;
-  --radius-pill: 9999px;
+  --font-hand: "Rock Salt", cursive;
 
   --sidebar-width: 280px;
   --content-max-width: 800px;
@@ -54,5 +33,27 @@
   --space-2xl: 3.5rem;
   --space-3xl: 5rem;
 
-  --transition-fast: color 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-fast: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg-app: oklch(0.21 0 0);
+    --bg-subtle: oklch(0.256 0 0);
+    --bg-surface: oklch(0.247 0 0);
+    --bg-hover: oklch(0.295 0 0);
+    --bg-overlay: oklch(0.21 0 0 / 0.92);
+
+    --text-primary: oklch(0.961 0 0);
+    --text-secondary: oklch(0.783 0 0);
+    --text-muted: oklch(0.640 0 0);
+    --text-faint: oklch(0.524 0 0);
+
+    --border-hairline: oklch(0.341 0 0);
+    --border-medium: oklch(0.416 0 0);
+    --border-strong: oklch(0.961 0 0);
+
+    --shadow-card: 0 2px 12px oklch(0 0 0 / 0.45);
+  }
 }
